@@ -1,0 +1,118 @@
+---
+title: "HPM 883: Advanced Quantitative Methods for Health policy and Management"
+execute: 
+  freeze: false
+editor_options: 
+  chunk_output_type: console
+---
+
+This page contains the schedule, topics, content and assigments for the semester.
+
+::: callout-tip
+## Note
+
+This schedule will be updated as the semester progresses.
+:::
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+library(googlesheets4)
+library(gt)
+library(tidyverse)
+gs4_deauth()
+d <- read_sheet("https://docs.google.com/spreadsheets/d/1XpkFUr6AfkO-w0mqtXZbBUIA_lxVNsePaWCtRMDuE0U/edit?usp=sharing", sheet = "Schedule")
+prepare_cutoff_date <- as.Date("2025-05-20")
+```
+
+```{r}
+#| echo: false
+#| column: screen-inset-right
+d |>
+  filter(!is.na(session)) |>
+  select(-dow, -admin_notes, -number, -session) |>
+  mutate(
+    date = as.Date(date),
+    prepare = if_else(date > prepare_cutoff_date, "*To be posted*", prepare)
+    ) |>
+  relocate(due, .after = materials) |>
+  gt() |>
+  fmt_date(date, date_style = 31) |>
+  sub_missing(
+    columns = c(week, prepare, topic, materials, due), 
+    missing_text = ""
+  ) |>
+  cols_align(
+    align = "center", 
+    columns = c(week)
+  ) |>
+  cols_align(
+    align = "right", 
+    columns = c(date)
+  ) |>
+  cols_align(
+    align = "left", 
+    columns = c(topic, prepare, materials, due)
+  ) |>
+  tab_style(
+    style = cell_text(
+      color = "#b4b4b4"
+    ),
+    locations = cells_body(
+      columns = c(prepare),
+      rows = prepare == "*To be posted*"
+    )
+  ) |>
+  tab_style(
+    style = cell_text(
+      color = "#b4b4b4"
+    ),
+    locations = cells_body(
+      columns = c(materials),
+      rows = materials == "*To be posted*"
+    )
+  ) |>
+  tab_style(
+    style = cell_borders(
+      sides = "right",
+      color = "#D3D3D3",
+      style = "solid"
+    ),
+    locations = cells_body(
+      columns = c(date, topic, prepare, materials)
+    )
+  ) |>
+  tab_style(
+    style = cell_borders(
+      sides = "top",
+      color = "black",
+      weight = px(2),
+      style = "solid"
+    ),
+    locations = cells_body(
+      columns = everything(),
+      rows = str_detect(topic, "[Ll]ab|Project milestone|Final$")
+    )
+  ) |>
+  fmt_markdown(
+    columns = c(topic, prepare, materials, due)
+  ) |>
+  tab_options(table.width = pct(100)) |>
+  cols_width(
+    week ~ pct(2),
+    date ~ pct(10), 
+    prepare ~ pct(25),
+    topic ~ pct(27),
+    materials ~ pct(18),
+    due ~ pct(18)
+  ) |>
+  cols_label_with(fn = function(x) {
+      janitor::make_clean_names(x, case = "title") |>
+        toupper() |>
+        stringr::str_replace_all("^|$", "**") |>
+        md()
+    }) |>
+  tab_options(table.font.size = 13) |>
+  opt_row_striping()
+```

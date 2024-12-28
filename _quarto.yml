@@ -1,0 +1,96 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  page-navigation: true
+  title: "HPM 883"
+  description: "Homepage for HPM 883: Advanced Quantitative Methods for Health policy and Management"
+  site-url: https://hpm883.github.io
+
+  repo-url: https://github.com/hpm883
+  repo-actions: [edit, issue]
+
+  draft-mode: unlinked
+
+  sidebar:
+    background: "#F5F5F5"
+    logo: images/logo.png
+    pinned: true
+    align: center
+    tools: 
+      - icon: github
+        href: https://github.com/hpm883
+        text: "GitHub"
+      - icon: code-square
+        href: https://rstudio.cloud/
+        text: "Rstudio Cloud"
+      - icon: life-preserver
+        text: Support
+        menu:
+          - icon: person-raised-hand
+            text: Office hours
+            href: https://placeholder.link/office-hours
+          - icon: people-fill
+            text: Help from humans 
+            href: https://placeholder.link/help-humans
+          - icon: robot
+            text: Help from AI (Chatbot)
+            href: https://placeholder.link/chatbot
+      - icon: slack
+        href: https://yourworkspace.slack.com
+        text: "Slack"
+      - icon: file-check-fill
+        text: "Canvas"
+        menu:
+          - icon: megaphone-fill
+            text: Announcements
+            url: https://placeholder.link/announcements
+          - icon: file-arrow-up-fill
+            text: Gradescope
+            url: https://placeholder.link/gradescope
+          - icon: alphabet-uppercase
+            text: Gradebook
+            url: https://placeholder.link/gradebook
+    
+    style: "docked"
+    search: true
+    collapse-level: 1
+    contents:
+      - section: "Course Information"
+        contents:
+          - href: course-overview.qmd
+            text: "Overview"
+          - href: course-syllabus.qmd
+            text: "Syllabus"
+          - href: index.qmd
+            text: "Schedule"
+      - section: "Resources"
+
+
+  page-footer:
+    right: 'This page is built with [Quarto](https://quarto.org/).'
+    left: "&copy; Copyright 2024, Sean Sylvia"
+    background: "#F5F5F5"
+
+format:
+  html:
+    mainfont: "Times New Roman"
+    highlight-style: a11y-light
+
+theme:
+  light: [cosmo, style/hpm883.scss]
+  dark: [cosmo, style/hpm883-dark.scss]
+linkcolor:: "#5D737E"
+toc: true
+code-copy: hover
+code-link: true
+code-overflow: wrap
+
+execute:
+  freeze: auto
+
+editor: visual
+
+
+

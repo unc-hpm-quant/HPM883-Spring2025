@@ -1,0 +1,22 @@
+---
+title: "HPM 883<br>Spring 2025"
+image: images/logo.png
+image-alt: logo for course 
+about:
+  template: trestles
+  links:
+    - icon: laptop
+      href: https://hpm883.github.io
+      aria-label: Link to course website
+    - icon: github
+      href: https://github.com/hpm883
+      aria-label: Link to course GitHub organization
+---
+
+## Overview
+
+HPM 883 is an advanced graduate-level course designed to equip PhD students in the Health Policy and Management program with sophisticated quantitative research skills. This course represents the third installment in the quantitative methods sequence, building on the foundational knowledge acquired in HPM 881 and HPM 882.
+
+Throughout the term, students will delve into advanced quantitative methods pertinent to health services research with a focus on the use of experimental methods and machine learning for causal inference. The course will provide a thorough introduction to machine learning techniques and explore the burgeoning domain of causal machine learning.
+
+To facilitate a deep and practical understanding of these complex topics, HPM 883 employs a "flipped" classroom structure. Students will be expected to engage with recorded lectures and complete assigned readings at home. Classroom time will then be dedicated to hands-on data analysis using the R programming language, allowing for immediate application of theoretical concepts to real-world datasets.

@@ -1,0 +1,26 @@
+/*-- scss:defaults --*/
+@import 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap';
+
+$carolina-blue: #4B9CD3; /* Carolina Blue */
+$dark-blue: #002D72; /* Dark Blue */
+$light-blue: #A4C8E1; /* Light Blue */
+$white: #FFFFFF; /* White */
+$font-family: 'Roboto', sans-serif; /* Modern Font */
+
+/*-- scss:rules --*/
+body {
+    background-color: $white;
+    color: $dark-blue;
+    font-family: $font-family; /* Apply the modern font */
+}
+
+h1, h2, h3 {
+    color: $carolina-blue;
+}
+
+a {
+    color: $carolina-blue;
+    &:hover {
+        color: $light-blue;
+    }
+}

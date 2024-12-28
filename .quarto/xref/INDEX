@@ -1,0 +1,20 @@
+{
+  "index.qmd": {
+    "index.html": "552e15d7"
+  },
+  "part_2_eda.qmd": {
+    "part_2_eda.html": "2ad1bb28"
+  },
+  "about.qmd": {
+    "about.html": "cdb4bf63"
+  },
+  "part_1_prep.qmd": {
+    "part_1_prep.html": "2de23c85"
+  },
+  "course-syllabus.qmd": {
+    "course-syllabus.html": "f79a3e4f"
+  },
+  "course-overview.qmd": {
+    "course-overview.html": "45adcc98"
+  }
+}

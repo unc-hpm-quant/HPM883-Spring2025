@@ -1,0 +1,86 @@
+/*-- scss:defaults --*/
+@import 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap';
+
+// Base colors from UNC palette with dark mode adjustments
+$carolina-blue: #4B9CD3; /* Carolina Blue */
+$dark-blue: #002D72; /* Dark Blue */
+$light-blue: #A4C8E1; /* Light Blue */
+$white: #FFFFFF;
+$dark-bg: #1a1a1a; /* Dark background */
+$darker-blue: #001F4D; /* Darker shade of UNC blue for contrast */
+
+// Theme variables
+$body-bg: $dark-bg;
+$body-color: $white;
+$link-color: $carolina-blue;
+$font-family: 'Roboto', sans-serif;
+
+// Navigation colors
+$navbar-bg: $darker-blue;
+$sidebar-bg: $darker-blue;
+$footer-bg: $darker-blue;
+
+// Code blocks
+$code-block-bg: #2d2d2d;
+$code-color: $light-blue;
+
+// Bootstrap customization
+$primary: $carolina-blue;
+$secondary: $light-blue;
+
+/*-- scss:rules --*/
+body {
+    background-color: $body-bg;
+    color: $body-color;
+    font-family: $font-family;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: $carolina-blue;
+}
+
+a {
+    color: $link-color;
+    &:hover {
+        color: $light-blue;
+    }
+}
+
+// Table styling
+.table {
+    color: $body-color;
+    background-color: $darker-blue;
+    
+    th {
+        background-color: $dark-blue;
+    }
+    
+    td {
+        border-color: rgba($white, 0.1);
+    }
+}
+
+// Code blocks
+pre {
+    background-color: $code-block-bg;
+    color: $code-color;
+    border: 1px solid rgba($white, 0.1);
+}
+
+// Navigation
+.sidebar {
+    background-color: $sidebar-bg;
+    border-right: 1px solid rgba($white, 0.1);
+}
+
+.navbar {
+    background-color: $navbar-bg;
+    border-bottom: 1px solid rgba($white, 0.1);
+}
+
+// Footer
+.footer {
+    background-color: $footer-bg;
+    color: $body-color;
+    border-top: 1px solid rgba($white, 0.1);
+}

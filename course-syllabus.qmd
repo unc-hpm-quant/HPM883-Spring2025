@@ -1,0 +1,12 @@
+---
+title: "Course Syllabus"
+format: 
+  html:
+    code-fold: false
+    code-tools: true
+editor: visual
+---
+
+::: {.embed-container}
+<iframe width="1000" height="800" src="https://docs.google.com/document/d/1Vcg3hWGOXfQNVwFnD2954a-tgz2zLwke/edit?usp=sharing&rm=minimal"></iframe>
+:::
