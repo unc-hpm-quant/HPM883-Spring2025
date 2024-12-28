@@ -16,5 +16,8 @@
   },
   "course-overview.qmd": {
     "course-overview.html": "45adcc98"
+  },
+  "labs/data/lab-1.ipynb": {
+    "lab-1.html": "e0bed2b3"
   }
 }
