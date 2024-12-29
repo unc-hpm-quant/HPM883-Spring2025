@@ -16,5 +16,17 @@
   },
   "course-overview.qmd": {
     "course-overview.html": "45adcc98"
+  },
+  "labs/part_2_eda.qmd": {
+    "part_2_eda.html": "caed9e41"
+  },
+  "labs/lab-1.ipynb": {
+    "lab-1.html": "312bc9d1"
+  },
+  "instructors.qmd": {
+    "instructors.html": "3b6faf32"
+  },
+  "computing.qmd": {
+    "computing.html": "e09d0090"
   }
 }

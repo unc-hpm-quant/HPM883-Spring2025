@@ -65,6 +65,7 @@ website:
             text: "Syllabus"
           - href: index.qmd
             text: "Schedule"
+          - href: instructors.qmd
       - section: "Resources"
 
 

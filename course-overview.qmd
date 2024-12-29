@@ -13,7 +13,7 @@ about:
       aria-label: Link to course GitHub organization
 ---
 
-## Overview
+## HPM 883 Overview
 
 HPM 883 is an advanced graduate-level course designed to equip PhD students in the Health Policy and Management program with sophisticated quantitative research skills. This course represents the third installment in the quantitative methods sequence, building on the foundational knowledge acquired in HPM 881 and HPM 882.
 
