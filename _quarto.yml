@@ -69,7 +69,6 @@ website:
             text: "Instructors"
           - href: course-communication.qmd
             text: "Communication"
-      - index.qmd
       - section: "Resources"
       - section: "Unit 0: Foundations"
         contents:
