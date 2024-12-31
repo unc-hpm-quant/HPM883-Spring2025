@@ -1,15 +1,12 @@
 {
-  "hash": "db55124c6491e37c6bb1171b912d8699",
+  "hash": "a3127ae4a7d5466c0c84a68510ff58a8",
   "result": {
-    "engine": "knitr",
-    "markdown": "---\ntitle: Lab 0\nsubtitle: The Hospital of Uncertain Outcomes\nauthor: Sean Sylvia\ndate: \"2025-05-16\"\nslug: lab-0\ncategories: \n    -  Lab\n    -  Preliminaries\ndescription: \"Intro to class computing setup\"\ndraft: false\n---\n\n\n\n# Lab 0: The Hospital of Uncertain Outcomes\n\n## Introduction\n\n### Learning Objectives\n\n\n## The Hospital of Uncertain Outcomes\n\nSt. Null’s Memorial Hospital is in chaos. Every time the hospital board—led by the well-meaning but trend-obsessed CEO Barnaby Beta—implements a new policy, they find puzzling or contradictory results. Dr. P-Hacker, a self-styled data guru, only adds to the confusion by massaging, cherry-picking, and p-hacking the data until he sees “significance.” Meanwhile, Nurse Random constantly rolls her eyes at his antics and reminds everyone that solid methodology—not creative statistics—should guide decision-making.\n\nBut there’s hope. Your class has just been hired as “methodology consultants” to diagnose and treat the hospital’s research woes. In each module (or “episode”), you’ll confront a new fiasco at St. Null’s: from suspiciously overfitted AI models, to missing data nightmares, to bungled randomized trials and flawed observational studies. Along the way, the brilliant but quirky Dr. Doub R. Obust will champion doubly robust methods and other advanced techniques to rescue the day.\n\nYour mission? Use proper causal inference and machine learning strategies to shed light on the true effects of the hospital’s interventions. Each chapter in your lecture notes (i.e., Jupyter notebooks) begins with a brief “scene” in which the hospital staff face some methodological mishap—then shifts to your step-by-step explanation of the relevant statistical concepts and R code. By the end of the course, you’ll have helped St. Null’s Memorial Hospital finally achieve consistent, credible results, while having a bit of comedic fun along the way.\n\n\n\n\n",
-    "supporting": [],
-    "filters": [
-      "rmarkdown/pagebreak.lua"
+    "engine": "jupyter",
+    "markdown": "---\ntitle: Lab 0\nsubtitle: The Hospital of Uncertain Outcomes\nauthor: Sean Sylvia\ndate: \"2025-05-16\"\nslug: lab-0\ncategories: \n    -  Lab\n    -  Preliminaries\ndescription: \"Intro to class computing setup\"\ndraft: false\n---\n\n\n# Lab 0: The Hospital of Uncertain Outcomes\n\n## Introduction\n\n### Learning Objectives\n\n## The Hospital of Uncertain Outcomes\n\nSt. Null’s Memorial Hospital is in chaos. Every time the hospital board—led by the well-meaning but trend-obsessed CEO Barnaby Beta—implements a new policy, they find puzzling or contradictory results. Dr. P-Hacker, a self-styled data guru, only adds to the confusion by massaging, cherry-picking, and p-hacking the data until he sees “significance.” Meanwhile, Nurse Random constantly rolls her eyes at his antics and reminds everyone that solid methodology—not creative statistics—should guide decision-making.\n\nBut there’s hope. Your class has just been hired as “methodology consultants” to diagnose and treat the hospital’s research woes. In each module (or “episode”), you’ll confront a new fiasco at St. Null’s: from suspiciously overfitted AI models, to missing data nightmares, to bungled randomized trials and flawed observational studies. Along the way, the brilliant but quirky Dr. Doub R. Obust will champion doubly robust methods and other advanced techniques to rescue the day.\n\nYour mission? Use proper causal inference and machine learning strategies to shed light on the true effects of the hospital’s interventions. Each chapter in your lecture notes (i.e., Jupyter notebooks) begins with a brief “scene” in which the hospital staff face some methodological mishap—then shifts to your step-by-step explanation of the relevant statistical concepts and R code. By the end of the course, you’ll have helped St. Null’s Memorial Hospital finally achieve consistent, credible results, while having a bit of comedic fun along the way.\n\n\n```{html}\n<video autoplay loop width=\"400\">\n  <source src=\"https://sora.com/g/gen_01jge9ck5nfd8rchxcjhp9rzn7\" type=\"video/mp4\">\n  Your browser does not support the video tag.\n</video>\n```\n\n",
+    "supporting": [
+      "lab-0_files"
     ],
-    "includes": {},
-    "engineDependencies": {},
-    "preserve": {},
-    "postProcess": true
+    "filters": [],
+    "includes": {}
   }
 }
