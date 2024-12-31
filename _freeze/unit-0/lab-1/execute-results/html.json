@@ -1,0 +1,15 @@
+{
+  "hash": "f009d3b6f15fc63366069175af343767",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: Lab N\nsubtitle: Subtitle\nauthor: Sean Sylvia\ndate: \"2024-12-31\"\nslug: lab-0\ncategories: \n    -  Lab\n    -  Preliminaries\ndescription: \"Description\"\ndraft: false\n---\n\n\n\n\n# Lab Exercise\n\n## Overview\n\nThis lab session focuses on **\\[Insert Topic Here\\]**. The goal of this exercise is to apply the concepts covered in class to practical problems using R.\n\n------------------------------------------------------------------------\n\n## Learning Objectives\n\nBy the end of this lab, you will be able to: 1. \\[Insert Learning Objective Here\\] 2. \\[Insert Additional Learning Objective Here\\] 3. \\[Insert Additional Learning Objective Here\\]\n\n------------------------------------------------------------------------\n\n## Case Scenario\n\nWelcome to today’s lab! You will take on the role of **\\[Insert Role Here\\]**, tasked with solving a real-world problem related to **\\[Insert Scenario Description Here\\]**. This scenario will guide the exercises and provide a context for applying your skills.\n\n------------------------------------------------------------------------\n\n## Instructions\n\n1.  Download the dataset from \\[Insert Link Here\\].\n2.  Follow the steps outlined in the exercises below.\n3.  Submit your completed lab exercise on Sakai by \\[Insert Deadline Here\\].\n\n------------------------------------------------------------------------\n\n## Exercises\n\n### Exercise 1: \\[Insert Exercise Title Here\\]\n\n-   **Objective**: \\[Insert Objective Here\\]\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# Step 1: [Insert Description Here]\n# Example Code\n```\n:::\n\n\n\n\n### Exercise 2: \\[Insert Exercise Title Here\\]\n\n-   **Objective**: \\[Insert Objective Here\\]\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# Step 1: [Insert Description Here]\n# Example Code\n```\n:::\n\n\n\n\n------------------------------------------------------------------------\n\n## Reflection Questions\n\nAnswer the following questions as part of your lab report: 1. \\[Insert Question Here\\] 2. \\[Insert Additional Question Here\\] 3. \\[Insert Additional Question Here\\]\n\n------------------------------------------------------------------------\n\n## Submission Guidelines\n\n-   Submit your R script and a brief write-up of your results.\n-   Include answers to the reflection questions.\n\n**Deadline**: \\[Insert Date and Time\\]\n\n------------------------------------------------------------------------\n\n## Notes\n\nEnsure that your code is well-commented and your results are clearly presented. Use ggplot2 or other visualization libraries for graphical outputs where applicable.",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

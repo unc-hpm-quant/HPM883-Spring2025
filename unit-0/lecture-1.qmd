@@ -8,7 +8,7 @@ categories:
     -  Lecture note
     -  Preliminaries
 description: "Description"
-draft: true
+draft: false
 ---
 
 ## Overview

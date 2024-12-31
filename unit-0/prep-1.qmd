@@ -1,0 +1,56 @@
+---
+title: Class Preparation
+subtitle: Topic
+author: Sean Sylvia
+date: "2024-12-31"
+slug: prep-0
+categories: 
+    -  Class Prep
+    -  Preliminaries
+description: "Description"
+draft: false
+---
+
+# Class Preparation
+
+## Overview
+
+In preparation for our upcoming class on **\[Insert Topic Here\]**, please complete the following activities. These materials will set the foundation for our in-class discussions and activities.
+
+------------------------------------------------------------------------
+
+## Required Readings
+
+-   **\[Insert Reading Title and Link Here\]**
+-   **\[Insert Additional Reading Title and Link Here\]**
+
+------------------------------------------------------------------------
+
+## Required Videos
+
+-   **\[Insert Video Title and Link Here\]**
+-   **\[Insert Additional Video Title and Link Here\]**
+
+------------------------------------------------------------------------
+
+## Quiz
+
+Complete the pre-class quiz on Sakai: \[Insert Link Here\]
+
+**Deadline**: \[Insert Date and Time\]
+
+------------------------------------------------------------------------
+
+## Reflection Questions
+
+Consider the following questions as you review the materials: 1. \[Insert Question Here\] 2. \[Insert Additional Question Here\] 3. \[Insert Additional Question Here\]
+
+------------------------------------------------------------------------
+
+## Notes
+
+Prepare notes summarizing key concepts from the readings and videos. These will be helpful for in-class discussions.
+
+------------------------------------------------------------------------
+
+**Remember**: This course uses a flipped classroom approach. Completing these tasks prior to class is essential for your active participation and understanding during our sessions.

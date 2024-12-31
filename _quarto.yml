@@ -63,6 +63,8 @@ website:
             text: "Overview"
           - href: course-syllabus.qmd
             text: "Syllabus"
+          - href: index.qmd
+            text: "Schedule"
           - href: instructors.qmd
             text: "Instructors"
           - href: course-communication.qmd
@@ -73,9 +75,9 @@ website:
         contents:
           - href: unit-0/prep-1.qmd
             text: "Class Preparation"
-          - href: unit-0/lecture.qmd
+          - href: unit-0/lecture-1.qmd
             text: "Lecture Notes"
-          - href: unit-0/lab.qmd
+          - href: unit-0/lab-1.qmd
             text: "Lab"
       - lab.qmd
  
