@@ -1,0 +1,16 @@
+---
+title: "Labs"
+listing:
+  contents: labs
+  sort: title
+  sort-ui: false
+  filter-ui: false
+  type: table
+  fields: [title, subtitle, description]
+  field-display-names:
+    title: "No."
+    subtitle: "Title"
+    description: "Due date"
+---
+
+More labs to be added as the semester progresses.

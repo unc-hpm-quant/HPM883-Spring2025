@@ -70,6 +70,7 @@ website:
           - href: course-communication.qmd
             text: "Communication"
       - section: "Resources"
+      - lab.qmd
 
 
   page-footer:

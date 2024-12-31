@@ -30,7 +30,7 @@ prepare_cutoff_date <- as.Date("2025-05-20")
 ```{r}
 #| echo: false
 #| column: screen-inset-right
-d %>%
+d %>% 
   mutate(
     date = as.Date(date),
     week = ifelse(is.na(week), "", week)

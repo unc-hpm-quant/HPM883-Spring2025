@@ -31,5 +31,11 @@
   },
   "course-communication.qmd": {
     "course-communication.html": "2a54933f"
+  },
+  "labs/lab-0.qmd": {
+    "lab-0.html": "434ea26a"
+  },
+  "lab.qmd": {
+    "lab.html": "93632b21"
   }
 }
