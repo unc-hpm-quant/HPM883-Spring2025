@@ -38,7 +38,7 @@ website:
             text: Help from AI (Chatbot)
             href: https://placeholder.link/chatbot
       - icon: slack
-        href: https://yourworkspace.slack.com
+        href: https://hpm883.slack.com
         text: "Slack"
       - icon: file-check-fill
         text: "Canvas"
@@ -66,6 +66,9 @@ website:
           - href: index.qmd
             text: "Schedule"
           - href: instructors.qmd
+            text: "Instructors"
+          - href: course-communication.qmd
+            text: "Communication"
       - section: "Resources"
 
 

@@ -1,0 +1,36 @@
+---
+title: "Communication"
+format: html
+---
+
+## Slack
+
+------------------------------------------------------------------------
+
+Slack will be our primary communication hub. An invitation to the course Slack will be shared on the first day of class. Use this place to ask questions, share resources, and engage with your peers, the instructor, and the TA. **(For personal matters, please use e-mail)**
+
+::: {.callout-note appearance="simple" style="color: #002D72"}
+## Important:
+
+Slack will not be continuously monitored by the instructor or TA outside of posted office hours. At other times, students are expected to help/engage with one another to foster a shared learning experience. If a question hasn't been addressed, the TA or Sean will respond but not immediately or even the same day.
+
+You may DM Sean or the TA in Slack (but, again, don't expect a response immediately or even the same day.)
+:::
+
+-   The `#announcements` channel will be used to share course announcements.
+
+-   Use the `#help` channel as a first stop for general questions about the class or for technical assistance.
+
+-   Use the `#general` channel to discuss lab assignments and discuss/share resources related to course topics.
+
+-   Use the `#interesting-stuff` channel to share relevant articles, podcasts, packages, data sources, and anything else relevant that you think your classmates will benefit from.
+
+## Office Hours
+
+Sean will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this [LINK](https://calendly.com/sean-sylvia/hpm-883-office-hours).
+
+The TA will hold office hours on...
+
+## Email
+
+Please use e-mail only for personal matters. **(For anything related to the course material or coding questions, please use Slack.)**

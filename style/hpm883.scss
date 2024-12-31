@@ -2,9 +2,12 @@
 @import 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap';
 
 $carolina-blue: #4B9CD3; /* Carolina Blue */
-$dark-blue: #002D72; /* Dark Blue */
+$dark-blue: #13294B; /* Dark Blue */
 $light-blue: #A4C8E1; /* Light Blue */
 $white: #FFFFFF; /* White */
+$black: #151515; /* Black */
+$longleaf-green: #00594C; /* Longleaf Green */
+$campus-sandstone: #F4E8DD; /* Campus Sandstone */
 $font-family: 'Roboto', sans-serif; /* Modern Font */
 
 /*-- scss:rules --*/
@@ -23,4 +26,8 @@ a {
     &:hover {
         color: $light-blue;
     }
+}
+
+code {
+    color: $longleaf-green;
 }
