@@ -1,5 +1,5 @@
 ---
-title: "HPM 883: Advanced Quantitative Methods for Health policy and Management"
+title: "Course Schedule"
 execute: 
   freeze: false
 editor_options: 
@@ -25,7 +25,6 @@ gs4_deauth()
 d <- read_sheet("https://docs.google.com/spreadsheets/d/1XpkFUr6AfkO-w0mqtXZbBUIA_lxVNsePaWCtRMDuE0U/edit?usp=sharing", sheet = "Schedule")
 prepare_cutoff_date <- as.Date("2025-05-20")
 ```
-
 
 ```{r}
 #| echo: false

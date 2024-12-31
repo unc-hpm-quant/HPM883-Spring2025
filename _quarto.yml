@@ -63,15 +63,22 @@ website:
             text: "Overview"
           - href: course-syllabus.qmd
             text: "Syllabus"
-          - href: index.qmd
-            text: "Schedule"
           - href: instructors.qmd
             text: "Instructors"
           - href: course-communication.qmd
             text: "Communication"
+      - index.qmd
       - section: "Resources"
+      - section: "Unit 0: Foundations"
+        contents:
+          - href: unit-0/prep-1.qmd
+            text: "Class Preparation"
+          - href: unit-0/lecture.qmd
+            text: "Lecture Notes"
+          - href: unit-0/lab.qmd
+            text: "Lab"
       - lab.qmd
-
+ 
 
   page-footer:
     right: 'This page is built with [Quarto](https://quarto.org/).'
