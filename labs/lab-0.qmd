@@ -4,7 +4,9 @@ subtitle: The Hospital of Uncertain Outcomes
 author: Sean Sylvia
 date: "2025-05-16"
 slug: lab-0
-categories: Lab
+categories: 
+    -  Lab
+    -  Preliminaries
 description: "Intro to class computing setup"
 draft: false
 ---
