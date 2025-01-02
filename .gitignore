@@ -51,3 +51,7 @@ rsconnect/
 /.quarto/
 .quarto/_freeze/index/execute-results/html.json
 .quarto/_freeze/index/execute-results/html.json
+
+# VSCode files
+.vscode/
+.code-workspace
