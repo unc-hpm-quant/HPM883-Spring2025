@@ -1,0 +1,363 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Course Schedule",
+    "section": "",
+    "text": "This page contains the schedule, topics, content and assigments for the semester.\n\n\n\n\n\n\nNote\n\n\n\nThis schedule will be updated as the semester progresses.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweek\ndow\ndate\nsession\nunit\ntopic\nprepare\nclass\nlab\nlab_sa\ndue\nnotes\n\n\n\n1\nW\n8 January\nLec\nFoundations\nWelcome; Key Concepts\n\n\n\n\n\n\n\n\nFDOC\n\n\n2\nM\n13 January\nLab\n\nComputing for Reproducibility\n\n\n\n\n\nSean Traveling, Led by Yumeng\n\n\n\nW\n15 January\n-\n-\n\n\n\n\n\n\nSean Traveling\n\n\n3\nM\n20 January\n-\nMLK Day\nNo Class\n\n\n\n\n\nNo Class\n\n\n\nW\n22 January\nLec\n\nCausal Inference through Randomization\n\n\n\n\n\n\n\n\n4\nM\n27 January\nLec\nModern High-dimensional Linear Regression\nLasso & Penalized Regression\n\n\n\n\n\n\n\n\n\nW\n29 January\nLab\n\nLasso & Penalized Regression\n\n\n\n\n\n\n\n\n5\nM\n3 February\nLec\n\nDouble Lasso\n\n\n\n\n\n\n\n\n\nW\n5 February\nLab\n\nDouble Lasso\n\n\n\n\n\n\n\n\n6\nM\n10 February\n-\nWell-being Day\nNo Class\n\n\n\n\n\n\n\n\n\nW\n12 February\n\nModern High-Dimensional Nonlinear Regression\nRegression Trees & Radnom Forests\n\n\n\n\n\n\n\n\n7\nM\n17 February\n\n\n\n\n\n\n\n\n\n\n\n\nW\n19 February\n\n\n\n\n\n\n\n\n\n\n\n8\nM\n24 February\n\nMIDTERM 1\n\n\n\n\n\n\n\n\n\n\nW\n26 February\n\n\n\n\n\n\n\n\n\n\n\n9\nM\n3 March\n\nExperimental Methods\n\n\n\n\n\n\n\n\n\n\nW\n5 March\n\n\nCausal Interence via Randomized Experiments\n\n\n\n\n\n\n\n\n10\nM\n10 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n\n\nW\n12 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n\n11\nM\n17 March\n\nExperimental Methods\nSampling, Inference, Power\n\n\n\n\n\n\n\n\n\nW\n19 March\n\nExperimental Methods\nSampling, Inference, Power\n\n\n\n\n\n\n\n\n12\nM\n24 March\n\nMIDTERM 2\nNoncompliance\n\n\n\n\n\n\n\n\n\nW\n26 March\n\nExperimental Methods\nNoncompliance\n\n\n\n\n\n\n\n\n13\nM\n31 March\n\nExperimental Methods\nAttrition\n\n\n\n\n\n\n\n\n\nW\n2 April\n\nExperimental Methods\nInterference\n\n\n\n\n\n\n\n\n14\nM\n7 April\n\nHeterogeneity, Policy Learning, and Adaptation\n\n\n\n\n\n\n\n\n\n\nW\n9 April\n\nHeterogeneity, Policy Learning, and Adaptation\n\n\n\n\n\n\n\n\n\n15\nM\n14 April\n\nHeterogeneity, Policy Learning, and Adaptation\n\n\n\n\n\n\n\n\n\n\nW\n16 April\n\nHeterogeneity, Policy Learning, and Adaptation\n\n\n\n\n\n\n\n\n\n16\nM\n21 April\n\n\n\n\n\n\n\n\n\n\n\n\nW\n23 April\n\n\n\n\n\n\n\n\n\n\n\n17\nM\n28 April\n\n\n\n\n\n\n\n\n\n\n\n\n\nW\n30 April\n\nFINAL EXAM",
+    "crumbs": [
+      "Course Schedule"
+    ]
+  },
+  {
+    "objectID": "course-overview.html",
+    "href": "course-overview.html",
+    "title": "HPM 883Spring 2025",
+    "section": "",
+    "text": "HPM 883 is an advanced graduate-level course designed to equip PhD students in the Health Policy and Management program with sophisticated quantitative research skills. This course represents the third installment in the quantitative methods sequence, building on the foundational knowledge acquired in HPM 881 and HPM 882.\nThroughout the term, students will delve into advanced quantitative methods pertinent to health services research with a focus on the use of experimental methods and machine learning for causal inference. The course will provide a thorough introduction to machine learning techniques and explore the burgeoning domain of causal machine learning.",
+    "crumbs": [
+      "Course Information",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "course-overview.html#advanced-quantitative-methods-for-health-policy-and-management",
+    "href": "course-overview.html#advanced-quantitative-methods-for-health-policy-and-management",
+    "title": "HPM 883Spring 2025",
+    "section": "",
+    "text": "HPM 883 is an advanced graduate-level course designed to equip PhD students in the Health Policy and Management program with sophisticated quantitative research skills. This course represents the third installment in the quantitative methods sequence, building on the foundational knowledge acquired in HPM 881 and HPM 882.\nThroughout the term, students will delve into advanced quantitative methods pertinent to health services research with a focus on the use of experimental methods and machine learning for causal inference. The course will provide a thorough introduction to machine learning techniques and explore the burgeoning domain of causal machine learning.",
+    "crumbs": [
+      "Course Information",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "unit-0/prep-1.html",
+    "href": "unit-0/prep-1.html",
+    "title": "Class Preparation",
+    "section": "",
+    "text": "In preparation for our upcoming class on [Insert Topic Here], please complete the following activities. These materials will set the foundation for our in-class discussions and activities.\n\n\n\n\n\n[Insert Reading Title and Link Here]\n[Insert Additional Reading Title and Link Here]\n\n\n\n\n\n\n[Insert Video Title and Link Here]\n[Insert Additional Video Title and Link Here]\n\n\n\n\n\nComplete the pre-class quiz on Sakai: [Insert Link Here]\nDeadline: [Insert Date and Time]\n\n\n\n\nConsider the following questions as you review the materials: 1. [Insert Question Here] 2. [Insert Additional Question Here] 3. [Insert Additional Question Here]\n\n\n\n\nPrepare notes summarizing key concepts from the readings and videos. These will be helpful for in-class discussions.\n\nRemember: This course uses a flipped classroom approach. Completing these tasks prior to class is essential for your active participation and understanding during our sessions.",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class Preparation"
+    ]
+  },
+  {
+    "objectID": "unit-0/prep-1.html#overview",
+    "href": "unit-0/prep-1.html#overview",
+    "title": "Class Preparation",
+    "section": "",
+    "text": "In preparation for our upcoming class on [Insert Topic Here], please complete the following activities. These materials will set the foundation for our in-class discussions and activities.",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class Preparation"
+    ]
+  },
+  {
+    "objectID": "unit-0/prep-1.html#required-readings",
+    "href": "unit-0/prep-1.html#required-readings",
+    "title": "Class Preparation",
+    "section": "",
+    "text": "[Insert Reading Title and Link Here]\n[Insert Additional Reading Title and Link Here]",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class Preparation"
+    ]
+  },
+  {
+    "objectID": "unit-0/prep-1.html#required-videos",
+    "href": "unit-0/prep-1.html#required-videos",
+    "title": "Class Preparation",
+    "section": "",
+    "text": "[Insert Video Title and Link Here]\n[Insert Additional Video Title and Link Here]",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class Preparation"
+    ]
+  },
+  {
+    "objectID": "unit-0/prep-1.html#quiz",
+    "href": "unit-0/prep-1.html#quiz",
+    "title": "Class Preparation",
+    "section": "",
+    "text": "Complete the pre-class quiz on Sakai: [Insert Link Here]\nDeadline: [Insert Date and Time]",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class Preparation"
+    ]
+  },
+  {
+    "objectID": "unit-0/prep-1.html#reflection-questions",
+    "href": "unit-0/prep-1.html#reflection-questions",
+    "title": "Class Preparation",
+    "section": "",
+    "text": "Consider the following questions as you review the materials: 1. [Insert Question Here] 2. [Insert Additional Question Here] 3. [Insert Additional Question Here]",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class Preparation"
+    ]
+  },
+  {
+    "objectID": "unit-0/prep-1.html#notes",
+    "href": "unit-0/prep-1.html#notes",
+    "title": "Class Preparation",
+    "section": "",
+    "text": "Prepare notes summarizing key concepts from the readings and videos. These will be helpful for in-class discussions.\n\nRemember: This course uses a flipped classroom approach. Completing these tasks prior to class is essential for your active participation and understanding during our sessions.",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class Preparation"
+    ]
+  },
+  {
+    "objectID": "course-communication.html",
+    "href": "course-communication.html",
+    "title": "Communication",
+    "section": "",
+    "text": "Slack will be our primary communication hub. An invitation to the course Slack will be shared on the first day of class. Use this place to ask questions, share resources, and engage with your peers, the instructor, and the TA. (For personal matters, please use e-mail)\n\n\n\n\n\n\nImportant:\n\n\n\nSlack will not be continuously monitored by the instructor or TA outside of posted office hours. At other times, students are expected to help/engage with one another to foster a shared learning experience. If a question hasn’t been addressed, the TA or Sean will respond but not immediately or even the same day.\nYou may DM Sean or the TA in Slack (but, again, don’t expect a response immediately or even the same day.)\n\n\n\nThe #announcements channel will be used to share course announcements.\nUse the #help channel as a first stop for general questions about the class or for technical assistance.\nUse the #general channel to discuss lab assignments and discuss/share resources related to course topics.\nUse the #interesting-stuff channel to share relevant articles, podcasts, packages, data sources, and anything else relevant that you think your classmates will benefit from.",
+    "crumbs": [
+      "Course Information",
+      "Communication"
+    ]
+  },
+  {
+    "objectID": "course-communication.html#slack",
+    "href": "course-communication.html#slack",
+    "title": "Communication",
+    "section": "",
+    "text": "Slack will be our primary communication hub. An invitation to the course Slack will be shared on the first day of class. Use this place to ask questions, share resources, and engage with your peers, the instructor, and the TA. (For personal matters, please use e-mail)\n\n\n\n\n\n\nImportant:\n\n\n\nSlack will not be continuously monitored by the instructor or TA outside of posted office hours. At other times, students are expected to help/engage with one another to foster a shared learning experience. If a question hasn’t been addressed, the TA or Sean will respond but not immediately or even the same day.\nYou may DM Sean or the TA in Slack (but, again, don’t expect a response immediately or even the same day.)\n\n\n\nThe #announcements channel will be used to share course announcements.\nUse the #help channel as a first stop for general questions about the class or for technical assistance.\nUse the #general channel to discuss lab assignments and discuss/share resources related to course topics.\nUse the #interesting-stuff channel to share relevant articles, podcasts, packages, data sources, and anything else relevant that you think your classmates will benefit from.",
+    "crumbs": [
+      "Course Information",
+      "Communication"
+    ]
+  },
+  {
+    "objectID": "course-communication.html#office-hours",
+    "href": "course-communication.html#office-hours",
+    "title": "Communication",
+    "section": "Office Hours",
+    "text": "Office Hours\nSean will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.\nThe TA will hold office hours on…",
+    "crumbs": [
+      "Course Information",
+      "Communication"
+    ]
+  },
+  {
+    "objectID": "course-communication.html#email",
+    "href": "course-communication.html#email",
+    "title": "Communication",
+    "section": "Email",
+    "text": "Email\nPlease use e-mail only for personal matters. (For anything related to the course material or coding questions, please use Slack.)",
+    "crumbs": [
+      "Course Information",
+      "Communication"
+    ]
+  },
+  {
+    "objectID": "labs/lab-0.html",
+    "href": "labs/lab-0.html",
+    "title": "Lab 0",
+    "section": "",
+    "text": "St. Null’s Memorial Hospital is in chaos. Every time the hospital board—led by the well-meaning but trend-obsessed CEO Barnaby Beta—implements a new policy, they find puzzling or contradictory results. Dr. P-Hacker, a self-styled data guru, only adds to the confusion by massaging, cherry-picking, and p-hacking the data until he sees “significance.” Meanwhile, Nurse Random constantly rolls her eyes at his antics and reminds everyone that solid methodology—not creative statistics—should guide decision-making.\nBut there’s hope. Your class has just been hired as “methodology consultants” to diagnose and treat the hospital’s research woes. In each module (or “episode”), you’ll confront a new fiasco at St. Null’s: from suspiciously overfitted AI models, to missing data nightmares, to bungled randomized trials and flawed observational studies. Along the way, the brilliant but quirky Dr. Doub R. Obust will champion doubly robust methods and other advanced techniques to rescue the day.\n\n\n\n\nYour mission? Use proper causal inference and machine learning strategies to shed light on the true effects of the hospital’s interventions. Each chapter in your lecture notes (i.e., Jupyter notebooks) begins with a brief “scene” in which the hospital staff face some methodological mishap—then shifts to your step-by-step explanation of the relevant statistical concepts and R code. By the end of the course, you’ll have helped St. Null’s Memorial Hospital finally achieve consistent, credible results, while having a bit of comedic fun along the way."
+  },
+  {
+    "objectID": "labs/lab-0.html#the-hospital-of-uncertain-outcomes",
+    "href": "labs/lab-0.html#the-hospital-of-uncertain-outcomes",
+    "title": "Lab 0",
+    "section": "",
+    "text": "St. Null’s Memorial Hospital is in chaos. Every time the hospital board—led by the well-meaning but trend-obsessed CEO Barnaby Beta—implements a new policy, they find puzzling or contradictory results. Dr. P-Hacker, a self-styled data guru, only adds to the confusion by massaging, cherry-picking, and p-hacking the data until he sees “significance.” Meanwhile, Nurse Random constantly rolls her eyes at his antics and reminds everyone that solid methodology—not creative statistics—should guide decision-making.\nBut there’s hope. Your class has just been hired as “methodology consultants” to diagnose and treat the hospital’s research woes. In each module (or “episode”), you’ll confront a new fiasco at St. Null’s: from suspiciously overfitted AI models, to missing data nightmares, to bungled randomized trials and flawed observational studies. Along the way, the brilliant but quirky Dr. Doub R. Obust will champion doubly robust methods and other advanced techniques to rescue the day.\n\n\n\n\nYour mission? Use proper causal inference and machine learning strategies to shed light on the true effects of the hospital’s interventions. Each chapter in your lecture notes (i.e., Jupyter notebooks) begins with a brief “scene” in which the hospital staff face some methodological mishap—then shifts to your step-by-step explanation of the relevant statistical concepts and R code. By the end of the course, you’ll have helped St. Null’s Memorial Hospital finally achieve consistent, credible results, while having a bit of comedic fun along the way."
+  },
+  {
+    "objectID": "instructors.html",
+    "href": "instructors.html",
+    "title": "Instructors",
+    "section": "",
+    "text": "Sean Sylvia is an Associate Professor in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Dr. Sylvia will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
+    "crumbs": [
+      "Course Information",
+      "Instructors"
+    ]
+  },
+  {
+    "objectID": "instructors.html#instructor-sean-sylvia-ph.d.",
+    "href": "instructors.html#instructor-sean-sylvia-ph.d.",
+    "title": "Instructors",
+    "section": "",
+    "text": "Sean Sylvia is an Associate Professor in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Dr. Sylvia will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
+    "crumbs": [
+      "Course Information",
+      "Instructors"
+    ]
+  },
+  {
+    "objectID": "instructors.html#teaching-assistant-yumeng-du",
+    "href": "instructors.html#teaching-assistant-yumeng-du",
+    "title": "Instructors",
+    "section": "Teaching Assistant: Yumeng Du",
+    "text": "Teaching Assistant: Yumeng Du\nYumeng Du is a Ph.D. student in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours:",
+    "crumbs": [
+      "Course Information",
+      "Instructors"
+    ]
+  },
+  {
+    "objectID": "unit-0/lecture-1.html",
+    "href": "unit-0/lecture-1.html",
+    "title": "Class Preparation",
+    "section": "",
+    "text": "Today’s session will focus on [Insert Topic Here]. This session combines lecture notes with guided coding exercises to enhance your understanding of the concepts and their application.",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Lecture Notes"
+    ]
+  },
+  {
+    "objectID": "unit-0/lecture-1.html#overview",
+    "href": "unit-0/lecture-1.html#overview",
+    "title": "Class Preparation",
+    "section": "",
+    "text": "Today’s session will focus on [Insert Topic Here]. This session combines lecture notes with guided coding exercises to enhance your understanding of the concepts and their application.",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Lecture Notes"
+    ]
+  },
+  {
+    "objectID": "unit-0/lecture-1.html#learning-objectives",
+    "href": "unit-0/lecture-1.html#learning-objectives",
+    "title": "Class Preparation",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\nBy the end of this session, you will be able to: 1. [Insert Learning Objective Here] 2. [Insert Additional Learning Objective Here] 3. [Insert Additional Learning Objective Here]",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Lecture Notes"
+    ]
+  },
+  {
+    "objectID": "unit-0/lecture-1.html#lecture-notes",
+    "href": "unit-0/lecture-1.html#lecture-notes",
+    "title": "Class Preparation",
+    "section": "Lecture Notes",
+    "text": "Lecture Notes\n\nKey Concepts\n\n[Insert Key Concept Here]\n\nExplanation: [Insert Explanation Here]\nExample: [Insert Example Here]\n\n[Insert Additional Key Concept Here]\n\nExplanation: [Insert Explanation Here]\nExample: [Insert Example Here]\n\n\n\n\nPart 1\n\n\nPart 2",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Lecture Notes"
+    ]
+  },
+  {
+    "objectID": "unit-0/lecture-1.html#wrap-up",
+    "href": "unit-0/lecture-1.html#wrap-up",
+    "title": "Class Preparation",
+    "section": "Wrap-Up",
+    "text": "Wrap-Up\nReview the key takeaways from today’s session: - [Insert Key Takeaway Here] - [Insert Additional Key Takeaway Here]\nPrepare for the lab session by completing any remaining exercises and reviewing today’s material.",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Lecture Notes"
+    ]
+  },
+  {
+    "objectID": "unit-0/lab-1.html",
+    "href": "unit-0/lab-1.html",
+    "title": "Lab N",
+    "section": "",
+    "text": "This lab session focuses on [Insert Topic Here]. The goal of this exercise is to apply the concepts covered in class to practical problems using R.\n\nBy the end of this lab, you will be able to: 1. [Insert Learning Objective Here] 2. [Insert Additional Learning Objective Here] 3. [Insert Additional Learning Objective Here]\n\nWelcome to today’s lab! You will take on the role of [Insert Role Here], tasked with solving a real-world problem related to [Insert Scenario Description Here]. This scenario will guide the exercises and provide a context for applying your skills.\n\n\nDownload the dataset from [Insert Link Here].\nFollow the steps outlined in the exercises below.\nSubmit your completed lab exercise on Sakai by [Insert Deadline Here].\n\n\n\n\n\nObjective: [Insert Objective Here]\n\n\n# Step 1: [Insert Description Here]\n# Example Code\n\n\n\n\nObjective: [Insert Objective Here]\n\n\n# Step 1: [Insert Description Here]\n# Example Code\n\n\nAnswer the following questions as part of your lab report: 1. [Insert Question Here] 2. [Insert Additional Question Here] 3. [Insert Additional Question Here]\n\n\nSubmit your R script and a brief write-up of your results.\nInclude answers to the reflection questions.\n\nDeadline: [Insert Date and Time]\n\nEnsure that your code is well-commented and your results are clearly presented. Use ggplot2 or other visualization libraries for graphical outputs where applicable.",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Lab"
+    ]
+  },
+  {
+    "objectID": "unit-0/lab-1.html#overview",
+    "href": "unit-0/lab-1.html#overview",
+    "title": "Lab N",
+    "section": "",
+    "text": "This lab session focuses on [Insert Topic Here]. The goal of this exercise is to apply the concepts covered in class to practical problems using R.",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Lab"
+    ]
+  },
+  {
+    "objectID": "unit-0/lab-1.html#learning-objectives",
+    "href": "unit-0/lab-1.html#learning-objectives",
+    "title": "Lab N",
+    "section": "",
+    "text": "By the end of this lab, you will be able to: 1. [Insert Learning Objective Here] 2. [Insert Additional Learning Objective Here] 3. [Insert Additional Learning Objective Here]",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Lab"
+    ]
+  },
+  {
+    "objectID": "unit-0/lab-1.html#case-scenario",
+    "href": "unit-0/lab-1.html#case-scenario",
+    "title": "Lab N",
+    "section": "",
+    "text": "Welcome to today’s lab! You will take on the role of [Insert Role Here], tasked with solving a real-world problem related to [Insert Scenario Description Here]. This scenario will guide the exercises and provide a context for applying your skills.",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Lab"
+    ]
+  },
+  {
+    "objectID": "unit-0/lab-1.html#instructions",
+    "href": "unit-0/lab-1.html#instructions",
+    "title": "Lab N",
+    "section": "",
+    "text": "Download the dataset from [Insert Link Here].\nFollow the steps outlined in the exercises below.\nSubmit your completed lab exercise on Sakai by [Insert Deadline Here].",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Lab"
+    ]
+  },
+  {
+    "objectID": "unit-0/lab-1.html#exercises",
+    "href": "unit-0/lab-1.html#exercises",
+    "title": "Lab N",
+    "section": "",
+    "text": "Objective: [Insert Objective Here]\n\n\n# Step 1: [Insert Description Here]\n# Example Code\n\n\n\n\nObjective: [Insert Objective Here]\n\n\n# Step 1: [Insert Description Here]\n# Example Code",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Lab"
+    ]
+  },
+  {
+    "objectID": "unit-0/lab-1.html#reflection-questions",
+    "href": "unit-0/lab-1.html#reflection-questions",
+    "title": "Lab N",
+    "section": "",
+    "text": "Answer the following questions as part of your lab report: 1. [Insert Question Here] 2. [Insert Additional Question Here] 3. [Insert Additional Question Here]",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Lab"
+    ]
+  },
+  {
+    "objectID": "unit-0/lab-1.html#submission-guidelines",
+    "href": "unit-0/lab-1.html#submission-guidelines",
+    "title": "Lab N",
+    "section": "",
+    "text": "Submit your R script and a brief write-up of your results.\nInclude answers to the reflection questions.\n\nDeadline: [Insert Date and Time]",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Lab"
+    ]
+  },
+  {
+    "objectID": "unit-0/lab-1.html#notes",
+    "href": "unit-0/lab-1.html#notes",
+    "title": "Lab N",
+    "section": "",
+    "text": "Ensure that your code is well-commented and your results are clearly presented. Use ggplot2 or other visualization libraries for graphical outputs where applicable.",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Lab"
+    ]
+  },
+  {
+    "objectID": "lab.html",
+    "href": "lab.html",
+    "title": "Labs",
+    "section": "",
+    "text": "More labs to be added as the semester progresses.\n\n\n\n\n\n\n\n\n\nNo.\n\n\nTitle\n\n\nDue date\n\n\n\n\n\n\nLab 0\n\n\nThe Hospital of Uncertain Outcomes\n\n\nIntro to class computing setup\n\n\n\n\n\nNo matching items"
+  }
+]
