@@ -1,0 +1,31 @@
+---
+title: "Resources"
+execute: 
+  freeze: false
+editor_options: 
+  chunk_output_type: console
+---
+
+## Key Texts
+
+List, John. *Experimental Economics: Theory and Practice*, 2025. (Link available soon)
+
+Chernozhukov, Victor, Christian Hansen, Nathan Kallus, Martin Spindler, and Vasilis Syrgkanis. [***Applied Causal Inference Powered by ML and AI***](https://causalml-book.org/), 2024.
+
+Wager, Stefan. [***Causal Inference: A Statistical Learning Approach***](https://web.stanford.edu/~swager/causal_inf_book.pdf), 2024.
+
+James, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. [***An Introduction to Statistical Learning: With Applications in R***](https://doi.org/10.1007/978-1-0716-1418-1). Springer Texts in Statistics. New York, NY: Springer US, 2021. 
+
+## Websites
+
+[Field Experiments Website](http://www.fieldexperiments.com/)\
+Papers in economic field experiments.
+
+[Abdul Latif Jameel Poverty Action Lab (JPAL)](https://www.povertyactionlab.org/)\
+A global research center based at MIT's Economics Department that works to reduce poverty through rigorous scientific evidence and policy implementation
+
+[Stanford Social Impact Lab](https://www.gsb.stanford.edu/faculty-research/labs-initiatives/sil)
+
+## Data
+
+[Stanford GSB Social Impact Lab Experiment Data](https://github.com/gsbDBI/ExperimentData)

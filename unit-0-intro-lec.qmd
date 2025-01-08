@@ -1,0 +1,23 @@
+---
+title: "Introduction to Field Experiments and Machine Learning in Health Services Research"
+author: "Sean Sylvia"
+date: "`r Sys.Date()`"
+format: 
+  revealjs:
+    theme: default
+    slide-number: true
+    transition: fade
+    progress: true
+    incremental: true
+    toc: false
+editor: visual
+---
+
+# Welcome to HPM 883
+
+**Advanced Quantitative Methods for Health Policy and Management**
+
+-   **Instructor:** Dr. Sean Sylvia
+-   **Teaching Assistant:** Yumeng Du
+-   **Course Website:** <https://hpm883.ssylvia.io/>
+-   **Preliminary Class Schedule:** [View Here](https://docs.google.com/spreadsheets/u/2/d/1XpkFUr6AfkO-w0mqtXZbBUIA_lxVNsePaWCtRMDuE0U/htmlview#gid=675503730)

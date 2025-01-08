@@ -1,0 +1,40 @@
+---
+title: "Unit 0: Foundations"
+---
+
+## Overview
+
+This unit will provide a foundation for the rest of the course. It will cover the following topics:
+
+1.  Why experiments and ML for Causal Inference
+2.  Course structure and tools
+3.  A field experiment in health services research
+4.  Computing for Reproducible Research
+
+------------------------------------------------------------------------
+
+## Class 1: Course Introduction
+
+### Preparation
+
+-   Harrison and List (2004)
+
+-   [ACI Chapters 0 and 2](https://causalml-book.org/)
+
+### In Class
+
+-   Lecture slides
+
+### Lab/Homework
+
+-   Introductory Class Survey
+
+### Additional Materials
+
+## Class 2: A Field Experiment in Health Services Research
+
+Guest Lecture by [Dr. Dorien Emmers](https://sccei.fsi.stanford.edu/reap/people/dorien-emmers)
+
+### Preparation
+
+-

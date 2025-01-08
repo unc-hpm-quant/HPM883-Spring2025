@@ -359,5 +359,95 @@
     "title": "Labs",
     "section": "",
     "text": "More labs to be added as the semester progresses.\n\n\n\n\n\n\n\n\n\nNo.\n\n\nTitle\n\n\nDue date\n\n\n\n\n\n\nLab 0\n\n\nThe Hospital of Uncertain Outcomes\n\n\nIntro to class computing setup\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "resources.html",
+    "href": "resources.html",
+    "title": "Resources",
+    "section": "",
+    "text": "List, John. Experimental Economics: Theory and Practice, 2025. (Link available soon)\nChernozhukov, Victor, Christian Hansen, Nathan Kallus, Martin Spindler, and Vasilis Syrgkanis. Applied Causal Inference Powered by ML and AI, 2024.\nWager, Stefan. Causal Inference: A Statistical Learning Approach, 2024.\nJames, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An Introduction to Statistical Learning: With Applications in R. Springer Texts in Statistics. New York, NY: Springer US, 2021.",
+    "crumbs": [
+      "Resources"
+    ]
+  },
+  {
+    "objectID": "resources.html#key-texts",
+    "href": "resources.html#key-texts",
+    "title": "Resources",
+    "section": "",
+    "text": "List, John. Experimental Economics: Theory and Practice, 2025. (Link available soon)\nChernozhukov, Victor, Christian Hansen, Nathan Kallus, Martin Spindler, and Vasilis Syrgkanis. Applied Causal Inference Powered by ML and AI, 2024.\nWager, Stefan. Causal Inference: A Statistical Learning Approach, 2024.\nJames, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An Introduction to Statistical Learning: With Applications in R. Springer Texts in Statistics. New York, NY: Springer US, 2021.",
+    "crumbs": [
+      "Resources"
+    ]
+  },
+  {
+    "objectID": "resources.html#ancillary",
+    "href": "resources.html#ancillary",
+    "title": "Resources",
+    "section": "Ancillary",
+    "text": "Ancillary\nField Experiments Website\nPapers in economic field experiments.\nAbdul Latif Jameel Poverty Action Lab (JPAL)\nA global research center based at MIT’s Economics Department that works to reduce poverty through rigorous scientific evidence and policy implementation\nStanford Social Impact Lab",
+    "crumbs": [
+      "Resources"
+    ]
+  },
+  {
+    "objectID": "unit-0-foundations.html",
+    "href": "unit-0-foundations.html",
+    "title": "Unit 0: Foundations",
+    "section": "",
+    "text": "This unit will provide a foundation for the rest of the course. It will cover the following topics:\n\nWhy experiments and ML for Causal Inference\nCourse structure and tools\nA field experiment in health services research\nComputing for Reproducible Research",
+    "crumbs": [
+      "Unit 0: Foundations"
+    ]
+  },
+  {
+    "objectID": "unit-0-foundations.html#overview",
+    "href": "unit-0-foundations.html#overview",
+    "title": "Unit 0: Foundations",
+    "section": "",
+    "text": "This unit will provide a foundation for the rest of the course. It will cover the following topics:\n\nWhy experiments and ML for Causal Inference\nCourse structure and tools\nA field experiment in health services research\nComputing for Reproducible Research",
+    "crumbs": [
+      "Unit 0: Foundations"
+    ]
+  },
+  {
+    "objectID": "unit-0-foundations.html#class-1-course-introduction",
+    "href": "unit-0-foundations.html#class-1-course-introduction",
+    "title": "Unit 0: Foundations",
+    "section": "Class 1: Course Introduction",
+    "text": "Class 1: Course Introduction\n\nPreparation\n\nHarrison and List (2004)\nACI Chapters 0 and 2\n\n\n\nIn Class\n\nLecture slides\n\n\n\nLab/Homework\n\nIntroductory Class Survey\n\n\n\nAdditional Materials",
+    "crumbs": [
+      "Unit 0: Foundations"
+    ]
+  },
+  {
+    "objectID": "unit-0-foundations.html#class-2-a-field-experiment-in-health-services-research",
+    "href": "unit-0-foundations.html#class-2-a-field-experiment-in-health-services-research",
+    "title": "Unit 0: Foundations",
+    "section": "Class 2: A Field Experiment in Health Services Research",
+    "text": "Class 2: A Field Experiment in Health Services Research\nGuest Lecture by Dr. Dorien Emmers\n\nPreparation",
+    "crumbs": [
+      "Unit 0: Foundations"
+    ]
+  },
+  {
+    "objectID": "resources.html#data",
+    "href": "resources.html#data",
+    "title": "Resources",
+    "section": "Data",
+    "text": "Data\nStanford GSB Social Impact Lab Experiment Data",
+    "crumbs": [
+      "Resources"
+    ]
+  },
+  {
+    "objectID": "resources.html#websites",
+    "href": "resources.html#websites",
+    "title": "Resources",
+    "section": "Websites",
+    "text": "Websites\nField Experiments Website\nPapers in economic field experiments.\nAbdul Latif Jameel Poverty Action Lab (JPAL)\nA global research center based at MIT’s Economics Department that works to reduce poverty through rigorous scientific evidence and policy implementation\nStanford Social Impact Lab",
+    "crumbs": [
+      "Resources"
+    ]
   }
 ]

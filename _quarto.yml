@@ -68,15 +68,11 @@ website:
           - href: course-communication.qmd
             text: "Communication"
       - index.qmd
-      - section: "Unit 0: Foundations"
-        contents:
-          - href: unit-0/prep-1.qmd
-            text: "Class Preparation"
-          - href: unit-0/lecture-1.qmd
-            text: "Lecture Notes"
-          - href: unit-0/lab-1.qmd
-            text: "Lab"
- 
+      - resources.qmd
+      - href: unit-0-foundations.qmd
+        text: "Unit 0: Foundations" 
+      
+
 
   page-footer:
     right: 'This page is built with [Quarto](https://quarto.org/).'
