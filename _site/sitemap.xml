@@ -1,32 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://hpm883.github.io/course-syllabus.html</loc>
-    <lastmod>2024-12-27T15:10:49.845Z</lastmod>
+    <loc>https://hpm883.github.io/resources.html</loc>
+    <lastmod>2025-01-07T20:19:56.589Z</lastmod>
   </url>
   <url>
-    <loc>https://hpm883.github.io/index.html</loc>
-    <lastmod>2025-01-03T13:58:38.638Z</lastmod>
+    <loc>https://hpm883.github.io/computing.html</loc>
+    <lastmod>2024-12-31T14:53:44.474Z</lastmod>
   </url>
   <url>
-    <loc>https://hpm883.github.io/course-overview.html</loc>
-    <lastmod>2024-12-31T11:38:49.530Z</lastmod>
+    <loc>https://hpm883.github.io/lab.html</loc>
+    <lastmod>2024-12-31T12:18:13.023Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hpm883.github.io/unit-0/unit-0-intro-lec.html</loc>
+    <lastmod>2025-01-08T15:52:47.897Z</lastmod>
   </url>
   <url>
     <loc>https://hpm883.github.io/unit-0/prep-1.html</loc>
     <lastmod>2024-12-31T14:32:04.143Z</lastmod>
   </url>
   <url>
-    <loc>https://hpm883.github.io/course-communication.html</loc>
-    <lastmod>2024-12-30T11:58:58.475Z</lastmod>
+    <loc>https://hpm883.github.io/unit-0/unit-0-foundations.html</loc>
+    <lastmod>2025-01-07T20:10:50.541Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hpm883.github.io/instructors.html</loc>
+    <lastmod>2024-12-31T11:00:56.229Z</lastmod>
   </url>
   <url>
     <loc>https://hpm883.github.io/labs/lab-0.html</loc>
     <lastmod>2024-12-31T13:48:43.429Z</lastmod>
   </url>
   <url>
-    <loc>https://hpm883.github.io/instructors.html</loc>
-    <lastmod>2024-12-31T11:00:56.229Z</lastmod>
+    <loc>https://hpm883.github.io/course-communication.html</loc>
+    <lastmod>2024-12-30T11:58:58.475Z</lastmod>
   </url>
   <url>
     <loc>https://hpm883.github.io/unit-0/lecture-1.html</loc>
@@ -37,23 +45,15 @@
     <lastmod>2024-12-31T14:59:47.684Z</lastmod>
   </url>
   <url>
-    <loc>https://hpm883.github.io/lab.html</loc>
-    <lastmod>2024-12-31T12:18:13.023Z</lastmod>
+    <loc>https://hpm883.github.io/course-overview.html</loc>
+    <lastmod>2024-12-31T11:38:49.530Z</lastmod>
   </url>
   <url>
-    <loc>https://hpm883.github.io/computing.html</loc>
-    <lastmod>2024-12-31T14:53:44.474Z</lastmod>
+    <loc>https://hpm883.github.io/index.html</loc>
+    <lastmod>2025-01-03T13:58:38.638Z</lastmod>
   </url>
   <url>
-    <loc>https://hpm883.github.io/resources.html</loc>
-    <lastmod>2025-01-07T20:19:56.589Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hpm883.github.io/unit-0-foundations.html</loc>
-    <lastmod>2025-01-07T20:10:50.541Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hpm883.github.io/unit-0-intro-lec.html</loc>
-    <lastmod>2025-01-08T15:48:48.225Z</lastmod>
+    <loc>https://hpm883.github.io/course-syllabus.html</loc>
+    <lastmod>2024-12-27T15:10:49.845Z</lastmod>
   </url>
 </urlset>

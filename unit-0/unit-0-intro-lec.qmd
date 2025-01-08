@@ -1,0 +1,224 @@
+---
+title: "Course Introduction"
+subtitle: "Advanced Quantitative Methods for Health Policy and Management"
+author: "Sean Sylvia, Ph.D."
+date: January 8, 2025
+format: 
+  revealjs:
+    theme: default
+    slide-number: true
+    transition: fade
+    progress: true
+    incremental: false
+    toc: false
+editor: visual
+---
+
+# Welcome to HPM 883!
+
+**Advanced Quantitative Methods for Health Policy and Management**
+
+-   **Instructor:** Dr. Sean Sylvia
+-   **Teaching Assistant:** Yumeng Du
+-   **Course Website:** <https://hpm883.ssylvia.io/>
+-   **Preliminary Class Schedule:** [View Here](https://docs.google.com/spreadsheets/u/2/d/1XpkFUr6AfkO-w0mqtXZbBUIA_lxVNsePaWCtRMDuE0U/htmlview#gid=675503730)
+
+## Course Summary
+
+Experiments and Machine Learning for Health Services Research
+
+**Primary Goal:** Equip you with tools to design, analyze, and interpret **field experiments** and apply **machine learning** to health services research.
+
+-   **Key Focus Areas:**\
+    Field experiments for causal inference.\
+    Machine learning for prediction and causal analysis.
+
+-   **Applications:**\
+    Health policy evaluations, resource allocation, and improving healthcare decision-making.
+
+## About Me: Dr. Sean Sylvia
+
+**Associate Professor, UNC Gillings School of Global Public Health**\
+- **Educational Background:** PhD in Economics\
+- **Research Focus:**\
+- Experimental methods and causal inference\
+- Health policy and behavioral economics\
+- Machine learning for health services research
+
+## Proud "Randomista"
+
+::::::: columns
+::: {.column width="60%"}
+-   Extensive fieldwork using **randomized controlled trials (RCTs)** and **quasi-experiments**.\
+-   Key projects include:
+    -   Field experiments in rural China on health service delivery\
+    -   Design and evaluation of community health worker interventions\
+    -   Behavioral incentives and data-driven decision-making in LMICs\
+:::
+
+::::: {.column width="40%"}
+::: center
+![Fieldwork Image 1](path/to/your-image1.jpg)
+:::
+
+::: center
+![Fieldwork Image 2](path/to/your-image2.jpg)
+:::
+:::::
+:::::::
+
+## Teaching Assistant: Yumeng Du
+
+**PhD Student in Health Policy and Management (Economics Track)**
+
+**Research Interests:**\
+- Evaluation of digital health programs for underserved populations
+
+**Background:**\
+- MSc in Public Health, London School of Hygiene and Tropical Medicine (LSHTM), UK\
+- MBBS, Central South University, China\
+- Former RA at UNC-China Project,implementing an RCT on rural telemedicine kiosk program
+
+**Role:**\
+- Available for technical support and office hours\
+- Assisting with labs and project feedback
+
+# "Tour de Course"
+
+## Experiments and Machine Learning for HSR
+
+-   **Causal Inference**:
+    -   Randomized experiments: the gold standard for testing mechanisms and prioritizing interpretability.
+-   **Machine Learning**:
+    -   Ideal for useful predictions when interpretability or theory is less critical.
+-   **Bridging the Divide**:
+    -   New methods integrate ML principles with causal inference.
+    -   Expand theory-building capabilities while testing hypotheses.
+
+## Increasing Relevance
+
+-   Health services research increasingly uses:
+    -   Experimental methods.
+    -   Machine learning tools.
+-   Many causal hypotheses align with predictive relationships between phenomena.
+-   Both approaches add value when combined.
+
+## Importance of Reproducibility
+
+### Reproducibility in Science
+
+-   **Foundational Principle**:
+    -   Good experiments are reproducible.
+    -   The "reproducibility crisis" has affected some fields.
+-   **Reproducibility and ML**:
+    -   Exploratory analyses, when systematic, help build reliable theories.
+    -   ML provides tools for:
+        -   Conducting reproducible exploratory research.
+        -   Identifying robust treatment effect heterogeneity.
+
+# Core Themes of the Course
+
+## Causal Inference as a Missing Data Problem
+
+-   **The Fundamental Problem**:
+    -   We cannot observe a unit in multiple states of the world simultaneously.
+    -   Represented as "missing data" in potential outcomes.
+
+::: center
+![Potential Outcomes Table Example](path/to/potential-outcomes-table.jpg)
+:::
+
+-   **Experimentation Solves under some key assumptions**:
+    1.  SUTVA.
+    2.  Observability.
+    3.  Complete Compliance.
+    4.  Statistical Independence.
+
+## Randomization recovers the ATE on average.
+
+## Experimental Problems: EP1 & EP2
+
+### EP1: Internal Validity
+
+-   **Understanding Effects of Causes**:
+    -   Do assumptions in the potential outcomes framework hold?
+    -   Mediators and moderators.
+
+### EP2: External Validity
+
+-   **Generalizability and Scalability**:
+    -   Would it work in different settings?
+    -   Can it scale to create meaningful impact?
+
+# Primer on Experiments in Social Science
+
+## Types of Experiments
+
+-   **Lab Experiments**:
+    -   Controlled settings, abstract framing, imposed rules.
+-   **Field Experiments**:
+    -   **Artefactual Field Experiment (AFE)**: Non-standard subject pool.
+    -   **Framed Field Experiment (FFE)**: Adds field-specific context.
+    -   **Natural Field Experiment (NFE)**: Subjects unaware they are in an experiment.
+-   **Survey Experiments**:
+    -   Embedded in survey designs.
+
+## Criteria Defining Field Experiments
+
+-   **Subjects and Environment**:
+    -   Selection into experiments.
+    -   Nature of tasks, commodities, stakes.
+-   **Question:** Do experiments require randomization?
+    -   *Reveal*: No, theory can serve as the counterfactual.
+
+## Choosing the Right Experiment
+
+-   **Weigh Costs and Benefits**:
+    -   **Benefits**:
+        -   EP1: Internal validity.
+        -   EP2: Generalizability and scalability.
+    -   **Costs**:
+        -   Monetary, logistical, and opportunity costs.
+
+# Course Outline
+
+## Units and Topics
+
+1.  **Foundations of Causal Inference**:
+    -   Missing data problem and potential outcomes.
+    -   Randomization and the ATE.
+2.  **Experimental Design**:
+    -   Power analysis and randomization strategies.
+3.  **Machine Learning for Causal Inference**:
+    -   Lasso, random forests, and causal forests.
+4.  **Violations of Internal Validity**:
+    -   SUTVA, compliance issues, and observability.
+5.  **Scaling and External Validity**:
+    -   Generalizability and implementation challenges.
+
+# Class Structure
+
+## Weekly-ish Format
+
+-   **Two sessions per topic**:
+    -   **Lecture**: Introduces key concepts and theory.
+    -   **Lab**: Hands-on practice with coding and data analysis.
+
+## Flipped(-ish) Classroom Approach
+
+-   Pre-class readings and recorded materials.
+-   Interactive sessions focused on data exploration and applied learning.
+-   Collaborative problem-solving in small groups.
+
+## Assessments
+
+-   **Pre-class Quizzes**: Test your understanding of key concepts (10%).
+-   **Lab Assignments**: Practical applications and analysis (25%).
+-   **Exams**: Evaluate theoretical and practical understanding (35%).
+-   **Pre-analysis Plan**: Develop and document a structured analysis plan (15%).
+-   **Final Paper**: Synthesize course material into a research application (15%).
+
+## Resources and Support
+
+-   Course website with materials and updates: [Course Website](https://hpm883.ssylvia.io/)
+-   Weekly office hours with Dr. Sylvia and Yumeng

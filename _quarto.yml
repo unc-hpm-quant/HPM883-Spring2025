@@ -68,7 +68,8 @@ website:
           - href: course-communication.qmd
             text: "Communication"
       - index.qmd
-      - resources.qmd
+      - href: resources.qmd
+        text: "Resources"
       - href: unit-0-foundations.qmd
         text: "Unit 0: Foundations" 
       

@@ -1,112 +1,300 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Course Schedule",
+    "objectID": "resources.html",
+    "href": "resources.html",
+    "title": "Resources",
     "section": "",
-    "text": "This page contains the schedule, topics, content and assigments for the semester.\n\n\n\n\n\n\nNote\n\n\n\nThis schedule will be updated as the semester progresses.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweek\ndow\ndate\nsession\nunit\ntopic\nprepare\nclass\nlab\nlab_sa\ndue\nnotes\n\n\n\n1\nW\n8 January\nLec\nFoundations\nWelcome; Key Concepts\n\n\n\n\n\n\n\n\nFDOC\n\n\n2\nM\n13 January\nLec\nFoundations\nGuest Lecture: Running a Randomized Trial\n\n\n\n\n\n\nSean Traveling, Kat or Dorien or Yunwei guest lecture on an RCT\n\n\n\nW\n15 January\n-\nFoundations\nReproducible Research\n\n\n\n\n\nSean Traveling, Led by Yumeng and Shuyi\n\n\n3\nM\n20 January\n-\nNo Class: MLK Day\n\n\n\n\n\n\nNo Class\n\n\n\nW\n22 January\nLec\nInternal Validity\nGeneralized Potential Outcomes Framework; Exclusion Restrictions\n\n\n\n\n\n\n\n\n\n4\nM\n27 January\nLab\nInternal Validity\nTBD\n\n\n\n\n\n\n\n\n\nW\n29 January\nLec\nExperimental Design\nOptimal design of experiments; Power\n\n\n\n\n\n\n\n\n\n5\nM\n3 February\nLab\nExperimental Design\nPower simulations\n\n\n\n\n\n\n\n\n\nW\n5 February\nLec\nExperimental Design\nRandomization and Blocking\n\n\n\n\n\n\n\n\n\n6\nM\n10 February\n-\nNo Class: Well-being Day\n\n\n\n\n\n\n\n\n\n\nW\n12 February\nLec\nPreparations\nEthics, Registration and Pre-Analysis Plans\n\n\n\n\n\n\n\n\n7\nM\n17 February\nLec\nIntroduction to Machine Learning\nLasso; Penalized Regression; Cross-Validation\n\n\n\n\n\n\n\n\n\nW\n19 February\nLab\nIntroduction to Machine Learning\nLasso and Friends\n\n\n\n\n\n\n\n\n8\nM\n24 February\nLec\nIntroduction to Machine Learning\nRandom Trees and Random Forests\n\n\n\n\n\n\n\n\n\n\nW\n26 February\n\nMIDTERM 1\n\n\n\n\n\n\n\n\n\n9\nM\n3 March\nLec\nHeterogeneity and Moderation\nHeterogeneous Treatment Effects\n\n\n\n\n\n\n\n\n\n\nW\n5 March\nLab\nHeterogeneity and Moderation\nCausal Forests\n\n\n\n\n\n\n\n\n\n10\nM\n10 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n\n\nW\n12 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n\n11\nM\n17 March\nLec\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\n\n\n\n\n\n\nW\n19 March\nLab\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\n\n\n\n\n\n12\nM\n24 March\nLec\nViolations of Internal Validity\nOne and Two-sided Compliance; TOT (LATE)\n\n\n\n\n\n\n\n\n\nW\n26 March\nLab\nViolations of Internal Validity\nIV\n\n\n\n\n\n\n\n\n\n13\nM\n31 March\n\nMIDTERM 2\n\n\n\n\n\n\n\n\n\n\nW\n2 April\nLec\nMediation and External Validity\nMediation Analysis and Generalizability\n\n\n\n\n\n\n\n\n14\nM\n7 April\nLab\nMediation and External Validity\n\n\n\n\n\n\n\n\n\n\n\nW\n9 April\n\nBuffer\nTBD\n\n\n\n\n\n\n\n\n15\nM\n14 April\n\nBuffer\nTBD\n\n\n\n\n\n\n\n\n\nW\n16 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n\n16\nM\n21 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n\n\nW\n23 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n\n17\nM\n28 April\n\nWrap-up\nTBD\n\n\n\n\n\n\n\n\n\n\nW\n30 April\n\nFINAL EXAM",
+    "text": "List, John. Experimental Economics: Theory and Practice, 2025. (Link available soon)\nChernozhukov, Victor, Christian Hansen, Nathan Kallus, Martin Spindler, and Vasilis Syrgkanis. Applied Causal Inference Powered by ML and AI, 2024.\nWager, Stefan. Causal Inference: A Statistical Learning Approach, 2024.\nJames, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An Introduction to Statistical Learning: With Applications in R. Springer Texts in Statistics. New York, NY: Springer US, 2021.",
     "crumbs": [
-      "Course Schedule"
+      "Resources"
     ]
   },
   {
-    "objectID": "course-overview.html",
-    "href": "course-overview.html",
-    "title": "HPM 883Spring 2025",
+    "objectID": "resources.html#key-texts",
+    "href": "resources.html#key-texts",
+    "title": "Resources",
     "section": "",
-    "text": "HPM 883 is an advanced graduate-level course designed to equip PhD students in the Health Policy and Management program with sophisticated quantitative research skills. This course represents the third installment in the quantitative methods sequence, building on the foundational knowledge acquired in HPM 881 and HPM 882.\nThroughout the term, students will delve into advanced quantitative methods pertinent to health services research with a focus on the use of experimental methods and machine learning for causal inference. The course will provide a thorough introduction to machine learning techniques and explore the burgeoning domain of causal machine learning.",
+    "text": "List, John. Experimental Economics: Theory and Practice, 2025. (Link available soon)\nChernozhukov, Victor, Christian Hansen, Nathan Kallus, Martin Spindler, and Vasilis Syrgkanis. Applied Causal Inference Powered by ML and AI, 2024.\nWager, Stefan. Causal Inference: A Statistical Learning Approach, 2024.\nJames, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An Introduction to Statistical Learning: With Applications in R. Springer Texts in Statistics. New York, NY: Springer US, 2021.",
     "crumbs": [
-      "Course Information",
-      "Overview"
+      "Resources"
     ]
   },
   {
-    "objectID": "course-overview.html#advanced-quantitative-methods-for-health-policy-and-management",
-    "href": "course-overview.html#advanced-quantitative-methods-for-health-policy-and-management",
-    "title": "HPM 883Spring 2025",
-    "section": "",
-    "text": "HPM 883 is an advanced graduate-level course designed to equip PhD students in the Health Policy and Management program with sophisticated quantitative research skills. This course represents the third installment in the quantitative methods sequence, building on the foundational knowledge acquired in HPM 881 and HPM 882.\nThroughout the term, students will delve into advanced quantitative methods pertinent to health services research with a focus on the use of experimental methods and machine learning for causal inference. The course will provide a thorough introduction to machine learning techniques and explore the burgeoning domain of causal machine learning.",
+    "objectID": "resources.html#websites",
+    "href": "resources.html#websites",
+    "title": "Resources",
+    "section": "Websites",
+    "text": "Websites\nField Experiments Website\nPapers in economic field experiments.\nAbdul Latif Jameel Poverty Action Lab (JPAL)\nA global research center based at MIT’s Economics Department that works to reduce poverty through rigorous scientific evidence and policy implementation\nStanford Social Impact Lab",
     "crumbs": [
-      "Course Information",
-      "Overview"
+      "Resources"
     ]
+  },
+  {
+    "objectID": "resources.html#data",
+    "href": "resources.html#data",
+    "title": "Resources",
+    "section": "Data",
+    "text": "Data\nStanford GSB Social Impact Lab Experiment Data",
+    "crumbs": [
+      "Resources"
+    ]
+  },
+  {
+    "objectID": "lab.html",
+    "href": "lab.html",
+    "title": "Labs",
+    "section": "",
+    "text": "More labs to be added as the semester progresses.\n\n\n\n\n\n\n\n\n\nNo.\n\n\nTitle\n\n\nDue date\n\n\n\n\n\n\nLab 0\n\n\nThe Hospital of Uncertain Outcomes\n\n\nIntro to class computing setup\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "unit-0/unit-0-intro-lec.html#course-summary",
+    "href": "unit-0/unit-0-intro-lec.html#course-summary",
+    "title": "Course Introduction",
+    "section": "Course Summary",
+    "text": "Course Summary\nExperiments and Machine Learning for Health Services Research\nPrimary Goal: Equip you with tools to design, analyze, and interpret field experiments and apply machine learning to health services research.\n\nKey Focus Areas:\nField experiments for causal inference.\nMachine learning for prediction and causal analysis.\nApplications:\nHealth policy evaluations, resource allocation, and improving healthcare decision-making."
+  },
+  {
+    "objectID": "unit-0/unit-0-intro-lec.html#about-me-dr.-sean-sylvia",
+    "href": "unit-0/unit-0-intro-lec.html#about-me-dr.-sean-sylvia",
+    "title": "Course Introduction",
+    "section": "About Me: Dr. Sean Sylvia",
+    "text": "About Me: Dr. Sean Sylvia\nAssociate Professor, UNC Gillings School of Global Public Health\n- Educational Background: PhD in Economics\n- Research Focus:\n- Experimental methods and causal inference\n- Health policy and behavioral economics\n- Machine learning for health services research"
+  },
+  {
+    "objectID": "unit-0/unit-0-intro-lec.html#proud-randomista",
+    "href": "unit-0/unit-0-intro-lec.html#proud-randomista",
+    "title": "Course Introduction",
+    "section": "Proud “Randomista”",
+    "text": "Proud “Randomista”\n\n\n\nExtensive fieldwork using randomized controlled trials (RCTs) and quasi-experiments.\n\nKey projects include:\n\nField experiments in rural China on health service delivery\n\nDesign and evaluation of community health worker interventions\n\nBehavioral incentives and data-driven decision-making in LMICs\n\n\n\n\n\n\n\n\nFieldwork Image 1\n\n\n\n\n\n\n\nFieldwork Image 2"
+  },
+  {
+    "objectID": "unit-0/unit-0-intro-lec.html#teaching-assistant-yumeng-du",
+    "href": "unit-0/unit-0-intro-lec.html#teaching-assistant-yumeng-du",
+    "title": "Course Introduction",
+    "section": "Teaching Assistant: Yumeng Du",
+    "text": "Teaching Assistant: Yumeng Du\nPhD Student in Health Policy and Management (Economics Track)\nResearch Interests:\n- Evaluation of digital health programs for underserved populations\nBackground:\n- MSc in Public Health, London School of Hygiene and Tropical Medicine (LSHTM), UK\n- MBBS, Central South University, China\n- Former RA at UNC-China Project,implementing an RCT on rural telemedicine kiosk program\nRole:\n- Available for technical support and office hours\n- Assisting with labs and project feedback"
+  },
+  {
+    "objectID": "unit-0/unit-0-intro-lec.html#experiments-and-machine-learning-for-hsr",
+    "href": "unit-0/unit-0-intro-lec.html#experiments-and-machine-learning-for-hsr",
+    "title": "Course Introduction",
+    "section": "Experiments and Machine Learning for HSR",
+    "text": "Experiments and Machine Learning for HSR\n\nCausal Inference:\n\nRandomized experiments: the gold standard for testing mechanisms and prioritizing interpretability.\n\nMachine Learning:\n\nIdeal for useful predictions when interpretability or theory is less critical.\n\nBridging the Divide:\n\nNew methods integrate ML principles with causal inference.\nExpand theory-building capabilities while testing hypotheses."
+  },
+  {
+    "objectID": "unit-0/unit-0-intro-lec.html#increasing-relevance",
+    "href": "unit-0/unit-0-intro-lec.html#increasing-relevance",
+    "title": "Course Introduction",
+    "section": "Increasing Relevance",
+    "text": "Increasing Relevance\n\nHealth services research increasingly uses:\n\nExperimental methods.\nMachine learning tools.\n\nMany causal hypotheses align with predictive relationships between phenomena.\nBoth approaches add value when combined."
+  },
+  {
+    "objectID": "unit-0/unit-0-intro-lec.html#importance-of-reproducibility",
+    "href": "unit-0/unit-0-intro-lec.html#importance-of-reproducibility",
+    "title": "Course Introduction",
+    "section": "Importance of Reproducibility",
+    "text": "Importance of Reproducibility\nReproducibility in Science\n\nFoundational Principle:\n\nGood experiments are reproducible.\nThe “reproducibility crisis” has affected some fields.\n\nReproducibility and ML:\n\nExploratory analyses, when systematic, help build reliable theories.\nML provides tools for:\n\nConducting reproducible exploratory research.\nIdentifying robust treatment effect heterogeneity."
+  },
+  {
+    "objectID": "unit-0/unit-0-intro-lec.html#causal-inference-as-a-missing-data-problem",
+    "href": "unit-0/unit-0-intro-lec.html#causal-inference-as-a-missing-data-problem",
+    "title": "Course Introduction",
+    "section": "Causal Inference as a Missing Data Problem",
+    "text": "Causal Inference as a Missing Data Problem\n\nThe Fundamental Problem:\n\nWe cannot observe a unit in multiple states of the world simultaneously.\nRepresented as “missing data” in potential outcomes.\n\n\n\n\n\n\nPotential Outcomes Table Example\n\n\n\n\nExperimentation Solves under some key assumptions:\n\nSUTVA.\nObservability.\nComplete Compliance.\nStatistical Independence."
+  },
+  {
+    "objectID": "unit-0/unit-0-intro-lec.html#randomization-recovers-the-ate-on-average.",
+    "href": "unit-0/unit-0-intro-lec.html#randomization-recovers-the-ate-on-average.",
+    "title": "Course Introduction",
+    "section": "Randomization recovers the ATE on average.",
+    "text": "Randomization recovers the ATE on average."
+  },
+  {
+    "objectID": "unit-0/unit-0-intro-lec.html#experimental-problems-ep1-ep2",
+    "href": "unit-0/unit-0-intro-lec.html#experimental-problems-ep1-ep2",
+    "title": "Course Introduction",
+    "section": "Experimental Problems: EP1 & EP2",
+    "text": "Experimental Problems: EP1 & EP2\nEP1: Internal Validity\n\nUnderstanding Effects of Causes:\n\nDo assumptions in the potential outcomes framework hold?\nMediators and moderators.\n\n\nEP2: External Validity\n\nGeneralizability and Scalability:\n\nWould it work in different settings?\nCan it scale to create meaningful impact?"
+  },
+  {
+    "objectID": "unit-0/unit-0-intro-lec.html#types-of-experiments",
+    "href": "unit-0/unit-0-intro-lec.html#types-of-experiments",
+    "title": "Course Introduction",
+    "section": "Types of Experiments",
+    "text": "Types of Experiments\n\nLab Experiments:\n\nControlled settings, abstract framing, imposed rules.\n\nField Experiments:\n\nArtefactual Field Experiment (AFE): Non-standard subject pool.\nFramed Field Experiment (FFE): Adds field-specific context.\nNatural Field Experiment (NFE): Subjects unaware they are in an experiment.\n\nSurvey Experiments:\n\nEmbedded in survey designs."
+  },
+  {
+    "objectID": "unit-0/unit-0-intro-lec.html#criteria-defining-field-experiments",
+    "href": "unit-0/unit-0-intro-lec.html#criteria-defining-field-experiments",
+    "title": "Course Introduction",
+    "section": "Criteria Defining Field Experiments",
+    "text": "Criteria Defining Field Experiments\n\nSubjects and Environment:\n\nSelection into experiments.\nNature of tasks, commodities, stakes.\n\nQuestion: Do experiments require randomization?\n\nReveal: No, theory can serve as the counterfactual."
+  },
+  {
+    "objectID": "unit-0/unit-0-intro-lec.html#choosing-the-right-experiment",
+    "href": "unit-0/unit-0-intro-lec.html#choosing-the-right-experiment",
+    "title": "Course Introduction",
+    "section": "Choosing the Right Experiment",
+    "text": "Choosing the Right Experiment\n\nWeigh Costs and Benefits:\n\nBenefits:\n\nEP1: Internal validity.\nEP2: Generalizability and scalability.\n\nCosts:\n\nMonetary, logistical, and opportunity costs."
+  },
+  {
+    "objectID": "unit-0/unit-0-intro-lec.html#units-and-topics",
+    "href": "unit-0/unit-0-intro-lec.html#units-and-topics",
+    "title": "Course Introduction",
+    "section": "Units and Topics",
+    "text": "Units and Topics\n\nFoundations of Causal Inference:\n\nMissing data problem and potential outcomes.\nRandomization and the ATE.\n\nExperimental Design:\n\nPower analysis and randomization strategies.\n\nMachine Learning for Causal Inference:\n\nLasso, random forests, and causal forests.\n\nViolations of Internal Validity:\n\nSUTVA, compliance issues, and observability.\n\nScaling and External Validity:\n\nGeneralizability and implementation challenges."
+  },
+  {
+    "objectID": "unit-0/unit-0-intro-lec.html#weekly-ish-format",
+    "href": "unit-0/unit-0-intro-lec.html#weekly-ish-format",
+    "title": "Course Introduction",
+    "section": "Weekly-ish Format",
+    "text": "Weekly-ish Format\n\nTwo sessions per topic:\n\nLecture: Introduces key concepts and theory.\nLab: Hands-on practice with coding and data analysis."
+  },
+  {
+    "objectID": "unit-0/unit-0-intro-lec.html#flipped-ish-classroom-approach",
+    "href": "unit-0/unit-0-intro-lec.html#flipped-ish-classroom-approach",
+    "title": "Course Introduction",
+    "section": "Flipped(-ish) Classroom Approach",
+    "text": "Flipped(-ish) Classroom Approach\n\nPre-class readings and recorded materials.\nInteractive sessions focused on data exploration and applied learning.\nCollaborative problem-solving in small groups."
+  },
+  {
+    "objectID": "unit-0/unit-0-intro-lec.html#assessments",
+    "href": "unit-0/unit-0-intro-lec.html#assessments",
+    "title": "Course Introduction",
+    "section": "Assessments",
+    "text": "Assessments\n\nPre-class Quizzes: Test your understanding of key concepts (10%).\nLab Assignments: Practical applications and analysis (25%).\nExams: Evaluate theoretical and practical understanding (35%).\nPre-analysis Plan: Develop and document a structured analysis plan (15%).\nFinal Paper: Synthesize course material into a research application (15%)."
+  },
+  {
+    "objectID": "unit-0/unit-0-intro-lec.html#resources-and-support",
+    "href": "unit-0/unit-0-intro-lec.html#resources-and-support",
+    "title": "Course Introduction",
+    "section": "Resources and Support",
+    "text": "Resources and Support\n\nCourse website with materials and updates: Course Website\nWeekly office hours with Dr. Sylvia and Yumeng"
   },
   {
     "objectID": "unit-0/prep-1.html",
     "href": "unit-0/prep-1.html",
     "title": "Class Preparation",
     "section": "",
-    "text": "In preparation for our upcoming class on [Insert Topic Here], please complete the following activities. These materials will set the foundation for our in-class discussions and activities.\n\n\n\n\n\n[Insert Reading Title and Link Here]\n[Insert Additional Reading Title and Link Here]\n\n\n\n\n\n\n[Insert Video Title and Link Here]\n[Insert Additional Video Title and Link Here]\n\n\n\n\n\nComplete the pre-class quiz on Sakai: [Insert Link Here]\nDeadline: [Insert Date and Time]\n\n\n\n\nConsider the following questions as you review the materials: 1. [Insert Question Here] 2. [Insert Additional Question Here] 3. [Insert Additional Question Here]\n\n\n\n\nPrepare notes summarizing key concepts from the readings and videos. These will be helpful for in-class discussions.\n\nRemember: This course uses a flipped classroom approach. Completing these tasks prior to class is essential for your active participation and understanding during our sessions.",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Class Preparation"
-    ]
+    "text": "In preparation for our upcoming class on [Insert Topic Here], please complete the following activities. These materials will set the foundation for our in-class discussions and activities.\n\n\n\n\n\n[Insert Reading Title and Link Here]\n[Insert Additional Reading Title and Link Here]\n\n\n\n\n\n\n[Insert Video Title and Link Here]\n[Insert Additional Video Title and Link Here]\n\n\n\n\n\nComplete the pre-class quiz on Sakai: [Insert Link Here]\nDeadline: [Insert Date and Time]\n\n\n\n\nConsider the following questions as you review the materials: 1. [Insert Question Here] 2. [Insert Additional Question Here] 3. [Insert Additional Question Here]\n\n\n\n\nPrepare notes summarizing key concepts from the readings and videos. These will be helpful for in-class discussions.\n\nRemember: This course uses a flipped classroom approach. Completing these tasks prior to class is essential for your active participation and understanding during our sessions."
   },
   {
     "objectID": "unit-0/prep-1.html#overview",
     "href": "unit-0/prep-1.html#overview",
     "title": "Class Preparation",
     "section": "",
-    "text": "In preparation for our upcoming class on [Insert Topic Here], please complete the following activities. These materials will set the foundation for our in-class discussions and activities.",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Class Preparation"
-    ]
+    "text": "In preparation for our upcoming class on [Insert Topic Here], please complete the following activities. These materials will set the foundation for our in-class discussions and activities."
   },
   {
     "objectID": "unit-0/prep-1.html#required-readings",
     "href": "unit-0/prep-1.html#required-readings",
     "title": "Class Preparation",
     "section": "",
-    "text": "[Insert Reading Title and Link Here]\n[Insert Additional Reading Title and Link Here]",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Class Preparation"
-    ]
+    "text": "[Insert Reading Title and Link Here]\n[Insert Additional Reading Title and Link Here]"
   },
   {
     "objectID": "unit-0/prep-1.html#required-videos",
     "href": "unit-0/prep-1.html#required-videos",
     "title": "Class Preparation",
     "section": "",
-    "text": "[Insert Video Title and Link Here]\n[Insert Additional Video Title and Link Here]",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Class Preparation"
-    ]
+    "text": "[Insert Video Title and Link Here]\n[Insert Additional Video Title and Link Here]"
   },
   {
     "objectID": "unit-0/prep-1.html#quiz",
     "href": "unit-0/prep-1.html#quiz",
     "title": "Class Preparation",
     "section": "",
-    "text": "Complete the pre-class quiz on Sakai: [Insert Link Here]\nDeadline: [Insert Date and Time]",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Class Preparation"
-    ]
+    "text": "Complete the pre-class quiz on Sakai: [Insert Link Here]\nDeadline: [Insert Date and Time]"
   },
   {
     "objectID": "unit-0/prep-1.html#reflection-questions",
     "href": "unit-0/prep-1.html#reflection-questions",
     "title": "Class Preparation",
     "section": "",
-    "text": "Consider the following questions as you review the materials: 1. [Insert Question Here] 2. [Insert Additional Question Here] 3. [Insert Additional Question Here]",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Class Preparation"
-    ]
+    "text": "Consider the following questions as you review the materials: 1. [Insert Question Here] 2. [Insert Additional Question Here] 3. [Insert Additional Question Here]"
   },
   {
     "objectID": "unit-0/prep-1.html#notes",
     "href": "unit-0/prep-1.html#notes",
     "title": "Class Preparation",
     "section": "",
-    "text": "Prepare notes summarizing key concepts from the readings and videos. These will be helpful for in-class discussions.\n\nRemember: This course uses a flipped classroom approach. Completing these tasks prior to class is essential for your active participation and understanding during our sessions.",
+    "text": "Prepare notes summarizing key concepts from the readings and videos. These will be helpful for in-class discussions.\n\nRemember: This course uses a flipped classroom approach. Completing these tasks prior to class is essential for your active participation and understanding during our sessions."
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations.html",
+    "href": "unit-0/unit-0-foundations.html",
+    "title": "Unit 0: Foundations",
+    "section": "",
+    "text": "This unit will provide a foundation for the rest of the course. It will cover the following topics:\n\nWhy experiments and ML for Causal Inference\nCourse structure and tools\nA field experiment in health services research\nComputing for Reproducible Research"
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations.html#overview",
+    "href": "unit-0/unit-0-foundations.html#overview",
+    "title": "Unit 0: Foundations",
+    "section": "",
+    "text": "This unit will provide a foundation for the rest of the course. It will cover the following topics:\n\nWhy experiments and ML for Causal Inference\nCourse structure and tools\nA field experiment in health services research\nComputing for Reproducible Research"
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations.html#class-1-course-introduction",
+    "href": "unit-0/unit-0-foundations.html#class-1-course-introduction",
+    "title": "Unit 0: Foundations",
+    "section": "Class 1: Course Introduction",
+    "text": "Class 1: Course Introduction\n\nPreparation\n\nHarrison and List (2004)\nACI Chapters 0 and 2\n\n\n\nIn Class\n\nLecture slides\n\n\n\nLab/Homework\n\nIntroductory Class Survey\n\n\n\nAdditional Materials"
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations.html#class-2-a-field-experiment-in-health-services-research",
+    "href": "unit-0/unit-0-foundations.html#class-2-a-field-experiment-in-health-services-research",
+    "title": "Unit 0: Foundations",
+    "section": "Class 2: A Field Experiment in Health Services Research",
+    "text": "Class 2: A Field Experiment in Health Services Research\nGuest Lecture by Dr. Dorien Emmers\n\nPreparation"
+  },
+  {
+    "objectID": "instructors.html",
+    "href": "instructors.html",
+    "title": "Instructors",
+    "section": "",
+    "text": "Sean Sylvia is an Associate Professor in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Dr. Sylvia will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
     "crumbs": [
-      "Unit 0: Foundations",
-      "Class Preparation"
+      "Course Information",
+      "Instructors"
     ]
+  },
+  {
+    "objectID": "instructors.html#instructor-sean-sylvia-ph.d.",
+    "href": "instructors.html#instructor-sean-sylvia-ph.d.",
+    "title": "Instructors",
+    "section": "",
+    "text": "Sean Sylvia is an Associate Professor in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Dr. Sylvia will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
+    "crumbs": [
+      "Course Information",
+      "Instructors"
+    ]
+  },
+  {
+    "objectID": "instructors.html#teaching-assistant-yumeng-du",
+    "href": "instructors.html#teaching-assistant-yumeng-du",
+    "title": "Instructors",
+    "section": "Teaching Assistant: Yumeng Du",
+    "text": "Teaching Assistant: Yumeng Du\nYumeng Du is a Ph.D. student in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours:",
+    "crumbs": [
+      "Course Information",
+      "Instructors"
+    ]
+  },
+  {
+    "objectID": "labs/lab-0.html",
+    "href": "labs/lab-0.html",
+    "title": "Lab 0",
+    "section": "",
+    "text": "St. Null’s Memorial Hospital is in chaos. Every time the hospital board—led by the well-meaning but trend-obsessed CEO Barnaby Beta—implements a new policy, they find puzzling or contradictory results. Dr. P-Hacker, a self-styled data guru, only adds to the confusion by massaging, cherry-picking, and p-hacking the data until he sees “significance.” Meanwhile, Nurse Random constantly rolls her eyes at his antics and reminds everyone that solid methodology—not creative statistics—should guide decision-making.\nBut there’s hope. Your class has just been hired as “methodology consultants” to diagnose and treat the hospital’s research woes. In each module (or “episode”), you’ll confront a new fiasco at St. Null’s: from suspiciously overfitted AI models, to missing data nightmares, to bungled randomized trials and flawed observational studies. Along the way, the brilliant but quirky Dr. Doub R. Obust will champion doubly robust methods and other advanced techniques to rescue the day.\n\n\n\n\nYour mission? Use proper causal inference and machine learning strategies to shed light on the true effects of the hospital’s interventions. Each chapter in your lecture notes (i.e., Jupyter notebooks) begins with a brief “scene” in which the hospital staff face some methodological mishap—then shifts to your step-by-step explanation of the relevant statistical concepts and R code. By the end of the course, you’ll have helped St. Null’s Memorial Hospital finally achieve consistent, credible results, while having a bit of comedic fun along the way."
+  },
+  {
+    "objectID": "labs/lab-0.html#the-hospital-of-uncertain-outcomes",
+    "href": "labs/lab-0.html#the-hospital-of-uncertain-outcomes",
+    "title": "Lab 0",
+    "section": "",
+    "text": "St. Null’s Memorial Hospital is in chaos. Every time the hospital board—led by the well-meaning but trend-obsessed CEO Barnaby Beta—implements a new policy, they find puzzling or contradictory results. Dr. P-Hacker, a self-styled data guru, only adds to the confusion by massaging, cherry-picking, and p-hacking the data until he sees “significance.” Meanwhile, Nurse Random constantly rolls her eyes at his antics and reminds everyone that solid methodology—not creative statistics—should guide decision-making.\nBut there’s hope. Your class has just been hired as “methodology consultants” to diagnose and treat the hospital’s research woes. In each module (or “episode”), you’ll confront a new fiasco at St. Null’s: from suspiciously overfitted AI models, to missing data nightmares, to bungled randomized trials and flawed observational studies. Along the way, the brilliant but quirky Dr. Doub R. Obust will champion doubly robust methods and other advanced techniques to rescue the day.\n\n\n\n\nYour mission? Use proper causal inference and machine learning strategies to shed light on the true effects of the hospital’s interventions. Each chapter in your lecture notes (i.e., Jupyter notebooks) begins with a brief “scene” in which the hospital staff face some methodological mishap—then shifts to your step-by-step explanation of the relevant statistical concepts and R code. By the end of the course, you’ll have helped St. Null’s Memorial Hospital finally achieve consistent, credible results, while having a bit of comedic fun along the way."
   },
   {
     "objectID": "course-communication.html",
@@ -153,427 +341,133 @@
     ]
   },
   {
-    "objectID": "labs/lab-0.html",
-    "href": "labs/lab-0.html",
-    "title": "Lab 0",
-    "section": "",
-    "text": "St. Null’s Memorial Hospital is in chaos. Every time the hospital board—led by the well-meaning but trend-obsessed CEO Barnaby Beta—implements a new policy, they find puzzling or contradictory results. Dr. P-Hacker, a self-styled data guru, only adds to the confusion by massaging, cherry-picking, and p-hacking the data until he sees “significance.” Meanwhile, Nurse Random constantly rolls her eyes at his antics and reminds everyone that solid methodology—not creative statistics—should guide decision-making.\nBut there’s hope. Your class has just been hired as “methodology consultants” to diagnose and treat the hospital’s research woes. In each module (or “episode”), you’ll confront a new fiasco at St. Null’s: from suspiciously overfitted AI models, to missing data nightmares, to bungled randomized trials and flawed observational studies. Along the way, the brilliant but quirky Dr. Doub R. Obust will champion doubly robust methods and other advanced techniques to rescue the day.\n\n\n\n\nYour mission? Use proper causal inference and machine learning strategies to shed light on the true effects of the hospital’s interventions. Each chapter in your lecture notes (i.e., Jupyter notebooks) begins with a brief “scene” in which the hospital staff face some methodological mishap—then shifts to your step-by-step explanation of the relevant statistical concepts and R code. By the end of the course, you’ll have helped St. Null’s Memorial Hospital finally achieve consistent, credible results, while having a bit of comedic fun along the way."
-  },
-  {
-    "objectID": "labs/lab-0.html#the-hospital-of-uncertain-outcomes",
-    "href": "labs/lab-0.html#the-hospital-of-uncertain-outcomes",
-    "title": "Lab 0",
-    "section": "",
-    "text": "St. Null’s Memorial Hospital is in chaos. Every time the hospital board—led by the well-meaning but trend-obsessed CEO Barnaby Beta—implements a new policy, they find puzzling or contradictory results. Dr. P-Hacker, a self-styled data guru, only adds to the confusion by massaging, cherry-picking, and p-hacking the data until he sees “significance.” Meanwhile, Nurse Random constantly rolls her eyes at his antics and reminds everyone that solid methodology—not creative statistics—should guide decision-making.\nBut there’s hope. Your class has just been hired as “methodology consultants” to diagnose and treat the hospital’s research woes. In each module (or “episode”), you’ll confront a new fiasco at St. Null’s: from suspiciously overfitted AI models, to missing data nightmares, to bungled randomized trials and flawed observational studies. Along the way, the brilliant but quirky Dr. Doub R. Obust will champion doubly robust methods and other advanced techniques to rescue the day.\n\n\n\n\nYour mission? Use proper causal inference and machine learning strategies to shed light on the true effects of the hospital’s interventions. Each chapter in your lecture notes (i.e., Jupyter notebooks) begins with a brief “scene” in which the hospital staff face some methodological mishap—then shifts to your step-by-step explanation of the relevant statistical concepts and R code. By the end of the course, you’ll have helped St. Null’s Memorial Hospital finally achieve consistent, credible results, while having a bit of comedic fun along the way."
-  },
-  {
-    "objectID": "instructors.html",
-    "href": "instructors.html",
-    "title": "Instructors",
-    "section": "",
-    "text": "Sean Sylvia is an Associate Professor in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Dr. Sylvia will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
-    "crumbs": [
-      "Course Information",
-      "Instructors"
-    ]
-  },
-  {
-    "objectID": "instructors.html#instructor-sean-sylvia-ph.d.",
-    "href": "instructors.html#instructor-sean-sylvia-ph.d.",
-    "title": "Instructors",
-    "section": "",
-    "text": "Sean Sylvia is an Associate Professor in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Dr. Sylvia will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
-    "crumbs": [
-      "Course Information",
-      "Instructors"
-    ]
-  },
-  {
-    "objectID": "instructors.html#teaching-assistant-yumeng-du",
-    "href": "instructors.html#teaching-assistant-yumeng-du",
-    "title": "Instructors",
-    "section": "Teaching Assistant: Yumeng Du",
-    "text": "Teaching Assistant: Yumeng Du\nYumeng Du is a Ph.D. student in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours:",
-    "crumbs": [
-      "Course Information",
-      "Instructors"
-    ]
-  },
-  {
     "objectID": "unit-0/lecture-1.html",
     "href": "unit-0/lecture-1.html",
     "title": "Class Preparation",
     "section": "",
-    "text": "Today’s session will focus on [Insert Topic Here]. This session combines lecture notes with guided coding exercises to enhance your understanding of the concepts and their application.",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Lecture Notes"
-    ]
+    "text": "Today’s session will focus on [Insert Topic Here]. This session combines lecture notes with guided coding exercises to enhance your understanding of the concepts and their application."
   },
   {
     "objectID": "unit-0/lecture-1.html#overview",
     "href": "unit-0/lecture-1.html#overview",
     "title": "Class Preparation",
     "section": "",
-    "text": "Today’s session will focus on [Insert Topic Here]. This session combines lecture notes with guided coding exercises to enhance your understanding of the concepts and their application.",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Lecture Notes"
-    ]
+    "text": "Today’s session will focus on [Insert Topic Here]. This session combines lecture notes with guided coding exercises to enhance your understanding of the concepts and their application."
   },
   {
     "objectID": "unit-0/lecture-1.html#learning-objectives",
     "href": "unit-0/lecture-1.html#learning-objectives",
     "title": "Class Preparation",
     "section": "Learning Objectives",
-    "text": "Learning Objectives\nBy the end of this session, you will be able to: 1. [Insert Learning Objective Here] 2. [Insert Additional Learning Objective Here] 3. [Insert Additional Learning Objective Here]",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Lecture Notes"
-    ]
+    "text": "Learning Objectives\nBy the end of this session, you will be able to: 1. [Insert Learning Objective Here] 2. [Insert Additional Learning Objective Here] 3. [Insert Additional Learning Objective Here]"
   },
   {
     "objectID": "unit-0/lecture-1.html#lecture-notes",
     "href": "unit-0/lecture-1.html#lecture-notes",
     "title": "Class Preparation",
     "section": "Lecture Notes",
-    "text": "Lecture Notes\n\nKey Concepts\n\n[Insert Key Concept Here]\n\nExplanation: [Insert Explanation Here]\nExample: [Insert Example Here]\n\n[Insert Additional Key Concept Here]\n\nExplanation: [Insert Explanation Here]\nExample: [Insert Example Here]\n\n\n\n\nPart 1\n\n\nPart 2",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Lecture Notes"
-    ]
+    "text": "Lecture Notes\n\nKey Concepts\n\n[Insert Key Concept Here]\n\nExplanation: [Insert Explanation Here]\nExample: [Insert Example Here]\n\n[Insert Additional Key Concept Here]\n\nExplanation: [Insert Explanation Here]\nExample: [Insert Example Here]\n\n\n\n\nPart 1\n\n\nPart 2"
   },
   {
     "objectID": "unit-0/lecture-1.html#wrap-up",
     "href": "unit-0/lecture-1.html#wrap-up",
     "title": "Class Preparation",
     "section": "Wrap-Up",
-    "text": "Wrap-Up\nReview the key takeaways from today’s session: - [Insert Key Takeaway Here] - [Insert Additional Key Takeaway Here]\nPrepare for the lab session by completing any remaining exercises and reviewing today’s material.",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Lecture Notes"
-    ]
+    "text": "Wrap-Up\nReview the key takeaways from today’s session: - [Insert Key Takeaway Here] - [Insert Additional Key Takeaway Here]\nPrepare for the lab session by completing any remaining exercises and reviewing today’s material."
   },
   {
     "objectID": "unit-0/lab-1.html",
     "href": "unit-0/lab-1.html",
     "title": "Lab N",
     "section": "",
-    "text": "This lab session focuses on [Insert Topic Here]. The goal of this exercise is to apply the concepts covered in class to practical problems using R.\n\nBy the end of this lab, you will be able to: 1. [Insert Learning Objective Here] 2. [Insert Additional Learning Objective Here] 3. [Insert Additional Learning Objective Here]\n\nWelcome to today’s lab! You will take on the role of [Insert Role Here], tasked with solving a real-world problem related to [Insert Scenario Description Here]. This scenario will guide the exercises and provide a context for applying your skills.\n\n\nDownload the dataset from [Insert Link Here].\nFollow the steps outlined in the exercises below.\nSubmit your completed lab exercise on Sakai by [Insert Deadline Here].\n\n\n\n\n\nObjective: [Insert Objective Here]\n\n\n# Step 1: [Insert Description Here]\n# Example Code\n\n\n\n\nObjective: [Insert Objective Here]\n\n\n# Step 1: [Insert Description Here]\n# Example Code\n\n\nAnswer the following questions as part of your lab report: 1. [Insert Question Here] 2. [Insert Additional Question Here] 3. [Insert Additional Question Here]\n\n\nSubmit your R script and a brief write-up of your results.\nInclude answers to the reflection questions.\n\nDeadline: [Insert Date and Time]\n\nEnsure that your code is well-commented and your results are clearly presented. Use ggplot2 or other visualization libraries for graphical outputs where applicable.",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Lab"
-    ]
+    "text": "This lab session focuses on [Insert Topic Here]. The goal of this exercise is to apply the concepts covered in class to practical problems using R.\n\nBy the end of this lab, you will be able to: 1. [Insert Learning Objective Here] 2. [Insert Additional Learning Objective Here] 3. [Insert Additional Learning Objective Here]\n\nWelcome to today’s lab! You will take on the role of [Insert Role Here], tasked with solving a real-world problem related to [Insert Scenario Description Here]. This scenario will guide the exercises and provide a context for applying your skills.\n\n\nDownload the dataset from [Insert Link Here].\nFollow the steps outlined in the exercises below.\nSubmit your completed lab exercise on Sakai by [Insert Deadline Here].\n\n\n\n\n\nObjective: [Insert Objective Here]\n\n\n# Step 1: [Insert Description Here]\n# Example Code\n\n\n\n\nObjective: [Insert Objective Here]\n\n\n# Step 1: [Insert Description Here]\n# Example Code\n\n\nAnswer the following questions as part of your lab report: 1. [Insert Question Here] 2. [Insert Additional Question Here] 3. [Insert Additional Question Here]\n\n\nSubmit your R script and a brief write-up of your results.\nInclude answers to the reflection questions.\n\nDeadline: [Insert Date and Time]\n\nEnsure that your code is well-commented and your results are clearly presented. Use ggplot2 or other visualization libraries for graphical outputs where applicable."
   },
   {
     "objectID": "unit-0/lab-1.html#overview",
     "href": "unit-0/lab-1.html#overview",
     "title": "Lab N",
     "section": "",
-    "text": "This lab session focuses on [Insert Topic Here]. The goal of this exercise is to apply the concepts covered in class to practical problems using R.",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Lab"
-    ]
+    "text": "This lab session focuses on [Insert Topic Here]. The goal of this exercise is to apply the concepts covered in class to practical problems using R."
   },
   {
     "objectID": "unit-0/lab-1.html#learning-objectives",
     "href": "unit-0/lab-1.html#learning-objectives",
     "title": "Lab N",
     "section": "",
-    "text": "By the end of this lab, you will be able to: 1. [Insert Learning Objective Here] 2. [Insert Additional Learning Objective Here] 3. [Insert Additional Learning Objective Here]",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Lab"
-    ]
+    "text": "By the end of this lab, you will be able to: 1. [Insert Learning Objective Here] 2. [Insert Additional Learning Objective Here] 3. [Insert Additional Learning Objective Here]"
   },
   {
     "objectID": "unit-0/lab-1.html#case-scenario",
     "href": "unit-0/lab-1.html#case-scenario",
     "title": "Lab N",
     "section": "",
-    "text": "Welcome to today’s lab! You will take on the role of [Insert Role Here], tasked with solving a real-world problem related to [Insert Scenario Description Here]. This scenario will guide the exercises and provide a context for applying your skills.",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Lab"
-    ]
+    "text": "Welcome to today’s lab! You will take on the role of [Insert Role Here], tasked with solving a real-world problem related to [Insert Scenario Description Here]. This scenario will guide the exercises and provide a context for applying your skills."
   },
   {
     "objectID": "unit-0/lab-1.html#instructions",
     "href": "unit-0/lab-1.html#instructions",
     "title": "Lab N",
     "section": "",
-    "text": "Download the dataset from [Insert Link Here].\nFollow the steps outlined in the exercises below.\nSubmit your completed lab exercise on Sakai by [Insert Deadline Here].",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Lab"
-    ]
+    "text": "Download the dataset from [Insert Link Here].\nFollow the steps outlined in the exercises below.\nSubmit your completed lab exercise on Sakai by [Insert Deadline Here]."
   },
   {
     "objectID": "unit-0/lab-1.html#exercises",
     "href": "unit-0/lab-1.html#exercises",
     "title": "Lab N",
     "section": "",
-    "text": "Objective: [Insert Objective Here]\n\n\n# Step 1: [Insert Description Here]\n# Example Code\n\n\n\n\nObjective: [Insert Objective Here]\n\n\n# Step 1: [Insert Description Here]\n# Example Code",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Lab"
-    ]
+    "text": "Objective: [Insert Objective Here]\n\n\n# Step 1: [Insert Description Here]\n# Example Code\n\n\n\n\nObjective: [Insert Objective Here]\n\n\n# Step 1: [Insert Description Here]\n# Example Code"
   },
   {
     "objectID": "unit-0/lab-1.html#reflection-questions",
     "href": "unit-0/lab-1.html#reflection-questions",
     "title": "Lab N",
     "section": "",
-    "text": "Answer the following questions as part of your lab report: 1. [Insert Question Here] 2. [Insert Additional Question Here] 3. [Insert Additional Question Here]",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Lab"
-    ]
+    "text": "Answer the following questions as part of your lab report: 1. [Insert Question Here] 2. [Insert Additional Question Here] 3. [Insert Additional Question Here]"
   },
   {
     "objectID": "unit-0/lab-1.html#submission-guidelines",
     "href": "unit-0/lab-1.html#submission-guidelines",
     "title": "Lab N",
     "section": "",
-    "text": "Submit your R script and a brief write-up of your results.\nInclude answers to the reflection questions.\n\nDeadline: [Insert Date and Time]",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Lab"
-    ]
+    "text": "Submit your R script and a brief write-up of your results.\nInclude answers to the reflection questions.\n\nDeadline: [Insert Date and Time]"
   },
   {
     "objectID": "unit-0/lab-1.html#notes",
     "href": "unit-0/lab-1.html#notes",
     "title": "Lab N",
     "section": "",
-    "text": "Ensure that your code is well-commented and your results are clearly presented. Use ggplot2 or other visualization libraries for graphical outputs where applicable.",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Lab"
-    ]
+    "text": "Ensure that your code is well-commented and your results are clearly presented. Use ggplot2 or other visualization libraries for graphical outputs where applicable."
   },
   {
-    "objectID": "lab.html",
-    "href": "lab.html",
-    "title": "Labs",
+    "objectID": "course-overview.html",
+    "href": "course-overview.html",
+    "title": "HPM 883Spring 2025",
     "section": "",
-    "text": "More labs to be added as the semester progresses.\n\n\n\n\n\n\n\n\n\nNo.\n\n\nTitle\n\n\nDue date\n\n\n\n\n\n\nLab 0\n\n\nThe Hospital of Uncertain Outcomes\n\n\nIntro to class computing setup\n\n\n\n\n\nNo matching items"
+    "text": "HPM 883 is an advanced graduate-level course designed to equip PhD students in the Health Policy and Management program with sophisticated quantitative research skills. This course represents the third installment in the quantitative methods sequence, building on the foundational knowledge acquired in HPM 881 and HPM 882.\nThroughout the term, students will delve into advanced quantitative methods pertinent to health services research with a focus on the use of experimental methods and machine learning for causal inference. The course will provide a thorough introduction to machine learning techniques and explore the burgeoning domain of causal machine learning.",
+    "crumbs": [
+      "Course Information",
+      "Overview"
+    ]
   },
   {
-    "objectID": "resources.html",
-    "href": "resources.html",
-    "title": "Resources",
+    "objectID": "course-overview.html#advanced-quantitative-methods-for-health-policy-and-management",
+    "href": "course-overview.html#advanced-quantitative-methods-for-health-policy-and-management",
+    "title": "HPM 883Spring 2025",
     "section": "",
-    "text": "List, John. Experimental Economics: Theory and Practice, 2025. (Link available soon)\nChernozhukov, Victor, Christian Hansen, Nathan Kallus, Martin Spindler, and Vasilis Syrgkanis. Applied Causal Inference Powered by ML and AI, 2024.\nWager, Stefan. Causal Inference: A Statistical Learning Approach, 2024.\nJames, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An Introduction to Statistical Learning: With Applications in R. Springer Texts in Statistics. New York, NY: Springer US, 2021.",
+    "text": "HPM 883 is an advanced graduate-level course designed to equip PhD students in the Health Policy and Management program with sophisticated quantitative research skills. This course represents the third installment in the quantitative methods sequence, building on the foundational knowledge acquired in HPM 881 and HPM 882.\nThroughout the term, students will delve into advanced quantitative methods pertinent to health services research with a focus on the use of experimental methods and machine learning for causal inference. The course will provide a thorough introduction to machine learning techniques and explore the burgeoning domain of causal machine learning.",
     "crumbs": [
-      "Resources"
+      "Course Information",
+      "Overview"
     ]
   },
   {
-    "objectID": "resources.html#key-texts",
-    "href": "resources.html#key-texts",
-    "title": "Resources",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Course Schedule",
     "section": "",
-    "text": "List, John. Experimental Economics: Theory and Practice, 2025. (Link available soon)\nChernozhukov, Victor, Christian Hansen, Nathan Kallus, Martin Spindler, and Vasilis Syrgkanis. Applied Causal Inference Powered by ML and AI, 2024.\nWager, Stefan. Causal Inference: A Statistical Learning Approach, 2024.\nJames, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An Introduction to Statistical Learning: With Applications in R. Springer Texts in Statistics. New York, NY: Springer US, 2021.",
+    "text": "This page contains the schedule, topics, content and assigments for the semester.\n\n\n\n\n\n\nNote\n\n\n\nThis schedule will be updated as the semester progresses.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweek\ndow\ndate\nsession\nunit\ntopic\nprepare\nclass\nlab\nlab_sa\ndue\nnotes\n\n\n\n1\nW\n8 January\nLec\nFoundations\nWelcome; Key Concepts\n\n\n\n\n\n\n\nFDOC\n\n\n2\nM\n13 January\nLec\nFoundations\nGuest Lecture: Running a Randomized Trial\n\n\n\n\n\n\nSean Traveling, Kat or Dorien or Yunwei guest lecture on an RCT\n\n\n\nW\n15 January\n-\nFoundations\nReproducible Research\n\n\n\n\n\nSean Traveling, Led by Yumeng and Shuyi\n\n\n3\nM\n20 January\n-\nNo Class: MLK Day\n\n\n\n\n\n\nNo Class\n\n\n\nW\n22 January\nLec\nInternal Validity\nGeneralized Potential Outcomes Framework; Exclusion Restrictions\n\n\n\n\n\n\n\n\n\n4\nM\n27 January\nLab\nInternal Validity\nTBD\n\n\n\n\n\n\n\n\n\nW\n29 January\nLec\nExperimental Design\nOptimal design of experiments; Power\n\n\n\n\n\n\n\n\n\n5\nM\n3 February\nLab\nExperimental Design\nPower simulations\n\n\n\n\n\n\n\n\n\nW\n5 February\nLec\nExperimental Design\nRandomization and Blocking\n\n\n\n\n\n\n\n\n\n6\nM\n10 February\n-\nNo Class: Well-being Day\n\n\n\n\n\n\n\n\n\n\nW\n12 February\nLec\nPreparations\nEthics, Registration and Pre-Analysis Plans\n\n\n\n\n\n\n\n\n7\nM\n17 February\nLec\nIntroduction to Machine Learning\nLasso; Penalized Regression; Cross-Validation\n\n\n\n\n\n\n\n\n\nW\n19 February\nLab\nIntroduction to Machine Learning\nLasso and Friends\n\n\n\n\n\n\n\n\n8\nM\n24 February\nLec\nIntroduction to Machine Learning\nRandom Trees and Random Forests\n\n\n\n\n\n\n\n\n\n\nW\n26 February\n\nMIDTERM 1\n\n\n\n\n\n\n\n\n\n9\nM\n3 March\nLec\nHeterogeneity and Moderation\nHeterogeneous Treatment Effects\n\n\n\n\n\n\n\n\n\n\nW\n5 March\nLab\nHeterogeneity and Moderation\nCausal Forests\n\n\n\n\n\n\n\n\n\n10\nM\n10 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n\n\nW\n12 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n\n11\nM\n17 March\nLec\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\n\n\n\n\n\n\nW\n19 March\nLab\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\n\n\n\n\n\n12\nM\n24 March\nLec\nViolations of Internal Validity\nOne and Two-sided Compliance; TOT (LATE)\n\n\n\n\n\n\n\n\n\nW\n26 March\nLab\nViolations of Internal Validity\nIV\n\n\n\n\n\n\n\n\n\n13\nM\n31 March\n\nMIDTERM 2\n\n\n\n\n\n\n\n\n\n\nW\n2 April\nLec\nMediation and External Validity\nMediation Analysis and Generalizability\n\n\n\n\n\n\n\n\n14\nM\n7 April\nLab\nMediation and External Validity\n\n\n\n\n\n\n\n\n\n\n\nW\n9 April\n\nBuffer\nTBD\n\n\n\n\n\n\n\n\n15\nM\n14 April\n\nBuffer\nTBD\n\n\n\n\n\n\n\n\n\nW\n16 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n\n16\nM\n21 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n\n\nW\n23 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n\n17\nM\n28 April\n\nWrap-up\nTBD\n\n\n\n\n\n\n\n\n\n\nW\n30 April\n\nFINAL EXAM",
     "crumbs": [
-      "Resources"
+      "Course Schedule"
     ]
-  },
-  {
-    "objectID": "resources.html#ancillary",
-    "href": "resources.html#ancillary",
-    "title": "Resources",
-    "section": "Ancillary",
-    "text": "Ancillary\nField Experiments Website\nPapers in economic field experiments.\nAbdul Latif Jameel Poverty Action Lab (JPAL)\nA global research center based at MIT’s Economics Department that works to reduce poverty through rigorous scientific evidence and policy implementation\nStanford Social Impact Lab",
-    "crumbs": [
-      "Resources"
-    ]
-  },
-  {
-    "objectID": "unit-0-foundations.html",
-    "href": "unit-0-foundations.html",
-    "title": "Unit 0: Foundations",
-    "section": "",
-    "text": "This unit will provide a foundation for the rest of the course. It will cover the following topics:\n\nWhy experiments and ML for Causal Inference\nCourse structure and tools\nA field experiment in health services research\nComputing for Reproducible Research",
-    "crumbs": [
-      "Unit 0: Foundations"
-    ]
-  },
-  {
-    "objectID": "unit-0-foundations.html#overview",
-    "href": "unit-0-foundations.html#overview",
-    "title": "Unit 0: Foundations",
-    "section": "",
-    "text": "This unit will provide a foundation for the rest of the course. It will cover the following topics:\n\nWhy experiments and ML for Causal Inference\nCourse structure and tools\nA field experiment in health services research\nComputing for Reproducible Research",
-    "crumbs": [
-      "Unit 0: Foundations"
-    ]
-  },
-  {
-    "objectID": "unit-0-foundations.html#class-1-course-introduction",
-    "href": "unit-0-foundations.html#class-1-course-introduction",
-    "title": "Unit 0: Foundations",
-    "section": "Class 1: Course Introduction",
-    "text": "Class 1: Course Introduction\n\nPreparation\n\nHarrison and List (2004)\nACI Chapters 0 and 2\n\n\n\nIn Class\n\nLecture slides\n\n\n\nLab/Homework\n\nIntroductory Class Survey\n\n\n\nAdditional Materials",
-    "crumbs": [
-      "Unit 0: Foundations"
-    ]
-  },
-  {
-    "objectID": "unit-0-foundations.html#class-2-a-field-experiment-in-health-services-research",
-    "href": "unit-0-foundations.html#class-2-a-field-experiment-in-health-services-research",
-    "title": "Unit 0: Foundations",
-    "section": "Class 2: A Field Experiment in Health Services Research",
-    "text": "Class 2: A Field Experiment in Health Services Research\nGuest Lecture by Dr. Dorien Emmers\n\nPreparation",
-    "crumbs": [
-      "Unit 0: Foundations"
-    ]
-  },
-  {
-    "objectID": "resources.html#data",
-    "href": "resources.html#data",
-    "title": "Resources",
-    "section": "Data",
-    "text": "Data\nStanford GSB Social Impact Lab Experiment Data",
-    "crumbs": [
-      "Resources"
-    ]
-  },
-  {
-    "objectID": "resources.html#websites",
-    "href": "resources.html#websites",
-    "title": "Resources",
-    "section": "Websites",
-    "text": "Websites\nField Experiments Website\nPapers in economic field experiments.\nAbdul Latif Jameel Poverty Action Lab (JPAL)\nA global research center based at MIT’s Economics Department that works to reduce poverty through rigorous scientific evidence and policy implementation\nStanford Social Impact Lab",
-    "crumbs": [
-      "Resources"
-    ]
-  },
-  {
-    "objectID": "unit-0-intro-lec.html#experiments-and-machine-learning-for-hsr",
-    "href": "unit-0-intro-lec.html#experiments-and-machine-learning-for-hsr",
-    "title": "Course Introduction",
-    "section": "Experiments and Machine Learning for HSR",
-    "text": "Experiments and Machine Learning for HSR\n\nCausal Inference:\n\nRandomized experiments: the gold standard for testing mechanisms and prioritizing interpretability.\n\nMachine Learning:\n\nIdeal for useful predictions when interpretability or theory is less critical.\n\nBridging the Divide:\n\nNew methods integrate ML principles with causal inference.\nExpand theory-building capabilities while testing hypotheses."
-  },
-  {
-    "objectID": "unit-0-intro-lec.html#course-summary",
-    "href": "unit-0-intro-lec.html#course-summary",
-    "title": "Course Introduction",
-    "section": "Course Summary",
-    "text": "Course Summary\nExperiments and Machine Learning for Health Services Research\nPrimary Goal: Equip you with tools to design, analyze, and interpret field experiments and apply machine learning to health services research.\n\nKey Focus Areas:\nField experiments for causal inference.\nMachine learning for prediction and causal analysis.\nApplications:\nHealth policy evaluations, resource allocation, and improving healthcare decision-making."
-  },
-  {
-    "objectID": "unit-0-intro-lec.html#about-me-dr.-sean-sylvia",
-    "href": "unit-0-intro-lec.html#about-me-dr.-sean-sylvia",
-    "title": "Course Introduction",
-    "section": "About Me: Dr. Sean Sylvia",
-    "text": "About Me: Dr. Sean Sylvia\nAssociate Professor, UNC Gillings School of Global Public Health\n- Educational Background: PhD in Economics\n- Research Focus:\n- Experimental methods and causal inference\n- Health policy and behavioral economics\n- Machine learning for health services research"
-  },
-  {
-    "objectID": "unit-0-intro-lec.html#proud-randomista",
-    "href": "unit-0-intro-lec.html#proud-randomista",
-    "title": "Course Introduction",
-    "section": "Proud “Randomista”",
-    "text": "Proud “Randomista”\n\n\n\nExtensive fieldwork using randomized controlled trials (RCTs) and quasi-experiments.\n\nKey projects include:\n\nField experiments in rural China on health service delivery\n\nDesign and evaluation of community health worker interventions\n\nBehavioral incentives and data-driven decision-making in LMICs\n\n\n\n\n\n\n\n\nFieldwork Image 1\n\n\n\n\n\n\n\nFieldwork Image 2"
-  },
-  {
-    "objectID": "unit-0-intro-lec.html#teaching-assistant-yumeng-du",
-    "href": "unit-0-intro-lec.html#teaching-assistant-yumeng-du",
-    "title": "Course Introduction",
-    "section": "Teaching Assistant: Yumeng Du",
-    "text": "Teaching Assistant: Yumeng Du\nPhD Student in Health Policy and Management (Economics Track)\nResearch Interests:\n- Evaluation of digital health programs for underserved populations\nBackground:\n- MSc in Public Health, London School of Hygiene and Tropical Medicine (LSHTM), UK\n- MBBS, Central South University, China\n- Former RA at UNC-China Project,implementing an RCT on rural telemedicine kiosk program\nRole:\n- Available for technical support and office hours\n- Assisting with labs and project feedback"
-  },
-  {
-    "objectID": "unit-0-intro-lec.html#increasing-relevance",
-    "href": "unit-0-intro-lec.html#increasing-relevance",
-    "title": "Course Introduction",
-    "section": "Increasing Relevance",
-    "text": "Increasing Relevance\n\nHealth services research increasingly uses:\n\nExperimental methods.\nMachine learning tools.\n\nMany causal hypotheses align with predictive relationships between phenomena.\nBoth approaches add value when combined."
-  },
-  {
-    "objectID": "unit-0-intro-lec.html#importance-of-reproducibility",
-    "href": "unit-0-intro-lec.html#importance-of-reproducibility",
-    "title": "Course Introduction",
-    "section": "Importance of Reproducibility",
-    "text": "Importance of Reproducibility\nReproducibility in Science\n\nFoundational Principle:\n\nGood experiments are reproducible.\nThe “reproducibility crisis” has affected some fields.\n\nReproducibility and ML:\n\nExploratory analyses, when systematic, help build reliable theories.\nML provides tools for:\n\nConducting reproducible exploratory research.\nIdentifying robust treatment effect heterogeneity."
-  },
-  {
-    "objectID": "unit-0-intro-lec.html#causal-inference-as-a-missing-data-problem",
-    "href": "unit-0-intro-lec.html#causal-inference-as-a-missing-data-problem",
-    "title": "Course Introduction",
-    "section": "Causal Inference as a Missing Data Problem",
-    "text": "Causal Inference as a Missing Data Problem\n\nThe Fundamental Problem:\n\nWe cannot observe a unit in multiple states of the world simultaneously.\nRepresented as “missing data” in potential outcomes.\n\n\n\n\n\n\nPotential Outcomes Table Example\n\n\n\n\nExperimentation Solves under some key assumptions:\n\nSUTVA.\nObservability.\nComplete Compliance.\nStatistical Independence."
-  },
-  {
-    "objectID": "unit-0-intro-lec.html#experimental-problems-ep1-ep2",
-    "href": "unit-0-intro-lec.html#experimental-problems-ep1-ep2",
-    "title": "Course Introduction",
-    "section": "Experimental Problems: EP1 & EP2",
-    "text": "Experimental Problems: EP1 & EP2\nEP1: Internal Validity\n\nUnderstanding Effects of Causes:\n\nDo assumptions in the potential outcomes framework hold?\nMediators and moderators.\n\n\nEP2: External Validity\n\nGeneralizability and Scalability:\n\nWould it work in different settings?\nCan it scale to create meaningful impact?"
-  },
-  {
-    "objectID": "unit-0-intro-lec.html#types-of-experiments",
-    "href": "unit-0-intro-lec.html#types-of-experiments",
-    "title": "Course Introduction",
-    "section": "Types of Experiments",
-    "text": "Types of Experiments\n\nLab Experiments:\n\nControlled settings, abstract framing, imposed rules.\n\nField Experiments:\n\nArtefactual Field Experiment (AFE): Non-standard subject pool.\nFramed Field Experiment (FFE): Adds field-specific context.\nNatural Field Experiment (NFE): Subjects unaware they are in an experiment.\n\nSurvey Experiments:\n\nEmbedded in survey designs."
-  },
-  {
-    "objectID": "unit-0-intro-lec.html#criteria-defining-field-experiments",
-    "href": "unit-0-intro-lec.html#criteria-defining-field-experiments",
-    "title": "Course Introduction",
-    "section": "Criteria Defining Field Experiments",
-    "text": "Criteria Defining Field Experiments\n\nSubjects and Environment:\n\nSelection into experiments.\nNature of tasks, commodities, stakes.\n\nQuestion: Do experiments require randomization?\n\nReveal: No, theory can serve as the counterfactual."
-  },
-  {
-    "objectID": "unit-0-intro-lec.html#choosing-the-right-experiment",
-    "href": "unit-0-intro-lec.html#choosing-the-right-experiment",
-    "title": "Course Introduction",
-    "section": "Choosing the Right Experiment",
-    "text": "Choosing the Right Experiment\n\nWeigh Costs and Benefits:\n\nBenefits:\n\nEP1: Internal validity.\nEP2: Generalizability and scalability.\n\nCosts:\n\nMonetary, logistical, and opportunity costs."
-  },
-  {
-    "objectID": "unit-0-intro-lec.html#units-and-topics",
-    "href": "unit-0-intro-lec.html#units-and-topics",
-    "title": "Course Introduction",
-    "section": "Units and Topics",
-    "text": "Units and Topics\n\nFoundations of Causal Inference:\n\nMissing data problem and potential outcomes.\nRandomization and the ATE.\n\nExperimental Design:\n\nPower analysis and randomization strategies.\n\nMachine Learning for Causal Inference:\n\nLasso, random forests, and causal forests.\n\nViolations of Internal Validity:\n\nSUTVA, compliance issues, and observability.\n\nScaling and External Validity:\n\nGeneralizability and implementation challenges."
-  },
-  {
-    "objectID": "unit-0-intro-lec.html#weekly-ish-format",
-    "href": "unit-0-intro-lec.html#weekly-ish-format",
-    "title": "Course Introduction",
-    "section": "Weekly-ish Format",
-    "text": "Weekly-ish Format\n\nTwo sessions per topic:\n\nLecture: Introduces key concepts and theory.\nLab: Hands-on practice with coding and data analysis."
-  },
-  {
-    "objectID": "unit-0-intro-lec.html#flipped-ish-classroom-approach",
-    "href": "unit-0-intro-lec.html#flipped-ish-classroom-approach",
-    "title": "Course Introduction",
-    "section": "Flipped(-ish) Classroom Approach",
-    "text": "Flipped(-ish) Classroom Approach\n\nPre-class readings and recorded materials.\nInteractive sessions focused on data exploration and applied learning.\nCollaborative problem-solving in small groups."
-  },
-  {
-    "objectID": "unit-0-intro-lec.html#assessments",
-    "href": "unit-0-intro-lec.html#assessments",
-    "title": "Course Introduction",
-    "section": "Assessments",
-    "text": "Assessments\n\nPre-class Quizzes: Test your understanding of key concepts (10%).\nLab Assignments: Practical applications and analysis (25%).\nExams: Evaluate theoretical and practical understanding (35%).\nPre-analysis Plan: Develop and document a structured analysis plan (15%).\nFinal Paper: Synthesize course material into a research application (15%)."
-  },
-  {
-    "objectID": "unit-0-intro-lec.html#resources-and-support",
-    "href": "unit-0-intro-lec.html#resources-and-support",
-    "title": "Course Introduction",
-    "section": "Resources and Support",
-    "text": "Resources and Support\n\nCourse website with materials and updates: Course Website\nWeekly office hours with Dr. Sylvia and Yumeng"
-  },
-  {
-    "objectID": "unit-0-intro-lec.html#randomization-recovers-the-ate-on-average.",
-    "href": "unit-0-intro-lec.html#randomization-recovers-the-ate-on-average.",
-    "title": "Course Introduction",
-    "section": "Randomization recovers the ATE on average.",
-    "text": "Randomization recovers the ATE on average."
   }
 ]
