@@ -449,5 +449,131 @@
     "crumbs": [
       "Resources"
     ]
+  },
+  {
+    "objectID": "unit-0-intro-lec.html#experiments-and-machine-learning-for-hsr",
+    "href": "unit-0-intro-lec.html#experiments-and-machine-learning-for-hsr",
+    "title": "Course Introduction",
+    "section": "Experiments and Machine Learning for HSR",
+    "text": "Experiments and Machine Learning for HSR\n\nCausal Inference:\n\nRandomized experiments: the gold standard for testing mechanisms and prioritizing interpretability.\n\nMachine Learning:\n\nIdeal for useful predictions when interpretability or theory is less critical.\n\nBridging the Divide:\n\nNew methods integrate ML principles with causal inference.\nExpand theory-building capabilities while testing hypotheses."
+  },
+  {
+    "objectID": "unit-0-intro-lec.html#course-summary",
+    "href": "unit-0-intro-lec.html#course-summary",
+    "title": "Course Introduction",
+    "section": "Course Summary",
+    "text": "Course Summary\nExperiments and Machine Learning for Health Services Research\nPrimary Goal: Equip you with tools to design, analyze, and interpret field experiments and apply machine learning to health services research.\n\nKey Focus Areas:\nField experiments for causal inference.\nMachine learning for prediction and causal analysis.\nApplications:\nHealth policy evaluations, resource allocation, and improving healthcare decision-making."
+  },
+  {
+    "objectID": "unit-0-intro-lec.html#about-me-dr.-sean-sylvia",
+    "href": "unit-0-intro-lec.html#about-me-dr.-sean-sylvia",
+    "title": "Course Introduction",
+    "section": "About Me: Dr. Sean Sylvia",
+    "text": "About Me: Dr. Sean Sylvia\nAssociate Professor, UNC Gillings School of Global Public Health\n- Educational Background: PhD in Economics\n- Research Focus:\n- Experimental methods and causal inference\n- Health policy and behavioral economics\n- Machine learning for health services research"
+  },
+  {
+    "objectID": "unit-0-intro-lec.html#proud-randomista",
+    "href": "unit-0-intro-lec.html#proud-randomista",
+    "title": "Course Introduction",
+    "section": "Proud “Randomista”",
+    "text": "Proud “Randomista”\n\n\n\nExtensive fieldwork using randomized controlled trials (RCTs) and quasi-experiments.\n\nKey projects include:\n\nField experiments in rural China on health service delivery\n\nDesign and evaluation of community health worker interventions\n\nBehavioral incentives and data-driven decision-making in LMICs\n\n\n\n\n\n\n\n\nFieldwork Image 1\n\n\n\n\n\n\n\nFieldwork Image 2"
+  },
+  {
+    "objectID": "unit-0-intro-lec.html#teaching-assistant-yumeng-du",
+    "href": "unit-0-intro-lec.html#teaching-assistant-yumeng-du",
+    "title": "Course Introduction",
+    "section": "Teaching Assistant: Yumeng Du",
+    "text": "Teaching Assistant: Yumeng Du\nPhD Student in Health Policy and Management (Economics Track)\nResearch Interests:\n- Evaluation of digital health programs for underserved populations\nBackground:\n- MSc in Public Health, London School of Hygiene and Tropical Medicine (LSHTM), UK\n- MBBS, Central South University, China\n- Former RA at UNC-China Project,implementing an RCT on rural telemedicine kiosk program\nRole:\n- Available for technical support and office hours\n- Assisting with labs and project feedback"
+  },
+  {
+    "objectID": "unit-0-intro-lec.html#increasing-relevance",
+    "href": "unit-0-intro-lec.html#increasing-relevance",
+    "title": "Course Introduction",
+    "section": "Increasing Relevance",
+    "text": "Increasing Relevance\n\nHealth services research increasingly uses:\n\nExperimental methods.\nMachine learning tools.\n\nMany causal hypotheses align with predictive relationships between phenomena.\nBoth approaches add value when combined."
+  },
+  {
+    "objectID": "unit-0-intro-lec.html#importance-of-reproducibility",
+    "href": "unit-0-intro-lec.html#importance-of-reproducibility",
+    "title": "Course Introduction",
+    "section": "Importance of Reproducibility",
+    "text": "Importance of Reproducibility\nReproducibility in Science\n\nFoundational Principle:\n\nGood experiments are reproducible.\nThe “reproducibility crisis” has affected some fields.\n\nReproducibility and ML:\n\nExploratory analyses, when systematic, help build reliable theories.\nML provides tools for:\n\nConducting reproducible exploratory research.\nIdentifying robust treatment effect heterogeneity."
+  },
+  {
+    "objectID": "unit-0-intro-lec.html#causal-inference-as-a-missing-data-problem",
+    "href": "unit-0-intro-lec.html#causal-inference-as-a-missing-data-problem",
+    "title": "Course Introduction",
+    "section": "Causal Inference as a Missing Data Problem",
+    "text": "Causal Inference as a Missing Data Problem\n\nThe Fundamental Problem:\n\nWe cannot observe a unit in multiple states of the world simultaneously.\nRepresented as “missing data” in potential outcomes.\n\n\n\n\n\n\nPotential Outcomes Table Example\n\n\n\n\nExperimentation Solves under some key assumptions:\n\nSUTVA.\nObservability.\nComplete Compliance.\nStatistical Independence."
+  },
+  {
+    "objectID": "unit-0-intro-lec.html#experimental-problems-ep1-ep2",
+    "href": "unit-0-intro-lec.html#experimental-problems-ep1-ep2",
+    "title": "Course Introduction",
+    "section": "Experimental Problems: EP1 & EP2",
+    "text": "Experimental Problems: EP1 & EP2\nEP1: Internal Validity\n\nUnderstanding Effects of Causes:\n\nDo assumptions in the potential outcomes framework hold?\nMediators and moderators.\n\n\nEP2: External Validity\n\nGeneralizability and Scalability:\n\nWould it work in different settings?\nCan it scale to create meaningful impact?"
+  },
+  {
+    "objectID": "unit-0-intro-lec.html#types-of-experiments",
+    "href": "unit-0-intro-lec.html#types-of-experiments",
+    "title": "Course Introduction",
+    "section": "Types of Experiments",
+    "text": "Types of Experiments\n\nLab Experiments:\n\nControlled settings, abstract framing, imposed rules.\n\nField Experiments:\n\nArtefactual Field Experiment (AFE): Non-standard subject pool.\nFramed Field Experiment (FFE): Adds field-specific context.\nNatural Field Experiment (NFE): Subjects unaware they are in an experiment.\n\nSurvey Experiments:\n\nEmbedded in survey designs."
+  },
+  {
+    "objectID": "unit-0-intro-lec.html#criteria-defining-field-experiments",
+    "href": "unit-0-intro-lec.html#criteria-defining-field-experiments",
+    "title": "Course Introduction",
+    "section": "Criteria Defining Field Experiments",
+    "text": "Criteria Defining Field Experiments\n\nSubjects and Environment:\n\nSelection into experiments.\nNature of tasks, commodities, stakes.\n\nQuestion: Do experiments require randomization?\n\nReveal: No, theory can serve as the counterfactual."
+  },
+  {
+    "objectID": "unit-0-intro-lec.html#choosing-the-right-experiment",
+    "href": "unit-0-intro-lec.html#choosing-the-right-experiment",
+    "title": "Course Introduction",
+    "section": "Choosing the Right Experiment",
+    "text": "Choosing the Right Experiment\n\nWeigh Costs and Benefits:\n\nBenefits:\n\nEP1: Internal validity.\nEP2: Generalizability and scalability.\n\nCosts:\n\nMonetary, logistical, and opportunity costs."
+  },
+  {
+    "objectID": "unit-0-intro-lec.html#units-and-topics",
+    "href": "unit-0-intro-lec.html#units-and-topics",
+    "title": "Course Introduction",
+    "section": "Units and Topics",
+    "text": "Units and Topics\n\nFoundations of Causal Inference:\n\nMissing data problem and potential outcomes.\nRandomization and the ATE.\n\nExperimental Design:\n\nPower analysis and randomization strategies.\n\nMachine Learning for Causal Inference:\n\nLasso, random forests, and causal forests.\n\nViolations of Internal Validity:\n\nSUTVA, compliance issues, and observability.\n\nScaling and External Validity:\n\nGeneralizability and implementation challenges."
+  },
+  {
+    "objectID": "unit-0-intro-lec.html#weekly-ish-format",
+    "href": "unit-0-intro-lec.html#weekly-ish-format",
+    "title": "Course Introduction",
+    "section": "Weekly-ish Format",
+    "text": "Weekly-ish Format\n\nTwo sessions per topic:\n\nLecture: Introduces key concepts and theory.\nLab: Hands-on practice with coding and data analysis."
+  },
+  {
+    "objectID": "unit-0-intro-lec.html#flipped-ish-classroom-approach",
+    "href": "unit-0-intro-lec.html#flipped-ish-classroom-approach",
+    "title": "Course Introduction",
+    "section": "Flipped(-ish) Classroom Approach",
+    "text": "Flipped(-ish) Classroom Approach\n\nPre-class readings and recorded materials.\nInteractive sessions focused on data exploration and applied learning.\nCollaborative problem-solving in small groups."
+  },
+  {
+    "objectID": "unit-0-intro-lec.html#assessments",
+    "href": "unit-0-intro-lec.html#assessments",
+    "title": "Course Introduction",
+    "section": "Assessments",
+    "text": "Assessments\n\nPre-class Quizzes: Test your understanding of key concepts (10%).\nLab Assignments: Practical applications and analysis (25%).\nExams: Evaluate theoretical and practical understanding (35%).\nPre-analysis Plan: Develop and document a structured analysis plan (15%).\nFinal Paper: Synthesize course material into a research application (15%)."
+  },
+  {
+    "objectID": "unit-0-intro-lec.html#resources-and-support",
+    "href": "unit-0-intro-lec.html#resources-and-support",
+    "title": "Course Introduction",
+    "section": "Resources and Support",
+    "text": "Resources and Support\n\nCourse website with materials and updates: Course Website\nWeekly office hours with Dr. Sylvia and Yumeng"
+  },
+  {
+    "objectID": "unit-0-intro-lec.html#randomization-recovers-the-ate-on-average.",
+    "href": "unit-0-intro-lec.html#randomization-recovers-the-ate-on-average.",
+    "title": "Course Introduction",
+    "section": "Randomization recovers the ATE on average.",
+    "text": "Randomization recovers the ATE on average."
   }
 ]
