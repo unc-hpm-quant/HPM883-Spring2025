@@ -23,7 +23,7 @@ This unit will provide a foundation for the rest of the course. It will cover th
 
 ### In Class
 
--   Lecture slides
+-   [Lecture slides](lec-0.qmd)
 
 ### Lab/Homework
 

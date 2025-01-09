@@ -100,7 +100,7 @@
     "href": "unit-0/unit-0-intro-lec.html#causal-inference-as-a-missing-data-problem",
     "title": "Course Introduction",
     "section": "Causal Inference as a Missing Data Problem",
-    "text": "Causal Inference as a Missing Data Problem\n\nThe Fundamental Problem:\n\nWe cannot observe a unit in multiple states of the world simultaneously.\nRepresented as “missing data” in potential outcomes.\n\n\n\n\n\n\nPotential Outcomes Table Example\n\n\n\n\nExperimentation Solves under some key assumptions:\n\nSUTVA.\nObservability.\nComplete Compliance.\nStatistical Independence."
+    "text": "Causal Inference as a Missing Data Problem\n\nThe Fundamental Problem:\n\nWe cannot observe a unit in multiple states of the world simultaneously.\nRepresented as “missing data” in potential outcomes.\n\nExperimentation Solves under some key assumptions:\n\nSUTVA.\nObservability.\nComplete Compliance.\nStatistical Independence."
   },
   {
     "objectID": "unit-0/unit-0-intro-lec.html#randomization-recovers-the-ate-on-average.",
@@ -469,5 +469,166 @@
     "crumbs": [
       "Course Schedule"
     ]
+  },
+  {
+    "objectID": "unit-0/lec-0.html#course-summary",
+    "href": "unit-0/lec-0.html#course-summary",
+    "title": "Course Introduction",
+    "section": "Course Summary",
+    "text": "Course Summary\nExperiments and Machine Learning for Health Services Research\nPrimary Goal: Equip you with tools to design, analyze, and interpret field experiments and apply machine learning to health services research.\n\nKey Focus Areas:\nField experiments for causal inference.\nMachine learning for prediction and causal analysis.\nApplications:\nHealth policy evaluations, resource allocation, and improving healthcare decision-making."
+  },
+  {
+    "objectID": "unit-0/lec-0.html#about-me-dr.-sean-sylvia",
+    "href": "unit-0/lec-0.html#about-me-dr.-sean-sylvia",
+    "title": "Course Introduction",
+    "section": "About Me: Dr. Sean Sylvia",
+    "text": "About Me: Dr. Sean Sylvia\n\n\nResearch: Designing & evaluating innovative approaches to improve health service delivery, globally.\n\nExperimental methods, machine learning, economics of digital health\n\nUNC Health Policy & Management (7 years)\n\nCarolina Population Center\nSheps Center for Health Services Research\n\nPreviously: Renmin University of China, World Bank\nTraining: U Maryland (PhD), Stanford (pre-doc)"
+  },
+  {
+    "objectID": "unit-0/lec-0.html#proud-randomista",
+    "href": "unit-0/lec-0.html#proud-randomista",
+    "title": "Course Introduction",
+    "section": "Proud “Randomista”",
+    "text": "Proud “Randomista”\n\n\n\nExtensive fieldwork using randomized controlled trials (RCTs)\nStarting in 2006, I’ve worked with colleagues on ~20 RCTs in China, Africa, and North Carolina.\n\n[Hot Tip: Collaborate. Collaborate. Collaborate.]\n\nKey projects include:\n\nField experiments in rural China on primary healthcare\nDesign and evaluation of community health worker interventions for early childhood health and development\nBehavioral nudges to recruit providers to MAT training for Opiod Use Disorder in North Carolina\n\n\n\nSCROLL DOWN TO READ Nobel Prize in Economics 2019 was awarded jointly to Abhijit Banerjee, Esther Duflo and Michael Kremer “for their experimental approach to alleviating global poverty”"
+  },
+  {
+    "objectID": "unit-0/lec-0.html#teaching-assistant-yumeng-du",
+    "href": "unit-0/lec-0.html#teaching-assistant-yumeng-du",
+    "title": "Course Introduction",
+    "section": "Teaching Assistant: Yumeng Du",
+    "text": "Teaching Assistant: Yumeng Du\nPhD Student in Health Policy and Management (Economics Track)\nResearch Interests:\n- Evaluation of digital health programs for underserved populations\nBackground:\n- MSc in Public Health, London School of Hygiene and Tropical Medicine (LSHTM), UK\n- MBBS, Central South University, China\n- Former RA at UNC-China Project,implementing an RCT on rural telemedicine kiosk program\nRole:\n- Available for technical support and office hours\n- Assisting with labs and project feedback"
+  },
+  {
+    "objectID": "unit-0/lec-0.html#experiments-and-machine-learning-for-hsr",
+    "href": "unit-0/lec-0.html#experiments-and-machine-learning-for-hsr",
+    "title": "Course Introduction",
+    "section": "Experiments and Machine Learning for HSR",
+    "text": "Experiments and Machine Learning for HSR\n\n\n\nRandomized experiments: the gold standard for testing mechanisms and interpretability.\nMachine Learning: Ideal for useful predictions when interpretability or theory is less critical.\nBridging the Divide:\n\nNew methods apply core ML principles to causal inference.\n\nAs we’ll see, parts of causal inference problems can be recast as prediction problems.\n\nPowerful tools for theory-building and expanding scope of feasible research.\n\n\n\n\n\n\n\n\n\nNote\n\n\nImportant!\nYou’ll hear the term “causal machine learning” in the literature. This is a misnomer!\nMachine Learning is about prediction. Period. It does not magically solve the causal inference problem.\nIt CAN:\n\nHelp strengthen plausibility of existing exclusion restriction in some cases\nAllow us to study treatment effect heterogeneity in new ways"
+  },
+  {
+    "objectID": "unit-0/lec-0.html#increasing-relevance",
+    "href": "unit-0/lec-0.html#increasing-relevance",
+    "title": "Course Introduction",
+    "section": "Increasing Relevance",
+    "text": "Increasing Relevance\n\nHealth services research increasingly uses:\n\nExperimental methods.\nMachine learning tools.\n\nMany causal hypotheses align with predictive relationships between phenomena.\nBoth approaches add value when combined."
+  },
+  {
+    "objectID": "unit-0/lec-0.html#importance-of-reproducibility",
+    "href": "unit-0/lec-0.html#importance-of-reproducibility",
+    "title": "Course Introduction",
+    "section": "Importance of Reproducibility",
+    "text": "Importance of Reproducibility\nReproducibility in Science\n\nFoundational Principle:\n\nGood experiments are reproducible.\nThe “reproducibility crisis” has affected some fields.\n\nReproducibility and ML:\n\nExploratory analyses, when systematic, help build reliable theories.\nML provides tools for:\n\nConducting reproducible exploratory research.\nIdentifying robust treatment effect heterogeneity."
+  },
+  {
+    "objectID": "unit-0/lec-0.html#causal-inference-as-a-missing-data-problem",
+    "href": "unit-0/lec-0.html#causal-inference-as-a-missing-data-problem",
+    "title": "Course Introduction",
+    "section": "Causal Inference as a Missing Data Problem",
+    "text": "Causal Inference as a Missing Data Problem\n\n\n\nThe Fundamental Problem of Causal Inference:\n\nWe cannot observe a unit in multiple states of the world simultaneously.\nRepresented as “missing data” in potential outcomes.\n\nExperimentation Solves under some key assumptions:\n\nSUTVA.\nObservability.\nComplete Compliance.\nStatistical Independence.\n\n\n\n\n\n\nUnit\nTreatment (W)\nY(0)\nY(1)\nObserved Outcome\n\n\n\n\n1\n1\n?\n5\n5\n\n\n2\n0\n3\n?\n3\n\n\n3\n1\n?\n6\n6\n\n\n4\n0\n4\n?\n4\n\n\n\n\nProblem: We can only observe either (Y(0)) or (Y(1)) but not both for any individual."
+  },
+  {
+    "objectID": "unit-0/lec-0.html#randomization-recovers-the-ate-on-average.",
+    "href": "unit-0/lec-0.html#randomization-recovers-the-ate-on-average.",
+    "title": "Course Introduction",
+    "section": "Randomization recovers the ATE on average.",
+    "text": "Randomization recovers the ATE on average.\n\nPotential outcomes: \\(Y_i(1)\\) and \\(Y_i(0)\\)\nTreatment indicator: \\(W_i = 1\\) if treated, \\(W_i = 0\\) if control\nObserved outcome: \\(Y_i = W_iY_i(1) + (1 - W_i)Y_i(0)\\)\nAverage Treatment Effect (ATE): \\(\\tau = \\mathbb{E}[Y_i(1) - Y_i(0)]\\)\n\nRandomization ensures that treatment is independent of potential outcomes:\n\\[\nW_i \\perp \\!\\!\\! \\perp (Y_i(0), Y_i(1)),\n\\]\nHence, \\(\\mathbb{E}[Y | W_i = w] = \\mathbb{E}[Y_i(w) | W_i = w] = \\mathbb{E}[Y_i(w)]\\) for all \\(w \\in \\{0, 1\\}\\).\nTherefore, the difference between \\(Y_i(1)\\) and \\(Y_i(0)\\) is the ATE:\n\\[\n\\mathbb{E}[Y_i(1) - Y_i(0)] = \\mathbb{E}[Y_i(1)] - \\mathbb{E}[Y_i(0)] = \\tau.\n\\]"
+  },
+  {
+    "objectID": "unit-0/lec-0.html#experimental-problems-ep1-ep2",
+    "href": "unit-0/lec-0.html#experimental-problems-ep1-ep2",
+    "title": "Course Introduction",
+    "section": "Experimental Problems: EP1 & EP2",
+    "text": "Experimental Problems: EP1 & EP2\nEP1: Internal Validity\n\nThe Effects of Causes (Internal Validity):\n\nDo assumptions in the potential outcomes framework hold?\n\nThe Causes of Effects (Mediators and Moderators):\n\nWhat drives the effects we see?\n\n\nEP2: External Validity\n\nGeneralizability: Would it work in different settings?\n\nPeople / populations\nContexts\n\nScalability: Can it scale to create meaningful impact?"
+  },
+  {
+    "objectID": "unit-0/lec-0.html#types-of-experiments",
+    "href": "unit-0/lec-0.html#types-of-experiments",
+    "title": "Course Introduction",
+    "section": "Types of Experiments",
+    "text": "Types of Experiments\n\nLab Experiments:\n\nControlled settings, abstract framing, imposed rules.\n\nField Experiments:\n\nArtefactual Field Experiment (AFE): Non-standard subject pool.\nFramed Field Experiment (FFE): Adds field-specific context.\nNatural Field Experiment (NFE): Subjects unaware they are in an experiment.\n\nSurvey Experiments:\n\nEmbedded in survey designs."
+  },
+  {
+    "objectID": "unit-0/lec-0.html#criteria-defining-field-experiments",
+    "href": "unit-0/lec-0.html#criteria-defining-field-experiments",
+    "title": "Course Introduction",
+    "section": "Criteria Defining Field Experiments",
+    "text": "Criteria Defining Field Experiments\n\nSubjects and Environment:\n\nSelection into experiments.\nNature of tasks, commodities, stakes.\n\nQuestion: Do experiments require randomization?\n\nReveal: No, theory can serve as the counterfactual."
+  },
+  {
+    "objectID": "unit-0/lec-0.html#choosing-the-right-experiment",
+    "href": "unit-0/lec-0.html#choosing-the-right-experiment",
+    "title": "Course Introduction",
+    "section": "Choosing the Right Experiment",
+    "text": "Choosing the Right Experiment\n\nWeigh Costs and Benefits:\n\nBenefits:\n\nEP1: Internal validity.\nEP2: Generalizability and scalability.\n\nCosts:\n\nMonetary\nLogistical\nOpportunity costs."
+  },
+  {
+    "objectID": "unit-0/lec-0.html#units-and-topics",
+    "href": "unit-0/lec-0.html#units-and-topics",
+    "title": "Course Introduction",
+    "section": "Units and Topics",
+    "text": "Units and Topics\n\nFoundations of Causal Inference:\n\nMissing data problem and potential outcomes.\nRandomization and the ATE.\n\nExperimental Design:\n\nPower analysis and randomization strategies.\n\nMachine Learning for Causal Inference:\n\nLasso, random forests, and causal forests.\n\nViolations of Internal Validity:\n\nSUTVA, compliance issues, and observability.\n\nScaling and External Validity:\n\nGeneralizability and implementation challenges."
+  },
+  {
+    "objectID": "unit-0/lec-0.html#weekly-ish-format",
+    "href": "unit-0/lec-0.html#weekly-ish-format",
+    "title": "Course Introduction",
+    "section": "Weekly-ish Format",
+    "text": "Weekly-ish Format\n\nTwo(-ish) sessions per topic:\n\nLecture: Introduces key concepts and theory.\nLab: Hands-on practice with coding and data analysis.\n\nFlipped(-ish) Classroom Approach\n\nPre-class readings and recorded materials.\nInteractive sessions focused on data exploration and applied learning.\nCollaborative problem-solving in small groups."
+  },
+  {
+    "objectID": "unit-0/lec-0.html#flipped-ish-classroom-approach",
+    "href": "unit-0/lec-0.html#flipped-ish-classroom-approach",
+    "title": "Course Introduction",
+    "section": "Flipped(-ish) Classroom Approach",
+    "text": "Flipped(-ish) Classroom Approach\n\nPre-class readings and recorded materials.\nInteractive sessions focused on data exploration and applied learning.\nCollaborative problem-solving in small groups."
+  },
+  {
+    "objectID": "unit-0/lec-0.html#assessments",
+    "href": "unit-0/lec-0.html#assessments",
+    "title": "Course Introduction",
+    "section": "Assessments",
+    "text": "Assessments\n\nPre-class Quizzes (10%):\n\nTest your understanding of key concepts\nRequest clarification on specific points\n\nLab Assignments (25%): Practical applications and analysis.\nExams (35%): Evaluate theoretical and practical understanding.\nSemester Project (30%): Research application.\n\nPre-analysis Plan (15%): Develop and document a structured analysis plan.\nFinal Paper (15%): Synthesize course material into a research application.\nDetails on class project to come."
+  },
+  {
+    "objectID": "unit-0/lec-0.html#resources-and-support",
+    "href": "unit-0/lec-0.html#resources-and-support",
+    "title": "Course Introduction",
+    "section": "Resources and Support",
+    "text": "Resources and Support\n\nCourse website with materials and updates: Course Website\nWeekly office hours with Dr. Sylvia and Yumeng\nCommunication channels:\n\nSlack: Join the course Slack to ask questions, share resources, and engage with your peers, the instructor, and the TA. (For personal matters, please use e-mail)\nEmail: Please use e-mail only for personal matters. (For anything related to the course material or coding questions, please use Slack.)\n\nGradescope: Submit assignments."
+  },
+  {
+    "objectID": "unit-0/lec-0.html#background-imagemediafieldwork.jpg",
+    "href": "unit-0/lec-0.html#background-imagemediafieldwork.jpg",
+    "title": "Course Introduction",
+    "section": "{.background-image=“media/fieldwork.jpg”}",
+    "text": "{.background-image=“media/fieldwork.jpg”}"
+  },
+  {
+    "objectID": "unit-0/lec-0.html#reproducibility",
+    "href": "unit-0/lec-0.html#reproducibility",
+    "title": "Course Introduction",
+    "section": "Reproducibility",
+    "text": "Reproducibility\nReproducibility is a Fundamental Principle of Science\n\nGood experiments are necessarily reproducible.\n\nClear, well-documented protocols, reproducible data collection, and clear and reproducible analysis.\nThe “reproducibility crisis” in some fields (e.g. psychology). This is actually a good thing! Only possible to confirm results if they are reproducible.\n\nReproducibility and ML:\n\nExploratory analyses, when systematic, help build reliable theories.\nML provides tools for:\n\nConducting reproducible exploratory research.\nIdentifying robust treatment effect heterogeneity."
+  },
+  {
+    "objectID": "unit-0/lec-0.html#experimentation-solves-under-some-key-assumptions",
+    "href": "unit-0/lec-0.html#experimentation-solves-under-some-key-assumptions",
+    "title": "Course Introduction",
+    "section": "Experimentation Solves under some key assumptions",
+    "text": "Experimentation Solves under some key assumptions\n\nExperimentation Solves under some key assumptions:\n\nSUTVA.\nObservability.\nComplete Compliance.\nStatistical Independence."
+  },
+  {
+    "objectID": "unit-0/lec-0.html#data-generation-and-modeling-for-causal-inference",
+    "href": "unit-0/lec-0.html#data-generation-and-modeling-for-causal-inference",
+    "title": "Course Introduction",
+    "section": "Data Generation and Modeling for Causal Inference",
+    "text": "Data Generation and Modeling for Causal Inference\n\n\n\nControlled: researcher knows and controls the assignment mechanism\nUncontrolled: researcher assignment mechanism neither controls nor knows the assignment mechanism\n\n\n\n\nSource: List (2009)\n\n\n\n\nLab Experiments: Controlled settings, abstract framing, imposed rules.\nField Experiments:\n\nArtefactual Field Experiment (AFE): Non-standard subject pool.\nFramed Field Experiment (FFE): Adds field-specific context.\nNatural Field Experiment (NFE): Subjects unaware they are in an experiment.\n\nSurvey Experiments:\n\nEmbedded in survey designs."
+  },
+  {
+    "objectID": "unit-0/lec-0.html#criteria-that-define-field-experiments",
+    "href": "unit-0/lec-0.html#criteria-that-define-field-experiments",
+    "title": "Course Introduction",
+    "section": "7 Criteria that define field experiments",
+    "text": "7 Criteria that define field experiments\n\nExperimental Subjects: Population and Selection\n\nThe nature of the subject pool\nThe nature of the information that subjects bring to the experimental task\nSelection into the experiment\n\nExperimental Environment\n\nThe nature of the commodity in the experiment\nThe nature of the experimental task\nThe nature of the stakes\nExperimental proclamation"
   }
 ]
