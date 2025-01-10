@@ -70,7 +70,7 @@ website:
       - index.qmd
       - href: resources.qmd
         text: "Resources"
-      - href: unit-0-foundations.qmd
+      - href: unit-0/unit-0-foundations.qmd
         text: "Unit 0: Foundations" 
       
 
