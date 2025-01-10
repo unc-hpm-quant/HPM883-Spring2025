@@ -17,7 +17,7 @@ This unit will provide a foundation for the rest of the course. It will cover th
 
 ### Preparation
 
--   [Harrison and List (2004)](https://drive.google.com/file/d/1tEGiMTNIGaC4L1b3fhRjV0at5QUew5To/view?usp=drive_link)
+-   Read: [Harrison and List (2004)](https://drive.google.com/file/d/1tEGiMTNIGaC4L1b3fhRjV0at5QUew5To/view?usp=drive_link)
     -   Perusall Link: [Harrison and List (2004)](https://app.perusall.com/courses/hpm-883/harrison-and-list-2004-field-experiments?assignmentId=YNZGZyGAPDg9kiTDh&part=1)
 
 ::: callout-tip
@@ -53,4 +53,4 @@ Zoom link: <https://unc.zoom.us/j/7840211370?omn=97363476255>
 
 ### Preparation
 
--   [Using Community Health Workers to Deliver a Scalable Integrated Parenting Program in Rural China: A Cluster Randomized Controlled Trial](https://app.perusall.com/courses/hpm-883/using-community-health-workers-to-deliver-a-scalable-integrated-parenting-program-in-rural-china-a-cluster-randomized-controlled-trial?assignmentId=jSe6qk9odjR8ngSFW&part=1)
+-   Read: [Using Community Health Workers to Deliver a Scalable Integrated Parenting Program in Rural China: A Cluster Randomized Controlled Trial](https://app.perusall.com/courses/hpm-883/using-community-health-workers-to-deliver-a-scalable-integrated-parenting-program-in-rural-china-a-cluster-randomized-controlled-trial?assignmentId=jSe6qk9odjR8ngSFW&part=1)
