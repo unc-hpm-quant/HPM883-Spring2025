@@ -20,8 +20,12 @@ This unit will provide a foundation for the rest of the course. It will cover th
 -   [Harrison and List (2004)](https://drive.google.com/file/d/1tEGiMTNIGaC4L1b3fhRjV0at5QUew5To/view?usp=drive_link)
     -   Perusall Link: [Harrison and List (2004)](https://app.perusall.com/courses/hpm-883/harrison-and-list-2004-field-experiments?assignmentId=YNZGZyGAPDg9kiTDh&part=1)
 
-::: callout-note
-Perusall is a free online platform that allows you to collaboratively annotate content with your classmates. Here is a link to the Perusall page for this course: [HPM 883](https://app.perusall.com/join/sylvia-zxtwh)
+::: callout-tip
+## Perusall
+
+Perusall is a free online platform that allows you to collaboratively annotate content with your classmates. Here is a link to the Perusall page for this course: [HPM 883](https://app.perusall.com/join/sylvia-zxtwh). If needed, the class enrollment code is SYLVIA-ZXTWH.\
+\
+Although it is a good way to engage with your classmates around the material, it is not required that you comment on Perusall. If you wish, you can just download the readings directly.
 :::
 
 -   [ACI Chapters 0 and 2](https://causalml-book.org/)
@@ -32,7 +36,7 @@ Perusall is a free online platform that allows you to collaboratively annotate c
 
 ### Lab/Homework
 
--   Introductory Class Survey
+-   10-15 min [Introductory Class Survey](https://unc.az1.qualtrics.com/jfe/form/SV_07iqDZtdRC5PIJE) (Due Jan 15)
 
 ### Additional Materials
 
