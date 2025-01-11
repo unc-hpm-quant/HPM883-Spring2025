@@ -159,91 +159,26 @@
     "text": "Resources and Support\n\nCourse website with materials and updates: Course Website\nWeekly office hours with Dr. Sylvia and Yumeng\nCommunication channels:\n\nSlack: Join the course Slack to ask questions, share resources, and engage with your peers, the instructor, and the TA. (For personal matters, please use e-mail)\nEmail: Please use e-mail only for personal matters. (For anything related to the course material or coding questions, please use Slack.)\n\nGradescope: Submit assignments."
   },
   {
-    "objectID": "unit-0/unit-0-foundations.html",
-    "href": "unit-0/unit-0-foundations.html",
+    "objectID": "unit-0/unit-0-foundations-2.html",
+    "href": "unit-0/unit-0-foundations-2.html",
     "title": "Unit 0: Foundations",
     "section": "",
-    "text": "This unit will provide a foundation for the rest of the course. It will cover the following topics:\n\nWhy experiments and ML for Causal Inference\nCourse structure and tools\nA field experiment in health services research\nComputing for Reproducible Research",
+    "text": "Guest Lecture by Dr. Dorien Emmers\n\n\n\n\n\n\nClass will be remote-only\n\n\n\nJoin from the comfort of your own home!\nZoom link: https://unc.zoom.us/j/7840211370?omn=97363476255\n\n\n\n\n\nRead: Using Community Health Workers to Deliver a Scalable Integrated Parenting Program in Rural China: A Cluster Randomized Controlled Trial\n\n\n\n\n\n\n\nPerusall\n\n\n\nPerusall is a free online platform that allows you to collaboratively annotate content with your classmates. Here is a link to the Perusall page for this course: HPM 883. If needed, the class enrollment code is SYLVIA-ZXTWH.\n\nAlthough it is a good way to engage with your classmates around the material, it is not required that you comment on Perusall. If you wish, you can just download the readings directly.\n\n\n\n\n\n\n\n\nIntroductory Survey Due by end of day on Jan 15\n\n\n\nIntroductory Class Survey",
     "crumbs": [
-      "Unit 0: Foundations"
+      "Unit 0: Foundations",
+      "Class 2: A Field Experiment in Health Services Research"
     ]
   },
   {
-    "objectID": "unit-0/unit-0-foundations.html#overview",
-    "href": "unit-0/unit-0-foundations.html#overview",
+    "objectID": "unit-0/unit-0-foundations-2.html#overview",
+    "href": "unit-0/unit-0-foundations-2.html#overview",
     "title": "Unit 0: Foundations",
     "section": "",
-    "text": "This unit will provide a foundation for the rest of the course. It will cover the following topics:\n\nWhy experiments and ML for Causal Inference\nCourse structure and tools\nA field experiment in health services research\nComputing for Reproducible Research",
+    "text": "Guest Lecture by Dr. Dorien Emmers\n\n\n\n\n\n\nClass will be remote-only\n\n\n\nJoin from the comfort of your own home!\nZoom link: https://unc.zoom.us/j/7840211370?omn=97363476255\n\n\n\n\n\nRead: Using Community Health Workers to Deliver a Scalable Integrated Parenting Program in Rural China: A Cluster Randomized Controlled Trial\n\n\n\n\n\n\n\nPerusall\n\n\n\nPerusall is a free online platform that allows you to collaboratively annotate content with your classmates. Here is a link to the Perusall page for this course: HPM 883. If needed, the class enrollment code is SYLVIA-ZXTWH.\n\nAlthough it is a good way to engage with your classmates around the material, it is not required that you comment on Perusall. If you wish, you can just download the readings directly.\n\n\n\n\n\n\n\n\nIntroductory Survey Due by end of day on Jan 15\n\n\n\nIntroductory Class Survey",
     "crumbs": [
-      "Unit 0: Foundations"
+      "Unit 0: Foundations",
+      "Class 2: A Field Experiment in Health Services Research"
     ]
-  },
-  {
-    "objectID": "unit-0/unit-0-foundations.html#class-1-course-introduction",
-    "href": "unit-0/unit-0-foundations.html#class-1-course-introduction",
-    "title": "Unit 0: Foundations",
-    "section": "Class 1: Course Introduction",
-    "text": "Class 1: Course Introduction\n\nPreparation\n\nRead: Harrison and List (2004)\n\nPerusall Link: Harrison and List (2004)\n\n\n\n\n\n\n\n\nPerusall\n\n\n\nPerusall is a free online platform that allows you to collaboratively annotate content with your classmates. Here is a link to the Perusall page for this course: HPM 883. If needed, the class enrollment code is SYLVIA-ZXTWH.\n\nAlthough it is a good way to engage with your classmates around the material, it is not required that you comment on Perusall. If you wish, you can just download the readings directly.\n\n\n\nACI Chapters 0 and 2\n\n\n\nIn Class\n\nLecture slides\n\n\n\nLab/Homework\n\n10-15 min Introductory Class Survey (Due Jan 15)\n\n\n\nAdditional Materials",
-    "crumbs": [
-      "Unit 0: Foundations"
-    ]
-  },
-  {
-    "objectID": "unit-0/unit-0-foundations.html#class-2-a-field-experiment-in-health-services-research",
-    "href": "unit-0/unit-0-foundations.html#class-2-a-field-experiment-in-health-services-research",
-    "title": "Unit 0: Foundations",
-    "section": "Class 2: A Field Experiment in Health Services Research",
-    "text": "Class 2: A Field Experiment in Health Services Research\nGuest Lecture by Dr. Dorien Emmers\n\n\n\n\n\n\nClass will be remote-only\n\n\n\nJoin from the comfort of your own home!\nZoom link: https://unc.zoom.us/j/7840211370?omn=97363476255\n\n\n\nPreparation\n\nRead: Using Community Health Workers to Deliver a Scalable Integrated Parenting Program in Rural China: A Cluster Randomized Controlled Trial",
-    "crumbs": [
-      "Unit 0: Foundations"
-    ]
-  },
-  {
-    "objectID": "instructors.html",
-    "href": "instructors.html",
-    "title": "Instructors",
-    "section": "",
-    "text": "Sean Sylvia is an Associate Professor in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Dr. Sylvia will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
-    "crumbs": [
-      "Course Information",
-      "Instructors"
-    ]
-  },
-  {
-    "objectID": "instructors.html#instructor-sean-sylvia-ph.d.",
-    "href": "instructors.html#instructor-sean-sylvia-ph.d.",
-    "title": "Instructors",
-    "section": "",
-    "text": "Sean Sylvia is an Associate Professor in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Dr. Sylvia will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
-    "crumbs": [
-      "Course Information",
-      "Instructors"
-    ]
-  },
-  {
-    "objectID": "instructors.html#teaching-assistant-yumeng-du",
-    "href": "instructors.html#teaching-assistant-yumeng-du",
-    "title": "Instructors",
-    "section": "Teaching Assistant: Yumeng Du",
-    "text": "Teaching Assistant: Yumeng Du\nYumeng Du is a Ph.D. student in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Yumeng will hold office hours on Mondays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
-    "crumbs": [
-      "Course Information",
-      "Instructors"
-    ]
-  },
-  {
-    "objectID": "labs/lab-0.html",
-    "href": "labs/lab-0.html",
-    "title": "Lab 0",
-    "section": "",
-    "text": "St. Null’s Memorial Hospital is in chaos. Every time the hospital board—led by the well-meaning but trend-obsessed CEO Barnaby Beta—implements a new policy, they find puzzling or contradictory results. Dr. P-Hacker, a self-styled data guru, only adds to the confusion by massaging, cherry-picking, and p-hacking the data until he sees “significance.” Meanwhile, Nurse Random constantly rolls her eyes at his antics and reminds everyone that solid methodology—not creative statistics—should guide decision-making.\nBut there’s hope. Your class has just been hired as “methodology consultants” to diagnose and treat the hospital’s research woes. In each module (or “episode”), you’ll confront a new fiasco at St. Null’s: from suspiciously overfitted AI models, to missing data nightmares, to bungled randomized trials and flawed observational studies. Along the way, the brilliant but quirky Dr. Doub R. Obust will champion doubly robust methods and other advanced techniques to rescue the day.\n\n\n\n\nYour mission? Use proper causal inference and machine learning strategies to shed light on the true effects of the hospital’s interventions. Each chapter in your lecture notes (i.e., Jupyter notebooks) begins with a brief “scene” in which the hospital staff face some methodological mishap—then shifts to your step-by-step explanation of the relevant statistical concepts and R code. By the end of the course, you’ll have helped St. Null’s Memorial Hospital finally achieve consistent, credible results, while having a bit of comedic fun along the way."
-  },
-  {
-    "objectID": "labs/lab-0.html#the-hospital-of-uncertain-outcomes",
-    "href": "labs/lab-0.html#the-hospital-of-uncertain-outcomes",
-    "title": "Lab 0",
-    "section": "",
-    "text": "St. Null’s Memorial Hospital is in chaos. Every time the hospital board—led by the well-meaning but trend-obsessed CEO Barnaby Beta—implements a new policy, they find puzzling or contradictory results. Dr. P-Hacker, a self-styled data guru, only adds to the confusion by massaging, cherry-picking, and p-hacking the data until he sees “significance.” Meanwhile, Nurse Random constantly rolls her eyes at his antics and reminds everyone that solid methodology—not creative statistics—should guide decision-making.\nBut there’s hope. Your class has just been hired as “methodology consultants” to diagnose and treat the hospital’s research woes. In each module (or “episode”), you’ll confront a new fiasco at St. Null’s: from suspiciously overfitted AI models, to missing data nightmares, to bungled randomized trials and flawed observational studies. Along the way, the brilliant but quirky Dr. Doub R. Obust will champion doubly robust methods and other advanced techniques to rescue the day.\n\n\n\n\nYour mission? Use proper causal inference and machine learning strategies to shed light on the true effects of the hospital’s interventions. Each chapter in your lecture notes (i.e., Jupyter notebooks) begins with a brief “scene” in which the hospital staff face some methodological mishap—then shifts to your step-by-step explanation of the relevant statistical concepts and R code. By the end of the course, you’ll have helped St. Null’s Memorial Hospital finally achieve consistent, credible results, while having a bit of comedic fun along the way."
   },
   {
     "objectID": "course-communication.html",
@@ -287,6 +222,53 @@
     "crumbs": [
       "Course Information",
       "Communication"
+    ]
+  },
+  {
+    "objectID": "labs/lab-0.html",
+    "href": "labs/lab-0.html",
+    "title": "Lab 0",
+    "section": "",
+    "text": "St. Null’s Memorial Hospital is in chaos. Every time the hospital board—led by the well-meaning but trend-obsessed CEO Barnaby Beta—implements a new policy, they find puzzling or contradictory results. Dr. P-Hacker, a self-styled data guru, only adds to the confusion by massaging, cherry-picking, and p-hacking the data until he sees “significance.” Meanwhile, Nurse Random constantly rolls her eyes at his antics and reminds everyone that solid methodology—not creative statistics—should guide decision-making.\nBut there’s hope. Your class has just been hired as “methodology consultants” to diagnose and treat the hospital’s research woes. In each module (or “episode”), you’ll confront a new fiasco at St. Null’s: from suspiciously overfitted AI models, to missing data nightmares, to bungled randomized trials and flawed observational studies. Along the way, the brilliant but quirky Dr. Doub R. Obust will champion doubly robust methods and other advanced techniques to rescue the day.\n\n\n\n\nYour mission? Use proper causal inference and machine learning strategies to shed light on the true effects of the hospital’s interventions. Each chapter in your lecture notes (i.e., Jupyter notebooks) begins with a brief “scene” in which the hospital staff face some methodological mishap—then shifts to your step-by-step explanation of the relevant statistical concepts and R code. By the end of the course, you’ll have helped St. Null’s Memorial Hospital finally achieve consistent, credible results, while having a bit of comedic fun along the way."
+  },
+  {
+    "objectID": "labs/lab-0.html#the-hospital-of-uncertain-outcomes",
+    "href": "labs/lab-0.html#the-hospital-of-uncertain-outcomes",
+    "title": "Lab 0",
+    "section": "",
+    "text": "St. Null’s Memorial Hospital is in chaos. Every time the hospital board—led by the well-meaning but trend-obsessed CEO Barnaby Beta—implements a new policy, they find puzzling or contradictory results. Dr. P-Hacker, a self-styled data guru, only adds to the confusion by massaging, cherry-picking, and p-hacking the data until he sees “significance.” Meanwhile, Nurse Random constantly rolls her eyes at his antics and reminds everyone that solid methodology—not creative statistics—should guide decision-making.\nBut there’s hope. Your class has just been hired as “methodology consultants” to diagnose and treat the hospital’s research woes. In each module (or “episode”), you’ll confront a new fiasco at St. Null’s: from suspiciously overfitted AI models, to missing data nightmares, to bungled randomized trials and flawed observational studies. Along the way, the brilliant but quirky Dr. Doub R. Obust will champion doubly robust methods and other advanced techniques to rescue the day.\n\n\n\n\nYour mission? Use proper causal inference and machine learning strategies to shed light on the true effects of the hospital’s interventions. Each chapter in your lecture notes (i.e., Jupyter notebooks) begins with a brief “scene” in which the hospital staff face some methodological mishap—then shifts to your step-by-step explanation of the relevant statistical concepts and R code. By the end of the course, you’ll have helped St. Null’s Memorial Hospital finally achieve consistent, credible results, while having a bit of comedic fun along the way."
+  },
+  {
+    "objectID": "instructors.html",
+    "href": "instructors.html",
+    "title": "Instructors",
+    "section": "",
+    "text": "Sean Sylvia is an Associate Professor in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Dr. Sylvia will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
+    "crumbs": [
+      "Course Information",
+      "Instructors"
+    ]
+  },
+  {
+    "objectID": "instructors.html#instructor-sean-sylvia-ph.d.",
+    "href": "instructors.html#instructor-sean-sylvia-ph.d.",
+    "title": "Instructors",
+    "section": "",
+    "text": "Sean Sylvia is an Associate Professor in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Dr. Sylvia will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
+    "crumbs": [
+      "Course Information",
+      "Instructors"
+    ]
+  },
+  {
+    "objectID": "instructors.html#teaching-assistant-yumeng-du",
+    "href": "instructors.html#teaching-assistant-yumeng-du",
+    "title": "Instructors",
+    "section": "Teaching Assistant: Yumeng Du",
+    "text": "Teaching Assistant: Yumeng Du\nYumeng Du is a Ph.D. student in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Yumeng will hold office hours on Mondays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
+    "crumbs": [
+      "Course Information",
+      "Instructors"
     ]
   },
   {
@@ -339,6 +321,50 @@
     "text": "Prepare notes summarizing key concepts from the readings and videos. These will be helpful for in-class discussions.\n\nRemember: This course uses a flipped classroom approach. Completing these tasks prior to class is essential for your active participation and understanding during our sessions."
   },
   {
+    "objectID": "unit-0/unit-0-foundations-1.html",
+    "href": "unit-0/unit-0-foundations-1.html",
+    "title": "Unit 0: Foundations",
+    "section": "",
+    "text": "This unit will provide a foundation for the rest of the course. It will cover the following topics:\n\nWhy experiments and ML for Causal Inference\nCourse structure and tools\nA field experiment in health services research\nComputing for Reproducible Research",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class 1: Introduction"
+    ]
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations-1.html#overview",
+    "href": "unit-0/unit-0-foundations-1.html#overview",
+    "title": "Unit 0: Foundations",
+    "section": "",
+    "text": "This unit will provide a foundation for the rest of the course. It will cover the following topics:\n\nWhy experiments and ML for Causal Inference\nCourse structure and tools\nA field experiment in health services research\nComputing for Reproducible Research",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class 1: Introduction"
+    ]
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations-1.html#class-1-course-introduction",
+    "href": "unit-0/unit-0-foundations-1.html#class-1-course-introduction",
+    "title": "Unit 0: Foundations",
+    "section": "Class 1: Course Introduction",
+    "text": "Class 1: Course Introduction\n\nPreparation\n\nRead: Harrison and List (2004)\n\nPerusall Link: Harrison and List (2004)\n\n\n\n\n\n\n\n\nPerusall\n\n\n\nPerusall is a free online platform that allows you to collaboratively annotate content with your classmates. Here is a link to the Perusall page for this course: HPM 883. If needed, the class enrollment code is SYLVIA-ZXTWH.\n\nAlthough it is a good way to engage with your classmates around the material, it is not required that you comment on Perusall. If you wish, you can just download the readings directly.\n\n\n\nACI Chapters 0 and 2\n\n\n\nIn Class\n\nLecture slides\n\n\n\nLab/Homework\n\n10-15 min Introductory Class Survey (Due Jan 15)\n\n\n\nAdditional Materials",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class 1: Introduction"
+    ]
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations-1.html#class-2-a-field-experiment-in-health-services-research",
+    "href": "unit-0/unit-0-foundations-1.html#class-2-a-field-experiment-in-health-services-research",
+    "title": "Unit 0: Foundations",
+    "section": "Class 2: A Field Experiment in Health Services Research",
+    "text": "Class 2: A Field Experiment in Health Services Research\nGuest Lecture by Dr. Dorien Emmers\n\n\n\n\n\n\nClass will be remote-only\n\n\n\nJoin from the comfort of your own home!\nZoom link: https://unc.zoom.us/j/7840211370?omn=97363476255\n\n\n\nPreparation\n\nRead: Using Community Health Workers to Deliver a Scalable Integrated Parenting Program in Rural China: A Cluster Randomized Controlled Trial",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class 1: Introduction"
+    ]
+  },
+  {
     "objectID": "course-overview.html",
     "href": "course-overview.html",
     "title": "HPM 883Spring 2025",
@@ -365,7 +391,7 @@
     "href": "index.html",
     "title": "Course Schedule",
     "section": "",
-    "text": "This page contains the schedule, topics, content and assigments for the semester.\n\n\n\n\n\n\nNote\n\n\n\nThis schedule will be updated as the semester progresses.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweek\ndow\ndate\nsession\nunit\ntopic\nprepare\nclass\nlab\nlab_sa\ndue\nnotes\n\n\n\n1\nW\n8 January\nLec\nFoundations\nWelcome; Key Concepts\n\n\n\n\n\n\n\nFDOC\n\n\n2\nM\n13 January\nLec\nFoundations\nGuest Lecture: Running a Randomized Trial\n\n\n\n\n\n\n\nSean Traveling, Kat or Dorien or Yunwei guest lecture on an RCT\n\n\n\nW\n15 January\n-\nFoundations\nReproducible Research\n\n\n\n\n\nSean Traveling, Led by Yumeng and Shuyi\n\n\n3\nM\n20 January\n-\nNo Class: MLK Day\n\n\n\n\n\n\nNo Class\n\n\n\nW\n22 January\nLec\nInternal Validity\nGeneralized Potential Outcomes Framework; Exclusion Restrictions\n\n\n\n\n\n\n\n\n\n4\nM\n27 January\nLab\nInternal Validity\nTBD\n\n\n\n\n\n\n\n\n\nW\n29 January\nLec\nExperimental Design\nOptimal design of experiments; Power\n\n\n\n\n\n\n\n\n\n5\nM\n3 February\nLab\nExperimental Design\nPower simulations\n\n\n\n\n\n\n\n\n\nW\n5 February\nLec\nExperimental Design\nRandomization and Blocking\n\n\n\n\n\n\n\n\n\n6\nM\n10 February\n-\nNo Class: Well-being Day\n\n\n\n\n\n\n\n\n\n\nW\n12 February\nLec\nPreparations\nEthics, Registration and Pre-Analysis Plans\n\n\n\n\n\n\n\n\n7\nM\n17 February\nLec\nIntroduction to Machine Learning\nLasso; Penalized Regression; Cross-Validation\n\n\n\n\n\n\n\n\n\nW\n19 February\nLab\nIntroduction to Machine Learning\nLasso and Friends\n\n\n\n\n\n\n\n\n8\nM\n24 February\nLec\nIntroduction to Machine Learning\nRandom Trees and Random Forests\n\n\n\n\n\n\n\n\n\n\nW\n26 February\n\nMIDTERM 1\n\n\n\n\n\n\n\n\n\n9\nM\n3 March\nLec\nHeterogeneity and Moderation\nHeterogeneous Treatment Effects\n\n\n\n\n\n\n\n\n\n\nW\n5 March\nLab\nHeterogeneity and Moderation\nCausal Forests\n\n\n\n\n\n\n\n\n\n10\nM\n10 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n\n\nW\n12 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n\n11\nM\n17 March\nLec\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\n\n\n\n\n\n\nW\n19 March\nLab\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\n\n\n\n\n\n12\nM\n24 March\nLec\nViolations of Internal Validity\nOne and Two-sided Compliance; TOT (LATE)\n\n\n\n\n\n\n\n\n\nW\n26 March\nLab\nViolations of Internal Validity\nIV\n\n\n\n\n\n\n\n\n\n13\nM\n31 March\n\nMIDTERM 2\n\n\n\n\n\n\n\n\n\n\nW\n2 April\nLec\nMediation and External Validity\nMediation Analysis and Generalizability\n\n\n\n\n\n\n\n\n14\nM\n7 April\nLab\nMediation and External Validity\n\n\n\n\n\n\n\n\n\n\n\nW\n9 April\n\nBuffer\nTBD\n\n\n\n\n\n\n\n\n15\nM\n14 April\n\nBuffer\nTBD\n\n\n\n\n\n\n\n\n\nW\n16 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n\n16\nM\n21 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n\n\nW\n23 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n\n17\nM\n28 April\n\nWrap-up\nTBD\n\n\n\n\n\n\n\n\n\n\nW\n30 April\n\nFINAL EXAM",
+    "text": "This page contains the schedule, topics, content and assigments for the semester.\n\n\n\n\n\n\nNote\n\n\n\nThis schedule will be updated as the semester progresses.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweek\ndow\ndate\nsession\nunit\ntopic\nprepare\nclass\nlab\nlab_sa\ndue\n\n\n\n1\nW\n8 January\nLec\nFoundations\nWelcome; Key Concepts\n\n\n\n\n\n\n\n\n\n2\nM\n13 January\nLec\nFoundations\nGuest Lecture: Running a Randomized Trial\n\n\n\n\n\nhttps://unc.az1.qualtrics.com/jfe/form/SV_07iqDZtdRC5PIJE\n\n\n\nW\n15 January\n-\nFoundations\nReproducible Research\n\n\n\n\n\n\n\n3\nM\n20 January\n-\nNo Class: MLK Day\n\n\n\n\n\n\n\n\n\nW\n22 January\nLec\nInternal Validity\nGeneralized Potential Outcomes Framework; Exclusion Restrictions\n\n\n\n\nProject Topic\n\n\n4\nM\n27 January\nLab\nInternal Validity\nTBD\n\n\n\n\n\n\n\n\nW\n29 January\nLec\nExperimental Design\nOptimal design of experiments; Power\n\n\n\n\nLab 1 Report\n\n\n5\nM\n3 February\nLab\nExperimental Design\nPower simulations\n\n\n\n\n\n\n\n\nW\n5 February\nLec\nExperimental Design\nRandomization and Blocking\n\n\n\n\nLab 2 Report\n\n\n6\nM\n10 February\n-\nNo Class: Well-being Day\n\n\n\n\n\n\n\n\n\nW\n12 February\nLec\nPreparations\nEthics, Registration and Pre-Analysis Plans\n\n\n\n\n\n\n\n7\nM\n17 February\nLec\nIntroduction to Machine Learning\nLasso; Penalized Regression; Cross-Validation\n\n\n\n\n\n\n\n\nW\n19 February\nLab\nIntroduction to Machine Learning\nLasso and Friends\n\n\n\n\n\n\n\n8\nM\n24 February\nLec\nIntroduction to Machine Learning\nRandom Trees and Random Forests\n\n\n\n\nLab 3 Report\n\n\n\nW\n26 February\n\nMIDTERM 1\n\n\n\n\n\n\n\n\n9\nM\n3 March\nLec\nHeterogeneity and Moderation\nHeterogeneous Treatment Effects\n\n\n\n\nLab 4 Report\n\n\n\nW\n5 March\nLab\nHeterogeneity and Moderation\nCausal Forests\n\n\n\n\nProject Pre-Analysis Plan\n\n\n10\nM\n10 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n\nW\n12 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n11\nM\n17 March\nLec\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\nLab 5 Report\n\n\n\nW\n19 March\nLab\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\nReferee Report\n\n\n12\nM\n24 March\nLec\nViolations of Internal Validity\nOne and Two-sided Compliance; TOT (LATE)\n\n\n\n\n\n\n\n\nW\n26 March\nLab\nViolations of Internal Validity\nIV\n\n\n\n\nLab 6 Report\n\n\n13\nM\n31 March\n\nMIDTERM 2\n\n\n\n\n\n\n\n\n\nW\n2 April\nLec\nMediation and External Validity\nMediation Analysis and Generalizability\n\n\n\n\n\n\n\n14\nM\n7 April\nLab\nMediation and External Validity\n\n\n\n\n\nLab 7 Report\n\n\n\nW\n9 April\n\nBuffer\nTBD\n\n\n\n\n\n\n\n15\nM\n14 April\n\nBuffer\nTBD\n\n\n\n\n\n\n\n\nW\n16 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n16\nM\n21 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n\nW\n23 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n17\nM\n28 April\n\nWrap-up\nTBD\n\n\n\n\nFinal Project Manuscript & Replication Repository\n\n\n\nW\n30 April\n\nFINAL EXAM",
     "crumbs": [
       "Course Schedule"
     ]

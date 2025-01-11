@@ -1,0 +1,35 @@
+---
+title: "Unit 0: Foundations"
+subtitle: "Class 2: A Field Experiment in Health Services Research"
+---
+
+## Overview
+
+Guest Lecture by [Dr. Dorien Emmers](https://sccei.fsi.stanford.edu/reap/people/dorien-emmers)
+
+::: {.callout-warning appearance="simple"}
+## Class will be remote-only
+
+Join from the comfort of your own home!\
+Zoom link: <https://unc.zoom.us/j/7840211370?omn=97363476255>
+:::
+
+### Preparation
+
+-   Read: [Using Community Health Workers to Deliver a Scalable Integrated Parenting Program in Rural China: A Cluster Randomized Controlled Trial](https://app.perusall.com/courses/hpm-883/using-community-health-workers-to-deliver-a-scalable-integrated-parenting-program-in-rural-china-a-cluster-randomized-controlled-trial?assignmentId=jSe6qk9odjR8ngSFW&part=1)
+
+::: callout-tip
+## Perusall
+
+Perusall is a free online platform that allows you to collaboratively annotate content with your classmates. Here is a link to the Perusall page for this course: [HPM 883](https://app.perusall.com/join/sylvia-zxtwh). If needed, the class enrollment code is SYLVIA-ZXTWH.\
+\
+Although it is a good way to engage with your classmates around the material, it is not required that you comment on Perusall. If you wish, you can just download the readings directly.
+:::
+
+::: callout-important
+## Introductory Survey Due by end of day on Jan 15
+[Introductory Class Survey](https://unc.az1.qualtrics.com/jfe/form/SV_07iqDZtdRC5PIJE)
+:::
+
+
+

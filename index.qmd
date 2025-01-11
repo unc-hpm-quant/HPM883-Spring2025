@@ -62,22 +62,15 @@ d %>%
         glue::glue("<a href = {x}>{fontawesome::fa('users')}</a>")
       )
     }
-   ) %>%
-      text_transform(cells_body(columns = c(due)),
-    fn = function(x) {
-      ifelse(is.na(x), fontawesome::fa("calendar-check", fill_opacity = 0.1),
-        glue::glue("<a href = {x}>{fontawesome::fa('calendar-check')}</a>")
-      )
-    }
   ) %>%
   fmt_date(date, date_style = 9) %>%
-  sub_missing(columns = c(date, session, unit, topic, notes), missing_text = "") %>%
+  sub_missing(columns = c(date, session, unit, topic, due), missing_text = "") %>%
   cols_align(
     align = "center", 
-    columns = c(week, dow, prepare, class, lab, lab_sa, due)
+    columns = c(week, dow, prepare, class, lab, lab_sa)
     ) %>%
   cols_align(
     align = "left", 
-    columns = c(date, session, unit, topic, notes)
+    columns = c(date, session, unit, topic, due)
     )  
 ```

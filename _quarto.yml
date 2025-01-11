@@ -70,10 +70,13 @@ website:
       - index.qmd
       - href: resources.qmd
         text: "Resources"
-      - href: unit-0/unit-0-foundations.qmd
-        text: "Unit 0: Foundations" 
+      - section: "Unit 0: Foundations"
+        contents:
+          - href: unit-0/unit-0-foundations-1.qmd
+            text: "Class 1: Introduction"
+          - href: unit-0/unit-0-foundations-2.qmd
+            text: "Class 2: A Field Experiment in Health Services Research"
       
-
 
   page-footer:
     right: 'This page is built with [Quarto](https://quarto.org/).'
