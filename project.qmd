@@ -8,26 +8,35 @@ draft: true
 
 ## Overview:
 
-This semester-long project will provide students with hands-on experience in the full research lifecycle, from experimental design to data analysis and reporting. Working in pairs, students will design an online experiment and either simulate the data or conduct the experiment with real participants. The goal is to develop methodological and analytical skills for causal inference and experimental health services research while emphasizing pre-registration and reproducibility.
+This semester-long project will provide students with hands-on experience in the full research lifecycle, from experimental design to data analysis and reporting. Working in pairs, students will design an online experiment and either **simulate the data** or conduct the experiment with real participants. The project will emphasize **causal inference** methods and require the application of **at least one machine learning technique** in the analysis phase. The goal is to develop methodological and analytical skills for causal inference, experimental health services research, and modern data science approaches.
 
 ## Deliverables:
 
 The project will be divided into the following key deliverables:
 
 1.  A Pre-analysis Plan: A document that outlines the experimental design and analysis plan.
-2.  
+2.  A Peer-Reviewed Referee Report: A document that assesses the validity and feasibility of the experimental design and analytical methods.
+3.  A Final Submission: A report that includes the experimental design, methods, results, and discussion.
 
 ## Project Components and Timeline:
 
 ### Phase 1: Project Proposal (Due by Jan ):
 
--   Work in pairs to brainstorm and propose an online experiment.
+Students will work in pairs to brainstorm and propose an online experiment.
 
-The project proposal should include: - Research question and hypotheses - Brief experimental design outline - Whether the data will be simulated or collected from real participants - Potential participant pool (if using real participants) - Submit the proposal for instructor approval by the end of Week 2.
+The project proposal should include: 
 
-### Phase 2: Study Registration and Pre-Analysis Plan (Due by ):
+- Research question and motivation
+- Specific hypotheses to be tested 
+- Brief experimental design outline 
+- Whether the data will be simulated or collected from real participants 
+    - Potential participant pool (if using real participants) 
 
-After approval, students will have six weeks to prepare a comprehensive study registration and pre-analysis plan. This document must include:
+Submit your project proposal on gradescope here: [LINK]
+
+### Phase 2: Pre-Analysis Plan (Due by ):
+
+After approval, students will have six weeks to prepare a comprehensive pre-analysis plan. This document must include:
 
 -   Detailed experimental design
 -   Specification of whether the data will be simulated or collected from real participants
@@ -35,27 +44,31 @@ After approval, students will have six weeks to prepare a comprehensive study re
 -   List of primary and secondary outcomes
 -   Planned statistical analyses
 -   Ethical considerations and consent forms (if applicable)
--   The pre-analysis plan must be submitted by the end of Week 8.
+
 
 ### Phase 3: Peer Review (Due by )
 
 To promote collaborative learning and critical evaluation, pre-analysis plans will be randomly allocated to classmates for peer review.
 
-Each student will review one pre-analysis plan and submit a referee report within one week. The referee report should assess: - Clarity of the research question and hypotheses - Validity and feasibility of the experimental design - Appropriateness of the analytical strategies and transparency
+Each student will review one pre-analysis plan and submit a referee report within one week. The referee report should assess:
+- Clarity of the research question and hypotheses
+- Validity and feasibility of the experimental design
+- Appropriateness of the analytical strategies and transparency
+
+A template/guide for the referee report will be provided.
 
 ### Phase 4: Final Submission (Due by )
 
-Students can choose between three options:
+Students can choose between two options:
 
-#### Option 1: Registered Report
+#### Option 1: Paper using Simulated Data
 
-#### Option 2: Paper using Simulated Data
+Students will generate synthetic data based on the proposed experimental design. Methods for generating simulated data will be covered in a lab session. The simulated dataset should match the proposed experiment in structure and key characteristics.
 
-Students will generate synthetic data based on the proposed experimental design using tools like R or Python. The simulated dataset should match the proposed experiment in structure and key characteristics.
-
-#### Option 3: Running the Experiment with Real Participants
+#### Option 2: Running the Experiment with Real Participants
 
 -   If choosing to run the experiment, students will conduct the approved design with real participants (classmates, friends, or external groups).
+    -   Instead of recruiting the number of participants required based on power simulations, running a small-scale "pilot" with just a few participants (2-3 per experimental condition) is acceptable.
 -   Data should be collected ethically and stored securely following UNC standards.
 
 The final project package should include:
@@ -68,9 +81,8 @@ The final project package should include:
 -   Results
 -   Discussion and Conclusion
 
-and, if choosing Option 2, include:
 
-2.  Push-Button Replication Package: A well-organized folder containing:
+2. Push-Button Replication Package: A well-organized folder containing:
 
 -   The raw data or simulated data and simulation code
 -   Cleaned datasets
@@ -79,4 +91,14 @@ and, if choosing Option 2, include:
 
 ### Grading Criteria:
 
-Pre-Analysis Plan: 40% Peer Review Report: 20% Final Submission: 40%
+1. Pre-Analysis Plan: 40% 
+2. Peer Review Report: 20% 
+3. Final Submission: 40%
+
+## FAQ:
+
+-   How do I come up with a research question and hypotheses?
+-   How do I conduct the experiment if I choose to recruit real participants?
+-   What is the ethical guidelines for collecting data from real participants?
+-   How do I simulate data for the experiment if I choose to use simulated data?
+
