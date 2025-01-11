@@ -1,8 +1,9 @@
 ---
 title: "Unit 0: Foundations"
+subtitle: "Class 1"
 ---
 
-## Overview
+## Unit Overview
 
 This unit will provide a foundation for the rest of the course. It will cover the following topics:
 

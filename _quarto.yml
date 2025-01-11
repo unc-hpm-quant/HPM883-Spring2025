@@ -67,6 +67,8 @@ website:
             text: "Instructors"
           - href: course-communication.qmd
             text: "Communication"
+          - href: project.qmd
+            text: "Semester Project"
       - index.qmd
       - href: resources.qmd
         text: "Resources"

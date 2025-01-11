@@ -395,5 +395,16 @@
     "crumbs": [
       "Course Schedule"
     ]
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations-1.html#unit-overview",
+    "href": "unit-0/unit-0-foundations-1.html#unit-overview",
+    "title": "Unit 0: Foundations",
+    "section": "",
+    "text": "This unit will provide a foundation for the rest of the course. It will cover the following topics:\n\nWhy experiments and ML for Causal Inference\nCourse structure and tools\nA field experiment in health services research\nComputing for Reproducible Research",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class 1: Introduction"
+    ]
   }
 ]

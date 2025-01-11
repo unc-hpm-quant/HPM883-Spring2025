@@ -1,0 +1,82 @@
+---
+title: "Semester Project"
+format: html
+draft: true
+---
+
+# Project Title: Designing, Simulating, and Analyzing an Online Experiment
+
+## Overview:
+
+This semester-long project will provide students with hands-on experience in the full research lifecycle, from experimental design to data analysis and reporting. Working in pairs, students will design an online experiment and either simulate the data or conduct the experiment with real participants. The goal is to develop methodological and analytical skills for causal inference and experimental health services research while emphasizing pre-registration and reproducibility.
+
+## Deliverables:
+
+The project will be divided into the following key deliverables:
+
+1.  A Pre-analysis Plan: A document that outlines the experimental design and analysis plan.
+2.  
+
+## Project Components and Timeline:
+
+### Phase 1: Project Proposal (Due by Jan ):
+
+-   Work in pairs to brainstorm and propose an online experiment.
+
+The project proposal should include: - Research question and hypotheses - Brief experimental design outline - Whether the data will be simulated or collected from real participants - Potential participant pool (if using real participants) - Submit the proposal for instructor approval by the end of Week 2.
+
+### Phase 2: Study Registration and Pre-Analysis Plan (Due by ):
+
+After approval, students will have six weeks to prepare a comprehensive study registration and pre-analysis plan. This document must include:
+
+-   Detailed experimental design
+-   Specification of whether the data will be simulated or collected from real participants
+-   Description of the randomization strategy
+-   List of primary and secondary outcomes
+-   Planned statistical analyses
+-   Ethical considerations and consent forms (if applicable)
+-   The pre-analysis plan must be submitted by the end of Week 8.
+
+### Phase 3: Peer Review (Due by )
+
+To promote collaborative learning and critical evaluation, pre-analysis plans will be randomly allocated to classmates for peer review.
+
+Each student will review one pre-analysis plan and submit a referee report within one week. The referee report should assess: - Clarity of the research question and hypotheses - Validity and feasibility of the experimental design - Appropriateness of the analytical strategies and transparency
+
+### Phase 4: Final Submission (Due by )
+
+Students can choose between three options:
+
+#### Option 1: Registered Report
+
+#### Option 2: Paper using Simulated Data
+
+Students will generate synthetic data based on the proposed experimental design using tools like R or Python. The simulated dataset should match the proposed experiment in structure and key characteristics.
+
+#### Option 3: Running the Experiment with Real Participants
+
+-   If choosing to run the experiment, students will conduct the approved design with real participants (classmates, friends, or external groups).
+-   Data should be collected ethically and stored securely following UNC standards.
+
+The final project package should include:
+
+1.  Manuscript/Registered Report: A complete research paper structured like a journal article, including:
+
+-   Abstract
+-   Introduction and Literature Review
+-   Methods Section (including experiment design and pre-analysis plan)
+-   Results
+-   Discussion and Conclusion
+
+and, if choosing Option 2, include:
+
+2.  Push-Button Replication Package: A well-organized folder containing:
+
+-   The raw data or simulated data and simulation code
+-   Cleaned datasets
+-   Code/scripts for analysis (R)
+-   README file explaining how to replicate the results
+
+### Grading Criteria:
+
+Pre-Analysis Plan: 40% Peer Review Report: 20% Final Submission: 40%
