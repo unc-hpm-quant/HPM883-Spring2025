@@ -70,6 +70,8 @@ website:
       - index.qmd
       - href: resources.qmd
         text: "Resources"
+      - href: computing.qmd
+        text: "Computing"
       - section: "Unit 0: Foundations"
         contents:
           - href: unit-0/unit-0-foundations-1.qmd

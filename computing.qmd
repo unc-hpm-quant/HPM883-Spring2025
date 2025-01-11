@@ -1,3 +1,107 @@
 ---
 title: "Computing"
+author: "Sean Sylvia"
+date: "2025-01-11"
+format: 
+    html:
+        code-block-style: "default"
+        code-block-line-numbers: true
+        code-block-background: true
+draft: true
 ---
+
+# Class Computing Guide and Tips
+
+This page is a guide for "best practices" for writing code and working with data. It is a work in progress, so please let Sean or the TA know if you have any suggestions for improvement. 
+
+::: {.callout-note appearance="simple" style="color: #002D72"}
+This is meant as a general quide. For specific instructions on completing labs and assignments, please refer to the lab and assignment instructions.
+:::
+
+## Useful Guides
+
+- [IPA Data Science, Engineering, and Technology Handbook](https://povertyaction.github.io/ipa-data-tech-handbook/index.html)
+- [Coding for Economists](https://aeturrell.github.io/coding-for-economists/intro.html)
+
+
+## Computer Setup
+
+### Using a Package Manager
+
+A package manager helps to standardize how you install and update software on your computer. Generally, you want to use a package manager to install any programs that are used globally on your computer. By “globally”, we mean that it is a program that is used across many projects and computing environments.
+
+#### Windows
+
+If using a Windows computer with Windows 10 or later, use the Windows Package Manager, [winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/).
+
+Example:
+```{.bash} 
+# Install a single program (e.g. GitHub for command line)
+winget install GitHub.cli
+```
+
+#### macOS
+
+If using a macOS computer, use Homebrew.
+
+Example:
+```{.bash}
+# Install a single program (e.g. GitHub for command line)
+brew install gh
+```
+
+### Installing R
+
+```{.bash}
+# Windows Install r
+winget install --id R-project.R
+
+# macOS Install R
+brew install --cask r
+```
+
+## Git and GitHub
+
+## Using R
+
+Scared of R? Not to worry! You'll pick it up as we go - I promise! During class we will go through code slowly at first and spend some time explaining what each line of code does. You'll be R literate in no time!
+
+If you do want to learn a bit of R on your own, here are some excellent resources:
+
+-   [R for Data Science](https://r4ds.had.co.nz/) by Hadley Wickham
+
+### R for Stata users
+
+**Nope, you cannot turn in assignments in Stata, sorry!** {{< fa face-smile>}} Why? It's not just that it's much harder to run the class when we're using different software (it is!), but there are several reasons that I strongly believe it is best for you to become comfortable with R:
+
+-   R is FREEEEE
+-   R has an open source ecosystem. This means
+    -   Immediate access to cutting-edge statistical methods through community contributions
+    -   Extensive library of packages for specialized analyses
+    -   Integration capabilities with other tools like Git, Python, and database systems
+-   R is just better for advanced data analysis
+    -   Ability to handle multiple datasets simultaneously
+    -   Superior graphical capabilities
+    -   Better tools for web scraping, JSON parsing, and database querying
+-   In industry, evidence that [R has 5x greater demand than Stata](https://www.r-bloggers.com/2022/10/data-science-software-popularity-update/) on the job market
+
+::: callout-tip
+## Learning Strategy
+Rather than directly mapping Stata commands to R, it's more effective to first understand R's fundamental concepts and then gradually build up to specific tasks like data management and regression models.
+:::
+
+Here are some excellent tools for Stata people to learn R:
+
+-   [Stata2R Website](https://stata2r.github.io/)
+-   [World Bank DIME R for Advanced Stata Users Workshop](https://osf.io/nj6bf/)
+
+## IDEs
+
+### The RStudio IDE
+
+### Visual Studio Code (VSCode)
+
+## Literate Programming and Quarto
+
+## Bibliography
+

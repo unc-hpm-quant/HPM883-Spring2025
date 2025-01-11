@@ -40,7 +40,7 @@ Experiments and Machine Learning for Health Services Research
 
 ## About Me: Dr. Sean Sylvia
 
-::::::: columns
+::::: columns
 ::: {.column width="60%"}
 **Research**: Designing & evaluating innovative approaches to improve health service delivery, globally.
 
@@ -55,36 +55,32 @@ Experiments and Machine Learning for Health Services Research
 **Previously**: Renmin University of China, World Bank
 
 **Training**: U Maryland (PhD), Stanford (pre-doc)
-
 :::
+
 ::: {.column width="40%"}
 ![](media/fam.jpeg)
 :::
-::::::
+:::::
 
 ## Proud "Randomista" {.scrollable}
 
-::::::: columns
+::::: columns
 ::: {.column width="60%"}
-
--   Extensive fieldwork using **randomized controlled trials (RCTs)** 
--   Starting in 2006, I've worked with colleagues on ~20 RCTs in China, Africa, and North Carolina. 
-    - [**Hot Tip:** Collaborate. Collaborate. Collaborate.]
+-   Extensive fieldwork using **randomized controlled trials (RCTs)**
+-   Starting in 2006, I've worked with colleagues on \~20 RCTs in China, Africa, and North Carolina.
+    -   \[**Hot Tip:** Collaborate. Collaborate. Collaborate.\]
 -   [Key projects](https://scholar.google.com/citations?user=Pv5bfkcAAAAJ&hl=en&oi=ao) include:
     -   Field experiments in rural China on primary healthcare
     -   Design and evaluation of community health worker interventions for early childhood health and development
     -   Behavioral nudges to recruit providers to MAT training for Opiod Use Disorder in North Carolina
-
 :::
+
 ::: {.column width="40%"}
-**SCROLL DOWN TO READ**
-![](media/nobel.jpg){.align-center}[Nobel Prize in Economics 2019 was awarded jointly to Abhijit Banerjee, Esther Duflo and Michael Kremer "for their experimental approach to alleviating global poverty"](https://www.pbs.org/newshour/economy/nobel-awarded-to-3-economists-for-work-to-alleviate-poverty)
+**SCROLL DOWN TO READ** ![](media/nobel.jpg){.align-center}[Nobel Prize in Economics 2019 was awarded jointly to Abhijit Banerjee, Esther Duflo and Michael Kremer "for their experimental approach to alleviating global poverty"](https://www.pbs.org/newshour/economy/nobel-awarded-to-3-economists-for-work-to-alleviate-poverty)
 :::
-::::::
+:::::
 
-## {background-image="media/fieldwork.jpg"}
-
-
+##  {background-image="media/fieldwork.jpg"}
 
 ## Teaching Assistant: Yumeng Du
 
@@ -106,36 +102,37 @@ Experiments and Machine Learning for Health Services Research
 
 ## Experiments and Machine Learning for HSR
 
-::::::{.columns}
+:::::: columns
 ::: {.column width="60%"}
 -   **Randomized experiments:** the **gold standard** for testing mechanisms and interpretability.
 -   **Machine Learning**: Ideal for useful predictions when interpretability or theory is less critical.
 -   **Bridging the Divide**:
     -   New methods apply core ML principles to causal inference.
-        - As we'll see, parts of causal inference problems can be recast as prediction problems.
+        -   As we'll see, parts of causal inference problems can be recast as prediction problems.
     -   Powerful tools for theory-building and expanding scope of feasible research.
 :::
-::: {.column width="40%"}
+
+:::: {.column width="40%"}
 ::: callout-note
 **Important!**
 
-You'll hear the term "causal machine learning" in the literature. **This is a misnomer!** 
+You'll hear the term "causal machine learning" in the literature. **This is a misnomer!**
 
 Machine Learning is about prediction. **Period**. It does not magically solve the causal inference problem.
 
 **It CAN**:
 
-1. Help strengthen plausibility of existing exclusion restriction in some cases
-2. Allow us to study treatment effect heterogeneity in new ways
+1.  Help strengthen plausibility of existing exclusion restriction in some cases
+2.  Allow us to study treatment effect heterogeneity in new ways
 :::
-:::
+::::
 ::::::
 
 ## Reproducibility
 
 ### Reproducibility is a Fundamental Principle of Science
 
--   Good experiments are necessarily reproducible. 
+-   Good experiments are necessarily reproducible.
     -   Clear, well-documented protocols, reproducible data collection, and clear and reproducible analysis.
     -   The "reproducibility crisis" in some fields (e.g. psychology). This is actually a good thing! Only possible to confirm results if they are reproducible.
 -   **Reproducibility and ML**:
@@ -147,52 +144,50 @@ Machine Learning is about prediction. **Period**. It does not magically solve th
 # Core Themes of the Course
 
 ## Causal Inference as a Missing Data Problem
-::::::{.columns}
+
+::::: columns
 ::: {.column width="50%"}
 -   **The Fundamental Problem of Causal Inference**:
     -   We cannot observe a unit in multiple states of the world simultaneously.
     -   Represented as "missing data" in potential outcomes.
-- **Experimentation Solves under some key assumptions**:
+-   **Experimentation Solves under some key assumptions**:
     1.  SUTVA.
     2.  Observability.
     3.  Complete Compliance.
     4.  Statistical Independence.
 :::
+
 ::: {.column width="50%"}
+| Unit | Treatment (W) | Y(0) | Y(1) | Observed Outcome |
+|------|---------------|------|------|------------------|
+| 1    | 1             | ?    | 5    | 5                |
+| 2    | 0             | 3    | ?    | 3                |
+| 3    | 1             | ?    | 6    | 6                |
+| 4    | 0             | 4    | ?    | 4                |
 
-| Unit | Treatment \(W\) | Y(0) | Y(1) | Observed Outcome |
-|------|--------------|------|------|------------------|
-| 1    | 1            | ?    | 5    | 5                |
-| 2    | 0            | 3    | ?    | 3                |
-| 3    | 1            | ?    | 6    | 6                |
-| 4    | 0            | 4    | ?    | 4                |
-
-- **Problem:** We can only observe either \(Y(0)\) or \(Y(1)\) but not both for any individual.
-
+-   **Problem:** We can only observe either (Y(0)) or (Y(1)) but not both for any individual.
 :::
-::::::
-
+:::::
 
 ## Randomization recovers the ATE on average.
 
-- Potential outcomes: $Y_i(1)$ and $Y_i(0)$
-- Treatment indicator: $W_i = 1$ if treated, $W_i = 0$ if control
-- Observed outcome:  $Y_i = W_iY_i(1) + (1 - W_i)Y_i(0)$
-- Average Treatment Effect (ATE):  $\tau = \mathbb{E}[Y_i(1) - Y_i(0)]$
+-   Potential outcomes: $Y_i(1)$ and $Y_i(0)$
+-   Treatment indicator: $W_i = 1$ if treated, $W_i = 0$ if control
+-   Observed outcome: $Y_i = W_iY_i(1) + (1 - W_i)Y_i(0)$
+-   Average Treatment Effect (ATE): $\tau = \mathbb{E}[Y_i(1) - Y_i(0)]$
 
-Randomization ensures that treatment is **independent** of potential outcomes:  
+Randomization ensures that treatment is **independent** of potential outcomes:
 
 $$
 W_i \perp \!\!\! \perp (Y_i(0), Y_i(1)),
-$$ 
+$$
 
-Hence, $\mathbb{E}[Y | W_i = w] = \mathbb{E}[Y_i(w) | W_i = w] = \mathbb{E}[Y_i(w)]$ for all  $w \in \{0, 1\}$.
+Hence, $\mathbb{E}[Y | W_i = w] = \mathbb{E}[Y_i(w) | W_i = w] = \mathbb{E}[Y_i(w)]$ for all $w \in \{0, 1\}$.
 
-Therefore, the difference between $Y_i(1)$ and $Y_i(0)$ is the ATE:  
+Therefore, the difference between $Y_i(1)$ and $Y_i(0)$ is the ATE:\
 $$
 \mathbb{E}[Y_i(1) - Y_i(0)] = \mathbb{E}[Y_i(1)] - \mathbb{E}[Y_i(0)] = \tau.
 $$
-
 
 ## Experimental Problems: EP1 & EP2
 
@@ -200,35 +195,31 @@ $$
 
 1.  **The Effects of Causes** (Internal Validity):
     -   Do assumptions in the potential outcomes framework hold?
-    
-2. **The Causes of Effects** (Mediators and Moderators):
+2.  **The Causes of Effects** (Mediators and Moderators):
     -   What drives the effects we see?
 
 ### EP2: External Validity
 
-1. **Generalizability**: Would it work in different settings?
-    
+1.  **Generalizability**: Would it work in different settings?
+
     -   People / populations
     -   Contexts
 
-2. **Scalability**: Can it scale to create meaningful impact?
+2.  **Scalability**: Can it scale to create meaningful impact?
 
 # Primer on Experiments in Social Science
 
 ## Data Generation and Modeling for Causal Inference
 
-::::{.columns}
-::: {.column width="50%"}   
-
-- **Controlled**: researcher knows and controls the assignment mechanism
-- **Uncontrolled**: researcher assignment mechanism neither controls nor knows the assignment mechanism
+::::: columns
+::: {.column width="50%"}
+-   **Controlled**: researcher knows and controls the assignment mechanism
+-   **Uncontrolled**: researcher assignment mechanism neither controls nor knows the assignment mechanism
 
 ![Source: [List (2009)](https://bpb-us-w2.wpmucdn.com/voices.uchicago.edu/dist/f/1276/files/2018/09/22-118-sqq0ac.pdf)](media/ListExperimentalBridge.png){.nostretch width="700px"}
-
-
 :::
-::: {.column width="50%"}
 
+::: {.column width="50%"}
 -   **Lab Experiments**: Controlled settings, abstract framing, imposed rules.
 -   **Field Experiments**:
     -   **Artefactual Field Experiment (AFE)**: Non-standard subject pool.
@@ -236,25 +227,20 @@ $$
     -   **Natural Field Experiment (NFE)**: Subjects unaware they are in an experiment.
 -   **Survey Experiments**:
     -   Embedded in survey designs.
-
-::: 
-::::
-
-
+:::
+:::::
 
 ## 7 Criteria that define field experiments
 
-- **Experimental Subjects: Population and Selection**
-  - The nature of the subject pool
-  - The nature of the information that subjects bring to the experimental task
-  - Selection into the experiment
-
-- **Experimental Environment**
-  - The nature of the commodity in the experiment
-  - The nature of the experimental task
-  - The nature of the stakes
-  - Experimental proclamation
-
+-   **Experimental Subjects: Population and Selection**
+    -   The nature of the subject pool
+    -   The nature of the information that subjects bring to the experimental task
+    -   Selection into the experiment
+-   **Experimental Environment**
+    -   The nature of the commodity in the experiment
+    -   The nature of the experimental task
+    -   The nature of the stakes
+    -   Experimental proclamation
 
 ## Choosing the Right Experiment
 
@@ -297,16 +283,15 @@ $$
 
 ## Assessments
 
--   **Pre-class Quizzes (10%)**: 
-    - Test your understanding of key concepts
-    - Request clarification on specific points
-
+-   **Pre-class Quizzes (10%)**:
+    -   Test your understanding of key concepts
+    -   Request clarification on specific points
 -   **Lab Assignments (25%)**: Practical applications and analysis.
 -   **Exams (35%)**: Evaluate theoretical and practical understanding.
-- **Semester Project (30%)**: Research application.
+-   **Semester Project (30%)**: Research application.
     -   **Pre-analysis Plan (15%)**: Develop and document a structured analysis plan.
     -   **Final Paper (15%)**: Synthesize course material into a research application.
-    -  **Details on class project to come. **
+    -   **Details on class project to come.**
 
 ## Resources and Support
 

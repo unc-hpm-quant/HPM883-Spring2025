@@ -5,7 +5,7 @@ subtitle: "Class 2: A Field Experiment in Health Services Research"
 
 ## Overview
 
-Guest Lecture by [Dr. Dorien Emmers](https://sccei.fsi.stanford.edu/reap/people/dorien-emmers)
+{{< fa person-chalkboard size=2x >}} Guest Lecture by [Dr. Dorien Emmers](https://sccei.fsi.stanford.edu/reap/people/dorien-emmers)
 
 ::: {.callout-warning appearance="simple"}
 ## Class will be remote-only
@@ -16,7 +16,13 @@ Zoom link: <https://unc.zoom.us/j/7840211370?omn=97363476255>
 
 ### Preparation
 
--   Read: [Using Community Health Workers to Deliver a Scalable Integrated Parenting Program in Rural China: A Cluster Randomized Controlled Trial](https://app.perusall.com/courses/hpm-883/using-community-health-workers-to-deliver-a-scalable-integrated-parenting-program-in-rural-china-a-cluster-randomized-controlled-trial?assignmentId=jSe6qk9odjR8ngSFW&part=1)
+
+**Skim:** [Using Community Health Workers to Deliver a Scalable Integrated Parenting Program in Rural China: A Cluster Randomized Controlled Trial](https://app.perusall.com/courses/hpm-883/using-community-health-workers-to-deliver-a-scalable-integrated-parenting-program-in-rural-china-a-cluster-randomized-controlled-trial) 
+    
+-  **Optional** 
+    -  **Download Replication Data and Code:** [<i class="fa-sharp fa-solid fa-code fa-flip" style="color: #74C0FC;" title="Replication data and code"></i>](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/XBGUUL)
+    -  Dr. Emmers wrote this analysis code in Stata (Boo! {{< fa smile size=1x >}}). Try converting it to R using the [`stata2r`](https://github.com/seanmcraig/stata2r) package.
+
 
 ::: callout-tip
 ## Perusall
@@ -25,6 +31,13 @@ Perusall is a free online platform that allows you to collaboratively annotate c
 \
 Although it is a good way to engage with your classmates around the material, it is not required that you comment on Perusall. If you wish, you can just download the readings directly.
 :::
+
+- **Submit:** Any questions you have for Dr. Emmers? Submit to the `#guest-lecture-questions` channel on Slack
+
+### In Class
+
+-   [Slides]()
+
 
 ::: callout-important
 ## Introductory Survey Due by end of day on Jan 15

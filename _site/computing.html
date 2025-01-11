@@ -6,6 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Sean Sylvia">
+<meta name="dcterms.date" content="2025-01-11">
 
 <title>Computing – HPM 883</title>
 <style>
@@ -20,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -29,6 +65,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./unit-0/unit-0-foundations-1.html" rel="next">
+<link href="./resources.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -38,8 +76,10 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-dece3bd051e391dd7205a6b15f93dc59.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-21090fed33d84cfa10535a3246644c3e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-c1d45ff13d6a82783c1d68f0afb24cfd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark-135ac4d113b30199e54d7437fe66c954.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -67,6 +107,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<meta name="quarto:status" content="draft">
 
 
 </head>
@@ -74,13 +115,13 @@ ul.task-list li input[type="checkbox"] {
 <body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top"><div id="quarto-draft-alert" class="alert alert-warning"><i class="bi bi-pencil-square"></i>Draft</div>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Computing</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./computing.html">Computing</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -232,8 +273,34 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#class-computing-guide-and-tips" id="toc-class-computing-guide-and-tips" class="nav-link active" data-scroll-target="#class-computing-guide-and-tips">Class Computing Guide and Tips</a>
+  <ul class="collapse">
+  <li><a href="#useful-guides" id="toc-useful-guides" class="nav-link" data-scroll-target="#useful-guides">Useful Guides</a></li>
+  <li><a href="#computer-setup" id="toc-computer-setup" class="nav-link" data-scroll-target="#computer-setup">Computer Setup</a>
+  <ul class="collapse">
+  <li><a href="#using-a-package-manager" id="toc-using-a-package-manager" class="nav-link" data-scroll-target="#using-a-package-manager">Using a Package Manager</a></li>
+  <li><a href="#installing-r" id="toc-installing-r" class="nav-link" data-scroll-target="#installing-r">Installing R</a></li>
+  </ul></li>
+  <li><a href="#git-and-github" id="toc-git-and-github" class="nav-link" data-scroll-target="#git-and-github">Git and GitHub</a></li>
+  <li><a href="#using-r" id="toc-using-r" class="nav-link" data-scroll-target="#using-r">Using R</a>
+  <ul class="collapse">
+  <li><a href="#r-for-stata-users" id="toc-r-for-stata-users" class="nav-link" data-scroll-target="#r-for-stata-users">R for Stata users</a></li>
+  </ul></li>
+  <li><a href="#ides" id="toc-ides" class="nav-link" data-scroll-target="#ides">IDEs</a>
+  <ul class="collapse">
+  <li><a href="#the-rstudio-ide" id="toc-the-rstudio-ide" class="nav-link" data-scroll-target="#the-rstudio-ide">The RStudio IDE</a></li>
+  <li><a href="#visual-studio-code-vscode" id="toc-visual-studio-code-vscode" class="nav-link" data-scroll-target="#visual-studio-code-vscode">Visual Studio Code (VSCode)</a></li>
+  </ul></li>
+  <li><a href="#literate-programming-and-quarto" id="toc-literate-programming-and-quarto" class="nav-link" data-scroll-target="#literate-programming-and-quarto">Literate Programming and Quarto</a></li>
+  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">Bibliography</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/hpm883/edit/main/computing.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -247,7 +314,19 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sean Sylvia </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 11, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -257,8 +336,122 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="class-computing-guide-and-tips" class="level1">
+<h1>Class Computing Guide and Tips</h1>
+<p>This page is a guide for “best practices” for writing code and working with data. It is a work in progress, so please let Sean or the TA know if you have any suggestions for improvement.</p>
+<div class="callout callout-style-simple callout-note" style="color: #002D72">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>This is meant as a general quide. For specific instructions on completing labs and assignments, please refer to the lab and assignment instructions.</p>
+</div>
+</div>
+</div>
+<section id="useful-guides" class="level2">
+<h2 class="anchored" data-anchor-id="useful-guides">Useful Guides</h2>
+<ul>
+<li><a href="https://povertyaction.github.io/ipa-data-tech-handbook/index.html">IPA Data Science, Engineering, and Technology Handbook</a></li>
+<li><a href="https://aeturrell.github.io/coding-for-economists/intro.html">Coding for Economists</a></li>
+</ul>
+</section>
+<section id="computer-setup" class="level2">
+<h2 class="anchored" data-anchor-id="computer-setup">Computer Setup</h2>
+<section id="using-a-package-manager" class="level3">
+<h3 class="anchored" data-anchor-id="using-a-package-manager">Using a Package Manager</h3>
+<p>A package manager helps to standardize how you install and update software on your computer. Generally, you want to use a package manager to install any programs that are used globally on your computer. By “globally”, we mean that it is a program that is used across many projects and computing environments.</p>
+<section id="windows" class="level4">
+<h4 class="anchored" data-anchor-id="windows">Windows</h4>
+<p>If using a Windows computer with Windows 10 or later, use the Windows Package Manager, <a href="https://learn.microsoft.com/en-us/windows/package-manager/winget/">winget</a>.</p>
+<p>Example:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install a single program (e.g. GitHub for command line)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">winget</span> install GitHub.cli</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="macos" class="level4">
+<h4 class="anchored" data-anchor-id="macos">macOS</h4>
+<p>If using a macOS computer, use Homebrew.</p>
+<p>Example:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install a single program (e.g. GitHub for command line)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install gh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="installing-r" class="level3">
+<h3 class="anchored" data-anchor-id="installing-r">Installing R</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Windows Install r</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">winget</span> install <span class="at">--id</span> R-project.R</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># macOS Install R</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install <span class="at">--cask</span> r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="git-and-github" class="level2">
+<h2 class="anchored" data-anchor-id="git-and-github">Git and GitHub</h2>
+</section>
+<section id="using-r" class="level2">
+<h2 class="anchored" data-anchor-id="using-r">Using R</h2>
+<p>Scared of R? Not to worry! You’ll pick it up as we go - I promise! During class we will go through code slowly at first and spend some time explaining what each line of code does. You’ll be R literate in no time!</p>
+<p>If you do want to learn a bit of R on your own, here are some excellent resources:</p>
+<ul>
+<li><a href="https://r4ds.had.co.nz/">R for Data Science</a> by Hadley Wickham</li>
+</ul>
+<section id="r-for-stata-users" class="level3">
+<h3 class="anchored" data-anchor-id="r-for-stata-users">R for Stata users</h3>
+<p><strong>Nope, you cannot turn in assignments in Stata, sorry!</strong> <i class="fa-solid fa-face-smile" aria-label="face-smile"></i> Why? It’s not just that it’s much harder to run the class when we’re using different software (it is!), but there are several reasons that I strongly believe it is best for you to become comfortable with R:</p>
+<ul>
+<li>R is FREEEEE</li>
+<li>R has an open source ecosystem. This means
+<ul>
+<li>Immediate access to cutting-edge statistical methods through community contributions</li>
+<li>Extensive library of packages for specialized analyses</li>
+<li>Integration capabilities with other tools like Git, Python, and database systems</li>
+</ul></li>
+<li>R is just better for advanced data analysis
+<ul>
+<li>Ability to handle multiple datasets simultaneously</li>
+<li>Superior graphical capabilities</li>
+<li>Better tools for web scraping, JSON parsing, and database querying</li>
+</ul></li>
+<li>In industry, evidence that <a href="https://www.r-bloggers.com/2022/10/data-science-software-popularity-update/">R has 5x greater demand than Stata</a> on the job market</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Learning Strategy
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Rather than directly mapping Stata commands to R, it’s more effective to first understand R’s fundamental concepts and then gradually build up to specific tasks like data management and regression models.</p>
+</div>
+</div>
+<p>Here are some excellent tools for Stata people to learn R:</p>
+<ul>
+<li><a href="https://stata2r.github.io/">Stata2R Website</a></li>
+<li><a href="https://osf.io/nj6bf/">World Bank DIME R for Advanced Stata Users Workshop</a></li>
+</ul>
+</section>
+</section>
+<section id="ides" class="level2">
+<h2 class="anchored" data-anchor-id="ides">IDEs</h2>
+<section id="the-rstudio-ide" class="level3">
+<h3 class="anchored" data-anchor-id="the-rstudio-ide">The RStudio IDE</h3>
+</section>
+<section id="visual-studio-code-vscode" class="level3">
+<h3 class="anchored" data-anchor-id="visual-studio-code-vscode">Visual Studio Code (VSCode)</h3>
+</section>
+</section>
+<section id="literate-programming-and-quarto" class="level2">
+<h2 class="anchored" data-anchor-id="literate-programming-and-quarto">Literate Programming and Quarto</h2>
+</section>
+<section id="bibliography" class="level2">
+<h2 class="anchored" data-anchor-id="bibliography">Bibliography</h2>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -822,6 +1015,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./resources.html" class="pagination-link" aria-label="Resources">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Resources</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./unit-0/unit-0-foundations-1.html" class="pagination-link" aria-label="Class 1: Introduction">
+        <span class="nav-page-text">Class 1: Introduction</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -830,7 +1035,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/hpm883/edit/main/computing.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/hpm883/edit/main/computing.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
