@@ -41,17 +41,4 @@ Although it is a good way to engage with your classmates around the material, it
 
 ### Additional Materials
 
-## Class 2: A Field Experiment in Health Services Research
-
-Guest Lecture by [Dr. Dorien Emmers](https://sccei.fsi.stanford.edu/reap/people/dorien-emmers)
-
-::: {.callout-warning appearance="simple"}
-## Class will be remote-only
-
-Join from the comfort of your own home!\
-Zoom link: <https://unc.zoom.us/j/7840211370?omn=97363476255>
-:::
-
-### Preparation
-
--   Read: [Using Community Health Workers to Deliver a Scalable Integrated Parenting Program in Rural China: A Cluster Randomized Controlled Trial](https://app.perusall.com/courses/hpm-883/using-community-health-workers-to-deliver-a-scalable-integrated-parenting-program-in-rural-china-a-cluster-randomized-controlled-trial?assignmentId=jSe6qk9odjR8ngSFW&part=1)
+##
