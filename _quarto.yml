@@ -80,6 +80,8 @@ website:
             text: "Class 1: Introduction"
           - href: unit-0/unit-0-foundations-2.qmd
             text: "Class 2: A Field Experiment in Health Services Research"
+          - href: unit-0/unit-0-foundations-3.qmd
+            text: "Class 3: Computing for Reproducible Research"
       
 
   page-footer:

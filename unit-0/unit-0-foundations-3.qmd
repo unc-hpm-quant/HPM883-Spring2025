@@ -1,0 +1,38 @@
+---
+title: "Unit 0: Foundations"
+subtitle: "Class 3: Computing for Reproducible Research"
+draft: true
+---
+
+## Overview
+
+
+## Learning Objectives
+
+1. Learn importance of reproducible research
+2. Learn key principles of reproducible research
+3. Learn how to design and implement a reproducible research workflow 
+    - Version control using git and github
+    - Literate programming using Quarto
+    - Package managemenet using `renv`
+
+## Preparation
+
+### 1. **Read/Watch/Listen**:
+
+
+### 2. **Setup**:
+
+
+
+## In Class
+
+1. Introduction to the project template 
+
+2. Reproducible Research Workflow
+
+
+
+
+
+
