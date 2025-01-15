@@ -9,19 +9,19 @@ Reproducible research is, quite frankly, one of the most important aspects of sc
 
 ## A. Why Reproducibility Matters
 
-1.	Definition
+1.  Definition
 
 In quantitative research, reproducibility means another researcher—or your future self with only half a memory of what you did—can take the same data and code, then arrive at the same results. No secret incantations, arcane folder structures, or chanting under the full moon required.
-	
-2.	Motivations
 
-- Transparency: Ever heard the phrase “Trust me, I’m a scientist”? Yeah, that doesn’t fly so well if your code is locked away in a cryptically named folder like “analysis_final_FINAL_noReally.r”. By exposing how you clean, analyze, and report data, you bolster confidence in your results.
+2.  Motivations
 
-- Collaboration: If multiple people have to dig through your code to figure out why you did something, at least make it a pleasant excavation. A reproducible workflow means you can share your project with colleagues, and they’ll only have mild confusion instead of sheer panic.
+-   Transparency: Ever heard the phrase “Trust me, I’m a scientist”? Yeah, that doesn’t fly so well if your code is locked away in a cryptically named folder like “analysis_final_FINAL_noReally.r”. By exposing how you clean, analyze, and report data, you bolster confidence in your results.
 
-- Efficiency: Imagine re-running your entire analysis with a single command. Now contrast that with rummaging through 57 scripts, each called “analysis2_v2_copy.R”. Reproducibility helps you avoid the second scenario—and possibly a meltdown.
+-   Collaboration: If multiple people have to dig through your code to figure out why you did something, at least make it a pleasant excavation. A reproducible workflow means you can share your project with colleagues, and they’ll only have mild confusion instead of sheer panic.
 
-- Error Detection: Because let’s face it, even the best of us occasionally type mean when we mean median. With reproducible code, errors can be spotted quickly and corrected before your findings end up on the front page of the Journal of Irreproducible Results.
+-   Efficiency: Imagine re-running your entire analysis with a single command. Now contrast that with rummaging through 57 scripts, each called “analysis2_v2_copy.R”. Reproducibility helps you avoid the second scenario—and possibly a meltdown.
+
+-   Error Detection: Because let’s face it, even the best of us occasionally type mean when we mean median. With reproducible code, errors can be spotted quickly and corrected before your findings end up on the front page of the Journal of Irreproducible Results.
 
 Reproducibility, in short, saves your sanity and safeguards your scientific honor.
 
@@ -33,11 +33,11 @@ So how do we make all this happen? We bring in the cavalry: version control, lit
 
 Version control is like a well-ordered diary for your project: it tracks every change—no matter how small—across time, preserving your code’s evolutionary history in tidy “commits.”
 
-- Tracks Changes: Every minor tweak, even the moment you changed a comma to a semicolon and saved your entire analysis from ruin.
+-   Tracks Changes: Every minor tweak, even the moment you changed a comma to a semicolon and saved your entire analysis from ruin.
 
-- Facilitates Collaboration: Gone are the days of emailing zip files named “Project_Latest.zip” back and forth. Now, you can break things collaboratively on GitHub and blame it on the merge conflict.
+-   Facilitates Collaboration: Gone are the days of emailing zip files named “Project_Latest.zip” back and forth. Now, you can break things collaboratively on GitHub and blame it on the merge conflict.
 
-- Commit History: “Who changed my code last Thursday?” Git knows. Git always knows.
+-   Commit History: “Who changed my code last Thursday?” Git knows. Git always knows.
 
 Think of GitHub as your code’s remote spa retreat—safe, relaxing, and occasionally throwing small hissy fits called “merge conflicts.”
 
@@ -45,33 +45,33 @@ Think of GitHub as your code’s remote spa retreat—safe, relaxing, and occasi
 
 Some folks write code in one file, then paste results into a Word document, and so on. Then they wonder why their final paper includes the wrong p-values. Enter literate programming.
 
-- Integrated Code + Narrative: Quarto, R Markdown, knitr, and friends let you keep code, text, and figures in one place, so you never again get lost in the labyrinth of “Oh wait, which file made that plot?”
+-   Integrated Code + Narrative: Quarto, R Markdown, knitr, and friends let you keep code, text, and figures in one place, so you never again get lost in the labyrinth of “Oh wait, which file made that plot?”
 
-- Minimizes Copy-Paste Errors: If your results are automatically woven into your final report, you can’t “forget to update Table 3.” All you do is re-run the document, and—voilà!—your latest analysis magically appears.
+-   Minimizes Copy-Paste Errors: If your results are automatically woven into your final report, you can’t “forget to update Table 3.” All you do is re-run the document, and—voilà!—your latest analysis magically appears.
 
-- Seamless Feedback Loop: Make a change, watch the effect ripple through the entire document. It’s like having the world’s fastest (and least sarcastic) collaborator.
+-   Seamless Feedback Loop: Make a change, watch the effect ripple through the entire document. It’s like having the world’s fastest (and least sarcastic) collaborator.
 
 ### 3. Environment Management (renv, or other)
 
 Picture this: You wrote a brilliant script six months ago, but now it refuses to run because some obscure package updated. Environment management tools let you freeze your code in time.
 
-- Captures R Package Versions: Tools like renv let you record all the packages (and their versions) you used, so re-installing them later won’t feel like Jumanji in dependency land.
+-   Captures R Package Versions: Tools like renv let you record all the packages (and their versions) you used, so re-installing them later won’t feel like Jumanji in dependency land.
 
-- Consistency Over Time: If you want your analyses to work in five years—or on your advisor’s laptop next Tuesday—document your environment so it can be replicated exactly.
+-   Consistency Over Time: If you want your analyses to work in five years—or on your advisor’s laptop next Tuesday—document your environment so it can be replicated exactly.
 
-- Fewer “It Worked On My Machine” Excuses: Because telling your collaborators to “just figure it out” is not a good look.
+-   Fewer “It Worked On My Machine” Excuses: Because telling your collaborators to “just figure it out” is not a good look.
 
 ### 4. Project Structure
 
 If your current method involves flinging scripts and data into a single folder named “Stuff,” we might have a gentle suggestion: adopt a standardized project structure.
 
-- Data Folder: A sanctuary for raw files, processed data, or your deep, dark secrets—just keep it consistent.
+-   Data Folder: A sanctuary for raw files, processed data, or your deep, dark secrets—just keep it consistent.
 
-- R Scripts or Quarto Documents: Store code for data cleaning, analysis, and visualization in separate scripts or well-labeled notebooks. It’s okay to have multiple files—just label them in a way that future you can actually decipher.
+-   R Scripts or Quarto Documents: Store code for data cleaning, analysis, and visualization in separate scripts or well-labeled notebooks. It’s okay to have multiple files—just label them in a way that future you can actually decipher.
 
-- Output Folder: All those shiny plots and tables? Keep them in one place. Resist the urge to edit them manually; they should be generated by your scripts, not conjured by hand.
+-   Output Folder: All those shiny plots and tables? Keep them in one place. Resist the urge to edit them manually; they should be generated by your scripts, not conjured by hand.
 
-- README: The wise old gatekeeper that explains your entire project to anyone who stops by (including you, after you forget everything).
+-   README: The wise old gatekeeper that explains your entire project to anyone who stops by (including you, after you forget everything).
 
 A tidy folder structure is a gift to yourself. And your future co-authors. And your future self’s sanity.
 
@@ -79,15 +79,15 @@ A tidy folder structure is a gift to yourself. And your future co-authors. And y
 
 Documentation is the special sauce that holds everything together—or, in some cases, the glaring absence that leads to frantic Slack messages at 2 a.m.
 
-- Commit Messages: If your commit message says “Update stuff,” your collaborators may weep softly. Be descriptive—like “Fix bug in logistic regression loop that caused meltdown.”
+-   Commit Messages: If your commit message says “Update stuff,” your collaborators may weep softly. Be descriptive—like “Fix bug in logistic regression loop that caused meltdown.”
 
-- Code Comments: Add them wherever something might confuse your labmates or your brain on a Monday morning. The more complicated the code, the more we need small notes to guide us.
+-   Code Comments: Add them wherever something might confuse your labmates or your brain on a Monday morning. The more complicated the code, the more we need small notes to guide us.
 
-- README or docs/ Folder: Provide an at-a-glance explanation of the project’s purpose, the dataset, how to replicate results, and any known issues. It’s your public service announcement to the world.
+-   README or docs/ Folder: Provide an at-a-glance explanation of the project’s purpose, the dataset, how to replicate results, and any known issues. It’s your public service announcement to the world.
 
 If you’re feeling particularly poetic, documentation is the short story you write about your data, so that others can appreciate its plot—without rummaging through all the raw scripts to figure out who the villain is (spoiler: it’s usually missing data).
 
-### Takeaway 
+### Takeaway
 
 Reproducible research is about ensuring that data and code aren’t locked in the dusty attic of your personal computer—half-labeled and wholly misunderstood. By relying on tools like Git, Quarto, and renv, and by maintaining a disciplined project structure and documentation process, you guarantee that your results are both credible and easy to revisit.
 
@@ -97,13 +97,12 @@ Now let's get our hands dirty with some of the tools for reproducibility. We'll 
 
 ## 1. GitHub Template Repository
 
-1. **Clone the Repository**  
-   - Go to the provided URL or use `git clone <REPO_URL>` in the terminal.
-   - In RStudio: "File" > "New Project" > "Version Control" > "Git" and paste the repo URL.
+1.  **Clone the Repository**
+    -   Go to the provided URL or use `git clone <REPO_URL>` in the terminal.
+    -   In RStudio: "File" \> "New Project" \> "Version Control" \> "Git" and paste the repo URL.
+2.  **Review Project Structure**
 
-2. **Review Project Structure**  
-   
-```bash
+``` bash
    rct-analysis-template/
    ├── README.md
    ├── .gitignore
@@ -116,70 +115,77 @@ Now let's get our hands dirty with some of the tools for reproducibility. We'll 
    └── output/
 ```
 
-3.	**Install Dependencies**
-    - If renv is used, run renv::restore() in the project to sync package versions.
+3.  **Install Dependencies**
+    -   If renv is used, run renv::restore() in the project to sync package versions.
 
 ## 2. Analyzing the Simulated RCT Data
-    
-- **Data**: rct_sim_data.csv includes columns 
-    - subject_id
-    - treatment
-    - outcome
-    - age 
-    - gender, etc.
-	
-- **Goal**: Estimate the average treatment effect, create summaray tables, and visualize distributions.
+
+-   **Data**: rct_sim_data.csv includes columns
+    -   subject_id
+    -   treatment
+    -   outcome
+    -   age
+    -   gender, etc.
+-   **Goal**: Estimate the average treatment effect, create summaray tables, and visualize distributions.
 
 ### 2.1 Open analysis.qmd
 
-	1.	Look at the top YAML and code chunks.
-	2.	Notice how code and text are interwoven.
+```         
+1.  Look at the top YAML and code chunks.
+2.  Notice how code and text are interwoven.
+```
 
 ### 2.2 Render the Document
 
-- In RStudio, click “Render” or run:
+-   In RStudio, click “Render” or run:
 
 ```{bash}
+#| eval: false
 quarto::quarto_render("analysis/analysis.qmd")
 ```
 
 The output (HTML, PDF, etc.) will appear in your output folder or in the same directory.
 
 ## 3. Modify and Commit
-	
-1.	Make a Small Change
+
+1.  Make a Small Change
 
 For example, add a simple plot of outcome vs. treatment:
 
 ```{r}
+#| eval: false
+
 ggplot(rct_data, aes(x = factor(treatment), y = outcome)) +
   geom_boxplot()
 ```
 
-2.	Re-run the document to see the new figure in the rendered output.
-	
-3.	Commit and Push
+2.  Re-run the document to see the new figure in the rendered output.
 
-- Stage your changes:
+3.  Commit and Push
 
-```{}
+-   Stage your changes:
+
+```{bash}
+#| eval: false
+
 git add analysis/analysis.qmd
 git commit -m "Added treatment-outcome boxplot"
 git push origin main
 ```
 
-4.	View on GitHub: Confirm your commit is visible and see the updated code.
+4.  View on GitHub: Confirm your commit is visible and see the updated code.
 
 ## 4. Branching and Pull Requests for bigger or test changes
 
-1. Create a new branch 
+1.  Create a new branch
 
 ```{bash}
+#| eval: false
+
 git checkout -b new-plot
 ```
 
-2. Add Covariates: Update the analysis to adjust for age and gender in a regression model.
-
+2.  Add Covariates: Update the analysis to adjust for age and gender in a regression model.
 
 ## 5. Wrap-Up
 
