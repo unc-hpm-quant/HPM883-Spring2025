@@ -97,12 +97,12 @@ Now let's get our hands dirty with some of the tools for reproducibility. We'll 
 
 ## 0. Guided Computer Setup
 
-- [Computing Setup](unit-0/lec-0-3.html)
+-   [Computing Setup](unit-0/lec-0-3.html)
 
 ## 1. GitHub Template Repository
 
 1.  **Clone the Repository**
-    -   Go to the provided URL or use `git clone <REPO_URL>` in the terminal.
+    -   Go to the provided URL or use `git clone https://github.com/unc-hpm-quant/rct-analysis-template` in the terminal.
     -   In RStudio: "File" \> "New Project" \> "Version Control" \> "Git" and paste the repo URL.
 2.  **Review Project Structure**
 
