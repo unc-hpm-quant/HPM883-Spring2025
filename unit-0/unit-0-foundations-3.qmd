@@ -13,11 +13,16 @@ draft: false
     -   Literate programming using Quarto
     -   Package managemenet using `renv`
 
+## Class will be remote-only
+
+Join from the comfort of your own home!\
+Zoom link: <https://unc.zoom.us/j/98379053109>
+
 ## Preparation
 
 ### 1. **Read/Watch/Listen**:
 
--   Review [Computing](computing.qmd) page
+-   Review [Computing](/computing.qmd) page
 -   Skim: [Reproducibility Lecture](/unit-0/lec-0-3.qmd)
 
 ### 2. **Computing Setup**:
@@ -66,7 +71,9 @@ Once you have completed the above steps, you should be ready for our in-class ac
 ## In Class
 
 -   [Reproducibility Lecture](/unit-0/lec-0-3.qmd)
+-   [RCT Analysis Template Repository](https://github.com/unc-hpm-quant/rct-analysis-template)
 
 ## Additional Resources
 
--   Happy with Git and GitHub for the UseR
+-   [Happy with Git and GitHub for the UseR](https://happygitwithr.com/)
+-   Bryan, Jennifer, 2018. [Excuse Me, Do You Have a Moment to Talk About Version Control?](https://www.tandfonline.com/doi/abs/10.1080/00031305.2017.1399928?casa_token=UFHQ4HFVZDoAAAAA:TEr0v79f7Ng4iZhTl-ErKRCVP7ICxlAaq2ZoKFiWF3tOJz_mF0C4qADuBiBU3kUwOuC6eYVnDnU), The American Statistician.
