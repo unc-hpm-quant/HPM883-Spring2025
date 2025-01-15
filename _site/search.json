@@ -228,5 +228,45 @@
       "Unit 0: Foundations",
       "Class 3: Computing for Reproducible Research"
     ]
+  },
+  {
+    "objectID": "computing.html",
+    "href": "computing.html",
+    "title": "Computing",
+    "section": "",
+    "text": "This page is a guide for “best practices” for writing code and working with data. It is a work in progress, so please let Sean or the TA know if you have any suggestions for improvement.\n\n\n\n\n\n\nThis is meant as a general quide. For specific instructions on completing labs and assignments, please refer to the lab and assignment instructions.\n\n\n\n\n\n\nIPA Data Science, Engineering, and Technology Handbook\nCoding for Economists\n\n\n\n\n\n\nA package manager helps to standardize how you install and update software on your computer. Generally, you want to use a package manager to install any programs that are used globally on your computer. By “globally”, we mean that it is a program that is used across many projects and computing environments.\n\n\nIf using a Windows computer with Windows 10 or later, use the Windows Package Manager, winget.\nExample:\n# Install a single program (e.g. GitHub for command line)\nwinget install GitHub.cli\n\n\n\nIf using a macOS computer, use Homebrew.\nExample:\n# Install a single program (e.g. GitHub for command line)\nbrew install gh\n\n\n\n\n# Windows Install r\nwinget install --id R-project.R\n\n# macOS Install R\nbrew install --cask r\n\n\n\n\n\n\n\nScared of R? Not to worry! You’ll pick it up as we go - I promise! During class we will go through code slowly at first and spend some time explaining what each line of code does. You’ll be R literate in no time!\nIf you do want to learn a bit of R on your own, here are some excellent resources:\n\nR for Data Science by Hadley Wickham\n\n\n\nNope, you cannot turn in assignments in Stata, sorry!  Why? It’s not just that it’s much harder to run the class when we’re using different software (it is!), but there are several reasons that I strongly believe it is best for you to become comfortable with R:\n\nR is FREEEEE\nR has an open source ecosystem. This means\n\nImmediate access to cutting-edge statistical methods through community contributions\nExtensive library of packages for specialized analyses\nIntegration capabilities with other tools like Git, Python, and database systems\n\nR is just better for advanced data analysis\n\nAbility to handle multiple datasets simultaneously\nSuperior graphical capabilities\nBetter tools for web scraping, JSON parsing, and database querying\n\nIn industry, evidence that R has 5x greater demand than Stata on the job market\n\n\n\n\n\n\n\nLearning Strategy\n\n\n\nRather than directly mapping Stata commands to R, it’s more effective to first understand R’s fundamental concepts and then gradually build up to specific tasks like data management and regression models.\n\n\nHere are some excellent tools for Stata people to learn R:\n\nStata2R Website\nWorld Bank DIME R for Advanced Stata Users Workshop",
+    "crumbs": [
+      "Computing"
+    ]
+  },
+  {
+    "objectID": "computing.html#useful-guides",
+    "href": "computing.html#useful-guides",
+    "title": "Computing",
+    "section": "",
+    "text": "IPA Data Science, Engineering, and Technology Handbook\nCoding for Economists",
+    "crumbs": [
+      "Computing"
+    ]
+  },
+  {
+    "objectID": "computing.html#computer-setup",
+    "href": "computing.html#computer-setup",
+    "title": "Computing",
+    "section": "",
+    "text": "A package manager helps to standardize how you install and update software on your computer. Generally, you want to use a package manager to install any programs that are used globally on your computer. By “globally”, we mean that it is a program that is used across many projects and computing environments.\n\n\nIf using a Windows computer with Windows 10 or later, use the Windows Package Manager, winget.\nExample:\n# Install a single program (e.g. GitHub for command line)\nwinget install GitHub.cli\n\n\n\nIf using a macOS computer, use Homebrew.\nExample:\n# Install a single program (e.g. GitHub for command line)\nbrew install gh\n\n\n\n\n# Windows Install r\nwinget install --id R-project.R\n\n# macOS Install R\nbrew install --cask r",
+    "crumbs": [
+      "Computing"
+    ]
+  },
+  {
+    "objectID": "computing.html#using-r",
+    "href": "computing.html#using-r",
+    "title": "Computing",
+    "section": "",
+    "text": "Scared of R? Not to worry! You’ll pick it up as we go - I promise! During class we will go through code slowly at first and spend some time explaining what each line of code does. You’ll be R literate in no time!\nIf you do want to learn a bit of R on your own, here are some excellent resources:\n\nR for Data Science by Hadley Wickham\n\n\n\nNope, you cannot turn in assignments in Stata, sorry!  Why? It’s not just that it’s much harder to run the class when we’re using different software (it is!), but there are several reasons that I strongly believe it is best for you to become comfortable with R:\n\nR is FREEEEE\nR has an open source ecosystem. This means\n\nImmediate access to cutting-edge statistical methods through community contributions\nExtensive library of packages for specialized analyses\nIntegration capabilities with other tools like Git, Python, and database systems\n\nR is just better for advanced data analysis\n\nAbility to handle multiple datasets simultaneously\nSuperior graphical capabilities\nBetter tools for web scraping, JSON parsing, and database querying\n\nIn industry, evidence that R has 5x greater demand than Stata on the job market\n\n\n\n\n\n\n\nLearning Strategy\n\n\n\nRather than directly mapping Stata commands to R, it’s more effective to first understand R’s fundamental concepts and then gradually build up to specific tasks like data management and regression models.\n\n\nHere are some excellent tools for Stata people to learn R:\n\nStata2R Website\nWorld Bank DIME R for Advanced Stata Users Workshop",
+    "crumbs": [
+      "Computing"
+    ]
   }
 ]

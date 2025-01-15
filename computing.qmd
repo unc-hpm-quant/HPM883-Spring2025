@@ -7,7 +7,7 @@ format:
         code-block-style: "default"
         code-block-line-numbers: true
         code-block-background: true
-draft: true
+draft: false
 ---
 
 # Class Computing Guide and Tips
