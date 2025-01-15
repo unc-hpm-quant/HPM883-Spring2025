@@ -1,13 +1,13 @@
 ---
-title: Lab 0
+title: Lab 1
 subtitle: The Hospital of Uncertain Outcomes
 author: Sean Sylvia
-date: "2024-12-31"
-slug: lab-0
+date: "2025-01-22"
+slug: lab-1
 categories: 
     -  Lab
     -  Foundations
-description: "Intro to class computing setup"
+description: "Reproducibility, Potential Outcomes"
 draft: true
 ---
 
@@ -16,8 +16,6 @@ draft: true
 ## Introduction
 
 ### Learning Objectives
-
-
 
 ## The Hospital of Uncertain Outcomes
 
@@ -33,6 +31,4 @@ But there’s hope. Your class has just been hired as “methodology consultants
 
 **Your mission?** Use proper causal inference and machine learning strategies to shed light on the true effects of the hospital’s interventions. Each chapter in your lecture notes begins with a brief “scene” in which the hospital staff face some methodological mishap—then shifts to your step-by-step explanation of the relevant statistical concepts and R code. By the end of the course, you’ll have helped St. Null’s Memorial Hospital finally achieve consistent, credible results, while having a bit of comedic fun along the way.
 
-
----
-
+------------------------------------------------------------------------
