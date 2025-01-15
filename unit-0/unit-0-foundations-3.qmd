@@ -1,78 +1,72 @@
 ---
 title: "Unit 0: Foundations"
 subtitle: "Class 3: Computing for Reproducible Research"
-draft: true
+draft: false
 ---
 
 ## Learning Objectives
 
-1. Learn importance of reproducible research
-2. Learn key principles of reproducible research
-3. Learn how to design and implement a reproducible research workflow 
-    - Version control using git and github
-    - Literate programming using Quarto
-    - Package managemenet using `renv`
+1.  Learn importance of reproducible research
+2.  Learn key principles of reproducible research
+3.  Learn how to design and implement a reproducible research workflow
+    -   Version control using git and github
+    -   Literate programming using Quarto
+    -   Package managemenet using `renv`
 
 ## Preparation
 
 ### 1. **Read/Watch/Listen**:
 
-- Review [Computing](computing.qmd) page
-- Skim: [Reproducibility Lecture](/unit-0/lec-0-3.qmd)
+-   Review [Computing](computing.qmd) page
+-   Skim: [Reproducibility Lecture](/unit-0/lec-0-3.qmd)
 
 ### 2. **Computing Setup**:
 
 To ensure a smooth experience during class, **please follow these steps**:
 
-1. **Install R (v4.x or later)**
-   - [CRAN Download](https://cloud.r-project.org/) or via your preferred package manager.
+1.  **Install R (v4.x or later)**
+    -   [CRAN Download](https://cloud.r-project.org/) or via your preferred package manager.
+2.  **Install RStudio** or a similar IDE
+    -   [RStudio Download](https://posit.co/download/rstudio-desktop/)
+3.  **Install Quarto**
+    -   [Quarto Installation](https://quarto.org/docs/get-started/) – ensures you can render .qmd files.
+4.  **Install Git**
+    -   Confirm Git is accessible from the command line:
 
-2. **Install RStudio** or a similar IDE
-   - [RStudio Download](https://posit.co/download/rstudio-desktop/)
+        ``` bash
+        git --version
+        ```
 
-3. **Install Quarto**
-   - [Quarto Installation](https://quarto.org/docs/get-started/) – ensures you can render .qmd files.
+    -   Windows: [Git for Windows](https://git-scm.com/download/win)\
 
-4. **Install Git**
-   - Confirm Git is accessible from the command line:  
-     ```bash
-     git --version
-     ```
-   - Windows: [Git for Windows](https://git-scm.com/download/win)  
-   - macOS: Use Xcode Command Line Tools or [Homebrew](https://brew.sh/).
+    -   macOS: Use Xcode Command Line Tools or [Homebrew](https://brew.sh/).
+5.  **Create a GitHub Account**
+    -   [GitHub Signup](https://github.com/) – used for version control and code sharing.
+6.  **Set Up Credentials (SSH keys or PAT)**
+    -   Helps push/pull to GitHub without repeated logins.\
+    -   GitHub Docs: [Connecting to GitHub with SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
+7.  **Install Required R Packages**
+    -   In R/RStudio, run:
 
-5. **Create a GitHub Account**
-   - [GitHub Signup](https://github.com/) – used for version control and code sharing.
-
-6. **Set Up Credentials (SSH keys or PAT)**
-   - Helps push/pull to GitHub without repeated logins.  
-   - GitHub Docs: [Connecting to GitHub with SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
-
-7. **Install Required R Packages**
-   - In R/RStudio, run:
-     ```r
-     install.packages(c("tidyverse",
-                        "renv",
-                        "devtools",
-                        "broom",
-                        "infer",
-                        "rmarkdown",
-                        "quarto"))
-     ```
-
-8. **Optional but Recommended: Set Up Renv**
-   - We will use `renv` to manage R package versions.  
-   - [Renv Documentation](https://rstudio.github.io/renv/articles/renv.html)
+        ``` r
+        install.packages(c("tidyverse",
+                           "renv",
+                           "devtools",
+                           "broom",
+                           "infer",
+                           "rmarkdown",
+                           "quarto"))
+        ```
+8.  **Optional but Recommended: Set Up Renv**
+    -   We will use `renv` to manage R package versions.\
+    -   [Renv Documentation](https://rstudio.github.io/renv/articles/renv.html)
 
 Once you have completed the above steps, you should be ready for our in-class activities.
 
 ## In Class
 
-- [Reproducibility Lecture](/unit-0/lec-0-3.qmd)
-
+-   [Reproducibility Lecture](/unit-0/lec-0-3.qmd)
 
 ## Additional Resources
 
-- Happy with Git and GitHub for the UseR
-
-
+-   Happy with Git and GitHub for the UseR

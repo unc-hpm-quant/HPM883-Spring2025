@@ -57,39 +57,6 @@
     ]
   },
   {
-    "objectID": "unit-0/unit-0-foundations-3.html#learning-objectives",
-    "href": "unit-0/unit-0-foundations-3.html#learning-objectives",
-    "title": "Unit 0: Foundations",
-    "section": "Learning Objectives",
-    "text": "Learning Objectives\n\nLearn importance of reproducible research\nLearn key principles of reproducible research\nLearn how to design and implement a reproducible research workflow\n\nVersion control using git and github\nLiterate programming using Quarto\nPackage managemenet using renv",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Class 3: Computing for Reproducible Research"
-    ]
-  },
-  {
-    "objectID": "unit-0/unit-0-foundations-3.html#preparation",
-    "href": "unit-0/unit-0-foundations-3.html#preparation",
-    "title": "Unit 0: Foundations",
-    "section": "Preparation",
-    "text": "Preparation\n\n1. Read/Watch/Listen:\n\nHappy with Git and GitHub for the UseR\n\n\n\n2. Computing Setup:\nTo ensure a smooth experience during class, please follow these steps:\n\nInstall R (v4.x or later)\n\nCRAN Download or via your preferred package manager.\n\nInstall RStudio or a similar IDE\n\nRStudio Download\n\nInstall Quarto\n\nQuarto Installation – ensures you can render .qmd files.\n\nInstall Git\n\nConfirm Git is accessible from the command line:\ngit --version\nWindows: Git for Windows\n\nmacOS: Use Xcode Command Line Tools or Homebrew.\n\nCreate a GitHub Account\n\nGitHub Signup – used for version control and code sharing.\n\nSet Up Credentials (SSH keys or PAT)\n\nHelps push/pull to GitHub without repeated logins.\n\nGitHub Docs: Connecting to GitHub with SSH\n\nInstall Required R Packages\n\nIn R/RStudio, run:\ninstall.packages(c(\"tidyverse\",\n                   \"renv\",\n                   \"devtools\",\n                   \"broom\",\n                   \"infer\",\n                   \"rmarkdown\",\n                   \"quarto\"))\n\nOptional but Recommended: Set Up Renv\n\nWe will use renv to manage R package versions.\n\nRenv Documentation\n\n\nOnce you have completed the above steps, you should be ready for our in-class activities.",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Class 3: Computing for Reproducible Research"
-    ]
-  },
-  {
-    "objectID": "unit-0/unit-0-foundations-3.html#in-class",
-    "href": "unit-0/unit-0-foundations-3.html#in-class",
-    "title": "Unit 0: Foundations",
-    "section": "In Class",
-    "text": "In Class\n\nIntroduction to the project template\nReproducible Research Workflow",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Class 3: Computing for Reproducible Research"
-    ]
-  },
-  {
     "objectID": "unit-0/lec-0-3.html",
     "href": "unit-0/lec-0-3.html",
     "title": "Foundations: Reproducible Research",
@@ -151,5 +118,115 @@
     "title": "Foundations: Reproducible Research",
     "section": "5. Wrap-Up",
     "text": "5. Wrap-Up\nReflect: How did version control and Quarto documents streamline your workflow?\nNext Steps: If you want to dig further into reproducible data analysis practices, you can explore advanced topics like Docker, code review workflows, and CI/CD (continuous integration and deployment)."
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations-1.html",
+    "href": "unit-0/unit-0-foundations-1.html",
+    "title": "Unit 0: Foundations",
+    "section": "",
+    "text": "This unit will provide a foundation for the rest of the course. It will cover the following topics:\n\nWhy experiments and ML for Causal Inference\nCourse structure and tools\nA field experiment in health services research\nComputing for Reproducible Research",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class 1: Introduction"
+    ]
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations-1.html#unit-overview",
+    "href": "unit-0/unit-0-foundations-1.html#unit-overview",
+    "title": "Unit 0: Foundations",
+    "section": "",
+    "text": "This unit will provide a foundation for the rest of the course. It will cover the following topics:\n\nWhy experiments and ML for Causal Inference\nCourse structure and tools\nA field experiment in health services research\nComputing for Reproducible Research",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class 1: Introduction"
+    ]
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations-1.html#class-1-course-introduction",
+    "href": "unit-0/unit-0-foundations-1.html#class-1-course-introduction",
+    "title": "Unit 0: Foundations",
+    "section": "Class 1: Course Introduction",
+    "text": "Class 1: Course Introduction\n\nPreparation\n\nRead: Harrison and List (2004)\n\nPerusall Link: Harrison and List (2004)\n\n\n\n\n\n\n\n\nPerusall\n\n\n\nPerusall is a free online platform that allows you to collaboratively annotate content with your classmates. Here is a link to the Perusall page for this course: HPM 883. If needed, the class enrollment code is SYLVIA-ZXTWH.\n\nAlthough it is a good way to engage with your classmates around the material, it is not required that you comment on Perusall. If you wish, you can just download the readings directly.\n\n\n\nACI Chapters 0 and 2\n\n\n\nIn Class\n\nLecture slides\n\n\n\nLab/Homework\n\n10-15 min Introductory Class Survey (Due Jan 15)\n\n\n\nAdditional Materials",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class 1: Introduction"
+    ]
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations-2.html",
+    "href": "unit-0/unit-0-foundations-2.html",
+    "title": "Unit 0: Foundations",
+    "section": "",
+    "text": "Guest Lecture by Dr. Dorien Emmers\n\n\n\n\n\n\nClass will be remote-only\n\n\n\nJoin from the comfort of your own home!\nZoom link: https://unc.zoom.us/j/7840211370?omn=97363476255\n\n\n\n\nSkim: Using Community Health Workers to Deliver a Scalable Integrated Parenting Program in Rural China: A Cluster Randomized Controlled Trial\n\nOptional\n\nDownload Replication Data and Code: \nDr. Emmers wrote this analysis code in Stata (Boo! ). Try converting it to R using the stata2r package.\n\n\n\n\n\n\n\n\nPerusall\n\n\n\nPerusall is a free online platform that allows you to collaboratively annotate content with your classmates. Here is a link to the Perusall page for this course: HPM 883. If needed, the class enrollment code is SYLVIA-ZXTWH.\n\nAlthough it is a good way to engage with your classmates around the material, it is not required that you comment on Perusall. If you wish, you can just download the readings directly.\n\n\n\nSubmit: Any questions you have for Dr. Emmers? Submit to the #guest-lecture-questions channel on Slack\n\n\n\n\n\nSlides\n\n\n\n\n\n\n\nIntroductory Survey Due by end of day on Jan 15\n\n\n\nIntroductory Class Survey",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class 2: A Field Experiment in Health Services Research"
+    ]
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations-2.html#overview",
+    "href": "unit-0/unit-0-foundations-2.html#overview",
+    "title": "Unit 0: Foundations",
+    "section": "",
+    "text": "Guest Lecture by Dr. Dorien Emmers\n\n\n\n\n\n\nClass will be remote-only\n\n\n\nJoin from the comfort of your own home!\nZoom link: https://unc.zoom.us/j/7840211370?omn=97363476255\n\n\n\n\nSkim: Using Community Health Workers to Deliver a Scalable Integrated Parenting Program in Rural China: A Cluster Randomized Controlled Trial\n\nOptional\n\nDownload Replication Data and Code: \nDr. Emmers wrote this analysis code in Stata (Boo! ). Try converting it to R using the stata2r package.\n\n\n\n\n\n\n\n\nPerusall\n\n\n\nPerusall is a free online platform that allows you to collaboratively annotate content with your classmates. Here is a link to the Perusall page for this course: HPM 883. If needed, the class enrollment code is SYLVIA-ZXTWH.\n\nAlthough it is a good way to engage with your classmates around the material, it is not required that you comment on Perusall. If you wish, you can just download the readings directly.\n\n\n\nSubmit: Any questions you have for Dr. Emmers? Submit to the #guest-lecture-questions channel on Slack\n\n\n\n\n\nSlides\n\n\n\n\n\n\n\nIntroductory Survey Due by end of day on Jan 15\n\n\n\nIntroductory Class Survey",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class 2: A Field Experiment in Health Services Research"
+    ]
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations-3.html",
+    "href": "unit-0/unit-0-foundations-3.html",
+    "title": "Unit 0: Foundations",
+    "section": "",
+    "text": "Learn importance of reproducible research\nLearn key principles of reproducible research\nLearn how to design and implement a reproducible research workflow\n\nVersion control using git and github\nLiterate programming using Quarto\nPackage managemenet using renv",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class 3: Computing for Reproducible Research"
+    ]
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations-3.html#learning-objectives",
+    "href": "unit-0/unit-0-foundations-3.html#learning-objectives",
+    "title": "Unit 0: Foundations",
+    "section": "",
+    "text": "Learn importance of reproducible research\nLearn key principles of reproducible research\nLearn how to design and implement a reproducible research workflow\n\nVersion control using git and github\nLiterate programming using Quarto\nPackage managemenet using renv",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class 3: Computing for Reproducible Research"
+    ]
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations-3.html#preparation",
+    "href": "unit-0/unit-0-foundations-3.html#preparation",
+    "title": "Unit 0: Foundations",
+    "section": "Preparation",
+    "text": "Preparation\n\n1. Read/Watch/Listen:\n\nReview Computing page\nSkim: Reproducibility Lecture\n\n\n\n2. Computing Setup:\nTo ensure a smooth experience during class, please follow these steps:\n\nInstall R (v4.x or later)\n\nCRAN Download or via your preferred package manager.\n\nInstall RStudio or a similar IDE\n\nRStudio Download\n\nInstall Quarto\n\nQuarto Installation – ensures you can render .qmd files.\n\nInstall Git\n\nConfirm Git is accessible from the command line:\ngit --version\nWindows: Git for Windows\n\nmacOS: Use Xcode Command Line Tools or Homebrew.\n\nCreate a GitHub Account\n\nGitHub Signup – used for version control and code sharing.\n\nSet Up Credentials (SSH keys or PAT)\n\nHelps push/pull to GitHub without repeated logins.\n\nGitHub Docs: Connecting to GitHub with SSH\n\nInstall Required R Packages\n\nIn R/RStudio, run:\ninstall.packages(c(\"tidyverse\",\n                   \"renv\",\n                   \"devtools\",\n                   \"broom\",\n                   \"infer\",\n                   \"rmarkdown\",\n                   \"quarto\"))\n\nOptional but Recommended: Set Up Renv\n\nWe will use renv to manage R package versions.\n\nRenv Documentation\n\n\nOnce you have completed the above steps, you should be ready for our in-class activities.",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class 3: Computing for Reproducible Research"
+    ]
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations-3.html#in-class",
+    "href": "unit-0/unit-0-foundations-3.html#in-class",
+    "title": "Unit 0: Foundations",
+    "section": "In Class",
+    "text": "In Class\n\nReproducibility Lecture",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class 3: Computing for Reproducible Research"
+    ]
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations-3.html#additional-resources",
+    "href": "unit-0/unit-0-foundations-3.html#additional-resources",
+    "title": "Unit 0: Foundations",
+    "section": "Additional Resources",
+    "text": "Additional Resources\n\nHappy with Git and GitHub for the UseR",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class 3: Computing for Reproducible Research"
+    ]
   }
 ]
