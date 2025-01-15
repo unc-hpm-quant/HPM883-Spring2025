@@ -12,7 +12,7 @@ draft: true
 
 # Class Computing Guide and Tips
 
-This page is a guide for "best practices" for writing code and working with data. It is a work in progress, so please let Sean or the TA know if you have any suggestions for improvement. 
+This page is a guide for "best practices" for writing code and working with data. It is a work in progress, so please let Sean or the TA know if you have any suggestions for improvement.
 
 ::: {.callout-note appearance="simple" style="color: #002D72"}
 This is meant as a general quide. For specific instructions on completing labs and assignments, please refer to the lab and assignment instructions.
@@ -20,9 +20,8 @@ This is meant as a general quide. For specific instructions on completing labs a
 
 ## Useful Guides
 
-- [IPA Data Science, Engineering, and Technology Handbook](https://povertyaction.github.io/ipa-data-tech-handbook/index.html)
-- [Coding for Economists](https://aeturrell.github.io/coding-for-economists/intro.html)
-
+-   [IPA Data Science, Engineering, and Technology Handbook](https://povertyaction.github.io/ipa-data-tech-handbook/index.html)
+-   [Coding for Economists](https://aeturrell.github.io/coding-for-economists/intro.html)
 
 ## Computer Setup
 
@@ -35,7 +34,8 @@ A package manager helps to standardize how you install and update software on yo
 If using a Windows computer with Windows 10 or later, use the Windows Package Manager, [winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/).
 
 Example:
-```{.bash} 
+
+``` bash
 # Install a single program (e.g. GitHub for command line)
 winget install GitHub.cli
 ```
@@ -45,14 +45,15 @@ winget install GitHub.cli
 If using a macOS computer, use Homebrew.
 
 Example:
-```{.bash}
+
+``` bash
 # Install a single program (e.g. GitHub for command line)
 brew install gh
 ```
 
 ### Installing R
 
-```{.bash}
+``` bash
 # Windows Install r
 winget install --id R-project.R
 
@@ -87,6 +88,7 @@ If you do want to learn a bit of R on your own, here are some excellent resource
 
 ::: callout-tip
 ## Learning Strategy
+
 Rather than directly mapping Stata commands to R, it's more effective to first understand R's fundamental concepts and then gradually build up to specific tasks like data management and regression models.
 :::
 
@@ -104,4 +106,3 @@ Here are some excellent tools for Stata people to learn R:
 ## Literate Programming and Quarto
 
 ## Bibliography
-

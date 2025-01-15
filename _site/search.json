@@ -1,5 +1,22 @@
 [
   {
+    "objectID": "lab.html",
+    "href": "lab.html",
+    "title": "Labs",
+    "section": "",
+    "text": "More labs to be added as the semester progresses.\n\n\n\n\n\n\n\n\n\nNo.\n\n\nTitle\n\n\nDue date\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Course Schedule",
+    "section": "",
+    "text": "This page contains the schedule, topics, content and assigments for the semester.\n\n\n\n\n\n\nNote\n\n\n\nThis schedule will be updated as the semester progresses.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweek\ndow\ndate\nsession\nunit\ntopic\nprepare\nclass\nlab\nlab_sa\ndue\n\n\n\n1\nW\n8 January\nLec\nFoundations\nWelcome; Key Concepts\n\n\n\n\n\n\n\n\n\n2\nM\n13 January\nLec\nFoundations\nGuest Lecture: Running a Randomized Trial\n\n\n\n\n\nIntroductory Survey\n\n\n\nW\n15 January\n-\nFoundations\nReproducible Research\n\n\n\n\n\n\n\n3\nM\n20 January\n-\nNo Class: MLK Day\n\n\n\n\n\n\n\n\n\nW\n22 January\nLec\nInternal Validity\nGeneralized Potential Outcomes Framework; Exclusion Restrictions\n\n\n\n\nProject Topic\n\n\n4\nM\n27 January\nLab\nInternal Validity\nTBD\n\n\n\n\n\n\n\n\nW\n29 January\nLec\nExperimental Design\nOptimal design of experiments; Power\n\n\n\n\nLab 1 Report\n\n\n5\nM\n3 February\nLab\nExperimental Design\nPower simulations\n\n\n\n\n\n\n\n\nW\n5 February\nLec\nExperimental Design\nRandomization and Blocking\n\n\n\n\nLab 2 Report\n\n\n6\nM\n10 February\n-\nNo Class: Well-being Day\n\n\n\n\n\n\n\n\n\nW\n12 February\nLec\nPreparations\nEthics, Registration and Pre-Analysis Plans\n\n\n\n\n\n\n\n7\nM\n17 February\nLec\nIntroduction to Machine Learning\nLasso; Penalized Regression; Cross-Validation\n\n\n\n\n\n\n\n\nW\n19 February\nLab\nIntroduction to Machine Learning\nLasso and Friends\n\n\n\n\n\n\n\n8\nM\n24 February\nLec\nIntroduction to Machine Learning\nRandom Trees and Random Forests\n\n\n\n\nLab 3 Report\n\n\n\nW\n26 February\n\nMIDTERM 1\n\n\n\n\n\n\n\n\n9\nM\n3 March\nLec\nHeterogeneity and Moderation\nHeterogeneous Treatment Effects\n\n\n\n\nLab 4 Report\n\n\n\nW\n5 March\nLab\nHeterogeneity and Moderation\nCausal Forests\n\n\n\n\nProject Pre-Analysis Plan\n\n\n10\nM\n10 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n\nW\n12 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n11\nM\n17 March\nLec\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\nLab 5 Report\n\n\n\nW\n19 March\nLab\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\nReferee Report\n\n\n12\nM\n24 March\nLec\nViolations of Internal Validity\nOne and Two-sided Compliance; TOT (LATE)\n\n\n\n\n\n\n\n\nW\n26 March\nLab\nViolations of Internal Validity\nIV\n\n\n\n\nLab 6 Report\n\n\n13\nM\n31 March\n\nMIDTERM 2\n\n\n\n\n\n\n\n\n\nW\n2 April\nLec\nMediation and External Validity\nMediation Analysis and Generalizability\n\n\n\n\n\n\n\n14\nM\n7 April\nLab\nMediation and External Validity\n\n\n\n\n\nLab 7 Report\n\n\n\nW\n9 April\n\nBuffer\nTBD\n\n\n\n\n\n\n\n15\nM\n14 April\n\nBuffer\nTBD\n\n\n\n\n\n\n\n\nW\n16 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n16\nM\n21 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n\nW\n23 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n17\nM\n28 April\n\nWrap-up\nTBD\n\n\n\n\nFinal Project Manuscript & Replication Repository\n\n\n\nW\n30 April\n\nFINAL EXAM",
+    "crumbs": [
+      "Course Schedule"
+    ]
+  },
+  {
     "objectID": "resources.html",
     "href": "resources.html",
     "title": "Resources",
@@ -40,349 +57,36 @@
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Course Schedule",
-    "section": "",
-    "text": "This page contains the schedule, topics, content and assigments for the semester.\n\n\n\n\n\n\nNote\n\n\n\nThis schedule will be updated as the semester progresses.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweek\ndow\ndate\nsession\nunit\ntopic\nprepare\nclass\nlab\nlab_sa\ndue\n\n\n\n1\nW\n8 January\nLec\nFoundations\nWelcome; Key Concepts\n\n\n\n\n\n\n\n\n\n2\nM\n13 January\nLec\nFoundations\nGuest Lecture: Running a Randomized Trial\n\n\n\n\n\nIntroductory Survey\n\n\n\nW\n15 January\n-\nFoundations\nReproducible Research\n\n\n\n\n\n\n\n3\nM\n20 January\n-\nNo Class: MLK Day\n\n\n\n\n\n\n\n\n\nW\n22 January\nLec\nInternal Validity\nGeneralized Potential Outcomes Framework; Exclusion Restrictions\n\n\n\n\nProject Topic\n\n\n4\nM\n27 January\nLab\nInternal Validity\nTBD\n\n\n\n\n\n\n\n\nW\n29 January\nLec\nExperimental Design\nOptimal design of experiments; Power\n\n\n\n\nLab 1 Report\n\n\n5\nM\n3 February\nLab\nExperimental Design\nPower simulations\n\n\n\n\n\n\n\n\nW\n5 February\nLec\nExperimental Design\nRandomization and Blocking\n\n\n\n\nLab 2 Report\n\n\n6\nM\n10 February\n-\nNo Class: Well-being Day\n\n\n\n\n\n\n\n\n\nW\n12 February\nLec\nPreparations\nEthics, Registration and Pre-Analysis Plans\n\n\n\n\n\n\n\n7\nM\n17 February\nLec\nIntroduction to Machine Learning\nLasso; Penalized Regression; Cross-Validation\n\n\n\n\n\n\n\n\nW\n19 February\nLab\nIntroduction to Machine Learning\nLasso and Friends\n\n\n\n\n\n\n\n8\nM\n24 February\nLec\nIntroduction to Machine Learning\nRandom Trees and Random Forests\n\n\n\n\nLab 3 Report\n\n\n\nW\n26 February\n\nMIDTERM 1\n\n\n\n\n\n\n\n\n9\nM\n3 March\nLec\nHeterogeneity and Moderation\nHeterogeneous Treatment Effects\n\n\n\n\nLab 4 Report\n\n\n\nW\n5 March\nLab\nHeterogeneity and Moderation\nCausal Forests\n\n\n\n\nProject Pre-Analysis Plan\n\n\n10\nM\n10 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n\nW\n12 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n11\nM\n17 March\nLec\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\nLab 5 Report\n\n\n\nW\n19 March\nLab\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\nReferee Report\n\n\n12\nM\n24 March\nLec\nViolations of Internal Validity\nOne and Two-sided Compliance; TOT (LATE)\n\n\n\n\n\n\n\n\nW\n26 March\nLab\nViolations of Internal Validity\nIV\n\n\n\n\nLab 6 Report\n\n\n13\nM\n31 March\n\nMIDTERM 2\n\n\n\n\n\n\n\n\n\nW\n2 April\nLec\nMediation and External Validity\nMediation Analysis and Generalizability\n\n\n\n\n\n\n\n14\nM\n7 April\nLab\nMediation and External Validity\n\n\n\n\n\nLab 7 Report\n\n\n\nW\n9 April\n\nBuffer\nTBD\n\n\n\n\n\n\n\n15\nM\n14 April\n\nBuffer\nTBD\n\n\n\n\n\n\n\n\nW\n16 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n16\nM\n21 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n\nW\n23 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n17\nM\n28 April\n\nWrap-up\nTBD\n\n\n\n\nFinal Project Manuscript & Replication Repository\n\n\n\nW\n30 April\n\nFINAL EXAM",
-    "crumbs": [
-      "Course Schedule"
-    ]
-  },
-  {
-    "objectID": "course-overview.html",
-    "href": "course-overview.html",
-    "title": "HPM 883Spring 2025",
-    "section": "",
-    "text": "HPM 883 is an advanced graduate-level course designed to equip PhD students in the Health Policy and Management program with sophisticated quantitative research skills. This course represents the third installment in the quantitative methods sequence, building on the foundational knowledge acquired in HPM 881 and HPM 882.\nThroughout the term, students will delve into advanced quantitative methods pertinent to health services research with a focus on the use of experimental methods and machine learning for causal inference. The course will provide a thorough introduction to machine learning techniques and explore the burgeoning domain of causal machine learning.",
-    "crumbs": [
-      "Course Information",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "course-overview.html#advanced-quantitative-methods-for-health-policy-and-management",
-    "href": "course-overview.html#advanced-quantitative-methods-for-health-policy-and-management",
-    "title": "HPM 883Spring 2025",
-    "section": "",
-    "text": "HPM 883 is an advanced graduate-level course designed to equip PhD students in the Health Policy and Management program with sophisticated quantitative research skills. This course represents the third installment in the quantitative methods sequence, building on the foundational knowledge acquired in HPM 881 and HPM 882.\nThroughout the term, students will delve into advanced quantitative methods pertinent to health services research with a focus on the use of experimental methods and machine learning for causal inference. The course will provide a thorough introduction to machine learning techniques and explore the burgeoning domain of causal machine learning.",
-    "crumbs": [
-      "Course Information",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "unit-0/unit-0-foundations-1.html",
-    "href": "unit-0/unit-0-foundations-1.html",
+    "objectID": "unit-0/unit-0-foundations-3.html#learning-objectives",
+    "href": "unit-0/unit-0-foundations-3.html#learning-objectives",
     "title": "Unit 0: Foundations",
-    "section": "",
-    "text": "This unit will provide a foundation for the rest of the course. It will cover the following topics:\n\nWhy experiments and ML for Causal Inference\nCourse structure and tools\nA field experiment in health services research\nComputing for Reproducible Research",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\n\nLearn importance of reproducible research\nLearn key principles of reproducible research\nLearn how to design and implement a reproducible research workflow\n\nVersion control using git and github\nLiterate programming using Quarto\nPackage managemenet using renv",
     "crumbs": [
       "Unit 0: Foundations",
-      "Class 1: Introduction"
+      "Class 3: Computing for Reproducible Research"
     ]
   },
   {
-    "objectID": "unit-0/unit-0-foundations-1.html#unit-overview",
-    "href": "unit-0/unit-0-foundations-1.html#unit-overview",
+    "objectID": "unit-0/unit-0-foundations-3.html#preparation",
+    "href": "unit-0/unit-0-foundations-3.html#preparation",
     "title": "Unit 0: Foundations",
-    "section": "",
-    "text": "This unit will provide a foundation for the rest of the course. It will cover the following topics:\n\nWhy experiments and ML for Causal Inference\nCourse structure and tools\nA field experiment in health services research\nComputing for Reproducible Research",
+    "section": "Preparation",
+    "text": "Preparation\n\n1. Read/Watch/Listen:\n\nHappy with Git and GitHub for the UseR\n\n\n\n2. Computing Setup:\nTo ensure a smooth experience during class, please follow these steps:\n\nInstall R (v4.x or later)\n\nCRAN Download or via your preferred package manager.\n\nInstall RStudio or a similar IDE\n\nRStudio Download\n\nInstall Quarto\n\nQuarto Installation – ensures you can render .qmd files.\n\nInstall Git\n\nConfirm Git is accessible from the command line:\ngit --version\nWindows: Git for Windows\n\nmacOS: Use Xcode Command Line Tools or Homebrew.\n\nCreate a GitHub Account\n\nGitHub Signup – used for version control and code sharing.\n\nSet Up Credentials (SSH keys or PAT)\n\nHelps push/pull to GitHub without repeated logins.\n\nGitHub Docs: Connecting to GitHub with SSH\n\nInstall Required R Packages\n\nIn R/RStudio, run:\ninstall.packages(c(\"tidyverse\",\n                   \"renv\",\n                   \"devtools\",\n                   \"broom\",\n                   \"infer\",\n                   \"rmarkdown\",\n                   \"quarto\"))\n\nOptional but Recommended: Set Up Renv\n\nWe will use renv to manage R package versions.\n\nRenv Documentation\n\n\nOnce you have completed the above steps, you should be ready for our in-class activities.",
     "crumbs": [
       "Unit 0: Foundations",
-      "Class 1: Introduction"
+      "Class 3: Computing for Reproducible Research"
     ]
   },
   {
-    "objectID": "unit-0/unit-0-foundations-1.html#class-1-course-introduction",
-    "href": "unit-0/unit-0-foundations-1.html#class-1-course-introduction",
+    "objectID": "unit-0/unit-0-foundations-3.html#in-class",
+    "href": "unit-0/unit-0-foundations-3.html#in-class",
     "title": "Unit 0: Foundations",
-    "section": "Class 1: Course Introduction",
-    "text": "Class 1: Course Introduction\n\nPreparation\n\nRead: Harrison and List (2004)\n\nPerusall Link: Harrison and List (2004)\n\n\n\n\n\n\n\n\nPerusall\n\n\n\nPerusall is a free online platform that allows you to collaboratively annotate content with your classmates. Here is a link to the Perusall page for this course: HPM 883. If needed, the class enrollment code is SYLVIA-ZXTWH.\n\nAlthough it is a good way to engage with your classmates around the material, it is not required that you comment on Perusall. If you wish, you can just download the readings directly.\n\n\n\nACI Chapters 0 and 2\n\n\n\nIn Class\n\nLecture slides\n\n\n\nLab/Homework\n\n10-15 min Introductory Class Survey (Due Jan 15)\n\n\n\nAdditional Materials",
+    "section": "In Class",
+    "text": "In Class\n\nIntroduction to the project template\nReproducible Research Workflow",
     "crumbs": [
       "Unit 0: Foundations",
-      "Class 1: Introduction"
+      "Class 3: Computing for Reproducible Research"
     ]
-  },
-  {
-    "objectID": "course-communication.html",
-    "href": "course-communication.html",
-    "title": "Communication",
-    "section": "",
-    "text": "Slack will be our primary communication hub. An invitation to the course Slack will be shared on the first day of class. Use this place to ask questions, share resources, and engage with your peers, the instructor, and the TA. (For personal matters, please use e-mail)\n\n\n\n\n\n\nImportant:\n\n\n\nSlack will not be continuously monitored by the instructor or TA outside of posted office hours. At other times, students are expected to help/engage with one another to foster a shared learning experience. If a question hasn’t been addressed, the TA or Sean will respond but not immediately or even the same day.\nYou may DM Sean or the TA in Slack (but, again, don’t expect a response immediately or even the same day.)\n\n\n\nThe #announcements channel will be used to share course announcements.\nUse the #help channel as a first stop for general questions about the class or for technical assistance.\nUse the #general channel to discuss lab assignments and discuss/share resources related to course topics.\nUse the #interesting-stuff channel to share relevant articles, podcasts, packages, data sources, and anything else relevant that you think your classmates will benefit from.",
-    "crumbs": [
-      "Course Information",
-      "Communication"
-    ]
-  },
-  {
-    "objectID": "course-communication.html#slack",
-    "href": "course-communication.html#slack",
-    "title": "Communication",
-    "section": "",
-    "text": "Slack will be our primary communication hub. An invitation to the course Slack will be shared on the first day of class. Use this place to ask questions, share resources, and engage with your peers, the instructor, and the TA. (For personal matters, please use e-mail)\n\n\n\n\n\n\nImportant:\n\n\n\nSlack will not be continuously monitored by the instructor or TA outside of posted office hours. At other times, students are expected to help/engage with one another to foster a shared learning experience. If a question hasn’t been addressed, the TA or Sean will respond but not immediately or even the same day.\nYou may DM Sean or the TA in Slack (but, again, don’t expect a response immediately or even the same day.)\n\n\n\nThe #announcements channel will be used to share course announcements.\nUse the #help channel as a first stop for general questions about the class or for technical assistance.\nUse the #general channel to discuss lab assignments and discuss/share resources related to course topics.\nUse the #interesting-stuff channel to share relevant articles, podcasts, packages, data sources, and anything else relevant that you think your classmates will benefit from.",
-    "crumbs": [
-      "Course Information",
-      "Communication"
-    ]
-  },
-  {
-    "objectID": "course-communication.html#office-hours",
-    "href": "course-communication.html#office-hours",
-    "title": "Communication",
-    "section": "Office Hours",
-    "text": "Office Hours\nSean will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.\nThe TA will hold office hours on…",
-    "crumbs": [
-      "Course Information",
-      "Communication"
-    ]
-  },
-  {
-    "objectID": "course-communication.html#email",
-    "href": "course-communication.html#email",
-    "title": "Communication",
-    "section": "Email",
-    "text": "Email\nPlease use e-mail only for personal matters. (For anything related to the course material or coding questions, please use Slack.)",
-    "crumbs": [
-      "Course Information",
-      "Communication"
-    ]
-  },
-  {
-    "objectID": "labs/lab-0.html",
-    "href": "labs/lab-0.html",
-    "title": "Lab 0",
-    "section": "",
-    "text": "St. Null’s Memorial Hospital is in chaos. Every time the hospital board—led by the well-meaning but trend-obsessed CEO Barnaby Beta—implements a new policy, they find puzzling or contradictory results. Dr. P-Hacker, a self-styled data guru, only adds to the confusion by massaging, cherry-picking, and p-hacking the data until he sees “significance.” Meanwhile, Nurse Random constantly rolls her eyes at his antics and reminds everyone that solid methodology—not creative statistics—should guide decision-making.\nBut there’s hope. Your class has just been hired as “methodology consultants” to diagnose and treat the hospital’s research woes. In each module (or “episode”), you’ll confront a new fiasco at St. Null’s: from suspiciously overfitted AI models, to missing data nightmares, to bungled randomized trials and flawed observational studies. Along the way, the brilliant but quirky Dr. Doub R. Obust will champion doubly robust methods and other advanced techniques to rescue the day.\n\n\n\n\nYour mission? Use proper causal inference and machine learning strategies to shed light on the true effects of the hospital’s interventions. Each chapter in your lecture notes (i.e., Jupyter notebooks) begins with a brief “scene” in which the hospital staff face some methodological mishap—then shifts to your step-by-step explanation of the relevant statistical concepts and R code. By the end of the course, you’ll have helped St. Null’s Memorial Hospital finally achieve consistent, credible results, while having a bit of comedic fun along the way."
-  },
-  {
-    "objectID": "labs/lab-0.html#the-hospital-of-uncertain-outcomes",
-    "href": "labs/lab-0.html#the-hospital-of-uncertain-outcomes",
-    "title": "Lab 0",
-    "section": "",
-    "text": "St. Null’s Memorial Hospital is in chaos. Every time the hospital board—led by the well-meaning but trend-obsessed CEO Barnaby Beta—implements a new policy, they find puzzling or contradictory results. Dr. P-Hacker, a self-styled data guru, only adds to the confusion by massaging, cherry-picking, and p-hacking the data until he sees “significance.” Meanwhile, Nurse Random constantly rolls her eyes at his antics and reminds everyone that solid methodology—not creative statistics—should guide decision-making.\nBut there’s hope. Your class has just been hired as “methodology consultants” to diagnose and treat the hospital’s research woes. In each module (or “episode”), you’ll confront a new fiasco at St. Null’s: from suspiciously overfitted AI models, to missing data nightmares, to bungled randomized trials and flawed observational studies. Along the way, the brilliant but quirky Dr. Doub R. Obust will champion doubly robust methods and other advanced techniques to rescue the day.\n\n\n\n\nYour mission? Use proper causal inference and machine learning strategies to shed light on the true effects of the hospital’s interventions. Each chapter in your lecture notes (i.e., Jupyter notebooks) begins with a brief “scene” in which the hospital staff face some methodological mishap—then shifts to your step-by-step explanation of the relevant statistical concepts and R code. By the end of the course, you’ll have helped St. Null’s Memorial Hospital finally achieve consistent, credible results, while having a bit of comedic fun along the way."
-  },
-  {
-    "objectID": "instructors.html",
-    "href": "instructors.html",
-    "title": "Instructors",
-    "section": "",
-    "text": "Sean Sylvia is an Associate Professor in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Dr. Sylvia will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
-    "crumbs": [
-      "Course Information",
-      "Instructors"
-    ]
-  },
-  {
-    "objectID": "instructors.html#instructor-sean-sylvia-ph.d.",
-    "href": "instructors.html#instructor-sean-sylvia-ph.d.",
-    "title": "Instructors",
-    "section": "",
-    "text": "Sean Sylvia is an Associate Professor in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Dr. Sylvia will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
-    "crumbs": [
-      "Course Information",
-      "Instructors"
-    ]
-  },
-  {
-    "objectID": "instructors.html#teaching-assistant-yumeng-du",
-    "href": "instructors.html#teaching-assistant-yumeng-du",
-    "title": "Instructors",
-    "section": "Teaching Assistant: Yumeng Du",
-    "text": "Teaching Assistant: Yumeng Du\nYumeng Du is a Ph.D. student in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Yumeng will hold office hours on Mondays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
-    "crumbs": [
-      "Course Information",
-      "Instructors"
-    ]
-  },
-  {
-    "objectID": "unit-0/prep-1.html",
-    "href": "unit-0/prep-1.html",
-    "title": "Class Preparation",
-    "section": "",
-    "text": "In preparation for our upcoming class on [Insert Topic Here], please complete the following activities. These materials will set the foundation for our in-class discussions and activities.\n\n\n\n\n\n[Insert Reading Title and Link Here]\n[Insert Additional Reading Title and Link Here]\n\n\n\n\n\n\n[Insert Video Title and Link Here]\n[Insert Additional Video Title and Link Here]\n\n\n\n\n\nComplete the pre-class quiz on Sakai: [Insert Link Here]\nDeadline: [Insert Date and Time]\n\n\n\n\nConsider the following questions as you review the materials: 1. [Insert Question Here] 2. [Insert Additional Question Here] 3. [Insert Additional Question Here]\n\n\n\n\nPrepare notes summarizing key concepts from the readings and videos. These will be helpful for in-class discussions.\n\nRemember: This course uses a flipped classroom approach. Completing these tasks prior to class is essential for your active participation and understanding during our sessions."
-  },
-  {
-    "objectID": "unit-0/prep-1.html#overview",
-    "href": "unit-0/prep-1.html#overview",
-    "title": "Class Preparation",
-    "section": "",
-    "text": "In preparation for our upcoming class on [Insert Topic Here], please complete the following activities. These materials will set the foundation for our in-class discussions and activities."
-  },
-  {
-    "objectID": "unit-0/prep-1.html#required-readings",
-    "href": "unit-0/prep-1.html#required-readings",
-    "title": "Class Preparation",
-    "section": "",
-    "text": "[Insert Reading Title and Link Here]\n[Insert Additional Reading Title and Link Here]"
-  },
-  {
-    "objectID": "unit-0/prep-1.html#required-videos",
-    "href": "unit-0/prep-1.html#required-videos",
-    "title": "Class Preparation",
-    "section": "",
-    "text": "[Insert Video Title and Link Here]\n[Insert Additional Video Title and Link Here]"
-  },
-  {
-    "objectID": "unit-0/prep-1.html#quiz",
-    "href": "unit-0/prep-1.html#quiz",
-    "title": "Class Preparation",
-    "section": "",
-    "text": "Complete the pre-class quiz on Sakai: [Insert Link Here]\nDeadline: [Insert Date and Time]"
-  },
-  {
-    "objectID": "unit-0/prep-1.html#reflection-questions",
-    "href": "unit-0/prep-1.html#reflection-questions",
-    "title": "Class Preparation",
-    "section": "",
-    "text": "Consider the following questions as you review the materials: 1. [Insert Question Here] 2. [Insert Additional Question Here] 3. [Insert Additional Question Here]"
-  },
-  {
-    "objectID": "unit-0/prep-1.html#notes",
-    "href": "unit-0/prep-1.html#notes",
-    "title": "Class Preparation",
-    "section": "",
-    "text": "Prepare notes summarizing key concepts from the readings and videos. These will be helpful for in-class discussions.\n\nRemember: This course uses a flipped classroom approach. Completing these tasks prior to class is essential for your active participation and understanding during our sessions."
-  },
-  {
-    "objectID": "unit-0/unit-0-foundations-2.html",
-    "href": "unit-0/unit-0-foundations-2.html",
-    "title": "Unit 0: Foundations",
-    "section": "",
-    "text": "Guest Lecture by Dr. Dorien Emmers\n\n\n\n\n\n\nClass will be remote-only\n\n\n\nJoin from the comfort of your own home!\nZoom link: https://unc.zoom.us/j/7840211370?omn=97363476255\n\n\n\n\nSkim: Using Community Health Workers to Deliver a Scalable Integrated Parenting Program in Rural China: A Cluster Randomized Controlled Trial\n\nOptional\n\nDownload Replication Data and Code: \nDr. Emmers wrote this analysis code in Stata (Boo! ). Try converting it to R using the stata2r package.\n\n\n\n\n\n\n\n\nPerusall\n\n\n\nPerusall is a free online platform that allows you to collaboratively annotate content with your classmates. Here is a link to the Perusall page for this course: HPM 883. If needed, the class enrollment code is SYLVIA-ZXTWH.\n\nAlthough it is a good way to engage with your classmates around the material, it is not required that you comment on Perusall. If you wish, you can just download the readings directly.\n\n\n\nSubmit: Any questions you have for Dr. Emmers? Submit to the #guest-lecture-questions channel on Slack\n\n\n\n\n\nSlides\n\n\n\n\n\n\n\nIntroductory Survey Due by end of day on Jan 15\n\n\n\nIntroductory Class Survey",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Class 2: A Field Experiment in Health Services Research"
-    ]
-  },
-  {
-    "objectID": "unit-0/unit-0-foundations-2.html#overview",
-    "href": "unit-0/unit-0-foundations-2.html#overview",
-    "title": "Unit 0: Foundations",
-    "section": "",
-    "text": "Guest Lecture by Dr. Dorien Emmers\n\n\n\n\n\n\nClass will be remote-only\n\n\n\nJoin from the comfort of your own home!\nZoom link: https://unc.zoom.us/j/7840211370?omn=97363476255\n\n\n\n\nSkim: Using Community Health Workers to Deliver a Scalable Integrated Parenting Program in Rural China: A Cluster Randomized Controlled Trial\n\nOptional\n\nDownload Replication Data and Code: \nDr. Emmers wrote this analysis code in Stata (Boo! ). Try converting it to R using the stata2r package.\n\n\n\n\n\n\n\n\nPerusall\n\n\n\nPerusall is a free online platform that allows you to collaboratively annotate content with your classmates. Here is a link to the Perusall page for this course: HPM 883. If needed, the class enrollment code is SYLVIA-ZXTWH.\n\nAlthough it is a good way to engage with your classmates around the material, it is not required that you comment on Perusall. If you wish, you can just download the readings directly.\n\n\n\nSubmit: Any questions you have for Dr. Emmers? Submit to the #guest-lecture-questions channel on Slack\n\n\n\n\n\nSlides\n\n\n\n\n\n\n\nIntroductory Survey Due by end of day on Jan 15\n\n\n\nIntroductory Class Survey",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Class 2: A Field Experiment in Health Services Research"
-    ]
-  },
-  {
-    "objectID": "unit-0/lec-0.html#course-summary",
-    "href": "unit-0/lec-0.html#course-summary",
-    "title": "Course Introduction",
-    "section": "Course Summary",
-    "text": "Course Summary\nExperiments and Machine Learning for Health Services Research\nPrimary Goal: Equip you with tools to design, analyze, and interpret field experiments and apply machine learning to health services research.\n\nKey Focus Areas:\nField experiments for causal inference.\nMachine learning for prediction and causal analysis.\nApplications:\nHealth policy evaluations, resource allocation, and improving healthcare decision-making."
-  },
-  {
-    "objectID": "unit-0/lec-0.html#about-me-dr.-sean-sylvia",
-    "href": "unit-0/lec-0.html#about-me-dr.-sean-sylvia",
-    "title": "Course Introduction",
-    "section": "About Me: Dr. Sean Sylvia",
-    "text": "About Me: Dr. Sean Sylvia\n\n\nResearch: Designing & evaluating innovative approaches to improve health service delivery, globally.\n\nExperimental methods, machine learning, economics of digital health\n\nUNC Health Policy & Management (7 years)\n\nCarolina Population Center\nSheps Center for Health Services Research\n\nPreviously: Renmin University of China, World Bank\nTraining: U Maryland (PhD), Stanford (pre-doc)"
-  },
-  {
-    "objectID": "unit-0/lec-0.html#proud-randomista",
-    "href": "unit-0/lec-0.html#proud-randomista",
-    "title": "Course Introduction",
-    "section": "Proud “Randomista”",
-    "text": "Proud “Randomista”\n\n\n\nExtensive fieldwork using randomized controlled trials (RCTs)\nStarting in 2006, I’ve worked with colleagues on ~20 RCTs in China, Africa, and North Carolina.\n\n[Hot Tip: Collaborate. Collaborate. Collaborate.]\n\nKey projects include:\n\nField experiments in rural China on primary healthcare\nDesign and evaluation of community health worker interventions for early childhood health and development\nBehavioral nudges to recruit providers to MAT training for Opiod Use Disorder in North Carolina\n\n\n\nSCROLL DOWN TO READ Nobel Prize in Economics 2019 was awarded jointly to Abhijit Banerjee, Esther Duflo and Michael Kremer “for their experimental approach to alleviating global poverty”"
-  },
-  {
-    "objectID": "unit-0/lec-0.html#teaching-assistant-yumeng-du",
-    "href": "unit-0/lec-0.html#teaching-assistant-yumeng-du",
-    "title": "Course Introduction",
-    "section": "Teaching Assistant: Yumeng Du",
-    "text": "Teaching Assistant: Yumeng Du\nPhD Student in Health Policy and Management (Economics Track)\nResearch Interests:\n- Evaluation of digital health programs for underserved populations\nBackground:\n- MSc in Public Health, London School of Hygiene and Tropical Medicine (LSHTM), UK\n- MBBS, Central South University, China\n- Former RA at UNC-China Project,implementing an RCT on rural telemedicine kiosk program\nRole:\n- Available for technical support and office hours\n- Assisting with labs and project feedback"
-  },
-  {
-    "objectID": "unit-0/lec-0.html#experiments-and-machine-learning-for-hsr",
-    "href": "unit-0/lec-0.html#experiments-and-machine-learning-for-hsr",
-    "title": "Course Introduction",
-    "section": "Experiments and Machine Learning for HSR",
-    "text": "Experiments and Machine Learning for HSR\n\n\n\nRandomized experiments: the gold standard for testing mechanisms and interpretability.\nMachine Learning: Ideal for useful predictions when interpretability or theory is less critical.\nBridging the Divide:\n\nNew methods apply core ML principles to causal inference.\n\nAs we’ll see, parts of causal inference problems can be recast as prediction problems.\n\nPowerful tools for theory-building and expanding scope of feasible research.\n\n\n\n\n\n\n\n\n\nNote\n\n\nImportant!\nYou’ll hear the term “causal machine learning” in the literature. This is a misnomer!\nMachine Learning is about prediction. Period. It does not magically solve the causal inference problem.\nIt CAN:\n\nHelp strengthen plausibility of existing exclusion restriction in some cases\nAllow us to study treatment effect heterogeneity in new ways"
-  },
-  {
-    "objectID": "unit-0/lec-0.html#reproducibility",
-    "href": "unit-0/lec-0.html#reproducibility",
-    "title": "Course Introduction",
-    "section": "Reproducibility",
-    "text": "Reproducibility\nReproducibility is a Fundamental Principle of Science\n\nGood experiments are necessarily reproducible.\n\nClear, well-documented protocols, reproducible data collection, and clear and reproducible analysis.\nThe “reproducibility crisis” in some fields (e.g. psychology). This is actually a good thing! Only possible to confirm results if they are reproducible.\n\nReproducibility and ML:\n\nExploratory analyses, when systematic, help build reliable theories.\nML provides tools for:\n\nConducting reproducible exploratory research.\nIdentifying robust treatment effect heterogeneity."
-  },
-  {
-    "objectID": "unit-0/lec-0.html#causal-inference-as-a-missing-data-problem",
-    "href": "unit-0/lec-0.html#causal-inference-as-a-missing-data-problem",
-    "title": "Course Introduction",
-    "section": "Causal Inference as a Missing Data Problem",
-    "text": "Causal Inference as a Missing Data Problem\n\n\n\nThe Fundamental Problem of Causal Inference:\n\nWe cannot observe a unit in multiple states of the world simultaneously.\nRepresented as “missing data” in potential outcomes.\n\nExperimentation Solves under some key assumptions:\n\nSUTVA.\nObservability.\nComplete Compliance.\nStatistical Independence.\n\n\n\n\n\n\nUnit\nTreatment (W)\nY(0)\nY(1)\nObserved Outcome\n\n\n\n\n1\n1\n?\n5\n5\n\n\n2\n0\n3\n?\n3\n\n\n3\n1\n?\n6\n6\n\n\n4\n0\n4\n?\n4\n\n\n\n\nProblem: We can only observe either (Y(0)) or (Y(1)) but not both for any individual."
-  },
-  {
-    "objectID": "unit-0/lec-0.html#randomization-recovers-the-ate-on-average.",
-    "href": "unit-0/lec-0.html#randomization-recovers-the-ate-on-average.",
-    "title": "Course Introduction",
-    "section": "Randomization recovers the ATE on average.",
-    "text": "Randomization recovers the ATE on average.\n\nPotential outcomes: \\(Y_i(1)\\) and \\(Y_i(0)\\)\nTreatment indicator: \\(W_i = 1\\) if treated, \\(W_i = 0\\) if control\nObserved outcome: \\(Y_i = W_iY_i(1) + (1 - W_i)Y_i(0)\\)\nAverage Treatment Effect (ATE): \\(\\tau = \\mathbb{E}[Y_i(1) - Y_i(0)]\\)\n\nRandomization ensures that treatment is independent of potential outcomes:\n\\[\nW_i \\perp \\!\\!\\! \\perp (Y_i(0), Y_i(1)),\n\\]\nHence, \\(\\mathbb{E}[Y | W_i = w] = \\mathbb{E}[Y_i(w) | W_i = w] = \\mathbb{E}[Y_i(w)]\\) for all \\(w \\in \\{0, 1\\}\\).\nTherefore, the difference between \\(Y_i(1)\\) and \\(Y_i(0)\\) is the ATE:\n\\[\n\\mathbb{E}[Y_i(1) - Y_i(0)] = \\mathbb{E}[Y_i(1)] - \\mathbb{E}[Y_i(0)] = \\tau.\n\\]"
-  },
-  {
-    "objectID": "unit-0/lec-0.html#experimental-problems-ep1-ep2",
-    "href": "unit-0/lec-0.html#experimental-problems-ep1-ep2",
-    "title": "Course Introduction",
-    "section": "Experimental Problems: EP1 & EP2",
-    "text": "Experimental Problems: EP1 & EP2\nEP1: Internal Validity\n\nThe Effects of Causes (Internal Validity):\n\nDo assumptions in the potential outcomes framework hold?\n\nThe Causes of Effects (Mediators and Moderators):\n\nWhat drives the effects we see?\n\n\nEP2: External Validity\n\nGeneralizability: Would it work in different settings?\n\nPeople / populations\nContexts\n\nScalability: Can it scale to create meaningful impact?"
-  },
-  {
-    "objectID": "unit-0/lec-0.html#data-generation-and-modeling-for-causal-inference",
-    "href": "unit-0/lec-0.html#data-generation-and-modeling-for-causal-inference",
-    "title": "Course Introduction",
-    "section": "Data Generation and Modeling for Causal Inference",
-    "text": "Data Generation and Modeling for Causal Inference\n\n\n\nControlled: researcher knows and controls the assignment mechanism\nUncontrolled: researcher assignment mechanism neither controls nor knows the assignment mechanism\n\n\n\n\nSource: List (2009)\n\n\n\n\nLab Experiments: Controlled settings, abstract framing, imposed rules.\nField Experiments:\n\nArtefactual Field Experiment (AFE): Non-standard subject pool.\nFramed Field Experiment (FFE): Adds field-specific context.\nNatural Field Experiment (NFE): Subjects unaware they are in an experiment.\n\nSurvey Experiments:\n\nEmbedded in survey designs."
-  },
-  {
-    "objectID": "unit-0/lec-0.html#criteria-that-define-field-experiments",
-    "href": "unit-0/lec-0.html#criteria-that-define-field-experiments",
-    "title": "Course Introduction",
-    "section": "7 Criteria that define field experiments",
-    "text": "7 Criteria that define field experiments\n\nExperimental Subjects: Population and Selection\n\nThe nature of the subject pool\nThe nature of the information that subjects bring to the experimental task\nSelection into the experiment\n\nExperimental Environment\n\nThe nature of the commodity in the experiment\nThe nature of the experimental task\nThe nature of the stakes\nExperimental proclamation"
-  },
-  {
-    "objectID": "unit-0/lec-0.html#choosing-the-right-experiment",
-    "href": "unit-0/lec-0.html#choosing-the-right-experiment",
-    "title": "Course Introduction",
-    "section": "Choosing the Right Experiment",
-    "text": "Choosing the Right Experiment\n\nWeigh Costs and Benefits:\n\nBenefits:\n\nEP1: Internal validity.\nEP2: Generalizability and scalability.\n\nCosts:\n\nMonetary\nLogistical\nOpportunity costs."
-  },
-  {
-    "objectID": "unit-0/lec-0.html#units-and-topics",
-    "href": "unit-0/lec-0.html#units-and-topics",
-    "title": "Course Introduction",
-    "section": "Units and Topics",
-    "text": "Units and Topics\n\nFoundations of Causal Inference:\n\nMissing data problem and potential outcomes.\nRandomization and the ATE.\n\nExperimental Design:\n\nPower analysis and randomization strategies.\n\nMachine Learning for Causal Inference:\n\nLasso, random forests, and causal forests.\n\nViolations of Internal Validity:\n\nSUTVA, compliance issues, and observability.\n\nScaling and External Validity:\n\nGeneralizability and implementation challenges."
-  },
-  {
-    "objectID": "unit-0/lec-0.html#weekly-ish-format",
-    "href": "unit-0/lec-0.html#weekly-ish-format",
-    "title": "Course Introduction",
-    "section": "Weekly-ish Format",
-    "text": "Weekly-ish Format\n\nTwo(-ish) sessions per topic:\n\nLecture: Introduces key concepts and theory.\nLab: Hands-on practice with coding and data analysis.\n\nFlipped(-ish) Classroom Approach\n\nPre-class readings and recorded materials.\nInteractive sessions focused on data exploration and applied learning.\nCollaborative problem-solving in small groups."
-  },
-  {
-    "objectID": "unit-0/lec-0.html#assessments",
-    "href": "unit-0/lec-0.html#assessments",
-    "title": "Course Introduction",
-    "section": "Assessments",
-    "text": "Assessments\n\nPre-class Quizzes (10%):\n\nTest your understanding of key concepts\nRequest clarification on specific points\n\nLab Assignments (25%): Practical applications and analysis.\nExams (35%): Evaluate theoretical and practical understanding.\nSemester Project (30%): Research application.\n\nPre-analysis Plan (15%): Develop and document a structured analysis plan.\nFinal Paper (15%): Synthesize course material into a research application.\nDetails on class project to come."
-  },
-  {
-    "objectID": "unit-0/lec-0.html#resources-and-support",
-    "href": "unit-0/lec-0.html#resources-and-support",
-    "title": "Course Introduction",
-    "section": "Resources and Support",
-    "text": "Resources and Support\n\nCourse website with materials and updates: Course Website\nWeekly office hours with Dr. Sylvia and Yumeng\nCommunication channels:\n\nSlack: Join the course Slack to ask questions, share resources, and engage with your peers, the instructor, and the TA. (For personal matters, please use e-mail)\nEmail: Please use e-mail only for personal matters. (For anything related to the course material or coding questions, please use Slack.)\n\nGradescope: Submit assignments."
-  },
-  {
-    "objectID": "lab.html",
-    "href": "lab.html",
-    "title": "Labs",
-    "section": "",
-    "text": "More labs to be added as the semester progresses.\n\n\n\n\n\n\n\n\n\nNo.\n\n\nTitle\n\n\nDue date\n\n\n\n\n\n\nLab 0\n\n\nThe Hospital of Uncertain Outcomes\n\n\nIntro to class computing setup\n\n\n\n\n\nNo matching items"
   }
 ]

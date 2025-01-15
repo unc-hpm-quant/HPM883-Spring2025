@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -192,6 +226,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Communication</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../project.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Semester Project</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -204,6 +244,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="../resources.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Resources</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../computing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Computing</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -227,6 +273,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Class 2: A Field Experiment in Health Services Research</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-0/unit-0-foundations-3.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Class 3: Computing for Reproducible Research</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -244,7 +296,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#preparation" id="toc-preparation" class="nav-link" data-scroll-target="#preparation">Preparation</a>
   <ul class="collapse">
   <li><a href="#readwatchlisten" id="toc-readwatchlisten" class="nav-link" data-scroll-target="#readwatchlisten">1. <strong>Read/Watch/Listen</strong>:</a></li>
-  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">2. <strong>Setup</strong>:</a></li>
+  <li><a href="#computing-setup" id="toc-computing-setup" class="nav-link" data-scroll-target="#computing-setup">2. <strong>Computing Setup</strong>:</a></li>
   </ul></li>
   <li><a href="#in-class" id="toc-in-class" class="nav-link" data-scroll-target="#in-class">In Class</a></li>
   </ul>
@@ -293,9 +345,63 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="preparation">Preparation</h2>
 <section id="readwatchlisten" class="level3">
 <h3 class="anchored" data-anchor-id="readwatchlisten">1. <strong>Read/Watch/Listen</strong>:</h3>
+<ul>
+<li>Happy with Git and GitHub for the UseR</li>
+</ul>
 </section>
-<section id="setup" class="level3">
-<h3 class="anchored" data-anchor-id="setup">2. <strong>Setup</strong>:</h3>
+<section id="computing-setup" class="level3">
+<h3 class="anchored" data-anchor-id="computing-setup">2. <strong>Computing Setup</strong>:</h3>
+<p>To ensure a smooth experience during class, <strong>please follow these steps</strong>:</p>
+<ol type="1">
+<li><strong>Install R (v4.x or later)</strong>
+<ul>
+<li><a href="https://cloud.r-project.org/">CRAN Download</a> or via your preferred package manager.</li>
+</ul></li>
+<li><strong>Install RStudio</strong> or a similar IDE
+<ul>
+<li><a href="https://posit.co/download/rstudio-desktop/">RStudio Download</a></li>
+</ul></li>
+<li><strong>Install Quarto</strong>
+<ul>
+<li><a href="https://quarto.org/docs/get-started/">Quarto Installation</a> – ensures you can render .qmd files.</li>
+</ul></li>
+<li><strong>Install Git</strong>
+<ul>
+<li><p>Confirm Git is accessible from the command line:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Windows: <a href="https://git-scm.com/download/win">Git for Windows</a><br>
+</p></li>
+<li><p>macOS: Use Xcode Command Line Tools or <a href="https://brew.sh/">Homebrew</a>.</p></li>
+</ul></li>
+<li><strong>Create a GitHub Account</strong>
+<ul>
+<li><a href="https://github.com/">GitHub Signup</a> – used for version control and code sharing.</li>
+</ul></li>
+<li><strong>Set Up Credentials (SSH keys or PAT)</strong>
+<ul>
+<li>Helps push/pull to GitHub without repeated logins.<br>
+</li>
+<li>GitHub Docs: <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh">Connecting to GitHub with SSH</a></li>
+</ul></li>
+<li><strong>Install Required R Packages</strong>
+<ul>
+<li><p>In R/RStudio, run:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"tidyverse"</span>,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"renv"</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"devtools"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"broom"</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"infer"</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"rmarkdown"</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"quarto"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+<li><strong>Optional but Recommended: Set Up Renv</strong>
+<ul>
+<li>We will use <code>renv</code> to manage R package versions.<br>
+</li>
+<li><a href="https://rstudio.github.io/renv/articles/renv.html">Renv Documentation</a></li>
+</ul></li>
+</ol>
+<p>Once you have completed the above steps, you should be ready for our in-class activities.</p>
 </section>
 </section>
 <section id="in-class" class="level2">

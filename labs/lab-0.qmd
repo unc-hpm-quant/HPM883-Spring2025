@@ -6,16 +6,18 @@ date: "2024-12-31"
 slug: lab-0
 categories: 
     -  Lab
-    -  Preliminaries
+    -  Foundations
 description: "Intro to class computing setup"
-draft: false
+draft: true
 ---
 
-# Lab 0: The Hospital of Uncertain Outcomes
+# Lab 1: The Hospital of Uncertain Outcomes
 
 ## Introduction
 
 ### Learning Objectives
+
+
 
 ## The Hospital of Uncertain Outcomes
 
@@ -29,4 +31,8 @@ But there’s hope. Your class has just been hired as “methodology consultants
 </iframe>
 :::
 
-**Your mission?** Use proper causal inference and machine learning strategies to shed light on the true effects of the hospital’s interventions. Each chapter in your lecture notes (i.e., Jupyter notebooks) begins with a brief “scene” in which the hospital staff face some methodological mishap—then shifts to your step-by-step explanation of the relevant statistical concepts and R code. By the end of the course, you’ll have helped St. Null’s Memorial Hospital finally achieve consistent, credible results, while having a bit of comedic fun along the way.
+**Your mission?** Use proper causal inference and machine learning strategies to shed light on the true effects of the hospital’s interventions. Each chapter in your lecture notes begins with a brief “scene” in which the hospital staff face some methodological mishap—then shifts to your step-by-step explanation of the relevant statistical concepts and R code. By the end of the course, you’ll have helped St. Null’s Memorial Hospital finally achieve consistent, credible results, while having a bit of comedic fun along the way.
+
+
+---
+
