@@ -13,6 +13,12 @@ draft: false
     -   Literate programming using Quarto
     -   Package managemenet using `renv`
 
+## Class will be remote-only
+
+Join from the comfort of your own home!\
+Zoom link: <https://unc.zoom.us/j/98379053109>
+:::
+
 ## Preparation
 
 ### 1. **Read/Watch/Listen**:
