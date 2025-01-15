@@ -95,6 +95,10 @@ Reproducible research is about ensuring that data and code aren’t locked in th
 
 Now let's get our hands dirty with some of the tools for reproducibility. We'll be applying reproducible research practices to a **simulated RCT dataset**. You’ll learn to clone a GitHub repository, explore the project structure, run an analysis using Quarto, and commit changes back to GitHub.
 
+## 0. Guided Computer Setup
+
+- [Computing Setup](unit-0/lec-0-3.html)
+
 ## 1. GitHub Template Repository
 
 1.  **Clone the Repository**
