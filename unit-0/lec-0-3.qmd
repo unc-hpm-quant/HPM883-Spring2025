@@ -98,6 +98,7 @@ Now let's get our hands dirty with some of the tools for reproducibility. We'll 
 ## 0. Guided Computer Setup
 
 - [Computing Setup](unit-0/lec-0-3.html)
+- [Intro to Github](unit-0/The Basics of GitHub.pdf)
 
 ## 1. GitHub Template Repository
 
