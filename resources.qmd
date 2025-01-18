@@ -18,13 +18,13 @@ James, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. [***An Intr
 
 ## R Tutorial
 
-Paradis, Emmanuel. R for Beginners. 2005. Accessed January 12, 2025. (https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf).
+Paradis, Emmanuel. [***R for Beginners***](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf), 2005.
 
-Wickham, Hadley, and Mine Çetinkaya-Rundel. R for Data Science. 2nd ed. 2023. (https://r4ds.hadley.nz/).
+Wickham, Hadley, and Mine Çetinkaya-Rundel. [***R for Data Science***](https://r4ds.hadley.nz/), 2nd ed. 2023.
 
-R "Cheat Sheet" Compilation: (https://www.usu.edu/math/amlc/files/r-studio-reference-sheets-compilation.pdf).
+[***R "Cheat Sheet" Compilation***](https://www.usu.edu/math/amlc/files/r-studio-reference-sheets-compilation.pdf).
 
-The R Graph Gallery (for making fancy graphs): (https://r-graph-gallery.com/).
+[***The R Graph Gallery***] (https://r-graph-gallery.com/).
 
 
 ## Websites
