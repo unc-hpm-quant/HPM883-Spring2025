@@ -16,6 +16,17 @@ Wager, Stefan. [***Causal Inference: A Statistical Learning Approach***](https:/
 
 James, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. [***An Introduction to Statistical Learning: With Applications in R***](https://doi.org/10.1007/978-1-0716-1418-1). Springer Texts in Statistics. New York, NY: Springer US, 2021. 
 
+## R Tutorial
+
+Paradis, Emmanuel. R for Beginners. 2005. Accessed January 12, 2025. (https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf).
+
+Wickham, Hadley, and Mine Çetinkaya-Rundel. R for Data Science. 2nd ed. 2023. (https://r4ds.hadley.nz/).
+
+R "Cheat Sheet" Compilation: (https://www.usu.edu/math/amlc/files/r-studio-reference-sheets-compilation.pdf).
+
+The R Graph Gallery (for making fancy graphs): (https://r-graph-gallery.com/).
+
+
 ## Websites
 
 [Field Experiments Website](http://www.fieldexperiments.com/)\
