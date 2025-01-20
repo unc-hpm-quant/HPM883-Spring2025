@@ -71,6 +71,9 @@ Once you have completed the above steps, you should be ready for our in-class ac
 ## In Class
 
 -   [Reproducibility Lecture](/unit-0/lec-0-3.qmd)
+
+-   [Zoom Recording](https://uncch.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=0275b0cf-379e-4174-bc81-b26b003b9785)
+
 -   [RCT Analysis Template Repository](https://github.com/unc-hpm-quant/rct-analysis-template)
 
 ## Additional Resources
