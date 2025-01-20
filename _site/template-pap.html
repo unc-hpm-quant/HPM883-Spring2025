@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Your Name">
 
-<title>Unit 0: Foundations – HPM 883</title>
+<title>Pre-Analysis Plan Template – HPM 883</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,61 +21,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../unit-0/unit-0-foundations-2.html" rel="prev">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dece3bd051e391dd7205a6b15f93dc59.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-dece3bd051e391dd7205a6b15f93dc59.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c1d45ff13d6a82783c1d68f0afb24cfd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-135ac4d113b30199e54d7437fe66c954.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dece3bd051e391dd7205a6b15f93dc59.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-dece3bd051e391dd7205a6b15f93dc59.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-c1d45ff13d6a82783c1d68f0afb24cfd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-135ac4d113b30199e54d7437fe66c954.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -115,7 +81,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../unit-0/unit-0-foundations-1.html">Unit 0: Foundations</a></li><li class="breadcrumb-item"><a href="../unit-0/unit-0-foundations-3.html">Class 3: Computing for Reproducible Research</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Pre-Analysis Plan Template</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -129,8 +95,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
-      <a href="../index.html" class="sidebar-logo-link">
-      <img src="../images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/hpm883" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
@@ -194,7 +160,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course Schedule</span></a>
   </div>
 </li>
@@ -209,25 +175,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../course-overview.html" class="sidebar-item-text sidebar-link">
+  <a href="./course-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../course-syllabus.html" class="sidebar-item-text sidebar-link">
+  <a href="./course-syllabus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Syllabus</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../instructors.html" class="sidebar-item-text sidebar-link">
+  <a href="./instructors.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Instructors</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../course-communication.html" class="sidebar-item-text sidebar-link">
+  <a href="./course-communication.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Communication</span></a>
   </div>
 </li>
@@ -244,13 +210,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../project.html" class="sidebar-item-text sidebar-link">
+  <a href="./project.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Project Description</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../ex-simulate.html" class="sidebar-item-text sidebar-link">
+  <a href="./ex-simulate.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Simulation Example</span></a>
   </div>
 </li>
@@ -258,40 +224,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../resources.html" class="sidebar-item-text sidebar-link">
+  <a href="./resources.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Resources</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../computing.html" class="sidebar-item-text sidebar-link">
+  <a href="./computing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Computing</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Unit 0: Foundations</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../unit-0/unit-0-foundations-1.html" class="sidebar-item-text sidebar-link">
+  <a href="./unit-0/unit-0-foundations-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Class 1: Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../unit-0/unit-0-foundations-2.html" class="sidebar-item-text sidebar-link">
+  <a href="./unit-0/unit-0-foundations-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Class 2: A Field Experiment in Health Services Research</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../unit-0/unit-0-foundations-3.html" class="sidebar-item-text sidebar-link active">
+  <a href="./unit-0/unit-0-foundations-3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Class 3: Computing for Reproducible Research</span></a>
   </div>
 </li>
@@ -307,32 +273,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
-  <li><a href="#class-will-be-remote-only" id="toc-class-will-be-remote-only" class="nav-link" data-scroll-target="#class-will-be-remote-only">Class will be remote-only</a></li>
-  <li><a href="#preparation" id="toc-preparation" class="nav-link" data-scroll-target="#preparation">Preparation</a>
-  <ul class="collapse">
-  <li><a href="#readwatchlisten" id="toc-readwatchlisten" class="nav-link" data-scroll-target="#readwatchlisten">1. <strong>Read/Watch/Listen</strong>:</a></li>
-  <li><a href="#computing-setup" id="toc-computing-setup" class="nav-link" data-scroll-target="#computing-setup">2. <strong>Computing Setup</strong>:</a></li>
-  </ul></li>
-  <li><a href="#in-class" id="toc-in-class" class="nav-link" data-scroll-target="#in-class">In Class</a></li>
-  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional Resources</a></li>
+  <li><a href="#helpful-resources" id="toc-helpful-resources" class="nav-link active" data-scroll-target="#helpful-resources">Helpful Resources:</a></li>
+  <li><a href="#title" id="toc-title" class="nav-link" data-scroll-target="#title">Title</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#hypotheses" id="toc-hypotheses" class="nav-link" data-scroll-target="#hypotheses">Hypotheses</a></li>
+  <li><a href="#experimental-design" id="toc-experimental-design" class="nav-link" data-scroll-target="#experimental-design">Experimental Design</a></li>
+  <li><a href="#outcome-measures" id="toc-outcome-measures" class="nav-link" data-scroll-target="#outcome-measures">Outcome Measures</a></li>
+  <li><a href="#data-collection" id="toc-data-collection" class="nav-link" data-scroll-target="#data-collection">Data Collection</a></li>
+  <li><a href="#sample-size-and-power-calculations" id="toc-sample-size-and-power-calculations" class="nav-link" data-scroll-target="#sample-size-and-power-calculations">Sample Size and Power Calculations</a></li>
+  <li><a href="#empirical-analysis" id="toc-empirical-analysis" class="nav-link" data-scroll-target="#empirical-analysis">Empirical Analysis</a></li>
+  <li><a href="#heterogeneous-treatment-effects" id="toc-heterogeneous-treatment-effects" class="nav-link" data-scroll-target="#heterogeneous-treatment-effects">Heterogeneous Treatment Effects</a></li>
+  <li><a href="#robustness-checks" id="toc-robustness-checks" class="nav-link" data-scroll-target="#robustness-checks">Robustness Checks</a></li>
+  <li><a href="#data-management" id="toc-data-management" class="nav-link" data-scroll-target="#data-management">Data Management</a></li>
+  <li><a href="#ethical-considerations" id="toc-ethical-considerations" class="nav-link" data-scroll-target="#ethical-considerations">Ethical Considerations</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/hpm883/edit/main/unit-0/unit-0-foundations-3.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/hpm883/edit/main/template-pap.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../unit-0/unit-0-foundations-1.html">Unit 0: Foundations</a></li><li class="breadcrumb-item"><a href="../unit-0/unit-0-foundations-3.html">Class 3: Computing for Reproducible Research</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Unit 0: Foundations</h1>
-<p class="subtitle lead">Class 3: Computing for Reproducible Research</p>
+<h1 class="title">Pre-Analysis Plan Template</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Your Name </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">Invalid Date</p>
+    </div>
+  </div>
   
     
   </div>
@@ -342,101 +324,88 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="learning-objectives" class="level2">
-<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
-<ol type="1">
-<li>Learn importance of reproducible research</li>
-<li>Learn key principles of reproducible research</li>
-<li>Learn how to design and implement a reproducible research workflow
+<p>This is a template for a Pre-Analysis Plan (PAP), roughly following guidelines from the American Economic Association (AEA) and the World Bank’s Development Impact Evaluation (DIME) group.</p>
+<section id="helpful-resources" class="level2">
+<h2 class="anchored" data-anchor-id="helpful-resources">Helpful Resources:</h2>
 <ul>
-<li>Version control using git and github</li>
-<li>Literate programming using Quarto</li>
-<li>Package managemenet using <code>renv</code></li>
-</ul></li>
-</ol>
-</section>
-<section id="class-will-be-remote-only" class="level2">
-<h2 class="anchored" data-anchor-id="class-will-be-remote-only">Class will be remote-only</h2>
-<p>Join from the comfort of your own home!<br>
-Zoom link: <a href="https://unc.zoom.us/j/98379053109" class="uri">https://unc.zoom.us/j/98379053109</a></p>
-</section>
-<section id="preparation" class="level2">
-<h2 class="anchored" data-anchor-id="preparation">Preparation</h2>
-<section id="readwatchlisten" class="level3">
-<h3 class="anchored" data-anchor-id="readwatchlisten">1. <strong>Read/Watch/Listen</strong>:</h3>
-<ul>
-<li>Review <a href="../computing.html">Computing</a> page</li>
-<li>Skim: <a href="../unit-0/lec-0-3.html">Reproducibility Lecture</a></li>
+<li><p>For guidance on pre-analysis plans, refer to the World Bank’s DIME Wiki: <a href="https://dimewiki.worldbank.org/Pre-Analysis_Plan">Pre-Analysis Plan - DIME Wiki</a></p></li>
+<li><p>For examples of pre-analysis plans, explore the AEA’s RCT Registry: <a href="https://www.socialscienceregistry.org/">AEA RCT Registry</a></p></li>
 </ul>
 </section>
-<section id="computing-setup" class="level3">
-<h3 class="anchored" data-anchor-id="computing-setup">2. <strong>Computing Setup</strong>:</h3>
-<p>To ensure a smooth experience during class, <strong>please follow these steps</strong>:</p>
-<ol type="1">
-<li><strong>Install R (v4.x or later)</strong>
-<ul>
-<li><a href="https://cloud.r-project.org/">CRAN Download</a> or via your preferred package manager.</li>
-</ul></li>
-<li><strong>Install RStudio</strong> or a similar IDE
-<ul>
-<li><a href="https://posit.co/download/rstudio-desktop/">RStudio Download</a></li>
-</ul></li>
-<li><strong>Install Quarto</strong>
-<ul>
-<li><a href="https://quarto.org/docs/get-started/">Quarto Installation</a> – ensures you can render .qmd files.</li>
-</ul></li>
-<li><strong>Install Git</strong>
-<ul>
-<li><p>Confirm Git is accessible from the command line:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Windows: <a href="https://git-scm.com/download/win">Git for Windows</a><br>
-</p></li>
-<li><p>macOS: Use Xcode Command Line Tools or <a href="https://brew.sh/">Homebrew</a>.</p></li>
-</ul></li>
-<li><strong>Create a GitHub Account</strong>
-<ul>
-<li><a href="https://github.com/">GitHub Signup</a> – used for version control and code sharing.</li>
-</ul></li>
-<li><strong>Set Up Credentials (SSH keys or PAT)</strong>
-<ul>
-<li>Helps push/pull to GitHub without repeated logins.<br>
-</li>
-<li>GitHub Docs: <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh">Connecting to GitHub with SSH</a></li>
-</ul></li>
-<li><strong>Install Required R Packages</strong>
-<ul>
-<li><p>In R/RStudio, run:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"tidyverse"</span>,</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"renv"</span>,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"devtools"</span>,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"broom"</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"infer"</span>,</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"rmarkdown"</span>,</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"quarto"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ul></li>
-<li><strong>Optional but Recommended: Set Up Renv</strong>
-<ul>
-<li>We will use <code>renv</code> to manage R package versions.<br>
-</li>
-<li><a href="https://rstudio.github.io/renv/articles/renv.html">Renv Documentation</a></li>
-</ul></li>
-</ol>
-<p>Once you have completed the above steps, you should be ready for our in-class activities.</p>
+<section id="title" class="level1">
+<h1>Title</h1>
+<p><strong>[Descriptive Title of the Study]</strong></p>
 </section>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>[Provide a brief overview of the study, including the research question, context, and objectives.]</p>
 </section>
-<section id="in-class" class="level2">
-<h2 class="anchored" data-anchor-id="in-class">In Class</h2>
+<section id="hypotheses" class="level1">
+<h1>Hypotheses</h1>
 <ul>
-<li><a href="../unit-0/lec-0-3.html">Reproducibility Lecture</a></li>
-<li><a href="https://github.com/unc-hpm-quant/rct-analysis-template">RCT Analysis Template Repository</a></li>
+<li><strong>Primary Hypothesis:</strong> [State the main hypothesis to be tested.]</li>
+<li><strong>Secondary Hypotheses:</strong> [List any additional hypotheses.]</li>
 </ul>
 </section>
-<section id="additional-resources" class="level2">
-<h2 class="anchored" data-anchor-id="additional-resources">Additional Resources</h2>
+<section id="experimental-design" class="level1">
+<h1>Experimental Design</h1>
 <ul>
-<li><a href="https://happygitwithr.com/">Happy with Git and GitHub for the UseR</a></li>
-<li>Bryan, Jennifer, 2018. <a href="https://www.tandfonline.com/doi/abs/10.1080/00031305.2017.1399928?casa_token=UFHQ4HFVZDoAAAAA:TEr0v79f7Ng4iZhTl-ErKRCVP7ICxlAaq2ZoKFiWF3tOJz_mF0C4qADuBiBU3kUwOuC6eYVnDnU">Excuse Me, Do You Have a Moment to Talk About Version Control?</a>, The American Statistician.</li>
+<li><strong>Intervention Details:</strong> [Describe the intervention or treatment.]</li>
+<li><strong>Control Group:</strong> [Describe the control condition.]</li>
+<li><strong>Randomization:</strong> [Explain the randomization process, including stratification or blocking if applicable.]</li>
 </ul>
+</section>
+<section id="outcome-measures" class="level1">
+<h1>Outcome Measures</h1>
+<ul>
+<li><strong>Primary Outcomes:</strong> [Define the main outcomes to be measured.]</li>
+<li><strong>Secondary Outcomes:</strong> [Define additional outcomes of interest.]</li>
+</ul>
+</section>
+<section id="data-collection" class="level1">
+<h1>Data Collection</h1>
+<ul>
+<li><strong>Timing:</strong> [Specify when data will be collected (e.g., baseline, endline).]</li>
+<li><strong>Methods:</strong> [Describe data collection methods and instruments.]</li>
+</ul>
+</section>
+<section id="sample-size-and-power-calculations" class="level1">
+<h1>Sample Size and Power Calculations</h1>
+<ul>
+<li><strong>Sample Size:</strong> [State the planned sample size.]</li>
+<li><strong>Power Calculations:</strong> [Provide details of power calculations, including assumptions and effect sizes.]</li>
+</ul>
+</section>
+<section id="empirical-analysis" class="level1">
+<h1>Empirical Analysis</h1>
+<ul>
+<li><strong>Estimation Strategy:</strong> [Describe the statistical models and methods to be used.]</li>
+<li><strong>Handling of Missing Data:</strong> [Explain how missing data will be addressed.]</li>
+<li><strong>Multiple Hypothesis Testing:</strong> [Discuss adjustments for multiple comparisons, if applicable.]</li>
+</ul>
+</section>
+<section id="heterogeneous-treatment-effects" class="level1">
+<h1>Heterogeneous Treatment Effects</h1>
+<p>[Specify any subgroup analyses or interactions to assess heterogeneous effects.]</p>
+</section>
+<section id="robustness-checks" class="level1">
+<h1>Robustness Checks</h1>
+<p>[Outline any additional analyses to test the robustness of the results.]</p>
+</section>
+<section id="data-management" class="level1">
+<h1>Data Management</h1>
+<ul>
+<li><strong>Data Cleaning:</strong> [Describe procedures for data cleaning and validation.]</li>
+<li><strong>Replication:</strong> [Plan for sharing replication files and data.]</li>
+</ul>
+</section>
+<section id="ethical-considerations" class="level1">
+<h1>Ethical Considerations</h1>
+<p>[Discuss ethical approvals, consent procedures, and any potential risks to participants.]</p>
+</section>
+<section id="references" class="level1">
+<h1>References</h1>
+<p>[Include all references cited in the plan.]</p>
 
 
 </section>
@@ -1003,15 +972,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../unit-0/unit-0-foundations-2.html" class="pagination-link" aria-label="Class 2: A Field Experiment in Health Services Research">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Class 2: A Field Experiment in Health Services Research</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1020,7 +980,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/hpm883/edit/main/unit-0/unit-0-foundations-3.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/hpm883/edit/main/template-pap.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

@@ -1,42 +1,42 @@
 [
   {
-    "objectID": "resources.html",
-    "href": "resources.html",
-    "title": "Resources",
+    "objectID": "computing.html",
+    "href": "computing.html",
+    "title": "Computing",
     "section": "",
-    "text": "List, John. Experimental Economics: Theory and Practice, 2025. (Link available soon)\nChernozhukov, Victor, Christian Hansen, Nathan Kallus, Martin Spindler, and Vasilis Syrgkanis. Applied Causal Inference Powered by ML and AI, 2024.\nWager, Stefan. Causal Inference: A Statistical Learning Approach, 2024.\nJames, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An Introduction to Statistical Learning: With Applications in R. Springer Texts in Statistics. New York, NY: Springer US, 2021.",
+    "text": "This page is a guide for “best practices” for writing code and working with data. It is a work in progress, so please let Sean or the TA know if you have any suggestions for improvement.\n\n\n\n\n\n\nThis is meant as a general quide. For specific instructions on completing labs and assignments, please refer to the lab and assignment instructions.\n\n\n\n\n\n\nIPA Data Science, Engineering, and Technology Handbook\nCoding for Economists\n\n\n\n\n\n\nA package manager helps to standardize how you install and update software on your computer. Generally, you want to use a package manager to install any programs that are used globally on your computer. By “globally”, we mean that it is a program that is used across many projects and computing environments.\n\n\nIf using a Windows computer with Windows 10 or later, use the Windows Package Manager, winget.\nExample:\n# Install a single program (e.g. GitHub for command line)\nwinget install GitHub.cli\n\n\n\nIf using a macOS computer, use Homebrew.\nExample:\n# Install a single program (e.g. GitHub for command line)\nbrew install gh\n\n\n\n\n# Windows Install r\nwinget install --id R-project.R\n\n# macOS Install R\nbrew install --cask r\n\n\n\n\n\n\n\nScared of R? Not to worry! You’ll pick it up as we go - I promise! During class we will go through code slowly at first and spend some time explaining what each line of code does. You’ll be R literate in no time!\nIf you do want to learn a bit of R on your own, here are some excellent resources:\n\nR for Data Science by Hadley Wickham\n\n\n\nNope, you cannot turn in assignments in Stata, sorry!  Why? It’s not just that it’s much harder to run the class when we’re using different software (it is!), but there are several reasons that I strongly believe it is best for you to become comfortable with R:\n\nR is FREEEEE\nR has an open source ecosystem. This means\n\nImmediate access to cutting-edge statistical methods through community contributions\nExtensive library of packages for specialized analyses\nIntegration capabilities with other tools like Git, Python, and database systems\n\nR is just better for advanced data analysis\n\nAbility to handle multiple datasets simultaneously\nSuperior graphical capabilities\nBetter tools for web scraping, JSON parsing, and database querying\n\nIn industry, evidence that R has 5x greater demand than Stata on the job market\n\n\n\n\n\n\n\nLearning Strategy\n\n\n\nRather than directly mapping Stata commands to R, it’s more effective to first understand R’s fundamental concepts and then gradually build up to specific tasks like data management and regression models.\n\n\nHere are some excellent tools for Stata people to learn R:\n\nStata2R Website\nWorld Bank DIME R for Advanced Stata Users Workshop",
     "crumbs": [
-      "Resources"
+      "Computing"
     ]
   },
   {
-    "objectID": "resources.html#key-texts",
-    "href": "resources.html#key-texts",
-    "title": "Resources",
+    "objectID": "computing.html#useful-guides",
+    "href": "computing.html#useful-guides",
+    "title": "Computing",
     "section": "",
-    "text": "List, John. Experimental Economics: Theory and Practice, 2025. (Link available soon)\nChernozhukov, Victor, Christian Hansen, Nathan Kallus, Martin Spindler, and Vasilis Syrgkanis. Applied Causal Inference Powered by ML and AI, 2024.\nWager, Stefan. Causal Inference: A Statistical Learning Approach, 2024.\nJames, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An Introduction to Statistical Learning: With Applications in R. Springer Texts in Statistics. New York, NY: Springer US, 2021.",
+    "text": "IPA Data Science, Engineering, and Technology Handbook\nCoding for Economists",
     "crumbs": [
-      "Resources"
+      "Computing"
     ]
   },
   {
-    "objectID": "resources.html#websites",
-    "href": "resources.html#websites",
-    "title": "Resources",
-    "section": "Websites",
-    "text": "Websites\nField Experiments Website\nPapers in economic field experiments.\nAbdul Latif Jameel Poverty Action Lab (JPAL)\nA global research center based at MIT’s Economics Department that works to reduce poverty through rigorous scientific evidence and policy implementation\nStanford Social Impact Lab",
+    "objectID": "computing.html#computer-setup",
+    "href": "computing.html#computer-setup",
+    "title": "Computing",
+    "section": "",
+    "text": "A package manager helps to standardize how you install and update software on your computer. Generally, you want to use a package manager to install any programs that are used globally on your computer. By “globally”, we mean that it is a program that is used across many projects and computing environments.\n\n\nIf using a Windows computer with Windows 10 or later, use the Windows Package Manager, winget.\nExample:\n# Install a single program (e.g. GitHub for command line)\nwinget install GitHub.cli\n\n\n\nIf using a macOS computer, use Homebrew.\nExample:\n# Install a single program (e.g. GitHub for command line)\nbrew install gh\n\n\n\n\n# Windows Install r\nwinget install --id R-project.R\n\n# macOS Install R\nbrew install --cask r",
     "crumbs": [
-      "Resources"
+      "Computing"
     ]
   },
   {
-    "objectID": "resources.html#data",
-    "href": "resources.html#data",
-    "title": "Resources",
-    "section": "Data",
-    "text": "Data\nStanford GSB Social Impact Lab Experiment Data",
+    "objectID": "computing.html#using-r",
+    "href": "computing.html#using-r",
+    "title": "Computing",
+    "section": "",
+    "text": "Scared of R? Not to worry! You’ll pick it up as we go - I promise! During class we will go through code slowly at first and spend some time explaining what each line of code does. You’ll be R literate in no time!\nIf you do want to learn a bit of R on your own, here are some excellent resources:\n\nR for Data Science by Hadley Wickham\n\n\n\nNope, you cannot turn in assignments in Stata, sorry!  Why? It’s not just that it’s much harder to run the class when we’re using different software (it is!), but there are several reasons that I strongly believe it is best for you to become comfortable with R:\n\nR is FREEEEE\nR has an open source ecosystem. This means\n\nImmediate access to cutting-edge statistical methods through community contributions\nExtensive library of packages for specialized analyses\nIntegration capabilities with other tools like Git, Python, and database systems\n\nR is just better for advanced data analysis\n\nAbility to handle multiple datasets simultaneously\nSuperior graphical capabilities\nBetter tools for web scraping, JSON parsing, and database querying\n\nIn industry, evidence that R has 5x greater demand than Stata on the job market\n\n\n\n\n\n\n\nLearning Strategy\n\n\n\nRather than directly mapping Stata commands to R, it’s more effective to first understand R’s fundamental concepts and then gradually build up to specific tasks like data management and regression models.\n\n\nHere are some excellent tools for Stata people to learn R:\n\nStata2R Website\nWorld Bank DIME R for Advanced Stata Users Workshop",
     "crumbs": [
-      "Resources"
+      "Computing"
     ]
   },
   {
@@ -44,7 +44,7 @@
     "href": "index.html",
     "title": "Course Schedule",
     "section": "",
-    "text": "This page contains the schedule, topics, content and assigments for the semester.\n\n\n\n\n\n\nNote\n\n\n\nThis schedule will be updated as the semester progresses.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweek\ndow\ndate\nsession\nunit\ntopic\nprepare\nclass\nlab\nlab_sa\ndue\n\n\n\n1\nW\n8 January\nLec\nFoundations\nWelcome; Key Concepts\n\n\n\n\n\n\n\n\n\n2\nM\n13 January\nLec\nFoundations\nGuest Lecture: Running a Randomized Trial\n\n\n\n\n\nIntroductory Survey\n\n\n\nW\n15 January\n-\nFoundations\nReproducible Research\n\n\n\n\n\n\n\n\n\n3\nM\n20 January\n-\nNo Class: MLK Day\n\n\n\n\n\n\n\n\n\nW\n22 January\nLec\nInternal Validity\nGeneralized Potential Outcomes Framework; Exclusion Restrictions\n\n\n\n\nProject Topic\n\n\n4\nM\n27 January\nLab\nInternal Validity\nTBD\n\n\n\n\n\n\n\n\nW\n29 January\nLec\nExperimental Design\nOptimal design of experiments; Power\n\n\n\n\nLab 1 Report\n\n\n5\nM\n3 February\nLab\nExperimental Design\nPower simulations\n\n\n\n\n\n\n\n\nW\n5 February\nLec\nExperimental Design\nRandomization and Blocking\n\n\n\n\nLab 2 Report\n\n\n6\nM\n10 February\n-\nNo Class: Well-being Day\n\n\n\n\n\n\n\n\n\nW\n12 February\nLec\nPreparations\nEthics, Registration and Pre-Analysis Plans\n\n\n\n\n\n\n\n7\nM\n17 February\nLec\nIntroduction to Machine Learning\nLasso; Penalized Regression; Cross-Validation\n\n\n\n\n\n\n\n\nW\n19 February\nLab\nIntroduction to Machine Learning\nLasso and Friends\n\n\n\n\n\n\n\n8\nM\n24 February\nLec\nIntroduction to Machine Learning\nRandom Trees and Random Forests\n\n\n\n\nLab 3 Report\n\n\n\nW\n26 February\n\nMIDTERM 1\n\n\n\n\n\n\n\n\n9\nM\n3 March\nLec\nHeterogeneity and Moderation\nHeterogeneous Treatment Effects\n\n\n\n\nLab 4 Report\n\n\n\nW\n5 March\nLab\nHeterogeneity and Moderation\nCausal Forests\n\n\n\n\nProject Pre-Analysis Plan\n\n\n10\nM\n10 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n\nW\n12 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n11\nM\n17 March\nLec\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\nLab 5 Report\n\n\n\nW\n19 March\nLab\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\nReferee Report\n\n\n12\nM\n24 March\nLec\nViolations of Internal Validity\nOne and Two-sided Compliance; TOT (LATE)\n\n\n\n\n\n\n\n\nW\n26 March\nLab\nViolations of Internal Validity\nIV\n\n\n\n\nLab 6 Report\n\n\n13\nM\n31 March\n\nMIDTERM 2\n\n\n\n\n\n\n\n\n\nW\n2 April\nLec\nMediation and External Validity\nMediation Analysis and Generalizability\n\n\n\n\n\n\n\n14\nM\n7 April\nLab\nMediation and External Validity\n\n\n\n\n\nLab 7 Report\n\n\n\nW\n9 April\n\nBuffer\nTBD\n\n\n\n\n\n\n\n15\nM\n14 April\n\nBuffer\nTBD\n\n\n\n\n\n\n\n\nW\n16 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n16\nM\n21 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n\nW\n23 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n17\nM\n28 April\n\nWrap-up\nTBD\n\n\n\n\nFinal Project Manuscript & Replication Repository\n\n\n\nW\n30 April\n\nFINAL EXAM",
+    "text": "This page contains the schedule, topics, content and assigments for the semester.\n\n\n\n\n\n\nNote\n\n\n\nThis schedule will be updated as the semester progresses.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweek\ndow\ndate\nsession\nunit\ntopic\nprepare\nclass\nlab\nlab_sa\ndue\n\n\n\n1\nW\n8 January\nLec\nFoundations\nWelcome; Key Concepts\n\n\n\n\n\n\n\n\n\n2\nM\n13 January\nLec\nFoundations\nGuest Lecture: Running a Randomized Trial\n\n\n\n\n\nIntroductory Survey\n\n\n\nW\n15 January\n-\nFoundations\nReproducible Research\n\n\n\n\n\n\n\n\n\n3\nM\n20 January\n-\nNo Class: MLK Day\n\n\n\n\n\n\n\n\n\nW\n22 January\nLec\nInternal Validity\nGeneralized Potential Outcomes Framework; Exclusion Restrictions\n\n\n\n\n\n\n\n4\nM\n27 January\nLab\nInternal Validity\nTBD\n\n\n\n\n\n\n\n\nW\n29 January\nLec\nExperimental Design\nOptimal design of experiments; Power\n\n\n\n\nLab 1 Report\n\n\n5\nM\n3 February\nLab\nExperimental Design\nPower simulations\n\n\n\n\n\n\n\n\nW\n5 February\nLec\nExperimental Design\nRandomization and Blocking\n\n\n\n\nLab 2 Report\n\n\n6\nM\n10 February\n-\nNo Class: Well-being Day\n\n\n\n\n\n\n\n\n\nW\n12 February\nLec\nPreparations\nEthics, Registration and Pre-Analysis Plans\n\n\n\n\n\n\n\n7\nM\n17 February\nLec\nIntroduction to Machine Learning\nLasso; Penalized Regression; Cross-Validation\n\n\n\n\n\n\n\n\nW\n19 February\nLab\nIntroduction to Machine Learning\nLasso and Friends\n\n\n\n\n\n\n\n8\nM\n24 February\nLec\nIntroduction to Machine Learning\nRandom Trees and Random Forests\n\n\n\n\nLab 3 Report\n\n\n\nW\n26 February\n\nMIDTERM 1\n\n\n\n\n\n\n\n\n9\nM\n3 March\nLec\nHeterogeneity and Moderation\nHeterogeneous Treatment Effects\n\n\n\n\nLab 4 Report\n\n\n\nW\n5 March\nLab\nHeterogeneity and Moderation\nCausal Forests\n\n\n\n\n\n\n\n10\nM\n10 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n\nW\n12 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n11\nM\n17 March\nLec\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\nLab 5 Report\n\n\n\nW\n19 March\nLab\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\n\n\n\n12\nM\n24 March\nLec\nViolations of Internal Validity\nOne and Two-sided Compliance; TOT (LATE)\n\n\n\n\n\n\n\n\nW\n26 March\nLab\nViolations of Internal Validity\nIV\n\n\n\n\nLab 6 Report\n\n\n13\nM\n31 March\n\nMIDTERM 2\n\n\n\n\n\n\n\n\n\nW\n2 April\nLec\nMediation and External Validity\nMediation Analysis and Generalizability\n\n\n\n\n\n\n\n14\nM\n7 April\nLab\nMediation and External Validity\n\n\n\n\n\nLab 7 Report\n\n\n\nW\n9 April\n\nBuffer\nTBD\n\n\n\n\nProject Pre-Analysis Plan\n\n\n15\nM\n14 April\n\nBuffer\nTBD\n\n\n\n\n\n\n\n\nW\n16 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n16\nM\n21 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n\nW\n23 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n17\nM\n28 April\n\nWrap-up\nTBD\n\n\n\n\nFinal Project Manuscript & Replication Repository\n\n\n\nW\n30 April\n\nFINAL EXAM",
     "crumbs": [
       "Course Schedule"
     ]
@@ -241,39 +241,6 @@
     "text": "5. Wrap-Up\nReflect: How did version control and Quarto documents streamline your workflow?\nNext Steps: If you want to dig further into reproducible data analysis practices, you can explore advanced topics like Docker, code review workflows, and CI/CD (continuous integration and deployment)."
   },
   {
-    "objectID": "instructors.html",
-    "href": "instructors.html",
-    "title": "Instructors",
-    "section": "",
-    "text": "Sean Sylvia is an Associate Professor in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Dr. Sylvia will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
-    "crumbs": [
-      "Course Information",
-      "Instructors"
-    ]
-  },
-  {
-    "objectID": "instructors.html#instructor-sean-sylvia-ph.d.",
-    "href": "instructors.html#instructor-sean-sylvia-ph.d.",
-    "title": "Instructors",
-    "section": "",
-    "text": "Sean Sylvia is an Associate Professor in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Dr. Sylvia will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
-    "crumbs": [
-      "Course Information",
-      "Instructors"
-    ]
-  },
-  {
-    "objectID": "instructors.html#teaching-assistant-yumeng-du",
-    "href": "instructors.html#teaching-assistant-yumeng-du",
-    "title": "Instructors",
-    "section": "Teaching Assistant: Yumeng Du",
-    "text": "Teaching Assistant: Yumeng Du\nYumeng Du is a Ph.D. student in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Yumeng will hold office hours on Mondays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
-    "crumbs": [
-      "Course Information",
-      "Instructors"
-    ]
-  },
-  {
     "objectID": "course-communication.html",
     "href": "course-communication.html",
     "title": "Communication",
@@ -315,6 +282,94 @@
     "crumbs": [
       "Course Information",
       "Communication"
+    ]
+  },
+  {
+    "objectID": "instructors.html",
+    "href": "instructors.html",
+    "title": "Instructors",
+    "section": "",
+    "text": "Sean Sylvia is an Associate Professor in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Dr. Sylvia will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
+    "crumbs": [
+      "Course Information",
+      "Instructors"
+    ]
+  },
+  {
+    "objectID": "instructors.html#instructor-sean-sylvia-ph.d.",
+    "href": "instructors.html#instructor-sean-sylvia-ph.d.",
+    "title": "Instructors",
+    "section": "",
+    "text": "Sean Sylvia is an Associate Professor in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Dr. Sylvia will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
+    "crumbs": [
+      "Course Information",
+      "Instructors"
+    ]
+  },
+  {
+    "objectID": "instructors.html#teaching-assistant-yumeng-du",
+    "href": "instructors.html#teaching-assistant-yumeng-du",
+    "title": "Instructors",
+    "section": "Teaching Assistant: Yumeng Du",
+    "text": "Teaching Assistant: Yumeng Du\nYumeng Du is a Ph.D. student in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Yumeng will hold office hours on Mondays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
+    "crumbs": [
+      "Course Information",
+      "Instructors"
+    ]
+  },
+  {
+    "objectID": "ex-simulate.html",
+    "href": "ex-simulate.html",
+    "title": "Simulating Experimental Data with Noncompliance",
+    "section": "",
+    "text": "In this example, we simulate data for a simple randomized experiment with one treatment and one control group. The randomization is at the individual level. Additionally, we introduce noncompliance, where some individuals assigned to the treatment group do not take the treatment.\n\n\nDefine the parameters for the experiment, such as the number of participants, compliance rate, and treatment effects.\n\n# Set seed for reproducibility\nset.seed(123)\n\n# Parameters\nn &lt;- 500  # Total number of participants\nprob_treatment &lt;- 0.5  # Probability of being assigned to treatment\ncompliance_rate &lt;- 0.8  # Proportion of treated participants who comply\n\n# Treatment effect\nbaseline_mean &lt;- 50  # Mean outcome for control group\ntreatment_effect &lt;- 10  # Additional effect for treated participants\n\n\nSimulate random assignment to treatment and compliance behavior.\n\n# Simulate random assignment\nassignment &lt;- rbinom(n, 1, prob_treatment)  # 1 = assigned to treatment, 0 = control\n\n# Simulate compliance behavior\n# If assigned to treatment, comply with probability `compliance_rate`\ncompliance &lt;- ifelse(assignment == 1, rbinom(n, 1, compliance_rate), 0)  # 1 = complied, 0 = did not comply\n\n\nSimulate the outcome variable based on compliance and treatment assignment.\n\n# Simulate outcomes\noutcome &lt;- baseline_mean + \n  (assignment * compliance * treatment_effect) +  # Effect for those who comply\n  rnorm(n, mean = 0, sd = 5)  # Add random noise\n\n# Combine data into a data frame\nexperiment_data &lt;- data.frame(\n  ID = 1:n,\n  Assignment = assignment,\n  Compliance = compliance,\n  Outcome = outcome\n)\n\n# View the first few rows of the data\nhead(experiment_data)\n\n  ID Assignment Compliance  Outcome\n1  1          0          0 46.99054\n2  2          1          1 55.03151\n3  3          0          0 55.13393\n4  4          1          1 63.75531\n5  5          1          1 52.45417\n6  6          0          0 49.52426\n\n\n\nExport the simulated data to a CSV file for further analysis.\n\n# Export the data to a CSV file\nwrite.csv(experiment_data, \"simulated_experiment_data.csv\", row.names = FALSE)\n\n# Confirm export\ncat(\"Data has been exported to 'simulated_experiment_data.csv'\")\n\nData has been exported to 'simulated_experiment_data.csv'",
+    "crumbs": [
+      "Semester Project",
+      "Data Simulation Example"
+    ]
+  },
+  {
+    "objectID": "ex-simulate.html#step-1-setup-and-parameters",
+    "href": "ex-simulate.html#step-1-setup-and-parameters",
+    "title": "Simulating Experimental Data with Noncompliance",
+    "section": "",
+    "text": "Define the parameters for the experiment, such as the number of participants, compliance rate, and treatment effects.\n\n# Set seed for reproducibility\nset.seed(123)\n\n# Parameters\nn &lt;- 500  # Total number of participants\nprob_treatment &lt;- 0.5  # Probability of being assigned to treatment\ncompliance_rate &lt;- 0.8  # Proportion of treated participants who comply\n\n# Treatment effect\nbaseline_mean &lt;- 50  # Mean outcome for control group\ntreatment_effect &lt;- 10  # Additional effect for treated participants",
+    "crumbs": [
+      "Semester Project",
+      "Data Simulation Example"
+    ]
+  },
+  {
+    "objectID": "ex-simulate.html#step-2-random-assignment-and-compliance",
+    "href": "ex-simulate.html#step-2-random-assignment-and-compliance",
+    "title": "Simulating Experimental Data with Noncompliance",
+    "section": "",
+    "text": "Simulate random assignment to treatment and compliance behavior.\n\n# Simulate random assignment\nassignment &lt;- rbinom(n, 1, prob_treatment)  # 1 = assigned to treatment, 0 = control\n\n# Simulate compliance behavior\n# If assigned to treatment, comply with probability `compliance_rate`\ncompliance &lt;- ifelse(assignment == 1, rbinom(n, 1, compliance_rate), 0)  # 1 = complied, 0 = did not comply",
+    "crumbs": [
+      "Semester Project",
+      "Data Simulation Example"
+    ]
+  },
+  {
+    "objectID": "ex-simulate.html#step-3-simulate-outcomes",
+    "href": "ex-simulate.html#step-3-simulate-outcomes",
+    "title": "Simulating Experimental Data with Noncompliance",
+    "section": "",
+    "text": "Simulate the outcome variable based on compliance and treatment assignment.\n\n# Simulate outcomes\noutcome &lt;- baseline_mean + \n  (assignment * compliance * treatment_effect) +  # Effect for those who comply\n  rnorm(n, mean = 0, sd = 5)  # Add random noise\n\n# Combine data into a data frame\nexperiment_data &lt;- data.frame(\n  ID = 1:n,\n  Assignment = assignment,\n  Compliance = compliance,\n  Outcome = outcome\n)\n\n# View the first few rows of the data\nhead(experiment_data)\n\n  ID Assignment Compliance  Outcome\n1  1          0          0 46.99054\n2  2          1          1 55.03151\n3  3          0          0 55.13393\n4  4          1          1 63.75531\n5  5          1          1 52.45417\n6  6          0          0 49.52426",
+    "crumbs": [
+      "Semester Project",
+      "Data Simulation Example"
+    ]
+  },
+  {
+    "objectID": "ex-simulate.html#step-4-export-data-to-csv",
+    "href": "ex-simulate.html#step-4-export-data-to-csv",
+    "title": "Simulating Experimental Data with Noncompliance",
+    "section": "",
+    "text": "Export the simulated data to a CSV file for further analysis.\n\n# Export the data to a CSV file\nwrite.csv(experiment_data, \"simulated_experiment_data.csv\", row.names = FALSE)\n\n# Confirm export\ncat(\"Data has been exported to 'simulated_experiment_data.csv'\")\n\nData has been exported to 'simulated_experiment_data.csv'",
+    "crumbs": [
+      "Semester Project",
+      "Data Simulation Example"
     ]
   },
   {
@@ -508,43 +563,112 @@
     "text": "More labs to be added as the semester progresses.\n\n\n\n\n\n\n\n\n\nNo.\n\n\nTitle\n\n\nDue date\n\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "computing.html",
-    "href": "computing.html",
-    "title": "Computing",
+    "objectID": "template-pap.html",
+    "href": "template-pap.html",
+    "title": "Pre-Analysis Plan Template",
     "section": "",
-    "text": "This page is a guide for “best practices” for writing code and working with data. It is a work in progress, so please let Sean or the TA know if you have any suggestions for improvement.\n\n\n\n\n\n\nThis is meant as a general quide. For specific instructions on completing labs and assignments, please refer to the lab and assignment instructions.\n\n\n\n\n\n\nIPA Data Science, Engineering, and Technology Handbook\nCoding for Economists\n\n\n\n\n\n\nA package manager helps to standardize how you install and update software on your computer. Generally, you want to use a package manager to install any programs that are used globally on your computer. By “globally”, we mean that it is a program that is used across many projects and computing environments.\n\n\nIf using a Windows computer with Windows 10 or later, use the Windows Package Manager, winget.\nExample:\n# Install a single program (e.g. GitHub for command line)\nwinget install GitHub.cli\n\n\n\nIf using a macOS computer, use Homebrew.\nExample:\n# Install a single program (e.g. GitHub for command line)\nbrew install gh\n\n\n\n\n# Windows Install r\nwinget install --id R-project.R\n\n# macOS Install R\nbrew install --cask r\n\n\n\n\n\n\n\nScared of R? Not to worry! You’ll pick it up as we go - I promise! During class we will go through code slowly at first and spend some time explaining what each line of code does. You’ll be R literate in no time!\nIf you do want to learn a bit of R on your own, here are some excellent resources:\n\nR for Data Science by Hadley Wickham\n\n\n\nNope, you cannot turn in assignments in Stata, sorry!  Why? It’s not just that it’s much harder to run the class when we’re using different software (it is!), but there are several reasons that I strongly believe it is best for you to become comfortable with R:\n\nR is FREEEEE\nR has an open source ecosystem. This means\n\nImmediate access to cutting-edge statistical methods through community contributions\nExtensive library of packages for specialized analyses\nIntegration capabilities with other tools like Git, Python, and database systems\n\nR is just better for advanced data analysis\n\nAbility to handle multiple datasets simultaneously\nSuperior graphical capabilities\nBetter tools for web scraping, JSON parsing, and database querying\n\nIn industry, evidence that R has 5x greater demand than Stata on the job market\n\n\n\n\n\n\n\nLearning Strategy\n\n\n\nRather than directly mapping Stata commands to R, it’s more effective to first understand R’s fundamental concepts and then gradually build up to specific tasks like data management and regression models.\n\n\nHere are some excellent tools for Stata people to learn R:\n\nStata2R Website\nWorld Bank DIME R for Advanced Stata Users Workshop",
+    "text": "This is a template for a Pre-Analysis Plan (PAP), roughly following guidelines from the American Economic Association (AEA) and the World Bank’s Development Impact Evaluation (DIME) group."
+  },
+  {
+    "objectID": "template-pap.html#helpful-resources",
+    "href": "template-pap.html#helpful-resources",
+    "title": "Pre-Analysis Plan Template",
+    "section": "Helpful Resources:",
+    "text": "Helpful Resources:\n\nFor guidance on pre-analysis plans, refer to the World Bank’s DIME Wiki: Pre-Analysis Plan - DIME Wiki\nFor examples of pre-analysis plans, explore the AEA’s RCT Registry: AEA RCT Registry"
+  },
+  {
+    "objectID": "project.html",
+    "href": "project.html",
+    "title": "Semester Project Description",
+    "section": "",
+    "text": "With the semester project, you’ll dive into the full experimental research lifecycle and apply the tools and techniques you’re learning in this course. Working in your assigned group, you’ll design an experiment to answer a meaningful research question of your choosing, develop a pre-analysis plan, and analyze data (we’ll simulate the data given time constraints). By the end of the semester, you’ll have a manuscript and replication package that showcase your ability to design, execute, and report on a rigorous experimental research project. This is your opportunity to apply what we learn in class to a topic of interest.\n\n\n\n\n\n\nThe Pre-Analysis Plan (PAP) ensures your experiment is well-conceived, transparent, and analytically rigorous. This document lays out your research design and specifies how you will analyze the data.\n\n\n\nIntroduction and Background: Explain your research question and its significance.\n\nHypotheses: Clearly state primary and secondary hypotheses.\n\nExperimental Design:\n\nType of experiment (e.g., lab, online A/B test, field).\n\nRandom assignment procedure.\n\nTreatment and control conditions.\n\nParticipant details (e.g., recruitment, sample size, inclusion criteria).\n\n\nKey Outcomes: Define primary and secondary outcomes and describe how they will be measured.\n\nAnalytical Strategy:\n\nSpecify statistical methods and models.\n\nIncorporate analysis related to compliance or heterogeneous treatment effects.\n\nUse a machine learning approach (e.g., predicting treatment heterogeneity or analyzing secondary outcomes).\n\nAddress how you will handle multiple hypotheses testing, if applicable.\n\n\nLimitations: Discuss potential weaknesses and their impact on findings.\n\n\n\n\n\nClarity and Completeness (40%)\n\nRigor of Design and Analysis (40%)\n\nFeasibility and Practicality (20%)\n\n\n\n\n\nFor guidance on pre-analysis plans: World Bank DIME Wiki\n\nFor examples of pre-analysis plans: AEA RCT Registry\n\n\n\n\n\n\nThis deliverable includes a journal-style manuscript and a replication package to showcase your research findings and ensure reproducibility.\n\n\n\nFinal Manuscript: (10–15 pages)\n\nAbstract: Concise summary of your study and findings.\nIntroduction: Background and motivation for your research.\nMethods: Detailed description of your experimental design, treatments, and analytical approach.\nResults: Clear presentation of findings, including tables and figures.\nDiscussion: Interpretation, limitations, and implications for future research or policy.\nReferences: Properly formatted citations.\n\nReplication Package:\n\nSimulated Data: Dataset formatted for analysis.\nCode: Well-documented scripts (R or Python recommended) for data cleaning and analysis, incorporating machine learning where appropriate.\nREADME File: Detailed instructions for replicating your analysis.\n\n\n\n\n\n\nManuscript:\n\nWriting Quality and Organization (20%)\nClarity and Depth of Analysis (30%)\n\nReplication Package:\n\nReproducibility (30%)\nCompleteness and Documentation (20%)\n\n\n\n\n\n\n\n\n\nNow - April 9: Work with team on pre-analysis plan.\nApril 9: Submit Pre-Analysis Plan for feedback.\nApril 9 - April 28: Simulate and analyze data; draft your final deliverable.\nApril 28: Submit Final Manuscript and Replication Package.\n\n\n\n\n\n\nPre-Analysis Plan: 50%\nFinal Manuscript and Replication Package: 50%",
     "crumbs": [
-      "Computing"
+      "Semester Project",
+      "Project Description"
     ]
   },
   {
-    "objectID": "computing.html#useful-guides",
-    "href": "computing.html#useful-guides",
-    "title": "Computing",
+    "objectID": "project.html#overview",
+    "href": "project.html#overview",
+    "title": "Semester Project Description",
     "section": "",
-    "text": "IPA Data Science, Engineering, and Technology Handbook\nCoding for Economists",
+    "text": "With the semester project, you’ll dive into the full experimental research lifecycle and apply the tools and techniques you’re learning in this course. Working in your assigned group, you’ll design an experiment to answer a meaningful research question of your choosing, develop a pre-analysis plan, and analyze data (we’ll simulate the data given time constraints). By the end of the semester, you’ll have a manuscript and replication package that showcase your ability to design, execute, and report on a rigorous experimental research project. This is your opportunity to apply what we learn in class to a topic of interest.",
     "crumbs": [
-      "Computing"
+      "Semester Project",
+      "Project Description"
     ]
   },
   {
-    "objectID": "computing.html#computer-setup",
-    "href": "computing.html#computer-setup",
-    "title": "Computing",
+    "objectID": "project.html#deliverables",
+    "href": "project.html#deliverables",
+    "title": "Semester Project Description",
     "section": "",
-    "text": "A package manager helps to standardize how you install and update software on your computer. Generally, you want to use a package manager to install any programs that are used globally on your computer. By “globally”, we mean that it is a program that is used across many projects and computing environments.\n\n\nIf using a Windows computer with Windows 10 or later, use the Windows Package Manager, winget.\nExample:\n# Install a single program (e.g. GitHub for command line)\nwinget install GitHub.cli\n\n\n\nIf using a macOS computer, use Homebrew.\nExample:\n# Install a single program (e.g. GitHub for command line)\nbrew install gh\n\n\n\n\n# Windows Install r\nwinget install --id R-project.R\n\n# macOS Install R\nbrew install --cask r",
+    "text": "The Pre-Analysis Plan (PAP) ensures your experiment is well-conceived, transparent, and analytically rigorous. This document lays out your research design and specifies how you will analyze the data.\n\n\n\nIntroduction and Background: Explain your research question and its significance.\n\nHypotheses: Clearly state primary and secondary hypotheses.\n\nExperimental Design:\n\nType of experiment (e.g., lab, online A/B test, field).\n\nRandom assignment procedure.\n\nTreatment and control conditions.\n\nParticipant details (e.g., recruitment, sample size, inclusion criteria).\n\n\nKey Outcomes: Define primary and secondary outcomes and describe how they will be measured.\n\nAnalytical Strategy:\n\nSpecify statistical methods and models.\n\nIncorporate analysis related to compliance or heterogeneous treatment effects.\n\nUse a machine learning approach (e.g., predicting treatment heterogeneity or analyzing secondary outcomes).\n\nAddress how you will handle multiple hypotheses testing, if applicable.\n\n\nLimitations: Discuss potential weaknesses and their impact on findings.\n\n\n\n\n\nClarity and Completeness (40%)\n\nRigor of Design and Analysis (40%)\n\nFeasibility and Practicality (20%)\n\n\n\n\n\nFor guidance on pre-analysis plans: World Bank DIME Wiki\n\nFor examples of pre-analysis plans: AEA RCT Registry\n\n\n\n\n\n\nThis deliverable includes a journal-style manuscript and a replication package to showcase your research findings and ensure reproducibility.\n\n\n\nFinal Manuscript: (10–15 pages)\n\nAbstract: Concise summary of your study and findings.\nIntroduction: Background and motivation for your research.\nMethods: Detailed description of your experimental design, treatments, and analytical approach.\nResults: Clear presentation of findings, including tables and figures.\nDiscussion: Interpretation, limitations, and implications for future research or policy.\nReferences: Properly formatted citations.\n\nReplication Package:\n\nSimulated Data: Dataset formatted for analysis.\nCode: Well-documented scripts (R or Python recommended) for data cleaning and analysis, incorporating machine learning where appropriate.\nREADME File: Detailed instructions for replicating your analysis.\n\n\n\n\n\n\nManuscript:\n\nWriting Quality and Organization (20%)\nClarity and Depth of Analysis (30%)\n\nReplication Package:\n\nReproducibility (30%)\nCompleteness and Documentation (20%)",
     "crumbs": [
-      "Computing"
+      "Semester Project",
+      "Project Description"
     ]
   },
   {
-    "objectID": "computing.html#using-r",
-    "href": "computing.html#using-r",
-    "title": "Computing",
+    "objectID": "project.html#timeline",
+    "href": "project.html#timeline",
+    "title": "Semester Project Description",
     "section": "",
-    "text": "Scared of R? Not to worry! You’ll pick it up as we go - I promise! During class we will go through code slowly at first and spend some time explaining what each line of code does. You’ll be R literate in no time!\nIf you do want to learn a bit of R on your own, here are some excellent resources:\n\nR for Data Science by Hadley Wickham\n\n\n\nNope, you cannot turn in assignments in Stata, sorry!  Why? It’s not just that it’s much harder to run the class when we’re using different software (it is!), but there are several reasons that I strongly believe it is best for you to become comfortable with R:\n\nR is FREEEEE\nR has an open source ecosystem. This means\n\nImmediate access to cutting-edge statistical methods through community contributions\nExtensive library of packages for specialized analyses\nIntegration capabilities with other tools like Git, Python, and database systems\n\nR is just better for advanced data analysis\n\nAbility to handle multiple datasets simultaneously\nSuperior graphical capabilities\nBetter tools for web scraping, JSON parsing, and database querying\n\nIn industry, evidence that R has 5x greater demand than Stata on the job market\n\n\n\n\n\n\n\nLearning Strategy\n\n\n\nRather than directly mapping Stata commands to R, it’s more effective to first understand R’s fundamental concepts and then gradually build up to specific tasks like data management and regression models.\n\n\nHere are some excellent tools for Stata people to learn R:\n\nStata2R Website\nWorld Bank DIME R for Advanced Stata Users Workshop",
+    "text": "Now - April 9: Work with team on pre-analysis plan.\nApril 9: Submit Pre-Analysis Plan for feedback.\nApril 9 - April 28: Simulate and analyze data; draft your final deliverable.\nApril 28: Submit Final Manuscript and Replication Package.",
     "crumbs": [
-      "Computing"
+      "Semester Project",
+      "Project Description"
+    ]
+  },
+  {
+    "objectID": "project.html#grading-breakdown",
+    "href": "project.html#grading-breakdown",
+    "title": "Semester Project Description",
+    "section": "",
+    "text": "Pre-Analysis Plan: 50%\nFinal Manuscript and Replication Package: 50%",
+    "crumbs": [
+      "Semester Project",
+      "Project Description"
+    ]
+  },
+  {
+    "objectID": "resources.html",
+    "href": "resources.html",
+    "title": "Resources",
+    "section": "",
+    "text": "List, John. Experimental Economics: Theory and Practice, 2025. (Link available soon)\nChernozhukov, Victor, Christian Hansen, Nathan Kallus, Martin Spindler, and Vasilis Syrgkanis. Applied Causal Inference Powered by ML and AI, 2024.\nWager, Stefan. Causal Inference: A Statistical Learning Approach, 2024.\nJames, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An Introduction to Statistical Learning: With Applications in R. Springer Texts in Statistics. New York, NY: Springer US, 2021.",
+    "crumbs": [
+      "Resources"
+    ]
+  },
+  {
+    "objectID": "resources.html#key-texts",
+    "href": "resources.html#key-texts",
+    "title": "Resources",
+    "section": "",
+    "text": "List, John. Experimental Economics: Theory and Practice, 2025. (Link available soon)\nChernozhukov, Victor, Christian Hansen, Nathan Kallus, Martin Spindler, and Vasilis Syrgkanis. Applied Causal Inference Powered by ML and AI, 2024.\nWager, Stefan. Causal Inference: A Statistical Learning Approach, 2024.\nJames, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An Introduction to Statistical Learning: With Applications in R. Springer Texts in Statistics. New York, NY: Springer US, 2021.",
+    "crumbs": [
+      "Resources"
+    ]
+  },
+  {
+    "objectID": "resources.html#websites",
+    "href": "resources.html#websites",
+    "title": "Resources",
+    "section": "Websites",
+    "text": "Websites\nField Experiments Website\nPapers in economic field experiments.\nAbdul Latif Jameel Poverty Action Lab (JPAL)\nA global research center based at MIT’s Economics Department that works to reduce poverty through rigorous scientific evidence and policy implementation\nStanford Social Impact Lab",
+    "crumbs": [
+      "Resources"
+    ]
+  },
+  {
+    "objectID": "resources.html#data",
+    "href": "resources.html#data",
+    "title": "Resources",
+    "section": "Data",
+    "text": "Data\nStanford GSB Social Impact Lab Experiment Data",
+    "crumbs": [
+      "Resources"
     ]
   }
 ]

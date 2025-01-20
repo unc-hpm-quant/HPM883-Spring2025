@@ -1,0 +1,78 @@
+---
+title: "Study Protocol Template"
+author: "Your Name"
+date: "`r Sys.Date()`"
+format: html
+draft: true
+---
+
+# Title
+
+**\[Descriptive Title of the Study\]**
+
+# Abstract
+
+\[Provide a structured abstract summarizing the background, objectives, methods, and anticipated outcomes of the study.\]
+
+# Background
+
+\[Discuss the context and rationale for the study, including a summary of existing research and the gap this study aims to address.\]
+
+# Objectives
+
+\[Clearly state the primary and secondary objectives of the study.\]
+
+# Methods
+
+## Study Design
+
+\[Describe the type of study design (e.g., randomized controlled trial, cohort study) and provide a detailed description.\]
+
+## Setting
+
+\[Specify the setting in which the study will be conducted.\]
+
+## Participants
+
+-   **Inclusion Criteria:** \[List the criteria for including participants.\]
+-   **Exclusion Criteria:** \[List the criteria for excluding participants.\]
+
+## Interventions
+
+\[Describe the interventions or exposures to be administered.\]
+
+## Outcomes
+
+\[Define the primary and secondary outcomes to be measured.\]
+
+## Sample Size
+
+\[Provide a justification for the sample size, including power calculations if applicable.\]
+
+## Randomization
+
+\[Describe the randomization process, including allocation concealment and blinding procedures.\]
+
+## Data Collection
+
+\[Outline the methods and tools for data collection.\]
+
+## Data Analysis
+
+\[Detail the statistical methods and software to be used for data analysis.\]
+
+## Ethical Considerations
+
+\[Discuss ethical approvals obtained, consent procedures, and any potential risks to participants.\]
+
+## Dissemination
+
+\[Explain how the results will be disseminated to stakeholders and the broader community.\]
+
+# Discussion
+
+\[Discuss the potential impact of the study, its limitations, and how the findings will contribute to the field.\]
+
+# References
+
+\[Include all references cited in the protocol.\]

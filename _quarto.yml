@@ -57,6 +57,7 @@ website:
     search: true
     collapse-level: 1
     contents:
+      - index.qmd
       - section: "Course Information"
         contents:
           - href: course-overview.qmd
@@ -67,9 +68,14 @@ website:
             text: "Instructors"
           - href: course-communication.qmd
             text: "Communication"
+      - section: "Semester Project"
+        contents:
           - href: project.qmd
-            text: "Semester Project"
-      - index.qmd
+            text: "Project Description"
+          - href: template-protocol.qmd
+            text: "Template Protocol"
+          - href: ex-simulate.qmd
+            text: "Data Simulation Example"
       - href: resources.qmd
         text: "Resources"
       - href: computing.qmd

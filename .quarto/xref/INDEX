@@ -79,5 +79,27 @@
   },
   "unit-0/lec-0-3.qmd": {
     "lec-0-3.html": "98641d80"
+  },
+  "labs/lab-1.qmd": {
+    "lab-1.html": "dab96d5d"
+  },
+  "example-powersim.qmd": {
+    "example-powersim.html": "85bf7d7f"
+  },
+  "ex-simulate.qmd": {
+    "ex-simulate.html": "bc313670"
+  },
+  "unit-1/unit-1-internal-1.qmd": {
+    "unit-1-internal-1.html": "de459ffa"
+  },
+  "unit-1/lec-1-1.qmd": {
+    "lec-1-1.html": "6537dd63"
+  },
+  "template-pap.qmd": {
+    "template-pap.tex": "4dbe3575",
+    "template-pap.html": "dd4b6137"
+  },
+  "template-protocol.qmd": {
+    "template-protocol.html": "ba92004b"
   }
 }

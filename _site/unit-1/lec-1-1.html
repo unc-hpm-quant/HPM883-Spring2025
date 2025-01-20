@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Sean Sylvia, Ph.D.">
+<meta name="dcterms.date" content="2025-01-16">
 
-<title>Unit 0: Foundations – HPM 883</title>
+<title>Unit 1: Internal Validity – HPM 883</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -63,7 +31,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../unit-0/unit-0-foundations-2.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -102,6 +69,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<meta name="quarto:status" content="draft">
 
 
 </head>
@@ -109,13 +77,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top"><div id="quarto-draft-alert" class="alert alert-warning"><i class="bi bi-pencil-square"></i>Draft</div>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../unit-0/unit-0-foundations-1.html">Unit 0: Foundations</a></li><li class="breadcrumb-item"><a href="../unit-0/unit-0-foundations-3.html">Class 3: Computing for Reproducible Research</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Unit 1: Internal Validity</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -270,13 +238,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Unit 0: Foundations</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../unit-0/unit-0-foundations-1.html" class="sidebar-item-text sidebar-link">
@@ -291,7 +259,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../unit-0/unit-0-foundations-3.html" class="sidebar-item-text sidebar-link active">
+  <a href="../unit-0/unit-0-foundations-3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Class 3: Computing for Reproducible Research</span></a>
   </div>
 </li>
@@ -302,37 +270,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
-  <li><a href="#class-will-be-remote-only" id="toc-class-will-be-remote-only" class="nav-link" data-scroll-target="#class-will-be-remote-only">Class will be remote-only</a></li>
-  <li><a href="#preparation" id="toc-preparation" class="nav-link" data-scroll-target="#preparation">Preparation</a>
-  <ul class="collapse">
-  <li><a href="#readwatchlisten" id="toc-readwatchlisten" class="nav-link" data-scroll-target="#readwatchlisten">1. <strong>Read/Watch/Listen</strong>:</a></li>
-  <li><a href="#computing-setup" id="toc-computing-setup" class="nav-link" data-scroll-target="#computing-setup">2. <strong>Computing Setup</strong>:</a></li>
-  </ul></li>
-  <li><a href="#in-class" id="toc-in-class" class="nav-link" data-scroll-target="#in-class">In Class</a></li>
-  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional Resources</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/hpm883/edit/main/unit-0/unit-0-foundations-3.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../unit-0/unit-0-foundations-1.html">Unit 0: Foundations</a></li><li class="breadcrumb-item"><a href="../unit-0/unit-0-foundations-3.html">Class 3: Computing for Reproducible Research</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Unit 0: Foundations</h1>
-<p class="subtitle lead">Class 3: Computing for Reproducible Research</p>
+<h1 class="title">Unit 1: Internal Validity</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sean Sylvia, Ph.D. </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 16, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -342,104 +307,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="learning-objectives" class="level2">
-<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
-<ol type="1">
-<li>Learn importance of reproducible research</li>
-<li>Learn key principles of reproducible research</li>
-<li>Learn how to design and implement a reproducible research workflow
-<ul>
-<li>Version control using git and github</li>
-<li>Literate programming using Quarto</li>
-<li>Package managemenet using <code>renv</code></li>
-</ul></li>
-</ol>
-</section>
-<section id="class-will-be-remote-only" class="level2">
-<h2 class="anchored" data-anchor-id="class-will-be-remote-only">Class will be remote-only</h2>
-<p>Join from the comfort of your own home!<br>
-Zoom link: <a href="https://unc.zoom.us/j/98379053109" class="uri">https://unc.zoom.us/j/98379053109</a></p>
-</section>
-<section id="preparation" class="level2">
-<h2 class="anchored" data-anchor-id="preparation">Preparation</h2>
-<section id="readwatchlisten" class="level3">
-<h3 class="anchored" data-anchor-id="readwatchlisten">1. <strong>Read/Watch/Listen</strong>:</h3>
-<ul>
-<li>Review <a href="../computing.html">Computing</a> page</li>
-<li>Skim: <a href="../unit-0/lec-0-3.html">Reproducibility Lecture</a></li>
-</ul>
-</section>
-<section id="computing-setup" class="level3">
-<h3 class="anchored" data-anchor-id="computing-setup">2. <strong>Computing Setup</strong>:</h3>
-<p>To ensure a smooth experience during class, <strong>please follow these steps</strong>:</p>
-<ol type="1">
-<li><strong>Install R (v4.x or later)</strong>
-<ul>
-<li><a href="https://cloud.r-project.org/">CRAN Download</a> or via your preferred package manager.</li>
-</ul></li>
-<li><strong>Install RStudio</strong> or a similar IDE
-<ul>
-<li><a href="https://posit.co/download/rstudio-desktop/">RStudio Download</a></li>
-</ul></li>
-<li><strong>Install Quarto</strong>
-<ul>
-<li><a href="https://quarto.org/docs/get-started/">Quarto Installation</a> – ensures you can render .qmd files.</li>
-</ul></li>
-<li><strong>Install Git</strong>
-<ul>
-<li><p>Confirm Git is accessible from the command line:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Windows: <a href="https://git-scm.com/download/win">Git for Windows</a><br>
-</p></li>
-<li><p>macOS: Use Xcode Command Line Tools or <a href="https://brew.sh/">Homebrew</a>.</p></li>
-</ul></li>
-<li><strong>Create a GitHub Account</strong>
-<ul>
-<li><a href="https://github.com/">GitHub Signup</a> – used for version control and code sharing.</li>
-</ul></li>
-<li><strong>Set Up Credentials (SSH keys or PAT)</strong>
-<ul>
-<li>Helps push/pull to GitHub without repeated logins.<br>
-</li>
-<li>GitHub Docs: <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh">Connecting to GitHub with SSH</a></li>
-</ul></li>
-<li><strong>Install Required R Packages</strong>
-<ul>
-<li><p>In R/RStudio, run:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"tidyverse"</span>,</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"renv"</span>,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"devtools"</span>,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"broom"</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"infer"</span>,</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"rmarkdown"</span>,</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"quarto"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ul></li>
-<li><strong>Optional but Recommended: Set Up Renv</strong>
-<ul>
-<li>We will use <code>renv</code> to manage R package versions.<br>
-</li>
-<li><a href="https://rstudio.github.io/renv/articles/renv.html">Renv Documentation</a></li>
-</ul></li>
-</ol>
-<p>Once you have completed the above steps, you should be ready for our in-class activities.</p>
-</section>
-</section>
-<section id="in-class" class="level2">
-<h2 class="anchored" data-anchor-id="in-class">In Class</h2>
-<ul>
-<li><a href="../unit-0/lec-0-3.html">Reproducibility Lecture</a></li>
-<li><a href="https://github.com/unc-hpm-quant/rct-analysis-template">RCT Analysis Template Repository</a></li>
-</ul>
-</section>
-<section id="additional-resources" class="level2">
-<h2 class="anchored" data-anchor-id="additional-resources">Additional Resources</h2>
-<ul>
-<li><a href="https://happygitwithr.com/">Happy with Git and GitHub for the UseR</a></li>
-<li>Bryan, Jennifer, 2018. <a href="https://www.tandfonline.com/doi/abs/10.1080/00031305.2017.1399928?casa_token=UFHQ4HFVZDoAAAAA:TEr0v79f7Ng4iZhTl-ErKRCVP7ICxlAaq2ZoKFiWF3tOJz_mF0C4qADuBiBU3kUwOuC6eYVnDnU">Excuse Me, Do You Have a Moment to Talk About Version Control?</a>, The American Statistician.</li>
-</ul>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1003,15 +872,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../unit-0/unit-0-foundations-2.html" class="pagination-link" aria-label="Class 2: A Field Experiment in Health Services Research">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Class 2: A Field Experiment in Health Services Research</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1020,7 +880,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/hpm883/edit/main/unit-0/unit-0-foundations-3.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/hpm883/edit/main/unit-1/lec-1-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

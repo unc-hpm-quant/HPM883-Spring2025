@@ -1,0 +1,87 @@
+---
+title: "Simulating Experimental Data with Noncompliance"
+author: "Your Name"
+date: "`r Sys.Date()`"
+format: html
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Simulating Experimental Data for a Randomized Experiment
+
+In this example, we simulate data for a simple randomized experiment with one treatment and one control group. The randomization is at the individual level. Additionally, we introduce noncompliance, where some individuals assigned to the treatment group do not take the treatment.
+
+------------------------------------------------------------------------
+
+## Step 1: Setup and Parameters
+
+Define the parameters for the experiment, such as the number of participants, compliance rate, and treatment effects.
+
+```{r}
+# Set seed for reproducibility
+set.seed(123)
+
+# Parameters
+n <- 500  # Total number of participants
+prob_treatment <- 0.5  # Probability of being assigned to treatment
+compliance_rate <- 0.8  # Proportion of treated participants who comply
+
+# Treatment effect
+baseline_mean <- 50  # Mean outcome for control group
+treatment_effect <- 10  # Additional effect for treated participants
+```
+
+------------------------------------------------------------------------
+
+## Step 2: Random Assignment and Compliance
+
+Simulate random assignment to treatment and compliance behavior.
+
+```{r}
+# Simulate random assignment
+assignment <- rbinom(n, 1, prob_treatment)  # 1 = assigned to treatment, 0 = control
+
+# Simulate compliance behavior
+# If assigned to treatment, comply with probability `compliance_rate`
+compliance <- ifelse(assignment == 1, rbinom(n, 1, compliance_rate), 0)  # 1 = complied, 0 = did not comply
+```
+
+------------------------------------------------------------------------
+
+## Step 3: Simulate Outcomes
+
+Simulate the outcome variable based on compliance and treatment assignment.
+
+```{r}
+# Simulate outcomes
+outcome <- baseline_mean + 
+  (assignment * compliance * treatment_effect) +  # Effect for those who comply
+  rnorm(n, mean = 0, sd = 5)  # Add random noise
+
+# Combine data into a data frame
+experiment_data <- data.frame(
+  ID = 1:n,
+  Assignment = assignment,
+  Compliance = compliance,
+  Outcome = outcome
+)
+
+# View the first few rows of the data
+head(experiment_data)
+```
+
+------------------------------------------------------------------------
+
+## Step 4: Export Data to CSV
+
+Export the simulated data to a CSV file for further analysis.
+
+```{r}
+# Export the data to a CSV file
+write.csv(experiment_data, "simulated_experiment_data.csv", row.names = FALSE)
+
+# Confirm export
+cat("Data has been exported to 'simulated_experiment_data.csv'")
+```

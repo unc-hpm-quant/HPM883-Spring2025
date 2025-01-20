@@ -1,0 +1,76 @@
+---
+title: "Pre-Analysis Plan Template"
+author: "Your Name"
+date: "`r Sys.Date()`"
+format: html
+draft: false
+---
+
+This is a template for a Pre-Analysis Plan (PAP), roughly following guidelines from the American Economic Association (AEA) and the World Bank’s Development Impact Evaluation (DIME) group.
+
+## Helpful Resources:
+
+-   For guidance on pre-analysis plans, refer to the World Bank’s DIME Wiki: [Pre-Analysis Plan - DIME Wiki](https://dimewiki.worldbank.org/Pre-Analysis_Plan)
+
+-   For examples of pre-analysis plans, explore the AEA’s RCT Registry: [AEA RCT Registry](https://www.socialscienceregistry.org/)
+
+# Title
+
+**\[Descriptive Title of the Study\]**
+
+# Introduction
+
+\[Provide a brief overview of the study, including the research question, context, and objectives.\]
+
+# Hypotheses
+
+-   **Primary Hypothesis:** \[State the main hypothesis to be tested.\]
+-   **Secondary Hypotheses:** \[List any additional hypotheses.\]
+
+# Experimental Design
+
+-   **Intervention Details:** \[Describe the intervention or treatment.\]
+-   **Control Group:** \[Describe the control condition.\]
+-   **Randomization:** \[Explain the randomization process, including stratification or blocking if applicable.\]
+
+# Outcome Measures
+
+-   **Primary Outcomes:** \[Define the main outcomes to be measured.\]
+-   **Secondary Outcomes:** \[Define additional outcomes of interest.\]
+
+# Data Collection
+
+-   **Timing:** \[Specify when data will be collected (e.g., baseline, endline).\]
+-   **Methods:** \[Describe data collection methods and instruments.\]
+
+# Sample Size and Power Calculations
+
+-   **Sample Size:** \[State the planned sample size.\]
+-   **Power Calculations:** \[Provide details of power calculations, including assumptions and effect sizes.\]
+
+# Empirical Analysis
+
+-   **Estimation Strategy:** \[Describe the statistical models and methods to be used.\]
+-   **Handling of Missing Data:** \[Explain how missing data will be addressed.\]
+-   **Multiple Hypothesis Testing:** \[Discuss adjustments for multiple comparisons, if applicable.\]
+
+# Heterogeneous Treatment Effects
+
+\[Specify any subgroup analyses or interactions to assess heterogeneous effects.\]
+
+# Robustness Checks
+
+\[Outline any additional analyses to test the robustness of the results.\]
+
+# Data Management
+
+-   **Data Cleaning:** \[Describe procedures for data cleaning and validation.\]
+-   **Replication:** \[Plan for sharing replication files and data.\]
+
+# Ethical Considerations
+
+\[Discuss ethical approvals, consent procedures, and any potential risks to participants.\]
+
+# References
+
+\[Include all references cited in the plan.\]

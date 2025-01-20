@@ -1,104 +1,94 @@
 ---
-title: "Semester Project"
+title: "Semester Project Description"
 format: html
-draft: true
+draft: false
 ---
 
-# Project Title: Designing, Simulating, and Analyzing an Online Experiment
+# **Designing and Analyzing an Experiment in Health Services Research**
 
-## Overview:
+------------------------------------------------------------------------
 
-This semester-long project will provide students with hands-on experience in the full research lifecycle, from experimental design to data analysis and reporting. Working in pairs, students will design an online experiment and either **simulate the data** or conduct the experiment with real participants. The project will emphasize **causal inference** methods and require the application of **at least one machine learning technique** in the analysis phase. The goal is to develop methodological and analytical skills for causal inference, experimental health services research, and modern data science approaches.
+## Overview
 
-## Deliverables:
+With the semester project, you'll dive into the full experimental research lifecycle and apply the tools and techniques you’re learning in this course. Working in your assigned group, you’ll design an experiment to answer a meaningful research question of your choosing, develop a pre-analysis plan, and analyze data (we'll simulate the data given time constraints). By the end of the semester, you’ll have a manuscript and replication package that showcase your ability to design, execute, and report on a rigorous experimental research project. This is your opportunity to apply what we learn in class to a topic of interest.
 
-The project will be divided into the following key deliverables:
+------------------------------------------------------------------------
 
-1.  A Pre-analysis Plan: A document that outlines the experimental design and analysis plan.
-2.  A Peer-Reviewed Referee Report: A document that assesses the validity and feasibility of the experimental design and analytical methods.
-3.  A Final Submission: A report that includes the experimental design, methods, results, and discussion.
+## Deliverables
 
-## Project Components and Timeline:
+### 1. Pre-Analysis Plan (50% of grade)
 
-### Phase 1: Project Proposal (Due by Jan ):
+The Pre-Analysis Plan (PAP) ensures your experiment is well-conceived, transparent, and analytically rigorous. This document lays out your research design and specifies how you will analyze the data.
 
-Students will work in pairs to brainstorm and propose an online experiment.
+#### **Requirements:**
 
-The project proposal should include: 
+-   **Introduction and Background:** Explain your research question and its significance.\
+-   **Hypotheses:** Clearly state primary and secondary hypotheses.\
+-   **Experimental Design:**
+    -   Type of experiment (e.g., lab, online A/B test, field).\
+    -   Random assignment procedure.\
+    -   Treatment and control conditions.\
+    -   Participant details (e.g., recruitment, sample size, inclusion criteria).\
+-   **Key Outcomes:** Define primary and secondary outcomes and describe how they will be measured.\
+-   **Analytical Strategy:**
+    -   Specify statistical methods and models.\
+    -   Incorporate analysis related to compliance or heterogeneous treatment effects.\
+    -   Use a machine learning approach (e.g., predicting treatment heterogeneity or analyzing secondary outcomes).\
+    -   Address how you will handle multiple hypotheses testing, if applicable.\
+-   **Limitations:** Discuss potential weaknesses and their impact on findings.
 
-- Research question and motivation
-- Specific hypotheses to be tested 
-- Brief experimental design outline 
-- Whether the data will be simulated or collected from real participants 
-    - Potential participant pool (if using real participants) 
+#### **Grading Criteria:**
 
-Submit your project proposal on gradescope here: [LINK]
+-   Clarity and Completeness (40%)\
+-   Rigor of Design and Analysis (40%)\
+-   Feasibility and Practicality (20%)
 
-### Phase 2: Pre-Analysis Plan (Due by ):
+#### **Helpful Resources:**
 
-After approval, students will have six weeks to prepare a comprehensive pre-analysis plan. This document must include:
+-   For guidance on pre-analysis plans: [World Bank DIME Wiki](https://dimewiki.worldbank.org/Pre-Analysis_Plan)\
+-   For examples of pre-analysis plans: [AEA RCT Registry](https://www.socialscienceregistry.org)
 
--   Detailed experimental design
--   Specification of whether the data will be simulated or collected from real participants
--   Description of the randomization strategy
--   List of primary and secondary outcomes
--   Planned statistical analyses
--   Ethical considerations and consent forms (if applicable)
+------------------------------------------------------------------------
 
+### 2. Final Manuscript and Replication Package (50% of grade)
 
-### Phase 3: Peer Review (Due by )
+This deliverable includes a journal-style manuscript and a replication package to showcase your research findings and ensure reproducibility.
 
-To promote collaborative learning and critical evaluation, pre-analysis plans will be randomly allocated to classmates for peer review.
+#### **Requirements:**
 
-Each student will review one pre-analysis plan and submit a referee report within one week. The referee report should assess:
-- Clarity of the research question and hypotheses
-- Validity and feasibility of the experimental design
-- Appropriateness of the analytical strategies and transparency
+1.  **Final Manuscript:** (10–15 pages)
+    -   **Abstract:** Concise summary of your study and findings.
+    -   **Introduction:** Background and motivation for your research.
+    -   **Methods:** Detailed description of your experimental design, treatments, and analytical approach.
+    -   **Results:** Clear presentation of findings, including tables and figures.
+    -   **Discussion:** Interpretation, limitations, and implications for future research or policy.
+    -   **References:** Properly formatted citations.
+2.  **Replication Package:**
+    -   **Simulated Data:** Dataset formatted for analysis.
+    -   **Code:** Well-documented scripts (R or Python recommended) for data cleaning and analysis, incorporating machine learning where appropriate.
+    -   **README File:** Detailed instructions for replicating your analysis.
 
-A template/guide for the referee report will be provided.
+#### **Grading Criteria:**
 
-### Phase 4: Final Submission (Due by )
+-   **Manuscript:**
+    -   Writing Quality and Organization (20%)
+    -   Clarity and Depth of Analysis (30%)
+-   **Replication Package:**
+    -   Reproducibility (30%)
+    -   Completeness and Documentation (20%)
 
-Students can choose between two options:
+------------------------------------------------------------------------
 
-#### Option 1: Paper using Simulated Data
+## Timeline
 
-Students will generate synthetic data based on the proposed experimental design. Methods for generating simulated data will be covered in a lab session. The simulated dataset should match the proposed experiment in structure and key characteristics.
+-   **Now - April 9**: Work with team on pre-analysis plan.
+-   **April 9:** Submit Pre-Analysis Plan for feedback.
+-   **April 9 - April 28:** Simulate and analyze data; draft your final deliverable.
+-   **April 28:** Submit Final Manuscript and Replication Package.
 
-#### Option 2: Running the Experiment with Real Participants
+------------------------------------------------------------------------
 
--   If choosing to run the experiment, students will conduct the approved design with real participants (classmates, friends, or external groups).
-    -   Instead of recruiting the number of participants required based on power simulations, running a small-scale "pilot" with just a few participants (2-3 per experimental condition) is acceptable.
--   Data should be collected ethically and stored securely following UNC standards.
+## Grading Breakdown
 
-The final project package should include:
-
-1.  Manuscript/Registered Report: A complete research paper structured like a journal article, including:
-
--   Abstract
--   Introduction and Literature Review
--   Methods Section (including experiment design and pre-analysis plan)
--   Results
--   Discussion and Conclusion
-
-
-2. Push-Button Replication Package: A well-organized folder containing:
-
--   The raw data or simulated data and simulation code
--   Cleaned datasets
--   Code/scripts for analysis (R)
--   README file explaining how to replicate the results
-
-### Grading Criteria:
-
-1. Pre-Analysis Plan: 40% 
-2. Peer Review Report: 20% 
-3. Final Submission: 40%
-
-## FAQ:
-
--   How do I come up with a research question and hypotheses?
--   How do I conduct the experiment if I choose to recruit real participants?
--   What is the ethical guidelines for collecting data from real participants?
--   How do I simulate data for the experiment if I choose to use simulated data?
-
+-   **Pre-Analysis Plan:** 50%
+-   **Final Manuscript and Replication Package:** 50%
