@@ -44,7 +44,7 @@
     "href": "index.html",
     "title": "Course Schedule",
     "section": "",
-    "text": "This page contains the schedule, topics, content and assigments for the semester.\n\n\n\n\n\n\nNote\n\n\n\nThis schedule will be updated as the semester progresses.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweek\ndow\ndate\nsession\nunit\ntopic\nprepare\nclass\nlab\nlab_sa\ndue\n\n\n\n1\nW\n8 January\nLec\nFoundations\nWelcome; Key Concepts\n\n\n\n\n\n\n\n\n\n2\nM\n13 January\nLec\nFoundations\nGuest Lecture: Running a Randomized Trial\n\n\n\n\n\nIntroductory Survey\n\n\n\nW\n15 January\n-\nFoundations\nReproducible Research\n\n\n\n\n\n\n\n\n\n3\nM\n20 January\n-\nNo Class: MLK Day\n\n\n\n\n\n\n\n\n\nW\n22 January\nLec\nInternal Validity\nGeneralized Potential Outcomes Framework; Exclusion Restrictions\n\n\n\n\n\n\n\n4\nM\n27 January\nLab\nInternal Validity\nTBD\n\n\n\n\n\n\n\n\nW\n29 January\nLec\nExperimental Design\nOptimal design of experiments; Power\n\n\n\n\nLab 1 Report\n\n\n5\nM\n3 February\nLab\nExperimental Design\nPower simulations\n\n\n\n\n\n\n\n\nW\n5 February\nLec\nExperimental Design\nRandomization and Blocking\n\n\n\n\nLab 2 Report\n\n\n6\nM\n10 February\n-\nNo Class: Well-being Day\n\n\n\n\n\n\n\n\n\nW\n12 February\nLec\nPreparations\nEthics, Registration and Pre-Analysis Plans\n\n\n\n\n\n\n\n7\nM\n17 February\nLec\nIntroduction to Machine Learning\nLasso; Penalized Regression; Cross-Validation\n\n\n\n\n\n\n\n\nW\n19 February\nLab\nIntroduction to Machine Learning\nLasso and Friends\n\n\n\n\n\n\n\n8\nM\n24 February\nLec\nIntroduction to Machine Learning\nRandom Trees and Random Forests\n\n\n\n\nLab 3 Report\n\n\n\nW\n26 February\n\nMIDTERM 1\n\n\n\n\n\n\n\n\n9\nM\n3 March\nLec\nHeterogeneity and Moderation\nHeterogeneous Treatment Effects\n\n\n\n\nLab 4 Report\n\n\n\nW\n5 March\nLab\nHeterogeneity and Moderation\nCausal Forests\n\n\n\n\n\n\n\n10\nM\n10 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n\nW\n12 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n11\nM\n17 March\nLec\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\nLab 5 Report\n\n\n\nW\n19 March\nLab\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\n\n\n\n12\nM\n24 March\nLec\nViolations of Internal Validity\nOne and Two-sided Compliance; TOT (LATE)\n\n\n\n\n\n\n\n\nW\n26 March\nLab\nViolations of Internal Validity\nIV\n\n\n\n\nLab 6 Report\n\n\n13\nM\n31 March\n\nMIDTERM 2\n\n\n\n\n\n\n\n\n\nW\n2 April\nLec\nMediation and External Validity\nMediation Analysis and Generalizability\n\n\n\n\n\n\n\n14\nM\n7 April\nLab\nMediation and External Validity\n\n\n\n\n\nLab 7 Report\n\n\n\nW\n9 April\n\nBuffer\nTBD\n\n\n\n\nProject Pre-Analysis Plan\n\n\n15\nM\n14 April\n\nBuffer\nTBD\n\n\n\n\n\n\n\n\nW\n16 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n16\nM\n21 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n\nW\n23 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n17\nM\n28 April\n\nWrap-up\nTBD\n\n\n\n\nFinal Project Manuscript & Replication Repository\n\n\n\nW\n30 April\n\nFINAL EXAM",
+    "text": "This page contains the schedule, topics, content and assigments for the semester.\n\n\n\n\n\n\nNote\n\n\n\nThis schedule will be updated as the semester progresses.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweek\ndow\ndate\nsession\nunit\ntopic\nprepare\nclass\nlab\nlab_sa\ndue\n\n\n\n1\nW\n8 January\nLec\nFoundations\nWelcome; Key Concepts\n\n\n\n\n\n\n\n\n\n2\nM\n13 January\nLec\nFoundations\nGuest Lecture: Running a Randomized Trial\n\n\n\n\n\nIntroductory Survey\n\n\n\nW\n15 January\n-\nFoundations\nReproducible Research\n\n\n\n\n\n\n\n\n\n3\nM\n20 January\n-\nNo Class: MLK Day\n\n\n\n\n\n\n\n\n\nW\n22 January\nLec\nInternal Validity\n\n\n\n\n\nClass Canceled\n\n\n4\nM\n27 January\nLab\nInternal Validity\nGeneralized Potential Outcomes Framework; Exclusion Restrictions\n\n\n\n\n\n\n\n\nW\n29 January\nLec\nExperimental Design\nOptimal design of experiments; Power\n\n\n\n\nLab 1 Report\n\n\n5\nM\n3 February\nLab\nExperimental Design\nPower simulations\n\n\n\n\n\n\n\n\nW\n5 February\nLec\nExperimental Design\nRandomization and Blocking\n\n\n\n\nLab 2 Report\n\n\n6\nM\n10 February\n-\nNo Class: Well-being Day\n\n\n\n\n\n\n\n\n\nW\n12 February\nLec\nPreparations\nEthics, Registration and Pre-Analysis Plans\n\n\n\n\n\n\n\n7\nM\n17 February\nLec\nIntroduction to Machine Learning\nLasso; Penalized Regression; Cross-Validation\n\n\n\n\n\n\n\n\nW\n19 February\nLab\nIntroduction to Machine Learning\nLasso and Friends\n\n\n\n\n\n\n\n8\nM\n24 February\nLec\nIntroduction to Machine Learning\nRandom Trees and Random Forests\n\n\n\n\nLab 3 Report\n\n\n\nW\n26 February\n\nMIDTERM 1\n\n\n\n\n\n\n\n\n9\nM\n3 March\nLec\nHeterogeneity and Moderation\nHeterogeneous Treatment Effects\n\n\n\n\nLab 4 Report\n\n\n\nW\n5 March\nLab\nHeterogeneity and Moderation\nCausal Forests\n\n\n\n\n\n\n\n10\nM\n10 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n\nW\n12 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n11\nM\n17 March\nLec\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\nLab 5 Report\n\n\n\nW\n19 March\nLab\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\n\n\n\n12\nM\n24 March\nLec\nViolations of Internal Validity\nOne and Two-sided Compliance; TOT (LATE)\n\n\n\n\n\n\n\n\nW\n26 March\nLab\nViolations of Internal Validity\nIV\n\n\n\n\nLab 6 Report\n\n\n13\nM\n31 March\n\nMIDTERM 2\n\n\n\n\n\n\n\n\n\nW\n2 April\nLec\nMediation and External Validity\nMediation Analysis and Generalizability\n\n\n\n\n\n\n\n14\nM\n7 April\nLab\nMediation and External Validity\n\n\n\n\n\nLab 7 Report\n\n\n\nW\n9 April\n\nBuffer\nTBD\n\n\n\n\nProject Pre-Analysis Plan\n\n\n15\nM\n14 April\n\nBuffer\nTBD\n\n\n\n\n\n\n\n\nW\n16 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n16\nM\n21 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n\nW\n23 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n17\nM\n28 April\n\nWrap-up\nTBD\n\n\n\n\nFinal Project Manuscript & Replication Repository\n\n\n\nW\n30 April\n\nFINAL EXAM",
     "crumbs": [
       "Course Schedule"
     ]
@@ -153,7 +153,7 @@
     "href": "unit-0/unit-0-foundations-3.html#in-class",
     "title": "Unit 0: Foundations",
     "section": "In Class",
-    "text": "In Class\n\nReproducibility Lecture\nRCT Analysis Template Repository",
+    "text": "In Class\n\nReproducibility Lecture\nZoom Recording\nRCT Analysis Template Repository",
     "crumbs": [
       "Unit 0: Foundations",
       "Class 3: Computing for Reproducible Research"
@@ -563,6 +563,50 @@
     "text": "More labs to be added as the semester progresses.\n\n\n\n\n\n\n\n\n\nNo.\n\n\nTitle\n\n\nDue date\n\n\n\n\n\n\n\nNo matching items"
   },
   {
+    "objectID": "unit-1/unit-1-internal-1.html",
+    "href": "unit-1/unit-1-internal-1.html",
+    "title": "Unit 1: Internal Validity",
+    "section": "",
+    "text": "Addresses key aspects of experimental design, including:\n\nRandomization\nExclusion restrictions\n\nThese elements are essential for establishing causality.\nWe will also review the notation that will be used throughout the class.",
+    "crumbs": [
+      "Unit 1: Internal Validity",
+      "Class 4: Internal Validity"
+    ]
+  },
+  {
+    "objectID": "unit-1/unit-1-internal-1.html#unit-overview",
+    "href": "unit-1/unit-1-internal-1.html#unit-overview",
+    "title": "Unit 1: Internal Validity",
+    "section": "",
+    "text": "Addresses key aspects of experimental design, including:\n\nRandomization\nExclusion restrictions\n\nThese elements are essential for establishing causality.\nWe will also review the notation that will be used throughout the class.",
+    "crumbs": [
+      "Unit 1: Internal Validity",
+      "Class 4: Internal Validity"
+    ]
+  },
+  {
+    "objectID": "unit-1/unit-1-internal-1.html#preparation",
+    "href": "unit-1/unit-1-internal-1.html#preparation",
+    "title": "Unit 1: Internal Validity",
+    "section": "Preparation",
+    "text": "Preparation\n\nRead: Applied Causal Inference Powered by ML and AI, Chapter 2\nListen: Internal Validity Podcast",
+    "crumbs": [
+      "Unit 1: Internal Validity",
+      "Class 4: Internal Validity"
+    ]
+  },
+  {
+    "objectID": "unit-1/unit-1-internal-1.html#in-class",
+    "href": "unit-1/unit-1-internal-1.html#in-class",
+    "title": "Unit 1: Internal Validity",
+    "section": "In-class",
+    "text": "In-class",
+    "crumbs": [
+      "Unit 1: Internal Validity",
+      "Class 4: Internal Validity"
+    ]
+  },
+  {
     "objectID": "template-pap.html",
     "href": "template-pap.html",
     "title": "Pre-Analysis Plan Template",
@@ -652,6 +696,16 @@
     ]
   },
   {
+    "objectID": "resources.html#r-tutorial",
+    "href": "resources.html#r-tutorial",
+    "title": "Resources",
+    "section": "R Tutorial",
+    "text": "R Tutorial\nParadis, Emmanuel. R for Beginners, 2005.\nWickham, Hadley, and Mine Çetinkaya-Rundel. R for Data Science, 2nd ed. 2023.\nR “Cheat Sheet” Compilation.\n[The R Graph Gallery] (https://r-graph-gallery.com/).",
+    "crumbs": [
+      "Resources"
+    ]
+  },
+  {
     "objectID": "resources.html#websites",
     "href": "resources.html#websites",
     "title": "Resources",
@@ -669,50 +723,6 @@
     "text": "Data\nStanford GSB Social Impact Lab Experiment Data",
     "crumbs": [
       "Resources"
-    ]
-  },
-  {
-    "objectID": "unit-1/unit-1-internal-1.html",
-    "href": "unit-1/unit-1-internal-1.html",
-    "title": "Unit 1: Internal Validity",
-    "section": "",
-    "text": "Addresses key aspects of experimental design, including:\n\nRandomization\nExclusion restrictions\n\nThese elements are essential for establishing causality.\nWe will also review the notation that will be used throughout the class.",
-    "crumbs": [
-      "Unit 1: Internal Validity",
-      "Class 4: Internal Validity"
-    ]
-  },
-  {
-    "objectID": "unit-1/unit-1-internal-1.html#unit-overview",
-    "href": "unit-1/unit-1-internal-1.html#unit-overview",
-    "title": "Unit 1: Internal Validity",
-    "section": "",
-    "text": "Addresses key aspects of experimental design, including:\n\nRandomization\nExclusion restrictions\n\nThese elements are essential for establishing causality.\nWe will also review the notation that will be used throughout the class.",
-    "crumbs": [
-      "Unit 1: Internal Validity",
-      "Class 4: Internal Validity"
-    ]
-  },
-  {
-    "objectID": "unit-1/unit-1-internal-1.html#preparation",
-    "href": "unit-1/unit-1-internal-1.html#preparation",
-    "title": "Unit 1: Internal Validity",
-    "section": "Preparation",
-    "text": "Preparation\n\nRead: Applied Causal Inference Powered by ML and AI, Chapter 2\nListen: Internal Validity Podcast",
-    "crumbs": [
-      "Unit 1: Internal Validity",
-      "Class 4: Internal Validity"
-    ]
-  },
-  {
-    "objectID": "unit-1/unit-1-internal-1.html#in-class",
-    "href": "unit-1/unit-1-internal-1.html#in-class",
-    "title": "Unit 1: Internal Validity",
-    "section": "In-class",
-    "text": "In-class",
-    "crumbs": [
-      "Unit 1: Internal Validity",
-      "Class 4: Internal Validity"
     ]
   }
 ]
