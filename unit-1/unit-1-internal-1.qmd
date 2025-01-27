@@ -5,6 +5,7 @@ draft: false
 
 ## Unit Overview
 
+- Reviewws the Potential Outcomes Framework
 - Addresses key aspects of experimental design, including:
   - Randomization
   - Exclusion restrictions
@@ -13,9 +14,11 @@ draft: false
 
 ## Preparation
 
-- Read: [Applied Causal Inference Powered by ML and AI, Chapter 2](https://causalml-book.org/assets/chapters/CausalML_chap_2.pdf) 
+- Read: 
+  - [Applied Causal Inference Powered by ML and AI, Chapter 2](https://causalml-book.org/assets/chapters/CausalML_chap_2.pdf) 
+  - [Causal Inference Mixtape, Chapter 4](https://mixtape.scunning.com/04-potential_outcomes)
 - Listen: [Internal Validity Podcast](media/InternalValidity.mp3)
 
 ## In-class
 
-- 
+[Lecture: Internal Validity](/unit-1/lec-1-1.qmd)

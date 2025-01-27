@@ -567,7 +567,7 @@
     "href": "unit-1/unit-1-internal-1.html",
     "title": "Unit 1: Internal Validity",
     "section": "",
-    "text": "Addresses key aspects of experimental design, including:\n\nRandomization\nExclusion restrictions\n\nThese elements are essential for establishing causality.\nWe will also review the notation that will be used throughout the class.",
+    "text": "Reviewws the Potential Outcomes Framework\nAddresses key aspects of experimental design, including:\n\nRandomization\nExclusion restrictions\n\nThese elements are essential for establishing causality.\nWe will also review the notation that will be used throughout the class.",
     "crumbs": [
       "Unit 1: Internal Validity",
       "Class 4: Internal Validity"
@@ -578,7 +578,7 @@
     "href": "unit-1/unit-1-internal-1.html#unit-overview",
     "title": "Unit 1: Internal Validity",
     "section": "",
-    "text": "Addresses key aspects of experimental design, including:\n\nRandomization\nExclusion restrictions\n\nThese elements are essential for establishing causality.\nWe will also review the notation that will be used throughout the class.",
+    "text": "Reviewws the Potential Outcomes Framework\nAddresses key aspects of experimental design, including:\n\nRandomization\nExclusion restrictions\n\nThese elements are essential for establishing causality.\nWe will also review the notation that will be used throughout the class.",
     "crumbs": [
       "Unit 1: Internal Validity",
       "Class 4: Internal Validity"
@@ -589,7 +589,7 @@
     "href": "unit-1/unit-1-internal-1.html#preparation",
     "title": "Unit 1: Internal Validity",
     "section": "Preparation",
-    "text": "Preparation\n\nRead: Applied Causal Inference Powered by ML and AI, Chapter 2\nListen: Internal Validity Podcast",
+    "text": "Preparation\n\nRead:\n\nApplied Causal Inference Powered by ML and AI, Chapter 2\nCausal Inference Mixtape, Chapter 4\n\nListen: Internal Validity Podcast",
     "crumbs": [
       "Unit 1: Internal Validity",
       "Class 4: Internal Validity"
@@ -600,7 +600,7 @@
     "href": "unit-1/unit-1-internal-1.html#in-class",
     "title": "Unit 1: Internal Validity",
     "section": "In-class",
-    "text": "In-class",
+    "text": "In-class\nLecture: Internal Validity",
     "crumbs": [
       "Unit 1: Internal Validity",
       "Class 4: Internal Validity"
@@ -724,5 +724,47 @@
     "crumbs": [
       "Resources"
     ]
+  },
+  {
+    "objectID": "unit-1/lec-1-1.html",
+    "href": "unit-1/lec-1-1.html",
+    "title": "Unit 1: Internal Validity",
+    "section": "",
+    "text": "Internal validity is the cornerstone of experimental design, crucial for establishing a causal relationship between treatment and outcome. It ensures that the observed effects in an experiment can be confidently attributed to the treatment rather than other confounding factors. This lecture explores the core principles and challenges of internal validity, including the role of randomization, exclusion restrictions, and the assignment mechanism. We also discuss practical applications and the complexities of ensuring compliance and observability in experimental settings."
+  },
+  {
+    "objectID": "unit-1/lec-1-1.html#scenario-1",
+    "href": "unit-1/lec-1-1.html#scenario-1",
+    "title": "Unit 1: Internal Validity",
+    "section": "Scenario 1",
+    "text": "Scenario 1\nSuppose you are considering whether a new diet is linked to lower risk of inflammatory arthritis.\nYou observe that in a given sample: - A small fraction of individuals on the diet have inflammatory arthritis. - A large fraction of individuals not on the diet have inflammatory arthritis.\nBased on this, you recommend that everyone pursue this new diet, but rates of inflammatory arthritis are unaffected.\nWhat happened?"
+  },
+  {
+    "objectID": "unit-1/lec-1-1.html#scenario-2",
+    "href": "unit-1/lec-1-1.html#scenario-2",
+    "title": "Unit 1: Internal Validity",
+    "section": "Scenario 2",
+    "text": "Scenario 2\nConsider a policy designed to reduce emergency room visits by offering free preventive care check-ups. Policymakers observed that communities with higher uptake of preventive care have fewer emergency visits. They implement the policy nationwide, expecting a significant reduction in emergency room visits. However, the policy shows no measurable impact.\nWhat happened?"
+  },
+  {
+    "objectID": "unit-1/lec-1-1.html#explanation",
+    "href": "unit-1/lec-1-1.html#explanation",
+    "title": "Unit 1: Internal Validity",
+    "section": "Explanation",
+    "text": "Explanation\nIn each case, you were unable to see what would have happened to each individual if the alternative action had been applied.\nIn scenario 1, it could be that individuals who chose the diet may already have healthier lifestyles, including better exercise and reduced stress levels, which are known to reduce the risk of inflammatory arthritis. The observed differences may be due to these factors rather than the diet itself. Without randomization or controlling for confounding factors, you cannot attribute causality to the diet. The association observed may not reflect the causal effect of the diet.\nIn scenario 2, the observed association between preventive care and lower emergency room visits may reflect that communities with higher uptake of preventive care might already have better healthcare access, socioeconomic conditions, or health awareness—all factors that independently reduce emergency visits. Implementing the policy broadly, without considering these confounders, does not account for the variation in baseline conditions.\nThe lack of this information is what prevents inference about causation from association."
+  },
+  {
+    "objectID": "unit-1/lec-1-1.html#randomization",
+    "href": "unit-1/lec-1-1.html#randomization",
+    "title": "Unit 1: Internal Validity",
+    "section": "Randomization",
+    "text": "Randomization\nAs we saw, the key source of bias arises from the assignment mechanism, or why a unit is assigned to treatment or control. Endogeneity can arise from units being assigned logically or based on percieved benefit, which is a function of their characteristics. There are two basic approaches to dealing with endogeneity:\n\nModel-based methods: Model the selection bias and then remove it mechanically\nDesign-based methods: Use the design of the experiment and randomization to remove selection bias\n\nIn randomized experiments, the assignment mechanism is controlled, and therefore known, by the researcher. This is a unique and key difference from naturally-occuring data where the assignment mechanisms is neither controlled nor typically known. The experimental apporach is often referred to as the “gold standard” for estimating casual effects because randomization can be made to ensure that the assignment is independent of individual characteristics, eliminating bias.\nTo satisfy, the basic restrictions on the assignment mechanism for randomized experiments are:\n\nThree Conditions for a Valid Assignment Mechanism\n\nNon-zero probability: Each individual has a positive probability of being assigned to treatment or control.\nIndividualism: Assignments are independent across individuals and do not depend on others’ potential outcomes.\nUnconfoundedness: Treatment assignment is orthogonal to potential outcomes.\n\nThese conditions ensure that observed differences between groups are attributable to the treatment rather than pre-existing differences."
+  },
+  {
+    "objectID": "unit-1/lec-1-1.html#footnotes",
+    "href": "unit-1/lec-1-1.html#footnotes",
+    "title": "Unit 1: Internal Validity",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThis example is adapted from Scott Cunninham’s example in the Mixtape book.↩︎"
   }
 ]
