@@ -21,4 +21,14 @@ draft: false
 
 ## In-class
 
-[Lecture: Internal Validity](/unit-1/lec-1-1.qmd)
+- Group Assignments
+
+![Group Assignments](/unit-1/media/GroupAssign.png){width=25%}
+
+- Selected Additional Topics via [Borda count](https://en.wikipedia.org/wiki/Borda_count):
+
+![Topic Selection](/unit-1/media/TopicSelection.png){width=50%}
+
+- Semester Project Description: [Semester Project](/project.qmd) 
+
+- [Lecture: Internal Validity](/unit-1/lec-1-1.qmd)

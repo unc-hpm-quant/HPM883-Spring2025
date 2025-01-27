@@ -40,450 +40,76 @@
     ]
   },
   {
-    "objectID": "unit-1/lec-1-1.html",
-    "href": "unit-1/lec-1-1.html",
+    "objectID": "unit-1/HPM883 introductory analysis.html",
+    "href": "unit-1/HPM883 introductory analysis.html",
+    "title": "HPM883 introductory survey analysis",
+    "section": "",
+    "text": "install.packages(c(\"dplyr\", \"skimr\", \"cluster\", \"tidyr\", \"ggplot2\", \"knitr\", \"Hmisc\"))\n\nlibrary(dplyr)\nlibrary(skimr)\nlibrary(cluster)\nlibrary(tidyr)\nlibrary(ggplot2)\nlibrary(knitr)\nlibrary(Hmisc)"
+  },
+  {
+    "objectID": "unit-1/HPM883 introductory analysis.html#calculate-borda-count-scores-for-q12how-do-you-like-to-learn",
+    "href": "unit-1/HPM883 introductory analysis.html#calculate-borda-count-scores-for-q12how-do-you-like-to-learn",
+    "title": "HPM883 introductory survey analysis",
+    "section": "Calculate Borda count scores for Q12:How do you like to learn?",
+    "text": "Calculate Borda count scores for Q12:How do you like to learn?\n\n### Creat data frame of ranking questions\nq12ranking_df &lt;- data.frame(introsurvey_data$Q1, introsurvey_data$Q12_1, introsurvey_data$Q12_2, introsurvey_data$Q12_3, introsurvey_data$Q12_4, introsurvey_data$Q12_5, introsurvey_data$Q12_6)\n\n### label ranking questions\nlabel(q12ranking_df$introsurvey_data.Q1) &lt;- \"Full Name\"\nlabel(q12ranking_df$introsurvey_data.Q12_1,) &lt;- \"How do you like to learn: Hands-on guided coding practice\"\nlabel(q12ranking_df$introsurvey_data.Q12_2) &lt;- \"How do you like to learn: Group discussions\"\nlabel(q12ranking_df$introsurvey_data.Q12_3) &lt;- \"How do you like to learn: Visual explanations/graphs\"\nlabel(q12ranking_df$introsurvey_data.Q12_4) &lt;- \"How do you like to learn: Independent reading\"\nlabel(q12ranking_df$introsurvey_data.Q12_5) &lt;- \"How do you like to learn: Independent exercises\"\nlabel(q12ranking_df$introsurvey_data.Q12_6) &lt;- \"How do you like to learn: Sleeping with a textbook under my pillow\"\n\n### Function to calculate Borda count:\nq12calculate_borda &lt;- function(q12rankings_df) {\n### Get number of candidates (excluding voter column if present)\nq12n_candidates &lt;- ncol(q12rankings_df)\nif(\"Q1\" %in% colnames(q12rankings_df)) {\n  q12n_candidates &lt;- q12n_candidates - 1\n  }\n  \n### Initialize scores dictionary\nq12scores &lt;- rep(0, q12n_candidates)\nnames(q12scores) &lt;- colnames(q12rankings_df)[!colnames(q12rankings_df) %in% \"Q1\"]\n  \n### Calculate points for each ranking\nfor(i in 1:nrow(q12rankings_df)) {\n  q12ranks &lt;- as.numeric(q12rankings_df[i, !colnames(q12rankings_df) %in% \"Q1\"])\n  \n### Assign points: n-rank points for each position\n  q12points &lt;- q12n_candidates - q12ranks\n  q12scores &lt;- q12scores + q12points\n  }\n  \n### Create results dataframe\n  q12_results &lt;- data.frame(\n    Q12_Candidate = names(q12scores),\n    Q12_Score = q12scores\n  )\n  \n### Sort by score in descending order\n  q12_results &lt;- q12_results[order(-q12_results$Q12_Score),]\n  \n  return(q12_results)\n}\n\n### Calculate Borda count scores\nq12_results &lt;- q12calculate_borda(q12ranking_df)\n\n### Rename candidates\nq12_results$Q12_Candidate[q12_results$Q12_Candidate == \"introsurvey_data.Q1\"] &lt;- \"Full Name\"\nq12_results$Q12_Candidate[q12_results$Q12_Candidate == \"introsurvey_data.Q12_1\"] &lt;- \"How do you like to learn: Hands-on guided coding practice\"\nq12_results$Q12_Candidate[q12_results$Q12_Candidate == \"introsurvey_data.Q12_2\"] &lt;- \"How do you like to learn: Group discussions\"\nq12_results$Q12_Candidate[q12_results$Q12_Candidate == \"introsurvey_data.Q12_3\"] &lt;- \"How do you like to learn: Visual explanations/graphs\"\nq12_results$Q12_Candidate[q12_results$Q12_Candidate == \"introsurvey_data.Q12_4\"] &lt;- \"How do you like to learn: Independent reading\"\nq12_results$Q12_Candidate[q12_results$Q12_Candidate == \"introsurvey_data.Q12_5\"] &lt;- \"How do you like to learn: Independent exercises\"\nq12_results$Q12_Candidate[q12_results$Q12_Candidate == \"introsurvey_data.Q12_6\"] &lt;- \"How do you like to learn: Sleeping with a textbook under my pillow\"\n\n### View Borda count scores\nprint(q12_results)"
+  },
+  {
+    "objectID": "unit-1/HPM883 introductory analysis.html#calculate-borda-count-scores-for-q19-please-rank-the-following-topics-in-order-of-preference",
+    "href": "unit-1/HPM883 introductory analysis.html#calculate-borda-count-scores-for-q19-please-rank-the-following-topics-in-order-of-preference",
+    "title": "HPM883 introductory survey analysis",
+    "section": "Calculate Borda count scores for Q19: Please rank the following topics in order of preference",
+    "text": "Calculate Borda count scores for Q19: Please rank the following topics in order of preference\n\n### Creat data frame of ranking questions\nq19ranking_df &lt;- data.frame(introsurvey_data$Q1, introsurvey_data$Q19_1, introsurvey_data$Q19_2, introsurvey_data$Q19_3, introsurvey_data$Q19_4, introsurvey_data$Q19_5, introsurvey_data$Q19_6, introsurvey_data$Q19_7, introsurvey_data$Q19_8, introsurvey_data$Q19_9)\n\n### label ranking questions\nlabel(q19ranking_df$introsurvey_data.Q1) &lt;- \"Full Name\"\nlabel(q19ranking_df$introsurvey_data.Q19_1,) &lt;- \"Topics in order of preference: Policy Learning\"\nlabel(q19ranking_df$introsurvey_data.Q19_2) &lt;- \"Topics in order of preference: Other\"\nlabel(q19ranking_df$introsurvey_data.Q19_3) &lt;- \"Topics in order of preference: Text-as-data\"\nlabel(q19ranking_df$introsurvey_data.Q19_4) &lt;- \"Topics in order of preference: Other\"\nlabel(q19ranking_df$introsurvey_data.Q19_5) &lt;- \"Topics in order of preference: Surrogate Indexes\"\nlabel(q19ranking_df$introsurvey_data.Q19_6) &lt;- \"Topics in order of preference: Double/De-biased Machine Learning\"\nlabel(q19ranking_df$introsurvey_data.Q19_7) &lt;- \"Topics in order of preference: Adaptive Experimental Design\"\nlabel(q19ranking_df$introsurvey_data.Q19_8) &lt;- \"Topics in order of preference: Embeddings\"\nlabel(q19ranking_df$introsurvey_data.Q19_9) &lt;- \"Topics in order of preference: Other\"\n\n### Drop the student who did not fill this question\nq19ranking_df &lt;- q19ranking_df %&gt;% filter(q19ranking_df$introsurvey_data.Q1 != \"Christian Osei\")\nq19ranking_df &lt;- q19ranking_df %&gt;% filter(q19ranking_df$introsurvey_data.Q1 != \"Yeshaben Patel\")\n\n### Function to calculate Borda count:\nq19calculate_borda &lt;- function(q19rankings_df) {\n### Get number of candidates (excluding voter column if present)\nq19n_candidates &lt;- ncol(q19rankings_df)\nif(\"Q1\" %in% colnames(q19rankings_df)) {\n  q19n_candidates &lt;- q19n_candidates - 1\n  }\n  \n### Initialize scores dictionary\nq19scores &lt;- rep(0, q19n_candidates)\nnames(q19scores) &lt;- colnames(q19rankings_df)[!colnames(q19rankings_df) %in% \"Q1\"]\n  \n### Calculate points for each ranking\nfor(i in 1:nrow(q19rankings_df)) {\n  q19ranks &lt;- as.numeric(q19rankings_df[i, !colnames(q19rankings_df) %in% \"Q1\"])\n  \n### Assign points: n-rank points for each position\n  q19points &lt;- q19n_candidates - q19ranks\n  q19scores &lt;- q19scores + q19points\n  }\n  \n### Create results dataframe\n  q19_results &lt;- data.frame(\n    Q19_Candidate = names(q19scores),\n    Q19_Score = q19scores\n  )\n  \n### Sort by score in descending order\n  q19_results &lt;- q19_results[order(-q19_results$Q19_Score),]\n  \n  return(q19_results)\n}\n\n### Calculate Borda count scores\nq19_results &lt;- q19calculate_borda(q19ranking_df)\n\n### Rename candidates\nq19_results$Q19_Candidate[q19_results$Q19_Candidate == \"introsurvey_data.Q1\"] &lt;- \"Full Name\"\nq19_results$Q19_Candidate[q19_results$Q19_Candidate == \"introsurvey_data.Q19_1\"] &lt;- \"Topics in order of preference: Policy Learning\"\nq19_results$Q19_Candidate[q19_results$Q19_Candidate == \"introsurvey_data.Q19_2\"] &lt;- \"Topics in order of preference: Other\"\nq19_results$Q19_Candidate[q19_results$Q19_Candidate == \"introsurvey_data.Q19_3\"] &lt;- \"Topics in order of preference: Text-as-data\"\nq19_results$Q19_Candidate[q19_results$Q19_Candidate == \"introsurvey_data.Q19_4\"] &lt;- \"Topics in order of preference: Other\"\nq19_results$Q19_Candidate[q19_results$Q19_Candidate == \"introsurvey_data.Q19_5\"] &lt;- \"Topics in order of preference: Surrogate Indexes\"\nq19_results$Q19_Candidate[q19_results$Q19_Candidate == \"introsurvey_data.Q19_6\"] &lt;- \"Topics in order of preference: Double/De-biased Machine Learning\"\nq19_results$Q19_Candidate[q19_results$Q19_Candidate == \"introsurvey_data.Q19_7\"] &lt;- \"Topics in order of preference: Adaptive Experimental Design\"\nq19_results$Q19_Candidate[q19_results$Q19_Candidate == \"introsurvey_data.Q19_8\"] &lt;- \"Topics in order of preference: Embeddings\"\nq19_results$Q19_Candidate[q19_results$Q19_Candidate == \"introsurvey_data.Q19_9\"] &lt;- \"Topics in order of preference: Other\"\n\n### View Borda count scores\nprint(q19_results)"
+  },
+  {
+    "objectID": "unit-1/unit-1-internal-1.html",
+    "href": "unit-1/unit-1-internal-1.html",
     "title": "Unit 1: Internal Validity",
     "section": "",
-    "text": "Internal validity is the cornerstone of experimental design, crucial for establishing a causal relationship between treatment and outcome. It ensures that the observed effects in an experiment can be confidently attributed to the treatment rather than other confounding factors. This lecture explores the core principles and challenges of internal validity, including the role of randomization, exclusion restrictions, and the assignment mechanism. We also discuss practical applications and the complexities of ensuring compliance and observability in experimental settings."
+    "text": "Reviewws the Potential Outcomes Framework\nAddresses key aspects of experimental design, including:\n\nRandomization\nExclusion restrictions\n\nThese elements are essential for establishing causality.\nWe will also review the notation that will be used throughout the class.",
+    "crumbs": [
+      "Unit 1: Internal Validity",
+      "Class 4: Internal Validity"
+    ]
   },
   {
-    "objectID": "unit-1/lec-1-1.html#scenario-1",
-    "href": "unit-1/lec-1-1.html#scenario-1",
+    "objectID": "unit-1/unit-1-internal-1.html#unit-overview",
+    "href": "unit-1/unit-1-internal-1.html#unit-overview",
     "title": "Unit 1: Internal Validity",
-    "section": "Scenario 1",
-    "text": "Scenario 1\nSuppose you are considering whether a new diet is linked to lower risk of inflammatory arthritis.\nYou observe that in a given sample: - A small fraction of individuals on the diet have inflammatory arthritis. - A large fraction of individuals not on the diet have inflammatory arthritis.\nBased on this, you recommend that everyone pursue this new diet, but rates of inflammatory arthritis are unaffected.\nWhat happened?"
+    "section": "",
+    "text": "Reviewws the Potential Outcomes Framework\nAddresses key aspects of experimental design, including:\n\nRandomization\nExclusion restrictions\n\nThese elements are essential for establishing causality.\nWe will also review the notation that will be used throughout the class.",
+    "crumbs": [
+      "Unit 1: Internal Validity",
+      "Class 4: Internal Validity"
+    ]
   },
   {
-    "objectID": "unit-1/lec-1-1.html#scenario-2",
-    "href": "unit-1/lec-1-1.html#scenario-2",
+    "objectID": "unit-1/unit-1-internal-1.html#preparation",
+    "href": "unit-1/unit-1-internal-1.html#preparation",
     "title": "Unit 1: Internal Validity",
-    "section": "Scenario 2",
-    "text": "Scenario 2\nConsider a policy designed to reduce emergency room visits by offering free preventive care check-ups. Policymakers observed that communities with higher uptake of preventive care have fewer emergency visits. They implement the policy nationwide, expecting a significant reduction in emergency room visits. However, the policy shows no measurable impact.\nWhat happened?"
-  },
-  {
-    "objectID": "unit-1/lec-1-1.html#explanation",
-    "href": "unit-1/lec-1-1.html#explanation",
-    "title": "Unit 1: Internal Validity",
-    "section": "Explanation",
-    "text": "Explanation\nIn each case, you were unable to see what would have happened to each individual if the alternative action had been applied.\nIn scenario 1, it could be that individuals who chose the diet may already have healthier lifestyles, including better exercise and reduced stress levels, which are known to reduce the risk of inflammatory arthritis. The observed differences may be due to these factors rather than the diet itself. Without randomization or controlling for confounding factors, you cannot attribute causality to the diet. The association observed may not reflect the causal effect of the diet.\nIn scenario 2, the observed association between preventive care and lower emergency room visits may reflect that communities with higher uptake of preventive care might already have better healthcare access, socioeconomic conditions, or health awareness—all factors that independently reduce emergency visits. Implementing the policy broadly, without considering these confounders, does not account for the variation in baseline conditions.\nThe lack of this information is what prevents inference about causation from association."
-  },
-  {
-    "objectID": "unit-1/lec-1-1.html#randomization",
-    "href": "unit-1/lec-1-1.html#randomization",
-    "title": "Unit 1: Internal Validity",
-    "section": "Randomization",
-    "text": "Randomization\nAs we saw, the key source of bias arises from the assignment mechanism, or why a unit is assigned to treatment or control. Endogeneity can arise from units being assigned logically or based on percieved benefit, which is a function of their characteristics. There are two basic approaches to dealing with endogeneity:\n\nModel-based methods: Model the selection bias and then remove it mechanically\nDesign-based methods: Use the design of the experiment and randomization to remove selection bias\n\nIn randomized experiments, the assignment mechanism is controlled, and therefore known, by the researcher. This is a unique and key difference from naturally-occuring data where the assignment mechanisms is neither controlled nor typically known. The experimental apporach is often referred to as the “gold standard” for estimating casual effects because randomization can be made to ensure that the assignment is independent of individual characteristics, eliminating bias.\nTo satisfy, the basic restrictions on the assignment mechanism for randomized experiments are:\n\nThree Conditions for a Valid Assignment Mechanism\n\nNon-zero probability: Each individual has a positive probability of being assigned to treatment or control.\nIndividualism: Assignments are independent across individuals and do not depend on others’ potential outcomes.\nUnconfoundedness: Treatment assignment is orthogonal to potential outcomes.\n\nThese conditions ensure that observed differences between groups are attributable to the treatment rather than pre-existing differences."
-  },
-  {
-    "objectID": "unit-1/lec-1-1.html#footnotes",
-    "href": "unit-1/lec-1-1.html#footnotes",
-    "title": "Unit 1: Internal Validity",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nThis example is adapted from Scott Cunninham’s example in the Mixtape book.↩︎"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Course Schedule",
-    "section": "",
-    "text": "This page contains the schedule, topics, content and assigments for the semester.\n\n\n\n\n\n\nNote\n\n\n\nThis schedule will be updated as the semester progresses.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweek\ndow\ndate\nsession\nunit\ntopic\nprepare\nclass\nlab\nlab_sa\ndue\n\n\n\n1\nW\n8 January\nLec\nFoundations\nWelcome; Key Concepts\n\n\n\n\n\n\n\n\n\n2\nM\n13 January\nLec\nFoundations\nGuest Lecture: Running a Randomized Trial\n\n\n\n\n\nIntroductory Survey\n\n\n\nW\n15 January\n-\nFoundations\nReproducible Research\n\n\n\n\n\n\n\n\n\n3\nM\n20 January\n-\nNo Class: MLK Day\n\n\n\n\n\n\n\n\n\nW\n22 January\nLec\nInternal Validity\n\n\n\n\n\nClass Canceled\n\n\n4\nM\n27 January\nLab\nInternal Validity\nGeneralized Potential Outcomes Framework; Exclusion Restrictions\n\n\n\n\n\n\n\n\n\n\nW\n29 January\nLec\nExperimental Design\nOptimal design of experiments; Power\n\n\n\n\nLab 1 Report\n\n\n5\nM\n3 February\nLab\nExperimental Design\nPower simulations\n\n\n\n\n\n\n\n\nW\n5 February\nLec\nExperimental Design\nRandomization and Blocking\n\n\n\n\nLab 2 Report\n\n\n6\nM\n10 February\n-\nNo Class: Well-being Day\n\n\n\n\n\n\n\n\n\nW\n12 February\nLec\nPreparations\nEthics, Registration and Pre-Analysis Plans\n\n\n\n\n\n\n\n7\nM\n17 February\nLec\nIntroduction to Machine Learning\nLasso; Penalized Regression; Cross-Validation\n\n\n\n\n\n\n\n\nW\n19 February\nLab\nIntroduction to Machine Learning\nLasso and Friends\n\n\n\n\n\n\n\n8\nM\n24 February\nLec\nIntroduction to Machine Learning\nRandom Trees and Random Forests\n\n\n\n\nLab 3 Report\n\n\n\nW\n26 February\n\nMIDTERM 1\n\n\n\n\n\n\n\n\n9\nM\n3 March\nLec\nHeterogeneity and Moderation\nHeterogeneous Treatment Effects\n\n\n\n\nLab 4 Report\n\n\n\nW\n5 March\nLab\nHeterogeneity and Moderation\nCausal Forests\n\n\n\n\n\n\n\n10\nM\n10 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n\nW\n12 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n11\nM\n17 March\nLec\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\nLab 5 Report\n\n\n\nW\n19 March\nLab\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\n\n\n\n12\nM\n24 March\nLec\nViolations of Internal Validity\nOne and Two-sided Compliance; TOT (LATE)\n\n\n\n\n\n\n\n\nW\n26 March\nLab\nViolations of Internal Validity\nIV\n\n\n\n\nLab 6 Report\n\n\n13\nM\n31 March\n\nMIDTERM 2\n\n\n\n\n\n\n\n\n\nW\n2 April\nLec\nMediation and External Validity\nMediation Analysis and Generalizability\n\n\n\n\n\n\n\n14\nM\n7 April\nLab\nMediation and External Validity\n\n\n\n\n\nLab 7 Report\n\n\n\nW\n9 April\n\nBuffer\nTBD\n\n\n\n\nProject Pre-Analysis Plan\n\n\n15\nM\n14 April\n\nBuffer\nTBD\n\n\n\n\n\n\n\n\nW\n16 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n16\nM\n21 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n\nW\n23 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n17\nM\n28 April\n\nWrap-up\nTBD\n\n\n\n\nFinal Project Manuscript & Replication Repository\n\n\n\nW\n30 April\n\nFINAL EXAM",
-    "crumbs": [
-      "Course Schedule"
-    ]
-  },
-  {
-    "objectID": "course-overview.html",
-    "href": "course-overview.html",
-    "title": "HPM 883Spring 2025",
-    "section": "",
-    "text": "HPM 883 is an advanced graduate-level course designed to equip PhD students in the Health Policy and Management program with sophisticated quantitative research skills. This course represents the third installment in the quantitative methods sequence, building on the foundational knowledge acquired in HPM 881 and HPM 882.\nThroughout the term, students will delve into advanced quantitative methods pertinent to health services research with a focus on the use of experimental methods and machine learning for causal inference. The course will provide a thorough introduction to machine learning techniques and explore the burgeoning domain of causal machine learning.",
-    "crumbs": [
-      "Course Information",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "course-overview.html#advanced-quantitative-methods-for-health-policy-and-management",
-    "href": "course-overview.html#advanced-quantitative-methods-for-health-policy-and-management",
-    "title": "HPM 883Spring 2025",
-    "section": "",
-    "text": "HPM 883 is an advanced graduate-level course designed to equip PhD students in the Health Policy and Management program with sophisticated quantitative research skills. This course represents the third installment in the quantitative methods sequence, building on the foundational knowledge acquired in HPM 881 and HPM 882.\nThroughout the term, students will delve into advanced quantitative methods pertinent to health services research with a focus on the use of experimental methods and machine learning for causal inference. The course will provide a thorough introduction to machine learning techniques and explore the burgeoning domain of causal machine learning.",
-    "crumbs": [
-      "Course Information",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "unit-0/unit-0-foundations-1.html",
-    "href": "unit-0/unit-0-foundations-1.html",
-    "title": "Unit 0: Foundations",
-    "section": "",
-    "text": "This unit will provide a foundation for the rest of the course. It will cover the following topics:\n\nWhy experiments and ML for Causal Inference\nCourse structure and tools\nA field experiment in health services research\nComputing for Reproducible Research",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Class 1: Introduction"
-    ]
-  },
-  {
-    "objectID": "unit-0/unit-0-foundations-1.html#unit-overview",
-    "href": "unit-0/unit-0-foundations-1.html#unit-overview",
-    "title": "Unit 0: Foundations",
-    "section": "",
-    "text": "This unit will provide a foundation for the rest of the course. It will cover the following topics:\n\nWhy experiments and ML for Causal Inference\nCourse structure and tools\nA field experiment in health services research\nComputing for Reproducible Research",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Class 1: Introduction"
-    ]
-  },
-  {
-    "objectID": "unit-0/unit-0-foundations-1.html#class-1-course-introduction",
-    "href": "unit-0/unit-0-foundations-1.html#class-1-course-introduction",
-    "title": "Unit 0: Foundations",
-    "section": "Class 1: Course Introduction",
-    "text": "Class 1: Course Introduction\n\nPreparation\n\nRead: Harrison and List (2004)\n\nPerusall Link: Harrison and List (2004)\n\n\n\n\n\n\n\n\nPerusall\n\n\n\nPerusall is a free online platform that allows you to collaboratively annotate content with your classmates. Here is a link to the Perusall page for this course: HPM 883. If needed, the class enrollment code is SYLVIA-ZXTWH.\n\nAlthough it is a good way to engage with your classmates around the material, it is not required that you comment on Perusall. If you wish, you can just download the readings directly.\n\n\n\nACI Chapters 0 and 2\n\n\n\nIn Class\n\nLecture slides\n\n\n\nLab/Homework\n\n10-15 min Introductory Class Survey (Due Jan 15)\n\n\n\nAdditional Materials",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Class 1: Introduction"
-    ]
-  },
-  {
-    "objectID": "unit-0/unit-0-foundations-3.html",
-    "href": "unit-0/unit-0-foundations-3.html",
-    "title": "Unit 0: Foundations",
-    "section": "",
-    "text": "Learn importance of reproducible research\nLearn key principles of reproducible research\nLearn how to design and implement a reproducible research workflow\n\nVersion control using git and github\nLiterate programming using Quarto\nPackage managemenet using renv",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Class 3: Computing for Reproducible Research"
-    ]
-  },
-  {
-    "objectID": "unit-0/unit-0-foundations-3.html#learning-objectives",
-    "href": "unit-0/unit-0-foundations-3.html#learning-objectives",
-    "title": "Unit 0: Foundations",
-    "section": "",
-    "text": "Learn importance of reproducible research\nLearn key principles of reproducible research\nLearn how to design and implement a reproducible research workflow\n\nVersion control using git and github\nLiterate programming using Quarto\nPackage managemenet using renv",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Class 3: Computing for Reproducible Research"
-    ]
-  },
-  {
-    "objectID": "unit-0/unit-0-foundations-3.html#class-will-be-remote-only",
-    "href": "unit-0/unit-0-foundations-3.html#class-will-be-remote-only",
-    "title": "Unit 0: Foundations",
-    "section": "Class will be remote-only",
-    "text": "Class will be remote-only\nJoin from the comfort of your own home!\nZoom link: https://unc.zoom.us/j/98379053109",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Class 3: Computing for Reproducible Research"
-    ]
-  },
-  {
-    "objectID": "unit-0/unit-0-foundations-3.html#preparation",
-    "href": "unit-0/unit-0-foundations-3.html#preparation",
-    "title": "Unit 0: Foundations",
     "section": "Preparation",
-    "text": "Preparation\n\n1. Read/Watch/Listen:\n\nReview Computing page\nSkim: Reproducibility Lecture\n\n\n\n2. Computing Setup:\nTo ensure a smooth experience during class, please follow these steps:\n\nInstall R (v4.x or later)\n\nCRAN Download or via your preferred package manager.\n\nInstall RStudio or a similar IDE\n\nRStudio Download\n\nInstall Quarto\n\nQuarto Installation – ensures you can render .qmd files.\n\nInstall Git\n\nConfirm Git is accessible from the command line:\ngit --version\nWindows: Git for Windows\n\nmacOS: Use Xcode Command Line Tools or Homebrew.\n\nCreate a GitHub Account\n\nGitHub Signup – used for version control and code sharing.\n\nSet Up Credentials (SSH keys or PAT)\n\nHelps push/pull to GitHub without repeated logins.\n\nGitHub Docs: Connecting to GitHub with SSH\n\nInstall Required R Packages\n\nIn R/RStudio, run:\ninstall.packages(c(\"tidyverse\",\n                   \"renv\",\n                   \"devtools\",\n                   \"broom\",\n                   \"infer\",\n                   \"rmarkdown\",\n                   \"quarto\"))\n\nOptional but Recommended: Set Up Renv\n\nWe will use renv to manage R package versions.\n\nRenv Documentation\n\n\nOnce you have completed the above steps, you should be ready for our in-class activities.",
+    "text": "Preparation\n\nRead:\n\nApplied Causal Inference Powered by ML and AI, Chapter 2\nCausal Inference Mixtape, Chapter 4\n\nListen: Internal Validity Podcast",
     "crumbs": [
-      "Unit 0: Foundations",
-      "Class 3: Computing for Reproducible Research"
+      "Unit 1: Internal Validity",
+      "Class 4: Internal Validity"
     ]
   },
   {
-    "objectID": "unit-0/unit-0-foundations-3.html#in-class",
-    "href": "unit-0/unit-0-foundations-3.html#in-class",
-    "title": "Unit 0: Foundations",
-    "section": "In Class",
-    "text": "In Class\n\nReproducibility Lecture\nZoom Recording\nRCT Analysis Template Repository",
+    "objectID": "unit-1/unit-1-internal-1.html#in-class",
+    "href": "unit-1/unit-1-internal-1.html#in-class",
+    "title": "Unit 1: Internal Validity",
+    "section": "In-class",
+    "text": "In-class\n\nGroup Assignments\n\n\n\n\nGroup Assignments\n\n\n\nSelected Additional Topics via Borda count:\n\n\n\n\nTopic Selection\n\n\n\nSemester Project Description: Semester Project\nLecture: Internal Validity",
     "crumbs": [
-      "Unit 0: Foundations",
-      "Class 3: Computing for Reproducible Research"
+      "Unit 1: Internal Validity",
+      "Class 4: Internal Validity"
     ]
   },
   {
-    "objectID": "unit-0/unit-0-foundations-3.html#additional-resources",
-    "href": "unit-0/unit-0-foundations-3.html#additional-resources",
-    "title": "Unit 0: Foundations",
-    "section": "Additional Resources",
-    "text": "Additional Resources\n\nHappy with Git and GitHub for the UseR\nBryan, Jennifer, 2018. Excuse Me, Do You Have a Moment to Talk About Version Control?, The American Statistician.",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Class 3: Computing for Reproducible Research"
-    ]
-  },
-  {
-    "objectID": "unit-0/lec-0-3.html",
-    "href": "unit-0/lec-0-3.html",
-    "title": "Foundations: Reproducible Research",
+    "objectID": "lab.html",
+    "href": "lab.html",
+    "title": "Labs",
     "section": "",
-    "text": "Reproducible research is, quite frankly, one of the most important aspects of scientific work—and also one of the most neglected. Whether you’re a grad student wrangling code after midnight or a seasoned PI rediscovering a half-forgotten analysis, reproducibility ensures your brilliant findings don’t vanish into the digital abyss. Below, we’ll review why you should care, and how you can implement reproducibility so thoroughly that even a time-traveling version of yourself from five years ago could decipher your code."
-  },
-  {
-    "objectID": "unit-0/lec-0-3.html#a.-why-reproducibility-matters",
-    "href": "unit-0/lec-0-3.html#a.-why-reproducibility-matters",
-    "title": "Foundations: Reproducible Research",
-    "section": "A. Why Reproducibility Matters",
-    "text": "A. Why Reproducibility Matters\n\nDefinition\n\nIn quantitative research, reproducibility means another researcher—or your future self with only half a memory of what you did—can take the same data and code, then arrive at the same results. No secret incantations, arcane folder structures, or chanting under the full moon required.\n\nMotivations\n\n\nTransparency: Ever heard the phrase “Trust me, I’m a scientist”? Yeah, that doesn’t fly so well if your code is locked away in a cryptically named folder like “analysis_final_FINAL_noReally.r”. By exposing how you clean, analyze, and report data, you bolster confidence in your results.\nCollaboration: If multiple people have to dig through your code to figure out why you did something, at least make it a pleasant excavation. A reproducible workflow means you can share your project with colleagues, and they’ll only have mild confusion instead of sheer panic.\nEfficiency: Imagine re-running your entire analysis with a single command. Now contrast that with rummaging through 57 scripts, each called “analysis2_v2_copy.R”. Reproducibility helps you avoid the second scenario—and possibly a meltdown.\nError Detection: Because let’s face it, even the best of us occasionally type mean when we mean median. With reproducible code, errors can be spotted quickly and corrected before your findings end up on the front page of the Journal of Irreproducible Results.\n\nReproducibility, in short, saves your sanity and safeguards your scientific honor."
-  },
-  {
-    "objectID": "unit-0/lec-0-3.html#b.-core-tools-and-concepts",
-    "href": "unit-0/lec-0-3.html#b.-core-tools-and-concepts",
-    "title": "Foundations: Reproducible Research",
-    "section": "B. Core Tools and Concepts",
-    "text": "B. Core Tools and Concepts\nSo how do we make all this happen? We bring in the cavalry: version control, literate programming, environment management, a logical project structure, and tidy documentation. Let’s get to it.\n1. Version Control (Git + GitHub)\nVersion control is like a well-ordered diary for your project: it tracks every change—no matter how small—across time, preserving your code’s evolutionary history in tidy “commits.”\n\nTracks Changes: Every minor tweak, even the moment you changed a comma to a semicolon and saved your entire analysis from ruin.\nFacilitates Collaboration: Gone are the days of emailing zip files named “Project_Latest.zip” back and forth. Now, you can break things collaboratively on GitHub and blame it on the merge conflict.\nCommit History: “Who changed my code last Thursday?” Git knows. Git always knows.\n\nThink of GitHub as your code’s remote spa retreat—safe, relaxing, and occasionally throwing small hissy fits called “merge conflicts.”\n2. Literate Programming (Quarto, R Markdown, knitr)\nSome folks write code in one file, then paste results into a Word document, and so on. Then they wonder why their final paper includes the wrong p-values. Enter literate programming.\n\nIntegrated Code + Narrative: Quarto, R Markdown, knitr, and friends let you keep code, text, and figures in one place, so you never again get lost in the labyrinth of “Oh wait, which file made that plot?”\nMinimizes Copy-Paste Errors: If your results are automatically woven into your final report, you can’t “forget to update Table 3.” All you do is re-run the document, and—voilà!—your latest analysis magically appears.\nSeamless Feedback Loop: Make a change, watch the effect ripple through the entire document. It’s like having the world’s fastest (and least sarcastic) collaborator.\n3. Environment Management (renv, or other)\nPicture this: You wrote a brilliant script six months ago, but now it refuses to run because some obscure package updated. Environment management tools let you freeze your code in time.\n\nCaptures R Package Versions: Tools like renv let you record all the packages (and their versions) you used, so re-installing them later won’t feel like Jumanji in dependency land.\nConsistency Over Time: If you want your analyses to work in five years—or on your advisor’s laptop next Tuesday—document your environment so it can be replicated exactly.\nFewer “It Worked On My Machine” Excuses: Because telling your collaborators to “just figure it out” is not a good look.\n4. Project Structure\nIf your current method involves flinging scripts and data into a single folder named “Stuff,” we might have a gentle suggestion: adopt a standardized project structure.\n\nData Folder: A sanctuary for raw files, processed data, or your deep, dark secrets—just keep it consistent.\nR Scripts or Quarto Documents: Store code for data cleaning, analysis, and visualization in separate scripts or well-labeled notebooks. It’s okay to have multiple files—just label them in a way that future you can actually decipher.\nOutput Folder: All those shiny plots and tables? Keep them in one place. Resist the urge to edit them manually; they should be generated by your scripts, not conjured by hand.\nREADME: The wise old gatekeeper that explains your entire project to anyone who stops by (including you, after you forget everything).\n\nA tidy folder structure is a gift to yourself. And your future co-authors. And your future self’s sanity.\n5. Documentation\nDocumentation is the special sauce that holds everything together—or, in some cases, the glaring absence that leads to frantic Slack messages at 2 a.m.\n\nCommit Messages: If your commit message says “Update stuff,” your collaborators may weep softly. Be descriptive—like “Fix bug in logistic regression loop that caused meltdown.”\nCode Comments: Add them wherever something might confuse your labmates or your brain on a Monday morning. The more complicated the code, the more we need small notes to guide us.\nREADME or docs/ Folder: Provide an at-a-glance explanation of the project’s purpose, the dataset, how to replicate results, and any known issues. It’s your public service announcement to the world.\n\nIf you’re feeling particularly poetic, documentation is the short story you write about your data, so that others can appreciate its plot—without rummaging through all the raw scripts to figure out who the villain is (spoiler: it’s usually missing data).\nTakeaway\nReproducible research is about ensuring that data and code aren’t locked in the dusty attic of your personal computer—half-labeled and wholly misunderstood. By relying on tools like Git, Quarto, and renv, and by maintaining a disciplined project structure and documentation process, you guarantee that your results are both credible and easy to revisit."
-  },
-  {
-    "objectID": "unit-0/lec-0-3.html#hands-on-pratice",
-    "href": "unit-0/lec-0-3.html#hands-on-pratice",
-    "title": "Foundations: Reproducible Research",
-    "section": "Hands-on Pratice",
-    "text": "Hands-on Pratice\nNow let’s get our hands dirty with some of the tools for reproducibility. We’ll be applying reproducible research practices to a simulated RCT dataset. You’ll learn to clone a GitHub repository, explore the project structure, run an analysis using Quarto, and commit changes back to GitHub."
-  },
-  {
-    "objectID": "unit-0/lec-0-3.html#guided-computer-setup",
-    "href": "unit-0/lec-0-3.html#guided-computer-setup",
-    "title": "Foundations: Reproducible Research",
-    "section": "0. Guided Computer Setup",
-    "text": "0. Guided Computer Setup\n\nComputing Setup"
-  },
-  {
-    "objectID": "unit-0/lec-0-3.html#github-template-repository",
-    "href": "unit-0/lec-0-3.html#github-template-repository",
-    "title": "Foundations: Reproducible Research",
-    "section": "1. GitHub Template Repository",
-    "text": "1. GitHub Template Repository\n\n\nClone the Repository\n\nGo to the provided URL or use git clone https://github.com/unc-hpm-quant/rct-analysis-template in the terminal.\nIn RStudio: “File” &gt; “New Project” &gt; “Version Control” &gt; “Git” and paste the repo URL.\n\n\nReview Project Structure\n\n   rct-analysis-template/\n   ├── README.md\n   ├── .gitignore\n   ├── renv.lock\n   ├── data/\n   │   └── rct_sim_data.csv\n   ├── analysis/\n   │   ├── analysis.qmd\n   │   └── helpers.R\n   └── output/\n\n\nInstall Dependencies\n\nIf renv is used, run renv::restore() in the project to sync package versions."
-  },
-  {
-    "objectID": "unit-0/lec-0-3.html#analyzing-the-simulated-rct-data",
-    "href": "unit-0/lec-0-3.html#analyzing-the-simulated-rct-data",
-    "title": "Foundations: Reproducible Research",
-    "section": "2. Analyzing the Simulated RCT Data",
-    "text": "2. Analyzing the Simulated RCT Data\n\n\nData: rct_sim_data.csv includes columns\n\nsubject_id\ntreatment\noutcome\nage\ngender, etc.\n\n\n\nGoal: Estimate the average treatment effect, create summaray tables, and visualize distributions.\n\n2.1 Open analysis.qmd\n1.  Look at the top YAML and code chunks.\n2.  Notice how code and text are interwoven.\n2.2 Render the Document\n\nIn RStudio, click “Render” or run:\n\n\nquarto::quarto_render(\"analysis/analysis.qmd\")\n\nThe output (HTML, PDF, etc.) will appear in your output folder or in the same directory."
-  },
-  {
-    "objectID": "unit-0/lec-0-3.html#modify-and-commit",
-    "href": "unit-0/lec-0-3.html#modify-and-commit",
-    "title": "Foundations: Reproducible Research",
-    "section": "3. Modify and Commit",
-    "text": "3. Modify and Commit\n\nMake a Small Change\n\nFor example, add a simple plot of outcome vs. treatment:\n\nggplot(rct_data, aes(x = factor(treatment), y = outcome)) +\n  geom_boxplot()\n\n\nRe-run the document to see the new figure in the rendered output.\nCommit and Push\n\n\nStage your changes:\n\n\ngit add analysis/analysis.qmd\ngit commit -m \"Added treatment-outcome boxplot\"\ngit push origin main\n\n\nView on GitHub: Confirm your commit is visible and see the updated code."
-  },
-  {
-    "objectID": "unit-0/lec-0-3.html#branching-and-pull-requests-for-bigger-or-test-changes",
-    "href": "unit-0/lec-0-3.html#branching-and-pull-requests-for-bigger-or-test-changes",
-    "title": "Foundations: Reproducible Research",
-    "section": "4. Branching and Pull Requests for bigger or test changes",
-    "text": "4. Branching and Pull Requests for bigger or test changes\n\nCreate a new branch\n\n\ngit checkout -b new-plot\n\n\nAdd Covariates: Update the analysis to adjust for age and gender in a regression model."
-  },
-  {
-    "objectID": "unit-0/lec-0-3.html#wrap-up",
-    "href": "unit-0/lec-0-3.html#wrap-up",
-    "title": "Foundations: Reproducible Research",
-    "section": "5. Wrap-Up",
-    "text": "5. Wrap-Up\nReflect: How did version control and Quarto documents streamline your workflow?\nNext Steps: If you want to dig further into reproducible data analysis practices, you can explore advanced topics like Docker, code review workflows, and CI/CD (continuous integration and deployment)."
-  },
-  {
-    "objectID": "course-communication.html",
-    "href": "course-communication.html",
-    "title": "Communication",
-    "section": "",
-    "text": "Slack will be our primary communication hub. An invitation to the course Slack will be shared on the first day of class. Use this place to ask questions, share resources, and engage with your peers, the instructor, and the TA. (For personal matters, please use e-mail)\n\n\n\n\n\n\nImportant:\n\n\n\nSlack will not be continuously monitored by the instructor or TA outside of posted office hours. At other times, students are expected to help/engage with one another to foster a shared learning experience. If a question hasn’t been addressed, the TA or Sean will respond but not immediately or even the same day.\nYou may DM Sean or the TA in Slack (but, again, don’t expect a response immediately or even the same day.)\n\n\n\nThe #announcements channel will be used to share course announcements.\nUse the #help channel as a first stop for general questions about the class or for technical assistance.\nUse the #general channel to discuss lab assignments and discuss/share resources related to course topics.\nUse the #interesting-stuff channel to share relevant articles, podcasts, packages, data sources, and anything else relevant that you think your classmates will benefit from.",
-    "crumbs": [
-      "Course Information",
-      "Communication"
-    ]
-  },
-  {
-    "objectID": "course-communication.html#slack",
-    "href": "course-communication.html#slack",
-    "title": "Communication",
-    "section": "",
-    "text": "Slack will be our primary communication hub. An invitation to the course Slack will be shared on the first day of class. Use this place to ask questions, share resources, and engage with your peers, the instructor, and the TA. (For personal matters, please use e-mail)\n\n\n\n\n\n\nImportant:\n\n\n\nSlack will not be continuously monitored by the instructor or TA outside of posted office hours. At other times, students are expected to help/engage with one another to foster a shared learning experience. If a question hasn’t been addressed, the TA or Sean will respond but not immediately or even the same day.\nYou may DM Sean or the TA in Slack (but, again, don’t expect a response immediately or even the same day.)\n\n\n\nThe #announcements channel will be used to share course announcements.\nUse the #help channel as a first stop for general questions about the class or for technical assistance.\nUse the #general channel to discuss lab assignments and discuss/share resources related to course topics.\nUse the #interesting-stuff channel to share relevant articles, podcasts, packages, data sources, and anything else relevant that you think your classmates will benefit from.",
-    "crumbs": [
-      "Course Information",
-      "Communication"
-    ]
-  },
-  {
-    "objectID": "course-communication.html#office-hours",
-    "href": "course-communication.html#office-hours",
-    "title": "Communication",
-    "section": "Office Hours",
-    "text": "Office Hours\nSean will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.\nThe TA will hold office hours on…",
-    "crumbs": [
-      "Course Information",
-      "Communication"
-    ]
-  },
-  {
-    "objectID": "course-communication.html#email",
-    "href": "course-communication.html#email",
-    "title": "Communication",
-    "section": "Email",
-    "text": "Email\nPlease use e-mail only for personal matters. (For anything related to the course material or coding questions, please use Slack.)",
-    "crumbs": [
-      "Course Information",
-      "Communication"
-    ]
-  },
-  {
-    "objectID": "instructors.html",
-    "href": "instructors.html",
-    "title": "Instructors",
-    "section": "",
-    "text": "Sean Sylvia is an Associate Professor in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Dr. Sylvia will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
-    "crumbs": [
-      "Course Information",
-      "Instructors"
-    ]
-  },
-  {
-    "objectID": "instructors.html#instructor-sean-sylvia-ph.d.",
-    "href": "instructors.html#instructor-sean-sylvia-ph.d.",
-    "title": "Instructors",
-    "section": "",
-    "text": "Sean Sylvia is an Associate Professor in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Dr. Sylvia will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
-    "crumbs": [
-      "Course Information",
-      "Instructors"
-    ]
-  },
-  {
-    "objectID": "instructors.html#teaching-assistant-yumeng-du",
-    "href": "instructors.html#teaching-assistant-yumeng-du",
-    "title": "Instructors",
-    "section": "Teaching Assistant: Yumeng Du",
-    "text": "Teaching Assistant: Yumeng Du\nYumeng Du is a Ph.D. student in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Yumeng will hold office hours on Mondays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
-    "crumbs": [
-      "Course Information",
-      "Instructors"
-    ]
-  },
-  {
-    "objectID": "ex-simulate.html",
-    "href": "ex-simulate.html",
-    "title": "Simulating Experimental Data with Noncompliance",
-    "section": "",
-    "text": "In this example, we simulate data for a simple randomized experiment with one treatment and one control group. The randomization is at the individual level. Additionally, we introduce noncompliance, where some individuals assigned to the treatment group do not take the treatment.\n\n\nDefine the parameters for the experiment, such as the number of participants, compliance rate, and treatment effects.\n\n# Set seed for reproducibility\nset.seed(123)\n\n# Parameters\nn &lt;- 500  # Total number of participants\nprob_treatment &lt;- 0.5  # Probability of being assigned to treatment\ncompliance_rate &lt;- 0.8  # Proportion of treated participants who comply\n\n# Treatment effect\nbaseline_mean &lt;- 50  # Mean outcome for control group\ntreatment_effect &lt;- 10  # Additional effect for treated participants\n\n\nSimulate random assignment to treatment and compliance behavior.\n\n# Simulate random assignment\nassignment &lt;- rbinom(n, 1, prob_treatment)  # 1 = assigned to treatment, 0 = control\n\n# Simulate compliance behavior\n# If assigned to treatment, comply with probability `compliance_rate`\ncompliance &lt;- ifelse(assignment == 1, rbinom(n, 1, compliance_rate), 0)  # 1 = complied, 0 = did not comply\n\n\nSimulate the outcome variable based on compliance and treatment assignment.\n\n# Simulate outcomes\noutcome &lt;- baseline_mean + \n  (assignment * compliance * treatment_effect) +  # Effect for those who comply\n  rnorm(n, mean = 0, sd = 5)  # Add random noise\n\n# Combine data into a data frame\nexperiment_data &lt;- data.frame(\n  ID = 1:n,\n  Assignment = assignment,\n  Compliance = compliance,\n  Outcome = outcome\n)\n\n# View the first few rows of the data\nhead(experiment_data)\n\n  ID Assignment Compliance  Outcome\n1  1          0          0 46.99054\n2  2          1          1 55.03151\n3  3          0          0 55.13393\n4  4          1          1 63.75531\n5  5          1          1 52.45417\n6  6          0          0 49.52426\n\n\n\nExport the simulated data to a CSV file for further analysis.\n\n# Export the data to a CSV file\nwrite.csv(experiment_data, \"simulated_experiment_data.csv\", row.names = FALSE)\n\n# Confirm export\ncat(\"Data has been exported to 'simulated_experiment_data.csv'\")\n\nData has been exported to 'simulated_experiment_data.csv'",
-    "crumbs": [
-      "Semester Project",
-      "Data Simulation Example"
-    ]
-  },
-  {
-    "objectID": "ex-simulate.html#step-1-setup-and-parameters",
-    "href": "ex-simulate.html#step-1-setup-and-parameters",
-    "title": "Simulating Experimental Data with Noncompliance",
-    "section": "",
-    "text": "Define the parameters for the experiment, such as the number of participants, compliance rate, and treatment effects.\n\n# Set seed for reproducibility\nset.seed(123)\n\n# Parameters\nn &lt;- 500  # Total number of participants\nprob_treatment &lt;- 0.5  # Probability of being assigned to treatment\ncompliance_rate &lt;- 0.8  # Proportion of treated participants who comply\n\n# Treatment effect\nbaseline_mean &lt;- 50  # Mean outcome for control group\ntreatment_effect &lt;- 10  # Additional effect for treated participants",
-    "crumbs": [
-      "Semester Project",
-      "Data Simulation Example"
-    ]
-  },
-  {
-    "objectID": "ex-simulate.html#step-2-random-assignment-and-compliance",
-    "href": "ex-simulate.html#step-2-random-assignment-and-compliance",
-    "title": "Simulating Experimental Data with Noncompliance",
-    "section": "",
-    "text": "Simulate random assignment to treatment and compliance behavior.\n\n# Simulate random assignment\nassignment &lt;- rbinom(n, 1, prob_treatment)  # 1 = assigned to treatment, 0 = control\n\n# Simulate compliance behavior\n# If assigned to treatment, comply with probability `compliance_rate`\ncompliance &lt;- ifelse(assignment == 1, rbinom(n, 1, compliance_rate), 0)  # 1 = complied, 0 = did not comply",
-    "crumbs": [
-      "Semester Project",
-      "Data Simulation Example"
-    ]
-  },
-  {
-    "objectID": "ex-simulate.html#step-3-simulate-outcomes",
-    "href": "ex-simulate.html#step-3-simulate-outcomes",
-    "title": "Simulating Experimental Data with Noncompliance",
-    "section": "",
-    "text": "Simulate the outcome variable based on compliance and treatment assignment.\n\n# Simulate outcomes\noutcome &lt;- baseline_mean + \n  (assignment * compliance * treatment_effect) +  # Effect for those who comply\n  rnorm(n, mean = 0, sd = 5)  # Add random noise\n\n# Combine data into a data frame\nexperiment_data &lt;- data.frame(\n  ID = 1:n,\n  Assignment = assignment,\n  Compliance = compliance,\n  Outcome = outcome\n)\n\n# View the first few rows of the data\nhead(experiment_data)\n\n  ID Assignment Compliance  Outcome\n1  1          0          0 46.99054\n2  2          1          1 55.03151\n3  3          0          0 55.13393\n4  4          1          1 63.75531\n5  5          1          1 52.45417\n6  6          0          0 49.52426",
-    "crumbs": [
-      "Semester Project",
-      "Data Simulation Example"
-    ]
-  },
-  {
-    "objectID": "ex-simulate.html#step-4-export-data-to-csv",
-    "href": "ex-simulate.html#step-4-export-data-to-csv",
-    "title": "Simulating Experimental Data with Noncompliance",
-    "section": "",
-    "text": "Export the simulated data to a CSV file for further analysis.\n\n# Export the data to a CSV file\nwrite.csv(experiment_data, \"simulated_experiment_data.csv\", row.names = FALSE)\n\n# Confirm export\ncat(\"Data has been exported to 'simulated_experiment_data.csv'\")\n\nData has been exported to 'simulated_experiment_data.csv'",
-    "crumbs": [
-      "Semester Project",
-      "Data Simulation Example"
-    ]
-  },
-  {
-    "objectID": "unit-0/prep-1.html",
-    "href": "unit-0/prep-1.html",
-    "title": "Class Preparation",
-    "section": "",
-    "text": "In preparation for our upcoming class on [Insert Topic Here], please complete the following activities. These materials will set the foundation for our in-class discussions and activities.\n\n\n\n\n\n[Insert Reading Title and Link Here]\n[Insert Additional Reading Title and Link Here]\n\n\n\n\n\n\n[Insert Video Title and Link Here]\n[Insert Additional Video Title and Link Here]\n\n\n\n\n\nComplete the pre-class quiz on Sakai: [Insert Link Here]\nDeadline: [Insert Date and Time]\n\n\n\n\nConsider the following questions as you review the materials: 1. [Insert Question Here] 2. [Insert Additional Question Here] 3. [Insert Additional Question Here]\n\n\n\n\nPrepare notes summarizing key concepts from the readings and videos. These will be helpful for in-class discussions.\n\nRemember: This course uses a flipped classroom approach. Completing these tasks prior to class is essential for your active participation and understanding during our sessions."
-  },
-  {
-    "objectID": "unit-0/prep-1.html#overview",
-    "href": "unit-0/prep-1.html#overview",
-    "title": "Class Preparation",
-    "section": "",
-    "text": "In preparation for our upcoming class on [Insert Topic Here], please complete the following activities. These materials will set the foundation for our in-class discussions and activities."
-  },
-  {
-    "objectID": "unit-0/prep-1.html#required-readings",
-    "href": "unit-0/prep-1.html#required-readings",
-    "title": "Class Preparation",
-    "section": "",
-    "text": "[Insert Reading Title and Link Here]\n[Insert Additional Reading Title and Link Here]"
-  },
-  {
-    "objectID": "unit-0/prep-1.html#required-videos",
-    "href": "unit-0/prep-1.html#required-videos",
-    "title": "Class Preparation",
-    "section": "",
-    "text": "[Insert Video Title and Link Here]\n[Insert Additional Video Title and Link Here]"
-  },
-  {
-    "objectID": "unit-0/prep-1.html#quiz",
-    "href": "unit-0/prep-1.html#quiz",
-    "title": "Class Preparation",
-    "section": "",
-    "text": "Complete the pre-class quiz on Sakai: [Insert Link Here]\nDeadline: [Insert Date and Time]"
-  },
-  {
-    "objectID": "unit-0/prep-1.html#reflection-questions",
-    "href": "unit-0/prep-1.html#reflection-questions",
-    "title": "Class Preparation",
-    "section": "",
-    "text": "Consider the following questions as you review the materials: 1. [Insert Question Here] 2. [Insert Additional Question Here] 3. [Insert Additional Question Here]"
-  },
-  {
-    "objectID": "unit-0/prep-1.html#notes",
-    "href": "unit-0/prep-1.html#notes",
-    "title": "Class Preparation",
-    "section": "",
-    "text": "Prepare notes summarizing key concepts from the readings and videos. These will be helpful for in-class discussions.\n\nRemember: This course uses a flipped classroom approach. Completing these tasks prior to class is essential for your active participation and understanding during our sessions."
-  },
-  {
-    "objectID": "unit-0/unit-0-foundations-2.html",
-    "href": "unit-0/unit-0-foundations-2.html",
-    "title": "Unit 0: Foundations",
-    "section": "",
-    "text": "Guest Lecture by Dr. Dorien Emmers\n\n\n\n\n\n\nClass will be remote-only\n\n\n\nJoin from the comfort of your own home!\nZoom link: https://unc.zoom.us/j/7840211370?omn=97363476255\n\n\n\n\nSkim: Using Community Health Workers to Deliver a Scalable Integrated Parenting Program in Rural China: A Cluster Randomized Controlled Trial\n\nOptional\n\nDownload Replication Data and Code: \nDr. Emmers wrote this analysis code in Stata (Boo! ). Try converting it to R using the stata2r package.\n\n\n\n\n\n\n\n\nPerusall\n\n\n\nPerusall is a free online platform that allows you to collaboratively annotate content with your classmates. Here is a link to the Perusall page for this course: HPM 883. If needed, the class enrollment code is SYLVIA-ZXTWH.\n\nAlthough it is a good way to engage with your classmates around the material, it is not required that you comment on Perusall. If you wish, you can just download the readings directly.\n\n\n\nSubmit: Any questions you have for Dr. Emmers? Submit to the #guest-lecture-questions channel on Slack\n\n\n\n\n\nSlides\nZoom Recording\n\n\n\n\n\n\n\nIntroductory Survey Due by end of day on Jan 15\n\n\n\nIntroductory Class Survey",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Class 2: A Field Experiment in Health Services Research"
-    ]
-  },
-  {
-    "objectID": "unit-0/unit-0-foundations-2.html#overview",
-    "href": "unit-0/unit-0-foundations-2.html#overview",
-    "title": "Unit 0: Foundations",
-    "section": "",
-    "text": "Guest Lecture by Dr. Dorien Emmers\n\n\n\n\n\n\nClass will be remote-only\n\n\n\nJoin from the comfort of your own home!\nZoom link: https://unc.zoom.us/j/7840211370?omn=97363476255\n\n\n\n\nSkim: Using Community Health Workers to Deliver a Scalable Integrated Parenting Program in Rural China: A Cluster Randomized Controlled Trial\n\nOptional\n\nDownload Replication Data and Code: \nDr. Emmers wrote this analysis code in Stata (Boo! ). Try converting it to R using the stata2r package.\n\n\n\n\n\n\n\n\nPerusall\n\n\n\nPerusall is a free online platform that allows you to collaboratively annotate content with your classmates. Here is a link to the Perusall page for this course: HPM 883. If needed, the class enrollment code is SYLVIA-ZXTWH.\n\nAlthough it is a good way to engage with your classmates around the material, it is not required that you comment on Perusall. If you wish, you can just download the readings directly.\n\n\n\nSubmit: Any questions you have for Dr. Emmers? Submit to the #guest-lecture-questions channel on Slack\n\n\n\n\n\nSlides\nZoom Recording\n\n\n\n\n\n\n\nIntroductory Survey Due by end of day on Jan 15\n\n\n\nIntroductory Class Survey",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Class 2: A Field Experiment in Health Services Research"
-    ]
+    "text": "More labs to be added as the semester progresses.\n\n\n\n\n\n\n\n\n\nNo.\n\n\nTitle\n\n\nDue date\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "unit-0/lec-0.html#course-summary",
@@ -598,55 +224,450 @@
     "text": "Resources and Support\n\nCourse website with materials and updates: Course Website\nWeekly office hours with Dr. Sylvia and Yumeng\nCommunication channels:\n\nSlack: Join the course Slack to ask questions, share resources, and engage with your peers, the instructor, and the TA. (For personal matters, please use e-mail)\nEmail: Please use e-mail only for personal matters. (For anything related to the course material or coding questions, please use Slack.)\n\nGradescope: Submit assignments."
   },
   {
-    "objectID": "lab.html",
-    "href": "lab.html",
-    "title": "Labs",
+    "objectID": "unit-0/unit-0-foundations-2.html",
+    "href": "unit-0/unit-0-foundations-2.html",
+    "title": "Unit 0: Foundations",
     "section": "",
-    "text": "More labs to be added as the semester progresses.\n\n\n\n\n\n\n\n\n\nNo.\n\n\nTitle\n\n\nDue date\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "unit-1/unit-1-internal-1.html",
-    "href": "unit-1/unit-1-internal-1.html",
-    "title": "Unit 1: Internal Validity",
-    "section": "",
-    "text": "Reviewws the Potential Outcomes Framework\nAddresses key aspects of experimental design, including:\n\nRandomization\nExclusion restrictions\n\nThese elements are essential for establishing causality.\nWe will also review the notation that will be used throughout the class.",
+    "text": "Guest Lecture by Dr. Dorien Emmers\n\n\n\n\n\n\nClass will be remote-only\n\n\n\nJoin from the comfort of your own home!\nZoom link: https://unc.zoom.us/j/7840211370?omn=97363476255\n\n\n\n\nSkim: Using Community Health Workers to Deliver a Scalable Integrated Parenting Program in Rural China: A Cluster Randomized Controlled Trial\n\nOptional\n\nDownload Replication Data and Code: \nDr. Emmers wrote this analysis code in Stata (Boo! ). Try converting it to R using the stata2r package.\n\n\n\n\n\n\n\n\nPerusall\n\n\n\nPerusall is a free online platform that allows you to collaboratively annotate content with your classmates. Here is a link to the Perusall page for this course: HPM 883. If needed, the class enrollment code is SYLVIA-ZXTWH.\n\nAlthough it is a good way to engage with your classmates around the material, it is not required that you comment on Perusall. If you wish, you can just download the readings directly.\n\n\n\nSubmit: Any questions you have for Dr. Emmers? Submit to the #guest-lecture-questions channel on Slack\n\n\n\n\n\nSlides\nZoom Recording\n\n\n\n\n\n\n\nIntroductory Survey Due by end of day on Jan 15\n\n\n\nIntroductory Class Survey",
     "crumbs": [
-      "Unit 1: Internal Validity",
-      "Class 4: Internal Validity"
+      "Unit 0: Foundations",
+      "Class 2: A Field Experiment in Health Services Research"
     ]
   },
   {
-    "objectID": "unit-1/unit-1-internal-1.html#unit-overview",
-    "href": "unit-1/unit-1-internal-1.html#unit-overview",
-    "title": "Unit 1: Internal Validity",
+    "objectID": "unit-0/unit-0-foundations-2.html#overview",
+    "href": "unit-0/unit-0-foundations-2.html#overview",
+    "title": "Unit 0: Foundations",
     "section": "",
-    "text": "Reviewws the Potential Outcomes Framework\nAddresses key aspects of experimental design, including:\n\nRandomization\nExclusion restrictions\n\nThese elements are essential for establishing causality.\nWe will also review the notation that will be used throughout the class.",
+    "text": "Guest Lecture by Dr. Dorien Emmers\n\n\n\n\n\n\nClass will be remote-only\n\n\n\nJoin from the comfort of your own home!\nZoom link: https://unc.zoom.us/j/7840211370?omn=97363476255\n\n\n\n\nSkim: Using Community Health Workers to Deliver a Scalable Integrated Parenting Program in Rural China: A Cluster Randomized Controlled Trial\n\nOptional\n\nDownload Replication Data and Code: \nDr. Emmers wrote this analysis code in Stata (Boo! ). Try converting it to R using the stata2r package.\n\n\n\n\n\n\n\n\nPerusall\n\n\n\nPerusall is a free online platform that allows you to collaboratively annotate content with your classmates. Here is a link to the Perusall page for this course: HPM 883. If needed, the class enrollment code is SYLVIA-ZXTWH.\n\nAlthough it is a good way to engage with your classmates around the material, it is not required that you comment on Perusall. If you wish, you can just download the readings directly.\n\n\n\nSubmit: Any questions you have for Dr. Emmers? Submit to the #guest-lecture-questions channel on Slack\n\n\n\n\n\nSlides\nZoom Recording\n\n\n\n\n\n\n\nIntroductory Survey Due by end of day on Jan 15\n\n\n\nIntroductory Class Survey",
     "crumbs": [
-      "Unit 1: Internal Validity",
-      "Class 4: Internal Validity"
+      "Unit 0: Foundations",
+      "Class 2: A Field Experiment in Health Services Research"
     ]
   },
   {
-    "objectID": "unit-1/unit-1-internal-1.html#preparation",
-    "href": "unit-1/unit-1-internal-1.html#preparation",
-    "title": "Unit 1: Internal Validity",
+    "objectID": "unit-0/prep-1.html",
+    "href": "unit-0/prep-1.html",
+    "title": "Class Preparation",
+    "section": "",
+    "text": "In preparation for our upcoming class on [Insert Topic Here], please complete the following activities. These materials will set the foundation for our in-class discussions and activities.\n\n\n\n\n\n[Insert Reading Title and Link Here]\n[Insert Additional Reading Title and Link Here]\n\n\n\n\n\n\n[Insert Video Title and Link Here]\n[Insert Additional Video Title and Link Here]\n\n\n\n\n\nComplete the pre-class quiz on Sakai: [Insert Link Here]\nDeadline: [Insert Date and Time]\n\n\n\n\nConsider the following questions as you review the materials: 1. [Insert Question Here] 2. [Insert Additional Question Here] 3. [Insert Additional Question Here]\n\n\n\n\nPrepare notes summarizing key concepts from the readings and videos. These will be helpful for in-class discussions.\n\nRemember: This course uses a flipped classroom approach. Completing these tasks prior to class is essential for your active participation and understanding during our sessions."
+  },
+  {
+    "objectID": "unit-0/prep-1.html#overview",
+    "href": "unit-0/prep-1.html#overview",
+    "title": "Class Preparation",
+    "section": "",
+    "text": "In preparation for our upcoming class on [Insert Topic Here], please complete the following activities. These materials will set the foundation for our in-class discussions and activities."
+  },
+  {
+    "objectID": "unit-0/prep-1.html#required-readings",
+    "href": "unit-0/prep-1.html#required-readings",
+    "title": "Class Preparation",
+    "section": "",
+    "text": "[Insert Reading Title and Link Here]\n[Insert Additional Reading Title and Link Here]"
+  },
+  {
+    "objectID": "unit-0/prep-1.html#required-videos",
+    "href": "unit-0/prep-1.html#required-videos",
+    "title": "Class Preparation",
+    "section": "",
+    "text": "[Insert Video Title and Link Here]\n[Insert Additional Video Title and Link Here]"
+  },
+  {
+    "objectID": "unit-0/prep-1.html#quiz",
+    "href": "unit-0/prep-1.html#quiz",
+    "title": "Class Preparation",
+    "section": "",
+    "text": "Complete the pre-class quiz on Sakai: [Insert Link Here]\nDeadline: [Insert Date and Time]"
+  },
+  {
+    "objectID": "unit-0/prep-1.html#reflection-questions",
+    "href": "unit-0/prep-1.html#reflection-questions",
+    "title": "Class Preparation",
+    "section": "",
+    "text": "Consider the following questions as you review the materials: 1. [Insert Question Here] 2. [Insert Additional Question Here] 3. [Insert Additional Question Here]"
+  },
+  {
+    "objectID": "unit-0/prep-1.html#notes",
+    "href": "unit-0/prep-1.html#notes",
+    "title": "Class Preparation",
+    "section": "",
+    "text": "Prepare notes summarizing key concepts from the readings and videos. These will be helpful for in-class discussions.\n\nRemember: This course uses a flipped classroom approach. Completing these tasks prior to class is essential for your active participation and understanding during our sessions."
+  },
+  {
+    "objectID": "ex-simulate.html",
+    "href": "ex-simulate.html",
+    "title": "Simulating Experimental Data with Noncompliance",
+    "section": "",
+    "text": "In this example, we simulate data for a simple randomized experiment with one treatment and one control group. The randomization is at the individual level. Additionally, we introduce noncompliance, where some individuals assigned to the treatment group do not take the treatment.\n\n\nDefine the parameters for the experiment, such as the number of participants, compliance rate, and treatment effects.\n\n# Set seed for reproducibility\nset.seed(123)\n\n# Parameters\nn &lt;- 500  # Total number of participants\nprob_treatment &lt;- 0.5  # Probability of being assigned to treatment\ncompliance_rate &lt;- 0.8  # Proportion of treated participants who comply\n\n# Treatment effect\nbaseline_mean &lt;- 50  # Mean outcome for control group\ntreatment_effect &lt;- 10  # Additional effect for treated participants\n\n\nSimulate random assignment to treatment and compliance behavior.\n\n# Simulate random assignment\nassignment &lt;- rbinom(n, 1, prob_treatment)  # 1 = assigned to treatment, 0 = control\n\n# Simulate compliance behavior\n# If assigned to treatment, comply with probability `compliance_rate`\ncompliance &lt;- ifelse(assignment == 1, rbinom(n, 1, compliance_rate), 0)  # 1 = complied, 0 = did not comply\n\n\nSimulate the outcome variable based on compliance and treatment assignment.\n\n# Simulate outcomes\noutcome &lt;- baseline_mean + \n  (assignment * compliance * treatment_effect) +  # Effect for those who comply\n  rnorm(n, mean = 0, sd = 5)  # Add random noise\n\n# Combine data into a data frame\nexperiment_data &lt;- data.frame(\n  ID = 1:n,\n  Assignment = assignment,\n  Compliance = compliance,\n  Outcome = outcome\n)\n\n# View the first few rows of the data\nhead(experiment_data)\n\n  ID Assignment Compliance  Outcome\n1  1          0          0 46.99054\n2  2          1          1 55.03151\n3  3          0          0 55.13393\n4  4          1          1 63.75531\n5  5          1          1 52.45417\n6  6          0          0 49.52426\n\n\n\nExport the simulated data to a CSV file for further analysis.\n\n# Export the data to a CSV file\nwrite.csv(experiment_data, \"simulated_experiment_data.csv\", row.names = FALSE)\n\n# Confirm export\ncat(\"Data has been exported to 'simulated_experiment_data.csv'\")\n\nData has been exported to 'simulated_experiment_data.csv'",
+    "crumbs": [
+      "Semester Project",
+      "Data Simulation Example"
+    ]
+  },
+  {
+    "objectID": "ex-simulate.html#step-1-setup-and-parameters",
+    "href": "ex-simulate.html#step-1-setup-and-parameters",
+    "title": "Simulating Experimental Data with Noncompliance",
+    "section": "",
+    "text": "Define the parameters for the experiment, such as the number of participants, compliance rate, and treatment effects.\n\n# Set seed for reproducibility\nset.seed(123)\n\n# Parameters\nn &lt;- 500  # Total number of participants\nprob_treatment &lt;- 0.5  # Probability of being assigned to treatment\ncompliance_rate &lt;- 0.8  # Proportion of treated participants who comply\n\n# Treatment effect\nbaseline_mean &lt;- 50  # Mean outcome for control group\ntreatment_effect &lt;- 10  # Additional effect for treated participants",
+    "crumbs": [
+      "Semester Project",
+      "Data Simulation Example"
+    ]
+  },
+  {
+    "objectID": "ex-simulate.html#step-2-random-assignment-and-compliance",
+    "href": "ex-simulate.html#step-2-random-assignment-and-compliance",
+    "title": "Simulating Experimental Data with Noncompliance",
+    "section": "",
+    "text": "Simulate random assignment to treatment and compliance behavior.\n\n# Simulate random assignment\nassignment &lt;- rbinom(n, 1, prob_treatment)  # 1 = assigned to treatment, 0 = control\n\n# Simulate compliance behavior\n# If assigned to treatment, comply with probability `compliance_rate`\ncompliance &lt;- ifelse(assignment == 1, rbinom(n, 1, compliance_rate), 0)  # 1 = complied, 0 = did not comply",
+    "crumbs": [
+      "Semester Project",
+      "Data Simulation Example"
+    ]
+  },
+  {
+    "objectID": "ex-simulate.html#step-3-simulate-outcomes",
+    "href": "ex-simulate.html#step-3-simulate-outcomes",
+    "title": "Simulating Experimental Data with Noncompliance",
+    "section": "",
+    "text": "Simulate the outcome variable based on compliance and treatment assignment.\n\n# Simulate outcomes\noutcome &lt;- baseline_mean + \n  (assignment * compliance * treatment_effect) +  # Effect for those who comply\n  rnorm(n, mean = 0, sd = 5)  # Add random noise\n\n# Combine data into a data frame\nexperiment_data &lt;- data.frame(\n  ID = 1:n,\n  Assignment = assignment,\n  Compliance = compliance,\n  Outcome = outcome\n)\n\n# View the first few rows of the data\nhead(experiment_data)\n\n  ID Assignment Compliance  Outcome\n1  1          0          0 46.99054\n2  2          1          1 55.03151\n3  3          0          0 55.13393\n4  4          1          1 63.75531\n5  5          1          1 52.45417\n6  6          0          0 49.52426",
+    "crumbs": [
+      "Semester Project",
+      "Data Simulation Example"
+    ]
+  },
+  {
+    "objectID": "ex-simulate.html#step-4-export-data-to-csv",
+    "href": "ex-simulate.html#step-4-export-data-to-csv",
+    "title": "Simulating Experimental Data with Noncompliance",
+    "section": "",
+    "text": "Export the simulated data to a CSV file for further analysis.\n\n# Export the data to a CSV file\nwrite.csv(experiment_data, \"simulated_experiment_data.csv\", row.names = FALSE)\n\n# Confirm export\ncat(\"Data has been exported to 'simulated_experiment_data.csv'\")\n\nData has been exported to 'simulated_experiment_data.csv'",
+    "crumbs": [
+      "Semester Project",
+      "Data Simulation Example"
+    ]
+  },
+  {
+    "objectID": "instructors.html",
+    "href": "instructors.html",
+    "title": "Instructors",
+    "section": "",
+    "text": "Sean Sylvia is an Associate Professor in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Dr. Sylvia will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
+    "crumbs": [
+      "Course Information",
+      "Instructors"
+    ]
+  },
+  {
+    "objectID": "instructors.html#instructor-sean-sylvia-ph.d.",
+    "href": "instructors.html#instructor-sean-sylvia-ph.d.",
+    "title": "Instructors",
+    "section": "",
+    "text": "Sean Sylvia is an Associate Professor in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Dr. Sylvia will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
+    "crumbs": [
+      "Course Information",
+      "Instructors"
+    ]
+  },
+  {
+    "objectID": "instructors.html#teaching-assistant-yumeng-du",
+    "href": "instructors.html#teaching-assistant-yumeng-du",
+    "title": "Instructors",
+    "section": "Teaching Assistant: Yumeng Du",
+    "text": "Teaching Assistant: Yumeng Du\nYumeng Du is a Ph.D. student in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Yumeng will hold office hours on Mondays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
+    "crumbs": [
+      "Course Information",
+      "Instructors"
+    ]
+  },
+  {
+    "objectID": "course-communication.html",
+    "href": "course-communication.html",
+    "title": "Communication",
+    "section": "",
+    "text": "Slack will be our primary communication hub. An invitation to the course Slack will be shared on the first day of class. Use this place to ask questions, share resources, and engage with your peers, the instructor, and the TA. (For personal matters, please use e-mail)\n\n\n\n\n\n\nImportant:\n\n\n\nSlack will not be continuously monitored by the instructor or TA outside of posted office hours. At other times, students are expected to help/engage with one another to foster a shared learning experience. If a question hasn’t been addressed, the TA or Sean will respond but not immediately or even the same day.\nYou may DM Sean or the TA in Slack (but, again, don’t expect a response immediately or even the same day.)\n\n\n\nThe #announcements channel will be used to share course announcements.\nUse the #help channel as a first stop for general questions about the class or for technical assistance.\nUse the #general channel to discuss lab assignments and discuss/share resources related to course topics.\nUse the #interesting-stuff channel to share relevant articles, podcasts, packages, data sources, and anything else relevant that you think your classmates will benefit from.",
+    "crumbs": [
+      "Course Information",
+      "Communication"
+    ]
+  },
+  {
+    "objectID": "course-communication.html#slack",
+    "href": "course-communication.html#slack",
+    "title": "Communication",
+    "section": "",
+    "text": "Slack will be our primary communication hub. An invitation to the course Slack will be shared on the first day of class. Use this place to ask questions, share resources, and engage with your peers, the instructor, and the TA. (For personal matters, please use e-mail)\n\n\n\n\n\n\nImportant:\n\n\n\nSlack will not be continuously monitored by the instructor or TA outside of posted office hours. At other times, students are expected to help/engage with one another to foster a shared learning experience. If a question hasn’t been addressed, the TA or Sean will respond but not immediately or even the same day.\nYou may DM Sean or the TA in Slack (but, again, don’t expect a response immediately or even the same day.)\n\n\n\nThe #announcements channel will be used to share course announcements.\nUse the #help channel as a first stop for general questions about the class or for technical assistance.\nUse the #general channel to discuss lab assignments and discuss/share resources related to course topics.\nUse the #interesting-stuff channel to share relevant articles, podcasts, packages, data sources, and anything else relevant that you think your classmates will benefit from.",
+    "crumbs": [
+      "Course Information",
+      "Communication"
+    ]
+  },
+  {
+    "objectID": "course-communication.html#office-hours",
+    "href": "course-communication.html#office-hours",
+    "title": "Communication",
+    "section": "Office Hours",
+    "text": "Office Hours\nSean will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.\nThe TA will hold office hours on…",
+    "crumbs": [
+      "Course Information",
+      "Communication"
+    ]
+  },
+  {
+    "objectID": "course-communication.html#email",
+    "href": "course-communication.html#email",
+    "title": "Communication",
+    "section": "Email",
+    "text": "Email\nPlease use e-mail only for personal matters. (For anything related to the course material or coding questions, please use Slack.)",
+    "crumbs": [
+      "Course Information",
+      "Communication"
+    ]
+  },
+  {
+    "objectID": "unit-0/lec-0-3.html",
+    "href": "unit-0/lec-0-3.html",
+    "title": "Foundations: Reproducible Research",
+    "section": "",
+    "text": "Reproducible research is, quite frankly, one of the most important aspects of scientific work—and also one of the most neglected. Whether you’re a grad student wrangling code after midnight or a seasoned PI rediscovering a half-forgotten analysis, reproducibility ensures your brilliant findings don’t vanish into the digital abyss. Below, we’ll review why you should care, and how you can implement reproducibility so thoroughly that even a time-traveling version of yourself from five years ago could decipher your code."
+  },
+  {
+    "objectID": "unit-0/lec-0-3.html#a.-why-reproducibility-matters",
+    "href": "unit-0/lec-0-3.html#a.-why-reproducibility-matters",
+    "title": "Foundations: Reproducible Research",
+    "section": "A. Why Reproducibility Matters",
+    "text": "A. Why Reproducibility Matters\n\nDefinition\n\nIn quantitative research, reproducibility means another researcher—or your future self with only half a memory of what you did—can take the same data and code, then arrive at the same results. No secret incantations, arcane folder structures, or chanting under the full moon required.\n\nMotivations\n\n\nTransparency: Ever heard the phrase “Trust me, I’m a scientist”? Yeah, that doesn’t fly so well if your code is locked away in a cryptically named folder like “analysis_final_FINAL_noReally.r”. By exposing how you clean, analyze, and report data, you bolster confidence in your results.\nCollaboration: If multiple people have to dig through your code to figure out why you did something, at least make it a pleasant excavation. A reproducible workflow means you can share your project with colleagues, and they’ll only have mild confusion instead of sheer panic.\nEfficiency: Imagine re-running your entire analysis with a single command. Now contrast that with rummaging through 57 scripts, each called “analysis2_v2_copy.R”. Reproducibility helps you avoid the second scenario—and possibly a meltdown.\nError Detection: Because let’s face it, even the best of us occasionally type mean when we mean median. With reproducible code, errors can be spotted quickly and corrected before your findings end up on the front page of the Journal of Irreproducible Results.\n\nReproducibility, in short, saves your sanity and safeguards your scientific honor."
+  },
+  {
+    "objectID": "unit-0/lec-0-3.html#b.-core-tools-and-concepts",
+    "href": "unit-0/lec-0-3.html#b.-core-tools-and-concepts",
+    "title": "Foundations: Reproducible Research",
+    "section": "B. Core Tools and Concepts",
+    "text": "B. Core Tools and Concepts\nSo how do we make all this happen? We bring in the cavalry: version control, literate programming, environment management, a logical project structure, and tidy documentation. Let’s get to it.\n1. Version Control (Git + GitHub)\nVersion control is like a well-ordered diary for your project: it tracks every change—no matter how small—across time, preserving your code’s evolutionary history in tidy “commits.”\n\nTracks Changes: Every minor tweak, even the moment you changed a comma to a semicolon and saved your entire analysis from ruin.\nFacilitates Collaboration: Gone are the days of emailing zip files named “Project_Latest.zip” back and forth. Now, you can break things collaboratively on GitHub and blame it on the merge conflict.\nCommit History: “Who changed my code last Thursday?” Git knows. Git always knows.\n\nThink of GitHub as your code’s remote spa retreat—safe, relaxing, and occasionally throwing small hissy fits called “merge conflicts.”\n2. Literate Programming (Quarto, R Markdown, knitr)\nSome folks write code in one file, then paste results into a Word document, and so on. Then they wonder why their final paper includes the wrong p-values. Enter literate programming.\n\nIntegrated Code + Narrative: Quarto, R Markdown, knitr, and friends let you keep code, text, and figures in one place, so you never again get lost in the labyrinth of “Oh wait, which file made that plot?”\nMinimizes Copy-Paste Errors: If your results are automatically woven into your final report, you can’t “forget to update Table 3.” All you do is re-run the document, and—voilà!—your latest analysis magically appears.\nSeamless Feedback Loop: Make a change, watch the effect ripple through the entire document. It’s like having the world’s fastest (and least sarcastic) collaborator.\n3. Environment Management (renv, or other)\nPicture this: You wrote a brilliant script six months ago, but now it refuses to run because some obscure package updated. Environment management tools let you freeze your code in time.\n\nCaptures R Package Versions: Tools like renv let you record all the packages (and their versions) you used, so re-installing them later won’t feel like Jumanji in dependency land.\nConsistency Over Time: If you want your analyses to work in five years—or on your advisor’s laptop next Tuesday—document your environment so it can be replicated exactly.\nFewer “It Worked On My Machine” Excuses: Because telling your collaborators to “just figure it out” is not a good look.\n4. Project Structure\nIf your current method involves flinging scripts and data into a single folder named “Stuff,” we might have a gentle suggestion: adopt a standardized project structure.\n\nData Folder: A sanctuary for raw files, processed data, or your deep, dark secrets—just keep it consistent.\nR Scripts or Quarto Documents: Store code for data cleaning, analysis, and visualization in separate scripts or well-labeled notebooks. It’s okay to have multiple files—just label them in a way that future you can actually decipher.\nOutput Folder: All those shiny plots and tables? Keep them in one place. Resist the urge to edit them manually; they should be generated by your scripts, not conjured by hand.\nREADME: The wise old gatekeeper that explains your entire project to anyone who stops by (including you, after you forget everything).\n\nA tidy folder structure is a gift to yourself. And your future co-authors. And your future self’s sanity.\n5. Documentation\nDocumentation is the special sauce that holds everything together—or, in some cases, the glaring absence that leads to frantic Slack messages at 2 a.m.\n\nCommit Messages: If your commit message says “Update stuff,” your collaborators may weep softly. Be descriptive—like “Fix bug in logistic regression loop that caused meltdown.”\nCode Comments: Add them wherever something might confuse your labmates or your brain on a Monday morning. The more complicated the code, the more we need small notes to guide us.\nREADME or docs/ Folder: Provide an at-a-glance explanation of the project’s purpose, the dataset, how to replicate results, and any known issues. It’s your public service announcement to the world.\n\nIf you’re feeling particularly poetic, documentation is the short story you write about your data, so that others can appreciate its plot—without rummaging through all the raw scripts to figure out who the villain is (spoiler: it’s usually missing data).\nTakeaway\nReproducible research is about ensuring that data and code aren’t locked in the dusty attic of your personal computer—half-labeled and wholly misunderstood. By relying on tools like Git, Quarto, and renv, and by maintaining a disciplined project structure and documentation process, you guarantee that your results are both credible and easy to revisit."
+  },
+  {
+    "objectID": "unit-0/lec-0-3.html#hands-on-pratice",
+    "href": "unit-0/lec-0-3.html#hands-on-pratice",
+    "title": "Foundations: Reproducible Research",
+    "section": "Hands-on Pratice",
+    "text": "Hands-on Pratice\nNow let’s get our hands dirty with some of the tools for reproducibility. We’ll be applying reproducible research practices to a simulated RCT dataset. You’ll learn to clone a GitHub repository, explore the project structure, run an analysis using Quarto, and commit changes back to GitHub."
+  },
+  {
+    "objectID": "unit-0/lec-0-3.html#guided-computer-setup",
+    "href": "unit-0/lec-0-3.html#guided-computer-setup",
+    "title": "Foundations: Reproducible Research",
+    "section": "0. Guided Computer Setup",
+    "text": "0. Guided Computer Setup\n\nComputing Setup"
+  },
+  {
+    "objectID": "unit-0/lec-0-3.html#github-template-repository",
+    "href": "unit-0/lec-0-3.html#github-template-repository",
+    "title": "Foundations: Reproducible Research",
+    "section": "1. GitHub Template Repository",
+    "text": "1. GitHub Template Repository\n\n\nClone the Repository\n\nGo to the provided URL or use git clone https://github.com/unc-hpm-quant/rct-analysis-template in the terminal.\nIn RStudio: “File” &gt; “New Project” &gt; “Version Control” &gt; “Git” and paste the repo URL.\n\n\nReview Project Structure\n\n   rct-analysis-template/\n   ├── README.md\n   ├── .gitignore\n   ├── renv.lock\n   ├── data/\n   │   └── rct_sim_data.csv\n   ├── analysis/\n   │   ├── analysis.qmd\n   │   └── helpers.R\n   └── output/\n\n\nInstall Dependencies\n\nIf renv is used, run renv::restore() in the project to sync package versions."
+  },
+  {
+    "objectID": "unit-0/lec-0-3.html#analyzing-the-simulated-rct-data",
+    "href": "unit-0/lec-0-3.html#analyzing-the-simulated-rct-data",
+    "title": "Foundations: Reproducible Research",
+    "section": "2. Analyzing the Simulated RCT Data",
+    "text": "2. Analyzing the Simulated RCT Data\n\n\nData: rct_sim_data.csv includes columns\n\nsubject_id\ntreatment\noutcome\nage\ngender, etc.\n\n\n\nGoal: Estimate the average treatment effect, create summaray tables, and visualize distributions.\n\n2.1 Open analysis.qmd\n1.  Look at the top YAML and code chunks.\n2.  Notice how code and text are interwoven.\n2.2 Render the Document\n\nIn RStudio, click “Render” or run:\n\n\nquarto::quarto_render(\"analysis/analysis.qmd\")\n\nThe output (HTML, PDF, etc.) will appear in your output folder or in the same directory."
+  },
+  {
+    "objectID": "unit-0/lec-0-3.html#modify-and-commit",
+    "href": "unit-0/lec-0-3.html#modify-and-commit",
+    "title": "Foundations: Reproducible Research",
+    "section": "3. Modify and Commit",
+    "text": "3. Modify and Commit\n\nMake a Small Change\n\nFor example, add a simple plot of outcome vs. treatment:\n\nggplot(rct_data, aes(x = factor(treatment), y = outcome)) +\n  geom_boxplot()\n\n\nRe-run the document to see the new figure in the rendered output.\nCommit and Push\n\n\nStage your changes:\n\n\ngit add analysis/analysis.qmd\ngit commit -m \"Added treatment-outcome boxplot\"\ngit push origin main\n\n\nView on GitHub: Confirm your commit is visible and see the updated code."
+  },
+  {
+    "objectID": "unit-0/lec-0-3.html#branching-and-pull-requests-for-bigger-or-test-changes",
+    "href": "unit-0/lec-0-3.html#branching-and-pull-requests-for-bigger-or-test-changes",
+    "title": "Foundations: Reproducible Research",
+    "section": "4. Branching and Pull Requests for bigger or test changes",
+    "text": "4. Branching and Pull Requests for bigger or test changes\n\nCreate a new branch\n\n\ngit checkout -b new-plot\n\n\nAdd Covariates: Update the analysis to adjust for age and gender in a regression model."
+  },
+  {
+    "objectID": "unit-0/lec-0-3.html#wrap-up",
+    "href": "unit-0/lec-0-3.html#wrap-up",
+    "title": "Foundations: Reproducible Research",
+    "section": "5. Wrap-Up",
+    "text": "5. Wrap-Up\nReflect: How did version control and Quarto documents streamline your workflow?\nNext Steps: If you want to dig further into reproducible data analysis practices, you can explore advanced topics like Docker, code review workflows, and CI/CD (continuous integration and deployment)."
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations-3.html",
+    "href": "unit-0/unit-0-foundations-3.html",
+    "title": "Unit 0: Foundations",
+    "section": "",
+    "text": "Learn importance of reproducible research\nLearn key principles of reproducible research\nLearn how to design and implement a reproducible research workflow\n\nVersion control using git and github\nLiterate programming using Quarto\nPackage managemenet using renv",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class 3: Computing for Reproducible Research"
+    ]
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations-3.html#learning-objectives",
+    "href": "unit-0/unit-0-foundations-3.html#learning-objectives",
+    "title": "Unit 0: Foundations",
+    "section": "",
+    "text": "Learn importance of reproducible research\nLearn key principles of reproducible research\nLearn how to design and implement a reproducible research workflow\n\nVersion control using git and github\nLiterate programming using Quarto\nPackage managemenet using renv",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class 3: Computing for Reproducible Research"
+    ]
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations-3.html#class-will-be-remote-only",
+    "href": "unit-0/unit-0-foundations-3.html#class-will-be-remote-only",
+    "title": "Unit 0: Foundations",
+    "section": "Class will be remote-only",
+    "text": "Class will be remote-only\nJoin from the comfort of your own home!\nZoom link: https://unc.zoom.us/j/98379053109",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class 3: Computing for Reproducible Research"
+    ]
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations-3.html#preparation",
+    "href": "unit-0/unit-0-foundations-3.html#preparation",
+    "title": "Unit 0: Foundations",
     "section": "Preparation",
-    "text": "Preparation\n\nRead:\n\nApplied Causal Inference Powered by ML and AI, Chapter 2\nCausal Inference Mixtape, Chapter 4\n\nListen: Internal Validity Podcast",
+    "text": "Preparation\n\n1. Read/Watch/Listen:\n\nReview Computing page\nSkim: Reproducibility Lecture\n\n\n\n2. Computing Setup:\nTo ensure a smooth experience during class, please follow these steps:\n\nInstall R (v4.x or later)\n\nCRAN Download or via your preferred package manager.\n\nInstall RStudio or a similar IDE\n\nRStudio Download\n\nInstall Quarto\n\nQuarto Installation – ensures you can render .qmd files.\n\nInstall Git\n\nConfirm Git is accessible from the command line:\ngit --version\nWindows: Git for Windows\n\nmacOS: Use Xcode Command Line Tools or Homebrew.\n\nCreate a GitHub Account\n\nGitHub Signup – used for version control and code sharing.\n\nSet Up Credentials (SSH keys or PAT)\n\nHelps push/pull to GitHub without repeated logins.\n\nGitHub Docs: Connecting to GitHub with SSH\n\nInstall Required R Packages\n\nIn R/RStudio, run:\ninstall.packages(c(\"tidyverse\",\n                   \"renv\",\n                   \"devtools\",\n                   \"broom\",\n                   \"infer\",\n                   \"rmarkdown\",\n                   \"quarto\"))\n\nOptional but Recommended: Set Up Renv\n\nWe will use renv to manage R package versions.\n\nRenv Documentation\n\n\nOnce you have completed the above steps, you should be ready for our in-class activities.",
     "crumbs": [
-      "Unit 1: Internal Validity",
-      "Class 4: Internal Validity"
+      "Unit 0: Foundations",
+      "Class 3: Computing for Reproducible Research"
     ]
   },
   {
-    "objectID": "unit-1/unit-1-internal-1.html#in-class",
-    "href": "unit-1/unit-1-internal-1.html#in-class",
-    "title": "Unit 1: Internal Validity",
-    "section": "In-class",
-    "text": "In-class\nLecture: Internal Validity",
+    "objectID": "unit-0/unit-0-foundations-3.html#in-class",
+    "href": "unit-0/unit-0-foundations-3.html#in-class",
+    "title": "Unit 0: Foundations",
+    "section": "In Class",
+    "text": "In Class\n\nReproducibility Lecture\nZoom Recording\nRCT Analysis Template Repository",
     "crumbs": [
-      "Unit 1: Internal Validity",
-      "Class 4: Internal Validity"
+      "Unit 0: Foundations",
+      "Class 3: Computing for Reproducible Research"
     ]
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations-3.html#additional-resources",
+    "href": "unit-0/unit-0-foundations-3.html#additional-resources",
+    "title": "Unit 0: Foundations",
+    "section": "Additional Resources",
+    "text": "Additional Resources\n\nHappy with Git and GitHub for the UseR\nBryan, Jennifer, 2018. Excuse Me, Do You Have a Moment to Talk About Version Control?, The American Statistician.",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class 3: Computing for Reproducible Research"
+    ]
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations-1.html",
+    "href": "unit-0/unit-0-foundations-1.html",
+    "title": "Unit 0: Foundations",
+    "section": "",
+    "text": "This unit will provide a foundation for the rest of the course. It will cover the following topics:\n\nWhy experiments and ML for Causal Inference\nCourse structure and tools\nA field experiment in health services research\nComputing for Reproducible Research",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class 1: Introduction"
+    ]
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations-1.html#unit-overview",
+    "href": "unit-0/unit-0-foundations-1.html#unit-overview",
+    "title": "Unit 0: Foundations",
+    "section": "",
+    "text": "This unit will provide a foundation for the rest of the course. It will cover the following topics:\n\nWhy experiments and ML for Causal Inference\nCourse structure and tools\nA field experiment in health services research\nComputing for Reproducible Research",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class 1: Introduction"
+    ]
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations-1.html#class-1-course-introduction",
+    "href": "unit-0/unit-0-foundations-1.html#class-1-course-introduction",
+    "title": "Unit 0: Foundations",
+    "section": "Class 1: Course Introduction",
+    "text": "Class 1: Course Introduction\n\nPreparation\n\nRead: Harrison and List (2004)\n\nPerusall Link: Harrison and List (2004)\n\n\n\n\n\n\n\n\nPerusall\n\n\n\nPerusall is a free online platform that allows you to collaboratively annotate content with your classmates. Here is a link to the Perusall page for this course: HPM 883. If needed, the class enrollment code is SYLVIA-ZXTWH.\n\nAlthough it is a good way to engage with your classmates around the material, it is not required that you comment on Perusall. If you wish, you can just download the readings directly.\n\n\n\nACI Chapters 0 and 2\n\n\n\nIn Class\n\nLecture slides\n\n\n\nLab/Homework\n\n10-15 min Introductory Class Survey (Due Jan 15)\n\n\n\nAdditional Materials",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class 1: Introduction"
+    ]
+  },
+  {
+    "objectID": "course-overview.html",
+    "href": "course-overview.html",
+    "title": "HPM 883Spring 2025",
+    "section": "",
+    "text": "HPM 883 is an advanced graduate-level course designed to equip PhD students in the Health Policy and Management program with sophisticated quantitative research skills. This course represents the third installment in the quantitative methods sequence, building on the foundational knowledge acquired in HPM 881 and HPM 882.\nThroughout the term, students will delve into advanced quantitative methods pertinent to health services research with a focus on the use of experimental methods and machine learning for causal inference. The course will provide a thorough introduction to machine learning techniques and explore the burgeoning domain of causal machine learning.",
+    "crumbs": [
+      "Course Information",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "course-overview.html#advanced-quantitative-methods-for-health-policy-and-management",
+    "href": "course-overview.html#advanced-quantitative-methods-for-health-policy-and-management",
+    "title": "HPM 883Spring 2025",
+    "section": "",
+    "text": "HPM 883 is an advanced graduate-level course designed to equip PhD students in the Health Policy and Management program with sophisticated quantitative research skills. This course represents the third installment in the quantitative methods sequence, building on the foundational knowledge acquired in HPM 881 and HPM 882.\nThroughout the term, students will delve into advanced quantitative methods pertinent to health services research with a focus on the use of experimental methods and machine learning for causal inference. The course will provide a thorough introduction to machine learning techniques and explore the burgeoning domain of causal machine learning.",
+    "crumbs": [
+      "Course Information",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Course Schedule",
+    "section": "",
+    "text": "This page contains the schedule, topics, content and assigments for the semester.\n\n\n\n\n\n\nNote\n\n\n\nThis schedule will be updated as the semester progresses.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweek\ndow\ndate\nsession\nunit\ntopic\nprepare\nclass\nlab\nlab_sa\ndue\n\n\n\n1\nW\n8 January\nLec\nFoundations\nWelcome; Key Concepts\n\n\n\n\n\n\n\n\n\n2\nM\n13 January\nLec\nFoundations\nGuest Lecture: Running a Randomized Trial\n\n\n\n\n\nIntroductory Survey\n\n\n\nW\n15 January\n-\nFoundations\nReproducible Research\n\n\n\n\n\n\n\n\n\n3\nM\n20 January\n-\nNo Class: MLK Day\n\n\n\n\n\n\n\n\n\nW\n22 January\nLec\nInternal Validity\n\n\n\n\n\nClass Canceled\n\n\n4\nM\n27 January\nLab\nInternal Validity\nGeneralized Potential Outcomes Framework; Exclusion Restrictions\n\n\n\n\n\n\n\n\n\n\nW\n29 January\nLec\nExperimental Design\nOptimal design of experiments; Power\n\n\n\n\nLab 1 Report\n\n\n5\nM\n3 February\nLab\nExperimental Design\nPower simulations\n\n\n\n\n\n\n\n\nW\n5 February\nLec\nExperimental Design\nRandomization and Blocking\n\n\n\n\nLab 2 Report\n\n\n6\nM\n10 February\n-\nNo Class: Well-being Day\n\n\n\n\n\n\n\n\n\nW\n12 February\nLec\nPreparations\nEthics, Registration and Pre-Analysis Plans\n\n\n\n\n\n\n\n7\nM\n17 February\nLec\nIntroduction to Machine Learning\nLasso; Penalized Regression; Cross-Validation\n\n\n\n\n\n\n\n\nW\n19 February\nLab\nIntroduction to Machine Learning\nLasso and Friends\n\n\n\n\n\n\n\n8\nM\n24 February\nLec\nIntroduction to Machine Learning\nRandom Trees and Random Forests\n\n\n\n\nLab 3 Report\n\n\n\nW\n26 February\n\nMIDTERM 1\n\n\n\n\n\n\n\n\n9\nM\n3 March\nLec\nHeterogeneity and Moderation\nHeterogeneous Treatment Effects\n\n\n\n\nLab 4 Report\n\n\n\nW\n5 March\nLab\nHeterogeneity and Moderation\nCausal Forests\n\n\n\n\n\n\n\n10\nM\n10 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n\nW\n12 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n11\nM\n17 March\nLec\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\nLab 5 Report\n\n\n\nW\n19 March\nLab\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\n\n\n\n12\nM\n24 March\nLec\nViolations of Internal Validity\nOne and Two-sided Compliance; TOT (LATE)\n\n\n\n\n\n\n\n\nW\n26 March\nLab\nViolations of Internal Validity\nIV\n\n\n\n\nLab 6 Report\n\n\n13\nM\n31 March\n\nMIDTERM 2\n\n\n\n\n\n\n\n\n\nW\n2 April\nLec\nMediation and External Validity\nMediation Analysis and Generalizability\n\n\n\n\n\n\n\n14\nM\n7 April\nLab\nMediation and External Validity\n\n\n\n\n\nLab 7 Report\n\n\n\nW\n9 April\n\nBuffer\nTBD\n\n\n\n\nProject Pre-Analysis Plan\n\n\n15\nM\n14 April\n\nBuffer\nTBD\n\n\n\n\n\n\n\n\nW\n16 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n16\nM\n21 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n\nW\n23 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n17\nM\n28 April\n\nWrap-up\nTBD\n\n\n\n\nFinal Project Manuscript & Replication Repository\n\n\n\nW\n30 April\n\nFINAL EXAM",
+    "crumbs": [
+      "Course Schedule"
+    ]
+  },
+  {
+    "objectID": "unit-1/lec-1-1.html",
+    "href": "unit-1/lec-1-1.html",
+    "title": "Unit 1: Internal Validity",
+    "section": "",
+    "text": "Internal validity is the cornerstone of experimental design, crucial for establishing a causal relationship between treatment and outcome. It ensures that the observed effects in an experiment can be confidently attributed to the treatment rather than other confounding factors. This lecture explores the core principles and challenges of internal validity, including the role of randomization, exclusion restrictions, and the assignment mechanism. We also discuss practical applications and the complexities of ensuring compliance and observability in experimental settings."
+  },
+  {
+    "objectID": "unit-1/lec-1-1.html#scenario-1",
+    "href": "unit-1/lec-1-1.html#scenario-1",
+    "title": "Unit 1: Internal Validity",
+    "section": "Scenario 1",
+    "text": "Scenario 1\nSuppose you are considering whether a new diet is linked to lower risk of inflammatory arthritis.\nYou observe that in a given sample: - A small fraction of individuals on the diet have inflammatory arthritis. - A large fraction of individuals not on the diet have inflammatory arthritis.\nBased on this, you recommend that everyone pursue this new diet, but rates of inflammatory arthritis are unaffected.\nWhat happened?"
+  },
+  {
+    "objectID": "unit-1/lec-1-1.html#scenario-2",
+    "href": "unit-1/lec-1-1.html#scenario-2",
+    "title": "Unit 1: Internal Validity",
+    "section": "Scenario 2",
+    "text": "Scenario 2\nConsider a policy designed to reduce emergency room visits by offering free preventive care check-ups. Policymakers observed that communities with higher uptake of preventive care have fewer emergency visits. They implement the policy nationwide, expecting a significant reduction in emergency room visits. However, the policy shows no measurable impact.\nWhat happened?"
+  },
+  {
+    "objectID": "unit-1/lec-1-1.html#explanation",
+    "href": "unit-1/lec-1-1.html#explanation",
+    "title": "Unit 1: Internal Validity",
+    "section": "Explanation",
+    "text": "Explanation\nIn each case, you were unable to see what would have happened to each individual if the alternative action had been applied.\nIn scenario 1, it could be that individuals who chose the diet may already have healthier lifestyles, including better exercise and reduced stress levels, which are known to reduce the risk of inflammatory arthritis. The observed differences may be due to these factors rather than the diet itself. Without randomization or controlling for confounding factors, you cannot attribute causality to the diet. The association observed may not reflect the causal effect of the diet.\nIn scenario 2, the observed association between preventive care and lower emergency room visits may reflect that communities with higher uptake of preventive care might already have better healthcare access, socioeconomic conditions, or health awareness—all factors that independently reduce emergency visits. Implementing the policy broadly, without considering these confounders, does not account for the variation in baseline conditions.\nThe lack of this information is what prevents inference about causation from association."
+  },
+  {
+    "objectID": "unit-1/lec-1-1.html#randomization",
+    "href": "unit-1/lec-1-1.html#randomization",
+    "title": "Unit 1: Internal Validity",
+    "section": "Randomization",
+    "text": "Randomization\nAs we saw, the key source of bias arises from the assignment mechanism, or why a unit is assigned to treatment or control. Endogeneity can arise from units being assigned logically or based on percieved benefit, which is a function of their characteristics. There are two basic approaches to dealing with endogeneity:\n\nModel-based methods: Model the selection bias and then remove it mechanically\nDesign-based methods: Use the design of the experiment and randomization to remove selection bias\n\nIn randomized experiments, the assignment mechanism is controlled, and therefore known, by the researcher. This is a unique and key difference from naturally-occuring data where the assignment mechanisms is neither controlled nor typically known. The experimental apporach is often referred to as the “gold standard” for estimating casual effects because randomization can be made to ensure that the assignment is independent of individual characteristics, eliminating bias.\nTo satisfy, the basic restrictions on the assignment mechanism for randomized experiments are:\n\nThree Conditions for a Valid Assignment Mechanism\n\nNon-zero probability: Each individual has a positive probability of being assigned to treatment or control.\nIndividualism: Assignments are independent across individuals and do not depend on others’ potential outcomes.\nUnconfoundedness: Treatment assignment is orthogonal to potential outcomes.\n\nThese conditions ensure that observed differences between groups are attributable to the treatment rather than pre-existing differences."
+  },
+  {
+    "objectID": "unit-1/lec-1-1.html#footnotes",
+    "href": "unit-1/lec-1-1.html#footnotes",
+    "title": "Unit 1: Internal Validity",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThis example is adapted from Scott Cunninham’s example in the Mixtape book.↩︎"
   },
   {
     "objectID": "template-pap.html",

@@ -1,0 +1,236 @@
+---
+title: "HPM883 introductory survey analysis"
+format: html
+author: Yumeng Du
+execute: 
+  enabled: false
+---
+
+# Load packages
+
+```{r}
+install.packages(c("dplyr", "skimr", "cluster", "tidyr", "ggplot2", "knitr", "Hmisc"))
+
+library(dplyr)
+library(skimr)
+library(cluster)
+library(tidyr)
+library(ggplot2)
+library(knitr)
+library(Hmisc)
+
+```
+
+# Preprocessing data
+
+```{r}
+## Import data
+introsurvey_data <- read.csv("/Users/mac/Dropbox/Mac/Desktop/2025 spring course UNC/HPM 883/introductory survey/raw data/HPM883 Introductory Class Survey_value.csv")
+
+## Show data structure (23 obs. of  61 variables)
+#str(introsurvey_data)
+
+
+```
+
+# Calculate scores for each topic choice ranking question (Q12 & Q19) using the Borda count
+
+## Calculate Borda count scores for Q12:How do you like to learn?
+```{r}
+### Creat data frame of ranking questions
+q12ranking_df <- data.frame(introsurvey_data$Q1, introsurvey_data$Q12_1, introsurvey_data$Q12_2, introsurvey_data$Q12_3, introsurvey_data$Q12_4, introsurvey_data$Q12_5, introsurvey_data$Q12_6)
+
+### label ranking questions
+label(q12ranking_df$introsurvey_data.Q1) <- "Full Name"
+label(q12ranking_df$introsurvey_data.Q12_1,) <- "How do you like to learn: Hands-on guided coding practice"
+label(q12ranking_df$introsurvey_data.Q12_2) <- "How do you like to learn: Group discussions"
+label(q12ranking_df$introsurvey_data.Q12_3) <- "How do you like to learn: Visual explanations/graphs"
+label(q12ranking_df$introsurvey_data.Q12_4) <- "How do you like to learn: Independent reading"
+label(q12ranking_df$introsurvey_data.Q12_5) <- "How do you like to learn: Independent exercises"
+label(q12ranking_df$introsurvey_data.Q12_6) <- "How do you like to learn: Sleeping with a textbook under my pillow"
+
+### Function to calculate Borda count:
+q12calculate_borda <- function(q12rankings_df) {
+### Get number of candidates (excluding voter column if present)
+q12n_candidates <- ncol(q12rankings_df)
+if("Q1" %in% colnames(q12rankings_df)) {
+  q12n_candidates <- q12n_candidates - 1
+  }
+  
+### Initialize scores dictionary
+q12scores <- rep(0, q12n_candidates)
+names(q12scores) <- colnames(q12rankings_df)[!colnames(q12rankings_df) %in% "Q1"]
+  
+### Calculate points for each ranking
+for(i in 1:nrow(q12rankings_df)) {
+  q12ranks <- as.numeric(q12rankings_df[i, !colnames(q12rankings_df) %in% "Q1"])
+  
+### Assign points: n-rank points for each position
+  q12points <- q12n_candidates - q12ranks
+  q12scores <- q12scores + q12points
+  }
+  
+### Create results dataframe
+  q12_results <- data.frame(
+    Q12_Candidate = names(q12scores),
+    Q12_Score = q12scores
+  )
+  
+### Sort by score in descending order
+  q12_results <- q12_results[order(-q12_results$Q12_Score),]
+  
+  return(q12_results)
+}
+
+### Calculate Borda count scores
+q12_results <- q12calculate_borda(q12ranking_df)
+
+### Rename candidates
+q12_results$Q12_Candidate[q12_results$Q12_Candidate == "introsurvey_data.Q1"] <- "Full Name"
+q12_results$Q12_Candidate[q12_results$Q12_Candidate == "introsurvey_data.Q12_1"] <- "How do you like to learn: Hands-on guided coding practice"
+q12_results$Q12_Candidate[q12_results$Q12_Candidate == "introsurvey_data.Q12_2"] <- "How do you like to learn: Group discussions"
+q12_results$Q12_Candidate[q12_results$Q12_Candidate == "introsurvey_data.Q12_3"] <- "How do you like to learn: Visual explanations/graphs"
+q12_results$Q12_Candidate[q12_results$Q12_Candidate == "introsurvey_data.Q12_4"] <- "How do you like to learn: Independent reading"
+q12_results$Q12_Candidate[q12_results$Q12_Candidate == "introsurvey_data.Q12_5"] <- "How do you like to learn: Independent exercises"
+q12_results$Q12_Candidate[q12_results$Q12_Candidate == "introsurvey_data.Q12_6"] <- "How do you like to learn: Sleeping with a textbook under my pillow"
+
+### View Borda count scores
+print(q12_results)
+
+```
+
+## Calculate Borda count scores for Q19: Please rank the following topics in order of preference
+```{r}
+### Creat data frame of ranking questions
+q19ranking_df <- data.frame(introsurvey_data$Q1, introsurvey_data$Q19_1, introsurvey_data$Q19_2, introsurvey_data$Q19_3, introsurvey_data$Q19_4, introsurvey_data$Q19_5, introsurvey_data$Q19_6, introsurvey_data$Q19_7, introsurvey_data$Q19_8, introsurvey_data$Q19_9)
+
+### label ranking questions
+label(q19ranking_df$introsurvey_data.Q1) <- "Full Name"
+label(q19ranking_df$introsurvey_data.Q19_1,) <- "Topics in order of preference: Policy Learning"
+label(q19ranking_df$introsurvey_data.Q19_2) <- "Topics in order of preference: Other"
+label(q19ranking_df$introsurvey_data.Q19_3) <- "Topics in order of preference: Text-as-data"
+label(q19ranking_df$introsurvey_data.Q19_4) <- "Topics in order of preference: Other"
+label(q19ranking_df$introsurvey_data.Q19_5) <- "Topics in order of preference: Surrogate Indexes"
+label(q19ranking_df$introsurvey_data.Q19_6) <- "Topics in order of preference: Double/De-biased Machine Learning"
+label(q19ranking_df$introsurvey_data.Q19_7) <- "Topics in order of preference: Adaptive Experimental Design"
+label(q19ranking_df$introsurvey_data.Q19_8) <- "Topics in order of preference: Embeddings"
+label(q19ranking_df$introsurvey_data.Q19_9) <- "Topics in order of preference: Other"
+
+### Drop the student who did not fill this question
+q19ranking_df <- q19ranking_df %>% filter(q19ranking_df$introsurvey_data.Q1 != "Christian Osei")
+q19ranking_df <- q19ranking_df %>% filter(q19ranking_df$introsurvey_data.Q1 != "Yeshaben Patel")
+
+### Function to calculate Borda count:
+q19calculate_borda <- function(q19rankings_df) {
+### Get number of candidates (excluding voter column if present)
+q19n_candidates <- ncol(q19rankings_df)
+if("Q1" %in% colnames(q19rankings_df)) {
+  q19n_candidates <- q19n_candidates - 1
+  }
+  
+### Initialize scores dictionary
+q19scores <- rep(0, q19n_candidates)
+names(q19scores) <- colnames(q19rankings_df)[!colnames(q19rankings_df) %in% "Q1"]
+  
+### Calculate points for each ranking
+for(i in 1:nrow(q19rankings_df)) {
+  q19ranks <- as.numeric(q19rankings_df[i, !colnames(q19rankings_df) %in% "Q1"])
+  
+### Assign points: n-rank points for each position
+  q19points <- q19n_candidates - q19ranks
+  q19scores <- q19scores + q19points
+  }
+  
+### Create results dataframe
+  q19_results <- data.frame(
+    Q19_Candidate = names(q19scores),
+    Q19_Score = q19scores
+  )
+  
+### Sort by score in descending order
+  q19_results <- q19_results[order(-q19_results$Q19_Score),]
+  
+  return(q19_results)
+}
+
+### Calculate Borda count scores
+q19_results <- q19calculate_borda(q19ranking_df)
+
+### Rename candidates
+q19_results$Q19_Candidate[q19_results$Q19_Candidate == "introsurvey_data.Q1"] <- "Full Name"
+q19_results$Q19_Candidate[q19_results$Q19_Candidate == "introsurvey_data.Q19_1"] <- "Topics in order of preference: Policy Learning"
+q19_results$Q19_Candidate[q19_results$Q19_Candidate == "introsurvey_data.Q19_2"] <- "Topics in order of preference: Other"
+q19_results$Q19_Candidate[q19_results$Q19_Candidate == "introsurvey_data.Q19_3"] <- "Topics in order of preference: Text-as-data"
+q19_results$Q19_Candidate[q19_results$Q19_Candidate == "introsurvey_data.Q19_4"] <- "Topics in order of preference: Other"
+q19_results$Q19_Candidate[q19_results$Q19_Candidate == "introsurvey_data.Q19_5"] <- "Topics in order of preference: Surrogate Indexes"
+q19_results$Q19_Candidate[q19_results$Q19_Candidate == "introsurvey_data.Q19_6"] <- "Topics in order of preference: Double/De-biased Machine Learning"
+q19_results$Q19_Candidate[q19_results$Q19_Candidate == "introsurvey_data.Q19_7"] <- "Topics in order of preference: Adaptive Experimental Design"
+q19_results$Q19_Candidate[q19_results$Q19_Candidate == "introsurvey_data.Q19_8"] <- "Topics in order of preference: Embeddings"
+q19_results$Q19_Candidate[q19_results$Q19_Candidate == "introsurvey_data.Q19_9"] <- "Topics in order of preference: Other"
+
+### View Borda count scores
+print(q19_results)
+
+
+```
+
+# Group assignment
+```{r}
+## Rename variables of preferences and skills
+introsurvey_data <- introsurvey_data %>%
+  rename(FullName = Q1, ComfortLevel = Q13, PreferenceGroupWork = Q15, IdealGroupSize = Q14, PreferenceSkillComposition = Q16, QuantitativeSkills = Q17.1_1, CodingSkills = Q17.1_2, RSkills = Q17.1_3, ConceptualSkill = Q17.1_4, WritingSkills = Q17.1_5)
+
+## Normalize self-assessed skills (scale between 0 and 1)
+introsurvey_data  <- introsurvey_data %>%
+  mutate(across(c(QuantitativeSkills, CodingSkills, RSkills, ConceptualSkill, WritingSkills), 
+                ~ (.-min(.))/(max(.)-min(.)), .names = "norm_{col}"))
+
+## Drop the TA
+introsurvey_data <- introsurvey_data %>% filter(introsurvey_data$FullName != "Yumeng Du")
+
+## Create a distance matrix
+## Include relevant columns for clustering
+distance_matrix <- dist(introsurvey_data %>% 
+                          select(ComfortLevel, PreferenceGroupWork, IdealGroupSize, norm_QuantitativeSkills, norm_CodingSkills, norm_RSkills, norm_ConceptualSkill, norm_WritingSkills), 
+                        method = "euclidean")
+
+## Perform hierarchical clustering
+hc <- hclust(distance_matrix, method = "ward.D2")
+
+# Determine number of clusters (groups)
+# You can replace `k` with the desired number of groups based on the class size and preferences.
+k <- 6 # Example: 6 groups, for 22 students in total, 3~4 students for each group on average
+groups <- cutree(hc, k)
+
+# Add group assignments to the original dataset
+introsurvey_data <- introsurvey_data %>% mutate(Group = groups)
+
+# Evaluate skill composition in groups
+group_summary <- introsurvey_data %>% 
+  group_by(Group) %>% 
+  summarise(
+    Mean_ComfortLevel = mean(ComfortLevel),
+    Mean_QuantitativeSkills = mean(norm_QuantitativeSkills),
+    Mean_CodingSkills = mean(norm_CodingSkills),
+    Mean_RSkills = mean(norm_RSkills),
+     Mean_ConceptualSkill = mean(norm_ConceptualSkill),
+    Mean_WritingSkills = mean(norm_WritingSkills),
+    .groups = 'drop'
+  )
+
+# Output group assignments and summary
+write.csv(introsurvey_data, "group_assignments.csv", row.names = FALSE)
+write.csv(group_summary, "group_summary.csv", row.names = FALSE)
+
+# Plot dendrogram (optional)
+plot(hc, labels = FALSE, main = "Dendrogram of Group Matching")
+
+# Check results
+table(subset(introsurvey_data, select = c(FullName, Group)))
+
+```
+
+
+
+
+
