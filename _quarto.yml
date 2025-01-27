@@ -88,6 +88,10 @@ website:
             text: "Class 2: A Field Experiment in Health Services Research"
           - href: unit-0/unit-0-foundations-3.qmd
             text: "Class 3: Computing for Reproducible Research"
+      - section: "Unit 1: Internal Validity"
+        contents:
+          - href: unit-1/unit-1-internal-1.qmd
+            text: "Class 4: Internal Validity"
       
 
   page-footer:

@@ -1,13 +1,21 @@
 ---
 title: "Unit 1: Internal Validity"
-subtitle: "Class 3"
-draft: true
+draft: false
 ---
 
 ## Unit Overview
 
+- Addresses key aspects of experimental design, including:
+  - Randomization
+  - Exclusion restrictions
+- These elements are essential for establishing causality.
+- We will also review the notation that will be used throughout the class.
 
 ## Preparation
 
+- Read: [Applied Causal Inference Powered by ML and AI, Chapter 2](https://causalml-book.org/assets/chapters/CausalML_chap_2.pdf) 
+- Listen: [Internal Validity Podcast](media/InternalValidity.mp3)
 
 ## In-class
+
+- 

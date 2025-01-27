@@ -426,7 +426,7 @@
     "href": "unit-0/unit-0-foundations-2.html",
     "title": "Unit 0: Foundations",
     "section": "",
-    "text": "Guest Lecture by Dr. Dorien Emmers\n\n\n\n\n\n\nClass will be remote-only\n\n\n\nJoin from the comfort of your own home!\nZoom link: https://unc.zoom.us/j/7840211370?omn=97363476255\n\n\n\n\nSkim: Using Community Health Workers to Deliver a Scalable Integrated Parenting Program in Rural China: A Cluster Randomized Controlled Trial\n\nOptional\n\nDownload Replication Data and Code: \nDr. Emmers wrote this analysis code in Stata (Boo! ). Try converting it to R using the stata2r package.\n\n\n\n\n\n\n\n\nPerusall\n\n\n\nPerusall is a free online platform that allows you to collaboratively annotate content with your classmates. Here is a link to the Perusall page for this course: HPM 883. If needed, the class enrollment code is SYLVIA-ZXTWH.\n\nAlthough it is a good way to engage with your classmates around the material, it is not required that you comment on Perusall. If you wish, you can just download the readings directly.\n\n\n\nSubmit: Any questions you have for Dr. Emmers? Submit to the #guest-lecture-questions channel on Slack\n\n\n\n\n\nSlides\n\n\n\n\n\n\n\nIntroductory Survey Due by end of day on Jan 15\n\n\n\nIntroductory Class Survey",
+    "text": "Guest Lecture by Dr. Dorien Emmers\n\n\n\n\n\n\nClass will be remote-only\n\n\n\nJoin from the comfort of your own home!\nZoom link: https://unc.zoom.us/j/7840211370?omn=97363476255\n\n\n\n\nSkim: Using Community Health Workers to Deliver a Scalable Integrated Parenting Program in Rural China: A Cluster Randomized Controlled Trial\n\nOptional\n\nDownload Replication Data and Code: \nDr. Emmers wrote this analysis code in Stata (Boo! ). Try converting it to R using the stata2r package.\n\n\n\n\n\n\n\n\nPerusall\n\n\n\nPerusall is a free online platform that allows you to collaboratively annotate content with your classmates. Here is a link to the Perusall page for this course: HPM 883. If needed, the class enrollment code is SYLVIA-ZXTWH.\n\nAlthough it is a good way to engage with your classmates around the material, it is not required that you comment on Perusall. If you wish, you can just download the readings directly.\n\n\n\nSubmit: Any questions you have for Dr. Emmers? Submit to the #guest-lecture-questions channel on Slack\n\n\n\n\n\nSlides\nZoom Recording\n\n\n\n\n\n\n\nIntroductory Survey Due by end of day on Jan 15\n\n\n\nIntroductory Class Survey",
     "crumbs": [
       "Unit 0: Foundations",
       "Class 2: A Field Experiment in Health Services Research"
@@ -437,7 +437,7 @@
     "href": "unit-0/unit-0-foundations-2.html#overview",
     "title": "Unit 0: Foundations",
     "section": "",
-    "text": "Guest Lecture by Dr. Dorien Emmers\n\n\n\n\n\n\nClass will be remote-only\n\n\n\nJoin from the comfort of your own home!\nZoom link: https://unc.zoom.us/j/7840211370?omn=97363476255\n\n\n\n\nSkim: Using Community Health Workers to Deliver a Scalable Integrated Parenting Program in Rural China: A Cluster Randomized Controlled Trial\n\nOptional\n\nDownload Replication Data and Code: \nDr. Emmers wrote this analysis code in Stata (Boo! ). Try converting it to R using the stata2r package.\n\n\n\n\n\n\n\n\nPerusall\n\n\n\nPerusall is a free online platform that allows you to collaboratively annotate content with your classmates. Here is a link to the Perusall page for this course: HPM 883. If needed, the class enrollment code is SYLVIA-ZXTWH.\n\nAlthough it is a good way to engage with your classmates around the material, it is not required that you comment on Perusall. If you wish, you can just download the readings directly.\n\n\n\nSubmit: Any questions you have for Dr. Emmers? Submit to the #guest-lecture-questions channel on Slack\n\n\n\n\n\nSlides\n\n\n\n\n\n\n\nIntroductory Survey Due by end of day on Jan 15\n\n\n\nIntroductory Class Survey",
+    "text": "Guest Lecture by Dr. Dorien Emmers\n\n\n\n\n\n\nClass will be remote-only\n\n\n\nJoin from the comfort of your own home!\nZoom link: https://unc.zoom.us/j/7840211370?omn=97363476255\n\n\n\n\nSkim: Using Community Health Workers to Deliver a Scalable Integrated Parenting Program in Rural China: A Cluster Randomized Controlled Trial\n\nOptional\n\nDownload Replication Data and Code: \nDr. Emmers wrote this analysis code in Stata (Boo! ). Try converting it to R using the stata2r package.\n\n\n\n\n\n\n\n\nPerusall\n\n\n\nPerusall is a free online platform that allows you to collaboratively annotate content with your classmates. Here is a link to the Perusall page for this course: HPM 883. If needed, the class enrollment code is SYLVIA-ZXTWH.\n\nAlthough it is a good way to engage with your classmates around the material, it is not required that you comment on Perusall. If you wish, you can just download the readings directly.\n\n\n\nSubmit: Any questions you have for Dr. Emmers? Submit to the #guest-lecture-questions channel on Slack\n\n\n\n\n\nSlides\nZoom Recording\n\n\n\n\n\n\n\nIntroductory Survey Due by end of day on Jan 15\n\n\n\nIntroductory Class Survey",
     "crumbs": [
       "Unit 0: Foundations",
       "Class 2: A Field Experiment in Health Services Research"
@@ -669,6 +669,50 @@
     "text": "Data\nStanford GSB Social Impact Lab Experiment Data",
     "crumbs": [
       "Resources"
+    ]
+  },
+  {
+    "objectID": "unit-1/unit-1-internal-1.html",
+    "href": "unit-1/unit-1-internal-1.html",
+    "title": "Unit 1: Internal Validity",
+    "section": "",
+    "text": "Addresses key aspects of experimental design, including:\n\nRandomization\nExclusion restrictions\n\nThese elements are essential for establishing causality.\nWe will also review the notation that will be used throughout the class.",
+    "crumbs": [
+      "Unit 1: Internal Validity",
+      "Class 4: Internal Validity"
+    ]
+  },
+  {
+    "objectID": "unit-1/unit-1-internal-1.html#unit-overview",
+    "href": "unit-1/unit-1-internal-1.html#unit-overview",
+    "title": "Unit 1: Internal Validity",
+    "section": "",
+    "text": "Addresses key aspects of experimental design, including:\n\nRandomization\nExclusion restrictions\n\nThese elements are essential for establishing causality.\nWe will also review the notation that will be used throughout the class.",
+    "crumbs": [
+      "Unit 1: Internal Validity",
+      "Class 4: Internal Validity"
+    ]
+  },
+  {
+    "objectID": "unit-1/unit-1-internal-1.html#preparation",
+    "href": "unit-1/unit-1-internal-1.html#preparation",
+    "title": "Unit 1: Internal Validity",
+    "section": "Preparation",
+    "text": "Preparation\n\nRead: Applied Causal Inference Powered by ML and AI, Chapter 2\nListen: Internal Validity Podcast",
+    "crumbs": [
+      "Unit 1: Internal Validity",
+      "Class 4: Internal Validity"
+    ]
+  },
+  {
+    "objectID": "unit-1/unit-1-internal-1.html#in-class",
+    "href": "unit-1/unit-1-internal-1.html#in-class",
+    "title": "Unit 1: Internal Validity",
+    "section": "In-class",
+    "text": "In-class",
+    "crumbs": [
+      "Unit 1: Internal Validity",
+      "Class 4: Internal Validity"
     ]
   }
 ]
