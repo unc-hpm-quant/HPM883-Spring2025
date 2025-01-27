@@ -40,11 +40,53 @@
     ]
   },
   {
+    "objectID": "unit-1/lec-1-1.html",
+    "href": "unit-1/lec-1-1.html",
+    "title": "Unit 1: Internal Validity",
+    "section": "",
+    "text": "Internal validity is the cornerstone of experimental design, crucial for establishing a causal relationship between treatment and outcome. It ensures that the observed effects in an experiment can be confidently attributed to the treatment rather than other confounding factors. This lecture explores the core principles and challenges of internal validity, including the role of randomization, exclusion restrictions, and the assignment mechanism. We also discuss practical applications and the complexities of ensuring compliance and observability in experimental settings."
+  },
+  {
+    "objectID": "unit-1/lec-1-1.html#scenario-1",
+    "href": "unit-1/lec-1-1.html#scenario-1",
+    "title": "Unit 1: Internal Validity",
+    "section": "Scenario 1",
+    "text": "Scenario 1\nSuppose you are considering whether a new diet is linked to lower risk of inflammatory arthritis.\nYou observe that in a given sample: - A small fraction of individuals on the diet have inflammatory arthritis. - A large fraction of individuals not on the diet have inflammatory arthritis.\nBased on this, you recommend that everyone pursue this new diet, but rates of inflammatory arthritis are unaffected.\nWhat happened?"
+  },
+  {
+    "objectID": "unit-1/lec-1-1.html#scenario-2",
+    "href": "unit-1/lec-1-1.html#scenario-2",
+    "title": "Unit 1: Internal Validity",
+    "section": "Scenario 2",
+    "text": "Scenario 2\nConsider a policy designed to reduce emergency room visits by offering free preventive care check-ups. Policymakers observed that communities with higher uptake of preventive care have fewer emergency visits. They implement the policy nationwide, expecting a significant reduction in emergency room visits. However, the policy shows no measurable impact.\nWhat happened?"
+  },
+  {
+    "objectID": "unit-1/lec-1-1.html#explanation",
+    "href": "unit-1/lec-1-1.html#explanation",
+    "title": "Unit 1: Internal Validity",
+    "section": "Explanation",
+    "text": "Explanation\nIn each case, you were unable to see what would have happened to each individual if the alternative action had been applied.\nIn scenario 1, it could be that individuals who chose the diet may already have healthier lifestyles, including better exercise and reduced stress levels, which are known to reduce the risk of inflammatory arthritis. The observed differences may be due to these factors rather than the diet itself. Without randomization or controlling for confounding factors, you cannot attribute causality to the diet. The association observed may not reflect the causal effect of the diet.\nIn scenario 2, the observed association between preventive care and lower emergency room visits may reflect that communities with higher uptake of preventive care might already have better healthcare access, socioeconomic conditions, or health awareness—all factors that independently reduce emergency visits. Implementing the policy broadly, without considering these confounders, does not account for the variation in baseline conditions.\nThe lack of this information is what prevents inference about causation from association."
+  },
+  {
+    "objectID": "unit-1/lec-1-1.html#randomization",
+    "href": "unit-1/lec-1-1.html#randomization",
+    "title": "Unit 1: Internal Validity",
+    "section": "Randomization",
+    "text": "Randomization\nAs we saw, the key source of bias arises from the assignment mechanism, or why a unit is assigned to treatment or control. Endogeneity can arise from units being assigned logically or based on percieved benefit, which is a function of their characteristics. There are two basic approaches to dealing with endogeneity:\n\nModel-based methods: Model the selection bias and then remove it mechanically\nDesign-based methods: Use the design of the experiment and randomization to remove selection bias\n\nIn randomized experiments, the assignment mechanism is controlled, and therefore known, by the researcher. This is a unique and key difference from naturally-occuring data where the assignment mechanisms is neither controlled nor typically known. The experimental apporach is often referred to as the “gold standard” for estimating casual effects because randomization can be made to ensure that the assignment is independent of individual characteristics, eliminating bias.\nTo satisfy, the basic restrictions on the assignment mechanism for randomized experiments are:\n\nThree Conditions for a Valid Assignment Mechanism\n\nNon-zero probability: Each individual has a positive probability of being assigned to treatment or control.\nIndividualism: Assignments are independent across individuals and do not depend on others’ potential outcomes.\nUnconfoundedness: Treatment assignment is orthogonal to potential outcomes.\n\nThese conditions ensure that observed differences between groups are attributable to the treatment rather than pre-existing differences."
+  },
+  {
+    "objectID": "unit-1/lec-1-1.html#footnotes",
+    "href": "unit-1/lec-1-1.html#footnotes",
+    "title": "Unit 1: Internal Validity",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThis example is adapted from Scott Cunninham’s example in the Mixtape book.↩︎"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Course Schedule",
     "section": "",
-    "text": "This page contains the schedule, topics, content and assigments for the semester.\n\n\n\n\n\n\nNote\n\n\n\nThis schedule will be updated as the semester progresses.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweek\ndow\ndate\nsession\nunit\ntopic\nprepare\nclass\nlab\nlab_sa\ndue\n\n\n\n1\nW\n8 January\nLec\nFoundations\nWelcome; Key Concepts\n\n\n\n\n\n\n\n\n\n2\nM\n13 January\nLec\nFoundations\nGuest Lecture: Running a Randomized Trial\n\n\n\n\n\nIntroductory Survey\n\n\n\nW\n15 January\n-\nFoundations\nReproducible Research\n\n\n\n\n\n\n\n\n\n3\nM\n20 January\n-\nNo Class: MLK Day\n\n\n\n\n\n\n\n\n\nW\n22 January\nLec\nInternal Validity\n\n\n\n\n\nClass Canceled\n\n\n4\nM\n27 January\nLab\nInternal Validity\nGeneralized Potential Outcomes Framework; Exclusion Restrictions\n\n\n\n\n\n\n\n\nW\n29 January\nLec\nExperimental Design\nOptimal design of experiments; Power\n\n\n\n\nLab 1 Report\n\n\n5\nM\n3 February\nLab\nExperimental Design\nPower simulations\n\n\n\n\n\n\n\n\nW\n5 February\nLec\nExperimental Design\nRandomization and Blocking\n\n\n\n\nLab 2 Report\n\n\n6\nM\n10 February\n-\nNo Class: Well-being Day\n\n\n\n\n\n\n\n\n\nW\n12 February\nLec\nPreparations\nEthics, Registration and Pre-Analysis Plans\n\n\n\n\n\n\n\n7\nM\n17 February\nLec\nIntroduction to Machine Learning\nLasso; Penalized Regression; Cross-Validation\n\n\n\n\n\n\n\n\nW\n19 February\nLab\nIntroduction to Machine Learning\nLasso and Friends\n\n\n\n\n\n\n\n8\nM\n24 February\nLec\nIntroduction to Machine Learning\nRandom Trees and Random Forests\n\n\n\n\nLab 3 Report\n\n\n\nW\n26 February\n\nMIDTERM 1\n\n\n\n\n\n\n\n\n9\nM\n3 March\nLec\nHeterogeneity and Moderation\nHeterogeneous Treatment Effects\n\n\n\n\nLab 4 Report\n\n\n\nW\n5 March\nLab\nHeterogeneity and Moderation\nCausal Forests\n\n\n\n\n\n\n\n10\nM\n10 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n\nW\n12 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n11\nM\n17 March\nLec\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\nLab 5 Report\n\n\n\nW\n19 March\nLab\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\n\n\n\n12\nM\n24 March\nLec\nViolations of Internal Validity\nOne and Two-sided Compliance; TOT (LATE)\n\n\n\n\n\n\n\n\nW\n26 March\nLab\nViolations of Internal Validity\nIV\n\n\n\n\nLab 6 Report\n\n\n13\nM\n31 March\n\nMIDTERM 2\n\n\n\n\n\n\n\n\n\nW\n2 April\nLec\nMediation and External Validity\nMediation Analysis and Generalizability\n\n\n\n\n\n\n\n14\nM\n7 April\nLab\nMediation and External Validity\n\n\n\n\n\nLab 7 Report\n\n\n\nW\n9 April\n\nBuffer\nTBD\n\n\n\n\nProject Pre-Analysis Plan\n\n\n15\nM\n14 April\n\nBuffer\nTBD\n\n\n\n\n\n\n\n\nW\n16 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n16\nM\n21 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n\nW\n23 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n17\nM\n28 April\n\nWrap-up\nTBD\n\n\n\n\nFinal Project Manuscript & Replication Repository\n\n\n\nW\n30 April\n\nFINAL EXAM",
+    "text": "This page contains the schedule, topics, content and assigments for the semester.\n\n\n\n\n\n\nNote\n\n\n\nThis schedule will be updated as the semester progresses.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweek\ndow\ndate\nsession\nunit\ntopic\nprepare\nclass\nlab\nlab_sa\ndue\n\n\n\n1\nW\n8 January\nLec\nFoundations\nWelcome; Key Concepts\n\n\n\n\n\n\n\n\n\n2\nM\n13 January\nLec\nFoundations\nGuest Lecture: Running a Randomized Trial\n\n\n\n\n\nIntroductory Survey\n\n\n\nW\n15 January\n-\nFoundations\nReproducible Research\n\n\n\n\n\n\n\n\n\n3\nM\n20 January\n-\nNo Class: MLK Day\n\n\n\n\n\n\n\n\n\nW\n22 January\nLec\nInternal Validity\n\n\n\n\n\nClass Canceled\n\n\n4\nM\n27 January\nLab\nInternal Validity\nGeneralized Potential Outcomes Framework; Exclusion Restrictions\n\n\n\n\n\n\n\n\n\n\nW\n29 January\nLec\nExperimental Design\nOptimal design of experiments; Power\n\n\n\n\nLab 1 Report\n\n\n5\nM\n3 February\nLab\nExperimental Design\nPower simulations\n\n\n\n\n\n\n\n\nW\n5 February\nLec\nExperimental Design\nRandomization and Blocking\n\n\n\n\nLab 2 Report\n\n\n6\nM\n10 February\n-\nNo Class: Well-being Day\n\n\n\n\n\n\n\n\n\nW\n12 February\nLec\nPreparations\nEthics, Registration and Pre-Analysis Plans\n\n\n\n\n\n\n\n7\nM\n17 February\nLec\nIntroduction to Machine Learning\nLasso; Penalized Regression; Cross-Validation\n\n\n\n\n\n\n\n\nW\n19 February\nLab\nIntroduction to Machine Learning\nLasso and Friends\n\n\n\n\n\n\n\n8\nM\n24 February\nLec\nIntroduction to Machine Learning\nRandom Trees and Random Forests\n\n\n\n\nLab 3 Report\n\n\n\nW\n26 February\n\nMIDTERM 1\n\n\n\n\n\n\n\n\n9\nM\n3 March\nLec\nHeterogeneity and Moderation\nHeterogeneous Treatment Effects\n\n\n\n\nLab 4 Report\n\n\n\nW\n5 March\nLab\nHeterogeneity and Moderation\nCausal Forests\n\n\n\n\n\n\n\n10\nM\n10 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n\nW\n12 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n11\nM\n17 March\nLec\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\nLab 5 Report\n\n\n\nW\n19 March\nLab\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\n\n\n\n12\nM\n24 March\nLec\nViolations of Internal Validity\nOne and Two-sided Compliance; TOT (LATE)\n\n\n\n\n\n\n\n\nW\n26 March\nLab\nViolations of Internal Validity\nIV\n\n\n\n\nLab 6 Report\n\n\n13\nM\n31 March\n\nMIDTERM 2\n\n\n\n\n\n\n\n\n\nW\n2 April\nLec\nMediation and External Validity\nMediation Analysis and Generalizability\n\n\n\n\n\n\n\n14\nM\n7 April\nLab\nMediation and External Validity\n\n\n\n\n\nLab 7 Report\n\n\n\nW\n9 April\n\nBuffer\nTBD\n\n\n\n\nProject Pre-Analysis Plan\n\n\n15\nM\n14 April\n\nBuffer\nTBD\n\n\n\n\n\n\n\n\nW\n16 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n16\nM\n21 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n\nW\n23 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n17\nM\n28 April\n\nWrap-up\nTBD\n\n\n\n\nFinal Project Manuscript & Replication Repository\n\n\n\nW\n30 April\n\nFINAL EXAM",
     "crumbs": [
       "Course Schedule"
     ]
@@ -724,47 +766,5 @@
     "crumbs": [
       "Resources"
     ]
-  },
-  {
-    "objectID": "unit-1/lec-1-1.html",
-    "href": "unit-1/lec-1-1.html",
-    "title": "Unit 1: Internal Validity",
-    "section": "",
-    "text": "Internal validity is the cornerstone of experimental design, crucial for establishing a causal relationship between treatment and outcome. It ensures that the observed effects in an experiment can be confidently attributed to the treatment rather than other confounding factors. This lecture explores the core principles and challenges of internal validity, including the role of randomization, exclusion restrictions, and the assignment mechanism. We also discuss practical applications and the complexities of ensuring compliance and observability in experimental settings."
-  },
-  {
-    "objectID": "unit-1/lec-1-1.html#scenario-1",
-    "href": "unit-1/lec-1-1.html#scenario-1",
-    "title": "Unit 1: Internal Validity",
-    "section": "Scenario 1",
-    "text": "Scenario 1\nSuppose you are considering whether a new diet is linked to lower risk of inflammatory arthritis.\nYou observe that in a given sample: - A small fraction of individuals on the diet have inflammatory arthritis. - A large fraction of individuals not on the diet have inflammatory arthritis.\nBased on this, you recommend that everyone pursue this new diet, but rates of inflammatory arthritis are unaffected.\nWhat happened?"
-  },
-  {
-    "objectID": "unit-1/lec-1-1.html#scenario-2",
-    "href": "unit-1/lec-1-1.html#scenario-2",
-    "title": "Unit 1: Internal Validity",
-    "section": "Scenario 2",
-    "text": "Scenario 2\nConsider a policy designed to reduce emergency room visits by offering free preventive care check-ups. Policymakers observed that communities with higher uptake of preventive care have fewer emergency visits. They implement the policy nationwide, expecting a significant reduction in emergency room visits. However, the policy shows no measurable impact.\nWhat happened?"
-  },
-  {
-    "objectID": "unit-1/lec-1-1.html#explanation",
-    "href": "unit-1/lec-1-1.html#explanation",
-    "title": "Unit 1: Internal Validity",
-    "section": "Explanation",
-    "text": "Explanation\nIn each case, you were unable to see what would have happened to each individual if the alternative action had been applied.\nIn scenario 1, it could be that individuals who chose the diet may already have healthier lifestyles, including better exercise and reduced stress levels, which are known to reduce the risk of inflammatory arthritis. The observed differences may be due to these factors rather than the diet itself. Without randomization or controlling for confounding factors, you cannot attribute causality to the diet. The association observed may not reflect the causal effect of the diet.\nIn scenario 2, the observed association between preventive care and lower emergency room visits may reflect that communities with higher uptake of preventive care might already have better healthcare access, socioeconomic conditions, or health awareness—all factors that independently reduce emergency visits. Implementing the policy broadly, without considering these confounders, does not account for the variation in baseline conditions.\nThe lack of this information is what prevents inference about causation from association."
-  },
-  {
-    "objectID": "unit-1/lec-1-1.html#randomization",
-    "href": "unit-1/lec-1-1.html#randomization",
-    "title": "Unit 1: Internal Validity",
-    "section": "Randomization",
-    "text": "Randomization\nAs we saw, the key source of bias arises from the assignment mechanism, or why a unit is assigned to treatment or control. Endogeneity can arise from units being assigned logically or based on percieved benefit, which is a function of their characteristics. There are two basic approaches to dealing with endogeneity:\n\nModel-based methods: Model the selection bias and then remove it mechanically\nDesign-based methods: Use the design of the experiment and randomization to remove selection bias\n\nIn randomized experiments, the assignment mechanism is controlled, and therefore known, by the researcher. This is a unique and key difference from naturally-occuring data where the assignment mechanisms is neither controlled nor typically known. The experimental apporach is often referred to as the “gold standard” for estimating casual effects because randomization can be made to ensure that the assignment is independent of individual characteristics, eliminating bias.\nTo satisfy, the basic restrictions on the assignment mechanism for randomized experiments are:\n\nThree Conditions for a Valid Assignment Mechanism\n\nNon-zero probability: Each individual has a positive probability of being assigned to treatment or control.\nIndividualism: Assignments are independent across individuals and do not depend on others’ potential outcomes.\nUnconfoundedness: Treatment assignment is orthogonal to potential outcomes.\n\nThese conditions ensure that observed differences between groups are attributable to the treatment rather than pre-existing differences."
-  },
-  {
-    "objectID": "unit-1/lec-1-1.html#footnotes",
-    "href": "unit-1/lec-1-1.html#footnotes",
-    "title": "Unit 1: Internal Validity",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nThis example is adapted from Scott Cunninham’s example in the Mixtape book.↩︎"
   }
 ]
