@@ -787,5 +787,38 @@
     "crumbs": [
       "Resources"
     ]
+  },
+  {
+    "objectID": "unit-1/unit-1-internal-1.html#lab",
+    "href": "unit-1/unit-1-internal-1.html#lab",
+    "title": "Unit 1: Internal Validity",
+    "section": "Lab",
+    "text": "Lab\n\nLab 1: The Hospital of Uncertain Outcomes",
+    "crumbs": [
+      "Unit 1: Internal Validity",
+      "Class 4: Internal Validity"
+    ]
+  },
+  {
+    "objectID": "labs/lab-1-InternalValidityPO.html",
+    "href": "labs/lab-1-InternalValidityPO.html",
+    "title": "Lab 1",
+    "section": "",
+    "text": "St. Null’s Memorial Hospital is in chaos. Every time the hospital board—led by the well-meaning but trend-obsessed CEO Barnaby Beta—implements a new policy, they find puzzling or contradictory results. Dr. P-Hacker, a self-styled data guru, only adds to the confusion by massaging, cherry-picking, and p-hacking the data until he sees “significance.” Meanwhile, Nurse Random constantly rolls her eyes at his antics and reminds everyone that solid methodology—not creative statistics—should guide decision-making.\nBut there’s hope. Your class has just been hired as “methodology consultants” to diagnose and treat the hospital’s research woes. In each module (or “episode”), you’ll confront a new fiasco at St. Null’s: from suspiciously overfitted AI models, to missing data nightmares, to bungled randomized trials and flawed observational studies. Along the way, the brilliant but quirky Dr. Doub R. Obust will champion doubly robust methods and other advanced techniques to rescue the day.\n\n\n\n\nYour mission? Use proper causal inference and machine learning strategies to shed light on the true effects of the hospital’s interventions. Each chapter in your lecture notes begins with a brief “scene” in which the hospital staff face some methodological mishap—then shifts to your step-by-step explanation of the relevant statistical concepts and R code. By the end of the course, you’ll have helped St. Null’s Memorial Hospital finally achieve consistent, credible results, while having a bit of comedic fun along the way.\n\nDirections: Complete the code in either R or Stata for the perfect and bad doctor treatment assignment then fill out the following information. Your code should create all of these and br replicable.\n\n\n\nPerfect Doctor\nBad Doctor\nCausal Parameter\n\n\n\n\nATE\n\n\n\n\nATT\n\n\n\n\nATU\n\n\n\n\nSelection bias terms\n\n\n\n\nE[Y0\nD=1]\n\n\n\nE[Y0\nD=0]\n\n\n\nSelection bias\n\n\n\n\nCalculations\n\n\n\n\nPi (share on vents)\n\n\n\n\nSDO manual\n\n\n\n\nSDO OLS\n\n\n\n\nSDO Decomposition\n\n\n\n\nObs\n\n\n\n\n\nPerfect doctor: assigns vents to patients for whom the treatment effect is greater than zero and no ventilators to those for whom the treatment effect is non-positive. After filling out the table with all the information requested, were you able to estimate the ATE, ATT, or the ATU using the simple difference in mean outcomes either with a regression or manually? Why/why not?\nBad doctor: assigns vents to the first 5,000 patients he sees and no vents to the next 5,000 patients he sees. After filling out the table with all the information requested, were you able to estimate the ATE, ATT, or the ATU using the simple difference in mean outcomes either with a regression or manually? Why/why not?\nDiscussion: What kind of treatment assignment mechanism is implied by the perfect versus the bad doctor in your opinion and where might we see these in real life?",
+    "crumbs": [
+      "Unit 1: Internal Validity",
+      "Lab 1: The Hospital of Uncertain Outcomes"
+    ]
+  },
+  {
+    "objectID": "labs/lab-1-InternalValidityPO.html#the-hospital-of-uncertain-outcomes",
+    "href": "labs/lab-1-InternalValidityPO.html#the-hospital-of-uncertain-outcomes",
+    "title": "Lab 1",
+    "section": "",
+    "text": "St. Null’s Memorial Hospital is in chaos. Every time the hospital board—led by the well-meaning but trend-obsessed CEO Barnaby Beta—implements a new policy, they find puzzling or contradictory results. Dr. P-Hacker, a self-styled data guru, only adds to the confusion by massaging, cherry-picking, and p-hacking the data until he sees “significance.” Meanwhile, Nurse Random constantly rolls her eyes at his antics and reminds everyone that solid methodology—not creative statistics—should guide decision-making.\nBut there’s hope. Your class has just been hired as “methodology consultants” to diagnose and treat the hospital’s research woes. In each module (or “episode”), you’ll confront a new fiasco at St. Null’s: from suspiciously overfitted AI models, to missing data nightmares, to bungled randomized trials and flawed observational studies. Along the way, the brilliant but quirky Dr. Doub R. Obust will champion doubly robust methods and other advanced techniques to rescue the day.\n\n\n\n\nYour mission? Use proper causal inference and machine learning strategies to shed light on the true effects of the hospital’s interventions. Each chapter in your lecture notes begins with a brief “scene” in which the hospital staff face some methodological mishap—then shifts to your step-by-step explanation of the relevant statistical concepts and R code. By the end of the course, you’ll have helped St. Null’s Memorial Hospital finally achieve consistent, credible results, while having a bit of comedic fun along the way.\n\nDirections: Complete the code in either R or Stata for the perfect and bad doctor treatment assignment then fill out the following information. Your code should create all of these and br replicable.\n\n\n\nPerfect Doctor\nBad Doctor\nCausal Parameter\n\n\n\n\nATE\n\n\n\n\nATT\n\n\n\n\nATU\n\n\n\n\nSelection bias terms\n\n\n\n\nE[Y0\nD=1]\n\n\n\nE[Y0\nD=0]\n\n\n\nSelection bias\n\n\n\n\nCalculations\n\n\n\n\nPi (share on vents)\n\n\n\n\nSDO manual\n\n\n\n\nSDO OLS\n\n\n\n\nSDO Decomposition\n\n\n\n\nObs\n\n\n\n\n\nPerfect doctor: assigns vents to patients for whom the treatment effect is greater than zero and no ventilators to those for whom the treatment effect is non-positive. After filling out the table with all the information requested, were you able to estimate the ATE, ATT, or the ATU using the simple difference in mean outcomes either with a regression or manually? Why/why not?\nBad doctor: assigns vents to the first 5,000 patients he sees and no vents to the next 5,000 patients he sees. After filling out the table with all the information requested, were you able to estimate the ATE, ATT, or the ATU using the simple difference in mean outcomes either with a regression or manually? Why/why not?\nDiscussion: What kind of treatment assignment mechanism is implied by the perfect versus the bad doctor in your opinion and where might we see these in real life?",
+    "crumbs": [
+      "Unit 1: Internal Validity",
+      "Lab 1: The Hospital of Uncertain Outcomes"
+    ]
   }
 ]

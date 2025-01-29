@@ -32,3 +32,7 @@ draft: false
 - Semester Project Description: [Semester Project](/project.qmd) 
 
 - [Lecture: Internal Validity](/unit-1/lec-1-1.qmd)
+
+## Lab
+
+- [Lab 1: The Hospital of Uncertain Outcomes](/labs/lab-1-InternalValidityPO.qmd)

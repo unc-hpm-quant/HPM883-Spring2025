@@ -6,9 +6,14 @@ date: "2024-12-31"
 slug: lab-0
 categories: 
     -  Lab
-    -  Preliminaries
+    -  TOPIC
 description: "Description"
-draft: false
+format: html
+    code-background: true
+execute:
+    warning: false
+    echo: false
+draft: true
 ---
 
 # Lab Exercise
@@ -34,7 +39,7 @@ Welcome to today’s lab! You will take on the role of **[Insert Role Here]**, t
 ## Instructions
 1. Download the dataset from [Insert Link Here].
 2. Follow the steps outlined in the exercises below.
-3. Submit your completed lab exercise on Sakai by [Insert Deadline Here].
+3. Submit your completed lab exercise in Gradescope [Link] by [Insert Deadline Here].
 
 ---
 
