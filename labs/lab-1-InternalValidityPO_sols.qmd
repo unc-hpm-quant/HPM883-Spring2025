@@ -29,7 +29,6 @@ By the end of this lab, you will be able to:
 - Implement basic **difference-in-means estimation** in R.
 - Use the **WebR** package to interactively run and modify code.
 
----
 
 ## Instructions
 
@@ -39,7 +38,6 @@ By the end of this lab, you will be able to:
 4. Run the interactive **WebR** code blocks in your browser to check your work.
 5. Submit your completed lab on **Gradescope** [Insert Link Here] by **[Insert Deadline Here]**.
 
----
 
 ## Scenario
 
@@ -67,7 +65,7 @@ But Nurse Random, unimpressed, insists that the hospital’s chaotic, ad hoc ven
 
 In this lab, you’ll **simulate a dataset** of 100,000 patients that captures both “potential outcomes” (i.e., what would happen if a patient were ventilated vs. not ventilated). This magical glimpse at parallel universes is impossible in real-world data, but here it will let us see exactly how different analytic approaches fare in the face of selection bias.
 
----
+
 # Install Packages if not installed
 
 ```{r}
@@ -76,8 +74,6 @@ for(pkg in required_packages){
   if(!require(pkg, character.only = TRUE)) install.packages(pkg)
 }
 ```
-
----
 
 ## Step 1: Simulating the Dataset
 
@@ -110,7 +106,7 @@ We also define the **individual treatment effect** for each patient. Dr. Doub R.
 df[, delta := y1 - y0]
 ```
 
----
+
 
 ## Step 2: The Two Doctors
 
@@ -142,7 +138,6 @@ df[doctor == "bad", vents := sample(c(TRUE, FALSE), .N, replace = TRUE)]
 
 It’s not exactly a model of ethical clarity, but it certainly demonstrates the complications of “treatment assignment” in the real world (or the real St. Null’s world).
 
----
 
 ## Step 3: Computing Causal Parameters
 
@@ -168,7 +163,7 @@ cat(sprintf("ATU = %.03f
 
 Dr. P-Hacker would stop right here and rejoice: “We have all the significance we need!” But hold your celebratory balloon drop—there’s more to do.
 
----
+
 
 ## Step 4: Selection Bias and Realized Outcomes
 
@@ -200,7 +195,6 @@ cat(sprintf(
 
 If Dr. Perfect is involved, we’d expect some big differences here. Dr. P-Hacker would probably ignore that and claim victory anyway. (He likes ignoring inconvenient truths.)
 
----
 
 ## Step 5: Comparing Outcomes Between Groups
 
@@ -224,7 +218,6 @@ cat(sprintf(
 
 Dr. P-Hacker would run around shouting: “Aha! This difference proves the intervention works!” or “Aha! It’s not significant!” depending on the p-value. Let’s see if we can do better.
 
----
 
 ## Step 6: Estimating the Effect with Regression
 
@@ -244,7 +237,6 @@ print(reg)
 
 This approach, while straightforward, is still subject to any biases from non-random assignment—like, say, Dr. Perfect or Dr. Bad being in charge.
 
----
 
 ## Step 7: Validating the Decomposition
 

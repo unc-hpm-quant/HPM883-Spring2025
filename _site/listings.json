@@ -1,6 +1,9 @@
 [
   {
     "listing": "/lab.html",
-    "items": []
+    "items": [
+      "/labs/lab-1-InternalValidityPO_sols.html",
+      "/labs/lab-1-InternalValidityPO.html"
+    ]
   }
 ]
