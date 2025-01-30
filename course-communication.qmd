@@ -7,7 +7,7 @@ format: html
 
 ------------------------------------------------------------------------
 
-Slack will be our primary communication hub. An invitation to the course Slack will be shared on the first day of class. Use this place to ask questions, share resources, and engage with your peers, the instructor, and the TA. **(For personal matters, please use e-mail)**
+Slack will be our primary communication hub. An invitation to the course Slack will be shared on the first day of class. Use this place to ask questions, share resources, and engage with your peers, the instructor, and the TA. **(For personal or sensitive matters, please use e-mail)**
 
 ::: {.callout-note appearance="simple" style="color: #002D72"}
 ## Important:
@@ -24,6 +24,24 @@ You may DM Sean or the TA in Slack (but, again, don't expect a response immediat
 -   Use the `#general` channel to discuss lab assignments and discuss/share resources related to course topics.
 
 -   Use the `#interesting-stuff` channel to share relevant articles, podcasts, packages, data sources, and anything else relevant that you think your classmates will benefit from.
+
+::: callout-warning
+## Don't post any sensitive or personal information in the class Slack
+
+Slack is only for general class discussions, announcements, and collaboration. In particular, please do not share or post any of the following:
+
+-   Individual or group grades, GPA, or other academic evaluations or records.
+
+-   Social Security Numbers
+
+-   Personal information about tuition payments, financial aid, or scholarships.
+
+-   Any information on accommodations or health-related information.
+
+-   Any other sensitive information
+
+For sensitive information, please use UNC email.
+:::
 
 ## Office Hours
 
