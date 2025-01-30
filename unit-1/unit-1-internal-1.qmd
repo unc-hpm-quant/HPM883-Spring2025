@@ -5,34 +5,35 @@ draft: false
 
 ## Unit Overview
 
-- Reviewws the Potential Outcomes Framework
-- Addresses key aspects of experimental design, including:
-  - Randomization
-  - Exclusion restrictions
-- These elements are essential for establishing causality.
-- We will also review the notation that will be used throughout the class.
+-   Reviewws the Potential Outcomes Framework
+-   Addresses key aspects of experimental design, including:
+    -   Randomization
+    -   Exclusion restrictions
+-   These elements are essential for establishing causality.
+-   We will also review the notation that will be used throughout the class.
 
 ## Preparation
 
-- Read: 
-  - [Applied Causal Inference Powered by ML and AI, Chapter 2](https://causalml-book.org/assets/chapters/CausalML_chap_2.pdf) 
-  - [Causal Inference Mixtape, Chapter 4](https://mixtape.scunning.com/04-potential_outcomes)
-- Listen: [Internal Validity Podcast](media/InternalValidity.mp3)
+-   Read:
+    -   [Applied Causal Inference Powered by ML and AI, Chapter 2](https://causalml-book.org/assets/chapters/CausalML_chap_2.pdf)
+    -   [Causal Inference Mixtape, Chapter 4](https://mixtape.scunning.com/04-potential_outcomes)
+-   Listen: [Internal Validity Podcast](media/InternalValidity.mp3)
 
 ## In-class
 
-- Group Assignments
+-   Group Assignments
 
-![Group Assignments](/unit-1/media/GroupAssign.png){width=25%}
+![Group Assignments](/unit-1/media/GroupAssign.png){width="25%"}
 
-- Selected Additional Topics via [Borda count](https://en.wikipedia.org/wiki/Borda_count):
+-   Selected Additional Topics via [Borda count](https://en.wikipedia.org/wiki/Borda_count):
 
-![Topic Selection](/unit-1/media/TopicSelection.png){width=50%}
+![Topic Selection](/unit-1/media/TopicSelection.png){width="50%"}
 
-- Semester Project Description: [Semester Project](/project.qmd) 
+-   Semester Project Description: [Semester Project](/project.qmd)
 
-- [Lecture: Internal Validity](/unit-1/lec-1-1.qmd)
+-   [Lecture: Internal Validity](/unit-1/lec-1-1.qmd)
 
 ## Lab
 
-- [Lab 1: The Hospital of Uncertain Outcomes](/labs/lab-1-InternalValidityPO.qmd)
+-   [Lab 1: The Hospital of Uncertain Outcomes](/labs/lab-1-InternalValidityPO.qmd)
+    - [Solutions](/labs/lab-1-InternalValidityPO_sols.qmd)
