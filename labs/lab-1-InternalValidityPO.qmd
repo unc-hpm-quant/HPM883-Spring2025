@@ -9,7 +9,9 @@ categories:
     - Internal Validity
 description: "Internal Validity, Potential Outcomes"
 draft: false
-format: html
+format: 
+  html:
+    code-tools: true
 editor: visual
 execute:
   eval: false
@@ -30,15 +32,11 @@ By the end of this lab, you will be able to:
 - Use the **WebR** package to interactively run and modify code.
 
 
-
 ## Instructions
 
-1. Download the dataset: [Insert Link Here]
-2. Open this `.qmd` file in RStudio or another Quarto-supported editor.
-3. Follow the guided coding prompts below, completing the missing code blocks.
-4. Run the interactive **WebR** code blocks in your browser to check your work.
-5. Submit your completed lab on **Gradescope** [Insert Link Here] by **[Insert Deadline Here]**.
-
+1. Open this `.qmd` file in RStudio or another Quarto-supported editor.
+2. Follow the guided coding prompts below, completing the missing code blocks.
+3. Submit your completed lab on [Gradescope](https://www.gradescope.com/courses/781406/assignments/5698860) by **Feb 3 at 11:59pm**.
 
 
 ## Scenario

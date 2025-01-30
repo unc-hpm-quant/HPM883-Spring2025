@@ -92,6 +92,8 @@ website:
         contents:
           - href: unit-1/unit-1-internal-1.qmd
             text: "Class 4: Internal Validity"
+          - href: labs/lab-1-InternalValidityPO.qmd
+            text: "Lab 1: The Hospital of Uncertain Outcomes"
       
 
   page-footer:

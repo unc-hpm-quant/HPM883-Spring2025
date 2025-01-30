@@ -1,5 +1,5 @@
 ---
-title: Lab 1
+title: Lab 1 Solutions
 subtitle: The Hospital of Uncertain Outcomes
 author: Sean Sylvia
 date: "2025-01-22"
@@ -12,8 +12,15 @@ draft: false
 format: html
 editor: visual
 execute:
-  eval: false
+  eval: true
 ---
+
+:::{.callout-note}
+## Results may differ
+This is only one of many possible ways to complete this lab. Your final code may look different, which is fine! In fact, it is good practice to experiment with different approaches.
+:::
+
+
 
 # Lab 1: The Hospital of Uncertain Outcomes
 
@@ -23,27 +30,23 @@ In this lab, we will explore **internal validity** and the **potential outcomes 
 
 By the end of this lab, you will be able to:
 
-- Understand the concept of **potential outcomes** and **causal effects**.
-- Apply **randomization inference** to estimate treatment effects.
-- Identify **threats to internal validity** and explore possible solutions.
-- Implement basic **difference-in-means estimation** in R.
-- Use the **WebR** package to interactively run and modify code.
-
+-   Understand the concept of **potential outcomes** and **causal effects**.
+-   Apply **randomization inference** to estimate treatment effects.
+-   Identify **threats to internal validity** and explore possible solutions.
+-   Implement basic **difference-in-means estimation** in R.
+-   Use the **WebR** package to interactively run and modify code.
 
 ## Instructions
 
-1. Download the dataset: [Insert Link Here]
-2. Open this `.qmd` file in RStudio or another Quarto-supported editor.
-3. Follow the guided coding prompts below, completing the missing code blocks.
-4. Run the interactive **WebR** code blocks in your browser to check your work.
-5. Submit your completed lab on **Gradescope** [Insert Link Here] by **[Insert Deadline Here]**.
-
+1.  Open this `.qmd` file in RStudio or another Quarto-supported editor.
+2.  Follow the guided coding prompts below, completing the missing code blocks.
+3.  Submit your completed lab on **Gradescope** \[Insert Link Here\] by **\[Insert Deadline Here\]**.
 
 ## Scenario
 
 ### The Hospital of Uncertain Outcomes
 
-Welcome to St. Null’s Memorial Hospital—an institution where the only constant is confusion. The hospital board—led by the well-meaning but trend-obsessed CEO, **Barnaby Beta**—changes policies so often that nobody knows what’s going on. 
+Welcome to St. Null’s Memorial Hospital—an institution where the only constant is confusion. The hospital board—led by the well-meaning but trend-obsessed CEO, **Barnaby Beta**—changes policies so often that nobody knows what’s going on.
 
 Worse yet is Dr. P-Hacker, a “data guru” who prefers p-values to patients. He mines the electronic health records (EHR) until something (anything!) is “significant.” Meanwhile, **Nurse Random** tries to keep everything on track, pointing out that good causal methods can be more important than good vibes. Lastly, **Dr. Doub R. Obust** lurks in the background, waiting for a chance to champion doubly robust methods that might someday save everyone’s sanity.
 
@@ -59,12 +62,11 @@ You and your team of budding methodologists are the new consultants hired to imp
 
 ### The Pandemic Mystery at St. Null’s
 
-A mysterious respiratory illness has swept through St. Null’s, leaving every ward scrambling. The question at hand is whether putting these patients on ventilators prolongs their lifespans. CEO Barnaby Beta wants quick answers (“If TikTok can do it, so can we!”). Dr. P-Hacker gleefully promises “instant significance,” claiming all he needs is the hospital’s EHR from the past week. 
+A mysterious respiratory illness has swept through St. Null’s, leaving every ward scrambling. The question at hand is whether putting these patients on ventilators prolongs their lifespans. CEO Barnaby Beta wants quick answers (“If TikTok can do it, so can we!”). Dr. P-Hacker gleefully promises “instant significance,” claiming all he needs is the hospital’s EHR from the past week.
 
 But Nurse Random, unimpressed, insists that the hospital’s chaotic, ad hoc ventilator assignments will cloud any conclusions. Dr. Doub R. Obust nods knowingly. They call in your team for an unbiased, data-driven approach.
 
 In this lab, you’ll **simulate a dataset** of 100,000 patients that captures both “potential outcomes” (i.e., what would happen if a patient were ventilated vs. not ventilated). This magical glimpse at parallel universes is impossible in real-world data, but here it will let us see exactly how different analytic approaches fare in the face of selection bias.
-
 
 # Install Packages if not installed
 
@@ -84,7 +86,7 @@ Run the following code to generate 100,000 patient records along with **potentia
 ```{r}
 library(fixest)
 library(data.table)
-set.seed(20200403)
+set.seed(072121)
 
 # 100,000 people with differing levels of covid symptoms
 N_people = 100000
@@ -106,14 +108,12 @@ We also define the **individual treatment effect** for each patient. Dr. Doub R.
 df[, delta := y1 - y0]
 ```
 
-
-
 ## Step 2: The Two Doctors
 
 St. Null’s has two very different doctors assigning ventilators:
 
-- **Dr. Perfect:** A mystical being who can see into each patient’s future and only gives ventilators to those who would benefit from them.
-- **Dr. Bad:** The name says it all. This doctor assigns ventilators randomly—could be beneficial, could not be. Who knows?
+-   **Dr. Perfect:** A mystical being who can see into each patient’s future and only gives ventilators to those who would benefit from them.
+-   **Dr. Bad:** The name says it all. This doctor assigns ventilators randomly—could be beneficial, could not be. Who knows?
 
 ### Step 2a: Assigning Doctors
 
@@ -138,14 +138,13 @@ df[doctor == "bad", vents := sample(c(TRUE, FALSE), .N, replace = TRUE)]
 
 It’s not exactly a model of ethical clarity, but it certainly demonstrates the complications of “treatment assignment” in the real world (or the real St. Null’s world).
 
-
 ## Step 3: Computing Causal Parameters
 
 Now, let’s calculate the key causal parameters:
 
-- **Average Treatment Effect (ATE)**: The overall difference in outcomes if everyone were ventilated vs. if no one were ventilated.
-- **Average Treatment Effect on the Treated (ATT)**: The effect of ventilation on those who actually *received* ventilation.
-- **Average Treatment Effect on the Untreated (ATU)**: The effect of ventilation on those who were *not* ventilated.
+-   **Average Treatment Effect (ATE)**: The overall difference in outcomes if everyone were ventilated vs. if no one were ventilated.
+-   **Average Treatment Effect on the Treated (ATT)**: The effect of ventilation on those who actually *received* ventilation.
+-   **Average Treatment Effect on the Untreated (ATU)**: The effect of ventilation on those who were *not* ventilated.
 
 ```{r}
 # Calculate all aggregate Causal Parameters (ATE, ATT, ATU)
@@ -162,8 +161,6 @@ cat(sprintf("ATU = %.03f
 ```
 
 Dr. P-Hacker would stop right here and rejoice: “We have all the significance we need!” But hold your celebratory balloon drop—there’s more to do.
-
-
 
 ## Step 4: Selection Bias and Realized Outcomes
 
@@ -195,7 +192,6 @@ cat(sprintf(
 
 If Dr. Perfect is involved, we’d expect some big differences here. Dr. P-Hacker would probably ignore that and claim victory anyway. (He likes ignoring inconvenient truths.)
 
-
 ## Step 5: Comparing Outcomes Between Groups
 
 One of the simplest ways to estimate the treatment effect is to look at the **Simple Difference in Outcomes (SDO)**—the difference in the observed mean outcome between those who got the treatment (ventilators) and those who did not.
@@ -218,7 +214,6 @@ cat(sprintf(
 
 Dr. P-Hacker would run around shouting: “Aha! This difference proves the intervention works!” or “Aha! It’s not significant!” depending on the p-value. Let’s see if we can do better.
 
-
 ## Step 6: Estimating the Effect with Regression
 
 To confirm our findings, let’s do an **Ordinary Least Squares (OLS)** regression of the realized outcome on the ventilator indicator:
@@ -237,7 +232,6 @@ print(reg)
 
 This approach, while straightforward, is still subject to any biases from non-random assignment—like, say, Dr. Perfect or Dr. Bad being in charge.
 
-
 ## Step 7: Validating the Decomposition
 
 At this point, we’d like to see if the **Simple Difference in Outcomes (SDO)** can be broken down into our measured parameters. You’ll fill in a table comparing **Dr. Perfect** to **Dr. Bad**, computing the ATE, ATT, ATU, selection bias, SDO, and so on.
@@ -254,36 +248,30 @@ cat(sprintf("SDO Check = %.03f
 
 When you fill out the table, you should include:
 
-| Perfect Doctor | Bad Doctor | Causal Parameter |
-| --- | --- | --- |
-| ATE |  |  |
-| ATT |  |  |
-| ATU |  |  |
-| Selection bias terms |  |  |
-| E[Y0 \| D=1] |  |  |
-| E[Y0 \| D=0] |  |  |
-| Selection bias |  |  |
-| Calculations |  |  |
-| Pi (share on vents) |  |  |
-| SDO manual |  |  |
-| SDO OLS |  |  |
-| SDO Decomposition |  |  |
-| Obs |  |  |
+| Perfect Doctor       | Bad Doctor | Causal Parameter |
+|----------------------|------------|------------------|
+| ATE                  |            |                  |
+| ATT                  |            |                  |
+| ATU                  |            |                  |
+| Selection bias terms |            |                  |
+| E\[Y0 \| D=1\]       |            |                  |
+| E\[Y0 \| D=0\]       |            |                  |
+| Selection bias       |            |                  |
+| Calculations         |            |                  |
+| Pi (share on vents)  |            |                  |
+| SDO manual           |            |                  |
+| SDO OLS              |            |                  |
+| SDO Decomposition    |            |                  |
+| Obs                  |            |                  |
 
 ### Reflection
 
 Finally, reflect on these questions:
 
-- Is the **Simple Difference in Outcomes (SDO)** enough to identify the **ATE**, **ATT**, or **ATU**?
-- How does **selection bias** play into interpreting the SDO?
-- What lessons would Nurse Random want Dr. P-Hacker to learn about data and design?
+-   Is the **Simple Difference in Outcomes (SDO)** enough to identify the **ATE**, **ATT**, or **ATU**?
+-   How does **selection bias** play into interpreting the SDO?
+-   What lessons would Nurse Random want Dr. P-Hacker to learn about data and design?
 
 (Extra credit if you can imagine the dramatic showdown when Dr. Doub R. Obust finally unveils a doubly robust method that saves the day—but that’s a story for a future lab!)
 
-That’s it! You’ve run the gauntlet of the Hospital of Uncertain Outcomes and lived to tell the tale. Now submit your work, and good luck diagnosing more of St. Null’s methodological maladies! 
-
-
-
-
-
-
+That’s it! You’ve run the gauntlet of the Hospital of Uncertain Outcomes and lived to tell the tale. Now submit your work, and good luck diagnosing more of St. Null’s methodological maladies!

@@ -7,7 +7,7 @@
 <meta name="author" content="Sean Sylvia">
 <meta name="dcterms.date" content="2025-01-22">
 <meta name="description" content="Internal Validity, Potential Outcomes">
-<title>Lab 1 – HPM 883</title>
+<title>Lab 1 Solutions – HPM 883</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -107,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Lab 1</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Lab 1 Solutions</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -299,6 +299,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Class 4: Internal Validity</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-1-InternalValidityPO.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 1: The Hospital of Uncertain Outcomes</span></a>
+  </div>
+</li>
       </ul>
 </li>
     </ul>
@@ -360,7 +366,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">Lab 1</h1>
+<h1 class="title">Lab 1 Solutions</h1>
 <p class="subtitle lead">The Hospital of Uncertain Outcomes</p>
   <div class="quarto-categories">
     <div class="quarto-category">Lab</div>
@@ -396,7 +402,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="lab-1-the-hospital-of-uncertain-outcomes" class="level1"><h1>Lab 1: The Hospital of Uncertain Outcomes</h1>
+</header><div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Results may differ
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is only one of many possible ways to complete this lab. Your final code may look different, which is fine! In fact, it is good practice to experiment with different approaches.</p>
+</div>
+</div>
+<section id="lab-1-the-hospital-of-uncertain-outcomes" class="level1"><h1>Lab 1: The Hospital of Uncertain Outcomes</h1>
 <section id="overview-and-learning-objectives" class="level2"><h2 class="anchored" data-anchor-id="overview-and-learning-objectives">Overview and Learning Objectives</h2>
 <p>In this lab, we will explore <strong>internal validity</strong> and the <strong>potential outcomes framework</strong> using simulated health data from the endlessly eventful <strong>St.&nbsp;Null’s Memorial Hospital</strong>. Specifically, we will recreate a scenario where a new intervention (putting patients on ventilators) may or may not reduce patient mortality. As you’ll discover, chaos at the hospital has made it far from straightforward to identify causal effects.</p>
 <p>By the end of this lab, you will be able to:</p>
@@ -408,10 +427,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Use the <strong>WebR</strong> package to interactively run and modify code.</li>
 </ul></section><section id="instructions" class="level2"><h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
 <ol type="1">
-<li>Download the dataset: [Insert Link Here]</li>
 <li>Open this <code>.qmd</code> file in RStudio or another Quarto-supported editor.</li>
 <li>Follow the guided coding prompts below, completing the missing code blocks.</li>
-<li>Run the interactive <strong>WebR</strong> code blocks in your browser to check your work.</li>
 <li>Submit your completed lab on <strong>Gradescope</strong> [Insert Link Here] by <strong>[Insert Deadline Here]</strong>.</li>
 </ol></section><section id="scenario" class="level2"><h2 class="anchored" data-anchor-id="scenario">Scenario</h2>
 <section id="the-hospital-of-uncertain-outcomes" class="level3"><h3 class="anchored" data-anchor-id="the-hospital-of-uncertain-outcomes">The Hospital of Uncertain Outcomes</h3>
@@ -433,14 +450,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="kw">for</span><span class="op">(</span><span class="va">pkg</span> <span class="kw">in</span> <span class="va">required_packages</span><span class="op">)</span><span class="op">{</span></span>
 <span>  <span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">pkg</span>, character.only <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="va">pkg</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: fixest</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: data.table</code></pre>
+</div>
 </div>
 <section id="step-1-simulating-the-dataset" class="level2"><h2 class="anchored" data-anchor-id="step-1-simulating-the-dataset">Step 1: Simulating the Dataset</h2>
 <p>Because the EHR system at St.&nbsp;Null’s is, in a word, “unreliable” (or, in two words, “utterly broken”), we’ll create our own dataset in R.</p>
 <p>Run the following code to generate 100,000 patient records along with <strong>potential outcomes</strong> (<code>y0</code> if no ventilator, <code>y1</code> if ventilated). Each outcome is the patient’s lifespan (in some made-up units). Note that lifespans below zero are set to zero—any negative numbers would just be an artifact of Dr.&nbsp;P-Hacker’s bizarre data extraction methods.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lrberge.github.io/fixest/">fixest</a></span><span class="op">)</span></span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lrberge.github.io/fixest/">fixest</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-datatable.com">data.table</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">20200403</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">072121</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># 100,000 people with differing levels of covid symptoms</span></span>
 <span><span class="va">N_people</span> <span class="op">=</span> <span class="fl">100000</span></span>
@@ -456,7 +479,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>We also define the <strong>individual treatment effect</strong> for each patient. Dr.&nbsp;Doub R. Obust is thrilled, because for once, we have both <code>y0</code> and <code>y1</code> simultaneously—an impossible dream in real life!</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define individual treatment effect</span></span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define individual treatment effect</span></span>
 <span><span class="va">df</span><span class="op">[</span>, <span class="va">delta</span> <span class="op">:=</span> <span class="va">y1</span> <span class="op">-</span> <span class="va">y0</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="step-2-the-two-doctors" class="level2"><h2 class="anchored" data-anchor-id="step-2-the-two-doctors">Step 2: The Two Doctors</h2>
@@ -470,13 +493,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="step-2a-assigning-doctors" class="level3"><h3 class="anchored" data-anchor-id="step-2a-assigning-doctors">Step 2a: Assigning Doctors</h3>
 <p>First, we randomly assign each patient to one of these two doctors. (No wonder this hospital is chaotic…)</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Assign doctors randomly</span></span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Assign doctors randomly</span></span>
 <span><span class="va">df</span><span class="op">[</span>, <span class="va">doctor</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"perfect"</span>, <span class="st">"bad"</span><span class="op">)</span>, <span class="va">N_people</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="step-2b-assigning-ventilators" class="level3"><h3 class="anchored" data-anchor-id="step-2b-assigning-ventilators">Step 2b: Assigning Ventilators</h3>
 <p>Next, each doctor does what they do best. Dr.&nbsp;Perfect uses clairvoyance to treat only those who stand to gain (<code>delta &gt; 0</code>). Dr.&nbsp;Bad flips a metaphorical coin:</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Perfect doctor assigns vents only to those who benefit</span></span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Perfect doctor assigns vents only to those who benefit</span></span>
 <span><span class="va">df</span><span class="op">[</span><span class="va">doctor</span> <span class="op">==</span> <span class="st">"perfect"</span>, <span class="va">vents</span> <span class="op">:=</span> <span class="op">(</span><span class="va">delta</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span><span class="op">]</span></span>
 <span></span>
 <span><span class="co"># Random doctor assigns vents randomly</span></span>
@@ -494,29 +517,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <strong>Average Treatment Effect on the Untreated (ATU)</strong>: The effect of ventilation on those who were <em>not</em> ventilated.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Calculate all aggregate Causal Parameters (ATE, ATT, ATU)</span></span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Calculate all aggregate Causal Parameters (ATE, ATT, ATU)</span></span>
 <span><span class="va">ate</span> <span class="op">=</span> <span class="va">df</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="va">att</span> <span class="op">=</span> <span class="va">df</span><span class="op">[</span><span class="va">vents</span> <span class="op">==</span> <span class="cn">TRUE</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="va">atu</span> <span class="op">=</span> <span class="va">df</span><span class="op">[</span><span class="va">vents</span> <span class="op">==</span> <span class="cn">FALSE</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span><span class="op">]</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"ATE = %.03f</span></span>
-<span><span class="st">"</span>, <span class="va">ate</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"ATT = %.03f</span></span>
-<span><span class="st">"</span>, <span class="va">att</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"ATU = %.03f</span></span>
+<span><span class="st">"</span>, <span class="va">ate</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ATE = 0.602</code></pre>
+</div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"ATT = %.03f</span></span>
+<span><span class="st">"</span>, <span class="va">att</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ATT = 2.748</code></pre>
+</div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"ATU = %.03f</span></span>
 <span><span class="st">"</span>, <span class="va">atu</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ATU = -1.711</code></pre>
+</div>
 </div>
 <p>Dr.&nbsp;P-Hacker would stop right here and rejoice: “We have all the significance we need!” But hold your celebratory balloon drop—there’s more to do.</p>
 </section><section id="step-4-selection-bias-and-realized-outcomes" class="level2"><h2 class="anchored" data-anchor-id="step-4-selection-bias-and-realized-outcomes">Step 4: Selection Bias and Realized Outcomes</h2>
 <p>Although the dataset has both <code>y0</code> and <code>y1</code>, in the real world, a patient’s outcome is observed under only one condition (treated or untreated). Let’s capture <em>which</em> outcome we’d actually see based on the ventilator assignment:</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Use the switching equation to select realized outcomes from potential outcomes based on treatment assignment</span></span>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Use the switching equation to select realized outcomes from potential outcomes based on treatment assignment</span></span>
 <span><span class="va">df</span><span class="op">[</span>, <span class="va">y</span> <span class="op">:=</span> <span class="va">vents</span> <span class="op">*</span> <span class="va">y1</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">vents</span><span class="op">)</span> <span class="op">*</span> <span class="va">y0</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="selection-bias-calculation" class="level3"><h3 class="anchored" data-anchor-id="selection-bias-calculation">Selection Bias Calculation</h3>
 <p>We’ll see if there is selection bias by comparing the expected lifespan of ventilated patients <em>had they not been ventilated</em> to the expected lifespan of non-ventilated patients.</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Calculate EY0 for vent group and no vent group</span></span>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Calculate EY0 for vent group and no vent group</span></span>
 <span><span class="va">ey01</span> <span class="op">=</span> <span class="va">df</span><span class="op">[</span><span class="va">vents</span> <span class="op">==</span> <span class="cn">TRUE</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span><span class="op">]</span>  </span>
 <span><span class="va">ey00</span> <span class="op">=</span> <span class="va">df</span><span class="op">[</span><span class="va">vents</span> <span class="op">==</span> <span class="cn">FALSE</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span><span class="op">]</span> </span>
 <span></span>
@@ -528,12 +560,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="st">"</span>, </span>
 <span>  <span class="va">ey01</span>, <span class="va">ey00</span>, <span class="va">selection_bias</span></span>
 <span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Selection Bias = 8.334 - 10.574 = -2.240 </code></pre>
+</div>
 </div>
 <p>If Dr.&nbsp;Perfect is involved, we’d expect some big differences here. Dr.&nbsp;P-Hacker would probably ignore that and claim victory anyway. (He likes ignoring inconvenient truths.)</p>
 </section></section><section id="step-5-comparing-outcomes-between-groups" class="level2"><h2 class="anchored" data-anchor-id="step-5-comparing-outcomes-between-groups">Step 5: Comparing Outcomes Between Groups</h2>
 <p>One of the simplest ways to estimate the treatment effect is to look at the <strong>Simple Difference in Outcomes (SDO)</strong>—the difference in the observed mean outcome between those who got the treatment (ventilators) and those who did not.</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Calculate the share of units treated with vents (pi)</span></span>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Calculate the share of units treated with vents (pi)</span></span>
 <span><span class="va">pi</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">vents</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Manually calculate the simple difference in mean health outcomes</span></span>
@@ -546,31 +581,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="st">"</span>, </span>
 <span>  <span class="va">ey1</span>, <span class="va">ey0</span>, <span class="va">sdo</span></span>
 <span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple Difference-in-Outcomes = 11.082 - 10.574 = 0.509 </code></pre>
+</div>
 </div>
 <p>Dr.&nbsp;P-Hacker would run around shouting: “Aha! This difference proves the intervention works!” or “Aha! It’s not significant!” depending on the p-value. Let’s see if we can do better.</p>
 </section><section id="step-6-estimating-the-effect-with-regression" class="level2"><h2 class="anchored" data-anchor-id="step-6-estimating-the-effect-with-regression">Step 6: Estimating the Effect with Regression</h2>
 <p>To confirm our findings, let’s do an <strong>Ordinary Least Squares (OLS)</strong> regression of the realized outcome on the ventilator indicator:</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Estimate the treatment effect using OLS</span></span>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Estimate the treatment effect using OLS</span></span>
 <span><span class="va">reg</span> <span class="op">=</span> <span class="fu"><a href="https://lrberge.github.io/fixest/reference/feols.html">feols</a></span><span class="op">(</span></span>
 <span>  <span class="va">y</span> <span class="op">~</span> <span class="va">vents</span>, data <span class="op">=</span> <span class="va">df</span>, </span>
 <span>  vcov <span class="op">=</span> <span class="st">"hc1"</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"</span></span>
-<span><span class="st">"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">reg</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="st">"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">reg</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>OLS estimation, Dep. Var.: y
+Observations: 100,000
+Standard-errors: Heteroskedasticity-robust 
+             Estimate Std. Error  t value  Pr(&gt;|t|)    
+(Intercept) 10.573703   0.017534 603.0511 &lt; 2.2e-16 ***
+ventsTRUE    0.508554   0.024209  21.0072 &lt; 2.2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+RMSE: 3.82331   Adj. R2: 0.004388</code></pre>
+</div>
 </div>
 <p>This approach, while straightforward, is still subject to any biases from non-random assignment—like, say, Dr.&nbsp;Perfect or Dr.&nbsp;Bad being in charge.</p>
 </section><section id="step-7-validating-the-decomposition" class="level2"><h2 class="anchored" data-anchor-id="step-7-validating-the-decomposition">Step 7: Validating the Decomposition</h2>
 <p>At this point, we’d like to see if the <strong>Simple Difference in Outcomes (SDO)</strong> can be broken down into our measured parameters. You’ll fill in a table comparing <strong>Dr.&nbsp;Perfect</strong> to <strong>Dr.&nbsp;Bad</strong>, computing the ATE, ATT, ATU, selection bias, SDO, and so on.</p>
 <p>Below is a quick consistency check to see if the SDO lines up with our theoretical decomposition:</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Decomposition check</span></span>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Decomposition check</span></span>
 <span><span class="va">sdo_check</span> <span class="op">=</span> <span class="va">ate</span> <span class="op">+</span> <span class="va">selection_bias</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">pi</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="va">att</span> <span class="op">-</span> <span class="va">atu</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"SDO Check = %.03f </span></span>
 <span><span class="st">"</span>, <span class="va">sdo_check</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>SDO Check = 0.509 </code></pre>
+</div>
 </div>
 <p>When you fill out the table, you should include:</p>
 <table class="caption-top table">
