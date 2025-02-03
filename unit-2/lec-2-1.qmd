@@ -1,0 +1,12 @@
+---
+title: "Unit 2: Experimental Design"
+subtitle: "Lecture Notes"
+author: "Sean Sylvia, Ph.D."
+date: February 3, 2025
+format:
+  html:
+    toc: true
+    toc-depth: 2
+draft: true
+---
+
