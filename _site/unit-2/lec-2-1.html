@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.40">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
 <meta name="author" content="Sean Sylvia, Ph.D.">
-<meta name="dcterms.date" content="2025-01-08">
-<title>Foundations: Reproducible Research – HPM 883</title>
+<meta name="dcterms.date" content="2025-02-03">
+
+<title>Unit 2: Experimental Design – HPM 883</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,41 +22,8 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
+
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
@@ -71,7 +41,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-fd9528830c3bd10aadebefd30ea787ae.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-135ac4d113b30199e54d7437fe66c954.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-dark-135ac4d113b30199e54d7437fe66c954.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -98,33 +69,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<meta name="quarto:status" content="draft">
+
+
 </head>
+
 <body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><div id="quarto-draft-alert" class="alert alert-warning"><i class="bi bi-pencil-square"></i>Draft</div>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Foundations: Reproducible Research</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Unit 2: Experimental Design</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-center sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
+      <img src="../images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/hpm883" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
     <a href="https://rstudio.cloud/" title="Rstudio Cloud" class="quarto-navigation-tool px-1" aria-label="Rstudio Cloud"><i class="bi bi-code-square"></i></a>
     <div class="dropdown">
       <a href="" title="Support" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Support"><i class="bi bi-life-preserver"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-<li>
+          <li>
             <a class="dropdown-item sidebar-tools-main-item" href="https://placeholder.link/office-hours">
               <i class="bi bi-person-raised-hand pe-1"></i>
             Office hours
@@ -143,12 +125,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             </a>
           </li>
       </ul>
-</div>
+    </div>
     <a href="https://hpm883.slack.com" title="Slack" class="quarto-navigation-tool px-1" aria-label="Slack"><i class="bi bi-slack"></i></a>
     <div class="dropdown">
       <a href="" title="Canvas" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Canvas"><i class="bi bi-file-check-fill"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
-<li>
+          <li>
             <a class="dropdown-item sidebar-tools-main-item" href="https://placeholder.link/announcements">
               <i class="bi bi-megaphone-fill pe-1"></i>
             Announcements
@@ -167,7 +149,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             </a>
           </li>
       </ul>
-</div>
+    </div>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div>
@@ -178,7 +160,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course Schedule</span></a>
@@ -192,8 +174,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../course-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
@@ -218,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
@@ -227,8 +209,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../project.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Project Description</span></a>
@@ -241,7 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../resources.html" class="sidebar-item-text sidebar-link">
@@ -262,8 +244,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../unit-0/unit-0-foundations-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Class 1: Introduction</span></a>
@@ -282,7 +264,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
@@ -291,8 +273,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../unit-1/unit-1-internal-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Class 4: Internal Validity</span></a>
@@ -305,45 +287,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
-   
-  <ul>
-<li><a href="#a.-why-reproducibility-matters" id="toc-a.-why-reproducibility-matters" class="nav-link active" data-scroll-target="#a.-why-reproducibility-matters">A. Why Reproducibility Matters</a></li>
-  <li>
-<a href="#b.-core-tools-and-concepts" id="toc-b.-core-tools-and-concepts" class="nav-link" data-scroll-target="#b.-core-tools-and-concepts">B. Core Tools and Concepts</a>
-  <ul class="collapse">
-<li><a href="#version-control-git-github" id="toc-version-control-git-github" class="nav-link" data-scroll-target="#version-control-git-github">1. Version Control (Git + GitHub)</a></li>
-  <li><a href="#literate-programming-quarto-r-markdown-knitr" id="toc-literate-programming-quarto-r-markdown-knitr" class="nav-link" data-scroll-target="#literate-programming-quarto-r-markdown-knitr">2. Literate Programming (Quarto, R Markdown, knitr)</a></li>
-  <li><a href="#environment-management-renv-or-other" id="toc-environment-management-renv-or-other" class="nav-link" data-scroll-target="#environment-management-renv-or-other">3. Environment Management (renv, or other)</a></li>
-  <li><a href="#project-structure" id="toc-project-structure" class="nav-link" data-scroll-target="#project-structure">4. Project Structure</a></li>
-  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">5. Documentation</a></li>
-  <li><a href="#takeaway" id="toc-takeaway" class="nav-link" data-scroll-target="#takeaway">Takeaway</a></li>
-  </ul>
-</li>
-  <li><a href="#hands-on-pratice" id="toc-hands-on-pratice" class="nav-link" data-scroll-target="#hands-on-pratice">Hands-on Pratice</a></li>
-  <li><a href="#guided-computer-setup" id="toc-guided-computer-setup" class="nav-link" data-scroll-target="#guided-computer-setup">0. Guided Computer Setup</a></li>
-  <li><a href="#github-template-repository" id="toc-github-template-repository" class="nav-link" data-scroll-target="#github-template-repository">1. GitHub Template Repository</a></li>
-  <li>
-<a href="#analyzing-the-simulated-rct-data" id="toc-analyzing-the-simulated-rct-data" class="nav-link" data-scroll-target="#analyzing-the-simulated-rct-data">2. Analyzing the Simulated RCT Data</a>
-  <ul class="collapse">
-<li><a href="#open-analysis.qmd" id="toc-open-analysis.qmd" class="nav-link" data-scroll-target="#open-analysis.qmd">2.1 Open analysis.qmd</a></li>
-  <li><a href="#render-the-document" id="toc-render-the-document" class="nav-link" data-scroll-target="#render-the-document">2.2 Render the Document</a></li>
-  </ul>
-</li>
-  <li><a href="#modify-and-commit" id="toc-modify-and-commit" class="nav-link" data-scroll-target="#modify-and-commit">3. Modify and Commit</a></li>
-  <li><a href="#branching-and-pull-requests-for-bigger-or-test-changes" id="toc-branching-and-pull-requests-for-bigger-or-test-changes" class="nav-link" data-scroll-target="#branching-and-pull-requests-for-bigger-or-test-changes">4. Branching and Pull Requests for bigger or test changes</a></li>
-  <li><a href="#wrap-up" id="toc-wrap-up" class="nav-link" data-scroll-target="#wrap-up">5. Wrap-Up</a></li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/hpm883/edit/main/unit-0/lec-0-3.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">Foundations: Reproducible Research</h1>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Unit 2: Experimental Design</h1>
+<p class="subtitle lead">Lecture Notes</p>
 </div>
 
 
@@ -360,7 +319,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 8, 2025</p>
+      <p class="date">February 3, 2025</p>
     </div>
   </div>
   
@@ -369,161 +328,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><p>Reproducible research is, quite frankly, one of the most important aspects of scientific work—and also one of the most neglected. Whether you’re a grad student wrangling code after midnight or a seasoned PI rediscovering a half-forgotten analysis, reproducibility ensures your brilliant findings don’t vanish into the digital abyss. Below, we’ll review why you should care, and how you can implement reproducibility so thoroughly that even a time-traveling version of yourself from five years ago could decipher your code.</p>
-<section id="a.-why-reproducibility-matters" class="level2"><h2 class="anchored" data-anchor-id="a.-why-reproducibility-matters">A. Why Reproducibility Matters</h2>
-<ol type="1">
-<li>Definition</li>
-</ol>
-<p>In quantitative research, reproducibility means another researcher—or your future self with only half a memory of what you did—can take the same data and code, then arrive at the same results. No secret incantations, arcane folder structures, or chanting under the full moon required.</p>
-<ol start="2" type="1">
-<li>Motivations</li>
-</ol>
-<ul>
-<li><p>Transparency: Ever heard the phrase “Trust me, I’m a scientist”? Yeah, that doesn’t fly so well if your code is locked away in a cryptically named folder like “analysis_final_FINAL_noReally.r”. By exposing how you clean, analyze, and report data, you bolster confidence in your results.</p></li>
-<li><p>Collaboration: If multiple people have to dig through your code to figure out why you did something, at least make it a pleasant excavation. A reproducible workflow means you can share your project with colleagues, and they’ll only have mild confusion instead of sheer panic.</p></li>
-<li><p>Efficiency: Imagine re-running your entire analysis with a single command. Now contrast that with rummaging through 57 scripts, each called “analysis2_v2_copy.R”. Reproducibility helps you avoid the second scenario—and possibly a meltdown.</p></li>
-<li><p>Error Detection: Because let’s face it, even the best of us occasionally type mean when we mean median. With reproducible code, errors can be spotted quickly and corrected before your findings end up on the front page of the Journal of Irreproducible Results.</p></li>
-</ul>
-<p>Reproducibility, in short, saves your sanity and safeguards your scientific honor.</p>
-</section><section id="b.-core-tools-and-concepts" class="level2"><h2 class="anchored" data-anchor-id="b.-core-tools-and-concepts">B. Core Tools and Concepts</h2>
-<p>So how do we make all this happen? We bring in the cavalry: version control, literate programming, environment management, a logical project structure, and tidy documentation. Let’s get to it.</p>
-<section id="version-control-git-github" class="level3"><h3 class="anchored" data-anchor-id="version-control-git-github">1. Version Control (Git + GitHub)</h3>
-<p>Version control is like a well-ordered diary for your project: it tracks every change—no matter how small—across time, preserving your code’s evolutionary history in tidy “commits.”</p>
-<ul>
-<li><p>Tracks Changes: Every minor tweak, even the moment you changed a comma to a semicolon and saved your entire analysis from ruin.</p></li>
-<li><p>Facilitates Collaboration: Gone are the days of emailing zip files named “Project_Latest.zip” back and forth. Now, you can break things collaboratively on GitHub and blame it on the merge conflict.</p></li>
-<li><p>Commit History: “Who changed my code last Thursday?” Git knows. Git always knows.</p></li>
-</ul>
-<p>Think of GitHub as your code’s remote spa retreat—safe, relaxing, and occasionally throwing small hissy fits called “merge conflicts.”</p>
-</section><section id="literate-programming-quarto-r-markdown-knitr" class="level3"><h3 class="anchored" data-anchor-id="literate-programming-quarto-r-markdown-knitr">2. Literate Programming (Quarto, R Markdown, knitr)</h3>
-<p>Some folks write code in one file, then paste results into a Word document, and so on. Then they wonder why their final paper includes the wrong p-values. Enter literate programming.</p>
-<ul>
-<li><p>Integrated Code + Narrative: Quarto, R Markdown, knitr, and friends let you keep code, text, and figures in one place, so you never again get lost in the labyrinth of “Oh wait, which file made that plot?”</p></li>
-<li><p>Minimizes Copy-Paste Errors: If your results are automatically woven into your final report, you can’t “forget to update Table 3.” All you do is re-run the document, and—voilà!—your latest analysis magically appears.</p></li>
-<li><p>Seamless Feedback Loop: Make a change, watch the effect ripple through the entire document. It’s like having the world’s fastest (and least sarcastic) collaborator.</p></li>
-</ul></section><section id="environment-management-renv-or-other" class="level3"><h3 class="anchored" data-anchor-id="environment-management-renv-or-other">3. Environment Management (renv, or other)</h3>
-<p>Picture this: You wrote a brilliant script six months ago, but now it refuses to run because some obscure package updated. Environment management tools let you freeze your code in time.</p>
-<ul>
-<li><p>Captures R Package Versions: Tools like renv let you record all the packages (and their versions) you used, so re-installing them later won’t feel like Jumanji in dependency land.</p></li>
-<li><p>Consistency Over Time: If you want your analyses to work in five years—or on your advisor’s laptop next Tuesday—document your environment so it can be replicated exactly.</p></li>
-<li><p>Fewer “It Worked On My Machine” Excuses: Because telling your collaborators to “just figure it out” is not a good look.</p></li>
-</ul></section><section id="project-structure" class="level3"><h3 class="anchored" data-anchor-id="project-structure">4. Project Structure</h3>
-<p>If your current method involves flinging scripts and data into a single folder named “Stuff,” we might have a gentle suggestion: adopt a standardized project structure.</p>
-<ul>
-<li><p>Data Folder: A sanctuary for raw files, processed data, or your deep, dark secrets—just keep it consistent.</p></li>
-<li><p>R Scripts or Quarto Documents: Store code for data cleaning, analysis, and visualization in separate scripts or well-labeled notebooks. It’s okay to have multiple files—just label them in a way that future you can actually decipher.</p></li>
-<li><p>Output Folder: All those shiny plots and tables? Keep them in one place. Resist the urge to edit them manually; they should be generated by your scripts, not conjured by hand.</p></li>
-<li><p>README: The wise old gatekeeper that explains your entire project to anyone who stops by (including you, after you forget everything).</p></li>
-</ul>
-<p>A tidy folder structure is a gift to yourself. And your future co-authors. And your future self’s sanity.</p>
-</section><section id="documentation" class="level3"><h3 class="anchored" data-anchor-id="documentation">5. Documentation</h3>
-<p>Documentation is the special sauce that holds everything together—or, in some cases, the glaring absence that leads to frantic Slack messages at 2 a.m.</p>
-<ul>
-<li><p>Commit Messages: If your commit message says “Update stuff,” your collaborators may weep softly. Be descriptive—like “Fix bug in logistic regression loop that caused meltdown.”</p></li>
-<li><p>Code Comments: Add them wherever something might confuse your labmates or your brain on a Monday morning. The more complicated the code, the more we need small notes to guide us.</p></li>
-<li><p>README or docs/ Folder: Provide an at-a-glance explanation of the project’s purpose, the dataset, how to replicate results, and any known issues. It’s your public service announcement to the world.</p></li>
-</ul>
-<p>If you’re feeling particularly poetic, documentation is the short story you write about your data, so that others can appreciate its plot—without rummaging through all the raw scripts to figure out who the villain is (spoiler: it’s usually missing data).</p>
-</section><section id="takeaway" class="level3"><h3 class="anchored" data-anchor-id="takeaway">Takeaway</h3>
-<p>Reproducible research is about ensuring that data and code aren’t locked in the dusty attic of your personal computer—half-labeled and wholly misunderstood. By relying on tools like Git, Quarto, and renv, and by maintaining a disciplined project structure and documentation process, you guarantee that your results are both credible and easy to revisit.</p>
-</section></section><section id="hands-on-pratice" class="level2"><h2 class="anchored" data-anchor-id="hands-on-pratice">Hands-on Pratice</h2>
-<p>Now let’s get our hands dirty with some of the tools for reproducibility. We’ll be applying reproducible research practices to a <strong>simulated RCT dataset</strong>. You’ll learn to clone a GitHub repository, explore the project structure, run an analysis using Quarto, and commit changes back to GitHub.</p>
-</section><section id="guided-computer-setup" class="level2"><h2 class="anchored" data-anchor-id="guided-computer-setup">0. Guided Computer Setup</h2>
-<ul>
-<li><a href="unit-0/lec-0-3.html">Computing Setup</a></li>
-<li><a href="unit-0/The Basics of GitHub.pdf">Intro to Github</a></li>
-</ul></section><section id="github-template-repository" class="level2"><h2 class="anchored" data-anchor-id="github-template-repository">1. GitHub Template Repository</h2>
-<ol type="1">
-<li>
-<strong>Clone the Repository</strong>
-<ul>
-<li>Go to the provided URL or use <code>git clone https://github.com/unc-hpm-quant/rct-analysis-template</code> in the terminal.</li>
-<li>In RStudio: “File” &gt; “New Project” &gt; “Version Control” &gt; “Git” and paste the repo URL.</li>
-</ul>
-</li>
-<li><strong>Review Project Structure</strong></li>
-</ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>   <span class="ex">rct-analysis-template/</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>   <span class="ex">├──</span> README.md</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>   <span class="ex">├──</span> .gitignore</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>   <span class="ex">├──</span> renv.lock</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>   <span class="ex">├──</span> data/</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>   <span class="ex">│</span>   └── rct_sim_data.csv</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>   <span class="ex">├──</span> analysis/</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>   <span class="ex">│</span>   ├── analysis.qmd</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>   <span class="ex">│</span>   └── helpers.R</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>   <span class="ex">└──</span> output/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="3" type="1">
-<li>
-<strong>Install Dependencies</strong>
-<ul>
-<li>If renv is used, run renv::restore() in the project to sync package versions.</li>
-</ul>
-</li>
-</ol></section><section id="analyzing-the-simulated-rct-data" class="level2"><h2 class="anchored" data-anchor-id="analyzing-the-simulated-rct-data">2. Analyzing the Simulated RCT Data</h2>
-<ul>
-<li>
-<strong>Data</strong>: rct_sim_data.csv includes columns
-<ul>
-<li>subject_id</li>
-<li>treatment</li>
-<li>outcome</li>
-<li>age</li>
-<li>gender, etc.</li>
-</ul>
-</li>
-<li>
-<strong>Goal</strong>: Estimate the average treatment effect, create summaray tables, and visualize distributions.</li>
-</ul>
-<section id="open-analysis.qmd" class="level3"><h3 class="anchored" data-anchor-id="open-analysis.qmd">2.1 Open analysis.qmd</h3>
-<pre><code>1.  Look at the top YAML and code chunks.
-2.  Notice how code and text are interwoven.</code></pre>
-</section><section id="render-the-document" class="level3"><h3 class="anchored" data-anchor-id="render-the-document">2.2 Render the Document</h3>
-<ul>
-<li>In RStudio, click “Render” or run:</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto::quarto_render</span><span class="er">(</span><span class="st">"analysis/analysis.qmd"</span><span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The output (HTML, PDF, etc.) will appear in your output folder or in the same directory.</p>
-</section></section><section id="modify-and-commit" class="level2"><h2 class="anchored" data-anchor-id="modify-and-commit">3. Modify and Commit</h2>
-<ol type="1">
-<li>Make a Small Change</li>
-</ol>
-<p>For example, add a simple plot of outcome vs.&nbsp;treatment:</p>
-<div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">rct_data</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">treatment</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">outcome</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="2" type="1">
-<li><p>Re-run the document to see the new figure in the rendered output.</p></li>
-<li><p>Commit and Push</p></li>
-</ol>
-<ul>
-<li>Stage your changes:</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add analysis/analysis.qmd</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Added treatment-outcome boxplot"</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="4" type="1">
-<li>View on GitHub: Confirm your commit is visible and see the updated code.</li>
-</ol></section><section id="branching-and-pull-requests-for-bigger-or-test-changes" class="level2"><h2 class="anchored" data-anchor-id="branching-and-pull-requests-for-bigger-or-test-changes">4. Branching and Pull Requests for bigger or test changes</h2>
-<ol type="1">
-<li>Create a new branch</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> new-plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="2" type="1">
-<li>Add Covariates: Update the analysis to adjust for age and gender in a regression model.</li>
-</ol></section><section id="wrap-up" class="level2"><h2 class="anchored" data-anchor-id="wrap-up">5. Wrap-Up</h2>
-<p>Reflect: How did version control and Quarto documents streamline your workflow?</p>
-<p>Next Steps: If you want to dig further into reproducible data analysis practices, you can explore advanced topics like Docker, code review workflows, and CI/CD (continuous integration and deployment).</p>
+</header>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1085,18 +897,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
+<footer class="footer">
+  <div class="nav-footer">
     <div class="nav-footer-left">
 <p>© Copyright 2024, Sean Sylvia</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/hpm883/edit/main/unit-0/lec-0-3.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/hpm883/edit/main/unit-2/lec-2-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
   </div>
 </footer>
+
+
 
 
 </body></html>

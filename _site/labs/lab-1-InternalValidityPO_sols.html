@@ -457,6 +457,29 @@ Results may differ
 <pre><code>Loading required package: data.table</code></pre>
 </div>
 </div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Explanation:</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>This code first defines a vector <code>required_packages</code> containing the package names <code>"fixest"</code> and <code>"data.table"</code>.</p></li>
+<li>
+<p>Then, it loops through each package:</p>
+<ul>
+<li><p>It checks if the package is already installed using <code><a href="https://rdrr.io/r/base/library.html">require(pkg, character.only = TRUE)</a></code>.</p></li>
+<li><p>If the package is not installed, it installs it using <code>install.packages(pkg)</code>.</p></li>
+</ul>
+</li>
+<li><p>This ensures that all necessary packages are available for use.</p></li>
+</ol>
+</div>
+</div>
 <section id="step-1-simulating-the-dataset" class="level2"><h2 class="anchored" data-anchor-id="step-1-simulating-the-dataset">Step 1: Simulating the Dataset</h2>
 <p>Because the EHR system at St.&nbsp;Null’s is, in a word, “unreliable” (or, in two words, “utterly broken”), we’ll create our own dataset in R.</p>
 <p>Run the following code to generate 100,000 patient records along with <strong>potential outcomes</strong> (<code>y0</code> if no ventilator, <code>y1</code> if ventilated). Each outcome is the patient’s lifespan (in some made-up units). Note that lifespans below zero are set to zero—any negative numbers would just be an artifact of Dr.&nbsp;P-Hacker’s bizarre data extraction methods.</p>
@@ -477,10 +500,78 @@ Results may differ
 <span><span class="va">df</span><span class="op">[</span>, <span class="va">y1</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">N_people</span>, <span class="fl">10</span>, <span class="fl">4</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="va">df</span><span class="op">[</span><span class="va">y1</span> <span class="op">&lt;</span> <span class="fl">0</span>, <span class="va">y1</span> <span class="op">:=</span> <span class="fl">0</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Explanation:</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>The necessary packages (<code>fixest</code> and <code>data.table</code>) are loaded.</p></li>
+<li><p>The <code>set.seed(072121)</code> ensures reproducibility, meaning the random numbers generated will be the same every time the code is run.</p></li>
+<li><p>A dataset <code>df</code> is created using <code>data.table</code> with 100,000 individuals (each represented by a row).</p></li>
+<li>
+<p><strong>Simulating Potential Outcomes:</strong></p>
+<ul>
+<li>
+<p><code>y0</code> represents the expected lifespan (in years) if no ventilator treatment is given. It is drawn from a normal distribution with:</p>
+<ul>
+<li><p>Mean: 9.4 years</p></li>
+<li><p>Standard deviation: 4 years</p></li>
+</ul>
+</li>
+<li><p>Any <code>y0</code> values below 0 (i.e., negative lifespans) are set to zero.</p></li>
+<li><p><code>y1</code> represents the expected lifespan if assigned to a ventilator. It is similarly drawn from a normal distribution but with a slightly higher mean of 10 years.</p></li>
+<li><p>Again, negative lifespan values are replaced with 0.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
 <p>We also define the <strong>individual treatment effect</strong> for each patient. Dr.&nbsp;Doub R. Obust is thrilled, because for once, we have both <code>y0</code> and <code>y1</code> simultaneously—an impossible dream in real life!</p>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define individual treatment effect</span></span>
 <span><span class="va">df</span><span class="op">[</span>, <span class="va">delta</span> <span class="op">:=</span> <span class="va">y1</span> <span class="op">-</span> <span class="va">y0</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Explanation:</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>A new column <code>delta</code> is created, which represents the individual treatment effect (ITE) for each person.</p></li>
+<li><p>The ITE is calculated as the difference between the potential outcome under treatment (<code>y1</code>) and the potential outcome under control (<code>y0</code>).</p></li>
+<li><p>This measures how much additional lifespan (if any) the ventilator treatment provides.</p></li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Alternative Approach
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>
+<p>The column can be created using <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> from <code>dplyr</code> if using <code>tidyverse</code>:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>delta <span class="op">=</span> <span class="va">y1</span> <span class="op">-</span> <span class="va">y0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</li>
+</ul>
+</div>
 </div>
 </section><section id="step-2-the-two-doctors" class="level2"><h2 class="anchored" data-anchor-id="step-2-the-two-doctors">Step 2: The Two Doctors</h2>
 <p>St.&nbsp;Null’s has two very different doctors assigning ventilators:</p>
@@ -493,17 +584,101 @@ Results may differ
 <section id="step-2a-assigning-doctors" class="level3"><h3 class="anchored" data-anchor-id="step-2a-assigning-doctors">Step 2a: Assigning Doctors</h3>
 <p>First, we randomly assign each patient to one of these two doctors. (No wonder this hospital is chaotic…)</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Assign doctors randomly</span></span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Assign doctors randomly</span></span>
 <span><span class="va">df</span><span class="op">[</span>, <span class="va">doctor</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"perfect"</span>, <span class="st">"bad"</span><span class="op">)</span>, <span class="va">N_people</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Explanation</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>
+<p><strong><code>sample(c("perfect", "bad"), N_people, replace = TRUE)</code></strong></p>
+<ul>
+<li><p><code>sample(x, size, replace)</code> randomly selects <code>size</code> elements from the vector <code>x</code>.</p></li>
+<li><p>Here, <code>x = c("perfect", "bad")</code>, meaning we are choosing between <code>"perfect"</code> and <code>"bad"</code>.</p></li>
+<li><p><code>size = N_people</code> ensures that we assign a doctor to all <code>N_people</code> individuals.</p></li>
+<li><p><code>replace = TRUE</code> allows values to be selected independently, meaning each person is assigned a doctor without affecting others.</p></li>
+</ul>
+</li>
+<li>
+<p><strong><code>df[, doctor := ...]</code> (Data.table Syntax)</strong></p>
+<ul>
+<li><p><code>df[, column_name := value]</code> is <code>data.table</code>’s syntax for adding or modifying a column.</p></li>
+<li><p>Here, <code>doctor</code> is created and populated with <code>"perfect"</code> or <code>"bad"</code> based on the <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> function.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Alternative Approach:</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>
+<p>Using <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> from <code>dplyr</code>:</p>
+<pre><code>df &lt;- df %&gt;%
+  mutate(doctor = sample(c("perfect", "bad"), N_people, replace = TRUE))</code></pre>
+</li>
+<li>
+<p>Instead of using <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code>, one could use <code><a href="https://rdrr.io/r/stats/Uniform.html">runif()</a></code> :</p>
+<pre><code>df[, doctor := ifelse(runif(N_people) &gt; 0.5, "perfect", "bad")]</code></pre>
+<p>This approach provides more flexibility if you want to adjust the probability of assigning each type of doctor.</p>
+</li>
+</ul>
+</div>
 </div>
 </section><section id="step-2b-assigning-ventilators" class="level3"><h3 class="anchored" data-anchor-id="step-2b-assigning-ventilators">Step 2b: Assigning Ventilators</h3>
 <p>Next, each doctor does what they do best. Dr.&nbsp;Perfect uses clairvoyance to treat only those who stand to gain (<code>delta &gt; 0</code>). Dr.&nbsp;Bad flips a metaphorical coin:</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Perfect doctor assigns vents only to those who benefit</span></span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Perfect doctor assigns vents only to those who benefit</span></span>
 <span><span class="va">df</span><span class="op">[</span><span class="va">doctor</span> <span class="op">==</span> <span class="st">"perfect"</span>, <span class="va">vents</span> <span class="op">:=</span> <span class="op">(</span><span class="va">delta</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span><span class="op">]</span></span>
 <span></span>
 <span><span class="co"># Random doctor assigns vents randomly</span></span>
 <span><span class="va">df</span><span class="op">[</span><span class="va">doctor</span> <span class="op">==</span> <span class="st">"bad"</span>, <span class="va">vents</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span><span class="op">)</span>, <span class="va">.N</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Explanation:</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>
+<p><strong><code>df[doctor == "perfect", vents := (delta &gt; 0)]</code></strong></p>
+<ul>
+<li><p><code>df[...]</code> is <code>data.table</code>’s way of selecting rows where <code>doctor == "perfect"</code>.</p></li>
+<li><p><code>vents := (delta &gt; 0)</code> assigns <code>TRUE</code> if <code>delta &gt; 0</code>, meaning treatment is given if the patient benefits.</p></li>
+<li><p>The <code>:=</code> operator modifies the column <strong>in place</strong>, making it more memory-efficient than base R.</p></li>
+</ul>
+</li>
+<li>
+<p><strong><code>df[doctor == "bad", vents := sample(c(TRUE, FALSE), .N, replace = TRUE)]</code></strong></p>
+<ul>
+<li><p><code>.N</code> represents the number of rows in the subset (<code>doctor == "bad"</code>), ensuring the right number of values is generated.</p></li>
+<li><p><code>sample(c(TRUE, FALSE), .N, replace = TRUE)</code> randomly assigns <code>TRUE</code> (ventilator given) or <code>FALSE</code> (no ventilator) to these individuals.</p></li>
+<li><p>Each person is assigned independently due to <code>replace = TRUE</code>.</p></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <p>It’s not exactly a model of ethical clarity, but it certainly demonstrates the complications of “treatment assignment” in the real world (or the real St.&nbsp;Null’s world).</p>
 </section></section><section id="step-3-computing-causal-parameters" class="level2"><h2 class="anchored" data-anchor-id="step-3-computing-causal-parameters">Step 3: Computing Causal Parameters</h2>
@@ -517,7 +692,7 @@ Results may differ
 <strong>Average Treatment Effect on the Untreated (ATU)</strong>: The effect of ventilation on those who were <em>not</em> ventilated.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Calculate all aggregate Causal Parameters (ATE, ATT, ATU)</span></span>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Calculate all aggregate Causal Parameters (ATE, ATT, ATU)</span></span>
 <span><span class="va">ate</span> <span class="op">=</span> <span class="va">df</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="va">att</span> <span class="op">=</span> <span class="va">df</span><span class="op">[</span><span class="va">vents</span> <span class="op">==</span> <span class="cn">TRUE</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="va">atu</span> <span class="op">=</span> <span class="va">df</span><span class="op">[</span><span class="va">vents</span> <span class="op">==</span> <span class="cn">FALSE</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span><span class="op">]</span></span>
@@ -527,28 +702,105 @@ Results may differ
 <div class="cell-output cell-output-stdout">
 <pre><code>ATE = 0.602</code></pre>
 </div>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"ATT = %.03f</span></span>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"ATT = %.03f</span></span>
 <span><span class="st">"</span>, <span class="va">att</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>ATT = 2.748</code></pre>
 </div>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"ATU = %.03f</span></span>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"ATU = %.03f</span></span>
 <span><span class="st">"</span>, <span class="va">atu</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>ATU = -1.711</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Explanation:</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>
+<p><strong><code>df[, mean(delta)]</code></strong></p>
+<ul>
+<li><p><code>mean(delta)</code> computes the average of <code>delta</code>, which represents the <strong>Average Treatment Effect (ATE)</strong>.</p></li>
+<li><p>Since no filtering is applied, it considers all individuals in the dataset.</p></li>
+</ul>
+</li>
+<li>
+<p><strong><code>df[vents == TRUE, mean(delta)]</code></strong></p>
+<ul>
+<li><p><code>df[...]</code> selects rows where <code>vents == TRUE</code> (patients who received ventilation).</p></li>
+<li><p><code>mean(delta)</code> then computes the <strong>Average Treatment Effect on the Treated (ATT)</strong>.</p></li>
+</ul>
+</li>
+<li>
+<p><strong><code>df[vents == FALSE, mean(delta)]</code></strong></p>
+<ul>
+<li><p>This selects individuals <strong>who were not treated</strong> (<code>vents == FALSE</code>).</p></li>
+<li><p><code>mean(delta)</code> calculates the <strong>Average Treatment Effect on the Untreated (ATU)</strong>.</p></li>
+</ul>
+</li>
+<li>
+<p><strong><code>cat(sprintf("ATE = %.03f\n", ate))</code></strong></p>
+<ul>
+<li><p><code>sprintf("ATE = %.03f\n", ate)</code> formats <code>ate</code> to <strong>3 decimal places</strong>.</p></li>
+<li><p><code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> prints the formatted result to the console.</p></li>
+</ul>
+</li>
+</ol>
 </div>
 </div>
 <p>Dr.&nbsp;P-Hacker would stop right here and rejoice: “We have all the significance we need!” But hold your celebratory balloon drop—there’s more to do.</p>
 </section><section id="step-4-selection-bias-and-realized-outcomes" class="level2"><h2 class="anchored" data-anchor-id="step-4-selection-bias-and-realized-outcomes">Step 4: Selection Bias and Realized Outcomes</h2>
 <p>Although the dataset has both <code>y0</code> and <code>y1</code>, in the real world, a patient’s outcome is observed under only one condition (treated or untreated). Let’s capture <em>which</em> outcome we’d actually see based on the ventilator assignment:</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Use the switching equation to select realized outcomes from potential outcomes based on treatment assignment</span></span>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Use the switching equation to select realized outcomes from potential outcomes based on treatment assignment</span></span>
 <span><span class="va">df</span><span class="op">[</span>, <span class="va">y</span> <span class="op">:=</span> <span class="va">vents</span> <span class="op">*</span> <span class="va">y1</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">vents</span><span class="op">)</span> <span class="op">*</span> <span class="va">y0</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Explanation :</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>
+<p><strong><code>vents * y1 + (1 - vents) * y0</code></strong></p>
+<ul>
+<li><p>This applies the <strong>switching equation</strong>, which determines the observed outcome (<code>y</code>) based on whether an individual received treatment.</p></li>
+<li><p>If <code>vents == TRUE</code> (1), the observed outcome is <code>y1</code> (the treated potential outcome).</p></li>
+<li><p>If <code>vents == FALSE</code> (0), the observed outcome is <code>y0</code> (the untreated potential outcome).</p></li>
+<li>
+<p>Mathematically, this follows:</p>
+<ul>
+<li>y=vents×y1+(1−vents)×y0</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>df[, y := ...]</code></strong></p>
+<ul>
+<li><p>This is <code>data.table</code> syntax for creating or modifying a column in place.</p></li>
+<li><p>The new column <code>y</code> represents the <strong>observed lifespan</strong> for each individual.</p></li>
+</ul>
+</li>
+</ol>
+</div>
 </div>
 <section id="selection-bias-calculation" class="level3"><h3 class="anchored" data-anchor-id="selection-bias-calculation">Selection Bias Calculation</h3>
 <p>We’ll see if there is selection bias by comparing the expected lifespan of ventilated patients <em>had they not been ventilated</em> to the expected lifespan of non-ventilated patients.</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Calculate EY0 for vent group and no vent group</span></span>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Calculate EY0 for vent group and no vent group</span></span>
 <span><span class="va">ey01</span> <span class="op">=</span> <span class="va">df</span><span class="op">[</span><span class="va">vents</span> <span class="op">==</span> <span class="cn">TRUE</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span><span class="op">]</span>  </span>
 <span><span class="va">ey00</span> <span class="op">=</span> <span class="va">df</span><span class="op">[</span><span class="va">vents</span> <span class="op">==</span> <span class="cn">FALSE</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span><span class="op">]</span> </span>
 <span></span>
@@ -564,11 +816,53 @@ Results may differ
 <pre><code>Selection Bias = 8.334 - 10.574 = -2.240 </code></pre>
 </div>
 </div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Detailed Explanation of Commands:</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>
+<p><strong><code>df[vents == TRUE, mean(y0)]</code></strong></p>
+<ul>
+<li><p>This calculates the expected <code>y0</code> (lifespan without ventilation) <strong>for people who actually received a ventilator</strong>.</p></li>
+<li><p>It measures the <strong>counterfactual</strong> lifespan if the treated group had not received treatment.</p></li>
+</ul>
+</li>
+<li>
+<p><strong><code>df[vents == FALSE, mean(y0)]</code></strong></p>
+<ul>
+<li><p>This calculates the expected <code>y0</code> <strong>for people who did not receive a ventilator</strong>.</p></li>
+<li><p>It represents their actual untreated lifespan.</p></li>
+</ul>
+</li>
+<li>
+<p><strong>Selection Bias Calculation</strong></p>
+<ul>
+<li><p><code>selection_bias = (ey01 - ey00)</code> compares these two means.</p></li>
+<li><p>If selection into treatment is <strong>not random</strong>, then the untreated potential outcome (<code>y0</code>) may differ between the treated and untreated groups.</p></li>
+</ul>
+</li>
+<li>
+<p><strong>Formatted Output Using <code><a href="https://rdrr.io/r/base/sprintf.html">sprintf()</a></code></strong></p>
+<ul>
+<li><p><code><a href="https://rdrr.io/r/base/sprintf.html">sprintf()</a></code> formats the output to three decimal places.</p></li>
+<li><p><code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> prints the formatted text to the console.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
 <p>If Dr.&nbsp;Perfect is involved, we’d expect some big differences here. Dr.&nbsp;P-Hacker would probably ignore that and claim victory anyway. (He likes ignoring inconvenient truths.)</p>
 </section></section><section id="step-5-comparing-outcomes-between-groups" class="level2"><h2 class="anchored" data-anchor-id="step-5-comparing-outcomes-between-groups">Step 5: Comparing Outcomes Between Groups</h2>
 <p>One of the simplest ways to estimate the treatment effect is to look at the <strong>Simple Difference in Outcomes (SDO)</strong>—the difference in the observed mean outcome between those who got the treatment (ventilators) and those who did not.</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Calculate the share of units treated with vents (pi)</span></span>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Calculate the share of units treated with vents (pi)</span></span>
 <span><span class="va">pi</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">vents</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Manually calculate the simple difference in mean health outcomes</span></span>
@@ -585,11 +879,52 @@ Results may differ
 <pre><code>Simple Difference-in-Outcomes = 11.082 - 10.574 = 0.509 </code></pre>
 </div>
 </div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Explanation:</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>
+<p><strong><code>pi = mean(df$vents)</code></strong></p>
+<ul>
+<li><p><code>df$vents</code> extracts the <code>vents</code> column as a vector.</p></li>
+<li><p><code>mean(df$vents)</code> computes the proportion of individuals who received ventilation (<code>TRUE</code> is treated as 1, <code>FALSE</code> as 0).</p></li>
+<li><p>This provides <strong>π (pi), the treatment probability</strong>.</p></li>
+</ul>
+</li>
+<li>
+<p><strong><code>df[vents == TRUE, mean(y)]</code></strong></p>
+<ul>
+<li>Calculates the mean observed outcome <code>y</code> (lifespan) <strong>for the treated group</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>df[vents == FALSE, mean(y)]</code></strong></p>
+<ul>
+<li>Calculates the mean observed outcome <code>y</code> <strong>for the untreated group</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Simple Difference in Outcomes (SDO)</strong></p>
+<ul>
+<li><p><code>sdo = ey1 - ey0</code> computes the naive difference in means.</p></li>
+<li><p>This is an <strong>unadjusted estimate of the treatment effect</strong>, which may be biased if treatment selection was non-random.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
 <p>Dr.&nbsp;P-Hacker would run around shouting: “Aha! This difference proves the intervention works!” or “Aha! It’s not significant!” depending on the p-value. Let’s see if we can do better.</p>
 </section><section id="step-6-estimating-the-effect-with-regression" class="level2"><h2 class="anchored" data-anchor-id="step-6-estimating-the-effect-with-regression">Step 6: Estimating the Effect with Regression</h2>
 <p>To confirm our findings, let’s do an <strong>Ordinary Least Squares (OLS)</strong> regression of the realized outcome on the ventilator indicator:</p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Estimate the treatment effect using OLS</span></span>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Estimate the treatment effect using OLS</span></span>
 <span><span class="va">reg</span> <span class="op">=</span> <span class="fu"><a href="https://lrberge.github.io/fixest/reference/feols.html">feols</a></span><span class="op">(</span></span>
 <span>  <span class="va">y</span> <span class="op">~</span> <span class="va">vents</span>, data <span class="op">=</span> <span class="va">df</span>, </span>
 <span>  vcov <span class="op">=</span> <span class="st">"hc1"</span></span>
@@ -597,7 +932,7 @@ Results may differ
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"</span></span>
 <span><span class="st">"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">reg</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">reg</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>OLS estimation, Dep. Var.: y
 Observations: 100,000
@@ -610,18 +945,96 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 RMSE: 3.82331   Adj. R2: 0.004388</code></pre>
 </div>
 </div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Explanation :</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>
+<p><strong><code>feols(y ~ vents, data = df, vcov = "hc1")</code></strong></p>
+<ul>
+<li><p><code><a href="https://lrberge.github.io/fixest/reference/feols.html">feols()</a></code> from the <code>fixest</code> package estimates an <strong>Ordinary Least Squares (OLS) regression</strong>.</p></li>
+<li><p>The formula <code>y ~ vents</code> models the observed outcome (<code>y</code>) as a function of treatment (<code>vents</code>).</p></li>
+<li><p>This provides an estimate of the <strong>average treatment effect (ATE)</strong> under the assumption of unconfoundedness (i.e., no omitted variables affecting both treatment and outcome).</p></li>
+<li><p><strong><code>vcov = "hc1"</code></strong> specifies robust standard errors (Huber-White correction), which adjust for heteroskedasticity in the residuals.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Alternative Approach:</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>
+<p>Using <code>tidyverse</code> with <code>broom</code>:</p>
+<pre><code><a href="https://broom.tidymodels.org/">library(broom)
+reg %&gt;% tidy()</a></code></pre>
+</li>
+<li>
+<p>If clustering standard errors is needed:</p>
+<pre><code>reg = feols(y ~ vents, data = df, vcov = "cluster")</code></pre>
+</li>
+</ul>
+</div>
+</div>
 <p>This approach, while straightforward, is still subject to any biases from non-random assignment—like, say, Dr.&nbsp;Perfect or Dr.&nbsp;Bad being in charge.</p>
 </section><section id="step-7-validating-the-decomposition" class="level2"><h2 class="anchored" data-anchor-id="step-7-validating-the-decomposition">Step 7: Validating the Decomposition</h2>
 <p>At this point, we’d like to see if the <strong>Simple Difference in Outcomes (SDO)</strong> can be broken down into our measured parameters. You’ll fill in a table comparing <strong>Dr.&nbsp;Perfect</strong> to <strong>Dr.&nbsp;Bad</strong>, computing the ATE, ATT, ATU, selection bias, SDO, and so on.</p>
 <p>Below is a quick consistency check to see if the SDO lines up with our theoretical decomposition:</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Decomposition check</span></span>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Decomposition check</span></span>
 <span><span class="va">sdo_check</span> <span class="op">=</span> <span class="va">ate</span> <span class="op">+</span> <span class="va">selection_bias</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">pi</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="va">att</span> <span class="op">-</span> <span class="va">atu</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"SDO Check = %.03f </span></span>
 <span><span class="st">"</span>, <span class="va">sdo_check</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>SDO Check = 0.509 </code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Detailed Explanation of Commands:</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>
+<p><strong>Decomposition Formula:</strong></p>
+<ul>
+<li>
+<p>The simple difference in outcomes (SDO) can be decomposed into:</p>
+<p> = + + (1 - ) ( - )</p>
+</li>
+<li><p>This checks whether our earlier calculations are consistent with theoretical expectations.</p></li>
+</ul>
+</li>
+<li>
+<p><strong><code>sdo_check = ate + selection_bias + (1 - pi) * (att - atu)</code></strong></p>
+<ul>
+<li><p><code>ate</code>: The overall average treatment effect.</p></li>
+<li><p><code>selection_bias</code>: The difference in untreated potential outcomes between treated and untreated individuals.</p></li>
+<li><p><code>(1 - pi) * (att - atu)</code>: Adjusts for differences in treatment assignment proportions.</p></li>
+</ul>
+</li>
+</ol>
 </div>
 </div>
 <p>When you fill out the table, you should include:</p>

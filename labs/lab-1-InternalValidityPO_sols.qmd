@@ -15,12 +15,11 @@ execute:
   eval: true
 ---
 
-:::{.callout-note}
+::: callout-note
 ## Results may differ
+
 This is only one of many possible ways to complete this lab. Your final code may look different, which is fine! In fact, it is good practice to experiment with different approaches.
 :::
-
-
 
 # Lab 1: The Hospital of Uncertain Outcomes
 
@@ -77,6 +76,20 @@ for(pkg in required_packages){
 }
 ```
 
+::: callout-note
+#### **Explanation:**
+
+1.  This code first defines a vector `required_packages` containing the package names `"fixest"` and `"data.table"`.
+
+2.  Then, it loops through each package:
+
+    -   It checks if the package is already installed using `require(pkg, character.only = TRUE)`.
+
+    -   If the package is not installed, it installs it using `install.packages(pkg)`.
+
+3.  This ensures that all necessary packages are available for use.
+:::
+
 ## Step 1: Simulating the Dataset
 
 Because the EHR system at St. Null’s is, in a word, “unreliable” (or, in two words, “utterly broken”), we’ll create our own dataset in R.
@@ -101,12 +114,57 @@ df[, y1 := rnorm(N_people, 10, 4)]
 df[y1 < 0, y1 := 0]
 ```
 
+::: callout-note
+#### **Explanation:**
+
+1.  The necessary packages (`fixest` and `data.table`) are loaded.
+
+2.  The `set.seed(072121)` ensures reproducibility, meaning the random numbers generated will be the same every time the code is run.
+
+3.  A dataset `df` is created using `data.table` with 100,000 individuals (each represented by a row).
+
+4.  **Simulating Potential Outcomes:**
+
+    -   `y0` represents the expected lifespan (in years) if no ventilator treatment is given. It is drawn from a normal distribution with:
+
+        -   Mean: 9.4 years
+
+        -   Standard deviation: 4 years
+
+    -   Any `y0` values below 0 (i.e., negative lifespans) are set to zero.
+
+    -   `y1` represents the expected lifespan if assigned to a ventilator. It is similarly drawn from a normal distribution but with a slightly higher mean of 10 years.
+
+    -   Again, negative lifespan values are replaced with 0.
+:::
+
 We also define the **individual treatment effect** for each patient. Dr. Doub R. Obust is thrilled, because for once, we have both `y0` and `y1` simultaneously—an impossible dream in real life!
 
 ```{r}
 # Define individual treatment effect
 df[, delta := y1 - y0]
 ```
+
+::: callout-note
+#### **Explanation:**
+
+1.  A new column `delta` is created, which represents the individual treatment effect (ITE) for each person.
+
+2.  The ITE is calculated as the difference between the potential outcome under treatment (`y1`) and the potential outcome under control (`y0`).
+
+3.  This measures how much additional lifespan (if any) the ventilator treatment provides.
+:::
+
+::: callout-note
+## Alternative Approach
+
+-   The column can be created using `mutate()` from `dplyr` if using `tidyverse`:
+
+    ``` r
+    library(dplyr)
+    df <- df %>% mutate(delta = y1 - y0)
+    ```
+:::
 
 ## Step 2: The Two Doctors
 
@@ -124,6 +182,45 @@ First, we randomly assign each patient to one of these two doctors. (No wonder t
 df[, doctor := sample(c("perfect", "bad"), N_people, replace = TRUE)]
 ```
 
+::: callout-note
+#### **Explanation**
+
+1.  **`sample(c("perfect", "bad"), N_people, replace = TRUE)`**
+
+    -   `sample(x, size, replace)` randomly selects `size` elements from the vector `x`.
+
+    -   Here, `x = c("perfect", "bad")`, meaning we are choosing between `"perfect"` and `"bad"`.
+
+    -   `size = N_people` ensures that we assign a doctor to all `N_people` individuals.
+
+    -   `replace = TRUE` allows values to be selected independently, meaning each person is assigned a doctor without affecting others.
+
+2.  **`df[, doctor := ...]` (Data.table Syntax)**
+
+    -   `df[, column_name := value]` is `data.table`’s syntax for adding or modifying a column.
+
+    -   Here, `doctor` is created and populated with `"perfect"` or `"bad"` based on the `sample()` function.
+:::
+
+::: callout-note
+#### **Alternative Approach:**
+
+-   Using `mutate()` from `dplyr`:
+
+    ```         
+    df <- df %>%
+      mutate(doctor = sample(c("perfect", "bad"), N_people, replace = TRUE))
+    ```
+
+-   Instead of using `sample()`, one could use `runif()` :
+
+    ```         
+    df[, doctor := ifelse(runif(N_people) > 0.5, "perfect", "bad")]
+    ```
+
+    This approach provides more flexibility if you want to adjust the probability of assigning each type of doctor.
+:::
+
 ### Step 2b: Assigning Ventilators
 
 Next, each doctor does what they do best. Dr. Perfect uses clairvoyance to treat only those who stand to gain (`delta > 0`). Dr. Bad flips a metaphorical coin:
@@ -135,6 +232,26 @@ df[doctor == "perfect", vents := (delta > 0)]
 # Random doctor assigns vents randomly
 df[doctor == "bad", vents := sample(c(TRUE, FALSE), .N, replace = TRUE)]
 ```
+
+::: callout-note
+#### **Explanation:**
+
+-   **`df[doctor == "perfect", vents := (delta > 0)]`**
+
+    -   `df[...]` is `data.table`'s way of selecting rows where `doctor == "perfect"`.
+
+    -   `vents := (delta > 0)` assigns `TRUE` if `delta > 0`, meaning treatment is given if the patient benefits.
+
+    -   The `:=` operator modifies the column **in place**, making it more memory-efficient than base R.
+
+-   **`df[doctor == "bad", vents := sample(c(TRUE, FALSE), .N, replace = TRUE)]`**
+
+    -   `.N` represents the number of rows in the subset (`doctor == "bad"`), ensuring the right number of values is generated.
+
+    -   `sample(c(TRUE, FALSE), .N, replace = TRUE)` randomly assigns `TRUE` (ventilator given) or `FALSE` (no ventilator) to these individuals.
+
+    -   Each person is assigned independently due to `replace = TRUE`.
+:::
 
 It’s not exactly a model of ethical clarity, but it certainly demonstrates the complications of “treatment assignment” in the real world (or the real St. Null’s world).
 
@@ -160,6 +277,34 @@ cat(sprintf("ATU = %.03f
 ", atu))
 ```
 
+::: callout-note
+#### **Explanation:**
+
+1.  **`df[, mean(delta)]`**
+
+    -   `mean(delta)` computes the average of `delta`, which represents the **Average Treatment Effect (ATE)**.
+
+    -   Since no filtering is applied, it considers all individuals in the dataset.
+
+2.  **`df[vents == TRUE, mean(delta)]`**
+
+    -   `df[...]` selects rows where `vents == TRUE` (patients who received ventilation).
+
+    -   `mean(delta)` then computes the **Average Treatment Effect on the Treated (ATT)**.
+
+3.  **`df[vents == FALSE, mean(delta)]`**
+
+    -   This selects individuals **who were not treated** (`vents == FALSE`).
+
+    -   `mean(delta)` calculates the **Average Treatment Effect on the Untreated (ATU)**.
+
+4.  **`cat(sprintf("ATE = %.03f\n", ate))`**
+
+    -   `sprintf("ATE = %.03f\n", ate)` formats `ate` to **3 decimal places**.
+
+    -   `cat()` prints the formatted result to the console.
+:::
+
 Dr. P-Hacker would stop right here and rejoice: “We have all the significance we need!” But hold your celebratory balloon drop—there’s more to do.
 
 ## Step 4: Selection Bias and Realized Outcomes
@@ -170,6 +315,28 @@ Although the dataset has both `y0` and `y1`, in the real world, a patient’s ou
 # Use the switching equation to select realized outcomes from potential outcomes based on treatment assignment
 df[, y := vents * y1 + (1 - vents) * y0]
 ```
+
+::: callout-note
+####  **Explanation :**
+
+1.  **`vents * y1 + (1 - vents) * y0`**
+
+    -   This applies the **switching equation**, which determines the observed outcome (`y`) based on whether an individual received treatment.
+
+    -   If `vents == TRUE` (1), the observed outcome is `y1` (the treated potential outcome).
+
+    -   If `vents == FALSE` (0), the observed outcome is `y0` (the untreated potential outcome).
+
+    -   Mathematically, this follows:
+
+        -   y=vents×y1+(1−vents)×y0
+
+2.  **`df[, y := ...]`**
+
+    -   This is `data.table` syntax for creating or modifying a column in place.
+
+    -   The new column `y` represents the **observed lifespan** for each individual.
+:::
 
 ### Selection Bias Calculation
 
@@ -189,6 +356,34 @@ cat(sprintf(
   ey01, ey00, selection_bias
 ))
 ```
+
+::: callout-note
+#### **Detailed Explanation of Commands:**
+
+1.  **`df[vents == TRUE, mean(y0)]`**
+
+    -   This calculates the expected `y0` (lifespan without ventilation) **for people who actually received a ventilator**.
+
+    -   It measures the **counterfactual** lifespan if the treated group had not received treatment.
+
+2.  **`df[vents == FALSE, mean(y0)]`**
+
+    -   This calculates the expected `y0` **for people who did not receive a ventilator**.
+
+    -   It represents their actual untreated lifespan.
+
+3.  **Selection Bias Calculation**
+
+    -   `selection_bias = (ey01 - ey00)` compares these two means.
+
+    -   If selection into treatment is **not random**, then the untreated potential outcome (`y0`) may differ between the treated and untreated groups.
+
+4.  **Formatted Output Using `sprintf()`**
+
+    -   `sprintf()` formats the output to three decimal places.
+
+    -   `cat()` prints the formatted text to the console.
+:::
 
 If Dr. Perfect is involved, we’d expect some big differences here. Dr. P-Hacker would probably ignore that and claim victory anyway. (He likes ignoring inconvenient truths.)
 
@@ -212,6 +407,32 @@ cat(sprintf(
 ))
 ```
 
+::: callout-note
+####  **Explanation:**
+
+1.  **`pi = mean(df$vents)`**
+
+    -   `df$vents` extracts the `vents` column as a vector.
+
+    -   `mean(df$vents)` computes the proportion of individuals who received ventilation (`TRUE` is treated as 1, `FALSE` as 0).
+
+    -   This provides **π (pi), the treatment probability**.
+
+2.  **`df[vents == TRUE, mean(y)]`**
+
+    -   Calculates the mean observed outcome `y` (lifespan) **for the treated group**.
+
+3.  **`df[vents == FALSE, mean(y)]`**
+
+    -   Calculates the mean observed outcome `y` **for the untreated group**.
+
+4.  **Simple Difference in Outcomes (SDO)**
+
+    -   `sdo = ey1 - ey0` computes the naive difference in means.
+
+    -   This is an **unadjusted estimate of the treatment effect**, which may be biased if treatment selection was non-random.
+:::
+
 Dr. P-Hacker would run around shouting: “Aha! This difference proves the intervention works!” or “Aha! It’s not significant!” depending on the p-value. Let’s see if we can do better.
 
 ## Step 6: Estimating the Effect with Regression
@@ -230,6 +451,37 @@ cat("
 print(reg)
 ```
 
+::: callout-note
+####  **Explanation :**
+
+1.  **`feols(y ~ vents, data = df, vcov = "hc1")`**
+
+    -   `feols()` from the `fixest` package estimates an **Ordinary Least Squares (OLS) regression**.
+
+    -   The formula `y ~ vents` models the observed outcome (`y`) as a function of treatment (`vents`).
+
+    -   This provides an estimate of the **average treatment effect (ATE)** under the assumption of unconfoundedness (i.e., no omitted variables affecting both treatment and outcome).
+
+    -   **`vcov = "hc1"`** specifies robust standard errors (Huber-White correction), which adjust for heteroskedasticity in the residuals.
+:::
+
+::: callout-note
+#### **Alternative Approach:**
+
+-   Using `tidyverse` with `broom`:
+
+    ```         
+    library(broom)
+    reg %>% tidy()
+    ```
+
+-   If clustering standard errors is needed:
+
+    ```         
+    reg = feols(y ~ vents, data = df, vcov = "cluster")
+    ```
+:::
+
 This approach, while straightforward, is still subject to any biases from non-random assignment—like, say, Dr. Perfect or Dr. Bad being in charge.
 
 ## Step 7: Validating the Decomposition
@@ -245,6 +497,26 @@ sdo_check = ate + selection_bias + (1 - pi) * (att - atu)
 cat(sprintf("SDO Check = %.03f 
 ", sdo_check))
 ```
+
+::: callout-note
+#### **Detailed Explanation of Commands:**
+
+1.  **Decomposition Formula:**
+
+    -   The simple difference in outcomes (SDO) can be decomposed into:
+
+        \text{SDO} = \text{ATE} + \text{Selection Bias} + (1 - \pi) \times (\text{ATT} - \text{ATU})
+
+    -   This checks whether our earlier calculations are consistent with theoretical expectations.
+
+2.  **`sdo_check = ate + selection_bias + (1 - pi) * (att - atu)`**
+
+    -   `ate`: The overall average treatment effect.
+
+    -   `selection_bias`: The difference in untreated potential outcomes between treated and untreated individuals.
+
+    -   `(1 - pi) * (att - atu)`: Adjusts for differences in treatment assignment proportions.
+:::
 
 When you fill out the table, you should include:
 
