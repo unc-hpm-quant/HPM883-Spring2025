@@ -368,8 +368,99 @@ The bottom half of the figure below illustrates how simulation allows us to exam
 
 # Multiple Hypothesis Testing
 
-To be continued in the next lecture...
+## The Challenge of Multiple Hypothesis Testing
 
+In many empirical settings, researchers conduct **multiple hypothesis tests** rather than a single test. This introduces the risk of **false positives**, or mistakenly finding significant effects simply due to chance. Multiple hypothesis testing arises naturally in at least three key scenarios:
+
+1. **Multiple Outcomes**: When we examine several outcomes ($Y_i$) to determine whether any are affected by the treatment.
+2. **Heterogeneous Treatment Effects (CATEs)**: When treatment effects vary across subgroups, and we want to assess which subgroups exhibit an effect.
+3. **Multiple Treatments**: When we compare multiple interventions ($D_i$) and want to test their effects relative to a control group or to each other.
+
+To properly interpret results, we need statistical techniques that **adjust for multiple comparisons** and control the probability of **false discoveries**.
+
+---
+
+## Types of Multiple Hypothesis Tests
+
+There are two broad types of statistical hypothesis testing frameworks when dealing with multiple comparisons:
+
+- **Joint Tests**: These assess whether at least one hypothesis is true (e.g., "Is at least one treatment effective?").
+- **Simultaneous Tests**: These examine whether multiple hypotheses are true at the same time (e.g., "Are both Treatment A and Treatment B effective?").
+
+When conducting multiple tests, researchers need to control for an increased **family-wise error rate (FWER)**, which is the probability of making at least one Type I error (false positive).
+
+---
+
+## Controlling the Family-Wise Error Rate (FWER)
+
+A single hypothesis test controls the probability of a **Type I error** at a given significance level ($\alpha$). However, with multiple tests, the probability of making **at least one false rejection** increases:
+
+$$
+\text{FWER} = 1 - (1 - \alpha)^k
+$$
+
+where $k$ is the number of tests. For example, if we conduct **5 tests at $\alpha = 0.05$**, the probability of making **no Type I errors** across all tests is:
+
+$$
+(1 - 0.05)^5 = 0.7738
+$$
+
+Thus, the probability of making **at least one** Type I error is:
+
+$$
+FWER = 1 - 0.7738 = 0.2262
+$$
+
+This means there is a **22.62% chance** of mistakenly rejecting at least one null hypothesis across the five tests. If we perform **20 tests**, the FWER increases to **64%**.
+
+---
+
+## Approaches to Controlling the FWER
+
+To mitigate this issue, researchers employ various **multiple testing corrections**, such as:
+
+- **Bonferroni Correction**: Adjusts the significance level by dividing $\alpha$ by the number of tests: $\alpha^* = \alpha / k$. This is simple but conservative.
+- **Holm Method**: A stepwise procedure that ranks p-values and adjusts them sequentially to control the FWER more efficiently.
+- **Modern Approaches (e.g., Westfall-Young, Benjamini-Hochberg FDR control)**: These methods control for false discovery rates and are widely used in large-scale testing.
+
+---
+
+## Simulating Multiple Hypothesis Testing in R
+
+To illustrate the impact of multiple testing and FWER correction, let's do a simulation in R:
+
+```{r}
+library(data.table)
+set.seed(072111)  # Ensures reproducibility
+
+# Define parameters
+N <- 200  # Sample size
+k <- 10  # Number of hypothesis tests
+alpha <- 0.05  # Significance level
+
+# Simulate k independent hypothesis tests
+dt <- data.table(test_id = 1:k)
+dt[, p_value := runif(.N, min = 0, max = 1)]  # Generate uniform random p-values
+
+dt[, bonferroni := p_value < (alpha / k)]  # Bonferroni correction
+dt[, holm := p.adjust(p_value, method = "holm") < alpha]  # Holm correction
+
+dt[, naive_reject := p_value < alpha]  # Standard test (without correction)
+
+# Count false positives
+false_discoveries <- dt[, sum(naive_reject)]
+adjusted_false_discoveries <- dt[, sum(bonferroni)]
+holm_false_discoveries <- dt[, sum(holm)]
+
+cat("False positives (no correction):", false_discoveries, "\n")
+cat("False positives (Bonferroni correction):", adjusted_false_discoveries, "\n")
+cat("False positives (Holm correction):", holm_false_discoveries, "\n")
+```
+
+### **Interpreting the Simulation**
+- **Without correction**, we expect around $\alpha \times k$ false discoveries.
+- **Bonferroni correction** sharply reduces false positives but may be overly conservative.
+- **Holm correction** provides a better balance, controlling FWER while maintaining statistical power.
 
 
 # References
