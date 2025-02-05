@@ -210,6 +210,41 @@
     "text": "Diagnosing Research Designs with Simulation\nWhen we simulate a research design, we evaluate its performance by considering:\n\n\nBias: How close is the empirical answer \\(a_d\\) to the true answer \\(a_m\\)?\n\nVariance: How much do the empirical answers fluctuate across different realizations?\n\nCoverage: How often do confidence intervals include the true effect?\n\nPower: How frequently does the study correctly reject the null hypothesis when a true effect exists?\n\nThe bottom half of the figure below illustrates how simulation allows us to examine the research design across multiple models (\\(m_1, ..., m_k\\)), generating different answers (\\(a_{m_1}, a_{m_2}, ..., a_{m_k}\\)) and associated datasets (\\(d_1, d_2, ..., d_k\\)). The simulated research design does not have direct access to the true answer but can assess performance across the models under consideration.\n\n\nSimulations in the MIDA Framework"
   },
   {
+    "objectID": "unit-1/lec-1-2.html#the-challenge-of-multiple-hypothesis-testing",
+    "href": "unit-1/lec-1-2.html#the-challenge-of-multiple-hypothesis-testing",
+    "title": "Unit 1-2: Statistical Conclusion Validity",
+    "section": "The Challenge of Multiple Hypothesis Testing",
+    "text": "The Challenge of Multiple Hypothesis Testing\nIn many empirical settings, researchers conduct multiple hypothesis tests rather than a single test. This introduces the risk of false positives, or mistakenly finding significant effects simply due to chance. Multiple hypothesis testing arises naturally in at least three key scenarios:\n\n\nMultiple Outcomes: When we examine several outcomes (\\(Y_i\\)) to determine whether any are affected by the treatment.\n\nHeterogeneous Treatment Effects (CATEs): When treatment effects vary across subgroups, and we want to assess which subgroups exhibit an effect.\n\nMultiple Treatments: When we compare multiple interventions (\\(D_i\\)) and want to test their effects relative to a control group or to each other.\n\nTo properly interpret results, we need statistical techniques that adjust for multiple comparisons and control the probability of false discoveries."
+  },
+  {
+    "objectID": "unit-1/lec-1-2.html#types-of-multiple-hypothesis-tests",
+    "href": "unit-1/lec-1-2.html#types-of-multiple-hypothesis-tests",
+    "title": "Unit 1-2: Statistical Conclusion Validity",
+    "section": "Types of Multiple Hypothesis Tests",
+    "text": "Types of Multiple Hypothesis Tests\nThere are two broad types of statistical hypothesis testing frameworks when dealing with multiple comparisons:\n\n\nJoint Tests: These assess whether at least one hypothesis is true (e.g., “Is at least one treatment effective?”).\n\nSimultaneous Tests: These examine whether multiple hypotheses are true at the same time (e.g., “Are both Treatment A and Treatment B effective?”).\n\nWhen conducting multiple tests, researchers need to control for an increased family-wise error rate (FWER), which is the probability of making at least one Type I error (false positive)."
+  },
+  {
+    "objectID": "unit-1/lec-1-2.html#controlling-the-family-wise-error-rate-fwer",
+    "href": "unit-1/lec-1-2.html#controlling-the-family-wise-error-rate-fwer",
+    "title": "Unit 1-2: Statistical Conclusion Validity",
+    "section": "Controlling the Family-Wise Error Rate (FWER)",
+    "text": "Controlling the Family-Wise Error Rate (FWER)\nA single hypothesis test controls the probability of a Type I error at a given significance level (\\(\\alpha\\)). However, with multiple tests, the probability of making at least one false rejection increases:\n\\[\n\\text{FWER} = 1 - (1 - \\alpha)^k\n\\]\nwhere \\(k\\) is the number of tests. For example, if we conduct 5 tests at \\(\\alpha = 0.05\\), the probability of making no Type I errors across all tests is:\n\\[\n(1 - 0.05)^5 = 0.7738\n\\]\nThus, the probability of making at least one Type I error is:\n\\[\nFWER = 1 - 0.7738 = 0.2262\n\\]\nThis means there is a 22.62% chance of mistakenly rejecting at least one null hypothesis across the five tests. If we perform 20 tests, the FWER increases to 64%."
+  },
+  {
+    "objectID": "unit-1/lec-1-2.html#approaches-to-controlling-the-fwer",
+    "href": "unit-1/lec-1-2.html#approaches-to-controlling-the-fwer",
+    "title": "Unit 1-2: Statistical Conclusion Validity",
+    "section": "Approaches to Controlling the FWER",
+    "text": "Approaches to Controlling the FWER\nTo mitigate this issue, researchers employ various multiple testing corrections, such as:\n\n\nBonferroni Correction: Adjusts the significance level by dividing \\(\\alpha\\) by the number of tests: \\(\\alpha^* = \\alpha / k\\). This is simple but conservative.\n\nHolm Method: A stepwise procedure that ranks p-values and adjusts them sequentially to control the FWER more efficiently.\n\nModern Approaches (e.g., Westfall-Young, Benjamini-Hochberg FDR control): These methods control for false discovery rates and are widely used in large-scale testing."
+  },
+  {
+    "objectID": "unit-1/lec-1-2.html#simulating-multiple-hypothesis-testing-in-r",
+    "href": "unit-1/lec-1-2.html#simulating-multiple-hypothesis-testing-in-r",
+    "title": "Unit 1-2: Statistical Conclusion Validity",
+    "section": "Simulating Multiple Hypothesis Testing in R",
+    "text": "Simulating Multiple Hypothesis Testing in R\nTo illustrate the impact of multiple testing and FWER correction, let’s do a simulation in R:\n\nlibrary(data.table)\nset.seed(072111)  # Ensures reproducibility\n\n# Define parameters\nN &lt;- 200  # Sample size\nk &lt;- 10  # Number of hypothesis tests\nalpha &lt;- 0.05  # Significance level\n\n# Simulate k independent hypothesis tests\ndt &lt;- data.table(test_id = 1:k)\ndt[, p_value := runif(.N, min = 0, max = 1)]  # Generate uniform random p-values\n\ndt[, bonferroni := p_value &lt; (alpha / k)]  # Bonferroni correction\ndt[, holm := p.adjust(p_value, method = \"holm\") &lt; alpha]  # Holm correction\n\ndt[, naive_reject := p_value &lt; alpha]  # Standard test (without correction)\n\n# Count false positives\nfalse_discoveries &lt;- dt[, sum(naive_reject)]\nadjusted_false_discoveries &lt;- dt[, sum(bonferroni)]\nholm_false_discoveries &lt;- dt[, sum(holm)]\n\ncat(\"False positives (no correction):\", false_discoveries, \"\\n\")\n\nFalse positives (no correction): 2 \n\ncat(\"False positives (Bonferroni correction):\", adjusted_false_discoveries, \"\\n\")\n\nFalse positives (Bonferroni correction): 0 \n\ncat(\"False positives (Holm correction):\", holm_false_discoveries, \"\\n\")\n\nFalse positives (Holm correction): 0 \n\n\nInterpreting the Simulation\n\n\nWithout correction, we expect around \\(\\alpha \\times k\\) false discoveries.\n\nBonferroni correction sharply reduces false positives but may be overly conservative.\n\nHolm correction provides a better balance, controlling FWER while maintaining statistical power.\n\n\n\n\n\n\n\nTip\n\n\n\nNote: In the lab, we’ll cover some modern approaches that are more powerful but a bit more complex."
+  },
+  {
     "objectID": "unit-1/lec-1-2.html#footnotes",
     "href": "unit-1/lec-1-2.html#footnotes",
     "title": "Unit 1-2: Statistical Conclusion Validity",
