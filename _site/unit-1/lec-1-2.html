@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Sean Sylvia, Ph.D.">
+<meta name="dcterms.date" content="2025-02-05">
+<title>Unit 1-2: Statistical Conclusion Validity – HPM 883</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dece3bd051e391dd7205a6b15f93dc59.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-dece3bd051e391dd7205a6b15f93dc59.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-fd9528830c3bd10aadebefd30ea787ae.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-135ac4d113b30199e54d7437fe66c954.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+</head>
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Unit 1-2: Statistical Conclusion Validity</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
+      <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/hpm883" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+    <a href="https://rstudio.cloud/" title="Rstudio Cloud" class="quarto-navigation-tool px-1" aria-label="Rstudio Cloud"><i class="bi bi-code-square"></i></a>
+    <div class="dropdown">
+      <a href="" title="Support" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Support"><i class="bi bi-life-preserver"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+<li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://placeholder.link/office-hours">
+              <i class="bi bi-person-raised-hand pe-1"></i>
+            Office hours
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://placeholder.link/help-humans">
+              <i class="bi bi-people-fill pe-1"></i>
+            Help from humans
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://placeholder.link/chatbot">
+              <i class="bi bi-robot pe-1"></i>
+            Help from AI (Chatbot)
+            </a>
+          </li>
+      </ul>
+</div>
+    <a href="https://hpm883.slack.com" title="Slack" class="quarto-navigation-tool px-1" aria-label="Slack"><i class="bi bi-slack"></i></a>
+    <div class="dropdown">
+      <a href="" title="Canvas" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Canvas"><i class="bi bi-file-check-fill"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+<li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://placeholder.link/announcements">
+              <i class="bi bi-megaphone-fill pe-1"></i>
+            Announcements
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://placeholder.link/gradescope">
+              <i class="bi bi-file-arrow-up-fill pe-1"></i>
+            Gradescope
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://placeholder.link/gradebook">
+              <i class="bi bi-alphabet-uppercase pe-1"></i>
+            Gradebook
+            </a>
+          </li>
+      </ul>
+</div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course Schedule</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Course Information</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Syllabus</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../instructors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Instructors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-communication.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Communication</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Semester Project</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../project.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project Description</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ex-simulate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Simulation Example</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Resources</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../computing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Computing</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Unit 0: Foundations</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-0/unit-0-foundations-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Class 1: Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-0/unit-0-foundations-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Class 2: A Field Experiment in Health Services Research</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-0/unit-0-foundations-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Class 3: Computing for Reproducible Research</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Unit 1: Internal Validity</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-1/unit-1-internal-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Class 4: Internal Validity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-1-InternalValidityPO.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 1: The Hospital of Uncertain Outcomes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-1/unit-1-internal-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Class 5: Statistical Conclusion Validity</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+<li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li>
+<a href="#uncertainty-and-statistical-conclusion-validity" id="toc-uncertainty-and-statistical-conclusion-validity" class="nav-link" data-scroll-target="#uncertainty-and-statistical-conclusion-validity">Uncertainty and Statistical Conclusion Validity</a>
+  <ul class="collapse">
+<li><a href="#what-is-uncertainty" id="toc-what-is-uncertainty" class="nav-link" data-scroll-target="#what-is-uncertainty">What is Uncertainty?</a></li>
+  <li><a href="#where-does-uncertainty-come-from-in-an-experimental-study" id="toc-where-does-uncertainty-come-from-in-an-experimental-study" class="nav-link" data-scroll-target="#where-does-uncertainty-come-from-in-an-experimental-study">Where Does Uncertainty Come From in an Experimental Study?</a></li>
+  <li><a href="#statistical-conclusion-validity" id="toc-statistical-conclusion-validity" class="nav-link" data-scroll-target="#statistical-conclusion-validity">Statistical Conclusion Validity</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#sampling-frameworks-understanding-the-foundations-of-estimation-in-experiments" id="toc-sampling-frameworks-understanding-the-foundations-of-estimation-in-experiments" class="nav-link" data-scroll-target="#sampling-frameworks-understanding-the-foundations-of-estimation-in-experiments"><strong>Sampling Frameworks: Understanding the Foundations of Estimation in Experiments</strong></a>
+  <ul class="collapse">
+<li><a href="#the-super-population-approach" id="toc-the-super-population-approach" class="nav-link" data-scroll-target="#the-super-population-approach"><strong>The Super-Population Approach</strong></a></li>
+  <li><a href="#the-finite-population-approach" id="toc-the-finite-population-approach" class="nav-link" data-scroll-target="#the-finite-population-approach"><strong>The Finite-Population Approach</strong></a></li>
+  <li><a href="#subpopulations-in-the-super-population-framework" id="toc-subpopulations-in-the-super-population-framework" class="nav-link" data-scroll-target="#subpopulations-in-the-super-population-framework"><strong>Subpopulations in the Super-Population Framework</strong></a></li>
+  <li><a href="#choosing-between-the-two-approaches" id="toc-choosing-between-the-two-approaches" class="nav-link" data-scroll-target="#choosing-between-the-two-approaches"><strong>Choosing Between the Two Approaches</strong></a></li>
+  </ul>
+</li>
+  <li>
+<a href="#single-hypothesis-testing-and-statistical-power" id="toc-single-hypothesis-testing-and-statistical-power" class="nav-link" data-scroll-target="#single-hypothesis-testing-and-statistical-power">Single Hypothesis Testing and Statistical Power</a>
+  <ul class="collapse">
+<li><a href="#statistical-significance-and-the-t-statistic" id="toc-statistical-significance-and-the-t-statistic" class="nav-link" data-scroll-target="#statistical-significance-and-the-t-statistic">Statistical Significance and the t-Statistic</a></li>
+  <li><a href="#type-i-and-type-ii-errors" id="toc-type-i-and-type-ii-errors" class="nav-link" data-scroll-target="#type-i-and-type-ii-errors">Type I and Type II Errors</a></li>
+  <li><a href="#power-calculation-ensuring-detectability" id="toc-power-calculation-ensuring-detectability" class="nav-link" data-scroll-target="#power-calculation-ensuring-detectability">Power Calculation: Ensuring Detectability</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#simulations-in-research-design" id="toc-simulations-in-research-design" class="nav-link" data-scroll-target="#simulations-in-research-design">Simulations in Research Design</a>
+  <ul class="collapse">
+<li><a href="#the-mida-framework-for-simulation" id="toc-the-mida-framework-for-simulation" class="nav-link" data-scroll-target="#the-mida-framework-for-simulation">The MIDA Framework for Simulation</a></li>
+  <li><a href="#diagnosing-research-designs-with-simulation" id="toc-diagnosing-research-designs-with-simulation" class="nav-link" data-scroll-target="#diagnosing-research-designs-with-simulation">Diagnosing Research Designs with Simulation</a></li>
+  </ul>
+</li>
+  <li><a href="#multiple-hypothesis-testing" id="toc-multiple-hypothesis-testing" class="nav-link" data-scroll-target="#multiple-hypothesis-testing">Multiple Hypothesis Testing</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/hpm883/edit/main/unit-1/lec-1-2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Unit 1-2: Statistical Conclusion Validity</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<p class="subtitle lead">Lecture Notes</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sean Sylvia, Ph.D. </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 5, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header><section id="summary" class="level1"><h1>Summary</h1>
+<p>This lecture delves into statistical conclusion validity, exploring how we can assess the reliability and accuracy of estimated treatment effects in experimental research. As we have seen, due to the fundamental nature of potential outcomes, it is inherently impossible to recover individual treatment effects since each unit reveals only one potential outcome. However, under specific assumptions and with an appropriate assignment mechanism—such as random assignment—we can consistently estimate an average treatment effect (ATE). This lecture provides a brief, selective statistical background on how to estimate the ATE and quantify the uncertainty in these estimates, ensuring statistical conclusion validity. To streamline the presentation, we focus on settings with a binary treatment and largely ignore the role of covariates.</p>
+</section><section id="learning-objectives" class="level1"><h1>Learning Objectives</h1>
+<ol type="1">
+<li>Explain the concept of statistical conclusion validity and its importance in ensuring that the estimated treatment effect reflects the true effect.</li>
+<li>Identify the key sources of uncertainty in experimental studies, including sampling variation, variance in potential outcomes, and measurement error.</li>
+<li>Review the principles of hypothesis testing, including the formulation of null and alternative hypotheses and the implications of Type I and Type II errors.</li>
+<li>Explore the role of statistical power in determining the sample size needed to detect significant effects.</li>
+<li>Explore the use of simulation techniques to conduct power calculations and assess the reliability of experimental designs.</li>
+<li>Explore the role of multiple hypothesis testing and its implications in statistical inference.</li>
+</ol></section><section id="uncertainty-and-statistical-conclusion-validity" class="level1"><h1>Uncertainty and Statistical Conclusion Validity</h1>
+<section id="what-is-uncertainty" class="level2"><h2 class="anchored" data-anchor-id="what-is-uncertainty">What is Uncertainty?</h2>
+<p>Uncertainty in empirical research refers to the inherent imprecision that arises when we attempt to infer quantities that cannot be directly observed. Whether we are engaged in descriptive, causal, or generalization inference, our estimates come with uncertainty that must be quantified and communicated.</p>
+<p>Two primary frameworks exist for this purpose: the Bayesian and the frequentist approaches.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<section id="bayesian-approach" class="level3"><h3 class="anchored" data-anchor-id="bayesian-approach">Bayesian Approach</h3>
+<p>The Bayesian framework uses Bayes’ rule to combine prior beliefs with the observed data, resulting in a posterior probability distribution over the parameter of interest, <span class="math inline">\(\theta\)</span>. Mathematically, this is expressed as:</p>
+<p><span class="math display">\[
+\Pr(\theta = \theta' \mid d = d') = \frac{\Pr(d = d' \mid \theta = \theta')\, \Pr(\theta = \theta')}{\sum_{\theta''} \Pr(d = d' \mid \theta = \theta'')\, \Pr(\theta = \theta'')},
+\]</span></p>
+<p>where:</p>
+<ul>
+<li><p><span class="math inline">\(d\)</span> represents data, and <span class="math inline">\(d'\)</span> represents the observed data (or an “observed realization of the data”)</p></li>
+<li><p><span class="math inline">\(\theta'\)</span> and <span class="math inline">\(\theta''\)</span> represent particular values of the parameter <span class="math inline">\(\theta\)</span>.</p></li>
+</ul>
+<p>From this posterior distribution, the <strong>posterior mean</strong> serves as our best estimate of <span class="math inline">\(\theta\)</span>, and the <strong>posterior variance</strong> quantifies the uncertainty associated with that estimate.</p>
+<p>By applying Bayes’ rule over different values of <span class="math inline">\(\theta\)</span>, we construct a complete probability distribution that represents all possible answers. This posterior distribution simultaneously provides our best estimate—often summarized by the posterior mean—and quantifies our uncertainty via the posterior variance.</p>
+<p>While intuitive, a challenge is that specifying prior uncertainty (<span class="math inline">\(\Pr(\theta = \theta')\)</span>) is often a subjective choice, and the posterior distribution is often difficult to interpret and communicate.</p>
+</section><section id="frequentist-approach" class="level3"><h3 class="anchored" data-anchor-id="frequentist-approach">Frequentist Approach</h3>
+<p>In contrast, the frequentist approach avoids specifying prior beliefs and focuses on the likelihood function, <span class="math inline">\(\Pr(d = d' \mid \theta = \theta')\)</span>, which describes the probability of observing the data <span class="math inline">\(d'\)</span> given a specific value of <span class="math inline">\(\theta\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> I.e. instead of thinking of the strength of beliefs, we consider that <span class="math inline">\(\theta\)</span> generates the actual probability distriubtion over possible data <span class="math inline">\(d\)</span>.</p>
+<p>This approach yields useful quantities:</p>
+<p><strong>P-value</strong>: The p-value for a null hypothesis, <span class="math inline">\(\theta = \theta_0\)</span>, is defined as the probability of observing data as extreme as <span class="math inline">\(d_{m*}\)</span> under the null hypothesis, or</p>
+<p><span class="math display">\[
+\Pr(d = d_{m*} \mid \theta = \theta_0).
+\]</span></p>
+<p>where <span class="math inline">\(d_{m*}\)</span> is the test statistic.</p>
+<p><strong>Confidence Interval</strong>: A 95% confidence interval is constructed such that, if the experiment were repeated many times, 95% of the intervals would contain the true parameter value. This approach provides a framework to rule out parameter values that are inconsistent with the observed data, or <span class="math inline">\(Pr(d = d' \mid \theta = \theta') \leq 0.05\)</span>.</p>
+</section></section><section id="where-does-uncertainty-come-from-in-an-experimental-study" class="level2"><h2 class="anchored" data-anchor-id="where-does-uncertainty-come-from-in-an-experimental-study">Where Does Uncertainty Come From in an Experimental Study?</h2>
+<p>Before getting into estimation and the uncertainty of the estimate, we need to be precise about the source of uncertainty. In experimental studies, uncertainty is an inherent part of the inference process, arising from several key sources. Recognizing these sources is critical to designing robust experiments and correctly interpreting the results. The main contributors to uncertainty include:</p>
+<ul>
+<li><p><strong>Sampling Variation:</strong><br>
+Uncertainty due to sampling variation stems from the fact that any sample drawn from a population is just one of many possible samples. Consequently, the same treatment might yield different results if applied to a different sample, reflecting random fluctuations in the selection process.</p></li>
+<li><p><strong>Variance in Potential Outcomes:</strong><br>
+The natural variability in the potential outcomes (i.e., the outcomes that would be observed under different treatment conditions) can lead to uncertainty. High variance makes it more challenging to detect a true treatment effect because the noise in the data can obscure the signal, thereby reducing the study’s power to reject a false null hypothesis.</p></li>
+<li><p><strong>Measurement Error:</strong><br>
+Measurement error occurs when there are inaccuracies in recording or assessing the potential outcomes. Such errors introduce additional variability and can bias the estimated treatment effect, further contributing to uncertainty in the experimental results.</p></li>
+</ul>
+<p>To vizualize this, the diagram below shows a “directed acyclic graph” (DAG) representation of the “data strategy” framework discussed in <a href="https://book.declaredesign.org/declaration-diagnosis-redesign/crafting-data-strategy.html">Chapter 8 of Research Design in the Social Sciences</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="../unit-1/media/figure-8-1.svg" class="img-fluid figure-img"></p>
+<figcaption>Data Strategy DAG, Source: Research Design in the Social Sciences</figcaption></figure>
+</div>
+<blockquote class="blockquote">
+<p>In Figure 8.1, we illustrate these three elements of data strategies: sampling (S), treatment assignment (Z), and measurement (Q). These nodes are highlighted by blue boxes to emphasize that they are in the control of the researcher. No arrows go into the S, Z, or Q nodes; they are set by the researcher. In each case, the strategy selected by the researcher affects a corresponding endogenous variable. The sampling procedure causes changes in the endogenous response (R), which represents whether participants provide outcome data, for example responding to survey questions. R is not under the full control of the researchers: it is affected by S, the sampling procedure, but also by the idiosyncratic choices of participants who have higher and lower interest and ability to respond and participate in the study (U). Similarly, the endogenous variable treatment D represents whether participants actually receive the treatment, regardless of their assignment Z. D is affected by the treatment assignment procedure (Z) of course. But except in cases when Z fully determines D (no noncompliance), we are concerned that it will be affected by unobserved idiosyncratic features of individuals U. The third researcher node is Q, the measurement procedure. Q affects Y, the observed outcome, measured by the researcher. Y is also affected by a latent variable Y*, which cannot be directly observed. The measurement procedure provides an imperfect measurement of that latent variable, which is (potentially) affected by treatment D and unobserved heterogeneity U. In the robustness section at the end of the chapter, we explore further variations of this DAG that incorporate threats to inference from noncompliance, attrition, excludability violations, and interference.</p>
+</blockquote>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Can you draw four arrows representing the four exclusion restrictions?</p>
+</div>
+</div>
+</section><section id="statistical-conclusion-validity" class="level2"><h2 class="anchored" data-anchor-id="statistical-conclusion-validity">Statistical Conclusion Validity</h2>
+<p>Given that our exclusion restrictions are satisfied, we can estimate the average treatment effect (ATE). The question is then: How can we ensure valid statistical conclusions from our estimate of the ATE?</p>
+<p>We need to consider the uncertainty in our estimate, and whether we can reject the null hypothesis that the treatment has no effect.</p>
+</section></section><section id="sampling-frameworks-understanding-the-foundations-of-estimation-in-experiments" class="level1"><h1><strong>Sampling Frameworks: Understanding the Foundations of Estimation in Experiments</strong></h1>
+<p>When designing an experiment, we need to consider how the sample relates to the broader population of interest. This decision influences the <strong>statistical inference</strong> and generalizability of findings. Two main perspectives in sampling frameworks help frame this discussion: the <strong>super-population approach</strong> and the <strong>finite-population approach</strong>.</p>
+<ul>
+<li>
+<strong>super-population approach</strong>: units are assumed an independent sample from some hypothetical infinite population.</li>
+<li>
+<strong>finite-population approach</strong>: inference is restricted to the specific individuals in the sample. Potential outcomes of the experimental units are fixed, and the randomness comes solely from the treatment assignment.</li>
+</ul>
+<section id="the-super-population-approach" class="level2"><h2 class="anchored" data-anchor-id="the-super-population-approach"><strong>The Super-Population Approach</strong></h2>
+<p>The <strong>super-population approach</strong> assumes that the study sample is drawn from a larger, hypothetical <strong>infinite population</strong> represented by a probability distribution, <span class="math inline">\(Q\)</span>. This perspective views potential outcomes—both with and without treatment—as stochastic variables drawn from <span class="math inline">\(Q\)</span>. The primary goal in this framework is to estimate a <strong>feature of this distribution</strong>, typically the <strong>expected treatment effect</strong>:</p>
+<p><span class="math display">\[
+E[Y(1) - Y(0)]
+\]</span></p>
+<p>where <span class="math inline">\(Y(1)\)</span> and <span class="math inline">\(Y(0)\)</span> denote the potential outcomes under treatment and control conditions, respectively. Under this approach, each sample is considered an independent and identically distributed (i.i.d.) draw from the distribution <span class="math inline">\(Q\)</span>, meaning the researcher is interested in making <strong>generalizable inferences</strong> beyond the study sample.</p>
+<p>A key implication of this framework is that <strong>two sources of variance</strong> affect our estimation of treatment effects: 1. <strong>Sampling variance</strong>—arising from differences between one sample and another. 2. <strong>Assignment mechanism variance</strong>—introduced by the randomness in treatment assignment.</p>
+<p>The super-population approach is useful when researchers aim to extend their findings to a broader population, such as in <strong>policy recommendations</strong> or <strong>clinical trials</strong>. However, it requires strong assumptions about how well the study sample represents the population.</p>
+</section><section id="the-finite-population-approach" class="level2"><h2 class="anchored" data-anchor-id="the-finite-population-approach"><strong>The Finite-Population Approach</strong></h2>
+<p>In contrast, the <strong>finite-population approach</strong> considers the sample as a fixed, well-defined group rather than a subset of an infinite population. Here, the researcher is not making inferences beyond the observed sample but instead treating the units as the <strong>entire relevant population</strong>. This approach is common in <strong>evaluations of specific interventions</strong> where the focus is on estimating the <strong>finite-population average treatment effect (ATE)</strong> (also called the sample average treatemnt effect, or SATE):<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p><span class="math display">\[
+\tau_{fp} = \frac{1}{N} \sum_{i=1}^{N} \left[Y_i(1) - Y_i(0)\right]
+\]</span></p>
+<p>where <span class="math inline">\(N\)</span> is the total number of units in the study. Unlike in the super-population approach, the potential outcomes in a finite population framework are <strong>fixed, not random</strong>. The treatment effect is then viewed as an empirical quantity to be estimated within the sample, rather than a parameter of an underlying distribution.</p>
+<p>A <strong>practical distinction</strong> between the two approaches is in their implications for statistical inference: - In the <strong>super-population approach</strong>, standard errors reflect both <strong>sampling variability</strong> and <strong>randomization-induced variation</strong>. - In the <strong>finite-population approach</strong>, standard errors are based only on the <strong>variation within the observed sample</strong>, without assuming a broader distribution.</p>
+<p>This framework is particularly relevant when researchers are concerned with <strong>internal validity</strong> over generalizability, such as in <strong>program evaluations or field experiments</strong>.</p>
+</section><section id="subpopulations-in-the-super-population-framework" class="level2"><h2 class="anchored" data-anchor-id="subpopulations-in-the-super-population-framework"><strong>Subpopulations in the Super-Population Framework</strong></h2>
+<p>Within the super-population framework, researchers often refine their analysis by considering <strong>subpopulations</strong> to account for <strong>heterogeneous treatment effects</strong>. One important example is the <strong>Conditional Average Treatment Effect (CATE)</strong>:</p>
+<p><span class="math display">\[
+E[Y(1, X) - Y(0, X) | X]
+\]</span></p>
+<p>where <span class="math inline">\(X\)</span> represents observed covariates that influence treatment effects. This approach allows for <strong>differentiated insights</strong> across groups, such as demographic segments in public health interventions.</p>
+</section><section id="choosing-between-the-two-approaches" class="level2"><h2 class="anchored" data-anchor-id="choosing-between-the-two-approaches"><strong>Choosing Between the Two Approaches</strong></h2>
+<p>The choice between these sampling frameworks depends on the <strong>research question</strong>:</p>
+<ul>
+<li>If the goal is to make <strong>generalizable claims</strong> about a broader population, the <strong>super-population approach</strong> is preferred.</li>
+<li>If the study focuses on <strong>a specific, finite group of units</strong>, the <strong>finite-population approach</strong> is more appropriate.</li>
+</ul>
+<p>Both perspectives provide valuable insights, and many empirical studies incorporate elements of both frameworks, particularly when considering <strong>external validity and policy relevance</strong>.</p>
+</section></section><section id="single-hypothesis-testing-and-statistical-power" class="level1"><h1>Single Hypothesis Testing and Statistical Power</h1>
+<p>With our sampling framework in mind, we can now turn to <strong>single hypothesis testing</strong> and <strong>statistical power</strong>. The first thing we need to do is choose an <strong>estimator</strong> of interest. If the estimand is an <strong>Average Treatment Effect (ATE)</strong>, then a reasonable choice is the <strong>difference-in-means estimator</strong>. This estimator compares the mean outcome of the treated group (<span class="math inline">\(Y(1)\)</span>) and the control group (<span class="math inline">\(Y(0)\)</span>):</p>
+<p><span class="math display">\[
+\hat{\tau} = \bar{Y}_1 - \bar{Y}_0
+\]</span></p>
+<p>where $ {Y}_1 $ and $ {Y}_0 $ are the sample means of the treated and control groups, respectively. The difference-in-means estimator provides an unbiased estimate of the <strong>Average Treatment Effect (ATE)</strong> (the estimand) under the assumption of random assignment.</p>
+<p>However, while the estimator provides a point estimate of the treatment effect, it does not convey <strong>uncertainty</strong>. To formally assess whether the estimated effect is significantly different from zero, we conduct a <strong>statistical hypothesis test</strong>.</p>
+<p>The fundamental question we seek to answer is:<br><strong>Can we be confident in detecting the reported effect size in our experimental results?</strong></p>
+<p>To do so, we frame our problem in terms of <strong>hypothesis testing</strong>: - We begin by specifying a <strong>null hypothesis (<span class="math inline">\(H_0\)</span>)</strong>, which typically asserts that the treatment has no effect (<span class="math inline">\(\tau = 0\)</span>). - The <strong>alternative hypothesis (<span class="math inline">\(H_A\)</span>)</strong> posits that there is a nonzero effect (<span class="math inline">\(\tau \neq 0\)</span>). - Hypothesis testing allows us to assess whether the observed difference-in-means provides sufficient evidence to reject <span class="math inline">\(H_0\)</span>.</p>
+<p>The hypothesis test is based on the <strong>sampling distribution</strong> of the estimator. Because we assume random assignment, the <strong>difference-in-means estimator follows a known distribution</strong>, and we use this fact to determine whether the observed effect is large enough to be statistically significant.</p>
+<section id="statistical-significance-and-the-t-statistic" class="level2"><h2 class="anchored" data-anchor-id="statistical-significance-and-the-t-statistic">Statistical Significance and the t-Statistic</h2>
+<p>To formally test the null hypothesis, we construct a <strong>t-statistic</strong>:</p>
+<p><span class="math display">\[
+t = \frac{\hat{\tau}}{\text{SE}(\hat{\tau})}
+\]</span></p>
+<p>where <strong>SE(<span class="math inline">\(\hat{\tau}\)</span>)</strong> represents the standard error of the difference-in-means estimator. As the sample size grows, this t-statistic follows a standard normal distribution (or Student’s t-distribution for small samples). A large absolute value of $ t $ provides evidence against the null hypothesis.</p>
+<p>To determine whether the result is <strong>statistically significant</strong>, we compare the t-statistic to a <strong>critical value</strong> determined by our chosen <strong>significance level</strong> (<span class="math inline">\(\alpha\)</span>, commonly set at 0.05). If the absolute value of the t-statistic exceeds this threshold, we reject the null hypothesis.</p>
+</section><section id="type-i-and-type-ii-errors" class="level2"><h2 class="anchored" data-anchor-id="type-i-and-type-ii-errors">Type I and Type II Errors</h2>
+<p>While hypothesis testing provides a structured approach to evaluating treatment effects, errors can still occur:</p>
+<ol type="1">
+<li>
+<strong>Type I Error (<span class="math inline">\(\alpha\)</span>)</strong>: Rejecting the null hypothesis when it is actually true (false positive).
+<ul>
+<li>Controlled by setting the significance level (<span class="math inline">\(\alpha\)</span>), which determines the probability of mistakenly rejecting <span class="math inline">\(H_0\)</span>.</li>
+<li>Lower <span class="math inline">\(\alpha\)</span> reduces false positives but increases the risk of missing real effects.</li>
+</ul>
+</li>
+<li>
+<strong>Type II Error (<span class="math inline">\(\beta\)</span>)</strong>: Failing to reject the null hypothesis when it is actually false (false negative).
+<ul>
+<li>Related to <strong>statistical power</strong>, which is the probability of detecting an effect when it truly exists.</li>
+</ul>
+</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="../unit-1/media/HypothesisTesting.png" class="img-fluid figure-img"></p>
+<figcaption>Type 1 and Type 2 Errors</figcaption></figure>
+</div>
+</section><section id="power-calculation-ensuring-detectability" class="level2"><h2 class="anchored" data-anchor-id="power-calculation-ensuring-detectability">Power Calculation: Ensuring Detectability</h2>
+<p><strong>Statistical power</strong> refers to the ability of a test to correctly reject the null hypothesis when a true effect exists. Mathematically:</p>
+<p><span class="math display">\[
+\text{Power} = 1 - \beta
+\]</span></p>
+<p>Factors influencing power:</p>
+<ul>
+<li>
+<strong>Effect size (<span class="math inline">\(\tau\)</span>)</strong>: Larger effects are easier to detect.</li>
+<li>
+<strong>Sample size (<span class="math inline">\(N\)</span>)</strong>: Larger samples reduce variability, increasing power.</li>
+<li>
+<strong>Significance level (<span class="math inline">\(\alpha\)</span>)</strong>: Lowering <span class="math inline">\(\alpha\)</span> increases the risk of missing true effects.</li>
+<li>
+<strong>Standard deviation of outcomes</strong>: Higher variability in outcomes reduces power.</li>
+</ul>
+<p>To achieve a well-powered experiment, researchers conduct <strong>power calculations</strong> before data collection to determine the minimum sample size required to detect an effect with reasonable confidence.</p>
+<section id="a-simple-example" class="level3"><h3 class="anchored" data-anchor-id="a-simple-example">A Simple Example</h3>
+<p>Let’s consider a simple example of a power simulation using a simple random assignment to a treatment and control group, where the estimate is the <strong>difference-in-means estimator</strong>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-datatable.com">data.table</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="step-1-define-simulation-parameters" class="level4"><h4 class="anchored" data-anchor-id="step-1-define-simulation-parameters"><strong>Step 1: Define Simulation Parameters</strong></h4>
+<ul>
+<li>Let’s assume we have a total sample size of <span class="math inline">\(N = 200\)</span> individuals.</li>
+<li>The treatment group receives an intervention, while the control group does not.</li>
+<li>The true treatment effect is set to <span class="math inline">\(\tau = 2\)</span>.</li>
+<li>The outcome variable follows a normal distribution with mean 10 and standard deviation 4.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">072111</span><span class="op">)</span>  <span class="co"># Ensures reproducibility</span></span>
+<span></span>
+<span><span class="co"># Define parameters</span></span>
+<span><span class="va">N</span> <span class="op">&lt;-</span> <span class="fl">200</span>  <span class="co"># Total sample size</span></span>
+<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fl">0.5</span>  <span class="co"># Probability of assignment to treatment</span></span>
+<span><span class="va">true_tau</span> <span class="op">&lt;-</span> <span class="fl">2</span>  <span class="co"># True treatment effect</span></span>
+<span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fl">4</span>  <span class="co"># Standard deviation of outcome</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="step-2-simulate-data" class="level4"><h4 class="anchored" data-anchor-id="step-2-simulate-data"><strong>Step 2: Simulate Data</strong></h4>
+<p>Now we can simulate the data using data.table:</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Simulate data using data.table</span></span>
+<span><span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">N</span><span class="op">)</span></span>
+<span><span class="va">dt</span><span class="op">[</span>, <span class="va">treatment</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span><span class="va">.N</span>, <span class="fl">1</span>, <span class="va">p</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="va">dt</span><span class="op">[</span>, <span class="va">outcome</span> <span class="op">:=</span> <span class="fl">10</span> <span class="op">+</span> <span class="va">true_tau</span> <span class="op">*</span> <span class="va">treatment</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">.N</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="va">sigma</span><span class="op">)</span><span class="op">]</span></span>
+<span></span>
+<span><span class="co">#display first few rows</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">dt</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      id treatment  outcome
+   &lt;int&gt;     &lt;int&gt;    &lt;num&gt;
+1:     1         0 10.39758
+2:     2         1 17.78058
+3:     3         0 11.46925
+4:     4         0 14.56752
+5:     5         1 10.55347
+6:     6         1 14.99933</code></pre>
+</div>
+</div>
+</section><section id="step-3-estimate-treatment-effect" class="level4"><h4 class="anchored" data-anchor-id="step-3-estimate-treatment-effect"><strong>Step 3: Estimate Treatment Effect</strong></h4>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diff_means</span> <span class="op">&lt;-</span> <span class="va">dt</span><span class="op">[</span><span class="va">treatment</span> <span class="op">==</span> <span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">outcome</span><span class="op">)</span><span class="op">]</span> <span class="op">-</span> <span class="va">dt</span><span class="op">[</span><span class="va">treatment</span> <span class="op">==</span> <span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">outcome</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="va">SE</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">dt</span><span class="op">[</span><span class="va">treatment</span> <span class="op">==</span> <span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">outcome</span><span class="op">)</span><span class="op">]</span> <span class="op">/</span> <span class="va">dt</span><span class="op">[</span><span class="va">treatment</span> <span class="op">==</span> <span class="fl">1</span>, <span class="va">.N</span><span class="op">]</span> <span class="op">+</span></span>
+<span>           <span class="va">dt</span><span class="op">[</span><span class="va">treatment</span> <span class="op">==</span> <span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">outcome</span><span class="op">)</span><span class="op">]</span> <span class="op">/</span> <span class="va">dt</span><span class="op">[</span><span class="va">treatment</span> <span class="op">==</span> <span class="fl">0</span>, <span class="va">.N</span><span class="op">]</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">t_stat</span> <span class="op">&lt;-</span> <span class="va">diff_means</span> <span class="op">/</span> <span class="va">SE</span>  <span class="co"># Compute t-statistic</span></span>
+<span><span class="va">p_value</span> <span class="op">&lt;-</span> <span class="fl">2</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">t_stat</span><span class="op">)</span>, df <span class="op">=</span> <span class="va">N</span> <span class="op">-</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>  <span class="co"># Two-tailed test</span></span>
+<span></span>
+<span><span class="co"># Display results</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Estimated Treatment Effect:"</span>, <span class="va">diff_means</span>, <span class="st">"\n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Estimated Treatment Effect: 2.453868 </code></pre>
+</div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"p-value:"</span>, <span class="va">p_value</span>, <span class="st">"\n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>p-value: 1.088986e-05 </code></pre>
+</div>
+</div>
+</section><section id="step-4-power-simulation" class="level4"><h4 class="anchored" data-anchor-id="step-4-power-simulation"><strong>Step 4: Power Simulation</strong></h4>
+<p>First, let’s consider how we will interpret the results:</p>
+<ul>
+<li>If the p-value is <strong>less than 0.05</strong>, we reject the null hypothesis and conclude that the treatment has a significant effect.</li>
+<li>If the p-value is <strong>greater than 0.05</strong>, we fail to reject the null, meaning we do not have enough evidence to confirm a treatment effect.</li>
+</ul>
+<p>Now, let’s simulate a power simulation:</p>
+<p>First, define the power simulation function:</p>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">simulate_power</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">N</span>, <span class="va">true_tau</span>, <span class="va">sigma</span>, <span class="va">p</span>, <span class="va">alpha</span>, <span class="va">reps</span> <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">rejections</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
+<span>  </span>
+<span>  <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="va">reps</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">N</span><span class="op">)</span></span>
+<span>    <span class="va">dt</span><span class="op">[</span>, <span class="va">treatment</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span><span class="va">.N</span>, <span class="fl">1</span>, <span class="va">p</span><span class="op">)</span><span class="op">]</span></span>
+<span>    <span class="va">dt</span><span class="op">[</span>, <span class="va">outcome</span> <span class="op">:=</span> <span class="fl">10</span> <span class="op">+</span> <span class="va">true_tau</span> <span class="op">*</span> <span class="va">treatment</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">.N</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="va">sigma</span><span class="op">)</span><span class="op">]</span></span>
+<span>    <span class="va">diff_means</span> <span class="op">&lt;-</span> <span class="va">dt</span><span class="op">[</span><span class="va">treatment</span> <span class="op">==</span> <span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">outcome</span><span class="op">)</span><span class="op">]</span> <span class="op">-</span> <span class="va">dt</span><span class="op">[</span><span class="va">treatment</span> <span class="op">==</span> <span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">outcome</span><span class="op">)</span><span class="op">]</span></span>
+<span>    <span class="va">SE</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">dt</span><span class="op">[</span><span class="va">treatment</span> <span class="op">==</span> <span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">outcome</span><span class="op">)</span><span class="op">]</span> <span class="op">/</span> <span class="va">dt</span><span class="op">[</span><span class="va">treatment</span> <span class="op">==</span> <span class="fl">1</span>, <span class="va">.N</span><span class="op">]</span> <span class="op">+</span></span>
+<span>               <span class="va">dt</span><span class="op">[</span><span class="va">treatment</span> <span class="op">==</span> <span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">outcome</span><span class="op">)</span><span class="op">]</span> <span class="op">/</span> <span class="va">dt</span><span class="op">[</span><span class="va">treatment</span> <span class="op">==</span> <span class="fl">0</span>, <span class="va">.N</span><span class="op">]</span><span class="op">)</span></span>
+<span>    <span class="va">t_stat</span> <span class="op">&lt;-</span> <span class="va">diff_means</span> <span class="op">/</span> <span class="va">SE</span></span>
+<span>    <span class="va">p_value</span> <span class="op">&lt;-</span> <span class="fl">2</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">t_stat</span><span class="op">)</span>, df <span class="op">=</span> <span class="va">N</span> <span class="op">-</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span>    </span>
+<span>    <span class="kw">if</span> <span class="op">(</span><span class="va">p_value</span> <span class="op">&lt;</span> <span class="va">alpha</span><span class="op">)</span> <span class="op">{</span></span>
+<span>      <span class="va">rejections</span> <span class="op">&lt;-</span> <span class="va">rejections</span> <span class="op">+</span> <span class="fl">1</span></span>
+<span>    <span class="op">}</span></span>
+<span>  <span class="op">}</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">rejections</span> <span class="op">/</span> <span class="va">reps</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, simulate this experiment <strong>1,000 times</strong>:</p>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Run power simulation</span></span>
+<span><span class="va">power</span> <span class="op">&lt;-</span> <span class="fu">simulate_power</span><span class="op">(</span>N <span class="op">=</span> <span class="fl">200</span>, true_tau <span class="op">=</span> <span class="fl">2</span>, sigma <span class="op">=</span> <span class="fl">4</span>, p <span class="op">=</span> <span class="fl">0.5</span>, alpha <span class="op">=</span> <span class="fl">0.05</span>, reps <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Estimated Power:"</span>, <span class="va">power</span>, <span class="st">"\n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Estimated Power: 0.938 </code></pre>
+</div>
+</div>
+</section></section><section id="step-5-interpreting-power-calculation" class="level3"><h3 class="anchored" data-anchor-id="step-5-interpreting-power-calculation"><strong>Step 5: Interpreting Power Calculation</strong></h3>
+<ul>
+<li>The <strong>power</strong> of the test is the proportion of simulations in which we correctly reject the null hypothesis when the treatment effect is truly <strong><span class="math inline">\(\tau = 2\)</span></strong>.</li>
+<li>A power value close to <strong>0.80 or higher</strong> indicates that the experiment is well-powered.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Try changing the sample size or effect size, to see how the power changes.</p>
+</div>
+</div>
+</section></section></section><section id="simulations-in-research-design" class="level1"><h1>Simulations in Research Design</h1>
+<p>To fix ideas of what we’re doing with simulations, it might be helpful to take a step back and view this in the context of an overall research design.</p>
+<p>We aim to generate empirical answers that closely approximate the true treatment effect. However, because we never observe both potential outcomes for an individual, we rely on statistical methods and experimental design to make <strong>valid inferences</strong>. Simulation plays a crucial role in assessing research designs, allowing us to compare <strong>simulated answers</strong> to possible true answers across multiple realizations of a study.</p>
+<p>In empirical research, a design consists of two halves:</p>
+<ol type="1">
+<li>
+<strong>Theoretical Component</strong>: Defines the inquiry using a model <span class="math inline">\(M\)</span>.</li>
+<li>
+<strong>Empirical Component</strong>: Applies the data strategy <span class="math inline">\(D\)</span> to generate a dataset, then applies an estimation strategy <span class="math inline">\(A\)</span> to obtain the empirical answer <span class="math inline">\(a_d\)</span>.</li>
+</ol>
+<p>Simulation dissociates the design from reality, allowing researchers to assess how their chosen model performs across various possible scenarios, even when the true answer is unknown.</p>
+<section id="the-mida-framework-for-simulation" class="level2"><h2 class="anchored" data-anchor-id="the-mida-framework-for-simulation">The MIDA Framework for Simulation</h2>
+<p>A structured way to think about research design and simulation is the <strong>MIDA Framework</strong>,<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>(https://book.declaredesign.org/declaration-diagnosis-redesign/research-design.html)] which consists of:</p>
+<ul>
+<li>
+<strong>M</strong>: The Model - The underlying data-generating process that defines the inquiry.</li>
+<li>
+<strong>I</strong>: The Inquiry - The specific research question we are trying to answer.</li>
+<li>
+<strong>D</strong>: The Data Strategy - The way we collect and structure data, including sampling and treatment assignment.</li>
+<li>
+<strong>A</strong>: The Answer Strategy - The statistical method we use to estimate the effect.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="../unit-1/media/MIDA.svg" class="img-fluid figure-img"></p>
+<figcaption>MIDA Framework, Source: Declaration Design</figcaption></figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="../unit-1/media/RDElements.png" class="img-fluid figure-img"></p>
+<figcaption>Elements of Research Design, Source: Declaration Design</figcaption></figure>
+</div>
+<p>In a real-world study, we can only observe a single realization of the design and generate one empirical answer <span class="math inline">\(a_d\)</span>. However, through <strong>simulation</strong>, we can consider many possible data realizations by repeatedly drawing from different models <span class="math inline">\(m_1, m_2, ..., m_k\)</span> within the model space <span class="math inline">\(M\)</span>. This allows us to assess how our research design performs across different scenarios.</p>
+</section><section id="diagnosing-research-designs-with-simulation" class="level2"><h2 class="anchored" data-anchor-id="diagnosing-research-designs-with-simulation">Diagnosing Research Designs with Simulation</h2>
+<p>When we simulate a research design, we evaluate its <strong>performance</strong> by considering:</p>
+<ul>
+<li>
+<strong>Bias</strong>: How close is the empirical answer <span class="math inline">\(a_d\)</span> to the true answer <span class="math inline">\(a_m\)</span>?</li>
+<li>
+<strong>Variance</strong>: How much do the empirical answers fluctuate across different realizations?</li>
+<li>
+<strong>Coverage</strong>: How often do confidence intervals include the true effect?</li>
+<li>
+<strong>Power</strong>: How frequently does the study correctly reject the null hypothesis when a true effect exists?</li>
+</ul>
+<p>The bottom half of the figure below illustrates how simulation allows us to examine the research design across multiple models (<span class="math inline">\(m_1, ..., m_k\)</span>), generating different answers (<span class="math inline">\(a_{m_1}, a_{m_2}, ..., a_{m_k}\)</span>) and associated datasets (<span class="math inline">\(d_1, d_2, ..., d_k\)</span>). The simulated research design does not have direct access to the true answer but can assess performance across the models under consideration.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="../unit-1/media/MIDA-Simulation.svg" class="img-fluid figure-img"></p>
+<figcaption>Simulations in the MIDA Framework</figcaption></figure>
+</div>
+</section></section><section id="multiple-hypothesis-testing" class="level1"><h1>Multiple Hypothesis Testing</h1>
+<p>To be continued in the next lecture…</p>
+</section><section id="references" class="level1"><h1>References</h1>
+<ol type="1">
+<li><a href="https://web.stanford.edu/~swager/causal_inf_book.pdf">Wager Chapter 1</a></li>
+<li><a href="https://book.declaredesign.org/declaration-diagnosis-redesign/declaring-designs.html">Declare Design Book</a></li>
+</ol>
+
+
+<!-- -->
+
+</section><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<ol>
+<li id="fn1"><p>Reference: <a href="https://book.declaredesign.org/declaration-diagnosis-redesign/choosing-answer-strategy.html#uncertainty">Research Design in the Social Sciences</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Can you explain in words how this differs from the Bayesian probability above?<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><a href="https://web.stanford.edu/~swager/causal_inf_book.pdf">Wager Chapter 1</a> refers to this as SATE.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Reference: Declaration Design<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/hpm883\.github\.io");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb12" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Unit 1-2: Statistical Conclusion Validity"</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Lecture Notes"</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Sean Sylvia, Ph.D."</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> February 5, 2025</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-depth: 2</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="an">draft:</span><span class="co"> false</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="fu"># Summary</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>This lecture delves into statistical conclusion validity, exploring how we can assess the reliability and accuracy of estimated treatment effects in experimental research. As we have seen, due to the fundamental nature of potential outcomes, it is inherently impossible to recover individual treatment effects since each unit reveals only one potential outcome. However, under specific assumptions and with an appropriate assignment mechanism—such as random assignment—we can consistently estimate an average treatment effect (ATE). This lecture provides a brief, selective statistical background on how to estimate the ATE and quantify the uncertainty in these estimates, ensuring statistical conclusion validity. To streamline the presentation, we focus on settings with a binary treatment and largely ignore the role of covariates.</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="fu"># Learning Objectives</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Explain the concept of statistical conclusion validity and its importance in ensuring that the estimated treatment effect reflects the true effect.</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Identify the key sources of uncertainty in experimental studies, including sampling variation, variance in potential outcomes, and measurement error.</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Review the principles of hypothesis testing, including the formulation of null and alternative hypotheses and the implications of Type I and Type II errors.</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Explore the role of statistical power in determining the sample size needed to detect significant effects.</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Explore the use of simulation techniques to conduct power calculations and assess the reliability of experimental designs.</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>Explore the role of multiple hypothesis testing and its implications in statistical inference.</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="fu"># Uncertainty and Statistical Conclusion Validity</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a><span class="fu">## What is Uncertainty?</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>Uncertainty in empirical research refers to the inherent imprecision that arises when we attempt to infer quantities that cannot be directly observed. Whether we are engaged in descriptive, causal, or generalization inference, our estimates come with uncertainty that must be quantified and communicated.</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>Two primary frameworks exist for this purpose: the Bayesian and the frequentist approaches.^<span class="co">[</span><span class="ot">Reference: [Research Design in the Social Sciences](https://book.declaredesign.org/declaration-diagnosis-redesign/choosing-answer-strategy.html#uncertainty)</span><span class="co">]</span></span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a><span class="fu">### Bayesian Approach</span></span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>The Bayesian framework uses Bayes’ rule to combine prior beliefs with the observed data, resulting in a posterior probability distribution over the parameter of interest, $\theta$. Mathematically, this is expressed as:</span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>\Pr(\theta = \theta' \mid d = d') = \frac{\Pr(d = d' \mid \theta = \theta')\, \Pr(\theta = \theta')}{\sum_{\theta''} \Pr(d = d' \mid \theta = \theta'')\, \Pr(\theta = \theta'')},</span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>where:</span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$d$ represents data, and $d'$ represents the observed data (or an "observed realization of the data")</span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\theta'$ and $\theta''$ represent particular values of the parameter $\theta$.</span>
+<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>From this posterior distribution, the **posterior mean** serves as our best estimate of $\theta$, and the **posterior variance** quantifies the uncertainty associated with that estimate.</span>
+<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a>By applying Bayes’ rule over different values of $\theta$, we construct a complete probability distribution that represents all possible answers. This posterior distribution simultaneously provides our best estimate—often summarized by the posterior mean—and quantifies our uncertainty via the posterior variance. </span>
+<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a>While intuitive, a challenge is that specifying prior uncertainty ($\Pr(\theta = \theta')$) is often a subjective choice, and the posterior distribution is often difficult to interpret and communicate.</span>
+<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a><span class="fu">### Frequentist Approach</span></span>
+<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a>In contrast, the frequentist approach avoids specifying prior beliefs and focuses on the likelihood function, $\Pr(d = d' \mid \theta = \theta')$, which describes the probability of observing the data $d'$ given a specific value of $\theta$.^<span class="co">[</span><span class="ot">Can you explain in words how this differs from the Bayesian probability above?</span><span class="co">]</span> I.e. instead of thinking of the strength of beliefs, we consider that $\theta$ generates the actual probability distriubtion over possible data $d$.</span>
+<span id="cb12-60"><a href="#cb12-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-61"><a href="#cb12-61" aria-hidden="true" tabindex="-1"></a>This approach yields useful quantities:</span>
+<span id="cb12-62"><a href="#cb12-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-63"><a href="#cb12-63" aria-hidden="true" tabindex="-1"></a>**P-value**: The p-value for a null hypothesis, $\theta = \theta_0$, is defined as the probability of observing data as extreme as $d_{m*}$ under the null hypothesis, or </span>
+<span id="cb12-64"><a href="#cb12-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-65"><a href="#cb12-65" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-66"><a href="#cb12-66" aria-hidden="true" tabindex="-1"></a>\Pr(d = d_{m*} \mid \theta = \theta_0).</span>
+<span id="cb12-67"><a href="#cb12-67" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-68"><a href="#cb12-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-69"><a href="#cb12-69" aria-hidden="true" tabindex="-1"></a>where $d_{m*}$ is the test statistic.</span>
+<span id="cb12-70"><a href="#cb12-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-71"><a href="#cb12-71" aria-hidden="true" tabindex="-1"></a>**Confidence Interval**: A 95% confidence interval is constructed such that, if the experiment were repeated many times, 95% of the intervals would contain the true parameter value. This approach provides a framework to rule out parameter values that are inconsistent with the observed data, or $Pr(d = d' \mid \theta = \theta') \leq 0.05$.</span>
+<span id="cb12-72"><a href="#cb12-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-73"><a href="#cb12-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-74"><a href="#cb12-74" aria-hidden="true" tabindex="-1"></a><span class="fu">## Where Does Uncertainty Come From in an Experimental Study?</span></span>
+<span id="cb12-75"><a href="#cb12-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-76"><a href="#cb12-76" aria-hidden="true" tabindex="-1"></a>Before getting into estimation and the uncertainty of the estimate, we need to be precise about the source of uncertainty. In experimental studies, uncertainty is an inherent part of the inference process, arising from several key sources. Recognizing these sources is critical to designing robust experiments and correctly interpreting the results. The main contributors to uncertainty include:</span>
+<span id="cb12-77"><a href="#cb12-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-78"><a href="#cb12-78" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Sampling Variation:**  </span>
+<span id="cb12-79"><a href="#cb12-79" aria-hidden="true" tabindex="-1"></a>  Uncertainty due to sampling variation stems from the fact that any sample drawn from a population is just one of many possible samples. Consequently, the same treatment might yield different results if applied to a different sample, reflecting random fluctuations in the selection process.</span>
+<span id="cb12-80"><a href="#cb12-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-81"><a href="#cb12-81" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Variance in Potential Outcomes:**  </span>
+<span id="cb12-82"><a href="#cb12-82" aria-hidden="true" tabindex="-1"></a>  The natural variability in the potential outcomes (i.e., the outcomes that would be observed under different treatment conditions) can lead to uncertainty. High variance makes it more challenging to detect a true treatment effect because the noise in the data can obscure the signal, thereby reducing the study's power to reject a false null hypothesis.</span>
+<span id="cb12-83"><a href="#cb12-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-84"><a href="#cb12-84" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Measurement Error:**  </span>
+<span id="cb12-85"><a href="#cb12-85" aria-hidden="true" tabindex="-1"></a>  Measurement error occurs when there are inaccuracies in recording or assessing the potential outcomes. Such errors introduce additional variability and can bias the estimated treatment effect, further contributing to uncertainty in the experimental results.</span>
+<span id="cb12-86"><a href="#cb12-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-87"><a href="#cb12-87" aria-hidden="true" tabindex="-1"></a>To vizualize this, the diagram below shows a "directed acyclic graph" (DAG) representation of the "data strategy" framework discussed in <span class="co">[</span><span class="ot">Chapter 8 of Research Design in the Social Sciences</span><span class="co">](https://book.declaredesign.org/declaration-diagnosis-redesign/crafting-data-strategy.html)</span>.</span>
+<span id="cb12-88"><a href="#cb12-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-89"><a href="#cb12-89" aria-hidden="true" tabindex="-1"></a><span class="al">![Data Strategy DAG, Source: Research Design in the Social Sciences](/unit-1/media/figure-8-1.svg)</span></span>
+<span id="cb12-90"><a href="#cb12-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-91"><a href="#cb12-91" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; In Figure 8.1, we illustrate these three elements of data strategies: sampling (S), treatment assignment (Z), and measurement (Q). These nodes are highlighted by blue boxes to emphasize that they are in the control of the researcher. No arrows go into the S, Z, or Q nodes; they are set by the researcher. In each case, the strategy selected by the researcher affects a corresponding endogenous variable. The sampling procedure causes changes in the endogenous response (R), which represents whether participants provide outcome data, for example responding to survey questions. R is not under the full control of the researchers: it is affected by S, the sampling procedure, but also by the idiosyncratic choices of participants who have higher and lower interest and ability to respond and participate in the study (U). Similarly, the endogenous variable treatment D represents whether participants actually receive the treatment, regardless of their assignment Z. D is affected by the treatment assignment procedure (Z) of course. But except in cases when Z fully determines D (no noncompliance), we are concerned that it will be affected by unobserved idiosyncratic features of individuals U. The third researcher node is Q, the measurement procedure. Q affects Y, the observed outcome, measured by the researcher. Y is also affected by a latent variable Y*, which cannot be directly observed. The measurement procedure provides an imperfect measurement of that latent variable, which is (potentially) affected by treatment D and unobserved heterogeneity U. In the robustness section at the end of the chapter, we explore further variations of this DAG that incorporate threats to inference from noncompliance, attrition, excludability violations, and interference.</span></span>
+<span id="cb12-92"><a href="#cb12-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-93"><a href="#cb12-93" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb12-94"><a href="#cb12-94" aria-hidden="true" tabindex="-1"></a>Can you draw four arrows representing the four exclusion restrictions?</span>
+<span id="cb12-95"><a href="#cb12-95" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb12-96"><a href="#cb12-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-97"><a href="#cb12-97" aria-hidden="true" tabindex="-1"></a><span class="fu">## Statistical Conclusion Validity</span></span>
+<span id="cb12-98"><a href="#cb12-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-99"><a href="#cb12-99" aria-hidden="true" tabindex="-1"></a>Given that our exclusion restrictions are satisfied, we can estimate the average treatment effect (ATE). The question is then: How can we ensure valid statistical conclusions from our estimate of the ATE? </span>
+<span id="cb12-100"><a href="#cb12-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-101"><a href="#cb12-101" aria-hidden="true" tabindex="-1"></a>We need to consider the uncertainty in our estimate, and whether we can reject the null hypothesis that the treatment has no effect.</span>
+<span id="cb12-102"><a href="#cb12-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-103"><a href="#cb12-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-104"><a href="#cb12-104" aria-hidden="true" tabindex="-1"></a><span class="fu"># **Sampling Frameworks: Understanding the Foundations of Estimation in Experiments**</span></span>
+<span id="cb12-105"><a href="#cb12-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-106"><a href="#cb12-106" aria-hidden="true" tabindex="-1"></a>When designing an experiment, we need to consider how the sample relates to the broader population of interest. This decision influences the **statistical inference** and generalizability of findings. Two main perspectives in sampling frameworks help frame this discussion: the **super-population approach** and the **finite-population approach**.</span>
+<span id="cb12-107"><a href="#cb12-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-108"><a href="#cb12-108" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**super-population approach**: units are assumed an independent sample from some hypothetical infinite population. </span>
+<span id="cb12-109"><a href="#cb12-109" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**finite-population approach**: inference is restricted to the specific individuals in the sample. Potential outcomes of the experimental units are fixed, and the randomness comes solely from the treatment assignment.</span>
+<span id="cb12-110"><a href="#cb12-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-111"><a href="#cb12-111" aria-hidden="true" tabindex="-1"></a><span class="fu">## **The Super-Population Approach**</span></span>
+<span id="cb12-112"><a href="#cb12-112" aria-hidden="true" tabindex="-1"></a>The **super-population approach** assumes that the study sample is drawn from a larger, hypothetical **infinite population** represented by a probability distribution, $Q$. This perspective views potential outcomes—both with and without treatment—as stochastic variables drawn from $Q$. The primary goal in this framework is to estimate a **feature of this distribution**, typically the **expected treatment effect**:</span>
+<span id="cb12-113"><a href="#cb12-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-114"><a href="#cb12-114" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-115"><a href="#cb12-115" aria-hidden="true" tabindex="-1"></a>E<span class="co">[</span><span class="ot">Y(1) - Y(0)</span><span class="co">]</span></span>
+<span id="cb12-116"><a href="#cb12-116" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-117"><a href="#cb12-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-118"><a href="#cb12-118" aria-hidden="true" tabindex="-1"></a>where $Y(1)$ and $Y(0)$ denote the potential outcomes under treatment and control conditions, respectively. Under this approach, each sample is considered an independent and identically distributed (i.i.d.) draw from the distribution $Q$, meaning the researcher is interested in making **generalizable inferences** beyond the study sample. </span>
+<span id="cb12-119"><a href="#cb12-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-120"><a href="#cb12-120" aria-hidden="true" tabindex="-1"></a>A key implication of this framework is that **two sources of variance** affect our estimation of treatment effects:</span>
+<span id="cb12-121"><a href="#cb12-121" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Sampling variance**—arising from differences between one sample and another.</span>
+<span id="cb12-122"><a href="#cb12-122" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Assignment mechanism variance**—introduced by the randomness in treatment assignment.</span>
+<span id="cb12-123"><a href="#cb12-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-124"><a href="#cb12-124" aria-hidden="true" tabindex="-1"></a>The super-population approach is useful when researchers aim to extend their findings to a broader population, such as in **policy recommendations** or **clinical trials**. However, it requires strong assumptions about how well the study sample represents the population.</span>
+<span id="cb12-125"><a href="#cb12-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-126"><a href="#cb12-126" aria-hidden="true" tabindex="-1"></a><span class="fu">## **The Finite-Population Approach**</span></span>
+<span id="cb12-127"><a href="#cb12-127" aria-hidden="true" tabindex="-1"></a>In contrast, the **finite-population approach** considers the sample as a fixed, well-defined group rather than a subset of an infinite population. Here, the researcher is not making inferences beyond the observed sample but instead treating the units as the **entire relevant population**. This approach is common in **evaluations of specific interventions** where the focus is on estimating the **finite-population average treatment effect (ATE)** (also called the sample average treatemnt effect, or SATE):^[<span class="co">[</span><span class="ot">Wager Chapter 1</span><span class="co">](https://web.stanford.edu/~swager/causal_inf_book.pdf)</span> refers to this as SATE.]</span>
+<span id="cb12-128"><a href="#cb12-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-129"><a href="#cb12-129" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-130"><a href="#cb12-130" aria-hidden="true" tabindex="-1"></a>\tau_{fp} = \frac{1}{N} \sum_{i=1}^{N} \left<span class="co">[</span><span class="ot">Y_i(1) - Y_i(0)\right</span><span class="co">]</span></span>
+<span id="cb12-131"><a href="#cb12-131" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-132"><a href="#cb12-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-133"><a href="#cb12-133" aria-hidden="true" tabindex="-1"></a>where $N$ is the total number of units in the study. Unlike in the super-population approach, the potential outcomes in a finite population framework are **fixed, not random**. The treatment effect is then viewed as an empirical quantity to be estimated within the sample, rather than a parameter of an underlying distribution.</span>
+<span id="cb12-134"><a href="#cb12-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-135"><a href="#cb12-135" aria-hidden="true" tabindex="-1"></a>A **practical distinction** between the two approaches is in their implications for statistical inference:</span>
+<span id="cb12-136"><a href="#cb12-136" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>In the **super-population approach**, standard errors reflect both **sampling variability** and **randomization-induced variation**.</span>
+<span id="cb12-137"><a href="#cb12-137" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>In the **finite-population approach**, standard errors are based only on the **variation within the observed sample**, without assuming a broader distribution.</span>
+<span id="cb12-138"><a href="#cb12-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-139"><a href="#cb12-139" aria-hidden="true" tabindex="-1"></a>This framework is particularly relevant when researchers are concerned with **internal validity** over generalizability, such as in **program evaluations or field experiments**.</span>
+<span id="cb12-140"><a href="#cb12-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-141"><a href="#cb12-141" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Subpopulations in the Super-Population Framework**</span></span>
+<span id="cb12-142"><a href="#cb12-142" aria-hidden="true" tabindex="-1"></a>Within the super-population framework, researchers often refine their analysis by considering **subpopulations** to account for **heterogeneous treatment effects**. One important example is the **Conditional Average Treatment Effect (CATE)**:</span>
+<span id="cb12-143"><a href="#cb12-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-144"><a href="#cb12-144" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-145"><a href="#cb12-145" aria-hidden="true" tabindex="-1"></a>E<span class="co">[</span><span class="ot">Y(1, X) - Y(0, X) | X</span><span class="co">]</span></span>
+<span id="cb12-146"><a href="#cb12-146" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-147"><a href="#cb12-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-148"><a href="#cb12-148" aria-hidden="true" tabindex="-1"></a>where $X$ represents observed covariates that influence treatment effects. This approach allows for **differentiated insights** across groups, such as demographic segments in public health interventions.</span>
+<span id="cb12-149"><a href="#cb12-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-150"><a href="#cb12-150" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Choosing Between the Two Approaches**</span></span>
+<span id="cb12-151"><a href="#cb12-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-152"><a href="#cb12-152" aria-hidden="true" tabindex="-1"></a>The choice between these sampling frameworks depends on the **research question**:</span>
+<span id="cb12-153"><a href="#cb12-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-154"><a href="#cb12-154" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>If the goal is to make **generalizable claims** about a broader population, the **super-population approach** is preferred.</span>
+<span id="cb12-155"><a href="#cb12-155" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>If the study focuses on **a specific, finite group of units**, the **finite-population approach** is more appropriate.</span>
+<span id="cb12-156"><a href="#cb12-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-157"><a href="#cb12-157" aria-hidden="true" tabindex="-1"></a>Both perspectives provide valuable insights, and many empirical studies incorporate elements of both frameworks, particularly when considering **external validity and policy relevance**.</span>
+<span id="cb12-158"><a href="#cb12-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-159"><a href="#cb12-159" aria-hidden="true" tabindex="-1"></a><span class="fu"># Single Hypothesis Testing and Statistical Power</span></span>
+<span id="cb12-160"><a href="#cb12-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-161"><a href="#cb12-161" aria-hidden="true" tabindex="-1"></a>With our sampling framework in mind, we can now turn to **single hypothesis testing** and **statistical power**. The first thing we need to do is choose an **estimator** of interest. If the estimand is an **Average Treatment Effect (ATE)**, then a reasonable choice is the **difference-in-means estimator**. This estimator compares the mean outcome of the treated group ($Y(1)$) and the control group ($Y(0)$):</span>
+<span id="cb12-162"><a href="#cb12-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-163"><a href="#cb12-163" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-164"><a href="#cb12-164" aria-hidden="true" tabindex="-1"></a>\hat{\tau} = \bar{Y}_1 - \bar{Y}_0</span>
+<span id="cb12-165"><a href="#cb12-165" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-166"><a href="#cb12-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-167"><a href="#cb12-167" aria-hidden="true" tabindex="-1"></a>where $ \bar{Y}_1 $ and $ \bar{Y}_0 $ are the sample means of the treated and control groups, respectively. The difference-in-means estimator provides an unbiased estimate of the **Average Treatment Effect (ATE)** (the estimand) under the assumption of random assignment.</span>
+<span id="cb12-168"><a href="#cb12-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-169"><a href="#cb12-169" aria-hidden="true" tabindex="-1"></a>However, while the estimator provides a point estimate of the treatment effect, it does not convey **uncertainty**. To formally assess whether the estimated effect is significantly different from zero, we conduct a **statistical hypothesis test**.</span>
+<span id="cb12-170"><a href="#cb12-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-171"><a href="#cb12-171" aria-hidden="true" tabindex="-1"></a>The fundamental question we seek to answer is:  </span>
+<span id="cb12-172"><a href="#cb12-172" aria-hidden="true" tabindex="-1"></a>**Can we be confident in detecting the reported effect size in our experimental results?**</span>
+<span id="cb12-173"><a href="#cb12-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-174"><a href="#cb12-174" aria-hidden="true" tabindex="-1"></a>To do so, we frame our problem in terms of **hypothesis testing**:</span>
+<span id="cb12-175"><a href="#cb12-175" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>We begin by specifying a **null hypothesis ($H_0$)**, which typically asserts that the treatment has no effect ($\tau = 0$).</span>
+<span id="cb12-176"><a href="#cb12-176" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The **alternative hypothesis ($H_A$)** posits that there is a nonzero effect ($\tau \neq 0$).</span>
+<span id="cb12-177"><a href="#cb12-177" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Hypothesis testing allows us to assess whether the observed difference-in-means provides sufficient evidence to reject $H_0$.</span>
+<span id="cb12-178"><a href="#cb12-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-179"><a href="#cb12-179" aria-hidden="true" tabindex="-1"></a>The hypothesis test is based on the **sampling distribution** of the estimator. Because we assume random assignment, the **difference-in-means estimator follows a known distribution**, and we use this fact to determine whether the observed effect is large enough to be statistically significant.</span>
+<span id="cb12-180"><a href="#cb12-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-181"><a href="#cb12-181" aria-hidden="true" tabindex="-1"></a><span class="fu">## Statistical Significance and the t-Statistic</span></span>
+<span id="cb12-182"><a href="#cb12-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-183"><a href="#cb12-183" aria-hidden="true" tabindex="-1"></a>To formally test the null hypothesis, we construct a **t-statistic**:</span>
+<span id="cb12-184"><a href="#cb12-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-185"><a href="#cb12-185" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-186"><a href="#cb12-186" aria-hidden="true" tabindex="-1"></a>t = \frac{\hat{\tau}}{\text{SE}(\hat{\tau})}</span>
+<span id="cb12-187"><a href="#cb12-187" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-188"><a href="#cb12-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-189"><a href="#cb12-189" aria-hidden="true" tabindex="-1"></a>where **SE($\hat{\tau}$)** represents the standard error of the difference-in-means estimator. As the sample size grows, this t-statistic follows a standard normal distribution (or Student's t-distribution for small samples). A large absolute value of $ t $ provides evidence against the null hypothesis.</span>
+<span id="cb12-190"><a href="#cb12-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-191"><a href="#cb12-191" aria-hidden="true" tabindex="-1"></a>To determine whether the result is **statistically significant**, we compare the t-statistic to a **critical value** determined by our chosen **significance level** ($\alpha$, commonly set at 0.05). If the absolute value of the t-statistic exceeds this threshold, we reject the null hypothesis.</span>
+<span id="cb12-192"><a href="#cb12-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-193"><a href="#cb12-193" aria-hidden="true" tabindex="-1"></a><span class="fu">## Type I and Type II Errors</span></span>
+<span id="cb12-194"><a href="#cb12-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-195"><a href="#cb12-195" aria-hidden="true" tabindex="-1"></a>While hypothesis testing provides a structured approach to evaluating treatment effects, errors can still occur:</span>
+<span id="cb12-196"><a href="#cb12-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-197"><a href="#cb12-197" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Type I Error ($\alpha$)**: Rejecting the null hypothesis when it is actually true (false positive).</span>
+<span id="cb12-198"><a href="#cb12-198" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Controlled by setting the significance level ($\alpha$), which determines the probability of mistakenly rejecting $H_0$.</span>
+<span id="cb12-199"><a href="#cb12-199" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Lower $\alpha$ reduces false positives but increases the risk of missing real effects.</span>
+<span id="cb12-200"><a href="#cb12-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-201"><a href="#cb12-201" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Type II Error ($\beta$)**: Failing to reject the null hypothesis when it is actually false (false negative).</span>
+<span id="cb12-202"><a href="#cb12-202" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Related to **statistical power**, which is the probability of detecting an effect when it truly exists.</span>
+<span id="cb12-203"><a href="#cb12-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-204"><a href="#cb12-204" aria-hidden="true" tabindex="-1"></a><span class="al">![Type 1 and Type 2 Errors](/unit-1/media/HypothesisTesting.png)</span></span>
+<span id="cb12-205"><a href="#cb12-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-206"><a href="#cb12-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-207"><a href="#cb12-207" aria-hidden="true" tabindex="-1"></a><span class="fu">## Power Calculation: Ensuring Detectability</span></span>
+<span id="cb12-208"><a href="#cb12-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-209"><a href="#cb12-209" aria-hidden="true" tabindex="-1"></a>**Statistical power** refers to the ability of a test to correctly reject the null hypothesis when a true effect exists. Mathematically:</span>
+<span id="cb12-210"><a href="#cb12-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-211"><a href="#cb12-211" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-212"><a href="#cb12-212" aria-hidden="true" tabindex="-1"></a>\text{Power} = 1 - \beta</span>
+<span id="cb12-213"><a href="#cb12-213" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-214"><a href="#cb12-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-215"><a href="#cb12-215" aria-hidden="true" tabindex="-1"></a>Factors influencing power:</span>
+<span id="cb12-216"><a href="#cb12-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-217"><a href="#cb12-217" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Effect size ($\tau$)**: Larger effects are easier to detect.</span>
+<span id="cb12-218"><a href="#cb12-218" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Sample size ($N$)**: Larger samples reduce variability, increasing power.</span>
+<span id="cb12-219"><a href="#cb12-219" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Significance level ($\alpha$)**: Lowering $\alpha$ increases the risk of missing true effects.</span>
+<span id="cb12-220"><a href="#cb12-220" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Standard deviation of outcomes**: Higher variability in outcomes reduces power.</span>
+<span id="cb12-221"><a href="#cb12-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-222"><a href="#cb12-222" aria-hidden="true" tabindex="-1"></a>To achieve a well-powered experiment, researchers conduct **power calculations** before data collection to determine the minimum sample size required to detect an effect with reasonable confidence.</span>
+<span id="cb12-223"><a href="#cb12-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-224"><a href="#cb12-224" aria-hidden="true" tabindex="-1"></a><span class="fu">### A Simple Example</span></span>
+<span id="cb12-225"><a href="#cb12-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-226"><a href="#cb12-226" aria-hidden="true" tabindex="-1"></a>Let's consider a simple example of a power simulation using a simple random assignment to a treatment and control group, where the estimate is the **difference-in-means estimator**.</span>
+<span id="cb12-227"><a href="#cb12-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-230"><a href="#cb12-230" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb12-231"><a href="#cb12-231" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb12-232"><a href="#cb12-232" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-233"><a href="#cb12-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-234"><a href="#cb12-234" aria-hidden="true" tabindex="-1"></a><span class="fu">#### **Step 1: Define Simulation Parameters**</span></span>
+<span id="cb12-235"><a href="#cb12-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-236"><a href="#cb12-236" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Let’s assume we have a total sample size of $N = 200$ individuals.</span>
+<span id="cb12-237"><a href="#cb12-237" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The treatment group receives an intervention, while the control group does not.</span>
+<span id="cb12-238"><a href="#cb12-238" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The true treatment effect is set to $\tau = 2$.</span>
+<span id="cb12-239"><a href="#cb12-239" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The outcome variable follows a normal distribution with mean 10 and standard deviation 4.</span>
+<span id="cb12-240"><a href="#cb12-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-243"><a href="#cb12-243" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb12-244"><a href="#cb12-244" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">072111</span>)  <span class="co"># Ensures reproducibility</span></span>
+<span id="cb12-245"><a href="#cb12-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-246"><a href="#cb12-246" aria-hidden="true" tabindex="-1"></a><span class="co"># Define parameters</span></span>
+<span id="cb12-247"><a href="#cb12-247" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">200</span>  <span class="co"># Total sample size</span></span>
+<span id="cb12-248"><a href="#cb12-248" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.5</span>  <span class="co"># Probability of assignment to treatment</span></span>
+<span id="cb12-249"><a href="#cb12-249" aria-hidden="true" tabindex="-1"></a>true_tau <span class="ot">&lt;-</span> <span class="dv">2</span>  <span class="co"># True treatment effect</span></span>
+<span id="cb12-250"><a href="#cb12-250" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">4</span>  <span class="co"># Standard deviation of outcome</span></span>
+<span id="cb12-251"><a href="#cb12-251" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-252"><a href="#cb12-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-253"><a href="#cb12-253" aria-hidden="true" tabindex="-1"></a><span class="fu">#### **Step 2: Simulate Data**</span></span>
+<span id="cb12-254"><a href="#cb12-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-255"><a href="#cb12-255" aria-hidden="true" tabindex="-1"></a>Now we can simulate the data using data.table:</span>
+<span id="cb12-256"><a href="#cb12-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-259"><a href="#cb12-259" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb12-260"><a href="#cb12-260" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate data using data.table</span></span>
+<span id="cb12-261"><a href="#cb12-261" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span>N)</span>
+<span id="cb12-262"><a href="#cb12-262" aria-hidden="true" tabindex="-1"></a>dt[, treatment <span class="sc">:</span><span class="er">=</span> <span class="fu">rbinom</span>(.N, <span class="dv">1</span>, p)]</span>
+<span id="cb12-263"><a href="#cb12-263" aria-hidden="true" tabindex="-1"></a>dt[, outcome <span class="sc">:</span><span class="er">=</span> <span class="dv">10</span> <span class="sc">+</span> true_tau <span class="sc">*</span> treatment <span class="sc">+</span> <span class="fu">rnorm</span>(.N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> sigma)]</span>
+<span id="cb12-264"><a href="#cb12-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-265"><a href="#cb12-265" aria-hidden="true" tabindex="-1"></a><span class="co">#display first few rows</span></span>
+<span id="cb12-266"><a href="#cb12-266" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span>
+<span id="cb12-267"><a href="#cb12-267" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-268"><a href="#cb12-268" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-269"><a href="#cb12-269" aria-hidden="true" tabindex="-1"></a><span class="fu">#### **Step 3: Estimate Treatment Effect**    </span></span>
+<span id="cb12-270"><a href="#cb12-270" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-273"><a href="#cb12-273" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb12-274"><a href="#cb12-274" aria-hidden="true" tabindex="-1"></a>diff_means <span class="ot">&lt;-</span> dt[treatment <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">mean</span>(outcome)] <span class="sc">-</span> dt[treatment <span class="sc">==</span> <span class="dv">0</span>, <span class="fu">mean</span>(outcome)]</span>
+<span id="cb12-275"><a href="#cb12-275" aria-hidden="true" tabindex="-1"></a>SE <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(dt[treatment <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">var</span>(outcome)] <span class="sc">/</span> dt[treatment <span class="sc">==</span> <span class="dv">1</span>, .N] <span class="sc">+</span></span>
+<span id="cb12-276"><a href="#cb12-276" aria-hidden="true" tabindex="-1"></a>           dt[treatment <span class="sc">==</span> <span class="dv">0</span>, <span class="fu">var</span>(outcome)] <span class="sc">/</span> dt[treatment <span class="sc">==</span> <span class="dv">0</span>, .N])</span>
+<span id="cb12-277"><a href="#cb12-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-278"><a href="#cb12-278" aria-hidden="true" tabindex="-1"></a>t_stat <span class="ot">&lt;-</span> diff_means <span class="sc">/</span> SE  <span class="co"># Compute t-statistic</span></span>
+<span id="cb12-279"><a href="#cb12-279" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="fu">abs</span>(t_stat), <span class="at">df =</span> N <span class="sc">-</span> <span class="dv">2</span>))  <span class="co"># Two-tailed test</span></span>
+<span id="cb12-280"><a href="#cb12-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-281"><a href="#cb12-281" aria-hidden="true" tabindex="-1"></a><span class="co"># Display results</span></span>
+<span id="cb12-282"><a href="#cb12-282" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Estimated Treatment Effect:"</span>, diff_means, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb12-283"><a href="#cb12-283" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"p-value:"</span>, p_value, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb12-284"><a href="#cb12-284" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-285"><a href="#cb12-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-286"><a href="#cb12-286" aria-hidden="true" tabindex="-1"></a><span class="fu">#### **Step 4: Power Simulation**</span></span>
+<span id="cb12-287"><a href="#cb12-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-288"><a href="#cb12-288" aria-hidden="true" tabindex="-1"></a>First, let's consider how we will interpret the results:</span>
+<span id="cb12-289"><a href="#cb12-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-290"><a href="#cb12-290" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>If the p-value is **less than 0.05**, we reject the null hypothesis and conclude that the treatment has a significant effect.</span>
+<span id="cb12-291"><a href="#cb12-291" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>If the p-value is **greater than 0.05**, we fail to reject the null, meaning we do not have enough evidence to confirm a treatment effect.</span>
+<span id="cb12-292"><a href="#cb12-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-293"><a href="#cb12-293" aria-hidden="true" tabindex="-1"></a>Now, let's simulate a power simulation:</span>
+<span id="cb12-294"><a href="#cb12-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-295"><a href="#cb12-295" aria-hidden="true" tabindex="-1"></a>First, define the power simulation function:</span>
+<span id="cb12-296"><a href="#cb12-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-299"><a href="#cb12-299" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb12-300"><a href="#cb12-300" aria-hidden="true" tabindex="-1"></a>simulate_power <span class="ot">&lt;-</span> <span class="cf">function</span>(N, true_tau, sigma, p, alpha, <span class="at">reps =</span> <span class="dv">1000</span>) {</span>
+<span id="cb12-301"><a href="#cb12-301" aria-hidden="true" tabindex="-1"></a>  rejections <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb12-302"><a href="#cb12-302" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-303"><a href="#cb12-303" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>reps) {</span>
+<span id="cb12-304"><a href="#cb12-304" aria-hidden="true" tabindex="-1"></a>    dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span>N)</span>
+<span id="cb12-305"><a href="#cb12-305" aria-hidden="true" tabindex="-1"></a>    dt[, treatment <span class="sc">:</span><span class="er">=</span> <span class="fu">rbinom</span>(.N, <span class="dv">1</span>, p)]</span>
+<span id="cb12-306"><a href="#cb12-306" aria-hidden="true" tabindex="-1"></a>    dt[, outcome <span class="sc">:</span><span class="er">=</span> <span class="dv">10</span> <span class="sc">+</span> true_tau <span class="sc">*</span> treatment <span class="sc">+</span> <span class="fu">rnorm</span>(.N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> sigma)]</span>
+<span id="cb12-307"><a href="#cb12-307" aria-hidden="true" tabindex="-1"></a>    diff_means <span class="ot">&lt;-</span> dt[treatment <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">mean</span>(outcome)] <span class="sc">-</span> dt[treatment <span class="sc">==</span> <span class="dv">0</span>, <span class="fu">mean</span>(outcome)]</span>
+<span id="cb12-308"><a href="#cb12-308" aria-hidden="true" tabindex="-1"></a>    SE <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(dt[treatment <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">var</span>(outcome)] <span class="sc">/</span> dt[treatment <span class="sc">==</span> <span class="dv">1</span>, .N] <span class="sc">+</span></span>
+<span id="cb12-309"><a href="#cb12-309" aria-hidden="true" tabindex="-1"></a>               dt[treatment <span class="sc">==</span> <span class="dv">0</span>, <span class="fu">var</span>(outcome)] <span class="sc">/</span> dt[treatment <span class="sc">==</span> <span class="dv">0</span>, .N])</span>
+<span id="cb12-310"><a href="#cb12-310" aria-hidden="true" tabindex="-1"></a>    t_stat <span class="ot">&lt;-</span> diff_means <span class="sc">/</span> SE</span>
+<span id="cb12-311"><a href="#cb12-311" aria-hidden="true" tabindex="-1"></a>    p_value <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="fu">abs</span>(t_stat), <span class="at">df =</span> N <span class="sc">-</span> <span class="dv">2</span>))</span>
+<span id="cb12-312"><a href="#cb12-312" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-313"><a href="#cb12-313" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (p_value <span class="sc">&lt;</span> alpha) {</span>
+<span id="cb12-314"><a href="#cb12-314" aria-hidden="true" tabindex="-1"></a>      rejections <span class="ot">&lt;-</span> rejections <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb12-315"><a href="#cb12-315" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb12-316"><a href="#cb12-316" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-317"><a href="#cb12-317" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(rejections <span class="sc">/</span> reps)</span>
+<span id="cb12-318"><a href="#cb12-318" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-319"><a href="#cb12-319" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-320"><a href="#cb12-320" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-321"><a href="#cb12-321" aria-hidden="true" tabindex="-1"></a>Now, simulate this experiment **1,000 times**:</span>
+<span id="cb12-322"><a href="#cb12-322" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-325"><a href="#cb12-325" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb12-326"><a href="#cb12-326" aria-hidden="true" tabindex="-1"></a><span class="co"># Run power simulation</span></span>
+<span id="cb12-327"><a href="#cb12-327" aria-hidden="true" tabindex="-1"></a>power <span class="ot">&lt;-</span> <span class="fu">simulate_power</span>(<span class="at">N =</span> <span class="dv">200</span>, <span class="at">true_tau =</span> <span class="dv">2</span>, <span class="at">sigma =</span> <span class="dv">4</span>, <span class="at">p =</span> <span class="fl">0.5</span>, <span class="at">alpha =</span> <span class="fl">0.05</span>, <span class="at">reps =</span> <span class="dv">1000</span>)</span>
+<span id="cb12-328"><a href="#cb12-328" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Estimated Power:"</span>, power, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb12-329"><a href="#cb12-329" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-330"><a href="#cb12-330" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-331"><a href="#cb12-331" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Step 5: Interpreting Power Calculation**</span></span>
+<span id="cb12-332"><a href="#cb12-332" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-333"><a href="#cb12-333" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The **power** of the test is the proportion of simulations in which we correctly reject the null hypothesis when the treatment effect is truly **$\tau = 2$**.</span>
+<span id="cb12-334"><a href="#cb12-334" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>A power value close to **0.80 or higher** indicates that the experiment is well-powered.</span>
+<span id="cb12-335"><a href="#cb12-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-336"><a href="#cb12-336" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb12-337"><a href="#cb12-337" aria-hidden="true" tabindex="-1"></a>Try changing the sample size or effect size, to see how the power changes.</span>
+<span id="cb12-338"><a href="#cb12-338" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb12-339"><a href="#cb12-339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-340"><a href="#cb12-340" aria-hidden="true" tabindex="-1"></a><span class="fu"># Simulations in Research Design</span></span>
+<span id="cb12-341"><a href="#cb12-341" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-342"><a href="#cb12-342" aria-hidden="true" tabindex="-1"></a>To fix ideas of what we're doing with simulations, it might be helpful to take a step back and view this in the context of an overall research design. </span>
+<span id="cb12-343"><a href="#cb12-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-344"><a href="#cb12-344" aria-hidden="true" tabindex="-1"></a>We aim to generate empirical answers that closely approximate the true treatment effect. However, because we never observe both potential outcomes for an individual, we rely on statistical methods and experimental design to make **valid inferences**. Simulation plays a crucial role in assessing research designs, allowing us to compare **simulated answers** to possible true answers across multiple realizations of a study.</span>
+<span id="cb12-345"><a href="#cb12-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-346"><a href="#cb12-346" aria-hidden="true" tabindex="-1"></a>In empirical research, a design consists of two halves:</span>
+<span id="cb12-347"><a href="#cb12-347" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-348"><a href="#cb12-348" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Theoretical Component**: Defines the inquiry using a model $M$.</span>
+<span id="cb12-349"><a href="#cb12-349" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Empirical Component**: Applies the data strategy $D$ to generate a dataset, then applies an estimation strategy $A$ to obtain the empirical answer $a_d$.</span>
+<span id="cb12-350"><a href="#cb12-350" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-351"><a href="#cb12-351" aria-hidden="true" tabindex="-1"></a>Simulation dissociates the design from reality, allowing researchers to assess how their chosen model performs across various possible scenarios, even when the true answer is unknown.</span>
+<span id="cb12-352"><a href="#cb12-352" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-353"><a href="#cb12-353" aria-hidden="true" tabindex="-1"></a><span class="fu">## The MIDA Framework for Simulation</span></span>
+<span id="cb12-354"><a href="#cb12-354" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-355"><a href="#cb12-355" aria-hidden="true" tabindex="-1"></a>A structured way to think about research design and simulation is the **MIDA Framework**,^<span class="co">[</span><span class="ot">Reference: Declaration Design</span><span class="co">](https://book.declaredesign.org/declaration-diagnosis-redesign/research-design.html)</span>] which consists of:</span>
+<span id="cb12-356"><a href="#cb12-356" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-357"><a href="#cb12-357" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**M**: The Model - The underlying data-generating process that defines the inquiry.</span>
+<span id="cb12-358"><a href="#cb12-358" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**I**: The Inquiry - The specific research question we are trying to answer.</span>
+<span id="cb12-359"><a href="#cb12-359" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**D**: The Data Strategy - The way we collect and structure data, including sampling and treatment assignment.</span>
+<span id="cb12-360"><a href="#cb12-360" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**A**: The Answer Strategy - The statistical method we use to estimate the effect.</span>
+<span id="cb12-361"><a href="#cb12-361" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-362"><a href="#cb12-362" aria-hidden="true" tabindex="-1"></a><span class="al">![MIDA Framework, Source: Declaration Design](/unit-1/media/MIDA.svg)</span></span>
+<span id="cb12-363"><a href="#cb12-363" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-364"><a href="#cb12-364" aria-hidden="true" tabindex="-1"></a><span class="al">![Elements of Research Design, Source: Declaration Design](/unit-1/media/RDElements.png)</span></span>
+<span id="cb12-365"><a href="#cb12-365" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-366"><a href="#cb12-366" aria-hidden="true" tabindex="-1"></a>In a real-world study, we can only observe a single realization of the design and generate one empirical answer $a_d$. However, through **simulation**, we can consider many possible data realizations by repeatedly drawing from different models $m_1, m_2, ..., m_k$ within the model space $M$. This allows us to assess how our research design performs across different scenarios.</span>
+<span id="cb12-367"><a href="#cb12-367" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-368"><a href="#cb12-368" aria-hidden="true" tabindex="-1"></a><span class="fu">## Diagnosing Research Designs with Simulation</span></span>
+<span id="cb12-369"><a href="#cb12-369" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-370"><a href="#cb12-370" aria-hidden="true" tabindex="-1"></a>When we simulate a research design, we evaluate its **performance** by considering:</span>
+<span id="cb12-371"><a href="#cb12-371" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-372"><a href="#cb12-372" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Bias**: How close is the empirical answer $a_d$ to the true answer $a_m$?</span>
+<span id="cb12-373"><a href="#cb12-373" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Variance**: How much do the empirical answers fluctuate across different realizations?</span>
+<span id="cb12-374"><a href="#cb12-374" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Coverage**: How often do confidence intervals include the true effect?</span>
+<span id="cb12-375"><a href="#cb12-375" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Power**: How frequently does the study correctly reject the null hypothesis when a true effect exists?</span>
+<span id="cb12-376"><a href="#cb12-376" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-377"><a href="#cb12-377" aria-hidden="true" tabindex="-1"></a>The bottom half of the figure below illustrates how simulation allows us to examine the research design across multiple models ($m_1, ..., m_k$), generating different answers ($a_{m_1}, a_{m_2}, ..., a_{m_k}$) and associated datasets ($d_1, d_2, ..., d_k$). The simulated research design does not have direct access to the true answer but can assess performance across the models under consideration.</span>
+<span id="cb12-378"><a href="#cb12-378" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-379"><a href="#cb12-379" aria-hidden="true" tabindex="-1"></a><span class="al">![Simulations in the MIDA Framework](/unit-1/media/MIDA-Simulation.svg)</span></span>
+<span id="cb12-380"><a href="#cb12-380" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-381"><a href="#cb12-381" aria-hidden="true" tabindex="-1"></a><span class="fu"># Multiple Hypothesis Testing</span></span>
+<span id="cb12-382"><a href="#cb12-382" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-383"><a href="#cb12-383" aria-hidden="true" tabindex="-1"></a>To be continued in the next lecture...</span>
+<span id="cb12-384"><a href="#cb12-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-385"><a href="#cb12-385" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-386"><a href="#cb12-386" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-387"><a href="#cb12-387" aria-hidden="true" tabindex="-1"></a><span class="fu"># References</span></span>
+<span id="cb12-388"><a href="#cb12-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-389"><a href="#cb12-389" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Wager Chapter 1</span><span class="co">](https://web.stanford.edu/~swager/causal_inf_book.pdf)</span></span>
+<span id="cb12-390"><a href="#cb12-390" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span><span class="co">[</span><span class="ot">Declare Design Book</span><span class="co">](https://book.declaredesign.org/declaration-diagnosis-redesign/declaring-designs.html)</span></span>
+<span id="cb12-391"><a href="#cb12-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-392"><a href="#cb12-392" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-393"><a href="#cb12-393" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-394"><a href="#cb12-394" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-395"><a href="#cb12-395" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-396"><a href="#cb12-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-397"><a href="#cb12-397" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-398"><a href="#cb12-398" aria-hidden="true" tabindex="-1"></a></span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2024, Sean Sylvia</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/hpm883/edit/main/unit-1/lec-1-2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This page is built with <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+</body></html>

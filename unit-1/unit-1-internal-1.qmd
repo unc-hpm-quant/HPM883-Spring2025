@@ -1,5 +1,5 @@
 ---
-title: "Unit 1: Internal Validity"
+title: "Unit 1.1: Internal Validity and Potential Outcomes"
 draft: false
 ---
 
@@ -12,14 +12,14 @@ draft: false
 -   These elements are essential for establishing causality.
 -   We will also review the notation that will be used throughout the class.
 
-## Preparation
+### Preparation
 
 -   Read:
     -   [Applied Causal Inference Powered by ML and AI, Chapter 2](https://causalml-book.org/assets/chapters/CausalML_chap_2.pdf)
     -   [Causal Inference Mixtape, Chapter 4](https://mixtape.scunning.com/04-potential_outcomes)
 -   Listen: [Internal Validity Podcast](media/InternalValidity.mp3)
 
-## In-class
+### Class
 
 -   Group Assignments
 
@@ -33,7 +33,8 @@ draft: false
 
 -   [Lecture: Internal Validity](/unit-1/lec-1-1.qmd)
 
-## Lab
+### Lab
 
 -   [Lab 1: The Hospital of Uncertain Outcomes](/labs/lab-1-InternalValidityPO.qmd)
     - [Solutions](/labs/lab-1-InternalValidityPO_sols.qmd)
+

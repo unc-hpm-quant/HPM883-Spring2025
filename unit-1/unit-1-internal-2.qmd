@@ -1,0 +1,30 @@
+---
+title: "Unit 1.2: Statistical Conclusion  Validity"
+subtitle: "Class 5: Statistical Conclusion Validity"
+draft: false
+---
+
+## Unit Overview
+
+-   Introduce statistical conclusion validity
+-   Explore sources of uncertainty in experiments
+-   Introduce hypothesis testing
+-   Examine the role of statistical power in determining sample size
+-   Use simulation techniques for power calculations and design assessments
+-   Discuss multiple hypothesis testing and its implications
+
+
+### Preparation
+
+-   Read:
+    -   [Wager Chapter 1](https://web.stanford.edu/~swager/causal_inf_book.pdf)
+    -   [Declare Design Book: 5.1, 8.2, 10](https://book.declaredesign.org/declaration-diagnosis-redesign/crafting-data-strategy.html)
+
+-   Listen:
+    -   [Experimental Design and Multiple Hypothesis Testing Podcast](media/Experimental Design and Multiple Hypothesis Testing.mp3)
+
+### Class
+
+-   [Lecture: Statistical Conclusion Validity](/unit-1/lec-1-2.qmd)
+
+### Lab

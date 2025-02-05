@@ -119,375 +119,424 @@
     "text": "Helpful Resources:\n\nFor guidance on pre-analysis plans, refer to the World Bank’s DIME Wiki: Pre-Analysis Plan - DIME Wiki\nFor examples of pre-analysis plans, explore the AEA’s RCT Registry: AEA RCT Registry"
   },
   {
-    "objectID": "unit-1/lec-1-1.html",
-    "href": "unit-1/lec-1-1.html",
-    "title": "Unit 1: Internal Validity",
+    "objectID": "unit-1/lec-1-2.html",
+    "href": "unit-1/lec-1-2.html",
+    "title": "Unit 1-2: Statistical Conclusion Validity",
     "section": "",
-    "text": "Internal validity is the cornerstone of experimental design, crucial for establishing a causal relationship between treatment and outcome. It ensures that the observed effects in an experiment can be confidently attributed to the treatment rather than other confounding factors. This lecture explores the core principles and challenges of internal validity, including the role of randomization, exclusion restrictions, and the assignment mechanism. We also discuss practical applications and the complexities of ensuring compliance and observability in experimental settings."
+    "text": "This lecture delves into statistical conclusion validity, exploring how we can assess the reliability and accuracy of estimated treatment effects in experimental research. As we have seen, due to the fundamental nature of potential outcomes, it is inherently impossible to recover individual treatment effects since each unit reveals only one potential outcome. However, under specific assumptions and with an appropriate assignment mechanism—such as random assignment—we can consistently estimate an average treatment effect (ATE). This lecture provides a brief, selective statistical background on how to estimate the ATE and quantify the uncertainty in these estimates, ensuring statistical conclusion validity. To streamline the presentation, we focus on settings with a binary treatment and largely ignore the role of covariates."
   },
   {
-    "objectID": "unit-1/lec-1-1.html#scenario-1",
-    "href": "unit-1/lec-1-1.html#scenario-1",
-    "title": "Unit 1: Internal Validity",
-    "section": "Scenario 1",
-    "text": "Scenario 1\nSuppose you are considering whether a new diet is linked to lower risk of inflammatory arthritis.\nYou observe that in a given sample: - A small fraction of individuals on the diet have inflammatory arthritis. - A large fraction of individuals not on the diet have inflammatory arthritis.\nBased on this, you recommend that everyone pursue this new diet, but rates of inflammatory arthritis are unaffected.\nWhat happened?"
+    "objectID": "unit-1/lec-1-2.html#what-is-uncertainty",
+    "href": "unit-1/lec-1-2.html#what-is-uncertainty",
+    "title": "Unit 1-2: Statistical Conclusion Validity",
+    "section": "What is Uncertainty?",
+    "text": "What is Uncertainty?\nUncertainty in empirical research refers to the inherent imprecision that arises when we attempt to infer quantities that cannot be directly observed. Whether we are engaged in descriptive, causal, or generalization inference, our estimates come with uncertainty that must be quantified and communicated.\nTwo primary frameworks exist for this purpose: the Bayesian and the frequentist approaches.1\nBayesian Approach\nThe Bayesian framework uses Bayes’ rule to combine prior beliefs with the observed data, resulting in a posterior probability distribution over the parameter of interest, \\(\\theta\\). Mathematically, this is expressed as:\n\\[\n\\Pr(\\theta = \\theta' \\mid d = d') = \\frac{\\Pr(d = d' \\mid \\theta = \\theta')\\, \\Pr(\\theta = \\theta')}{\\sum_{\\theta''} \\Pr(d = d' \\mid \\theta = \\theta'')\\, \\Pr(\\theta = \\theta'')},\n\\]\nwhere:\n\n\\(d\\) represents data, and \\(d'\\) represents the observed data (or an “observed realization of the data”)\n\\(\\theta'\\) and \\(\\theta''\\) represent particular values of the parameter \\(\\theta\\).\n\nFrom this posterior distribution, the posterior mean serves as our best estimate of \\(\\theta\\), and the posterior variance quantifies the uncertainty associated with that estimate.\nBy applying Bayes’ rule over different values of \\(\\theta\\), we construct a complete probability distribution that represents all possible answers. This posterior distribution simultaneously provides our best estimate—often summarized by the posterior mean—and quantifies our uncertainty via the posterior variance.\nWhile intuitive, a challenge is that specifying prior uncertainty (\\(\\Pr(\\theta = \\theta')\\)) is often a subjective choice, and the posterior distribution is often difficult to interpret and communicate.\nFrequentist Approach\nIn contrast, the frequentist approach avoids specifying prior beliefs and focuses on the likelihood function, \\(\\Pr(d = d' \\mid \\theta = \\theta')\\), which describes the probability of observing the data \\(d'\\) given a specific value of \\(\\theta\\).2 I.e. instead of thinking of the strength of beliefs, we consider that \\(\\theta\\) generates the actual probability distriubtion over possible data \\(d\\).\nThis approach yields useful quantities:\nP-value: The p-value for a null hypothesis, \\(\\theta = \\theta_0\\), is defined as the probability of observing data as extreme as \\(d_{m*}\\) under the null hypothesis, or\n\\[\n\\Pr(d = d_{m*} \\mid \\theta = \\theta_0).\n\\]\nwhere \\(d_{m*}\\) is the test statistic.\nConfidence Interval: A 95% confidence interval is constructed such that, if the experiment were repeated many times, 95% of the intervals would contain the true parameter value. This approach provides a framework to rule out parameter values that are inconsistent with the observed data, or \\(Pr(d = d' \\mid \\theta = \\theta') \\leq 0.05\\)."
   },
   {
-    "objectID": "unit-1/lec-1-1.html#scenario-2",
-    "href": "unit-1/lec-1-1.html#scenario-2",
-    "title": "Unit 1: Internal Validity",
-    "section": "Scenario 2",
-    "text": "Scenario 2\nConsider a policy designed to reduce emergency room visits by offering free preventive care check-ups. Policymakers observed that communities with higher uptake of preventive care have fewer emergency visits. They implement the policy nationwide, expecting a significant reduction in emergency room visits. However, the policy shows no measurable impact.\nWhat happened?"
+    "objectID": "unit-1/lec-1-2.html#where-does-uncertainty-come-from-in-an-experimental-study",
+    "href": "unit-1/lec-1-2.html#where-does-uncertainty-come-from-in-an-experimental-study",
+    "title": "Unit 1-2: Statistical Conclusion Validity",
+    "section": "Where Does Uncertainty Come From in an Experimental Study?",
+    "text": "Where Does Uncertainty Come From in an Experimental Study?\nBefore getting into estimation and the uncertainty of the estimate, we need to be precise about the source of uncertainty. In experimental studies, uncertainty is an inherent part of the inference process, arising from several key sources. Recognizing these sources is critical to designing robust experiments and correctly interpreting the results. The main contributors to uncertainty include:\n\nSampling Variation:\nUncertainty due to sampling variation stems from the fact that any sample drawn from a population is just one of many possible samples. Consequently, the same treatment might yield different results if applied to a different sample, reflecting random fluctuations in the selection process.\nVariance in Potential Outcomes:\nThe natural variability in the potential outcomes (i.e., the outcomes that would be observed under different treatment conditions) can lead to uncertainty. High variance makes it more challenging to detect a true treatment effect because the noise in the data can obscure the signal, thereby reducing the study’s power to reject a false null hypothesis.\nMeasurement Error:\nMeasurement error occurs when there are inaccuracies in recording or assessing the potential outcomes. Such errors introduce additional variability and can bias the estimated treatment effect, further contributing to uncertainty in the experimental results.\n\nTo vizualize this, the diagram below shows a “directed acyclic graph” (DAG) representation of the “data strategy” framework discussed in Chapter 8 of Research Design in the Social Sciences.\n\n\nData Strategy DAG, Source: Research Design in the Social Sciences\n\n\nIn Figure 8.1, we illustrate these three elements of data strategies: sampling (S), treatment assignment (Z), and measurement (Q). These nodes are highlighted by blue boxes to emphasize that they are in the control of the researcher. No arrows go into the S, Z, or Q nodes; they are set by the researcher. In each case, the strategy selected by the researcher affects a corresponding endogenous variable. The sampling procedure causes changes in the endogenous response (R), which represents whether participants provide outcome data, for example responding to survey questions. R is not under the full control of the researchers: it is affected by S, the sampling procedure, but also by the idiosyncratic choices of participants who have higher and lower interest and ability to respond and participate in the study (U). Similarly, the endogenous variable treatment D represents whether participants actually receive the treatment, regardless of their assignment Z. D is affected by the treatment assignment procedure (Z) of course. But except in cases when Z fully determines D (no noncompliance), we are concerned that it will be affected by unobserved idiosyncratic features of individuals U. The third researcher node is Q, the measurement procedure. Q affects Y, the observed outcome, measured by the researcher. Y is also affected by a latent variable Y*, which cannot be directly observed. The measurement procedure provides an imperfect measurement of that latent variable, which is (potentially) affected by treatment D and unobserved heterogeneity U. In the robustness section at the end of the chapter, we explore further variations of this DAG that incorporate threats to inference from noncompliance, attrition, excludability violations, and interference.\n\n\n\n\n\n\n\nTip\n\n\n\nCan you draw four arrows representing the four exclusion restrictions?"
   },
   {
-    "objectID": "unit-1/lec-1-1.html#explanation",
-    "href": "unit-1/lec-1-1.html#explanation",
-    "title": "Unit 1: Internal Validity",
-    "section": "Explanation",
-    "text": "Explanation\nIn each case, you were unable to see what would have happened to each individual if the alternative action had been applied.\nIn scenario 1, it could be that individuals who chose the diet may already have healthier lifestyles, including better exercise and reduced stress levels, which are known to reduce the risk of inflammatory arthritis. The observed differences may be due to these factors rather than the diet itself. Without randomization or controlling for confounding factors, you cannot attribute causality to the diet. The association observed may not reflect the causal effect of the diet.\nIn scenario 2, the observed association between preventive care and lower emergency room visits may reflect that communities with higher uptake of preventive care might already have better healthcare access, socioeconomic conditions, or health awareness—all factors that independently reduce emergency visits. Implementing the policy broadly, without considering these confounders, does not account for the variation in baseline conditions.\nThe lack of this information is what prevents inference about causation from association."
+    "objectID": "unit-1/lec-1-2.html#statistical-conclusion-validity",
+    "href": "unit-1/lec-1-2.html#statistical-conclusion-validity",
+    "title": "Unit 1-2: Statistical Conclusion Validity",
+    "section": "Statistical Conclusion Validity",
+    "text": "Statistical Conclusion Validity\nGiven that our exclusion restrictions are satisfied, we can estimate the average treatment effect (ATE). The question is then: How can we ensure valid statistical conclusions from our estimate of the ATE?\nWe need to consider the uncertainty in our estimate, and whether we can reject the null hypothesis that the treatment has no effect."
   },
   {
-    "objectID": "unit-1/lec-1-1.html#randomization",
-    "href": "unit-1/lec-1-1.html#randomization",
-    "title": "Unit 1: Internal Validity",
-    "section": "Randomization",
-    "text": "Randomization\nAs we saw, the key source of bias arises from the assignment mechanism, or why a unit is assigned to treatment or control. Endogeneity can arise from units being assigned logically or based on percieved benefit, which is a function of their characteristics. There are two basic approaches to dealing with endogeneity:\n\nModel-based methods: Model the selection bias and then remove it mechanically\nDesign-based methods: Use the design of the experiment and randomization to remove selection bias\n\nIn randomized experiments, the assignment mechanism is controlled, and therefore known, by the researcher. This is a unique and key difference from naturally-occuring data where the assignment mechanisms is neither controlled nor typically known. The experimental apporach is often referred to as the “gold standard” for estimating casual effects because randomization can be made to ensure that the assignment is independent of individual characteristics, eliminating bias.\nTo satisfy, the basic restrictions on the assignment mechanism for randomized experiments are:\n\nThree Conditions for a Valid Assignment Mechanism\n\nNon-zero probability: Each individual has a positive probability of being assigned to treatment or control.\nIndividualism: Assignments are independent across individuals and do not depend on others’ potential outcomes.\nUnconfoundedness: Treatment assignment is orthogonal to potential outcomes.\n\nThese conditions ensure that observed differences between groups are attributable to the treatment rather than pre-existing differences."
+    "objectID": "unit-1/lec-1-2.html#the-super-population-approach",
+    "href": "unit-1/lec-1-2.html#the-super-population-approach",
+    "title": "Unit 1-2: Statistical Conclusion Validity",
+    "section": "The Super-Population Approach",
+    "text": "The Super-Population Approach\nThe super-population approach assumes that the study sample is drawn from a larger, hypothetical infinite population represented by a probability distribution, \\(Q\\). This perspective views potential outcomes—both with and without treatment—as stochastic variables drawn from \\(Q\\). The primary goal in this framework is to estimate a feature of this distribution, typically the expected treatment effect:\n\\[\nE[Y(1) - Y(0)]\n\\]\nwhere \\(Y(1)\\) and \\(Y(0)\\) denote the potential outcomes under treatment and control conditions, respectively. Under this approach, each sample is considered an independent and identically distributed (i.i.d.) draw from the distribution \\(Q\\), meaning the researcher is interested in making generalizable inferences beyond the study sample.\nA key implication of this framework is that two sources of variance affect our estimation of treatment effects: 1. Sampling variance—arising from differences between one sample and another. 2. Assignment mechanism variance—introduced by the randomness in treatment assignment.\nThe super-population approach is useful when researchers aim to extend their findings to a broader population, such as in policy recommendations or clinical trials. However, it requires strong assumptions about how well the study sample represents the population."
   },
   {
-    "objectID": "unit-1/lec-1-1.html#footnotes",
-    "href": "unit-1/lec-1-1.html#footnotes",
-    "title": "Unit 1: Internal Validity",
+    "objectID": "unit-1/lec-1-2.html#the-finite-population-approach",
+    "href": "unit-1/lec-1-2.html#the-finite-population-approach",
+    "title": "Unit 1-2: Statistical Conclusion Validity",
+    "section": "The Finite-Population Approach",
+    "text": "The Finite-Population Approach\nIn contrast, the finite-population approach considers the sample as a fixed, well-defined group rather than a subset of an infinite population. Here, the researcher is not making inferences beyond the observed sample but instead treating the units as the entire relevant population. This approach is common in evaluations of specific interventions where the focus is on estimating the finite-population average treatment effect (ATE) (also called the sample average treatemnt effect, or SATE):3\n\\[\n\\tau_{fp} = \\frac{1}{N} \\sum_{i=1}^{N} \\left[Y_i(1) - Y_i(0)\\right]\n\\]\nwhere \\(N\\) is the total number of units in the study. Unlike in the super-population approach, the potential outcomes in a finite population framework are fixed, not random. The treatment effect is then viewed as an empirical quantity to be estimated within the sample, rather than a parameter of an underlying distribution.\nA practical distinction between the two approaches is in their implications for statistical inference: - In the super-population approach, standard errors reflect both sampling variability and randomization-induced variation. - In the finite-population approach, standard errors are based only on the variation within the observed sample, without assuming a broader distribution.\nThis framework is particularly relevant when researchers are concerned with internal validity over generalizability, such as in program evaluations or field experiments."
+  },
+  {
+    "objectID": "unit-1/lec-1-2.html#subpopulations-in-the-super-population-framework",
+    "href": "unit-1/lec-1-2.html#subpopulations-in-the-super-population-framework",
+    "title": "Unit 1-2: Statistical Conclusion Validity",
+    "section": "Subpopulations in the Super-Population Framework",
+    "text": "Subpopulations in the Super-Population Framework\nWithin the super-population framework, researchers often refine their analysis by considering subpopulations to account for heterogeneous treatment effects. One important example is the Conditional Average Treatment Effect (CATE):\n\\[\nE[Y(1, X) - Y(0, X) | X]\n\\]\nwhere \\(X\\) represents observed covariates that influence treatment effects. This approach allows for differentiated insights across groups, such as demographic segments in public health interventions."
+  },
+  {
+    "objectID": "unit-1/lec-1-2.html#choosing-between-the-two-approaches",
+    "href": "unit-1/lec-1-2.html#choosing-between-the-two-approaches",
+    "title": "Unit 1-2: Statistical Conclusion Validity",
+    "section": "Choosing Between the Two Approaches",
+    "text": "Choosing Between the Two Approaches\nThe choice between these sampling frameworks depends on the research question:\n\nIf the goal is to make generalizable claims about a broader population, the super-population approach is preferred.\nIf the study focuses on a specific, finite group of units, the finite-population approach is more appropriate.\n\nBoth perspectives provide valuable insights, and many empirical studies incorporate elements of both frameworks, particularly when considering external validity and policy relevance."
+  },
+  {
+    "objectID": "unit-1/lec-1-2.html#statistical-significance-and-the-t-statistic",
+    "href": "unit-1/lec-1-2.html#statistical-significance-and-the-t-statistic",
+    "title": "Unit 1-2: Statistical Conclusion Validity",
+    "section": "Statistical Significance and the t-Statistic",
+    "text": "Statistical Significance and the t-Statistic\nTo formally test the null hypothesis, we construct a t-statistic:\n\\[\nt = \\frac{\\hat{\\tau}}{\\text{SE}(\\hat{\\tau})}\n\\]\nwhere SE(\\(\\hat{\\tau}\\)) represents the standard error of the difference-in-means estimator. As the sample size grows, this t-statistic follows a standard normal distribution (or Student’s t-distribution for small samples). A large absolute value of $ t $ provides evidence against the null hypothesis.\nTo determine whether the result is statistically significant, we compare the t-statistic to a critical value determined by our chosen significance level (\\(\\alpha\\), commonly set at 0.05). If the absolute value of the t-statistic exceeds this threshold, we reject the null hypothesis."
+  },
+  {
+    "objectID": "unit-1/lec-1-2.html#type-i-and-type-ii-errors",
+    "href": "unit-1/lec-1-2.html#type-i-and-type-ii-errors",
+    "title": "Unit 1-2: Statistical Conclusion Validity",
+    "section": "Type I and Type II Errors",
+    "text": "Type I and Type II Errors\nWhile hypothesis testing provides a structured approach to evaluating treatment effects, errors can still occur:\n\n\nType I Error (\\(\\alpha\\)): Rejecting the null hypothesis when it is actually true (false positive).\n\nControlled by setting the significance level (\\(\\alpha\\)), which determines the probability of mistakenly rejecting \\(H_0\\).\nLower \\(\\alpha\\) reduces false positives but increases the risk of missing real effects.\n\n\n\nType II Error (\\(\\beta\\)): Failing to reject the null hypothesis when it is actually false (false negative).\n\nRelated to statistical power, which is the probability of detecting an effect when it truly exists.\n\n\n\n\n\nType 1 and Type 2 Errors"
+  },
+  {
+    "objectID": "unit-1/lec-1-2.html#power-calculation-ensuring-detectability",
+    "href": "unit-1/lec-1-2.html#power-calculation-ensuring-detectability",
+    "title": "Unit 1-2: Statistical Conclusion Validity",
+    "section": "Power Calculation: Ensuring Detectability",
+    "text": "Power Calculation: Ensuring Detectability\nStatistical power refers to the ability of a test to correctly reject the null hypothesis when a true effect exists. Mathematically:\n\\[\n\\text{Power} = 1 - \\beta\n\\]\nFactors influencing power:\n\n\nEffect size (\\(\\tau\\)): Larger effects are easier to detect.\n\nSample size (\\(N\\)): Larger samples reduce variability, increasing power.\n\nSignificance level (\\(\\alpha\\)): Lowering \\(\\alpha\\) increases the risk of missing true effects.\n\nStandard deviation of outcomes: Higher variability in outcomes reduces power.\n\nTo achieve a well-powered experiment, researchers conduct power calculations before data collection to determine the minimum sample size required to detect an effect with reasonable confidence.\nA Simple Example\nLet’s consider a simple example of a power simulation using a simple random assignment to a treatment and control group, where the estimate is the difference-in-means estimator.\n\nlibrary(data.table)\n\nStep 1: Define Simulation Parameters\n\nLet’s assume we have a total sample size of \\(N = 200\\) individuals.\nThe treatment group receives an intervention, while the control group does not.\nThe true treatment effect is set to \\(\\tau = 2\\).\nThe outcome variable follows a normal distribution with mean 10 and standard deviation 4.\n\n\nset.seed(072111)  # Ensures reproducibility\n\n# Define parameters\nN &lt;- 200  # Total sample size\np &lt;- 0.5  # Probability of assignment to treatment\ntrue_tau &lt;- 2  # True treatment effect\nsigma &lt;- 4  # Standard deviation of outcome\n\nStep 2: Simulate Data\nNow we can simulate the data using data.table:\n\n# Simulate data using data.table\ndt &lt;- data.table(id = 1:N)\ndt[, treatment := rbinom(.N, 1, p)]\ndt[, outcome := 10 + true_tau * treatment + rnorm(.N, mean = 0, sd = sigma)]\n\n#display first few rows\nhead(dt)\n\n      id treatment  outcome\n   &lt;int&gt;     &lt;int&gt;    &lt;num&gt;\n1:     1         0 10.39758\n2:     2         1 17.78058\n3:     3         0 11.46925\n4:     4         0 14.56752\n5:     5         1 10.55347\n6:     6         1 14.99933\n\n\nStep 3: Estimate Treatment Effect\n\ndiff_means &lt;- dt[treatment == 1, mean(outcome)] - dt[treatment == 0, mean(outcome)]\nSE &lt;- sqrt(dt[treatment == 1, var(outcome)] / dt[treatment == 1, .N] +\n           dt[treatment == 0, var(outcome)] / dt[treatment == 0, .N])\n\nt_stat &lt;- diff_means / SE  # Compute t-statistic\np_value &lt;- 2 * (1 - pt(abs(t_stat), df = N - 2))  # Two-tailed test\n\n# Display results\ncat(\"Estimated Treatment Effect:\", diff_means, \"\\n\")\n\nEstimated Treatment Effect: 2.453868 \n\ncat(\"p-value:\", p_value, \"\\n\")\n\np-value: 1.088986e-05 \n\n\nStep 4: Power Simulation\nFirst, let’s consider how we will interpret the results:\n\nIf the p-value is less than 0.05, we reject the null hypothesis and conclude that the treatment has a significant effect.\nIf the p-value is greater than 0.05, we fail to reject the null, meaning we do not have enough evidence to confirm a treatment effect.\n\nNow, let’s simulate a power simulation:\nFirst, define the power simulation function:\n\nsimulate_power &lt;- function(N, true_tau, sigma, p, alpha, reps = 1000) {\n  rejections &lt;- 0\n  \n  for (i in 1:reps) {\n    dt &lt;- data.table(id = 1:N)\n    dt[, treatment := rbinom(.N, 1, p)]\n    dt[, outcome := 10 + true_tau * treatment + rnorm(.N, mean = 0, sd = sigma)]\n    diff_means &lt;- dt[treatment == 1, mean(outcome)] - dt[treatment == 0, mean(outcome)]\n    SE &lt;- sqrt(dt[treatment == 1, var(outcome)] / dt[treatment == 1, .N] +\n               dt[treatment == 0, var(outcome)] / dt[treatment == 0, .N])\n    t_stat &lt;- diff_means / SE\n    p_value &lt;- 2 * (1 - pt(abs(t_stat), df = N - 2))\n    \n    if (p_value &lt; alpha) {\n      rejections &lt;- rejections + 1\n    }\n  }\n  return(rejections / reps)\n}\n\nNow, simulate this experiment 1,000 times:\n\n# Run power simulation\npower &lt;- simulate_power(N = 200, true_tau = 2, sigma = 4, p = 0.5, alpha = 0.05, reps = 1000)\ncat(\"Estimated Power:\", power, \"\\n\")\n\nEstimated Power: 0.938 \n\n\nStep 5: Interpreting Power Calculation\n\nThe power of the test is the proportion of simulations in which we correctly reject the null hypothesis when the treatment effect is truly \\(\\tau = 2\\).\nA power value close to 0.80 or higher indicates that the experiment is well-powered.\n\n\n\n\n\n\n\nTip\n\n\n\nTry changing the sample size or effect size, to see how the power changes."
+  },
+  {
+    "objectID": "unit-1/lec-1-2.html#the-mida-framework-for-simulation",
+    "href": "unit-1/lec-1-2.html#the-mida-framework-for-simulation",
+    "title": "Unit 1-2: Statistical Conclusion Validity",
+    "section": "The MIDA Framework for Simulation",
+    "text": "The MIDA Framework for Simulation\nA structured way to think about research design and simulation is the MIDA Framework,4(https://book.declaredesign.org/declaration-diagnosis-redesign/research-design.html)] which consists of:\n\n\nM: The Model - The underlying data-generating process that defines the inquiry.\n\nI: The Inquiry - The specific research question we are trying to answer.\n\nD: The Data Strategy - The way we collect and structure data, including sampling and treatment assignment.\n\nA: The Answer Strategy - The statistical method we use to estimate the effect.\n\n\n\nMIDA Framework, Source: Declaration Design\n\n\n\nElements of Research Design, Source: Declaration Design\n\nIn a real-world study, we can only observe a single realization of the design and generate one empirical answer \\(a_d\\). However, through simulation, we can consider many possible data realizations by repeatedly drawing from different models \\(m_1, m_2, ..., m_k\\) within the model space \\(M\\). This allows us to assess how our research design performs across different scenarios."
+  },
+  {
+    "objectID": "unit-1/lec-1-2.html#diagnosing-research-designs-with-simulation",
+    "href": "unit-1/lec-1-2.html#diagnosing-research-designs-with-simulation",
+    "title": "Unit 1-2: Statistical Conclusion Validity",
+    "section": "Diagnosing Research Designs with Simulation",
+    "text": "Diagnosing Research Designs with Simulation\nWhen we simulate a research design, we evaluate its performance by considering:\n\n\nBias: How close is the empirical answer \\(a_d\\) to the true answer \\(a_m\\)?\n\nVariance: How much do the empirical answers fluctuate across different realizations?\n\nCoverage: How often do confidence intervals include the true effect?\n\nPower: How frequently does the study correctly reject the null hypothesis when a true effect exists?\n\nThe bottom half of the figure below illustrates how simulation allows us to examine the research design across multiple models (\\(m_1, ..., m_k\\)), generating different answers (\\(a_{m_1}, a_{m_2}, ..., a_{m_k}\\)) and associated datasets (\\(d_1, d_2, ..., d_k\\)). The simulated research design does not have direct access to the true answer but can assess performance across the models under consideration.\n\n\nSimulations in the MIDA Framework"
+  },
+  {
+    "objectID": "unit-1/lec-1-2.html#footnotes",
+    "href": "unit-1/lec-1-2.html#footnotes",
+    "title": "Unit 1-2: Statistical Conclusion Validity",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nThis example is adapted from Scott Cunninham’s example in the Mixtape book.↩︎"
+    "text": "Footnotes\n\nReference: Research Design in the Social Sciences↩︎\nCan you explain in words how this differs from the Bayesian probability above?↩︎\nWager Chapter 1 refers to this as SATE.↩︎\nReference: Declaration Design↩︎"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Course Schedule",
+    "objectID": "unit-1/unit-1-internal-2.html",
+    "href": "unit-1/unit-1-internal-2.html",
+    "title": "Unit 1.2: Statistical Conclusion Validity",
     "section": "",
-    "text": "This page contains the schedule, topics, content and assigments for the semester.\n\n\n\n\n\n\nNote\n\n\n\nThis schedule will be updated as the semester progresses.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweek\ndow\ndate\nsession\nunit\ntopic\nprepare\nclass\nlab\nlab_sa\ndue\n\n\n\n1\nW\n8 January\nLec\nFoundations\nWelcome; Key Concepts\n\n\n\n\n\n\n\n\n\n2\nM\n13 January\nLec\nFoundations\nGuest Lecture: Running a Randomized Trial\n\n\n\n\n\nIntroductory Survey\n\n\n\nW\n15 January\n-\nFoundations\nReproducible Research\n\n\n\n\n\n\n\n\n\n3\nM\n20 January\n-\nNo Class: MLK Day\n\n\n\n\n\n\n\n\n\nW\n22 January\n-\nInternal Validity\n\n\n\n\n\nClass Canceled\n\n\n4\nM\n27 January\nLec\nInternal Validity\nGeneralized Potential Outcomes Framework; Exclusion Restrictions\n\n\n\n\n\n\n\n\n\n\nW\n29 January\nLab\nInternal Validity\nLab: Hospital of Uncertain Outcomes\n\n\n\n\n\n\n\n\n5\nM\n3 February\nLec\nExperimental Design\nOptimal design of experiments; Randomization and Blocking; Power\n\n\n\n\nLab 1 Report\n\n\n\nW\n5 February\nLab\nExperimental Design\nLab: Designing an RCT\n\n\n\n\nLab 2 Report (due Friday)\n\n\n6\nM\n10 February\n-\nNo Class: Well-being Day\n\n\n\n\n\n\n\n\n\nW\n12 February\nLec\nPreparations\nEthics, Registration and Pre-Analysis Plans\n\n\n\n\n\n\n\n7\nM\n17 February\nLec\nIntroduction to Machine Learning\nLasso; Penalized Regression; Cross-Validation\n\n\n\n\n\n\n\n\nW\n19 February\nLab\nIntroduction to Machine Learning\nLab: Lasso and Friends\n\n\n\n\n\n\n\n8\nM\n24 February\nLec\nIntroduction to Machine Learning\nRandom Trees and Random Forests\n\n\n\n\nLab 3 Report\n\n\n\nW\n26 February\n\nMIDTERM 1\n\n\n\n\n\n\n\n\n9\nM\n3 March\nLec\nHeterogeneity and Moderation\nHeterogeneous Treatment Effects\n\n\n\n\nLab 4 Report\n\n\n\nW\n5 March\nLab\nHeterogeneity and Moderation\nCausal Forests\n\n\n\n\n\n\n\n10\nM\n10 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n\nW\n12 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n11\nM\n17 March\nLec\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\nLab 5 Report\n\n\n\nW\n19 March\nLab\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\n\n\n\n12\nM\n24 March\nLec\nViolations of Internal Validity\nOne and Two-sided Compliance; TOT (LATE)\n\n\n\n\n\n\n\n\nW\n26 March\nLab\nViolations of Internal Validity\nIV\n\n\n\n\nLab 6 Report\n\n\n13\nM\n31 March\n\nMIDTERM 2\n\n\n\n\n\n\n\n\n\nW\n2 April\nLec\nMediation and External Validity\nMediation Analysis and Generalizability\n\n\n\n\n\n\n\n14\nM\n7 April\nLab\nMediation and External Validity\n\n\n\n\n\nLab 7 Report\n\n\n\nW\n9 April\n\nBuffer\nTBD\n\n\n\n\nProject Pre-Analysis Plan\n\n\n15\nM\n14 April\n\nBuffer\nTBD\n\n\n\n\n\n\n\n\nW\n16 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n16\nM\n21 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n\nW\n23 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n17\nM\n28 April\n\nWrap-up\nTBD\n\n\n\n\nFinal Project Manuscript & Replication Repository\n\n\n\nW\n30 April\n\nFINAL EXAM",
+    "text": "Introduce statistical conclusion validity\nExplore sources of uncertainty in experiments\nIntroduce hypothesis testing\nExamine the role of statistical power in determining sample size\nUse simulation techniques for power calculations and design assessments\nDiscuss multiple hypothesis testing and its implications\n\n\n\n\nRead:\n\nWager Chapter 1\nDeclare Design Book: 5.1, 8.2, 10\n\nListen:\n\nExperimental Design and Multiple Hypothesis Testing Podcast\n\n\n\n\n\n\nLecture: Statistical Conclusion Validity",
     "crumbs": [
-      "Course Schedule"
+      "Unit 1: Internal Validity",
+      "Class 5: Statistical Conclusion Validity"
     ]
   },
   {
-    "objectID": "course-overview.html",
-    "href": "course-overview.html",
-    "title": "HPM 883Spring 2025",
+    "objectID": "unit-1/unit-1-internal-2.html#unit-overview",
+    "href": "unit-1/unit-1-internal-2.html#unit-overview",
+    "title": "Unit 1.2: Statistical Conclusion Validity",
     "section": "",
-    "text": "HPM 883 is an advanced graduate-level course designed to equip PhD students in the Health Policy and Management program with sophisticated quantitative research skills. This course represents the third installment in the quantitative methods sequence, building on the foundational knowledge acquired in HPM 881 and HPM 882.\nThroughout the term, students will delve into advanced quantitative methods pertinent to health services research with a focus on the use of experimental methods and machine learning for causal inference. The course will provide a thorough introduction to machine learning techniques and explore the burgeoning domain of causal machine learning.",
+    "text": "Introduce statistical conclusion validity\nExplore sources of uncertainty in experiments\nIntroduce hypothesis testing\nExamine the role of statistical power in determining sample size\nUse simulation techniques for power calculations and design assessments\nDiscuss multiple hypothesis testing and its implications\n\n\n\n\nRead:\n\nWager Chapter 1\nDeclare Design Book: 5.1, 8.2, 10\n\nListen:\n\nExperimental Design and Multiple Hypothesis Testing Podcast\n\n\n\n\n\n\nLecture: Statistical Conclusion Validity",
+    "crumbs": [
+      "Unit 1: Internal Validity",
+      "Class 5: Statistical Conclusion Validity"
+    ]
+  },
+  {
+    "objectID": "unit-1/unit-1-internal-1.html",
+    "href": "unit-1/unit-1-internal-1.html",
+    "title": "Unit 1.1: Internal Validity and Potential Outcomes",
+    "section": "",
+    "text": "Reviewws the Potential Outcomes Framework\nAddresses key aspects of experimental design, including:\n\nRandomization\nExclusion restrictions\n\nThese elements are essential for establishing causality.\nWe will also review the notation that will be used throughout the class.\n\n\n\n\nRead:\n\nApplied Causal Inference Powered by ML and AI, Chapter 2\nCausal Inference Mixtape, Chapter 4\n\nListen: Internal Validity Podcast\n\n\n\n\n\nGroup Assignments\n\n\n\n\nGroup Assignments\n\n\n\nSelected Additional Topics via Borda count:\n\n\n\n\nTopic Selection\n\n\n\nSemester Project Description: Semester Project\nLecture: Internal Validity\n\n\n\n\n\nLab 1: The Hospital of Uncertain Outcomes\n\nSolutions",
+    "crumbs": [
+      "Unit 1: Internal Validity",
+      "Class 4: Internal Validity"
+    ]
+  },
+  {
+    "objectID": "unit-1/unit-1-internal-1.html#unit-overview",
+    "href": "unit-1/unit-1-internal-1.html#unit-overview",
+    "title": "Unit 1.1: Internal Validity and Potential Outcomes",
+    "section": "",
+    "text": "Reviewws the Potential Outcomes Framework\nAddresses key aspects of experimental design, including:\n\nRandomization\nExclusion restrictions\n\nThese elements are essential for establishing causality.\nWe will also review the notation that will be used throughout the class.\n\n\n\n\nRead:\n\nApplied Causal Inference Powered by ML and AI, Chapter 2\nCausal Inference Mixtape, Chapter 4\n\nListen: Internal Validity Podcast\n\n\n\n\n\nGroup Assignments\n\n\n\n\nGroup Assignments\n\n\n\nSelected Additional Topics via Borda count:\n\n\n\n\nTopic Selection\n\n\n\nSemester Project Description: Semester Project\nLecture: Internal Validity\n\n\n\n\n\nLab 1: The Hospital of Uncertain Outcomes\n\nSolutions",
+    "crumbs": [
+      "Unit 1: Internal Validity",
+      "Class 4: Internal Validity"
+    ]
+  },
+  {
+    "objectID": "lab.html",
+    "href": "lab.html",
+    "title": "Labs",
+    "section": "",
+    "text": "More labs to be added as the semester progresses.\n\n\n\n\n\n\n\n\n\nNo.\n\n\nTitle\n\n\nDue date\n\n\n\n\n\n\nLab 1\n\n\nThe Hospital of Uncertain Outcomes\n\n\nInternal Validity, Potential Outcomes\n\n\n\n\nLab 1 Solutions\n\n\nThe Hospital of Uncertain Outcomes\n\n\nInternal Validity, Potential Outcomes\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "unit-0/lec-0.html#course-summary",
+    "href": "unit-0/lec-0.html#course-summary",
+    "title": "Course Introduction",
+    "section": "Course Summary",
+    "text": "Course Summary\nExperiments and Machine Learning for Health Services Research\nPrimary Goal: Equip you with tools to design, analyze, and interpret field experiments and apply machine learning to health services research.\n\nKey Focus Areas:\nField experiments for causal inference.\nMachine learning for prediction and causal analysis.\nApplications:\nHealth policy evaluations, resource allocation, and improving healthcare decision-making."
+  },
+  {
+    "objectID": "unit-0/lec-0.html#about-me-dr.-sean-sylvia",
+    "href": "unit-0/lec-0.html#about-me-dr.-sean-sylvia",
+    "title": "Course Introduction",
+    "section": "About Me: Dr. Sean Sylvia",
+    "text": "About Me: Dr. Sean Sylvia\n\n\nResearch: Designing & evaluating innovative approaches to improve health service delivery, globally.\n\nExperimental methods, machine learning, economics of digital health\n\nUNC Health Policy & Management (7 years)\n\nCarolina Population Center\nSheps Center for Health Services Research\n\nPreviously: Renmin University of China, World Bank\nTraining: U Maryland (PhD), Stanford (pre-doc)"
+  },
+  {
+    "objectID": "unit-0/lec-0.html#proud-randomista",
+    "href": "unit-0/lec-0.html#proud-randomista",
+    "title": "Course Introduction",
+    "section": "Proud “Randomista”",
+    "text": "Proud “Randomista”\n\n\n\nExtensive fieldwork using randomized controlled trials (RCTs)\nStarting in 2006, I’ve worked with colleagues on ~20 RCTs in China, Africa, and North Carolina.\n\n[Hot Tip: Collaborate. Collaborate. Collaborate.]\n\nKey projects include:\n\nField experiments in rural China on primary healthcare\nDesign and evaluation of community health worker interventions for early childhood health and development\nBehavioral nudges to recruit providers to MAT training for Opiod Use Disorder in North Carolina\n\n\n\nSCROLL DOWN TO READ Nobel Prize in Economics 2019 was awarded jointly to Abhijit Banerjee, Esther Duflo and Michael Kremer “for their experimental approach to alleviating global poverty”"
+  },
+  {
+    "objectID": "unit-0/lec-0.html#teaching-assistant-yumeng-du",
+    "href": "unit-0/lec-0.html#teaching-assistant-yumeng-du",
+    "title": "Course Introduction",
+    "section": "Teaching Assistant: Yumeng Du",
+    "text": "Teaching Assistant: Yumeng Du\nPhD Student in Health Policy and Management (Economics Track)\nResearch Interests:\n- Evaluation of digital health programs for underserved populations\nBackground:\n- MSc in Public Health, London School of Hygiene and Tropical Medicine (LSHTM), UK\n- MBBS, Central South University, China\n- Former RA at UNC-China Project,implementing an RCT on rural telemedicine kiosk program\nRole:\n- Available for technical support and office hours\n- Assisting with labs and project feedback"
+  },
+  {
+    "objectID": "unit-0/lec-0.html#experiments-and-machine-learning-for-hsr",
+    "href": "unit-0/lec-0.html#experiments-and-machine-learning-for-hsr",
+    "title": "Course Introduction",
+    "section": "Experiments and Machine Learning for HSR",
+    "text": "Experiments and Machine Learning for HSR\n\n\n\nRandomized experiments: the gold standard for testing mechanisms and interpretability.\nMachine Learning: Ideal for useful predictions when interpretability or theory is less critical.\nBridging the Divide:\n\nNew methods apply core ML principles to causal inference.\n\nAs we’ll see, parts of causal inference problems can be recast as prediction problems.\n\nPowerful tools for theory-building and expanding scope of feasible research.\n\n\n\n\n\n\n\n\n\nNote\n\n\nImportant!\nYou’ll hear the term “causal machine learning” in the literature. This is a misnomer!\nMachine Learning is about prediction. Period. It does not magically solve the causal inference problem.\nIt CAN:\n\nHelp strengthen plausibility of existing exclusion restriction in some cases\nAllow us to study treatment effect heterogeneity in new ways"
+  },
+  {
+    "objectID": "unit-0/lec-0.html#reproducibility",
+    "href": "unit-0/lec-0.html#reproducibility",
+    "title": "Course Introduction",
+    "section": "Reproducibility",
+    "text": "Reproducibility\nReproducibility is a Fundamental Principle of Science\n\nGood experiments are necessarily reproducible.\n\nClear, well-documented protocols, reproducible data collection, and clear and reproducible analysis.\nThe “reproducibility crisis” in some fields (e.g. psychology). This is actually a good thing! Only possible to confirm results if they are reproducible.\n\nReproducibility and ML:\n\nExploratory analyses, when systematic, help build reliable theories.\nML provides tools for:\n\nConducting reproducible exploratory research.\nIdentifying robust treatment effect heterogeneity."
+  },
+  {
+    "objectID": "unit-0/lec-0.html#causal-inference-as-a-missing-data-problem",
+    "href": "unit-0/lec-0.html#causal-inference-as-a-missing-data-problem",
+    "title": "Course Introduction",
+    "section": "Causal Inference as a Missing Data Problem",
+    "text": "Causal Inference as a Missing Data Problem\n\n\n\nThe Fundamental Problem of Causal Inference:\n\nWe cannot observe a unit in multiple states of the world simultaneously.\nRepresented as “missing data” in potential outcomes.\n\nExperimentation Solves under some key assumptions:\n\nSUTVA.\nObservability.\nComplete Compliance.\nStatistical Independence.\n\n\n\n\n\n\nUnit\nTreatment (W)\nY(0)\nY(1)\nObserved Outcome\n\n\n\n\n1\n1\n?\n5\n5\n\n\n2\n0\n3\n?\n3\n\n\n3\n1\n?\n6\n6\n\n\n4\n0\n4\n?\n4\n\n\n\n\nProblem: We can only observe either (Y(0)) or (Y(1)) but not both for any individual."
+  },
+  {
+    "objectID": "unit-0/lec-0.html#randomization-recovers-the-ate-on-average.",
+    "href": "unit-0/lec-0.html#randomization-recovers-the-ate-on-average.",
+    "title": "Course Introduction",
+    "section": "Randomization recovers the ATE on average.",
+    "text": "Randomization recovers the ATE on average.\n\nPotential outcomes: \\(Y_i(1)\\) and \\(Y_i(0)\\)\nTreatment indicator: \\(W_i = 1\\) if treated, \\(W_i = 0\\) if control\nObserved outcome: \\(Y_i = W_iY_i(1) + (1 - W_i)Y_i(0)\\)\nAverage Treatment Effect (ATE): \\(\\tau = \\mathbb{E}[Y_i(1) - Y_i(0)]\\)\n\nRandomization ensures that treatment is independent of potential outcomes:\n\\[\nW_i \\perp \\!\\!\\! \\perp (Y_i(0), Y_i(1)),\n\\]\nHence, \\(\\mathbb{E}[Y | W_i = w] = \\mathbb{E}[Y_i(w) | W_i = w] = \\mathbb{E}[Y_i(w)]\\) for all \\(w \\in \\{0, 1\\}\\).\nTherefore, the difference between \\(Y_i(1)\\) and \\(Y_i(0)\\) is the ATE:\n\\[\n\\mathbb{E}[Y_i(1) - Y_i(0)] = \\mathbb{E}[Y_i(1)] - \\mathbb{E}[Y_i(0)] = \\tau.\n\\]"
+  },
+  {
+    "objectID": "unit-0/lec-0.html#experimental-problems-ep1-ep2",
+    "href": "unit-0/lec-0.html#experimental-problems-ep1-ep2",
+    "title": "Course Introduction",
+    "section": "Experimental Problems: EP1 & EP2",
+    "text": "Experimental Problems: EP1 & EP2\nEP1: Internal Validity\n\nThe Effects of Causes (Internal Validity):\n\nDo assumptions in the potential outcomes framework hold?\n\nThe Causes of Effects (Mediators and Moderators):\n\nWhat drives the effects we see?\n\n\nEP2: External Validity\n\nGeneralizability: Would it work in different settings?\n\nPeople / populations\nContexts\n\nScalability: Can it scale to create meaningful impact?"
+  },
+  {
+    "objectID": "unit-0/lec-0.html#data-generation-and-modeling-for-causal-inference",
+    "href": "unit-0/lec-0.html#data-generation-and-modeling-for-causal-inference",
+    "title": "Course Introduction",
+    "section": "Data Generation and Modeling for Causal Inference",
+    "text": "Data Generation and Modeling for Causal Inference\n\n\n\nControlled: researcher knows and controls the assignment mechanism\nUncontrolled: researcher assignment mechanism neither controls nor knows the assignment mechanism\n\n\n\n\nSource: List (2009)\n\n\n\n\nLab Experiments: Controlled settings, abstract framing, imposed rules.\nField Experiments:\n\nArtefactual Field Experiment (AFE): Non-standard subject pool.\nFramed Field Experiment (FFE): Adds field-specific context.\nNatural Field Experiment (NFE): Subjects unaware they are in an experiment.\n\nSurvey Experiments:\n\nEmbedded in survey designs."
+  },
+  {
+    "objectID": "unit-0/lec-0.html#criteria-that-define-field-experiments",
+    "href": "unit-0/lec-0.html#criteria-that-define-field-experiments",
+    "title": "Course Introduction",
+    "section": "7 Criteria that define field experiments",
+    "text": "7 Criteria that define field experiments\n\nExperimental Subjects: Population and Selection\n\nThe nature of the subject pool\nThe nature of the information that subjects bring to the experimental task\nSelection into the experiment\n\nExperimental Environment\n\nThe nature of the commodity in the experiment\nThe nature of the experimental task\nThe nature of the stakes\nExperimental proclamation"
+  },
+  {
+    "objectID": "unit-0/lec-0.html#choosing-the-right-experiment",
+    "href": "unit-0/lec-0.html#choosing-the-right-experiment",
+    "title": "Course Introduction",
+    "section": "Choosing the Right Experiment",
+    "text": "Choosing the Right Experiment\n\nWeigh Costs and Benefits:\n\nBenefits:\n\nEP1: Internal validity.\nEP2: Generalizability and scalability.\n\nCosts:\n\nMonetary\nLogistical\nOpportunity costs."
+  },
+  {
+    "objectID": "unit-0/lec-0.html#units-and-topics",
+    "href": "unit-0/lec-0.html#units-and-topics",
+    "title": "Course Introduction",
+    "section": "Units and Topics",
+    "text": "Units and Topics\n\nFoundations of Causal Inference:\n\nMissing data problem and potential outcomes.\nRandomization and the ATE.\n\nExperimental Design:\n\nPower analysis and randomization strategies.\n\nMachine Learning for Causal Inference:\n\nLasso, random forests, and causal forests.\n\nViolations of Internal Validity:\n\nSUTVA, compliance issues, and observability.\n\nScaling and External Validity:\n\nGeneralizability and implementation challenges."
+  },
+  {
+    "objectID": "unit-0/lec-0.html#weekly-ish-format",
+    "href": "unit-0/lec-0.html#weekly-ish-format",
+    "title": "Course Introduction",
+    "section": "Weekly-ish Format",
+    "text": "Weekly-ish Format\n\nTwo(-ish) sessions per topic:\n\nLecture: Introduces key concepts and theory.\nLab: Hands-on practice with coding and data analysis.\n\nFlipped(-ish) Classroom Approach\n\nPre-class readings and recorded materials.\nInteractive sessions focused on data exploration and applied learning.\nCollaborative problem-solving in small groups."
+  },
+  {
+    "objectID": "unit-0/lec-0.html#assessments",
+    "href": "unit-0/lec-0.html#assessments",
+    "title": "Course Introduction",
+    "section": "Assessments",
+    "text": "Assessments\n\nPre-class Quizzes (10%):\n\nTest your understanding of key concepts\nRequest clarification on specific points\n\nLab Assignments (25%): Practical applications and analysis.\nExams (35%): Evaluate theoretical and practical understanding.\nSemester Project (30%): Research application.\n\nPre-analysis Plan (15%): Develop and document a structured analysis plan.\nFinal Paper (15%): Synthesize course material into a research application.\nDetails on class project to come."
+  },
+  {
+    "objectID": "unit-0/lec-0.html#resources-and-support",
+    "href": "unit-0/lec-0.html#resources-and-support",
+    "title": "Course Introduction",
+    "section": "Resources and Support",
+    "text": "Resources and Support\n\nCourse website with materials and updates: Course Website\nWeekly office hours with Dr. Sylvia and Yumeng\nCommunication channels:\n\nSlack: Join the course Slack to ask questions, share resources, and engage with your peers, the instructor, and the TA. (For personal matters, please use e-mail)\nEmail: Please use e-mail only for personal matters. (For anything related to the course material or coding questions, please use Slack.)\n\nGradescope: Submit assignments."
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations-2.html",
+    "href": "unit-0/unit-0-foundations-2.html",
+    "title": "Unit 0: Foundations",
+    "section": "",
+    "text": "Guest Lecture by Dr. Dorien Emmers\n\n\n\n\n\n\nClass will be remote-only\n\n\n\nJoin from the comfort of your own home!\nZoom link: https://unc.zoom.us/j/7840211370?omn=97363476255\n\n\n\n\nSkim: Using Community Health Workers to Deliver a Scalable Integrated Parenting Program in Rural China: A Cluster Randomized Controlled Trial\n\nOptional\n\nDownload Replication Data and Code: \nDr. Emmers wrote this analysis code in Stata (Boo! ). Try converting it to R using the stata2r package.\n\n\n\n\n\n\n\n\nPerusall\n\n\n\nPerusall is a free online platform that allows you to collaboratively annotate content with your classmates. Here is a link to the Perusall page for this course: HPM 883. If needed, the class enrollment code is SYLVIA-ZXTWH.\n\nAlthough it is a good way to engage with your classmates around the material, it is not required that you comment on Perusall. If you wish, you can just download the readings directly.\n\n\n\nSubmit: Any questions you have for Dr. Emmers? Submit to the #guest-lecture-questions channel on Slack\n\n\n\n\n\nSlides\nZoom Recording\n\n\n\n\n\n\n\nIntroductory Survey Due by end of day on Jan 15\n\n\n\nIntroductory Class Survey",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class 2: A Field Experiment in Health Services Research"
+    ]
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations-2.html#overview",
+    "href": "unit-0/unit-0-foundations-2.html#overview",
+    "title": "Unit 0: Foundations",
+    "section": "",
+    "text": "Guest Lecture by Dr. Dorien Emmers\n\n\n\n\n\n\nClass will be remote-only\n\n\n\nJoin from the comfort of your own home!\nZoom link: https://unc.zoom.us/j/7840211370?omn=97363476255\n\n\n\n\nSkim: Using Community Health Workers to Deliver a Scalable Integrated Parenting Program in Rural China: A Cluster Randomized Controlled Trial\n\nOptional\n\nDownload Replication Data and Code: \nDr. Emmers wrote this analysis code in Stata (Boo! ). Try converting it to R using the stata2r package.\n\n\n\n\n\n\n\n\nPerusall\n\n\n\nPerusall is a free online platform that allows you to collaboratively annotate content with your classmates. Here is a link to the Perusall page for this course: HPM 883. If needed, the class enrollment code is SYLVIA-ZXTWH.\n\nAlthough it is a good way to engage with your classmates around the material, it is not required that you comment on Perusall. If you wish, you can just download the readings directly.\n\n\n\nSubmit: Any questions you have for Dr. Emmers? Submit to the #guest-lecture-questions channel on Slack\n\n\n\n\n\nSlides\nZoom Recording\n\n\n\n\n\n\n\nIntroductory Survey Due by end of day on Jan 15\n\n\n\nIntroductory Class Survey",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class 2: A Field Experiment in Health Services Research"
+    ]
+  },
+  {
+    "objectID": "unit-0/prep-1.html",
+    "href": "unit-0/prep-1.html",
+    "title": "Class Preparation",
+    "section": "",
+    "text": "In preparation for our upcoming class on [Insert Topic Here], please complete the following activities. These materials will set the foundation for our in-class discussions and activities.\n\n\n\n\n\n[Insert Reading Title and Link Here]\n[Insert Additional Reading Title and Link Here]\n\n\n\n\n\n\n[Insert Video Title and Link Here]\n[Insert Additional Video Title and Link Here]\n\n\n\n\n\nComplete the pre-class quiz on Sakai: [Insert Link Here]\nDeadline: [Insert Date and Time]\n\n\n\n\nConsider the following questions as you review the materials: 1. [Insert Question Here] 2. [Insert Additional Question Here] 3. [Insert Additional Question Here]\n\n\n\n\nPrepare notes summarizing key concepts from the readings and videos. These will be helpful for in-class discussions.\n\nRemember: This course uses a flipped classroom approach. Completing these tasks prior to class is essential for your active participation and understanding during our sessions."
+  },
+  {
+    "objectID": "unit-0/prep-1.html#overview",
+    "href": "unit-0/prep-1.html#overview",
+    "title": "Class Preparation",
+    "section": "",
+    "text": "In preparation for our upcoming class on [Insert Topic Here], please complete the following activities. These materials will set the foundation for our in-class discussions and activities."
+  },
+  {
+    "objectID": "unit-0/prep-1.html#required-readings",
+    "href": "unit-0/prep-1.html#required-readings",
+    "title": "Class Preparation",
+    "section": "",
+    "text": "[Insert Reading Title and Link Here]\n[Insert Additional Reading Title and Link Here]"
+  },
+  {
+    "objectID": "unit-0/prep-1.html#required-videos",
+    "href": "unit-0/prep-1.html#required-videos",
+    "title": "Class Preparation",
+    "section": "",
+    "text": "[Insert Video Title and Link Here]\n[Insert Additional Video Title and Link Here]"
+  },
+  {
+    "objectID": "unit-0/prep-1.html#quiz",
+    "href": "unit-0/prep-1.html#quiz",
+    "title": "Class Preparation",
+    "section": "",
+    "text": "Complete the pre-class quiz on Sakai: [Insert Link Here]\nDeadline: [Insert Date and Time]"
+  },
+  {
+    "objectID": "unit-0/prep-1.html#reflection-questions",
+    "href": "unit-0/prep-1.html#reflection-questions",
+    "title": "Class Preparation",
+    "section": "",
+    "text": "Consider the following questions as you review the materials: 1. [Insert Question Here] 2. [Insert Additional Question Here] 3. [Insert Additional Question Here]"
+  },
+  {
+    "objectID": "unit-0/prep-1.html#notes",
+    "href": "unit-0/prep-1.html#notes",
+    "title": "Class Preparation",
+    "section": "",
+    "text": "Prepare notes summarizing key concepts from the readings and videos. These will be helpful for in-class discussions.\n\nRemember: This course uses a flipped classroom approach. Completing these tasks prior to class is essential for your active participation and understanding during our sessions."
+  },
+  {
+    "objectID": "ex-simulate.html",
+    "href": "ex-simulate.html",
+    "title": "Simulating Experimental Data with Noncompliance",
+    "section": "",
+    "text": "In this example, we simulate data for a simple randomized experiment with one treatment and one control group. The randomization is at the individual level. Additionally, we introduce noncompliance, where some individuals assigned to the treatment group do not take the treatment.\n\n\nDefine the parameters for the experiment, such as the number of participants, compliance rate, and treatment effects.\n\n# Set seed for reproducibility\nset.seed(123)\n\n# Parameters\nn &lt;- 500  # Total number of participants\nprob_treatment &lt;- 0.5  # Probability of being assigned to treatment\ncompliance_rate &lt;- 0.8  # Proportion of treated participants who comply\n\n# Treatment effect\nbaseline_mean &lt;- 50  # Mean outcome for control group\ntreatment_effect &lt;- 10  # Additional effect for treated participants\n\n\nSimulate random assignment to treatment and compliance behavior.\n\n# Simulate random assignment\nassignment &lt;- rbinom(n, 1, prob_treatment)  # 1 = assigned to treatment, 0 = control\n\n# Simulate compliance behavior\n# If assigned to treatment, comply with probability `compliance_rate`\ncompliance &lt;- ifelse(assignment == 1, rbinom(n, 1, compliance_rate), 0)  # 1 = complied, 0 = did not comply\n\n\nSimulate the outcome variable based on compliance and treatment assignment.\n\n# Simulate outcomes\noutcome &lt;- baseline_mean + \n  (assignment * compliance * treatment_effect) +  # Effect for those who comply\n  rnorm(n, mean = 0, sd = 5)  # Add random noise\n\n# Combine data into a data frame\nexperiment_data &lt;- data.frame(\n  ID = 1:n,\n  Assignment = assignment,\n  Compliance = compliance,\n  Outcome = outcome\n)\n\n# View the first few rows of the data\nhead(experiment_data)\n\n  ID Assignment Compliance  Outcome\n1  1          0          0 46.99054\n2  2          1          1 55.03151\n3  3          0          0 55.13393\n4  4          1          1 63.75531\n5  5          1          1 52.45417\n6  6          0          0 49.52426\n\n\n\nExport the simulated data to a CSV file for further analysis.\n\n# Export the data to a CSV file\nwrite.csv(experiment_data, \"simulated_experiment_data.csv\", row.names = FALSE)\n\n# Confirm export\ncat(\"Data has been exported to 'simulated_experiment_data.csv'\")\n\nData has been exported to 'simulated_experiment_data.csv'",
+    "crumbs": [
+      "Semester Project",
+      "Data Simulation Example"
+    ]
+  },
+  {
+    "objectID": "ex-simulate.html#step-1-setup-and-parameters",
+    "href": "ex-simulate.html#step-1-setup-and-parameters",
+    "title": "Simulating Experimental Data with Noncompliance",
+    "section": "",
+    "text": "Define the parameters for the experiment, such as the number of participants, compliance rate, and treatment effects.\n\n# Set seed for reproducibility\nset.seed(123)\n\n# Parameters\nn &lt;- 500  # Total number of participants\nprob_treatment &lt;- 0.5  # Probability of being assigned to treatment\ncompliance_rate &lt;- 0.8  # Proportion of treated participants who comply\n\n# Treatment effect\nbaseline_mean &lt;- 50  # Mean outcome for control group\ntreatment_effect &lt;- 10  # Additional effect for treated participants",
+    "crumbs": [
+      "Semester Project",
+      "Data Simulation Example"
+    ]
+  },
+  {
+    "objectID": "ex-simulate.html#step-2-random-assignment-and-compliance",
+    "href": "ex-simulate.html#step-2-random-assignment-and-compliance",
+    "title": "Simulating Experimental Data with Noncompliance",
+    "section": "",
+    "text": "Simulate random assignment to treatment and compliance behavior.\n\n# Simulate random assignment\nassignment &lt;- rbinom(n, 1, prob_treatment)  # 1 = assigned to treatment, 0 = control\n\n# Simulate compliance behavior\n# If assigned to treatment, comply with probability `compliance_rate`\ncompliance &lt;- ifelse(assignment == 1, rbinom(n, 1, compliance_rate), 0)  # 1 = complied, 0 = did not comply",
+    "crumbs": [
+      "Semester Project",
+      "Data Simulation Example"
+    ]
+  },
+  {
+    "objectID": "ex-simulate.html#step-3-simulate-outcomes",
+    "href": "ex-simulate.html#step-3-simulate-outcomes",
+    "title": "Simulating Experimental Data with Noncompliance",
+    "section": "",
+    "text": "Simulate the outcome variable based on compliance and treatment assignment.\n\n# Simulate outcomes\noutcome &lt;- baseline_mean + \n  (assignment * compliance * treatment_effect) +  # Effect for those who comply\n  rnorm(n, mean = 0, sd = 5)  # Add random noise\n\n# Combine data into a data frame\nexperiment_data &lt;- data.frame(\n  ID = 1:n,\n  Assignment = assignment,\n  Compliance = compliance,\n  Outcome = outcome\n)\n\n# View the first few rows of the data\nhead(experiment_data)\n\n  ID Assignment Compliance  Outcome\n1  1          0          0 46.99054\n2  2          1          1 55.03151\n3  3          0          0 55.13393\n4  4          1          1 63.75531\n5  5          1          1 52.45417\n6  6          0          0 49.52426",
+    "crumbs": [
+      "Semester Project",
+      "Data Simulation Example"
+    ]
+  },
+  {
+    "objectID": "ex-simulate.html#step-4-export-data-to-csv",
+    "href": "ex-simulate.html#step-4-export-data-to-csv",
+    "title": "Simulating Experimental Data with Noncompliance",
+    "section": "",
+    "text": "Export the simulated data to a CSV file for further analysis.\n\n# Export the data to a CSV file\nwrite.csv(experiment_data, \"simulated_experiment_data.csv\", row.names = FALSE)\n\n# Confirm export\ncat(\"Data has been exported to 'simulated_experiment_data.csv'\")\n\nData has been exported to 'simulated_experiment_data.csv'",
+    "crumbs": [
+      "Semester Project",
+      "Data Simulation Example"
+    ]
+  },
+  {
+    "objectID": "instructors.html",
+    "href": "instructors.html",
+    "title": "Instructors",
+    "section": "",
+    "text": "Sean Sylvia is an Associate Professor in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Dr. Sylvia will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
     "crumbs": [
       "Course Information",
-      "Overview"
+      "Instructors"
     ]
   },
   {
-    "objectID": "course-overview.html#advanced-quantitative-methods-for-health-policy-and-management",
-    "href": "course-overview.html#advanced-quantitative-methods-for-health-policy-and-management",
-    "title": "HPM 883Spring 2025",
+    "objectID": "instructors.html#instructor-sean-sylvia-ph.d.",
+    "href": "instructors.html#instructor-sean-sylvia-ph.d.",
+    "title": "Instructors",
     "section": "",
-    "text": "HPM 883 is an advanced graduate-level course designed to equip PhD students in the Health Policy and Management program with sophisticated quantitative research skills. This course represents the third installment in the quantitative methods sequence, building on the foundational knowledge acquired in HPM 881 and HPM 882.\nThroughout the term, students will delve into advanced quantitative methods pertinent to health services research with a focus on the use of experimental methods and machine learning for causal inference. The course will provide a thorough introduction to machine learning techniques and explore the burgeoning domain of causal machine learning.",
+    "text": "Sean Sylvia is an Associate Professor in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Dr. Sylvia will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
     "crumbs": [
       "Course Information",
-      "Overview"
+      "Instructors"
     ]
   },
   {
-    "objectID": "unit-0/unit-0-foundations-1.html",
-    "href": "unit-0/unit-0-foundations-1.html",
-    "title": "Unit 0: Foundations",
-    "section": "",
-    "text": "This unit will provide a foundation for the rest of the course. It will cover the following topics:\n\nWhy experiments and ML for Causal Inference\nCourse structure and tools\nA field experiment in health services research\nComputing for Reproducible Research",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Class 1: Introduction"
-    ]
-  },
-  {
-    "objectID": "unit-0/unit-0-foundations-1.html#unit-overview",
-    "href": "unit-0/unit-0-foundations-1.html#unit-overview",
-    "title": "Unit 0: Foundations",
-    "section": "",
-    "text": "This unit will provide a foundation for the rest of the course. It will cover the following topics:\n\nWhy experiments and ML for Causal Inference\nCourse structure and tools\nA field experiment in health services research\nComputing for Reproducible Research",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Class 1: Introduction"
-    ]
-  },
-  {
-    "objectID": "unit-0/unit-0-foundations-1.html#class-1-course-introduction",
-    "href": "unit-0/unit-0-foundations-1.html#class-1-course-introduction",
-    "title": "Unit 0: Foundations",
-    "section": "Class 1: Course Introduction",
-    "text": "Class 1: Course Introduction\n\nPreparation\n\nRead: Harrison and List (2004)\n\nPerusall Link: Harrison and List (2004)\n\n\n\n\n\n\n\n\nPerusall\n\n\n\nPerusall is a free online platform that allows you to collaboratively annotate content with your classmates. Here is a link to the Perusall page for this course: HPM 883. If needed, the class enrollment code is SYLVIA-ZXTWH.\n\nAlthough it is a good way to engage with your classmates around the material, it is not required that you comment on Perusall. If you wish, you can just download the readings directly.\n\n\n\nACI Chapters 0 and 2\n\n\n\nIn Class\n\nLecture slides\n\n\n\nLab/Homework\n\n10-15 min Introductory Class Survey (Due Jan 15)\n\n\n\nAdditional Materials",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Class 1: Introduction"
-    ]
-  },
-  {
-    "objectID": "unit-0/unit-0-foundations-3.html",
-    "href": "unit-0/unit-0-foundations-3.html",
-    "title": "Unit 0: Foundations",
-    "section": "",
-    "text": "Learn importance of reproducible research\nLearn key principles of reproducible research\nLearn how to design and implement a reproducible research workflow\n\nVersion control using git and github\nLiterate programming using Quarto\nPackage managemenet using renv",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Class 3: Computing for Reproducible Research"
-    ]
-  },
-  {
-    "objectID": "unit-0/unit-0-foundations-3.html#learning-objectives",
-    "href": "unit-0/unit-0-foundations-3.html#learning-objectives",
-    "title": "Unit 0: Foundations",
-    "section": "",
-    "text": "Learn importance of reproducible research\nLearn key principles of reproducible research\nLearn how to design and implement a reproducible research workflow\n\nVersion control using git and github\nLiterate programming using Quarto\nPackage managemenet using renv",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Class 3: Computing for Reproducible Research"
-    ]
-  },
-  {
-    "objectID": "unit-0/unit-0-foundations-3.html#class-will-be-remote-only",
-    "href": "unit-0/unit-0-foundations-3.html#class-will-be-remote-only",
-    "title": "Unit 0: Foundations",
-    "section": "Class will be remote-only",
-    "text": "Class will be remote-only\nJoin from the comfort of your own home!\nZoom link: https://unc.zoom.us/j/98379053109",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Class 3: Computing for Reproducible Research"
-    ]
-  },
-  {
-    "objectID": "unit-0/unit-0-foundations-3.html#preparation",
-    "href": "unit-0/unit-0-foundations-3.html#preparation",
-    "title": "Unit 0: Foundations",
-    "section": "Preparation",
-    "text": "Preparation\n\n1. Read/Watch/Listen:\n\nReview Computing page\nSkim: Reproducibility Lecture\n\n\n\n2. Computing Setup:\nTo ensure a smooth experience during class, please follow these steps:\n\nInstall R (v4.x or later)\n\nCRAN Download or via your preferred package manager.\n\nInstall RStudio or a similar IDE\n\nRStudio Download\n\nInstall Quarto\n\nQuarto Installation – ensures you can render .qmd files.\n\nInstall Git\n\nConfirm Git is accessible from the command line:\ngit --version\nWindows: Git for Windows\n\nmacOS: Use Xcode Command Line Tools or Homebrew.\n\nCreate a GitHub Account\n\nGitHub Signup – used for version control and code sharing.\n\nSet Up Credentials (SSH keys or PAT)\n\nHelps push/pull to GitHub without repeated logins.\n\nGitHub Docs: Connecting to GitHub with SSH\n\nInstall Required R Packages\n\nIn R/RStudio, run:\ninstall.packages(c(\"tidyverse\",\n                   \"renv\",\n                   \"devtools\",\n                   \"broom\",\n                   \"infer\",\n                   \"rmarkdown\",\n                   \"quarto\"))\n\nOptional but Recommended: Set Up Renv\n\nWe will use renv to manage R package versions.\n\nRenv Documentation\n\n\nOnce you have completed the above steps, you should be ready for our in-class activities.",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Class 3: Computing for Reproducible Research"
-    ]
-  },
-  {
-    "objectID": "unit-0/unit-0-foundations-3.html#in-class",
-    "href": "unit-0/unit-0-foundations-3.html#in-class",
-    "title": "Unit 0: Foundations",
-    "section": "In Class",
-    "text": "In Class\n\nReproducibility Lecture\nZoom Recording\nRCT Analysis Template Repository",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Class 3: Computing for Reproducible Research"
-    ]
-  },
-  {
-    "objectID": "unit-0/unit-0-foundations-3.html#additional-resources",
-    "href": "unit-0/unit-0-foundations-3.html#additional-resources",
-    "title": "Unit 0: Foundations",
-    "section": "Additional Resources",
-    "text": "Additional Resources\n\nHappy with Git and GitHub for the UseR\nBryan, Jennifer, 2018. Excuse Me, Do You Have a Moment to Talk About Version Control?, The American Statistician.",
-    "crumbs": [
-      "Unit 0: Foundations",
-      "Class 3: Computing for Reproducible Research"
-    ]
-  },
-  {
-    "objectID": "unit-0/lec-0-3.html",
-    "href": "unit-0/lec-0-3.html",
-    "title": "Foundations: Reproducible Research",
-    "section": "",
-    "text": "Reproducible research is, quite frankly, one of the most important aspects of scientific work—and also one of the most neglected. Whether you’re a grad student wrangling code after midnight or a seasoned PI rediscovering a half-forgotten analysis, reproducibility ensures your brilliant findings don’t vanish into the digital abyss. Below, we’ll review why you should care, and how you can implement reproducibility so thoroughly that even a time-traveling version of yourself from five years ago could decipher your code."
-  },
-  {
-    "objectID": "unit-0/lec-0-3.html#a.-why-reproducibility-matters",
-    "href": "unit-0/lec-0-3.html#a.-why-reproducibility-matters",
-    "title": "Foundations: Reproducible Research",
-    "section": "A. Why Reproducibility Matters",
-    "text": "A. Why Reproducibility Matters\n\nDefinition\n\nIn quantitative research, reproducibility means another researcher—or your future self with only half a memory of what you did—can take the same data and code, then arrive at the same results. No secret incantations, arcane folder structures, or chanting under the full moon required.\n\nMotivations\n\n\nTransparency: Ever heard the phrase “Trust me, I’m a scientist”? Yeah, that doesn’t fly so well if your code is locked away in a cryptically named folder like “analysis_final_FINAL_noReally.r”. By exposing how you clean, analyze, and report data, you bolster confidence in your results.\nCollaboration: If multiple people have to dig through your code to figure out why you did something, at least make it a pleasant excavation. A reproducible workflow means you can share your project with colleagues, and they’ll only have mild confusion instead of sheer panic.\nEfficiency: Imagine re-running your entire analysis with a single command. Now contrast that with rummaging through 57 scripts, each called “analysis2_v2_copy.R”. Reproducibility helps you avoid the second scenario—and possibly a meltdown.\nError Detection: Because let’s face it, even the best of us occasionally type mean when we mean median. With reproducible code, errors can be spotted quickly and corrected before your findings end up on the front page of the Journal of Irreproducible Results.\n\nReproducibility, in short, saves your sanity and safeguards your scientific honor."
-  },
-  {
-    "objectID": "unit-0/lec-0-3.html#b.-core-tools-and-concepts",
-    "href": "unit-0/lec-0-3.html#b.-core-tools-and-concepts",
-    "title": "Foundations: Reproducible Research",
-    "section": "B. Core Tools and Concepts",
-    "text": "B. Core Tools and Concepts\nSo how do we make all this happen? We bring in the cavalry: version control, literate programming, environment management, a logical project structure, and tidy documentation. Let’s get to it.\n1. Version Control (Git + GitHub)\nVersion control is like a well-ordered diary for your project: it tracks every change—no matter how small—across time, preserving your code’s evolutionary history in tidy “commits.”\n\nTracks Changes: Every minor tweak, even the moment you changed a comma to a semicolon and saved your entire analysis from ruin.\nFacilitates Collaboration: Gone are the days of emailing zip files named “Project_Latest.zip” back and forth. Now, you can break things collaboratively on GitHub and blame it on the merge conflict.\nCommit History: “Who changed my code last Thursday?” Git knows. Git always knows.\n\nThink of GitHub as your code’s remote spa retreat—safe, relaxing, and occasionally throwing small hissy fits called “merge conflicts.”\n2. Literate Programming (Quarto, R Markdown, knitr)\nSome folks write code in one file, then paste results into a Word document, and so on. Then they wonder why their final paper includes the wrong p-values. Enter literate programming.\n\nIntegrated Code + Narrative: Quarto, R Markdown, knitr, and friends let you keep code, text, and figures in one place, so you never again get lost in the labyrinth of “Oh wait, which file made that plot?”\nMinimizes Copy-Paste Errors: If your results are automatically woven into your final report, you can’t “forget to update Table 3.” All you do is re-run the document, and—voilà!—your latest analysis magically appears.\nSeamless Feedback Loop: Make a change, watch the effect ripple through the entire document. It’s like having the world’s fastest (and least sarcastic) collaborator.\n3. Environment Management (renv, or other)\nPicture this: You wrote a brilliant script six months ago, but now it refuses to run because some obscure package updated. Environment management tools let you freeze your code in time.\n\nCaptures R Package Versions: Tools like renv let you record all the packages (and their versions) you used, so re-installing them later won’t feel like Jumanji in dependency land.\nConsistency Over Time: If you want your analyses to work in five years—or on your advisor’s laptop next Tuesday—document your environment so it can be replicated exactly.\nFewer “It Worked On My Machine” Excuses: Because telling your collaborators to “just figure it out” is not a good look.\n4. Project Structure\nIf your current method involves flinging scripts and data into a single folder named “Stuff,” we might have a gentle suggestion: adopt a standardized project structure.\n\nData Folder: A sanctuary for raw files, processed data, or your deep, dark secrets—just keep it consistent.\nR Scripts or Quarto Documents: Store code for data cleaning, analysis, and visualization in separate scripts or well-labeled notebooks. It’s okay to have multiple files—just label them in a way that future you can actually decipher.\nOutput Folder: All those shiny plots and tables? Keep them in one place. Resist the urge to edit them manually; they should be generated by your scripts, not conjured by hand.\nREADME: The wise old gatekeeper that explains your entire project to anyone who stops by (including you, after you forget everything).\n\nA tidy folder structure is a gift to yourself. And your future co-authors. And your future self’s sanity.\n5. Documentation\nDocumentation is the special sauce that holds everything together—or, in some cases, the glaring absence that leads to frantic Slack messages at 2 a.m.\n\nCommit Messages: If your commit message says “Update stuff,” your collaborators may weep softly. Be descriptive—like “Fix bug in logistic regression loop that caused meltdown.”\nCode Comments: Add them wherever something might confuse your labmates or your brain on a Monday morning. The more complicated the code, the more we need small notes to guide us.\nREADME or docs/ Folder: Provide an at-a-glance explanation of the project’s purpose, the dataset, how to replicate results, and any known issues. It’s your public service announcement to the world.\n\nIf you’re feeling particularly poetic, documentation is the short story you write about your data, so that others can appreciate its plot—without rummaging through all the raw scripts to figure out who the villain is (spoiler: it’s usually missing data).\nTakeaway\nReproducible research is about ensuring that data and code aren’t locked in the dusty attic of your personal computer—half-labeled and wholly misunderstood. By relying on tools like Git, Quarto, and renv, and by maintaining a disciplined project structure and documentation process, you guarantee that your results are both credible and easy to revisit."
-  },
-  {
-    "objectID": "unit-0/lec-0-3.html#hands-on-pratice",
-    "href": "unit-0/lec-0-3.html#hands-on-pratice",
-    "title": "Foundations: Reproducible Research",
-    "section": "Hands-on Pratice",
-    "text": "Hands-on Pratice\nNow let’s get our hands dirty with some of the tools for reproducibility. We’ll be applying reproducible research practices to a simulated RCT dataset. You’ll learn to clone a GitHub repository, explore the project structure, run an analysis using Quarto, and commit changes back to GitHub."
-  },
-  {
-    "objectID": "unit-0/lec-0-3.html#guided-computer-setup",
-    "href": "unit-0/lec-0-3.html#guided-computer-setup",
-    "title": "Foundations: Reproducible Research",
-    "section": "0. Guided Computer Setup",
-    "text": "0. Guided Computer Setup\n\nComputing Setup\nIntro to Github"
-  },
-  {
-    "objectID": "unit-0/lec-0-3.html#github-template-repository",
-    "href": "unit-0/lec-0-3.html#github-template-repository",
-    "title": "Foundations: Reproducible Research",
-    "section": "1. GitHub Template Repository",
-    "text": "1. GitHub Template Repository\n\n\nClone the Repository\n\nGo to the provided URL or use git clone https://github.com/unc-hpm-quant/rct-analysis-template in the terminal.\nIn RStudio: “File” &gt; “New Project” &gt; “Version Control” &gt; “Git” and paste the repo URL.\n\n\nReview Project Structure\n\n   rct-analysis-template/\n   ├── README.md\n   ├── .gitignore\n   ├── renv.lock\n   ├── data/\n   │   └── rct_sim_data.csv\n   ├── analysis/\n   │   ├── analysis.qmd\n   │   └── helpers.R\n   └── output/\n\n\nInstall Dependencies\n\nIf renv is used, run renv::restore() in the project to sync package versions."
-  },
-  {
-    "objectID": "unit-0/lec-0-3.html#analyzing-the-simulated-rct-data",
-    "href": "unit-0/lec-0-3.html#analyzing-the-simulated-rct-data",
-    "title": "Foundations: Reproducible Research",
-    "section": "2. Analyzing the Simulated RCT Data",
-    "text": "2. Analyzing the Simulated RCT Data\n\n\nData: rct_sim_data.csv includes columns\n\nsubject_id\ntreatment\noutcome\nage\ngender, etc.\n\n\n\nGoal: Estimate the average treatment effect, create summaray tables, and visualize distributions.\n\n2.1 Open analysis.qmd\n1.  Look at the top YAML and code chunks.\n2.  Notice how code and text are interwoven.\n2.2 Render the Document\n\nIn RStudio, click “Render” or run:\n\n\nquarto::quarto_render(\"analysis/analysis.qmd\")\n\nThe output (HTML, PDF, etc.) will appear in your output folder or in the same directory."
-  },
-  {
-    "objectID": "unit-0/lec-0-3.html#modify-and-commit",
-    "href": "unit-0/lec-0-3.html#modify-and-commit",
-    "title": "Foundations: Reproducible Research",
-    "section": "3. Modify and Commit",
-    "text": "3. Modify and Commit\n\nMake a Small Change\n\nFor example, add a simple plot of outcome vs. treatment:\n\nggplot(rct_data, aes(x = factor(treatment), y = outcome)) +\n  geom_boxplot()\n\n\nRe-run the document to see the new figure in the rendered output.\nCommit and Push\n\n\nStage your changes:\n\n\ngit add analysis/analysis.qmd\ngit commit -m \"Added treatment-outcome boxplot\"\ngit push origin main\n\n\nView on GitHub: Confirm your commit is visible and see the updated code."
-  },
-  {
-    "objectID": "unit-0/lec-0-3.html#branching-and-pull-requests-for-bigger-or-test-changes",
-    "href": "unit-0/lec-0-3.html#branching-and-pull-requests-for-bigger-or-test-changes",
-    "title": "Foundations: Reproducible Research",
-    "section": "4. Branching and Pull Requests for bigger or test changes",
-    "text": "4. Branching and Pull Requests for bigger or test changes\n\nCreate a new branch\n\n\ngit checkout -b new-plot\n\n\nAdd Covariates: Update the analysis to adjust for age and gender in a regression model."
-  },
-  {
-    "objectID": "unit-0/lec-0-3.html#wrap-up",
-    "href": "unit-0/lec-0-3.html#wrap-up",
-    "title": "Foundations: Reproducible Research",
-    "section": "5. Wrap-Up",
-    "text": "5. Wrap-Up\nReflect: How did version control and Quarto documents streamline your workflow?\nNext Steps: If you want to dig further into reproducible data analysis practices, you can explore advanced topics like Docker, code review workflows, and CI/CD (continuous integration and deployment)."
-  },
-  {
-    "objectID": "course-communication.html",
-    "href": "course-communication.html",
-    "title": "Communication",
-    "section": "",
-    "text": "Slack will be our primary communication hub. An invitation to the course Slack will be shared on the first day of class. Use this place to ask questions, share resources, and engage with your peers, the instructor, and the TA. (For personal or sensitive matters, please use e-mail)\n\n\n\n\n\n\nImportant:\n\n\n\nSlack will not be continuously monitored by the instructor or TA outside of posted office hours. At other times, students are expected to help/engage with one another to foster a shared learning experience. If a question hasn’t been addressed, the TA or Sean will respond but not immediately or even the same day.\nYou may DM Sean or the TA in Slack (but, again, don’t expect a response immediately or even the same day.)\n\n\n\nThe #announcements channel will be used to share course announcements.\nUse the #help channel as a first stop for general questions about the class or for technical assistance.\nUse the #general channel to discuss lab assignments and discuss/share resources related to course topics.\nUse the #interesting-stuff channel to share relevant articles, podcasts, packages, data sources, and anything else relevant that you think your classmates will benefit from.\n\n\n\n\n\n\n\nDon’t post any sensitive or personal information in the class Slack\n\n\n\nSlack is only for general class discussions, announcements, and collaboration. In particular, please do not share or post any of the following:\n\nIndividual or group grades, GPA, or other academic evaluations or records.\nSocial Security Numbers\nPersonal information about tuition payments, financial aid, or scholarships.\nAny information on accommodations or health-related information.\nAny other sensitive information\n\nFor sensitive information, please use UNC email.",
+    "objectID": "instructors.html#teaching-assistant-yumeng-du",
+    "href": "instructors.html#teaching-assistant-yumeng-du",
+    "title": "Instructors",
+    "section": "Teaching Assistant: Yumeng Du",
+    "text": "Teaching Assistant: Yumeng Du\nYumeng Du is a Ph.D. student in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Yumeng will hold office hours on Mondays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
     "crumbs": [
       "Course Information",
-      "Communication"
+      "Instructors"
     ]
-  },
-  {
-    "objectID": "course-communication.html#slack",
-    "href": "course-communication.html#slack",
-    "title": "Communication",
-    "section": "",
-    "text": "Slack will be our primary communication hub. An invitation to the course Slack will be shared on the first day of class. Use this place to ask questions, share resources, and engage with your peers, the instructor, and the TA. (For personal or sensitive matters, please use e-mail)\n\n\n\n\n\n\nImportant:\n\n\n\nSlack will not be continuously monitored by the instructor or TA outside of posted office hours. At other times, students are expected to help/engage with one another to foster a shared learning experience. If a question hasn’t been addressed, the TA or Sean will respond but not immediately or even the same day.\nYou may DM Sean or the TA in Slack (but, again, don’t expect a response immediately or even the same day.)\n\n\n\nThe #announcements channel will be used to share course announcements.\nUse the #help channel as a first stop for general questions about the class or for technical assistance.\nUse the #general channel to discuss lab assignments and discuss/share resources related to course topics.\nUse the #interesting-stuff channel to share relevant articles, podcasts, packages, data sources, and anything else relevant that you think your classmates will benefit from.\n\n\n\n\n\n\n\nDon’t post any sensitive or personal information in the class Slack\n\n\n\nSlack is only for general class discussions, announcements, and collaboration. In particular, please do not share or post any of the following:\n\nIndividual or group grades, GPA, or other academic evaluations or records.\nSocial Security Numbers\nPersonal information about tuition payments, financial aid, or scholarships.\nAny information on accommodations or health-related information.\nAny other sensitive information\n\nFor sensitive information, please use UNC email.",
-    "crumbs": [
-      "Course Information",
-      "Communication"
-    ]
-  },
-  {
-    "objectID": "course-communication.html#office-hours",
-    "href": "course-communication.html#office-hours",
-    "title": "Communication",
-    "section": "Office Hours",
-    "text": "Office Hours\nSean will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.\nThe TA will hold office hours on…",
-    "crumbs": [
-      "Course Information",
-      "Communication"
-    ]
-  },
-  {
-    "objectID": "course-communication.html#email",
-    "href": "course-communication.html#email",
-    "title": "Communication",
-    "section": "Email",
-    "text": "Email\nPlease use e-mail only for personal matters. (For anything related to the course material or coding questions, please use Slack.)",
-    "crumbs": [
-      "Course Information",
-      "Communication"
-    ]
-  },
-  {
-    "objectID": "labs/lab-1-InternalValidityPO_sols.html",
-    "href": "labs/lab-1-InternalValidityPO_sols.html",
-    "title": "Lab 1 Solutions",
-    "section": "",
-    "text": "Results may differ\n\n\n\nThis is only one of many possible ways to complete this lab. Your final code may look different, which is fine! In fact, it is good practice to experiment with different approaches."
-  },
-  {
-    "objectID": "labs/lab-1-InternalValidityPO_sols.html#overview-and-learning-objectives",
-    "href": "labs/lab-1-InternalValidityPO_sols.html#overview-and-learning-objectives",
-    "title": "Lab 1 Solutions",
-    "section": "Overview and Learning Objectives",
-    "text": "Overview and Learning Objectives\nIn this lab, we will explore internal validity and the potential outcomes framework using simulated health data from the endlessly eventful St. Null’s Memorial Hospital. Specifically, we will recreate a scenario where a new intervention (putting patients on ventilators) may or may not reduce patient mortality. As you’ll discover, chaos at the hospital has made it far from straightforward to identify causal effects.\nBy the end of this lab, you will be able to:\n\nUnderstand the concept of potential outcomes and causal effects.\nApply randomization inference to estimate treatment effects.\nIdentify threats to internal validity and explore possible solutions.\nImplement basic difference-in-means estimation in R.\nUse the WebR package to interactively run and modify code."
-  },
-  {
-    "objectID": "labs/lab-1-InternalValidityPO_sols.html#instructions",
-    "href": "labs/lab-1-InternalValidityPO_sols.html#instructions",
-    "title": "Lab 1 Solutions",
-    "section": "Instructions",
-    "text": "Instructions\n\nOpen this .qmd file in RStudio or another Quarto-supported editor.\nFollow the guided coding prompts below, completing the missing code blocks.\nSubmit your completed lab on Gradescope [Insert Link Here] by [Insert Deadline Here]."
-  },
-  {
-    "objectID": "labs/lab-1-InternalValidityPO_sols.html#scenario",
-    "href": "labs/lab-1-InternalValidityPO_sols.html#scenario",
-    "title": "Lab 1 Solutions",
-    "section": "Scenario",
-    "text": "Scenario\nThe Hospital of Uncertain Outcomes\nWelcome to St. Null’s Memorial Hospital—an institution where the only constant is confusion. The hospital board—led by the well-meaning but trend-obsessed CEO, Barnaby Beta—changes policies so often that nobody knows what’s going on.\nWorse yet is Dr. P-Hacker, a “data guru” who prefers p-values to patients. He mines the electronic health records (EHR) until something (anything!) is “significant.” Meanwhile, Nurse Random tries to keep everything on track, pointing out that good causal methods can be more important than good vibes. Lastly, Dr. Doub R. Obust lurks in the background, waiting for a chance to champion doubly robust methods that might someday save everyone’s sanity.\n\n\n\n\nYou and your team of budding methodologists are the new consultants hired to impose some order on this bedlam. In each module, you’ll tackle another fiasco at St. Null’s—from overfitted AI catastrophes to weird missing-data mishaps—and attempt to restore some semblance of methodological rigor. Good luck!"
-  },
-  {
-    "objectID": "labs/lab-1-InternalValidityPO_sols.html#your-mission",
-    "href": "labs/lab-1-InternalValidityPO_sols.html#your-mission",
-    "title": "Lab 1 Solutions",
-    "section": "Your Mission",
-    "text": "Your Mission\nThe Pandemic Mystery at St. Null’s\nA mysterious respiratory illness has swept through St. Null’s, leaving every ward scrambling. The question at hand is whether putting these patients on ventilators prolongs their lifespans. CEO Barnaby Beta wants quick answers (“If TikTok can do it, so can we!”). Dr. P-Hacker gleefully promises “instant significance,” claiming all he needs is the hospital’s EHR from the past week.\nBut Nurse Random, unimpressed, insists that the hospital’s chaotic, ad hoc ventilator assignments will cloud any conclusions. Dr. Doub R. Obust nods knowingly. They call in your team for an unbiased, data-driven approach.\nIn this lab, you’ll simulate a dataset of 100,000 patients that captures both “potential outcomes” (i.e., what would happen if a patient were ventilated vs. not ventilated). This magical glimpse at parallel universes is impossible in real-world data, but here it will let us see exactly how different analytic approaches fare in the face of selection bias."
-  },
-  {
-    "objectID": "labs/lab-1-InternalValidityPO_sols.html#step-1-simulating-the-dataset",
-    "href": "labs/lab-1-InternalValidityPO_sols.html#step-1-simulating-the-dataset",
-    "title": "Lab 1 Solutions",
-    "section": "Step 1: Simulating the Dataset",
-    "text": "Step 1: Simulating the Dataset\nBecause the EHR system at St. Null’s is, in a word, “unreliable” (or, in two words, “utterly broken”), we’ll create our own dataset in R.\nRun the following code to generate 100,000 patient records along with potential outcomes (y0 if no ventilator, y1 if ventilated). Each outcome is the patient’s lifespan (in some made-up units). Note that lifespans below zero are set to zero—any negative numbers would just be an artifact of Dr. P-Hacker’s bizarre data extraction methods.\n\nlibrary(fixest)\nlibrary(data.table)\nset.seed(072121)\n\n# 100,000 people with differing levels of covid symptoms\nN_people = 100000\ndf = data.table(person = 1:N_people)\n\n# Potential outcomes (Y0): life-span if no vent\ndf[, y0 := rnorm(N_people, 9.4, 4)]\ndf[y0 &lt; 0, y0 := 0]\n\n# Potential outcomes (Y1): life-span if assigned to vents\ndf[, y1 := rnorm(N_people, 10, 4)]\ndf[y1 &lt; 0, y1 := 0]\n\n\n\n\n\n\n\nExplanation:\n\n\n\n\nThe necessary packages (fixest and data.table) are loaded.\nThe set.seed(072121) ensures reproducibility, meaning the random numbers generated will be the same every time the code is run.\nA dataset df is created using data.table with 100,000 individuals (each represented by a row).\n\nSimulating Potential Outcomes:\n\n\ny0 represents the expected lifespan (in years) if no ventilator treatment is given. It is drawn from a normal distribution with:\n\nMean: 9.4 years\nStandard deviation: 4 years\n\n\nAny y0 values below 0 (i.e., negative lifespans) are set to zero.\ny1 represents the expected lifespan if assigned to a ventilator. It is similarly drawn from a normal distribution but with a slightly higher mean of 10 years.\nAgain, negative lifespan values are replaced with 0.\n\n\n\n\n\nWe also define the individual treatment effect for each patient. Dr. Doub R. Obust is thrilled, because for once, we have both y0 and y1 simultaneously—an impossible dream in real life!\n\n# Define individual treatment effect\ndf[, delta := y1 - y0]\n\n\n\n\n\n\n\nExplanation:\n\n\n\n\nA new column delta is created, which represents the individual treatment effect (ITE) for each person.\nThe ITE is calculated as the difference between the potential outcome under treatment (y1) and the potential outcome under control (y0).\nThis measures how much additional lifespan (if any) the ventilator treatment provides.\n\n\n\n\n\n\n\n\n\nAlternative Approach\n\n\n\n\n\nThe column can be created using mutate() from dplyr if using tidyverse:\nlibrary(dplyr)\ndf &lt;- df %&gt;% mutate(delta = y1 - y0)"
-  },
-  {
-    "objectID": "labs/lab-1-InternalValidityPO_sols.html#step-2-the-two-doctors",
-    "href": "labs/lab-1-InternalValidityPO_sols.html#step-2-the-two-doctors",
-    "title": "Lab 1 Solutions",
-    "section": "Step 2: The Two Doctors",
-    "text": "Step 2: The Two Doctors\nSt. Null’s has two very different doctors assigning ventilators:\n\n\nDr. Perfect: A mystical being who can see into each patient’s future and only gives ventilators to those who would benefit from them.\n\nDr. Bad: The name says it all. This doctor assigns ventilators randomly—could be beneficial, could not be. Who knows?\n\nStep 2a: Assigning Doctors\nFirst, we randomly assign each patient to one of these two doctors. (No wonder this hospital is chaotic…)\n\n# Assign doctors randomly\ndf[, doctor := sample(c(\"perfect\", \"bad\"), N_people, replace = TRUE)]\n\n\n\n\n\n\n\nExplanation\n\n\n\n\n\nsample(c(\"perfect\", \"bad\"), N_people, replace = TRUE)\n\nsample(x, size, replace) randomly selects size elements from the vector x.\nHere, x = c(\"perfect\", \"bad\"), meaning we are choosing between \"perfect\" and \"bad\".\nsize = N_people ensures that we assign a doctor to all N_people individuals.\nreplace = TRUE allows values to be selected independently, meaning each person is assigned a doctor without affecting others.\n\n\n\ndf[, doctor := ...] (Data.table Syntax)\n\ndf[, column_name := value] is data.table’s syntax for adding or modifying a column.\nHere, doctor is created and populated with \"perfect\" or \"bad\" based on the sample() function.\n\n\n\n\n\n\n\n\n\n\n\nAlternative Approach:\n\n\n\n\n\nUsing mutate() from dplyr:\ndf &lt;- df %&gt;%\n  mutate(doctor = sample(c(\"perfect\", \"bad\"), N_people, replace = TRUE))\n\n\nInstead of using sample(), one could use runif() :\ndf[, doctor := ifelse(runif(N_people) &gt; 0.5, \"perfect\", \"bad\")]\nThis approach provides more flexibility if you want to adjust the probability of assigning each type of doctor.\n\n\n\n\nStep 2b: Assigning Ventilators\nNext, each doctor does what they do best. Dr. Perfect uses clairvoyance to treat only those who stand to gain (delta &gt; 0). Dr. Bad flips a metaphorical coin:\n\n# Perfect doctor assigns vents only to those who benefit\ndf[doctor == \"perfect\", vents := (delta &gt; 0)]\n\n# Random doctor assigns vents randomly\ndf[doctor == \"bad\", vents := sample(c(TRUE, FALSE), .N, replace = TRUE)]\n\n\n\n\n\n\n\nExplanation:\n\n\n\n\n\ndf[doctor == \"perfect\", vents := (delta &gt; 0)]\n\ndf[...] is data.table’s way of selecting rows where doctor == \"perfect\".\nvents := (delta &gt; 0) assigns TRUE if delta &gt; 0, meaning treatment is given if the patient benefits.\nThe := operator modifies the column in place, making it more memory-efficient than base R.\n\n\n\ndf[doctor == \"bad\", vents := sample(c(TRUE, FALSE), .N, replace = TRUE)]\n\n.N represents the number of rows in the subset (doctor == \"bad\"), ensuring the right number of values is generated.\nsample(c(TRUE, FALSE), .N, replace = TRUE) randomly assigns TRUE (ventilator given) or FALSE (no ventilator) to these individuals.\nEach person is assigned independently due to replace = TRUE.\n\n\n\n\n\nIt’s not exactly a model of ethical clarity, but it certainly demonstrates the complications of “treatment assignment” in the real world (or the real St. Null’s world)."
-  },
-  {
-    "objectID": "labs/lab-1-InternalValidityPO_sols.html#step-3-computing-causal-parameters",
-    "href": "labs/lab-1-InternalValidityPO_sols.html#step-3-computing-causal-parameters",
-    "title": "Lab 1 Solutions",
-    "section": "Step 3: Computing Causal Parameters",
-    "text": "Step 3: Computing Causal Parameters\nNow, let’s calculate the key causal parameters:\n\n\nAverage Treatment Effect (ATE): The overall difference in outcomes if everyone were ventilated vs. if no one were ventilated.\n\nAverage Treatment Effect on the Treated (ATT): The effect of ventilation on those who actually received ventilation.\n\nAverage Treatment Effect on the Untreated (ATU): The effect of ventilation on those who were not ventilated.\n\n\n# Calculate all aggregate Causal Parameters (ATE, ATT, ATU)\nate = df[, mean(delta)]\natt = df[vents == TRUE, mean(delta)]\natu = df[vents == FALSE, mean(delta)]\n\ncat(sprintf(\"ATE = %.03f\n\", ate))\n\nATE = 0.602\n\ncat(sprintf(\"ATT = %.03f\n\", att))\n\nATT = 2.748\n\ncat(sprintf(\"ATU = %.03f\n\", atu))\n\nATU = -1.711\n\n\n\n\n\n\n\n\nExplanation:\n\n\n\n\n\ndf[, mean(delta)]\n\nmean(delta) computes the average of delta, which represents the Average Treatment Effect (ATE).\nSince no filtering is applied, it considers all individuals in the dataset.\n\n\n\ndf[vents == TRUE, mean(delta)]\n\ndf[...] selects rows where vents == TRUE (patients who received ventilation).\nmean(delta) then computes the Average Treatment Effect on the Treated (ATT).\n\n\n\ndf[vents == FALSE, mean(delta)]\n\nThis selects individuals who were not treated (vents == FALSE).\nmean(delta) calculates the Average Treatment Effect on the Untreated (ATU).\n\n\n\ncat(sprintf(\"ATE = %.03f\\n\", ate))\n\nsprintf(\"ATE = %.03f\\n\", ate) formats ate to 3 decimal places.\ncat() prints the formatted result to the console.\n\n\n\n\n\nDr. P-Hacker would stop right here and rejoice: “We have all the significance we need!” But hold your celebratory balloon drop—there’s more to do."
-  },
-  {
-    "objectID": "labs/lab-1-InternalValidityPO_sols.html#step-4-selection-bias-and-realized-outcomes",
-    "href": "labs/lab-1-InternalValidityPO_sols.html#step-4-selection-bias-and-realized-outcomes",
-    "title": "Lab 1 Solutions",
-    "section": "Step 4: Selection Bias and Realized Outcomes",
-    "text": "Step 4: Selection Bias and Realized Outcomes\nAlthough the dataset has both y0 and y1, in the real world, a patient’s outcome is observed under only one condition (treated or untreated). Let’s capture which outcome we’d actually see based on the ventilator assignment:\n\n# Use the switching equation to select realized outcomes from potential outcomes based on treatment assignment\ndf[, y := vents * y1 + (1 - vents) * y0]\n\n\n\n\n\n\n\nExplanation :\n\n\n\n\n\nvents * y1 + (1 - vents) * y0\n\nThis applies the switching equation, which determines the observed outcome (y) based on whether an individual received treatment.\nIf vents == TRUE (1), the observed outcome is y1 (the treated potential outcome).\nIf vents == FALSE (0), the observed outcome is y0 (the untreated potential outcome).\n\nMathematically, this follows:\n\ny=vents×y1+(1−vents)×y0\n\n\n\n\n\ndf[, y := ...]\n\nThis is data.table syntax for creating or modifying a column in place.\nThe new column y represents the observed lifespan for each individual.\n\n\n\n\n\nSelection Bias Calculation\nWe’ll see if there is selection bias by comparing the expected lifespan of ventilated patients had they not been ventilated to the expected lifespan of non-ventilated patients.\n\n# Calculate EY0 for vent group and no vent group\ney01 = df[vents == TRUE, mean(y0)]  \ney00 = df[vents == FALSE, mean(y0)] \n\n# Calculate selection bias\nselection_bias = (ey01 - ey00)\n\ncat(sprintf(\n  \"Selection Bias = %.03f - %.03f = %.03f \n\", \n  ey01, ey00, selection_bias\n))\n\nSelection Bias = 8.334 - 10.574 = -2.240 \n\n\n\n\n\n\n\n\nDetailed Explanation of Commands:\n\n\n\n\n\ndf[vents == TRUE, mean(y0)]\n\nThis calculates the expected y0 (lifespan without ventilation) for people who actually received a ventilator.\nIt measures the counterfactual lifespan if the treated group had not received treatment.\n\n\n\ndf[vents == FALSE, mean(y0)]\n\nThis calculates the expected y0 for people who did not receive a ventilator.\nIt represents their actual untreated lifespan.\n\n\n\nSelection Bias Calculation\n\nselection_bias = (ey01 - ey00) compares these two means.\nIf selection into treatment is not random, then the untreated potential outcome (y0) may differ between the treated and untreated groups.\n\n\n\nFormatted Output Using sprintf()\n\nsprintf() formats the output to three decimal places.\ncat() prints the formatted text to the console.\n\n\n\n\n\nIf Dr. Perfect is involved, we’d expect some big differences here. Dr. P-Hacker would probably ignore that and claim victory anyway. (He likes ignoring inconvenient truths.)"
-  },
-  {
-    "objectID": "labs/lab-1-InternalValidityPO_sols.html#step-5-comparing-outcomes-between-groups",
-    "href": "labs/lab-1-InternalValidityPO_sols.html#step-5-comparing-outcomes-between-groups",
-    "title": "Lab 1 Solutions",
-    "section": "Step 5: Comparing Outcomes Between Groups",
-    "text": "Step 5: Comparing Outcomes Between Groups\nOne of the simplest ways to estimate the treatment effect is to look at the Simple Difference in Outcomes (SDO)—the difference in the observed mean outcome between those who got the treatment (ventilators) and those who did not.\n\n# Calculate the share of units treated with vents (pi)\npi = mean(df$vents)\n\n# Manually calculate the simple difference in mean health outcomes\ney1 = df[vents == TRUE, mean(y)]\ney0 = df[vents == FALSE, mean(y)]\nsdo = ey1 - ey0\n\ncat(sprintf(\n  \"Simple Difference-in-Outcomes = %.03f - %.03f = %.03f \n\", \n  ey1, ey0, sdo\n))\n\nSimple Difference-in-Outcomes = 11.082 - 10.574 = 0.509 \n\n\n\n\n\n\n\n\nExplanation:\n\n\n\n\n\npi = mean(df$vents)\n\ndf$vents extracts the vents column as a vector.\nmean(df$vents) computes the proportion of individuals who received ventilation (TRUE is treated as 1, FALSE as 0).\nThis provides π (pi), the treatment probability.\n\n\n\ndf[vents == TRUE, mean(y)]\n\nCalculates the mean observed outcome y (lifespan) for the treated group.\n\n\n\ndf[vents == FALSE, mean(y)]\n\nCalculates the mean observed outcome y for the untreated group.\n\n\n\nSimple Difference in Outcomes (SDO)\n\nsdo = ey1 - ey0 computes the naive difference in means.\nThis is an unadjusted estimate of the treatment effect, which may be biased if treatment selection was non-random.\n\n\n\n\n\nDr. P-Hacker would run around shouting: “Aha! This difference proves the intervention works!” or “Aha! It’s not significant!” depending on the p-value. Let’s see if we can do better."
-  },
-  {
-    "objectID": "labs/lab-1-InternalValidityPO_sols.html#step-6-estimating-the-effect-with-regression",
-    "href": "labs/lab-1-InternalValidityPO_sols.html#step-6-estimating-the-effect-with-regression",
-    "title": "Lab 1 Solutions",
-    "section": "Step 6: Estimating the Effect with Regression",
-    "text": "Step 6: Estimating the Effect with Regression\nTo confirm our findings, let’s do an Ordinary Least Squares (OLS) regression of the realized outcome on the ventilator indicator:\n\n# Estimate the treatment effect using OLS\nreg = feols(\n  y ~ vents, data = df, \n  vcov = \"hc1\"\n)\n\ncat(\"\n\")\nprint(reg)\n\nOLS estimation, Dep. Var.: y\nObservations: 100,000\nStandard-errors: Heteroskedasticity-robust \n             Estimate Std. Error  t value  Pr(&gt;|t|)    \n(Intercept) 10.573703   0.017534 603.0511 &lt; 2.2e-16 ***\nventsTRUE    0.508554   0.024209  21.0072 &lt; 2.2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\nRMSE: 3.82331   Adj. R2: 0.004388\n\n\n\n\n\n\n\n\nExplanation :\n\n\n\n\n\nfeols(y ~ vents, data = df, vcov = \"hc1\")\n\nfeols() from the fixest package estimates an Ordinary Least Squares (OLS) regression.\nThe formula y ~ vents models the observed outcome (y) as a function of treatment (vents).\nThis provides an estimate of the average treatment effect (ATE) under the assumption of unconfoundedness (i.e., no omitted variables affecting both treatment and outcome).\nvcov = \"hc1\" specifies robust standard errors (Huber-White correction), which adjust for heteroskedasticity in the residuals.\n\n\n\n\n\n\n\n\n\n\n\nAlternative Approach:\n\n\n\n\n\nUsing tidyverse with broom:\nlibrary(broom)\nreg %&gt;% tidy()\n\n\nIf clustering standard errors is needed:\nreg = feols(y ~ vents, data = df, vcov = \"cluster\")\n\n\n\n\nThis approach, while straightforward, is still subject to any biases from non-random assignment—like, say, Dr. Perfect or Dr. Bad being in charge."
-  },
-  {
-    "objectID": "labs/lab-1-InternalValidityPO_sols.html#step-7-validating-the-decomposition",
-    "href": "labs/lab-1-InternalValidityPO_sols.html#step-7-validating-the-decomposition",
-    "title": "Lab 1 Solutions",
-    "section": "Step 7: Validating the Decomposition",
-    "text": "Step 7: Validating the Decomposition\nAt this point, we’d like to see if the Simple Difference in Outcomes (SDO) can be broken down into our measured parameters. You’ll fill in a table comparing Dr. Perfect to Dr. Bad, computing the ATE, ATT, ATU, selection bias, SDO, and so on.\nBelow is a quick consistency check to see if the SDO lines up with our theoretical decomposition:\n\n# Decomposition check\nsdo_check = ate + selection_bias + (1 - pi) * (att - atu)\n\ncat(sprintf(\"SDO Check = %.03f \n\", sdo_check))\n\nSDO Check = 0.509 \n\n\n\n\n\n\n\n\nDetailed Explanation of Commands:\n\n\n\n\n\nDecomposition Formula:\n\n\nThe simple difference in outcomes (SDO) can be decomposed into:\n = + + (1 - ) ( - )\n\nThis checks whether our earlier calculations are consistent with theoretical expectations.\n\n\n\nsdo_check = ate + selection_bias + (1 - pi) * (att - atu)\n\nate: The overall average treatment effect.\nselection_bias: The difference in untreated potential outcomes between treated and untreated individuals.\n(1 - pi) * (att - atu): Adjusts for differences in treatment assignment proportions.\n\n\n\n\n\nWhen you fill out the table, you should include:\n\n\nPerfect Doctor\nBad Doctor\nCausal Parameter\n\n\n\nATE\n\n\n\n\nATT\n\n\n\n\nATU\n\n\n\n\nSelection bias terms\n\n\n\n\nE[Y0 | D=1]\n\n\n\n\nE[Y0 | D=0]\n\n\n\n\nSelection bias\n\n\n\n\nCalculations\n\n\n\n\nPi (share on vents)\n\n\n\n\nSDO manual\n\n\n\n\nSDO OLS\n\n\n\n\nSDO Decomposition\n\n\n\n\nObs\n\n\n\n\n\nReflection\nFinally, reflect on these questions:\n\nIs the Simple Difference in Outcomes (SDO) enough to identify the ATE, ATT, or ATU?\nHow does selection bias play into interpreting the SDO?\nWhat lessons would Nurse Random want Dr. P-Hacker to learn about data and design?\n\n(Extra credit if you can imagine the dramatic showdown when Dr. Doub R. Obust finally unveils a doubly robust method that saves the day—but that’s a story for a future lab!)\nThat’s it! You’ve run the gauntlet of the Hospital of Uncertain Outcomes and lived to tell the tale. Now submit your work, and good luck diagnosing more of St. Null’s methodological maladies!"
   },
   {
     "objectID": "labs/lab-1-InternalValidityPO.html",
@@ -622,337 +671,375 @@
     ]
   },
   {
-    "objectID": "instructors.html",
-    "href": "instructors.html",
-    "title": "Instructors",
+    "objectID": "labs/lab-1-InternalValidityPO_sols.html",
+    "href": "labs/lab-1-InternalValidityPO_sols.html",
+    "title": "Lab 1 Solutions",
     "section": "",
-    "text": "Sean Sylvia is an Associate Professor in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Dr. Sylvia will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
+    "text": "Results may differ\n\n\n\nThis is only one of many possible ways to complete this lab. Your final code may look different, which is fine! In fact, it is good practice to experiment with different approaches."
+  },
+  {
+    "objectID": "labs/lab-1-InternalValidityPO_sols.html#overview-and-learning-objectives",
+    "href": "labs/lab-1-InternalValidityPO_sols.html#overview-and-learning-objectives",
+    "title": "Lab 1 Solutions",
+    "section": "Overview and Learning Objectives",
+    "text": "Overview and Learning Objectives\nIn this lab, we will explore internal validity and the potential outcomes framework using simulated health data from the endlessly eventful St. Null’s Memorial Hospital. Specifically, we will recreate a scenario where a new intervention (putting patients on ventilators) may or may not reduce patient mortality. As you’ll discover, chaos at the hospital has made it far from straightforward to identify causal effects.\nBy the end of this lab, you will be able to:\n\nUnderstand the concept of potential outcomes and causal effects.\nApply randomization inference to estimate treatment effects.\nIdentify threats to internal validity and explore possible solutions.\nImplement basic difference-in-means estimation in R.\nUse the WebR package to interactively run and modify code."
+  },
+  {
+    "objectID": "labs/lab-1-InternalValidityPO_sols.html#instructions",
+    "href": "labs/lab-1-InternalValidityPO_sols.html#instructions",
+    "title": "Lab 1 Solutions",
+    "section": "Instructions",
+    "text": "Instructions\n\nOpen this .qmd file in RStudio or another Quarto-supported editor.\nFollow the guided coding prompts below, completing the missing code blocks.\nSubmit your completed lab on Gradescope [Insert Link Here] by [Insert Deadline Here]."
+  },
+  {
+    "objectID": "labs/lab-1-InternalValidityPO_sols.html#scenario",
+    "href": "labs/lab-1-InternalValidityPO_sols.html#scenario",
+    "title": "Lab 1 Solutions",
+    "section": "Scenario",
+    "text": "Scenario\nThe Hospital of Uncertain Outcomes\nWelcome to St. Null’s Memorial Hospital—an institution where the only constant is confusion. The hospital board—led by the well-meaning but trend-obsessed CEO, Barnaby Beta—changes policies so often that nobody knows what’s going on.\nWorse yet is Dr. P-Hacker, a “data guru” who prefers p-values to patients. He mines the electronic health records (EHR) until something (anything!) is “significant.” Meanwhile, Nurse Random tries to keep everything on track, pointing out that good causal methods can be more important than good vibes. Lastly, Dr. Doub R. Obust lurks in the background, waiting for a chance to champion doubly robust methods that might someday save everyone’s sanity.\n\n\n\n\nYou and your team of budding methodologists are the new consultants hired to impose some order on this bedlam. In each module, you’ll tackle another fiasco at St. Null’s—from overfitted AI catastrophes to weird missing-data mishaps—and attempt to restore some semblance of methodological rigor. Good luck!"
+  },
+  {
+    "objectID": "labs/lab-1-InternalValidityPO_sols.html#your-mission",
+    "href": "labs/lab-1-InternalValidityPO_sols.html#your-mission",
+    "title": "Lab 1 Solutions",
+    "section": "Your Mission",
+    "text": "Your Mission\nThe Pandemic Mystery at St. Null’s\nA mysterious respiratory illness has swept through St. Null’s, leaving every ward scrambling. The question at hand is whether putting these patients on ventilators prolongs their lifespans. CEO Barnaby Beta wants quick answers (“If TikTok can do it, so can we!”). Dr. P-Hacker gleefully promises “instant significance,” claiming all he needs is the hospital’s EHR from the past week.\nBut Nurse Random, unimpressed, insists that the hospital’s chaotic, ad hoc ventilator assignments will cloud any conclusions. Dr. Doub R. Obust nods knowingly. They call in your team for an unbiased, data-driven approach.\nIn this lab, you’ll simulate a dataset of 100,000 patients that captures both “potential outcomes” (i.e., what would happen if a patient were ventilated vs. not ventilated). This magical glimpse at parallel universes is impossible in real-world data, but here it will let us see exactly how different analytic approaches fare in the face of selection bias."
+  },
+  {
+    "objectID": "labs/lab-1-InternalValidityPO_sols.html#step-1-simulating-the-dataset",
+    "href": "labs/lab-1-InternalValidityPO_sols.html#step-1-simulating-the-dataset",
+    "title": "Lab 1 Solutions",
+    "section": "Step 1: Simulating the Dataset",
+    "text": "Step 1: Simulating the Dataset\nBecause the EHR system at St. Null’s is, in a word, “unreliable” (or, in two words, “utterly broken”), we’ll create our own dataset in R.\nRun the following code to generate 100,000 patient records along with potential outcomes (y0 if no ventilator, y1 if ventilated). Each outcome is the patient’s lifespan (in some made-up units). Note that lifespans below zero are set to zero—any negative numbers would just be an artifact of Dr. P-Hacker’s bizarre data extraction methods.\n\nlibrary(fixest)\nlibrary(data.table)\nset.seed(072121)\n\n# 100,000 people with differing levels of covid symptoms\nN_people = 100000\ndf = data.table(person = 1:N_people)\n\n# Potential outcomes (Y0): life-span if no vent\ndf[, y0 := rnorm(N_people, 9.4, 4)]\ndf[y0 &lt; 0, y0 := 0]\n\n# Potential outcomes (Y1): life-span if assigned to vents\ndf[, y1 := rnorm(N_people, 10, 4)]\ndf[y1 &lt; 0, y1 := 0]\n\n\n\n\n\n\n\nExplanation:\n\n\n\n\nThe necessary packages (fixest and data.table) are loaded.\nThe set.seed(072121) ensures reproducibility, meaning the random numbers generated will be the same every time the code is run.\nA dataset df is created using data.table with 100,000 individuals (each represented by a row).\n\nSimulating Potential Outcomes:\n\n\ny0 represents the expected lifespan (in years) if no ventilator treatment is given. It is drawn from a normal distribution with:\n\nMean: 9.4 years\nStandard deviation: 4 years\n\n\nAny y0 values below 0 (i.e., negative lifespans) are set to zero.\ny1 represents the expected lifespan if assigned to a ventilator. It is similarly drawn from a normal distribution but with a slightly higher mean of 10 years.\nAgain, negative lifespan values are replaced with 0.\n\n\n\n\n\nWe also define the individual treatment effect for each patient. Dr. Doub R. Obust is thrilled, because for once, we have both y0 and y1 simultaneously—an impossible dream in real life!\n\n# Define individual treatment effect\ndf[, delta := y1 - y0]\n\n\n\n\n\n\n\nExplanation:\n\n\n\n\nA new column delta is created, which represents the individual treatment effect (ITE) for each person.\nThe ITE is calculated as the difference between the potential outcome under treatment (y1) and the potential outcome under control (y0).\nThis measures how much additional lifespan (if any) the ventilator treatment provides.\n\n\n\n\n\n\n\n\n\nAlternative Approach\n\n\n\n\n\nThe column can be created using mutate() from dplyr if using tidyverse:\nlibrary(dplyr)\ndf &lt;- df %&gt;% mutate(delta = y1 - y0)"
+  },
+  {
+    "objectID": "labs/lab-1-InternalValidityPO_sols.html#step-2-the-two-doctors",
+    "href": "labs/lab-1-InternalValidityPO_sols.html#step-2-the-two-doctors",
+    "title": "Lab 1 Solutions",
+    "section": "Step 2: The Two Doctors",
+    "text": "Step 2: The Two Doctors\nSt. Null’s has two very different doctors assigning ventilators:\n\n\nDr. Perfect: A mystical being who can see into each patient’s future and only gives ventilators to those who would benefit from them.\n\nDr. Bad: The name says it all. This doctor assigns ventilators randomly—could be beneficial, could not be. Who knows?\n\nStep 2a: Assigning Doctors\nFirst, we randomly assign each patient to one of these two doctors. (No wonder this hospital is chaotic…)\n\n# Assign doctors randomly\ndf[, doctor := sample(c(\"perfect\", \"bad\"), N_people, replace = TRUE)]\n\n\n\n\n\n\n\nExplanation\n\n\n\n\n\nsample(c(\"perfect\", \"bad\"), N_people, replace = TRUE)\n\nsample(x, size, replace) randomly selects size elements from the vector x.\nHere, x = c(\"perfect\", \"bad\"), meaning we are choosing between \"perfect\" and \"bad\".\nsize = N_people ensures that we assign a doctor to all N_people individuals.\nreplace = TRUE allows values to be selected independently, meaning each person is assigned a doctor without affecting others.\n\n\n\ndf[, doctor := ...] (Data.table Syntax)\n\ndf[, column_name := value] is data.table’s syntax for adding or modifying a column.\nHere, doctor is created and populated with \"perfect\" or \"bad\" based on the sample() function.\n\n\n\n\n\n\n\n\n\n\n\nAlternative Approach:\n\n\n\n\n\nUsing mutate() from dplyr:\ndf &lt;- df %&gt;%\n  mutate(doctor = sample(c(\"perfect\", \"bad\"), N_people, replace = TRUE))\n\n\nInstead of using sample(), one could use runif() :\ndf[, doctor := ifelse(runif(N_people) &gt; 0.5, \"perfect\", \"bad\")]\nThis approach provides more flexibility if you want to adjust the probability of assigning each type of doctor.\n\n\n\n\nStep 2b: Assigning Ventilators\nNext, each doctor does what they do best. Dr. Perfect uses clairvoyance to treat only those who stand to gain (delta &gt; 0). Dr. Bad flips a metaphorical coin:\n\n# Perfect doctor assigns vents only to those who benefit\ndf[doctor == \"perfect\", vents := (delta &gt; 0)]\n\n# Random doctor assigns vents randomly\ndf[doctor == \"bad\", vents := sample(c(TRUE, FALSE), .N, replace = TRUE)]\n\n\n\n\n\n\n\nExplanation:\n\n\n\n\n\ndf[doctor == \"perfect\", vents := (delta &gt; 0)]\n\ndf[...] is data.table’s way of selecting rows where doctor == \"perfect\".\nvents := (delta &gt; 0) assigns TRUE if delta &gt; 0, meaning treatment is given if the patient benefits.\nThe := operator modifies the column in place, making it more memory-efficient than base R.\n\n\n\ndf[doctor == \"bad\", vents := sample(c(TRUE, FALSE), .N, replace = TRUE)]\n\n.N represents the number of rows in the subset (doctor == \"bad\"), ensuring the right number of values is generated.\nsample(c(TRUE, FALSE), .N, replace = TRUE) randomly assigns TRUE (ventilator given) or FALSE (no ventilator) to these individuals.\nEach person is assigned independently due to replace = TRUE.\n\n\n\n\n\nIt’s not exactly a model of ethical clarity, but it certainly demonstrates the complications of “treatment assignment” in the real world (or the real St. Null’s world)."
+  },
+  {
+    "objectID": "labs/lab-1-InternalValidityPO_sols.html#step-3-computing-causal-parameters",
+    "href": "labs/lab-1-InternalValidityPO_sols.html#step-3-computing-causal-parameters",
+    "title": "Lab 1 Solutions",
+    "section": "Step 3: Computing Causal Parameters",
+    "text": "Step 3: Computing Causal Parameters\nNow, let’s calculate the key causal parameters:\n\n\nAverage Treatment Effect (ATE): The overall difference in outcomes if everyone were ventilated vs. if no one were ventilated.\n\nAverage Treatment Effect on the Treated (ATT): The effect of ventilation on those who actually received ventilation.\n\nAverage Treatment Effect on the Untreated (ATU): The effect of ventilation on those who were not ventilated.\n\n\n# Calculate all aggregate Causal Parameters (ATE, ATT, ATU)\nate = df[, mean(delta)]\natt = df[vents == TRUE, mean(delta)]\natu = df[vents == FALSE, mean(delta)]\n\ncat(sprintf(\"ATE = %.03f\n\", ate))\n\nATE = 0.602\n\ncat(sprintf(\"ATT = %.03f\n\", att))\n\nATT = 2.748\n\ncat(sprintf(\"ATU = %.03f\n\", atu))\n\nATU = -1.711\n\n\n\n\n\n\n\n\nExplanation:\n\n\n\n\n\ndf[, mean(delta)]\n\nmean(delta) computes the average of delta, which represents the Average Treatment Effect (ATE).\nSince no filtering is applied, it considers all individuals in the dataset.\n\n\n\ndf[vents == TRUE, mean(delta)]\n\ndf[...] selects rows where vents == TRUE (patients who received ventilation).\nmean(delta) then computes the Average Treatment Effect on the Treated (ATT).\n\n\n\ndf[vents == FALSE, mean(delta)]\n\nThis selects individuals who were not treated (vents == FALSE).\nmean(delta) calculates the Average Treatment Effect on the Untreated (ATU).\n\n\n\ncat(sprintf(\"ATE = %.03f\\n\", ate))\n\nsprintf(\"ATE = %.03f\\n\", ate) formats ate to 3 decimal places.\ncat() prints the formatted result to the console.\n\n\n\n\n\nDr. P-Hacker would stop right here and rejoice: “We have all the significance we need!” But hold your celebratory balloon drop—there’s more to do."
+  },
+  {
+    "objectID": "labs/lab-1-InternalValidityPO_sols.html#step-4-selection-bias-and-realized-outcomes",
+    "href": "labs/lab-1-InternalValidityPO_sols.html#step-4-selection-bias-and-realized-outcomes",
+    "title": "Lab 1 Solutions",
+    "section": "Step 4: Selection Bias and Realized Outcomes",
+    "text": "Step 4: Selection Bias and Realized Outcomes\nAlthough the dataset has both y0 and y1, in the real world, a patient’s outcome is observed under only one condition (treated or untreated). Let’s capture which outcome we’d actually see based on the ventilator assignment:\n\n# Use the switching equation to select realized outcomes from potential outcomes based on treatment assignment\ndf[, y := vents * y1 + (1 - vents) * y0]\n\n\n\n\n\n\n\nExplanation :\n\n\n\n\n\nvents * y1 + (1 - vents) * y0\n\nThis applies the switching equation, which determines the observed outcome (y) based on whether an individual received treatment.\nIf vents == TRUE (1), the observed outcome is y1 (the treated potential outcome).\nIf vents == FALSE (0), the observed outcome is y0 (the untreated potential outcome).\n\nMathematically, this follows:\n\ny=vents×y1+(1−vents)×y0\n\n\n\n\n\ndf[, y := ...]\n\nThis is data.table syntax for creating or modifying a column in place.\nThe new column y represents the observed lifespan for each individual.\n\n\n\n\n\nSelection Bias Calculation\nWe’ll see if there is selection bias by comparing the expected lifespan of ventilated patients had they not been ventilated to the expected lifespan of non-ventilated patients.\n\n# Calculate EY0 for vent group and no vent group\ney01 = df[vents == TRUE, mean(y0)]  \ney00 = df[vents == FALSE, mean(y0)] \n\n# Calculate selection bias\nselection_bias = (ey01 - ey00)\n\ncat(sprintf(\n  \"Selection Bias = %.03f - %.03f = %.03f \n\", \n  ey01, ey00, selection_bias\n))\n\nSelection Bias = 8.334 - 10.574 = -2.240 \n\n\n\n\n\n\n\n\nDetailed Explanation of Commands:\n\n\n\n\n\ndf[vents == TRUE, mean(y0)]\n\nThis calculates the expected y0 (lifespan without ventilation) for people who actually received a ventilator.\nIt measures the counterfactual lifespan if the treated group had not received treatment.\n\n\n\ndf[vents == FALSE, mean(y0)]\n\nThis calculates the expected y0 for people who did not receive a ventilator.\nIt represents their actual untreated lifespan.\n\n\n\nSelection Bias Calculation\n\nselection_bias = (ey01 - ey00) compares these two means.\nIf selection into treatment is not random, then the untreated potential outcome (y0) may differ between the treated and untreated groups.\n\n\n\nFormatted Output Using sprintf()\n\nsprintf() formats the output to three decimal places.\ncat() prints the formatted text to the console.\n\n\n\n\n\nIf Dr. Perfect is involved, we’d expect some big differences here. Dr. P-Hacker would probably ignore that and claim victory anyway. (He likes ignoring inconvenient truths.)"
+  },
+  {
+    "objectID": "labs/lab-1-InternalValidityPO_sols.html#step-5-comparing-outcomes-between-groups",
+    "href": "labs/lab-1-InternalValidityPO_sols.html#step-5-comparing-outcomes-between-groups",
+    "title": "Lab 1 Solutions",
+    "section": "Step 5: Comparing Outcomes Between Groups",
+    "text": "Step 5: Comparing Outcomes Between Groups\nOne of the simplest ways to estimate the treatment effect is to look at the Simple Difference in Outcomes (SDO)—the difference in the observed mean outcome between those who got the treatment (ventilators) and those who did not.\n\n# Calculate the share of units treated with vents (pi)\npi = mean(df$vents)\n\n# Manually calculate the simple difference in mean health outcomes\ney1 = df[vents == TRUE, mean(y)]\ney0 = df[vents == FALSE, mean(y)]\nsdo = ey1 - ey0\n\ncat(sprintf(\n  \"Simple Difference-in-Outcomes = %.03f - %.03f = %.03f \n\", \n  ey1, ey0, sdo\n))\n\nSimple Difference-in-Outcomes = 11.082 - 10.574 = 0.509 \n\n\n\n\n\n\n\n\nExplanation:\n\n\n\n\n\npi = mean(df$vents)\n\ndf$vents extracts the vents column as a vector.\nmean(df$vents) computes the proportion of individuals who received ventilation (TRUE is treated as 1, FALSE as 0).\nThis provides π (pi), the treatment probability.\n\n\n\ndf[vents == TRUE, mean(y)]\n\nCalculates the mean observed outcome y (lifespan) for the treated group.\n\n\n\ndf[vents == FALSE, mean(y)]\n\nCalculates the mean observed outcome y for the untreated group.\n\n\n\nSimple Difference in Outcomes (SDO)\n\nsdo = ey1 - ey0 computes the naive difference in means.\nThis is an unadjusted estimate of the treatment effect, which may be biased if treatment selection was non-random.\n\n\n\n\n\nDr. P-Hacker would run around shouting: “Aha! This difference proves the intervention works!” or “Aha! It’s not significant!” depending on the p-value. Let’s see if we can do better."
+  },
+  {
+    "objectID": "labs/lab-1-InternalValidityPO_sols.html#step-6-estimating-the-effect-with-regression",
+    "href": "labs/lab-1-InternalValidityPO_sols.html#step-6-estimating-the-effect-with-regression",
+    "title": "Lab 1 Solutions",
+    "section": "Step 6: Estimating the Effect with Regression",
+    "text": "Step 6: Estimating the Effect with Regression\nTo confirm our findings, let’s do an Ordinary Least Squares (OLS) regression of the realized outcome on the ventilator indicator:\n\n# Estimate the treatment effect using OLS\nreg = feols(\n  y ~ vents, data = df, \n  vcov = \"hc1\"\n)\n\ncat(\"\n\")\nprint(reg)\n\nOLS estimation, Dep. Var.: y\nObservations: 100,000\nStandard-errors: Heteroskedasticity-robust \n             Estimate Std. Error  t value  Pr(&gt;|t|)    \n(Intercept) 10.573703   0.017534 603.0511 &lt; 2.2e-16 ***\nventsTRUE    0.508554   0.024209  21.0072 &lt; 2.2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\nRMSE: 3.82331   Adj. R2: 0.004388\n\n\n\n\n\n\n\n\nExplanation :\n\n\n\n\n\nfeols(y ~ vents, data = df, vcov = \"hc1\")\n\nfeols() from the fixest package estimates an Ordinary Least Squares (OLS) regression.\nThe formula y ~ vents models the observed outcome (y) as a function of treatment (vents).\nThis provides an estimate of the average treatment effect (ATE) under the assumption of unconfoundedness (i.e., no omitted variables affecting both treatment and outcome).\nvcov = \"hc1\" specifies robust standard errors (Huber-White correction), which adjust for heteroskedasticity in the residuals.\n\n\n\n\n\n\n\n\n\n\n\nAlternative Approach:\n\n\n\n\n\nUsing tidyverse with broom:\nlibrary(broom)\nreg %&gt;% tidy()\n\n\nIf clustering standard errors is needed:\nreg = feols(y ~ vents, data = df, vcov = \"cluster\")\n\n\n\n\nThis approach, while straightforward, is still subject to any biases from non-random assignment—like, say, Dr. Perfect or Dr. Bad being in charge."
+  },
+  {
+    "objectID": "labs/lab-1-InternalValidityPO_sols.html#step-7-validating-the-decomposition",
+    "href": "labs/lab-1-InternalValidityPO_sols.html#step-7-validating-the-decomposition",
+    "title": "Lab 1 Solutions",
+    "section": "Step 7: Validating the Decomposition",
+    "text": "Step 7: Validating the Decomposition\nAt this point, we’d like to see if the Simple Difference in Outcomes (SDO) can be broken down into our measured parameters. You’ll fill in a table comparing Dr. Perfect to Dr. Bad, computing the ATE, ATT, ATU, selection bias, SDO, and so on.\nBelow is a quick consistency check to see if the SDO lines up with our theoretical decomposition:\n\n# Decomposition check\nsdo_check = ate + selection_bias + (1 - pi) * (att - atu)\n\ncat(sprintf(\"SDO Check = %.03f \n\", sdo_check))\n\nSDO Check = 0.509 \n\n\n\n\n\n\n\n\nDetailed Explanation of Commands:\n\n\n\n\n\nDecomposition Formula:\n\n\nThe simple difference in outcomes (SDO) can be decomposed into:\n = + + (1 - ) ( - )\n\nThis checks whether our earlier calculations are consistent with theoretical expectations.\n\n\n\nsdo_check = ate + selection_bias + (1 - pi) * (att - atu)\n\nate: The overall average treatment effect.\nselection_bias: The difference in untreated potential outcomes between treated and untreated individuals.\n(1 - pi) * (att - atu): Adjusts for differences in treatment assignment proportions.\n\n\n\n\n\nWhen you fill out the table, you should include:\n\n\nPerfect Doctor\nBad Doctor\nCausal Parameter\n\n\n\nATE\n\n\n\n\nATT\n\n\n\n\nATU\n\n\n\n\nSelection bias terms\n\n\n\n\nE[Y0 | D=1]\n\n\n\n\nE[Y0 | D=0]\n\n\n\n\nSelection bias\n\n\n\n\nCalculations\n\n\n\n\nPi (share on vents)\n\n\n\n\nSDO manual\n\n\n\n\nSDO OLS\n\n\n\n\nSDO Decomposition\n\n\n\n\nObs\n\n\n\n\n\nReflection\nFinally, reflect on these questions:\n\nIs the Simple Difference in Outcomes (SDO) enough to identify the ATE, ATT, or ATU?\nHow does selection bias play into interpreting the SDO?\nWhat lessons would Nurse Random want Dr. P-Hacker to learn about data and design?\n\n(Extra credit if you can imagine the dramatic showdown when Dr. Doub R. Obust finally unveils a doubly robust method that saves the day—but that’s a story for a future lab!)\nThat’s it! You’ve run the gauntlet of the Hospital of Uncertain Outcomes and lived to tell the tale. Now submit your work, and good luck diagnosing more of St. Null’s methodological maladies!"
+  },
+  {
+    "objectID": "course-communication.html",
+    "href": "course-communication.html",
+    "title": "Communication",
+    "section": "",
+    "text": "Slack will be our primary communication hub. An invitation to the course Slack will be shared on the first day of class. Use this place to ask questions, share resources, and engage with your peers, the instructor, and the TA. (For personal or sensitive matters, please use e-mail)\n\n\n\n\n\n\nImportant:\n\n\n\nSlack will not be continuously monitored by the instructor or TA outside of posted office hours. At other times, students are expected to help/engage with one another to foster a shared learning experience. If a question hasn’t been addressed, the TA or Sean will respond but not immediately or even the same day.\nYou may DM Sean or the TA in Slack (but, again, don’t expect a response immediately or even the same day.)\n\n\n\nThe #announcements channel will be used to share course announcements.\nUse the #help channel as a first stop for general questions about the class or for technical assistance.\nUse the #general channel to discuss lab assignments and discuss/share resources related to course topics.\nUse the #interesting-stuff channel to share relevant articles, podcasts, packages, data sources, and anything else relevant that you think your classmates will benefit from.\n\n\n\n\n\n\n\nDon’t post any sensitive or personal information in the class Slack\n\n\n\nSlack is only for general class discussions, announcements, and collaboration. In particular, please do not share or post any of the following:\n\nIndividual or group grades, GPA, or other academic evaluations or records.\nSocial Security Numbers\nPersonal information about tuition payments, financial aid, or scholarships.\nAny information on accommodations or health-related information.\nAny other sensitive information\n\nFor sensitive information, please use UNC email.",
     "crumbs": [
       "Course Information",
-      "Instructors"
+      "Communication"
     ]
   },
   {
-    "objectID": "instructors.html#instructor-sean-sylvia-ph.d.",
-    "href": "instructors.html#instructor-sean-sylvia-ph.d.",
-    "title": "Instructors",
+    "objectID": "course-communication.html#slack",
+    "href": "course-communication.html#slack",
+    "title": "Communication",
     "section": "",
-    "text": "Sean Sylvia is an Associate Professor in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Dr. Sylvia will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
+    "text": "Slack will be our primary communication hub. An invitation to the course Slack will be shared on the first day of class. Use this place to ask questions, share resources, and engage with your peers, the instructor, and the TA. (For personal or sensitive matters, please use e-mail)\n\n\n\n\n\n\nImportant:\n\n\n\nSlack will not be continuously monitored by the instructor or TA outside of posted office hours. At other times, students are expected to help/engage with one another to foster a shared learning experience. If a question hasn’t been addressed, the TA or Sean will respond but not immediately or even the same day.\nYou may DM Sean or the TA in Slack (but, again, don’t expect a response immediately or even the same day.)\n\n\n\nThe #announcements channel will be used to share course announcements.\nUse the #help channel as a first stop for general questions about the class or for technical assistance.\nUse the #general channel to discuss lab assignments and discuss/share resources related to course topics.\nUse the #interesting-stuff channel to share relevant articles, podcasts, packages, data sources, and anything else relevant that you think your classmates will benefit from.\n\n\n\n\n\n\n\nDon’t post any sensitive or personal information in the class Slack\n\n\n\nSlack is only for general class discussions, announcements, and collaboration. In particular, please do not share or post any of the following:\n\nIndividual or group grades, GPA, or other academic evaluations or records.\nSocial Security Numbers\nPersonal information about tuition payments, financial aid, or scholarships.\nAny information on accommodations or health-related information.\nAny other sensitive information\n\nFor sensitive information, please use UNC email.",
     "crumbs": [
       "Course Information",
-      "Instructors"
+      "Communication"
     ]
   },
   {
-    "objectID": "instructors.html#teaching-assistant-yumeng-du",
-    "href": "instructors.html#teaching-assistant-yumeng-du",
-    "title": "Instructors",
-    "section": "Teaching Assistant: Yumeng Du",
-    "text": "Teaching Assistant: Yumeng Du\nYumeng Du is a Ph.D. student in the Department of Health Policy and Management in the Gillings School of Global Public Health at UNC Chapel Hill.\nOffice Hours: Yumeng will hold office hours on Mondays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.",
+    "objectID": "course-communication.html#office-hours",
+    "href": "course-communication.html#office-hours",
+    "title": "Communication",
+    "section": "Office Hours",
+    "text": "Office Hours\nSean will hold office hours on Wednesdays from 1-2pm. Please book an appointment at least 24 hours ahead of time using this LINK.\nThe TA will hold office hours on…",
     "crumbs": [
       "Course Information",
-      "Instructors"
+      "Communication"
     ]
   },
   {
-    "objectID": "ex-simulate.html",
-    "href": "ex-simulate.html",
-    "title": "Simulating Experimental Data with Noncompliance",
-    "section": "",
-    "text": "In this example, we simulate data for a simple randomized experiment with one treatment and one control group. The randomization is at the individual level. Additionally, we introduce noncompliance, where some individuals assigned to the treatment group do not take the treatment.\n\n\nDefine the parameters for the experiment, such as the number of participants, compliance rate, and treatment effects.\n\n# Set seed for reproducibility\nset.seed(123)\n\n# Parameters\nn &lt;- 500  # Total number of participants\nprob_treatment &lt;- 0.5  # Probability of being assigned to treatment\ncompliance_rate &lt;- 0.8  # Proportion of treated participants who comply\n\n# Treatment effect\nbaseline_mean &lt;- 50  # Mean outcome for control group\ntreatment_effect &lt;- 10  # Additional effect for treated participants\n\n\nSimulate random assignment to treatment and compliance behavior.\n\n# Simulate random assignment\nassignment &lt;- rbinom(n, 1, prob_treatment)  # 1 = assigned to treatment, 0 = control\n\n# Simulate compliance behavior\n# If assigned to treatment, comply with probability `compliance_rate`\ncompliance &lt;- ifelse(assignment == 1, rbinom(n, 1, compliance_rate), 0)  # 1 = complied, 0 = did not comply\n\n\nSimulate the outcome variable based on compliance and treatment assignment.\n\n# Simulate outcomes\noutcome &lt;- baseline_mean + \n  (assignment * compliance * treatment_effect) +  # Effect for those who comply\n  rnorm(n, mean = 0, sd = 5)  # Add random noise\n\n# Combine data into a data frame\nexperiment_data &lt;- data.frame(\n  ID = 1:n,\n  Assignment = assignment,\n  Compliance = compliance,\n  Outcome = outcome\n)\n\n# View the first few rows of the data\nhead(experiment_data)\n\n  ID Assignment Compliance  Outcome\n1  1          0          0 46.99054\n2  2          1          1 55.03151\n3  3          0          0 55.13393\n4  4          1          1 63.75531\n5  5          1          1 52.45417\n6  6          0          0 49.52426\n\n\n\nExport the simulated data to a CSV file for further analysis.\n\n# Export the data to a CSV file\nwrite.csv(experiment_data, \"simulated_experiment_data.csv\", row.names = FALSE)\n\n# Confirm export\ncat(\"Data has been exported to 'simulated_experiment_data.csv'\")\n\nData has been exported to 'simulated_experiment_data.csv'",
+    "objectID": "course-communication.html#email",
+    "href": "course-communication.html#email",
+    "title": "Communication",
+    "section": "Email",
+    "text": "Email\nPlease use e-mail only for personal matters. (For anything related to the course material or coding questions, please use Slack.)",
     "crumbs": [
-      "Semester Project",
-      "Data Simulation Example"
+      "Course Information",
+      "Communication"
     ]
   },
   {
-    "objectID": "ex-simulate.html#step-1-setup-and-parameters",
-    "href": "ex-simulate.html#step-1-setup-and-parameters",
-    "title": "Simulating Experimental Data with Noncompliance",
+    "objectID": "unit-0/lec-0-3.html",
+    "href": "unit-0/lec-0-3.html",
+    "title": "Foundations: Reproducible Research",
     "section": "",
-    "text": "Define the parameters for the experiment, such as the number of participants, compliance rate, and treatment effects.\n\n# Set seed for reproducibility\nset.seed(123)\n\n# Parameters\nn &lt;- 500  # Total number of participants\nprob_treatment &lt;- 0.5  # Probability of being assigned to treatment\ncompliance_rate &lt;- 0.8  # Proportion of treated participants who comply\n\n# Treatment effect\nbaseline_mean &lt;- 50  # Mean outcome for control group\ntreatment_effect &lt;- 10  # Additional effect for treated participants",
-    "crumbs": [
-      "Semester Project",
-      "Data Simulation Example"
-    ]
+    "text": "Reproducible research is, quite frankly, one of the most important aspects of scientific work—and also one of the most neglected. Whether you’re a grad student wrangling code after midnight or a seasoned PI rediscovering a half-forgotten analysis, reproducibility ensures your brilliant findings don’t vanish into the digital abyss. Below, we’ll review why you should care, and how you can implement reproducibility so thoroughly that even a time-traveling version of yourself from five years ago could decipher your code."
   },
   {
-    "objectID": "ex-simulate.html#step-2-random-assignment-and-compliance",
-    "href": "ex-simulate.html#step-2-random-assignment-and-compliance",
-    "title": "Simulating Experimental Data with Noncompliance",
-    "section": "",
-    "text": "Simulate random assignment to treatment and compliance behavior.\n\n# Simulate random assignment\nassignment &lt;- rbinom(n, 1, prob_treatment)  # 1 = assigned to treatment, 0 = control\n\n# Simulate compliance behavior\n# If assigned to treatment, comply with probability `compliance_rate`\ncompliance &lt;- ifelse(assignment == 1, rbinom(n, 1, compliance_rate), 0)  # 1 = complied, 0 = did not comply",
-    "crumbs": [
-      "Semester Project",
-      "Data Simulation Example"
-    ]
+    "objectID": "unit-0/lec-0-3.html#a.-why-reproducibility-matters",
+    "href": "unit-0/lec-0-3.html#a.-why-reproducibility-matters",
+    "title": "Foundations: Reproducible Research",
+    "section": "A. Why Reproducibility Matters",
+    "text": "A. Why Reproducibility Matters\n\nDefinition\n\nIn quantitative research, reproducibility means another researcher—or your future self with only half a memory of what you did—can take the same data and code, then arrive at the same results. No secret incantations, arcane folder structures, or chanting under the full moon required.\n\nMotivations\n\n\nTransparency: Ever heard the phrase “Trust me, I’m a scientist”? Yeah, that doesn’t fly so well if your code is locked away in a cryptically named folder like “analysis_final_FINAL_noReally.r”. By exposing how you clean, analyze, and report data, you bolster confidence in your results.\nCollaboration: If multiple people have to dig through your code to figure out why you did something, at least make it a pleasant excavation. A reproducible workflow means you can share your project with colleagues, and they’ll only have mild confusion instead of sheer panic.\nEfficiency: Imagine re-running your entire analysis with a single command. Now contrast that with rummaging through 57 scripts, each called “analysis2_v2_copy.R”. Reproducibility helps you avoid the second scenario—and possibly a meltdown.\nError Detection: Because let’s face it, even the best of us occasionally type mean when we mean median. With reproducible code, errors can be spotted quickly and corrected before your findings end up on the front page of the Journal of Irreproducible Results.\n\nReproducibility, in short, saves your sanity and safeguards your scientific honor."
   },
   {
-    "objectID": "ex-simulate.html#step-3-simulate-outcomes",
-    "href": "ex-simulate.html#step-3-simulate-outcomes",
-    "title": "Simulating Experimental Data with Noncompliance",
-    "section": "",
-    "text": "Simulate the outcome variable based on compliance and treatment assignment.\n\n# Simulate outcomes\noutcome &lt;- baseline_mean + \n  (assignment * compliance * treatment_effect) +  # Effect for those who comply\n  rnorm(n, mean = 0, sd = 5)  # Add random noise\n\n# Combine data into a data frame\nexperiment_data &lt;- data.frame(\n  ID = 1:n,\n  Assignment = assignment,\n  Compliance = compliance,\n  Outcome = outcome\n)\n\n# View the first few rows of the data\nhead(experiment_data)\n\n  ID Assignment Compliance  Outcome\n1  1          0          0 46.99054\n2  2          1          1 55.03151\n3  3          0          0 55.13393\n4  4          1          1 63.75531\n5  5          1          1 52.45417\n6  6          0          0 49.52426",
-    "crumbs": [
-      "Semester Project",
-      "Data Simulation Example"
-    ]
+    "objectID": "unit-0/lec-0-3.html#b.-core-tools-and-concepts",
+    "href": "unit-0/lec-0-3.html#b.-core-tools-and-concepts",
+    "title": "Foundations: Reproducible Research",
+    "section": "B. Core Tools and Concepts",
+    "text": "B. Core Tools and Concepts\nSo how do we make all this happen? We bring in the cavalry: version control, literate programming, environment management, a logical project structure, and tidy documentation. Let’s get to it.\n1. Version Control (Git + GitHub)\nVersion control is like a well-ordered diary for your project: it tracks every change—no matter how small—across time, preserving your code’s evolutionary history in tidy “commits.”\n\nTracks Changes: Every minor tweak, even the moment you changed a comma to a semicolon and saved your entire analysis from ruin.\nFacilitates Collaboration: Gone are the days of emailing zip files named “Project_Latest.zip” back and forth. Now, you can break things collaboratively on GitHub and blame it on the merge conflict.\nCommit History: “Who changed my code last Thursday?” Git knows. Git always knows.\n\nThink of GitHub as your code’s remote spa retreat—safe, relaxing, and occasionally throwing small hissy fits called “merge conflicts.”\n2. Literate Programming (Quarto, R Markdown, knitr)\nSome folks write code in one file, then paste results into a Word document, and so on. Then they wonder why their final paper includes the wrong p-values. Enter literate programming.\n\nIntegrated Code + Narrative: Quarto, R Markdown, knitr, and friends let you keep code, text, and figures in one place, so you never again get lost in the labyrinth of “Oh wait, which file made that plot?”\nMinimizes Copy-Paste Errors: If your results are automatically woven into your final report, you can’t “forget to update Table 3.” All you do is re-run the document, and—voilà!—your latest analysis magically appears.\nSeamless Feedback Loop: Make a change, watch the effect ripple through the entire document. It’s like having the world’s fastest (and least sarcastic) collaborator.\n3. Environment Management (renv, or other)\nPicture this: You wrote a brilliant script six months ago, but now it refuses to run because some obscure package updated. Environment management tools let you freeze your code in time.\n\nCaptures R Package Versions: Tools like renv let you record all the packages (and their versions) you used, so re-installing them later won’t feel like Jumanji in dependency land.\nConsistency Over Time: If you want your analyses to work in five years—or on your advisor’s laptop next Tuesday—document your environment so it can be replicated exactly.\nFewer “It Worked On My Machine” Excuses: Because telling your collaborators to “just figure it out” is not a good look.\n4. Project Structure\nIf your current method involves flinging scripts and data into a single folder named “Stuff,” we might have a gentle suggestion: adopt a standardized project structure.\n\nData Folder: A sanctuary for raw files, processed data, or your deep, dark secrets—just keep it consistent.\nR Scripts or Quarto Documents: Store code for data cleaning, analysis, and visualization in separate scripts or well-labeled notebooks. It’s okay to have multiple files—just label them in a way that future you can actually decipher.\nOutput Folder: All those shiny plots and tables? Keep them in one place. Resist the urge to edit them manually; they should be generated by your scripts, not conjured by hand.\nREADME: The wise old gatekeeper that explains your entire project to anyone who stops by (including you, after you forget everything).\n\nA tidy folder structure is a gift to yourself. And your future co-authors. And your future self’s sanity.\n5. Documentation\nDocumentation is the special sauce that holds everything together—or, in some cases, the glaring absence that leads to frantic Slack messages at 2 a.m.\n\nCommit Messages: If your commit message says “Update stuff,” your collaborators may weep softly. Be descriptive—like “Fix bug in logistic regression loop that caused meltdown.”\nCode Comments: Add them wherever something might confuse your labmates or your brain on a Monday morning. The more complicated the code, the more we need small notes to guide us.\nREADME or docs/ Folder: Provide an at-a-glance explanation of the project’s purpose, the dataset, how to replicate results, and any known issues. It’s your public service announcement to the world.\n\nIf you’re feeling particularly poetic, documentation is the short story you write about your data, so that others can appreciate its plot—without rummaging through all the raw scripts to figure out who the villain is (spoiler: it’s usually missing data).\nTakeaway\nReproducible research is about ensuring that data and code aren’t locked in the dusty attic of your personal computer—half-labeled and wholly misunderstood. By relying on tools like Git, Quarto, and renv, and by maintaining a disciplined project structure and documentation process, you guarantee that your results are both credible and easy to revisit."
   },
   {
-    "objectID": "ex-simulate.html#step-4-export-data-to-csv",
-    "href": "ex-simulate.html#step-4-export-data-to-csv",
-    "title": "Simulating Experimental Data with Noncompliance",
-    "section": "",
-    "text": "Export the simulated data to a CSV file for further analysis.\n\n# Export the data to a CSV file\nwrite.csv(experiment_data, \"simulated_experiment_data.csv\", row.names = FALSE)\n\n# Confirm export\ncat(\"Data has been exported to 'simulated_experiment_data.csv'\")\n\nData has been exported to 'simulated_experiment_data.csv'",
-    "crumbs": [
-      "Semester Project",
-      "Data Simulation Example"
-    ]
+    "objectID": "unit-0/lec-0-3.html#hands-on-pratice",
+    "href": "unit-0/lec-0-3.html#hands-on-pratice",
+    "title": "Foundations: Reproducible Research",
+    "section": "Hands-on Pratice",
+    "text": "Hands-on Pratice\nNow let’s get our hands dirty with some of the tools for reproducibility. We’ll be applying reproducible research practices to a simulated RCT dataset. You’ll learn to clone a GitHub repository, explore the project structure, run an analysis using Quarto, and commit changes back to GitHub."
   },
   {
-    "objectID": "unit-0/prep-1.html",
-    "href": "unit-0/prep-1.html",
-    "title": "Class Preparation",
-    "section": "",
-    "text": "In preparation for our upcoming class on [Insert Topic Here], please complete the following activities. These materials will set the foundation for our in-class discussions and activities.\n\n\n\n\n\n[Insert Reading Title and Link Here]\n[Insert Additional Reading Title and Link Here]\n\n\n\n\n\n\n[Insert Video Title and Link Here]\n[Insert Additional Video Title and Link Here]\n\n\n\n\n\nComplete the pre-class quiz on Sakai: [Insert Link Here]\nDeadline: [Insert Date and Time]\n\n\n\n\nConsider the following questions as you review the materials: 1. [Insert Question Here] 2. [Insert Additional Question Here] 3. [Insert Additional Question Here]\n\n\n\n\nPrepare notes summarizing key concepts from the readings and videos. These will be helpful for in-class discussions.\n\nRemember: This course uses a flipped classroom approach. Completing these tasks prior to class is essential for your active participation and understanding during our sessions."
+    "objectID": "unit-0/lec-0-3.html#guided-computer-setup",
+    "href": "unit-0/lec-0-3.html#guided-computer-setup",
+    "title": "Foundations: Reproducible Research",
+    "section": "0. Guided Computer Setup",
+    "text": "0. Guided Computer Setup\n\nComputing Setup\nIntro to Github"
   },
   {
-    "objectID": "unit-0/prep-1.html#overview",
-    "href": "unit-0/prep-1.html#overview",
-    "title": "Class Preparation",
-    "section": "",
-    "text": "In preparation for our upcoming class on [Insert Topic Here], please complete the following activities. These materials will set the foundation for our in-class discussions and activities."
+    "objectID": "unit-0/lec-0-3.html#github-template-repository",
+    "href": "unit-0/lec-0-3.html#github-template-repository",
+    "title": "Foundations: Reproducible Research",
+    "section": "1. GitHub Template Repository",
+    "text": "1. GitHub Template Repository\n\n\nClone the Repository\n\nGo to the provided URL or use git clone https://github.com/unc-hpm-quant/rct-analysis-template in the terminal.\nIn RStudio: “File” &gt; “New Project” &gt; “Version Control” &gt; “Git” and paste the repo URL.\n\n\nReview Project Structure\n\n   rct-analysis-template/\n   ├── README.md\n   ├── .gitignore\n   ├── renv.lock\n   ├── data/\n   │   └── rct_sim_data.csv\n   ├── analysis/\n   │   ├── analysis.qmd\n   │   └── helpers.R\n   └── output/\n\n\nInstall Dependencies\n\nIf renv is used, run renv::restore() in the project to sync package versions."
   },
   {
-    "objectID": "unit-0/prep-1.html#required-readings",
-    "href": "unit-0/prep-1.html#required-readings",
-    "title": "Class Preparation",
-    "section": "",
-    "text": "[Insert Reading Title and Link Here]\n[Insert Additional Reading Title and Link Here]"
+    "objectID": "unit-0/lec-0-3.html#analyzing-the-simulated-rct-data",
+    "href": "unit-0/lec-0-3.html#analyzing-the-simulated-rct-data",
+    "title": "Foundations: Reproducible Research",
+    "section": "2. Analyzing the Simulated RCT Data",
+    "text": "2. Analyzing the Simulated RCT Data\n\n\nData: rct_sim_data.csv includes columns\n\nsubject_id\ntreatment\noutcome\nage\ngender, etc.\n\n\n\nGoal: Estimate the average treatment effect, create summaray tables, and visualize distributions.\n\n2.1 Open analysis.qmd\n1.  Look at the top YAML and code chunks.\n2.  Notice how code and text are interwoven.\n2.2 Render the Document\n\nIn RStudio, click “Render” or run:\n\n\nquarto::quarto_render(\"analysis/analysis.qmd\")\n\nThe output (HTML, PDF, etc.) will appear in your output folder or in the same directory."
   },
   {
-    "objectID": "unit-0/prep-1.html#required-videos",
-    "href": "unit-0/prep-1.html#required-videos",
-    "title": "Class Preparation",
-    "section": "",
-    "text": "[Insert Video Title and Link Here]\n[Insert Additional Video Title and Link Here]"
+    "objectID": "unit-0/lec-0-3.html#modify-and-commit",
+    "href": "unit-0/lec-0-3.html#modify-and-commit",
+    "title": "Foundations: Reproducible Research",
+    "section": "3. Modify and Commit",
+    "text": "3. Modify and Commit\n\nMake a Small Change\n\nFor example, add a simple plot of outcome vs. treatment:\n\nggplot(rct_data, aes(x = factor(treatment), y = outcome)) +\n  geom_boxplot()\n\n\nRe-run the document to see the new figure in the rendered output.\nCommit and Push\n\n\nStage your changes:\n\n\ngit add analysis/analysis.qmd\ngit commit -m \"Added treatment-outcome boxplot\"\ngit push origin main\n\n\nView on GitHub: Confirm your commit is visible and see the updated code."
   },
   {
-    "objectID": "unit-0/prep-1.html#quiz",
-    "href": "unit-0/prep-1.html#quiz",
-    "title": "Class Preparation",
-    "section": "",
-    "text": "Complete the pre-class quiz on Sakai: [Insert Link Here]\nDeadline: [Insert Date and Time]"
+    "objectID": "unit-0/lec-0-3.html#branching-and-pull-requests-for-bigger-or-test-changes",
+    "href": "unit-0/lec-0-3.html#branching-and-pull-requests-for-bigger-or-test-changes",
+    "title": "Foundations: Reproducible Research",
+    "section": "4. Branching and Pull Requests for bigger or test changes",
+    "text": "4. Branching and Pull Requests for bigger or test changes\n\nCreate a new branch\n\n\ngit checkout -b new-plot\n\n\nAdd Covariates: Update the analysis to adjust for age and gender in a regression model."
   },
   {
-    "objectID": "unit-0/prep-1.html#reflection-questions",
-    "href": "unit-0/prep-1.html#reflection-questions",
-    "title": "Class Preparation",
-    "section": "",
-    "text": "Consider the following questions as you review the materials: 1. [Insert Question Here] 2. [Insert Additional Question Here] 3. [Insert Additional Question Here]"
+    "objectID": "unit-0/lec-0-3.html#wrap-up",
+    "href": "unit-0/lec-0-3.html#wrap-up",
+    "title": "Foundations: Reproducible Research",
+    "section": "5. Wrap-Up",
+    "text": "5. Wrap-Up\nReflect: How did version control and Quarto documents streamline your workflow?\nNext Steps: If you want to dig further into reproducible data analysis practices, you can explore advanced topics like Docker, code review workflows, and CI/CD (continuous integration and deployment)."
   },
   {
-    "objectID": "unit-0/prep-1.html#notes",
-    "href": "unit-0/prep-1.html#notes",
-    "title": "Class Preparation",
-    "section": "",
-    "text": "Prepare notes summarizing key concepts from the readings and videos. These will be helpful for in-class discussions.\n\nRemember: This course uses a flipped classroom approach. Completing these tasks prior to class is essential for your active participation and understanding during our sessions."
-  },
-  {
-    "objectID": "unit-0/unit-0-foundations-2.html",
-    "href": "unit-0/unit-0-foundations-2.html",
+    "objectID": "unit-0/unit-0-foundations-3.html",
+    "href": "unit-0/unit-0-foundations-3.html",
     "title": "Unit 0: Foundations",
     "section": "",
-    "text": "Guest Lecture by Dr. Dorien Emmers\n\n\n\n\n\n\nClass will be remote-only\n\n\n\nJoin from the comfort of your own home!\nZoom link: https://unc.zoom.us/j/7840211370?omn=97363476255\n\n\n\n\nSkim: Using Community Health Workers to Deliver a Scalable Integrated Parenting Program in Rural China: A Cluster Randomized Controlled Trial\n\nOptional\n\nDownload Replication Data and Code: \nDr. Emmers wrote this analysis code in Stata (Boo! ). Try converting it to R using the stata2r package.\n\n\n\n\n\n\n\n\nPerusall\n\n\n\nPerusall is a free online platform that allows you to collaboratively annotate content with your classmates. Here is a link to the Perusall page for this course: HPM 883. If needed, the class enrollment code is SYLVIA-ZXTWH.\n\nAlthough it is a good way to engage with your classmates around the material, it is not required that you comment on Perusall. If you wish, you can just download the readings directly.\n\n\n\nSubmit: Any questions you have for Dr. Emmers? Submit to the #guest-lecture-questions channel on Slack\n\n\n\n\n\nSlides\nZoom Recording\n\n\n\n\n\n\n\nIntroductory Survey Due by end of day on Jan 15\n\n\n\nIntroductory Class Survey",
+    "text": "Learn importance of reproducible research\nLearn key principles of reproducible research\nLearn how to design and implement a reproducible research workflow\n\nVersion control using git and github\nLiterate programming using Quarto\nPackage managemenet using renv",
     "crumbs": [
       "Unit 0: Foundations",
-      "Class 2: A Field Experiment in Health Services Research"
+      "Class 3: Computing for Reproducible Research"
     ]
   },
   {
-    "objectID": "unit-0/unit-0-foundations-2.html#overview",
-    "href": "unit-0/unit-0-foundations-2.html#overview",
+    "objectID": "unit-0/unit-0-foundations-3.html#learning-objectives",
+    "href": "unit-0/unit-0-foundations-3.html#learning-objectives",
     "title": "Unit 0: Foundations",
     "section": "",
-    "text": "Guest Lecture by Dr. Dorien Emmers\n\n\n\n\n\n\nClass will be remote-only\n\n\n\nJoin from the comfort of your own home!\nZoom link: https://unc.zoom.us/j/7840211370?omn=97363476255\n\n\n\n\nSkim: Using Community Health Workers to Deliver a Scalable Integrated Parenting Program in Rural China: A Cluster Randomized Controlled Trial\n\nOptional\n\nDownload Replication Data and Code: \nDr. Emmers wrote this analysis code in Stata (Boo! ). Try converting it to R using the stata2r package.\n\n\n\n\n\n\n\n\nPerusall\n\n\n\nPerusall is a free online platform that allows you to collaboratively annotate content with your classmates. Here is a link to the Perusall page for this course: HPM 883. If needed, the class enrollment code is SYLVIA-ZXTWH.\n\nAlthough it is a good way to engage with your classmates around the material, it is not required that you comment on Perusall. If you wish, you can just download the readings directly.\n\n\n\nSubmit: Any questions you have for Dr. Emmers? Submit to the #guest-lecture-questions channel on Slack\n\n\n\n\n\nSlides\nZoom Recording\n\n\n\n\n\n\n\nIntroductory Survey Due by end of day on Jan 15\n\n\n\nIntroductory Class Survey",
+    "text": "Learn importance of reproducible research\nLearn key principles of reproducible research\nLearn how to design and implement a reproducible research workflow\n\nVersion control using git and github\nLiterate programming using Quarto\nPackage managemenet using renv",
     "crumbs": [
       "Unit 0: Foundations",
-      "Class 2: A Field Experiment in Health Services Research"
+      "Class 3: Computing for Reproducible Research"
     ]
   },
   {
-    "objectID": "unit-0/lec-0.html#course-summary",
-    "href": "unit-0/lec-0.html#course-summary",
-    "title": "Course Introduction",
-    "section": "Course Summary",
-    "text": "Course Summary\nExperiments and Machine Learning for Health Services Research\nPrimary Goal: Equip you with tools to design, analyze, and interpret field experiments and apply machine learning to health services research.\n\nKey Focus Areas:\nField experiments for causal inference.\nMachine learning for prediction and causal analysis.\nApplications:\nHealth policy evaluations, resource allocation, and improving healthcare decision-making."
-  },
-  {
-    "objectID": "unit-0/lec-0.html#about-me-dr.-sean-sylvia",
-    "href": "unit-0/lec-0.html#about-me-dr.-sean-sylvia",
-    "title": "Course Introduction",
-    "section": "About Me: Dr. Sean Sylvia",
-    "text": "About Me: Dr. Sean Sylvia\n\n\nResearch: Designing & evaluating innovative approaches to improve health service delivery, globally.\n\nExperimental methods, machine learning, economics of digital health\n\nUNC Health Policy & Management (7 years)\n\nCarolina Population Center\nSheps Center for Health Services Research\n\nPreviously: Renmin University of China, World Bank\nTraining: U Maryland (PhD), Stanford (pre-doc)"
-  },
-  {
-    "objectID": "unit-0/lec-0.html#proud-randomista",
-    "href": "unit-0/lec-0.html#proud-randomista",
-    "title": "Course Introduction",
-    "section": "Proud “Randomista”",
-    "text": "Proud “Randomista”\n\n\n\nExtensive fieldwork using randomized controlled trials (RCTs)\nStarting in 2006, I’ve worked with colleagues on ~20 RCTs in China, Africa, and North Carolina.\n\n[Hot Tip: Collaborate. Collaborate. Collaborate.]\n\nKey projects include:\n\nField experiments in rural China on primary healthcare\nDesign and evaluation of community health worker interventions for early childhood health and development\nBehavioral nudges to recruit providers to MAT training for Opiod Use Disorder in North Carolina\n\n\n\nSCROLL DOWN TO READ Nobel Prize in Economics 2019 was awarded jointly to Abhijit Banerjee, Esther Duflo and Michael Kremer “for their experimental approach to alleviating global poverty”"
-  },
-  {
-    "objectID": "unit-0/lec-0.html#teaching-assistant-yumeng-du",
-    "href": "unit-0/lec-0.html#teaching-assistant-yumeng-du",
-    "title": "Course Introduction",
-    "section": "Teaching Assistant: Yumeng Du",
-    "text": "Teaching Assistant: Yumeng Du\nPhD Student in Health Policy and Management (Economics Track)\nResearch Interests:\n- Evaluation of digital health programs for underserved populations\nBackground:\n- MSc in Public Health, London School of Hygiene and Tropical Medicine (LSHTM), UK\n- MBBS, Central South University, China\n- Former RA at UNC-China Project,implementing an RCT on rural telemedicine kiosk program\nRole:\n- Available for technical support and office hours\n- Assisting with labs and project feedback"
-  },
-  {
-    "objectID": "unit-0/lec-0.html#experiments-and-machine-learning-for-hsr",
-    "href": "unit-0/lec-0.html#experiments-and-machine-learning-for-hsr",
-    "title": "Course Introduction",
-    "section": "Experiments and Machine Learning for HSR",
-    "text": "Experiments and Machine Learning for HSR\n\n\n\nRandomized experiments: the gold standard for testing mechanisms and interpretability.\nMachine Learning: Ideal for useful predictions when interpretability or theory is less critical.\nBridging the Divide:\n\nNew methods apply core ML principles to causal inference.\n\nAs we’ll see, parts of causal inference problems can be recast as prediction problems.\n\nPowerful tools for theory-building and expanding scope of feasible research.\n\n\n\n\n\n\n\n\n\nNote\n\n\nImportant!\nYou’ll hear the term “causal machine learning” in the literature. This is a misnomer!\nMachine Learning is about prediction. Period. It does not magically solve the causal inference problem.\nIt CAN:\n\nHelp strengthen plausibility of existing exclusion restriction in some cases\nAllow us to study treatment effect heterogeneity in new ways"
-  },
-  {
-    "objectID": "unit-0/lec-0.html#reproducibility",
-    "href": "unit-0/lec-0.html#reproducibility",
-    "title": "Course Introduction",
-    "section": "Reproducibility",
-    "text": "Reproducibility\nReproducibility is a Fundamental Principle of Science\n\nGood experiments are necessarily reproducible.\n\nClear, well-documented protocols, reproducible data collection, and clear and reproducible analysis.\nThe “reproducibility crisis” in some fields (e.g. psychology). This is actually a good thing! Only possible to confirm results if they are reproducible.\n\nReproducibility and ML:\n\nExploratory analyses, when systematic, help build reliable theories.\nML provides tools for:\n\nConducting reproducible exploratory research.\nIdentifying robust treatment effect heterogeneity."
-  },
-  {
-    "objectID": "unit-0/lec-0.html#causal-inference-as-a-missing-data-problem",
-    "href": "unit-0/lec-0.html#causal-inference-as-a-missing-data-problem",
-    "title": "Course Introduction",
-    "section": "Causal Inference as a Missing Data Problem",
-    "text": "Causal Inference as a Missing Data Problem\n\n\n\nThe Fundamental Problem of Causal Inference:\n\nWe cannot observe a unit in multiple states of the world simultaneously.\nRepresented as “missing data” in potential outcomes.\n\nExperimentation Solves under some key assumptions:\n\nSUTVA.\nObservability.\nComplete Compliance.\nStatistical Independence.\n\n\n\n\n\n\nUnit\nTreatment (W)\nY(0)\nY(1)\nObserved Outcome\n\n\n\n\n1\n1\n?\n5\n5\n\n\n2\n0\n3\n?\n3\n\n\n3\n1\n?\n6\n6\n\n\n4\n0\n4\n?\n4\n\n\n\n\nProblem: We can only observe either (Y(0)) or (Y(1)) but not both for any individual."
-  },
-  {
-    "objectID": "unit-0/lec-0.html#randomization-recovers-the-ate-on-average.",
-    "href": "unit-0/lec-0.html#randomization-recovers-the-ate-on-average.",
-    "title": "Course Introduction",
-    "section": "Randomization recovers the ATE on average.",
-    "text": "Randomization recovers the ATE on average.\n\nPotential outcomes: \\(Y_i(1)\\) and \\(Y_i(0)\\)\nTreatment indicator: \\(W_i = 1\\) if treated, \\(W_i = 0\\) if control\nObserved outcome: \\(Y_i = W_iY_i(1) + (1 - W_i)Y_i(0)\\)\nAverage Treatment Effect (ATE): \\(\\tau = \\mathbb{E}[Y_i(1) - Y_i(0)]\\)\n\nRandomization ensures that treatment is independent of potential outcomes:\n\\[\nW_i \\perp \\!\\!\\! \\perp (Y_i(0), Y_i(1)),\n\\]\nHence, \\(\\mathbb{E}[Y | W_i = w] = \\mathbb{E}[Y_i(w) | W_i = w] = \\mathbb{E}[Y_i(w)]\\) for all \\(w \\in \\{0, 1\\}\\).\nTherefore, the difference between \\(Y_i(1)\\) and \\(Y_i(0)\\) is the ATE:\n\\[\n\\mathbb{E}[Y_i(1) - Y_i(0)] = \\mathbb{E}[Y_i(1)] - \\mathbb{E}[Y_i(0)] = \\tau.\n\\]"
-  },
-  {
-    "objectID": "unit-0/lec-0.html#experimental-problems-ep1-ep2",
-    "href": "unit-0/lec-0.html#experimental-problems-ep1-ep2",
-    "title": "Course Introduction",
-    "section": "Experimental Problems: EP1 & EP2",
-    "text": "Experimental Problems: EP1 & EP2\nEP1: Internal Validity\n\nThe Effects of Causes (Internal Validity):\n\nDo assumptions in the potential outcomes framework hold?\n\nThe Causes of Effects (Mediators and Moderators):\n\nWhat drives the effects we see?\n\n\nEP2: External Validity\n\nGeneralizability: Would it work in different settings?\n\nPeople / populations\nContexts\n\nScalability: Can it scale to create meaningful impact?"
-  },
-  {
-    "objectID": "unit-0/lec-0.html#data-generation-and-modeling-for-causal-inference",
-    "href": "unit-0/lec-0.html#data-generation-and-modeling-for-causal-inference",
-    "title": "Course Introduction",
-    "section": "Data Generation and Modeling for Causal Inference",
-    "text": "Data Generation and Modeling for Causal Inference\n\n\n\nControlled: researcher knows and controls the assignment mechanism\nUncontrolled: researcher assignment mechanism neither controls nor knows the assignment mechanism\n\n\n\n\nSource: List (2009)\n\n\n\n\nLab Experiments: Controlled settings, abstract framing, imposed rules.\nField Experiments:\n\nArtefactual Field Experiment (AFE): Non-standard subject pool.\nFramed Field Experiment (FFE): Adds field-specific context.\nNatural Field Experiment (NFE): Subjects unaware they are in an experiment.\n\nSurvey Experiments:\n\nEmbedded in survey designs."
-  },
-  {
-    "objectID": "unit-0/lec-0.html#criteria-that-define-field-experiments",
-    "href": "unit-0/lec-0.html#criteria-that-define-field-experiments",
-    "title": "Course Introduction",
-    "section": "7 Criteria that define field experiments",
-    "text": "7 Criteria that define field experiments\n\nExperimental Subjects: Population and Selection\n\nThe nature of the subject pool\nThe nature of the information that subjects bring to the experimental task\nSelection into the experiment\n\nExperimental Environment\n\nThe nature of the commodity in the experiment\nThe nature of the experimental task\nThe nature of the stakes\nExperimental proclamation"
-  },
-  {
-    "objectID": "unit-0/lec-0.html#choosing-the-right-experiment",
-    "href": "unit-0/lec-0.html#choosing-the-right-experiment",
-    "title": "Course Introduction",
-    "section": "Choosing the Right Experiment",
-    "text": "Choosing the Right Experiment\n\nWeigh Costs and Benefits:\n\nBenefits:\n\nEP1: Internal validity.\nEP2: Generalizability and scalability.\n\nCosts:\n\nMonetary\nLogistical\nOpportunity costs."
-  },
-  {
-    "objectID": "unit-0/lec-0.html#units-and-topics",
-    "href": "unit-0/lec-0.html#units-and-topics",
-    "title": "Course Introduction",
-    "section": "Units and Topics",
-    "text": "Units and Topics\n\nFoundations of Causal Inference:\n\nMissing data problem and potential outcomes.\nRandomization and the ATE.\n\nExperimental Design:\n\nPower analysis and randomization strategies.\n\nMachine Learning for Causal Inference:\n\nLasso, random forests, and causal forests.\n\nViolations of Internal Validity:\n\nSUTVA, compliance issues, and observability.\n\nScaling and External Validity:\n\nGeneralizability and implementation challenges."
-  },
-  {
-    "objectID": "unit-0/lec-0.html#weekly-ish-format",
-    "href": "unit-0/lec-0.html#weekly-ish-format",
-    "title": "Course Introduction",
-    "section": "Weekly-ish Format",
-    "text": "Weekly-ish Format\n\nTwo(-ish) sessions per topic:\n\nLecture: Introduces key concepts and theory.\nLab: Hands-on practice with coding and data analysis.\n\nFlipped(-ish) Classroom Approach\n\nPre-class readings and recorded materials.\nInteractive sessions focused on data exploration and applied learning.\nCollaborative problem-solving in small groups."
-  },
-  {
-    "objectID": "unit-0/lec-0.html#assessments",
-    "href": "unit-0/lec-0.html#assessments",
-    "title": "Course Introduction",
-    "section": "Assessments",
-    "text": "Assessments\n\nPre-class Quizzes (10%):\n\nTest your understanding of key concepts\nRequest clarification on specific points\n\nLab Assignments (25%): Practical applications and analysis.\nExams (35%): Evaluate theoretical and practical understanding.\nSemester Project (30%): Research application.\n\nPre-analysis Plan (15%): Develop and document a structured analysis plan.\nFinal Paper (15%): Synthesize course material into a research application.\nDetails on class project to come."
-  },
-  {
-    "objectID": "unit-0/lec-0.html#resources-and-support",
-    "href": "unit-0/lec-0.html#resources-and-support",
-    "title": "Course Introduction",
-    "section": "Resources and Support",
-    "text": "Resources and Support\n\nCourse website with materials and updates: Course Website\nWeekly office hours with Dr. Sylvia and Yumeng\nCommunication channels:\n\nSlack: Join the course Slack to ask questions, share resources, and engage with your peers, the instructor, and the TA. (For personal matters, please use e-mail)\nEmail: Please use e-mail only for personal matters. (For anything related to the course material or coding questions, please use Slack.)\n\nGradescope: Submit assignments."
-  },
-  {
-    "objectID": "lab.html",
-    "href": "lab.html",
-    "title": "Labs",
-    "section": "",
-    "text": "More labs to be added as the semester progresses.\n\n\n\n\n\n\n\n\n\nNo.\n\n\nTitle\n\n\nDue date\n\n\n\n\n\n\nLab 1\n\n\nThe Hospital of Uncertain Outcomes\n\n\nInternal Validity, Potential Outcomes\n\n\n\n\nLab 1 Solutions\n\n\nThe Hospital of Uncertain Outcomes\n\n\nInternal Validity, Potential Outcomes\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "unit-1/unit-1-internal-1.html",
-    "href": "unit-1/unit-1-internal-1.html",
-    "title": "Unit 1: Internal Validity",
-    "section": "",
-    "text": "Reviewws the Potential Outcomes Framework\nAddresses key aspects of experimental design, including:\n\nRandomization\nExclusion restrictions\n\nThese elements are essential for establishing causality.\nWe will also review the notation that will be used throughout the class.",
+    "objectID": "unit-0/unit-0-foundations-3.html#class-will-be-remote-only",
+    "href": "unit-0/unit-0-foundations-3.html#class-will-be-remote-only",
+    "title": "Unit 0: Foundations",
+    "section": "Class will be remote-only",
+    "text": "Class will be remote-only\nJoin from the comfort of your own home!\nZoom link: https://unc.zoom.us/j/98379053109",
     "crumbs": [
-      "Unit 1: Internal Validity",
-      "Class 4: Internal Validity"
+      "Unit 0: Foundations",
+      "Class 3: Computing for Reproducible Research"
     ]
   },
   {
-    "objectID": "unit-1/unit-1-internal-1.html#unit-overview",
-    "href": "unit-1/unit-1-internal-1.html#unit-overview",
-    "title": "Unit 1: Internal Validity",
-    "section": "",
-    "text": "Reviewws the Potential Outcomes Framework\nAddresses key aspects of experimental design, including:\n\nRandomization\nExclusion restrictions\n\nThese elements are essential for establishing causality.\nWe will also review the notation that will be used throughout the class.",
-    "crumbs": [
-      "Unit 1: Internal Validity",
-      "Class 4: Internal Validity"
-    ]
-  },
-  {
-    "objectID": "unit-1/unit-1-internal-1.html#preparation",
-    "href": "unit-1/unit-1-internal-1.html#preparation",
-    "title": "Unit 1: Internal Validity",
+    "objectID": "unit-0/unit-0-foundations-3.html#preparation",
+    "href": "unit-0/unit-0-foundations-3.html#preparation",
+    "title": "Unit 0: Foundations",
     "section": "Preparation",
-    "text": "Preparation\n\nRead:\n\nApplied Causal Inference Powered by ML and AI, Chapter 2\nCausal Inference Mixtape, Chapter 4\n\nListen: Internal Validity Podcast",
+    "text": "Preparation\n\n1. Read/Watch/Listen:\n\nReview Computing page\nSkim: Reproducibility Lecture\n\n\n\n2. Computing Setup:\nTo ensure a smooth experience during class, please follow these steps:\n\nInstall R (v4.x or later)\n\nCRAN Download or via your preferred package manager.\n\nInstall RStudio or a similar IDE\n\nRStudio Download\n\nInstall Quarto\n\nQuarto Installation – ensures you can render .qmd files.\n\nInstall Git\n\nConfirm Git is accessible from the command line:\ngit --version\nWindows: Git for Windows\n\nmacOS: Use Xcode Command Line Tools or Homebrew.\n\nCreate a GitHub Account\n\nGitHub Signup – used for version control and code sharing.\n\nSet Up Credentials (SSH keys or PAT)\n\nHelps push/pull to GitHub without repeated logins.\n\nGitHub Docs: Connecting to GitHub with SSH\n\nInstall Required R Packages\n\nIn R/RStudio, run:\ninstall.packages(c(\"tidyverse\",\n                   \"renv\",\n                   \"devtools\",\n                   \"broom\",\n                   \"infer\",\n                   \"rmarkdown\",\n                   \"quarto\"))\n\nOptional but Recommended: Set Up Renv\n\nWe will use renv to manage R package versions.\n\nRenv Documentation\n\n\nOnce you have completed the above steps, you should be ready for our in-class activities.",
     "crumbs": [
-      "Unit 1: Internal Validity",
-      "Class 4: Internal Validity"
+      "Unit 0: Foundations",
+      "Class 3: Computing for Reproducible Research"
     ]
   },
   {
-    "objectID": "unit-1/unit-1-internal-1.html#in-class",
-    "href": "unit-1/unit-1-internal-1.html#in-class",
-    "title": "Unit 1: Internal Validity",
-    "section": "In-class",
-    "text": "In-class\n\nGroup Assignments\n\n\n\n\nGroup Assignments\n\n\n\nSelected Additional Topics via Borda count:\n\n\n\n\nTopic Selection\n\n\n\nSemester Project Description: Semester Project\nLecture: Internal Validity",
+    "objectID": "unit-0/unit-0-foundations-3.html#in-class",
+    "href": "unit-0/unit-0-foundations-3.html#in-class",
+    "title": "Unit 0: Foundations",
+    "section": "In Class",
+    "text": "In Class\n\nReproducibility Lecture\nZoom Recording\nRCT Analysis Template Repository",
     "crumbs": [
-      "Unit 1: Internal Validity",
-      "Class 4: Internal Validity"
+      "Unit 0: Foundations",
+      "Class 3: Computing for Reproducible Research"
     ]
   },
   {
-    "objectID": "unit-1/unit-1-internal-1.html#lab",
-    "href": "unit-1/unit-1-internal-1.html#lab",
-    "title": "Unit 1: Internal Validity",
-    "section": "Lab",
-    "text": "Lab\n\nLab 1: The Hospital of Uncertain Outcomes\n\nSolutions",
+    "objectID": "unit-0/unit-0-foundations-3.html#additional-resources",
+    "href": "unit-0/unit-0-foundations-3.html#additional-resources",
+    "title": "Unit 0: Foundations",
+    "section": "Additional Resources",
+    "text": "Additional Resources\n\nHappy with Git and GitHub for the UseR\nBryan, Jennifer, 2018. Excuse Me, Do You Have a Moment to Talk About Version Control?, The American Statistician.",
     "crumbs": [
-      "Unit 1: Internal Validity",
-      "Class 4: Internal Validity"
+      "Unit 0: Foundations",
+      "Class 3: Computing for Reproducible Research"
     ]
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations-1.html",
+    "href": "unit-0/unit-0-foundations-1.html",
+    "title": "Unit 0: Foundations",
+    "section": "",
+    "text": "This unit will provide a foundation for the rest of the course. It will cover the following topics:\n\nWhy experiments and ML for Causal Inference\nCourse structure and tools\nA field experiment in health services research\nComputing for Reproducible Research",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class 1: Introduction"
+    ]
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations-1.html#unit-overview",
+    "href": "unit-0/unit-0-foundations-1.html#unit-overview",
+    "title": "Unit 0: Foundations",
+    "section": "",
+    "text": "This unit will provide a foundation for the rest of the course. It will cover the following topics:\n\nWhy experiments and ML for Causal Inference\nCourse structure and tools\nA field experiment in health services research\nComputing for Reproducible Research",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class 1: Introduction"
+    ]
+  },
+  {
+    "objectID": "unit-0/unit-0-foundations-1.html#class-1-course-introduction",
+    "href": "unit-0/unit-0-foundations-1.html#class-1-course-introduction",
+    "title": "Unit 0: Foundations",
+    "section": "Class 1: Course Introduction",
+    "text": "Class 1: Course Introduction\n\nPreparation\n\nRead: Harrison and List (2004)\n\nPerusall Link: Harrison and List (2004)\n\n\n\n\n\n\n\n\nPerusall\n\n\n\nPerusall is a free online platform that allows you to collaboratively annotate content with your classmates. Here is a link to the Perusall page for this course: HPM 883. If needed, the class enrollment code is SYLVIA-ZXTWH.\n\nAlthough it is a good way to engage with your classmates around the material, it is not required that you comment on Perusall. If you wish, you can just download the readings directly.\n\n\n\nACI Chapters 0 and 2\n\n\n\nIn Class\n\nLecture slides\n\n\n\nLab/Homework\n\n10-15 min Introductory Class Survey (Due Jan 15)\n\n\n\nAdditional Materials",
+    "crumbs": [
+      "Unit 0: Foundations",
+      "Class 1: Introduction"
+    ]
+  },
+  {
+    "objectID": "course-overview.html",
+    "href": "course-overview.html",
+    "title": "HPM 883Spring 2025",
+    "section": "",
+    "text": "HPM 883 is an advanced graduate-level course designed to equip PhD students in the Health Policy and Management program with sophisticated quantitative research skills. This course represents the third installment in the quantitative methods sequence, building on the foundational knowledge acquired in HPM 881 and HPM 882.\nThroughout the term, students will delve into advanced quantitative methods pertinent to health services research with a focus on the use of experimental methods and machine learning for causal inference. The course will provide a thorough introduction to machine learning techniques and explore the burgeoning domain of causal machine learning.",
+    "crumbs": [
+      "Course Information",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "course-overview.html#advanced-quantitative-methods-for-health-policy-and-management",
+    "href": "course-overview.html#advanced-quantitative-methods-for-health-policy-and-management",
+    "title": "HPM 883Spring 2025",
+    "section": "",
+    "text": "HPM 883 is an advanced graduate-level course designed to equip PhD students in the Health Policy and Management program with sophisticated quantitative research skills. This course represents the third installment in the quantitative methods sequence, building on the foundational knowledge acquired in HPM 881 and HPM 882.\nThroughout the term, students will delve into advanced quantitative methods pertinent to health services research with a focus on the use of experimental methods and machine learning for causal inference. The course will provide a thorough introduction to machine learning techniques and explore the burgeoning domain of causal machine learning.",
+    "crumbs": [
+      "Course Information",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Course Schedule",
+    "section": "",
+    "text": "This page contains the schedule, topics, content and assigments for the semester.\n\n\n\n\n\n\nNote\n\n\n\nThis schedule will be updated as the semester progresses.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweek\ndow\ndate\nsession\nunit\ntopic\nprepare\nclass\nlab\nlab_sa\ndue\n\n\n\n1\nW\n8 January\nLec\nFoundations\nWelcome; Key Concepts\n\n\n\n\n\n\n\n\n\n2\nM\n13 January\nLec\nFoundations\nGuest Lecture: Running a Randomized Trial\n\n\n\n\n\nIntroductory Survey\n\n\n\nW\n15 January\n-\nFoundations\nReproducible Research\n\n\n\n\n\n\n\n\n\n3\nM\n20 January\n-\nNo Class: MLK Day\n\n\n\n\n\n\n\n\n\nW\n22 January\n-\nInternal Validity\n\n\n\n\n\nClass Canceled\n\n\n4\nM\n27 January\nLec\nInternal Validity\nGeneralized Potential Outcomes Framework; Exclusion Restrictions\n\n\n\n\n\n\n\n\n\n\nW\n29 January\nLab\nInternal Validity\nLab: Hospital of Uncertain Outcomes\n\n\n\n\n\n\n\n\n5\nM\n3 February\nLab\nInternal Validity\nLab: Hospital of Uncertain Outcomes, Solutions\n\n\n\n\n\nLab 1 Report\n\n\n\nW\n5 February\nLec\nInternal Validity\nStatistical Conclusion Validity; Power\n\n\n\n\n\n\n\n\n\n6\nM\n10 February\n-\nNo Class: Well-being Day\n\n\n\n\n\n\n\n\n\nW\n12 February\nLec\nDesign of Expeirments\nOptimal Design of Experiments\n\n\n\n\nLab 2 Report (due Friday)\n\n\n7\nM\n17 February\nLec\nPreparations\nEthics, Registration and Pre-Analysis Plans\n\n\n\n\n\n\n\n\nW\n19 February\nLec\nIntroduction to Machine Learning\nLasso; Penalized Regression; Cross-Validation\n\n\n\n\n\n\n\n8\nM\n24 February\nLab\nIntroduction to Machine Learning\nLab: Lasso and Friends\n\n\n\n\nLab 3 Report\n\n\n\nW\n26 February\nLec\nIntroduction to Machine Learning\nRandom Trees and Random Forests\n\n\n\n\n\n\n\n9\nM\n3 March\n\nMIDTERM 1\n\n\n\n\n\nLab 4 Report\n\n\n\nW\n5 March\nLec\nHeterogeneity and Moderation\nHeterogeneous Treatment Effects\n\n\n\n\n\n\n\n10\nM\n10 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n\nW\n12 March\n-\nSpring Break\nNo Class\n\n\n\n\n\n\n\n11\nM\n17 March\nLab\nHeterogeneity and Moderation\nCausal Forests\n\n\n\n\nLab 5 Report\n\n\n\nW\n19 March\nLec\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\n\n\n\n12\nM\n24 March\nLab\nViolations of Internal Validity\nSUTVA and Observability\n\n\n\n\n\n\n\n\nW\n26 March\nLec\nViolations of Internal Validity\nOne and Two-sided Compliance; TOT (LATE)\n\n\n\n\nLab 6 Report\n\n\n13\nM\n31 March\n\nMIDTERM 2\n\n\n\n\n\n\n\n\n\nW\n2 April\nLab\nViolations of Internal Validity\nIV\n\n\n\n\n\n\n\n14\nM\n7 April\nLec\nMediation and External Validity\nMediation Analysis and Generalizability\n\n\n\n\nLab 7 Report\n\n\n\nW\n9 April\nLab\nMediation and External Validity\n\n\n\n\n\nProject Pre-Analysis Plan\n\n\n15\nM\n14 April\n\nBuffer\nTBD\n\n\n\n\n\n\n\n\nW\n16 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n16\nM\n21 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n\nW\n23 April\n\nBonus Topics\nTBD\n\n\n\n\n\n\n\n17\nM\n28 April\n\nWrap-up\nTBD\n\n\n\n\nFinal Project Manuscript & Replication Repository\n\n\n\nW\n30 April\n\nFINAL EXAM",
+    "crumbs": [
+      "Course Schedule"
+    ]
+  },
+  {
+    "objectID": "unit-1/lec-1-1.html",
+    "href": "unit-1/lec-1-1.html",
+    "title": "Unit 1: Internal Validity",
+    "section": "",
+    "text": "Internal validity is the cornerstone of experimental design, crucial for establishing a causal relationship between treatment and outcome. It ensures that the observed effects in an experiment can be confidently attributed to the treatment rather than other confounding factors. This lecture explores the core principles and challenges of internal validity, including the role of randomization, exclusion restrictions, and the assignment mechanism. We also discuss practical applications and the complexities of ensuring compliance and observability in experimental settings."
+  },
+  {
+    "objectID": "unit-1/lec-1-1.html#scenario-1",
+    "href": "unit-1/lec-1-1.html#scenario-1",
+    "title": "Unit 1: Internal Validity",
+    "section": "Scenario 1",
+    "text": "Scenario 1\nSuppose you are considering whether a new diet is linked to lower risk of inflammatory arthritis.\nYou observe that in a given sample: - A small fraction of individuals on the diet have inflammatory arthritis. - A large fraction of individuals not on the diet have inflammatory arthritis.\nBased on this, you recommend that everyone pursue this new diet, but rates of inflammatory arthritis are unaffected.\nWhat happened?"
+  },
+  {
+    "objectID": "unit-1/lec-1-1.html#scenario-2",
+    "href": "unit-1/lec-1-1.html#scenario-2",
+    "title": "Unit 1: Internal Validity",
+    "section": "Scenario 2",
+    "text": "Scenario 2\nConsider a policy designed to reduce emergency room visits by offering free preventive care check-ups. Policymakers observed that communities with higher uptake of preventive care have fewer emergency visits. They implement the policy nationwide, expecting a significant reduction in emergency room visits. However, the policy shows no measurable impact.\nWhat happened?"
+  },
+  {
+    "objectID": "unit-1/lec-1-1.html#explanation",
+    "href": "unit-1/lec-1-1.html#explanation",
+    "title": "Unit 1: Internal Validity",
+    "section": "Explanation",
+    "text": "Explanation\nIn each case, you were unable to see what would have happened to each individual if the alternative action had been applied.\nIn scenario 1, it could be that individuals who chose the diet may already have healthier lifestyles, including better exercise and reduced stress levels, which are known to reduce the risk of inflammatory arthritis. The observed differences may be due to these factors rather than the diet itself. Without randomization or controlling for confounding factors, you cannot attribute causality to the diet. The association observed may not reflect the causal effect of the diet.\nIn scenario 2, the observed association between preventive care and lower emergency room visits may reflect that communities with higher uptake of preventive care might already have better healthcare access, socioeconomic conditions, or health awareness—all factors that independently reduce emergency visits. Implementing the policy broadly, without considering these confounders, does not account for the variation in baseline conditions.\nThe lack of this information is what prevents inference about causation from association."
+  },
+  {
+    "objectID": "unit-1/lec-1-1.html#randomization",
+    "href": "unit-1/lec-1-1.html#randomization",
+    "title": "Unit 1: Internal Validity",
+    "section": "Randomization",
+    "text": "Randomization\nAs we saw, the key source of bias arises from the assignment mechanism, or why a unit is assigned to treatment or control. Endogeneity can arise from units being assigned logically or based on percieved benefit, which is a function of their characteristics. There are two basic approaches to dealing with endogeneity:\n\nModel-based methods: Model the selection bias and then remove it mechanically\nDesign-based methods: Use the design of the experiment and randomization to remove selection bias\n\nIn randomized experiments, the assignment mechanism is controlled, and therefore known, by the researcher. This is a unique and key difference from naturally-occuring data where the assignment mechanisms is neither controlled nor typically known. The experimental apporach is often referred to as the “gold standard” for estimating casual effects because randomization can be made to ensure that the assignment is independent of individual characteristics, eliminating bias.\nTo satisfy, the basic restrictions on the assignment mechanism for randomized experiments are:\n\nThree Conditions for a Valid Assignment Mechanism\n\nNon-zero probability: Each individual has a positive probability of being assigned to treatment or control.\nIndividualism: Assignments are independent across individuals and do not depend on others’ potential outcomes.\nUnconfoundedness: Treatment assignment is orthogonal to potential outcomes.\n\nThese conditions ensure that observed differences between groups are attributable to the treatment rather than pre-existing differences."
+  },
+  {
+    "objectID": "unit-1/lec-1-1.html#footnotes",
+    "href": "unit-1/lec-1-1.html#footnotes",
+    "title": "Unit 1: Internal Validity",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThis example is adapted from Scott Cunninham’s example in the Mixtape book.↩︎"
   },
   {
     "objectID": "unit-1/HPM883 introductory analysis.html",
