@@ -462,6 +462,9 @@ cat("False positives (Holm correction):", holm_false_discoveries, "\n")
 - **Bonferroni correction** sharply reduces false positives but may be overly conservative.
 - **Holm correction** provides a better balance, controlling FWER while maintaining statistical power.
 
+::: callout-tip
+Note: In the lab, we'll cover some modern approaches that are more powerful but a bit more complex.
+:::
 
 # References
 
