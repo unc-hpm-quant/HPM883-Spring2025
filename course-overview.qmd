@@ -13,7 +13,7 @@ about:
       aria-label: Link to course GitHub organization
 ---
 
-## Advanced Quantitative Methods for Health Policy and Management 
+## Advanced Quantitative Methods for Health Policy and Management
 
 ### Overview
 

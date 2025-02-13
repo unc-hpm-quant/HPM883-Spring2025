@@ -1,0 +1,185 @@
+---
+title: "Pre-Analysis Plan: Title of the Study"
+author: "Author's Name"
+date: "Date of Latest Draft"
+format: pdf
+editor: visual
+---
+
+::: callout-note
+Template for a Pre-Analysis Plan (PAP) for a randomized experiment. This is modified from an original template created by Alejandro Ganimian, available [here](https://raw.githubusercontent.com/BITSS/INSP2017/master/2-Reg-and-PAP/pre-analysis%20plan%20template.tex).
+
+Other Helpful Resources:
+
+For guidance on pre-analysis plans, refer to 
+
+- the World Bank’s DIME Wiki: [Pre-Analysis Plan - DIME Wiki](https://dimewiki.worldbank.org/Pre-Analysis_Plan)
+- The J-Pal Research Resources Website: [J-Pal Research Resources](https://www.povertyactionlab.org/resource/pre-analysis-plans)
+
+For examples of pre-analysis plans, explore the AEA’s RCT Registry: [AEA RCT Registry](https://www.socialscienceregistry.org/). Here are some of mine:
+
+- [Pay by Design Trial](https://www.socialscienceregistry.org/trials/411)
+- [Anemia P4P Trial](https://www.socialscienceregistry.org/trials/1469) 
+:::
+
+# Introduction
+
+## Abstract
+
+-   In 1-2 sentences, what does the study entail?
+-   In 1-2 sentences, why is this study important/relevant?
+
+## Motivation
+
+-   What is the main problem/question motivating the study?
+-   How has this problem/question been addressed thus far?
+-   How is this study different from prior research on this problem/question?
+-   Why is the context that you have chosen for this study appropriate?
+
+## Research Questions
+
+-   What are the main research questions the study seeks to answer?
+
+# Research Strategy
+
+## Sampling
+
+### Sampling Frame
+
+-   What is the eligible population for the study?
+    -   What are the main characteristics of this population?
+-   What is the expected sample for the study?
+    -   What is the expected sample size?
+    -   How does the expected sample differ from the population?
+
+### Statistical Power
+
+-   What is the effect size you will be able to detect?
+    -   What are your assumptions about your alpha-level?
+    -   What are your assumptions about your statistical power?
+    -   What are your assumptions about variability in your effect size?
+    -   How many sites will you have?
+    -   How many people will you have in each site?
+    -   What share of the variance do you expect to predict with your covariates?
+-   How sensitive is your effect size to changes in your parameters?
+
+### Assignment to Treatment
+
+-   How will individuals be assigned to treatment and control conditions?
+-   What is the source of exogenous variation in your study?
+
+### Attrition from the Sample
+
+-   Do you anticipate any form of attrition from the sample?
+    -   If so, what share of the sample do you anticipate will attrit?
+    -   On what evidence are you basing your expectations about attrition?
+    -   How realistic are your expectations about attrition?
+-   What can you do to prevent/remedy sample attrition?
+-   How does expected attrition change your power calculations?
+
+## Fieldwork
+
+### Instruments
+
+-   What data collection instruments will you employ?
+    -   What (groups of) indicators will each instrument cover?
+    -   How was each instrument developed?
+    -   Have each instrument been used before?
+    -   If so, by whom? If not, are you piloting it?
+    -   What are the main advantages/disadvantages of each instrument?
+
+### Data Collection
+
+-   How long will the entire data collection process take from start to finish?
+-   What does the data collection entail?
+-   What steps will be taken to keep the data collected confidential at this stage?
+
+### Data Processing
+
+-   How long will data processing take from start to finish?
+-   What does the data processing entail?
+-   What steps will be taken to keep the processed data confidential?
+-   Who has ownership over the processed data?
+-   How will the data be used/stored after the study at this stage?
+
+# Empirical Analysis
+
+## Variables
+
+-   What are the main variables of interest in your study?
+    -   How is each of them defined in your dataset?
+
+## Balancing Checks
+
+-   How will you check balance between treatment and control groups?
+    -   What is the specification that you will run?
+    -   What variables will you include in these balancing checks?
+-   How will you check balance between attritors and non-attritors?
+    -   What is the specification that you will run?
+    -   What variables will you include in these balancing checks?
+
+## Treatment Effects
+
+### Intent to Treat
+
+-   How will you estimate the (causal) effect of the offer of the treatment?
+    -   What is the specification that you will run?
+    -   What controls will you include in your specification?
+
+### Treatment on the Treated
+
+-   How will you estimate the (causal) effect of the receipt of the treatment?
+    -   What is the specification that you will run?
+    -   What controls will you include in your specification?
+
+## Heterogeneous Effects
+
+-   Which groups do you anticipate will display heterogeneous effects?
+-   What is the broad theory of action that leads you to anticipate these effects?
+
+### Intent to Treat
+
+-   How will you estimate the heterogeneous effects of the offer of the treatment?
+    -   What are the specifications that you will run?
+    -   What controls will you include in your specification?
+
+### Treatment on the Treated
+
+-   How will you estimate the heterogeneous effects of the receipt of the treatment?
+    -   What are the specifications that you will run?
+    -   What controls will you include in your specification?
+
+## Standard Error Adjustments
+
+-   How will you account for clustering in your data?
+-   How will you address false positives from multiple hypothesis testing?
+    -   If you plan to adjust your standard errors, what adjustment procedure will you use? (e.g., Family Wise Error Rate, False Discovery Rates, etc.)
+    -   If you plan to aggregate multiple variables into an index, which variables will you aggregate and how?
+    -   How will you deal with outcomes with limited variation?
+
+# Research Team
+
+-   Who are the principal investigators of this study?
+    -   What will each of these investigators do?
+-   Will there be any research assistants in this study?
+    -   If so, what will these research assistants do?
+
+# Deliverables
+
+-   What are the main products that will result from this study?
+-   Who will be the lead author(s) for each of these deliverables?
+
+# Calendar
+
+-   How long will the entire study take from start to finish?
+-   What are the different tasks/steps to be completed each week/month?
+
+# Budget
+
+-   What will each part of this study cost?
+-   What sources of funding do you anticipate?
+
+# References
+
+::: {#refs}
+:::

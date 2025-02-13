@@ -45,7 +45,8 @@ The Pre-Analysis Plan (PAP) ensures your experiment is well-conceived, transpare
 
 #### **Helpful Resources:**
 
--   For guidance on pre-analysis plans: [World Bank DIME Wiki](https://dimewiki.worldbank.org/Pre-Analysis_Plan)\
+-   [Pre-Analysis Plan Template](Resources/Pre-AnalysisPlanTemplate.qmd)
+-   For guidance on pre-analysis plans: [World Bank DIME Wiki](https://dimewiki.worldbank.org/Pre-Analysis_Plan)
 -   For examples of pre-analysis plans: [AEA RCT Registry](https://www.socialscienceregistry.org)
 
 ------------------------------------------------------------------------

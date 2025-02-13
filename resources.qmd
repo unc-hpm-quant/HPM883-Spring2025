@@ -16,7 +16,7 @@ Wager, Stefan. [***Causal Inference: A Statistical Learning Approach***](https:/
 
 James, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. [***An Introduction to Statistical Learning: With Applications in R***](https://doi.org/10.1007/978-1-0716-1418-1). Springer Texts in Statistics. New York, NY: Springer US, 2021. 
 
-## R Tutorial
+## R Tutorials
 
 Paradis, Emmanuel. [***R for Beginners***](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf), 2005.
 
@@ -24,8 +24,7 @@ Wickham, Hadley, and Mine Çetinkaya-Rundel. [***R for Data Science***](https://
 
 [***R "Cheat Sheet" Compilation***](https://www.usu.edu/math/amlc/files/r-studio-reference-sheets-compilation.pdf).
 
-[***The R Graph Gallery***] (https://r-graph-gallery.com/).
-
+[***The R Graph Gallery***](https://r-graph-gallery.com/)
 
 ## Websites
 
@@ -35,8 +34,18 @@ Papers in economic field experiments.
 [Abdul Latif Jameel Poverty Action Lab (JPAL)](https://www.povertyactionlab.org/)\
 A global research center based at MIT's Economics Department that works to reduce poverty through rigorous scientific evidence and policy implementation
 
+-   JPAL maintains an excellent [site](https://www.povertyactionlab.org/research-resources) with resources for randomized evaluations and more
+
 [Stanford Social Impact Lab](https://www.gsb.stanford.edu/faculty-research/labs-initiatives/sil)
 
 ## Data
 
 [Stanford GSB Social Impact Lab Experiment Data](https://github.com/gsbDBI/ExperimentData)
+
+## Templates
+
+[Pre-Analysis Plan Template](Resources/Pre-AnalysisPlanTemplate.qmd)
+
+[RCT Analysis Template Repository (GitHub)](https://github.com/unc-hpm-quant/rct-analysis-template)
+
+[J-Pal Sample Size and Power Repository](https://github.com/unc-hpm-quant/JPAL-Sample_Size_and_Power)
