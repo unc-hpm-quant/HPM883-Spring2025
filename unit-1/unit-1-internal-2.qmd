@@ -13,18 +13,22 @@ draft: false
 -   Use simulation techniques for power calculations and design assessments
 -   Discuss multiple hypothesis testing and its implications
 
-
 ### Preparation
 
 -   Read:
     -   [Wager Chapter 1](https://web.stanford.edu/~swager/causal_inf_book.pdf)
     -   [Declare Design Book: 5.1, 8.2, 10](https://book.declaredesign.org/declaration-diagnosis-redesign/crafting-data-strategy.html)
-
 -   Listen:
-    -   [Experimental Design and Multiple Hypothesis Testing Podcast](media/Experimental Design and Multiple Hypothesis Testing.mp3)
+    -   [Experimental Design and Multiple Hypothesis Testing Podcast](media/Experimental%20Design%20and%20Multiple%20Hypothesis%20Testing.mp3)
 
 ### Class
 
 -   [Lecture: Statistical Conclusion Validity](/unit-1/lec-1-2.qmd)
 
-### Lab
+### Labs
+
+-   [Lab 2: Power Calculation by Simulation](/labs/lab-2-Power.qmd)
+    - Due by 11:59pm on Monday, February 17
+    - Submit on [Gradescope](https://www.gradescope.com/courses/1187218)
+-   [Lab 2B (BONUS): Multiple Hypothesis Testing](/labs/lab-2B-MultipleHypothesis.qmd)
+    - Complete this to earn a 5 percentage point bonus on the first midterm exam!! 

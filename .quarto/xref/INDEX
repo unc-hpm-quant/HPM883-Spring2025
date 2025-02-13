@@ -126,5 +126,16 @@
   },
   "unit-1/unit-1-internal-2.qmd": {
     "unit-1-internal-2.html": "3bb3d8e4"
+  },
+  "labs/lab-2-Power.qmd": {
+    "lab-2-Power.html": "87e8427f",
+    "lab-2-Power.tex": "0707748a"
+  },
+  "labs/lab-3-OptimalDesign.qmd": {
+    "lab-3-OptimalDesign.html": "900dc2e8"
+  },
+  "Resources/Pre-AnalysisPlanTemplate.qmd": {
+    "Pre-AnalysisPlanTemplate.html": "cd439bfc",
+    "Pre-AnalysisPlanTemplate.tex": "94cf4037"
   }
 }

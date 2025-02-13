@@ -1,0 +1,14 @@
+---
+title: Lab 3
+subtitle: TITLE
+author: Sean Sylvia
+date: "2025-01-22"
+slug: lab-2
+categories: 
+    -  Lab
+    -  Optimal Design
+description: "Optimal Design"
+draft: true
+---
+
+Weiming RCT
