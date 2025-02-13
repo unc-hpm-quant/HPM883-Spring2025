@@ -327,10 +327,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#understanding-the-sources-of-uncertainty" id="toc-understanding-the-sources-of-uncertainty" class="nav-link" data-scroll-target="#understanding-the-sources-of-uncertainty"><strong>Understanding the Sources of Uncertainty</strong></a></li>
   <li><a href="#power-calculations-with-clustering" id="toc-power-calculations-with-clustering" class="nav-link" data-scroll-target="#power-calculations-with-clustering"><strong>Power Calculations With Clustering</strong></a></li>
   <li><a href="#the-truth-about-p-values" id="toc-the-truth-about-p-values" class="nav-link" data-scroll-target="#the-truth-about-p-values"><strong>The Truth About <em>p</em>-Values</strong></a></li>
-  <li><a href="#optional-plotting-the-minimum-detectable-effect-mde" id="toc-optional-plotting-the-minimum-detectable-effect-mde" class="nav-link" data-scroll-target="#optional-plotting-the-minimum-detectable-effect-mde"><strong>(Optional) Plotting the Minimum Detectable Effect (MDE)</strong></a></li>
+  <li><a href="#plotting-the-minimum-detectable-effect-mde" id="toc-plotting-the-minimum-detectable-effect-mde" class="nav-link" data-scroll-target="#plotting-the-minimum-detectable-effect-mde"><strong>Plotting the Minimum Detectable Effect (MDE)</strong></a></li>
   <li><a href="#final-words-from-the-hospital-staff" id="toc-final-words-from-the-hospital-staff" class="nav-link" data-scroll-target="#final-words-from-the-hospital-staff"><strong>Final Words from the Hospital Staff</strong></a></li>
   <li><a href="#submission-instructions" id="toc-submission-instructions" class="nav-link" data-scroll-target="#submission-instructions"><strong>Submission Instructions</strong></a></li>
-  </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/hpm883/edit/main/labs/lab-2-Power.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lab-2-Power.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+  </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/hpm883/edit/main/labs/lab-2-Power.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
@@ -377,7 +377,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Extend that simulation to <strong>account for clustering</strong> (i.e., clinics as the unit of randomization).</li>
 <li>Examine the impact of <strong>sample size</strong>, <strong>effect size</strong>, and <strong>clustering</strong> on statistical power, and visualize how minimum detectable effect sizes (MDE) change with sample size.</li>
 </ol>
-<p>By the end of this lab, you will have a deeper understanding of: - How <strong>sources of uncertainty</strong> (sampling variation, variance in potential outcomes across participants, and measurement error) affect your study’s outcomes. - Why we must beware of <strong>Type I</strong> (false positive) and <strong>Type II</strong> (false negative) errors—especially if Dr.&nbsp;P-Hacker is anywhere near our data. - How <strong>p-values</strong> should (and should not!) be interpreted. - How to <strong>simulate data</strong> that include cluster-level effects and adjust for these effects in your analysis.</p>
+<p>By the end of this lab, you will have a deeper understanding of:</p>
+<ul>
+<li>How <strong>sources of uncertainty</strong> (sampling variation, variance in potential outcomes across participants, and measurement error) affect your study’s outcomes.</li>
+<li>Why we must beware of <strong>Type I</strong> (false positive) and <strong>Type II</strong> (false negative) errors—especially if Dr.&nbsp;P-Hacker is anywhere near our data.</li>
+<li>How <strong>p-values</strong> should (and should not!) be interpreted.</li>
+<li>How to <strong>simulate data</strong> that include cluster-level effects and adjust for these effects in your analysis.</li>
+</ul>
 <hr></section><section id="the-hospital-drama-begins" class="level2"><h2 class="anchored" data-anchor-id="the-hospital-drama-begins"><strong>The Hospital Drama Begins</strong></h2>
 <p>Welcome to <strong>St.&nbsp;Null’s Memorial Hospital</strong>, where a brand-new quality improvement intervention is about to be tested. The hospital’s network of clinics, collectively called <strong>The Null Distribution</strong>, is famous for its dedication to meticulous data collection—and also for some questionable statistical practices performed by a rather infamous staff member.</p>
 <ul>
@@ -487,13 +493,9 @@ Task 1: Flawed Simulation Setup
 <strong>Sampling Variation</strong>: Even if you have a large population of patients, the sample you select is just one draw from a bigger population. Different samples might give different estimates.<br>
 </li>
 <li>
-<strong>Variance in Potential Outcomes</strong>: Not all patients respond to treatments in the same way. Some might be strongly affected, some not at all—leading to variation in the outcomes.<br>
-</li>
+<strong>Measurement Error</strong>: If your measurement tool for patient well-being is noisy (e.g., patients often mis-report how they feel, or staff record data incorrectly), it introduces extra variability that can muddy your effect estimates.</li>
 <li>
-<strong>Measurement Error</strong>: If your measurement tool for patient well-being is noisy (e.g., patients often mis-report how they feel, or staff record data incorrectly), it introduces extra variability that can muddy your effect estimates.<br>
-</li>
-<li>
-<strong>Clustering</strong>: Patients in the <em>same clinic</em> share certain characteristics, environmental factors, or staff practices. This correlation must be accounted for in the design and analysis.</li>
+<strong>Variance in Potential Outcomes</strong>: Not all patients respond to treatments in the same way. Some might be strongly affected, some not at all—leading to variation in the outcomes. This includes <strong>clustering</strong>: Patients in the <em>same clinic</em> share certain characteristics, environmental factors, or staff practices that can affect their potential outcomes. This correlation <em>must</em> be accounted for in the design and analysis.</li>
 </ol>
 <blockquote class="blockquote">
 <p><strong>Nurse Random:</strong> “So if we ignore that last point—clustering—our estimate of the variability (and thus the standard error) is off, and we might incorrectly claim significance. That’s basically p-hacking 101!”</p>
@@ -515,7 +517,7 @@ Task 1: Flawed Simulation Setup
 </li>
 <li>We’ll generate clinic-level “random effects” and individual-level error terms to reflect <strong>both</strong> measurement error and the variability in potential outcomes across individuals.</li>
 </ul>
-<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -624,9 +626,9 @@ Task 2: Correcting the Simulation for Clustering
 <blockquote class="blockquote">
 <p><strong>Dr.&nbsp;P-Hacker</strong>: “I was so sure it was the probability that <em>I</em> was right.”<br><strong>Dr.&nbsp;Doub R. Obust</strong>: “We live and learn, Doctor.”</p>
 </blockquote>
-<hr></section><section id="optional-plotting-the-minimum-detectable-effect-mde" class="level2"><h2 class="anchored" data-anchor-id="optional-plotting-the-minimum-detectable-effect-mde"><strong>(Optional) Plotting the Minimum Detectable Effect (MDE)</strong></h2>
+<hr></section><section id="plotting-the-minimum-detectable-effect-mde" class="level2"><h2 class="anchored" data-anchor-id="plotting-the-minimum-detectable-effect-mde"><strong>Plotting the Minimum Detectable Effect (MDE)</strong></h2>
 <p>Because <strong>CEO Barnaby Beta</strong> wants to know how large an effect must be to have a reasonable chance of detection, you might want to simulate across a range of effect sizes and/or sample sizes. You can then plot the resulting power curves to see what the <strong>Minimum Detectable Effect</strong> (MDE) is for a given power requirement.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -678,13 +680,12 @@ Task 3: Create an MDE Plot
 <ol type="1">
 <li>Make sure your <code>.qmd</code> file knits successfully (to <code>.pdf</code> or <code>.html</code>).<br>
 </li>
-<li>Upload your compiled document to Gradescope:<br>
+<li>Upload your compiled document to <a href="https://www.gradescope.com/courses/781406">Gradescope</a>.<br>
 </li>
 <li>
 <strong>Include</strong> your discussion of the results, your code, and your responses to the callout sections.</li>
 </ol>
 <p>Remember, the moral of the story: <strong>Always check who (or what) is being randomized, and account for clustering when necessary!</strong> Otherwise, your study conclusions might be as random as Dr.&nbsp;P-Hacker’s next dinner choice.</p>
-<p><strong>Good luck!</strong></p>
 
 
 <!-- -->
@@ -1314,331 +1315,327 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-depth: 2</span></span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">  pdf:</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-depth: 2</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> visual</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="an">draft:</span><span class="co"> false</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Overview and Learning Objectives**</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>In this lab, you will explore the concept of **statistical conclusion validity** by conducting **power calculations via simulation**. Specifically, you will:</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Conduct a power simulation for a simple randomized experiment **without clustering** (i.e., ignoring the fact that participants may be grouped within clinics).</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Extend that simulation to **account for clustering** (i.e., clinics as the unit of randomization).</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Examine the impact of **sample size**, **effect size**, and **clustering** on statistical power, and visualize how minimum detectable effect sizes (MDE) change with sample size.</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>By the end of this lab, you will have a deeper understanding of:</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>How **sources of uncertainty** (sampling variation, variance in potential outcomes across participants, and measurement error) affect your study’s outcomes.</span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Why we must beware of **Type I** (false positive) and **Type II** (false negative) errors—especially if Dr. P-Hacker is anywhere near our data.</span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>How **p-values** should (and should not!) be interpreted.</span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>How to **simulate data** that include cluster-level effects and adjust for these effects in your analysis.</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> visual</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="an">draft:</span><span class="co"> false</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Overview and Learning Objectives**</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>In this lab, you will explore the concept of **statistical conclusion validity** by conducting **power calculations via simulation**. Specifically, you will:</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Conduct a power simulation for a simple randomized experiment **without clustering** (i.e., ignoring the fact that participants may be grouped within clinics).</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Extend that simulation to **account for clustering** (i.e., clinics as the unit of randomization).</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Examine the impact of **sample size**, **effect size**, and **clustering** on statistical power, and visualize how minimum detectable effect sizes (MDE) change with sample size.</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>By the end of this lab, you will have a deeper understanding of:</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>How **sources of uncertainty** (sampling variation, variance in potential outcomes across participants, and measurement error) affect your study’s outcomes.</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Why we must beware of **Type I** (false positive) and **Type II** (false negative) errors—especially if Dr. P-Hacker is anywhere near our data.</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>How **p-values** should (and should not!) be interpreted.</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>How to **simulate data** that include cluster-level effects and adjust for these effects in your analysis.</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="fu">## **The Hospital Drama Begins**</span></span>
 <span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="fu">## **The Hospital Drama Begins**</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>Welcome to **St. Null’s Memorial Hospital**, where a brand-new quality improvement intervention is about to be tested. The hospital’s network of clinics, collectively called **The Null Distribution**, is famous for its dedication to meticulous data collection—and also for some questionable statistical practices performed by a rather infamous staff member.</span>
 <span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>Welcome to **St. Null’s Memorial Hospital**, where a brand-new quality improvement intervention is about to be tested. The hospital’s network of clinics, collectively called **The Null Distribution**, is famous for its dedication to meticulous data collection—and also for some questionable statistical practices performed by a rather infamous staff member.</span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**CEO Barnaby Beta** has championed a new, cost-intensive intervention aimed at improving patient satisfaction. </span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Nurse Random** insists on conducting a proper **randomized control trial (RCT)**, but quickly realizes **Dr. P-Hacker** might have already meddled with the initial power calculations. </span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Dr. P-Hacker** is known to declare victory (“Significant at the 5% level!”) before even cleaning the data, and is rumored to own a golden “<span class="in">`p &lt; 0.05`</span>” sign that he waves in staff meetings.</span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Dr. Doub R. Obust** is the voice of reason, reminding everyone of fundamental statistical principles. </span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**CEO Barnaby Beta** has championed a new, cost-intensive intervention aimed at improving patient satisfaction. </span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Nurse Random** insists on conducting a proper **randomized control trial (RCT)**, but quickly realizes **Dr. P-Hacker** might have already meddled with the initial power calculations. </span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Dr. P-Hacker** is known to declare victory (“Significant at the 5% level!”) before even cleaning the data, and is rumored to own a golden “<span class="in">`p &lt; 0.05`</span>” sign that he waves in staff meetings.</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Dr. Doub R. Obust** is the voice of reason, reminding everyone of fundamental statistical principles. </span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>In this lab, you (the consultants) have been summoned to **salvage** the situation. Let’s see how this plays out.</span>
 <span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>In this lab, you (the consultants) have been summoned to **salvage** the situation. Let’s see how this plays out.</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a><span class="fu">## **The Plot Thickens: Power Calculations Without Clustering**</span></span>
 <span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a><span class="fu">## **The Plot Thickens: Power Calculations Without Clustering**</span></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a><span class="fu">### Scene 1: The Mysterious Spreadsheet</span></span>
 <span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a><span class="fu">### Scene 1: The Mysterious Spreadsheet</span></span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>**Nurse Random** bursts into the conference room, clutching a color-coded spreadsheet.</span>
 <span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>**Nurse Random** bursts into the conference room, clutching a color-coded spreadsheet.</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Nurse Random:** “Dr. P-Hacker, your power calculations look suspiciously high. Did you account for the fact that we’re randomizing by clinic, not by individual patient?”</span></span>
 <span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Nurse Random:** “Dr. P-Hacker, your power calculations look suspiciously high. Did you account for the fact that we’re randomizing by clinic, not by individual patient?”</span></span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Dr. P-Hacker:** “Of course not, Nurse Random. Look, a random patient is a random patient—no matter which clinic they come from! Besides, I love high power. It makes me feel like my study can conquer the world!”</span></span>
 <span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Dr. P-Hacker:** “Of course not, Nurse Random. Look, a random patient is a random patient—no matter which clinic they come from! Besides, I love high power. It makes me feel like my study can conquer the world!”</span></span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Dr. Doub R. Obust (rolling eyes):** “We’re going to need to run a simulation that properly reflects how the intervention is assigned at the **clinic** level, not just among individual patients. Otherwise, your calculations will be as overconfident as your new P-value neon sign.”</span></span>
 <span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Dr. Doub R. Obust (rolling eyes):** “We’re going to need to run a simulation that properly reflects how the intervention is assigned at the **clinic** level, not just among individual patients. Otherwise, your calculations will be as overconfident as your new P-value neon sign.”</span></span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>Nonetheless, **Dr. P-Hacker** shares his “method” with you first. Let’s start by **replicating** his approach (ignoring clustering). This will be our baseline—**what not to do** if clinics are truly the unit of randomization.</span>
 <span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>Nonetheless, **Dr. P-Hacker** shares his “method” with you first. Let’s start by **replicating** his approach (ignoring clustering). This will be our baseline—**what not to do** if clinics are truly the unit of randomization.</span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Step 1: Flawed Power Simulation (Ignoring Clustering)**</span></span>
 <span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Step 1: Flawed Power Simulation (Ignoring Clustering)**</span></span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>We’ll simulate a dataset **as if** individual patients are randomly assigned to treatment or control. We’ll compute the statistical power for detecting a **true treatment effect** of a specified size, ignoring any clinic-level differences.</span>
 <span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>We’ll simulate a dataset **as if** individual patients are randomly assigned to treatment or control. We’ll compute the statistical power for detecting a **true treatment effect** of a specified size, ignoring any clinic-level differences.</span>
-<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a><span class="fu">## Task 1: Flawed Simulation Setup</span></span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a><span class="fu">## Task 1: Flawed Simulation Setup</span></span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>Fill in the code below to acheive a power of around 0.8 (may not be exact, but get as close as you can):</span>
 <span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>Fill in the code below to acheive a power of around 0.8 (may not be exact, but get as close as you can):</span>
-<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Set a **sample size** for the total number of patients.  </span>
-<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Specify a **treatment effect** (<span class="in">`effect`</span>).  </span>
-<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Decide on the **proportion** of participants to receive treatment (<span class="in">`prop`</span>).  </span>
-<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Select a **significance level** (<span class="in">`t_alpha`</span>).  </span>
-<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Run multiple simulations (<span class="in">`sim.size`</span>).  </span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Set a **sample size** for the total number of patients.  </span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Specify a **treatment effect** (<span class="in">`effect`</span>).  </span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Decide on the **proportion** of participants to receive treatment (<span class="in">`prop`</span>).  </span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Select a **significance level** (<span class="in">`t_alpha`</span>).  </span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Run multiple simulations (<span class="in">`sim.size`</span>).  </span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>Then, run a linear regression on each simulated dataset, gather the *p*-values, and compute how often the null hypothesis is rejected (i.e., estimate power).</span>
 <span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>Then, run a linear regression on each simulated dataset, gather the *p*-values, and compute how often the null hypothesis is rejected (i.e., estimate power).</span>
-<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a>Note: The code below is not executable. You need to change the <span class="in">`eval: false`</span> to <span class="in">`eval: true`</span> to make it work and fill in the blanks.</span>
-<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: flawed-sim</span></span>
-<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123456</span>)</span>
-<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a><span class="co"># Define parameters</span></span>
-<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a>sample_size <span class="ot">&lt;-</span>     <span class="co"># e.g. 500</span></span>
-<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a>effect <span class="ot">&lt;-</span>          <span class="co"># e.g. 0.2</span></span>
-<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a>prop <span class="ot">&lt;-</span>            <span class="co"># e.g. 0.5</span></span>
-<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a>t_alpha <span class="ot">&lt;-</span>         <span class="co"># e.g. 0.05</span></span>
-<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a>sim.size <span class="ot">&lt;-</span>        <span class="co"># e.g. 2000</span></span>
-<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize storage for results</span></span>
-<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a>reject_t <span class="ot">&lt;-</span> <span class="fu">numeric</span>(sim.size)</span>
-<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulation loop</span></span>
-<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>sim.size) {</span>
-<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a>  dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span>sample_size)</span>
-<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Assign treatment individually (incorrect for cluster randomization!)</span></span>
-<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a>  dt[, treatment <span class="sc">:</span><span class="er">=</span> <span class="fu">rbinom</span>(.N, <span class="dv">1</span>, prop)]</span>
-<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Simulate outcome (10 is baseline, 'effect' is added if treatment=1)</span></span>
-<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a>  dt[, outcome <span class="sc">:</span><span class="er">=</span> <span class="dv">10</span> <span class="sc">+</span> effect <span class="sc">*</span> treatment <span class="sc">+</span> <span class="fu">rnorm</span>(.N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)]</span>
-<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Estimate the effect</span></span>
-<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a>  fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(outcome <span class="sc">~</span> treatment, <span class="at">data =</span> dt)</span>
-<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a>  p_value <span class="ot">&lt;-</span> <span class="fu">summary</span>(fit)<span class="sc">$</span>coefficients[<span class="dv">2</span>,<span class="dv">4</span>]</span>
-<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check if we reject H0: (p-value &lt; alpha)</span></span>
-<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a>  reject_t[i] <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(p_value <span class="sc">&lt;</span> t_alpha, <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute estimated power</span></span>
-<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a>power_flawed <span class="ot">&lt;-</span> <span class="fu">mean</span>(reject_t)</span>
-<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Estimated Power (Ignoring Clustering):"</span>, power_flawed, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>Note: The code below is not executable. You need to change the <span class="in">`eval: false`</span> to <span class="in">`eval: true`</span> to make it work and fill in the blanks.</span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: flawed-sim</span></span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123456</span>)</span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a><span class="co"># Define parameters</span></span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>sample_size <span class="ot">&lt;-</span>     <span class="co"># e.g. 500</span></span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>effect <span class="ot">&lt;-</span>          <span class="co"># e.g. 0.2</span></span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a>prop <span class="ot">&lt;-</span>            <span class="co"># e.g. 0.5</span></span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a>t_alpha <span class="ot">&lt;-</span>         <span class="co"># e.g. 0.05</span></span>
+<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a>sim.size <span class="ot">&lt;-</span>        <span class="co"># e.g. 2000</span></span>
+<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize storage for results</span></span>
+<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a>reject_t <span class="ot">&lt;-</span> <span class="fu">numeric</span>(sim.size)</span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulation loop</span></span>
+<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>sim.size) {</span>
+<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a>  dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span>sample_size)</span>
+<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Assign treatment individually (incorrect for cluster randomization!)</span></span>
+<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a>  dt[, treatment <span class="sc">:</span><span class="er">=</span> <span class="fu">rbinom</span>(.N, <span class="dv">1</span>, prop)]</span>
+<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Simulate outcome (10 is baseline, 'effect' is added if treatment=1)</span></span>
+<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a>  dt[, outcome <span class="sc">:</span><span class="er">=</span> <span class="dv">10</span> <span class="sc">+</span> effect <span class="sc">*</span> treatment <span class="sc">+</span> <span class="fu">rnorm</span>(.N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)]</span>
+<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Estimate the effect</span></span>
+<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a>  fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(outcome <span class="sc">~</span> treatment, <span class="at">data =</span> dt)</span>
+<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a>  p_value <span class="ot">&lt;-</span> <span class="fu">summary</span>(fit)<span class="sc">$</span>coefficients[<span class="dv">2</span>,<span class="dv">4</span>]</span>
+<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check if we reject H0: (p-value &lt; alpha)</span></span>
+<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a>  reject_t[i] <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(p_value <span class="sc">&lt;</span> t_alpha, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute estimated power</span></span>
+<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a>power_flawed <span class="ot">&lt;-</span> <span class="fu">mean</span>(reject_t)</span>
+<span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Estimated Power (Ignoring Clustering):"</span>, power_flawed, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Discussion of Step 1**</span></span>
 <span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Discussion of Step 1**</span></span>
-<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Nurse Random** sighs: “We got an estimated power of 0.8 (yours might be slightly different). But do we trust this number?”</span>
-<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Dr. Doub R. Obust** chimes in: “Nope. We’re ignoring that patients within the same clinic might be more similar to each other than to patients in other clinics. Our standard errors are artificially small.”</span>
+<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Nurse Random** sighs: “We got an estimated power of 0.8 (yours might be slightly different). But do we trust this number?”</span>
+<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Dr. Doub R. Obust** chimes in: “Nope. We’re ignoring that patients within the same clinic might be more similar to each other than to patients in other clinics. Our standard errors are artificially small.”</span>
+<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a>At this point, **CEO Barnaby Beta** perks up: “Artificially small standard errors? That means we’re basically claiming more precision than we actually have, right?”</span>
 <span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a>At this point, **CEO Barnaby Beta** perks up: “Artificially small standard errors? That means we’re basically claiming more precision than we actually have, right?”</span>
+<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a>Yes, indeed. If we disregard the **clustering** of patients, we risk making a **Type I error** more often than we realize. Dr. P-Hacker, in typical fashion, responds:</span>
 <span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a>Yes, indeed. If we disregard the **clustering** of patients, we risk making a **Type I error** more often than we realize. Dr. P-Hacker, in typical fashion, responds:</span>
-<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Dr. P-Hacker:** “Type I error? Isn’t that just when we see something interesting that’s obviously there?!”</span>  </span>
-<span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Dr. Doub R. Obust (groaning):** “No. A Type I error is a *false positive*—we conclude there *is* an effect even though, in truth, there isn’t. Like thinking you’ve discovered a rare golden banana flavor at the cafeteria soda machine when really it’s just seltzer water with a weird label!”</span></span>
+<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Dr. P-Hacker:** “Type I error? Isn’t that just when we see something interesting that’s obviously there?!”</span>  </span>
+<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Dr. Doub R. Obust (groaning):** “No. A Type I error is a *false positive*—we conclude there *is* an effect even though, in truth, there isn’t. Like thinking you’ve discovered a rare golden banana flavor at the cafeteria soda machine when really it’s just seltzer water with a weird label!”</span></span>
+<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb4-139"><a href="#cb4-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-140"><a href="#cb4-140" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-140"><a href="#cb4-140" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Understanding the Sources of Uncertainty**</span></span>
 <span id="cb4-141"><a href="#cb4-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-142"><a href="#cb4-142" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Understanding the Sources of Uncertainty**</span></span>
+<span id="cb4-142"><a href="#cb4-142" aria-hidden="true" tabindex="-1"></a>Before we fix our simulation, **Dr. Doub R. Obust** insists that you reflect on **why** ignoring clinic-level clustering is a problem. He ticks off sources of variability that a real experiment faces:</span>
 <span id="cb4-143"><a href="#cb4-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-144"><a href="#cb4-144" aria-hidden="true" tabindex="-1"></a>Before we fix our simulation, **Dr. Doub R. Obust** insists that you reflect on **why** ignoring clinic-level clustering is a problem. He ticks off sources of variability that a real experiment faces:</span>
-<span id="cb4-145"><a href="#cb4-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-146"><a href="#cb4-146" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Sampling Variation**: Even if you have a large population of patients, the sample you select is just one draw from a bigger population. Different samples might give different estimates.  </span>
-<span id="cb4-147"><a href="#cb4-147" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Variance in Potential Outcomes**: Not all patients respond to treatments in the same way. Some might be strongly affected, some not at all—leading to variation in the outcomes.  </span>
-<span id="cb4-148"><a href="#cb4-148" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Measurement Error**: If your measurement tool for patient well-being is noisy (e.g., patients often mis-report how they feel, or staff record data incorrectly), it introduces extra variability that can muddy your effect estimates.  </span>
-<span id="cb4-149"><a href="#cb4-149" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Clustering**: Patients in the *same clinic* share certain characteristics, environmental factors, or staff practices. This correlation must be accounted for in the design and analysis.</span>
-<span id="cb4-150"><a href="#cb4-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-151"><a href="#cb4-151" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Nurse Random:** “So if we ignore that last point—clustering—our estimate of the variability (and thus the standard error) is off, and we might incorrectly claim significance. That’s basically p-hacking 101!”</span></span>
-<span id="cb4-152"><a href="#cb4-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-153"><a href="#cb4-153" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb4-154"><a href="#cb4-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-155"><a href="#cb4-155" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Power Calculations With Clustering**</span></span>
-<span id="cb4-156"><a href="#cb4-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-157"><a href="#cb4-157" aria-hidden="true" tabindex="-1"></a><span class="fu">### Scene 2: A (Cluster-)Randomized Trial</span></span>
-<span id="cb4-158"><a href="#cb4-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-159"><a href="#cb4-159" aria-hidden="true" tabindex="-1"></a>Now we come to the **correct** approach: our **unit of randomization** is the **clinic**, not the individual. That means each clinic either receives the intervention or does not, and all patients in a clinic share the same treatment assignment.</span>
-<span id="cb4-160"><a href="#cb4-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-161"><a href="#cb4-161" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb4-162"><a href="#cb4-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-163"><a href="#cb4-163" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Step 2: Incorporating Clustering**</span></span>
-<span id="cb4-164"><a href="#cb4-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-165"><a href="#cb4-165" aria-hidden="true" tabindex="-1"></a>We’ll model:</span>
-<span id="cb4-166"><a href="#cb4-166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-167"><a href="#cb4-167" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`num_clusters`** = number of clinics.  </span>
-<span id="cb4-168"><a href="#cb4-168" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`cluster_size`** = number of patients per clinic.  </span>
-<span id="cb4-169"><a href="#cb4-169" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`icc`** (*Intraclass Correlation Coefficient*): A measure of how strongly patients in the same clinic resemble each other. High ICC means patients within a clinic are more correlated.  </span>
-<span id="cb4-170"><a href="#cb4-170" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>We’ll generate clinic-level “random effects” and individual-level error terms to reflect **both** measurement error and the variability in potential outcomes across individuals.</span>
+<span id="cb4-144"><a href="#cb4-144" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Sampling Variation**: Even if you have a large population of patients, the sample you select is just one draw from a bigger population. Different samples might give different estimates.  </span>
+<span id="cb4-145"><a href="#cb4-145" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Measurement Error**: If your measurement tool for patient well-being is noisy (e.g., patients often mis-report how they feel, or staff record data incorrectly), it introduces extra variability that can muddy your effect estimates. </span>
+<span id="cb4-146"><a href="#cb4-146" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Variance in Potential Outcomes**: Not all patients respond to treatments in the same way. Some might be strongly affected, some not at all—leading to variation in the outcomes. This includes **clustering**: Patients in the *same clinic* share certain characteristics, environmental factors, or staff practices that can affect their potential outcomes. This correlation *must* be accounted for in the design and analysis.</span>
+<span id="cb4-147"><a href="#cb4-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-148"><a href="#cb4-148" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Nurse Random:** “So if we ignore that last point—clustering—our estimate of the variability (and thus the standard error) is off, and we might incorrectly claim significance. That’s basically p-hacking 101!”</span></span>
+<span id="cb4-149"><a href="#cb4-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-150"><a href="#cb4-150" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-151"><a href="#cb4-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-152"><a href="#cb4-152" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Power Calculations With Clustering**</span></span>
+<span id="cb4-153"><a href="#cb4-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-154"><a href="#cb4-154" aria-hidden="true" tabindex="-1"></a><span class="fu">### Scene 2: A (Cluster-)Randomized Trial</span></span>
+<span id="cb4-155"><a href="#cb4-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-156"><a href="#cb4-156" aria-hidden="true" tabindex="-1"></a>Now we come to the **correct** approach: our **unit of randomization** is the **clinic**, not the individual. That means each clinic either receives the intervention or does not, and all patients in a clinic share the same treatment assignment.</span>
+<span id="cb4-157"><a href="#cb4-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-158"><a href="#cb4-158" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-159"><a href="#cb4-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-160"><a href="#cb4-160" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Step 2: Incorporating Clustering**</span></span>
+<span id="cb4-161"><a href="#cb4-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-162"><a href="#cb4-162" aria-hidden="true" tabindex="-1"></a>We’ll model:</span>
+<span id="cb4-163"><a href="#cb4-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-164"><a href="#cb4-164" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`num_clusters`** = number of clinics.  </span>
+<span id="cb4-165"><a href="#cb4-165" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`cluster_size`** = number of patients per clinic.  </span>
+<span id="cb4-166"><a href="#cb4-166" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`icc`** (*Intraclass Correlation Coefficient*): A measure of how strongly patients in the same clinic resemble each other. High ICC means patients within a clinic are more correlated.  </span>
+<span id="cb4-167"><a href="#cb4-167" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>We’ll generate clinic-level “random effects” and individual-level error terms to reflect **both** measurement error and the variability in potential outcomes across individuals.</span>
+<span id="cb4-168"><a href="#cb4-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-169"><a href="#cb4-169" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb4-170"><a href="#cb4-170" aria-hidden="true" tabindex="-1"></a><span class="fu">## Task 2: Correcting the Simulation for Clustering</span></span>
 <span id="cb4-171"><a href="#cb4-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-172"><a href="#cb4-172" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb4-173"><a href="#cb4-173" aria-hidden="true" tabindex="-1"></a><span class="fu">## Task 2: Correcting the Simulation for Clustering</span></span>
-<span id="cb4-174"><a href="#cb4-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-175"><a href="#cb4-175" aria-hidden="true" tabindex="-1"></a>Fill in the code below to acheive a power of 0.8:</span>
-<span id="cb4-176"><a href="#cb4-176" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-177"><a href="#cb4-177" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Define the **number of clinics** and the **number of patients per clinic**.  </span>
-<span id="cb4-178"><a href="#cb4-178" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Assign each entire clinic to treatment or control.  </span>
-<span id="cb4-179"><a href="#cb4-179" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Incorporate **cluster-level** random effects.  </span>
-<span id="cb4-180"><a href="#cb4-180" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Fit the model but adjust standard errors for clustering.  </span>
-<span id="cb4-181"><a href="#cb4-181" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb4-182"><a href="#cb4-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-185"><a href="#cb4-185" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb4-186"><a href="#cb4-186" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb4-172"><a href="#cb4-172" aria-hidden="true" tabindex="-1"></a>Fill in the code below to acheive a power of 0.8:</span>
+<span id="cb4-173"><a href="#cb4-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-174"><a href="#cb4-174" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Define the **number of clinics** and the **number of patients per clinic**.  </span>
+<span id="cb4-175"><a href="#cb4-175" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Assign each entire clinic to treatment or control.  </span>
+<span id="cb4-176"><a href="#cb4-176" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Incorporate **cluster-level** random effects.  </span>
+<span id="cb4-177"><a href="#cb4-177" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Fit the model but adjust standard errors for clustering.  </span>
+<span id="cb4-178"><a href="#cb4-178" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb4-179"><a href="#cb4-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-182"><a href="#cb4-182" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-183"><a href="#cb4-183" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb4-184"><a href="#cb4-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-185"><a href="#cb4-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-186"><a href="#cb4-186" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(multiwayvcov)  <span class="co"># for cluster-robust standard errors</span></span>
 <span id="cb4-187"><a href="#cb4-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-188"><a href="#cb4-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-189"><a href="#cb4-189" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(multiwayvcov)  <span class="co"># for cluster-robust standard errors</span></span>
-<span id="cb4-190"><a href="#cb4-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-191"><a href="#cb4-191" aria-hidden="true" tabindex="-1"></a><span class="co"># Define cluster parameters</span></span>
-<span id="cb4-192"><a href="#cb4-192" aria-hidden="true" tabindex="-1"></a>num_clusters <span class="ot">&lt;-</span>     <span class="co"># e.g. 50</span></span>
-<span id="cb4-193"><a href="#cb4-193" aria-hidden="true" tabindex="-1"></a>cluster_size <span class="ot">&lt;-</span>     <span class="co"># e.g. 10</span></span>
-<span id="cb4-194"><a href="#cb4-194" aria-hidden="true" tabindex="-1"></a>total_sample <span class="ot">&lt;-</span> num_clusters <span class="sc">*</span> cluster_size</span>
-<span id="cb4-195"><a href="#cb4-195" aria-hidden="true" tabindex="-1"></a>icc <span class="ot">&lt;-</span>              <span class="co"># e.g. 0.4</span></span>
-<span id="cb4-196"><a href="#cb4-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-197"><a href="#cb4-197" aria-hidden="true" tabindex="-1"></a><span class="co"># Variances</span></span>
-<span id="cb4-198"><a href="#cb4-198" aria-hidden="true" tabindex="-1"></a>ind_err_var <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb4-199"><a href="#cb4-199" aria-hidden="true" tabindex="-1"></a><span class="co"># cluster_err_var is derived from the intraclass correlation coefficient</span></span>
-<span id="cb4-200"><a href="#cb4-200" aria-hidden="true" tabindex="-1"></a>cluster_err_var <span class="ot">&lt;-</span> (icc <span class="sc">*</span> ind_err_var) <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">-</span> icc)</span>
-<span id="cb4-201"><a href="#cb4-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-202"><a href="#cb4-202" aria-hidden="true" tabindex="-1"></a>sim.size <span class="ot">&lt;-</span>         <span class="co"># e.g. 2000</span></span>
-<span id="cb4-203"><a href="#cb4-203" aria-hidden="true" tabindex="-1"></a>effect <span class="ot">&lt;-</span>           <span class="co"># e.g. 0.2</span></span>
-<span id="cb4-204"><a href="#cb4-204" aria-hidden="true" tabindex="-1"></a>prop <span class="ot">&lt;-</span>             <span class="co"># e.g. 0.5</span></span>
-<span id="cb4-205"><a href="#cb4-205" aria-hidden="true" tabindex="-1"></a>t_alpha <span class="ot">&lt;-</span>          <span class="co"># e.g. 0.05</span></span>
-<span id="cb4-206"><a href="#cb4-206" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-207"><a href="#cb4-207" aria-hidden="true" tabindex="-1"></a>reject_t <span class="ot">&lt;-</span> <span class="fu">numeric</span>(sim.size)</span>
-<span id="cb4-208"><a href="#cb4-208" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-209"><a href="#cb4-209" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">654321</span>)</span>
-<span id="cb4-210"><a href="#cb4-210" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>sim.size) {</span>
-<span id="cb4-211"><a href="#cb4-211" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-212"><a href="#cb4-212" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create a data table with one row per cluster, repeated for each patient</span></span>
-<span id="cb4-213"><a href="#cb4-213" aria-hidden="true" tabindex="-1"></a>  clusters <span class="ot">&lt;-</span> <span class="fu">data.table</span>(</span>
-<span id="cb4-214"><a href="#cb4-214" aria-hidden="true" tabindex="-1"></a>    <span class="at">cluster =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>num_clusters, <span class="at">each =</span> cluster_size)</span>
-<span id="cb4-215"><a href="#cb4-215" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb4-216"><a href="#cb4-216" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-217"><a href="#cb4-217" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Generate a cluster-level random effect</span></span>
-<span id="cb4-218"><a href="#cb4-218" aria-hidden="true" tabindex="-1"></a>  clusters[, cluster_error <span class="sc">:</span><span class="er">=</span> <span class="fu">rep</span>(</span>
-<span id="cb4-219"><a href="#cb4-219" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rnorm</span>(num_clusters, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(cluster_err_var)),</span>
-<span id="cb4-220"><a href="#cb4-220" aria-hidden="true" tabindex="-1"></a>    <span class="at">each =</span> cluster_size</span>
-<span id="cb4-221"><a href="#cb4-221" aria-hidden="true" tabindex="-1"></a>  )]</span>
-<span id="cb4-222"><a href="#cb4-222" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-223"><a href="#cb4-223" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Randomize at the clinic level</span></span>
-<span id="cb4-224"><a href="#cb4-224" aria-hidden="true" tabindex="-1"></a>  clusters[, treatment <span class="sc">:</span><span class="er">=</span> <span class="fu">rep</span>(</span>
-<span id="cb4-225"><a href="#cb4-225" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rbinom</span>(num_clusters, <span class="dv">1</span>, prop),</span>
-<span id="cb4-226"><a href="#cb4-226" aria-hidden="true" tabindex="-1"></a>    <span class="at">each =</span> cluster_size</span>
-<span id="cb4-227"><a href="#cb4-227" aria-hidden="true" tabindex="-1"></a>  )]</span>
+<span id="cb4-188"><a href="#cb4-188" aria-hidden="true" tabindex="-1"></a><span class="co"># Define cluster parameters</span></span>
+<span id="cb4-189"><a href="#cb4-189" aria-hidden="true" tabindex="-1"></a>num_clusters <span class="ot">&lt;-</span>     <span class="co"># e.g. 50</span></span>
+<span id="cb4-190"><a href="#cb4-190" aria-hidden="true" tabindex="-1"></a>cluster_size <span class="ot">&lt;-</span>     <span class="co"># e.g. 10</span></span>
+<span id="cb4-191"><a href="#cb4-191" aria-hidden="true" tabindex="-1"></a>total_sample <span class="ot">&lt;-</span> num_clusters <span class="sc">*</span> cluster_size</span>
+<span id="cb4-192"><a href="#cb4-192" aria-hidden="true" tabindex="-1"></a>icc <span class="ot">&lt;-</span>              <span class="co"># e.g. 0.4</span></span>
+<span id="cb4-193"><a href="#cb4-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-194"><a href="#cb4-194" aria-hidden="true" tabindex="-1"></a><span class="co"># Variances</span></span>
+<span id="cb4-195"><a href="#cb4-195" aria-hidden="true" tabindex="-1"></a>ind_err_var <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb4-196"><a href="#cb4-196" aria-hidden="true" tabindex="-1"></a><span class="co"># cluster_err_var is derived from the intraclass correlation coefficient</span></span>
+<span id="cb4-197"><a href="#cb4-197" aria-hidden="true" tabindex="-1"></a>cluster_err_var <span class="ot">&lt;-</span> (icc <span class="sc">*</span> ind_err_var) <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">-</span> icc)</span>
+<span id="cb4-198"><a href="#cb4-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-199"><a href="#cb4-199" aria-hidden="true" tabindex="-1"></a>sim.size <span class="ot">&lt;-</span>         <span class="co"># e.g. 2000</span></span>
+<span id="cb4-200"><a href="#cb4-200" aria-hidden="true" tabindex="-1"></a>effect <span class="ot">&lt;-</span>           <span class="co"># e.g. 0.2</span></span>
+<span id="cb4-201"><a href="#cb4-201" aria-hidden="true" tabindex="-1"></a>prop <span class="ot">&lt;-</span>             <span class="co"># e.g. 0.5</span></span>
+<span id="cb4-202"><a href="#cb4-202" aria-hidden="true" tabindex="-1"></a>t_alpha <span class="ot">&lt;-</span>          <span class="co"># e.g. 0.05</span></span>
+<span id="cb4-203"><a href="#cb4-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-204"><a href="#cb4-204" aria-hidden="true" tabindex="-1"></a>reject_t <span class="ot">&lt;-</span> <span class="fu">numeric</span>(sim.size)</span>
+<span id="cb4-205"><a href="#cb4-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-206"><a href="#cb4-206" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">654321</span>)</span>
+<span id="cb4-207"><a href="#cb4-207" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>sim.size) {</span>
+<span id="cb4-208"><a href="#cb4-208" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-209"><a href="#cb4-209" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create a data table with one row per cluster, repeated for each patient</span></span>
+<span id="cb4-210"><a href="#cb4-210" aria-hidden="true" tabindex="-1"></a>  clusters <span class="ot">&lt;-</span> <span class="fu">data.table</span>(</span>
+<span id="cb4-211"><a href="#cb4-211" aria-hidden="true" tabindex="-1"></a>    <span class="at">cluster =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>num_clusters, <span class="at">each =</span> cluster_size)</span>
+<span id="cb4-212"><a href="#cb4-212" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-213"><a href="#cb4-213" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-214"><a href="#cb4-214" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Generate a cluster-level random effect</span></span>
+<span id="cb4-215"><a href="#cb4-215" aria-hidden="true" tabindex="-1"></a>  clusters[, cluster_error <span class="sc">:</span><span class="er">=</span> <span class="fu">rep</span>(</span>
+<span id="cb4-216"><a href="#cb4-216" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rnorm</span>(num_clusters, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(cluster_err_var)),</span>
+<span id="cb4-217"><a href="#cb4-217" aria-hidden="true" tabindex="-1"></a>    <span class="at">each =</span> cluster_size</span>
+<span id="cb4-218"><a href="#cb4-218" aria-hidden="true" tabindex="-1"></a>  )]</span>
+<span id="cb4-219"><a href="#cb4-219" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-220"><a href="#cb4-220" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Randomize at the clinic level</span></span>
+<span id="cb4-221"><a href="#cb4-221" aria-hidden="true" tabindex="-1"></a>  clusters[, treatment <span class="sc">:</span><span class="er">=</span> <span class="fu">rep</span>(</span>
+<span id="cb4-222"><a href="#cb4-222" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rbinom</span>(num_clusters, <span class="dv">1</span>, prop),</span>
+<span id="cb4-223"><a href="#cb4-223" aria-hidden="true" tabindex="-1"></a>    <span class="at">each =</span> cluster_size</span>
+<span id="cb4-224"><a href="#cb4-224" aria-hidden="true" tabindex="-1"></a>  )]</span>
+<span id="cb4-225"><a href="#cb4-225" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-226"><a href="#cb4-226" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add an individual-level error</span></span>
+<span id="cb4-227"><a href="#cb4-227" aria-hidden="true" tabindex="-1"></a>  clusters[, individual_error <span class="sc">:</span><span class="er">=</span> <span class="fu">rnorm</span>(.N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(ind_err_var))]</span>
 <span id="cb4-228"><a href="#cb4-228" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-229"><a href="#cb4-229" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add an individual-level error</span></span>
-<span id="cb4-230"><a href="#cb4-230" aria-hidden="true" tabindex="-1"></a>  clusters[, individual_error <span class="sc">:</span><span class="er">=</span> <span class="fu">rnorm</span>(.N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(ind_err_var))]</span>
+<span id="cb4-229"><a href="#cb4-229" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Final outcome for each individual</span></span>
+<span id="cb4-230"><a href="#cb4-230" aria-hidden="true" tabindex="-1"></a>  clusters[, outcome <span class="sc">:</span><span class="er">=</span> <span class="dv">10</span> <span class="sc">+</span> effect <span class="sc">*</span> treatment <span class="sc">+</span> cluster_error <span class="sc">+</span> individual_error]</span>
 <span id="cb4-231"><a href="#cb4-231" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-232"><a href="#cb4-232" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Final outcome for each individual</span></span>
-<span id="cb4-233"><a href="#cb4-233" aria-hidden="true" tabindex="-1"></a>  clusters[, outcome <span class="sc">:</span><span class="er">=</span> <span class="dv">10</span> <span class="sc">+</span> effect <span class="sc">*</span> treatment <span class="sc">+</span> cluster_error <span class="sc">+</span> individual_error]</span>
+<span id="cb4-232"><a href="#cb4-232" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fit a naive linear model (ignoring clustering in standard errors)</span></span>
+<span id="cb4-233"><a href="#cb4-233" aria-hidden="true" tabindex="-1"></a>  fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(outcome <span class="sc">~</span> treatment, <span class="at">data =</span> clusters)</span>
 <span id="cb4-234"><a href="#cb4-234" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-235"><a href="#cb4-235" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fit a naive linear model (ignoring clustering in standard errors)</span></span>
-<span id="cb4-236"><a href="#cb4-236" aria-hidden="true" tabindex="-1"></a>  fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(outcome <span class="sc">~</span> treatment, <span class="at">data =</span> clusters)</span>
-<span id="cb4-237"><a href="#cb4-237" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-238"><a href="#cb4-238" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Adjust standard errors for clustering</span></span>
-<span id="cb4-239"><a href="#cb4-239" aria-hidden="true" tabindex="-1"></a>  robust_SE <span class="ot">&lt;-</span> <span class="fu">cluster.vcov</span>(fit, clusters<span class="sc">$</span>cluster, <span class="at">df_correction =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb4-240"><a href="#cb4-240" aria-hidden="true" tabindex="-1"></a>  robust_coef <span class="ot">&lt;-</span> <span class="fu">coeftest</span>(fit, robust_SE)</span>
-<span id="cb4-241"><a href="#cb4-241" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-242"><a href="#cb4-242" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get the p-value for the treatment coefficient</span></span>
-<span id="cb4-243"><a href="#cb4-243" aria-hidden="true" tabindex="-1"></a>  p_value <span class="ot">&lt;-</span> robust_coef[<span class="dv">2</span>,<span class="dv">4</span>]</span>
-<span id="cb4-244"><a href="#cb4-244" aria-hidden="true" tabindex="-1"></a>  reject_t[i] <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(p_value <span class="sc">&lt;</span> t_alpha, <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb4-245"><a href="#cb4-245" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-246"><a href="#cb4-246" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-247"><a href="#cb4-247" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute estimated power with clustering</span></span>
-<span id="cb4-248"><a href="#cb4-248" aria-hidden="true" tabindex="-1"></a>power_clustered <span class="ot">&lt;-</span> <span class="fu">mean</span>(reject_t)</span>
-<span id="cb4-249"><a href="#cb4-249" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Estimated Power (Clustered):"</span>, power_clustered, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb4-250"><a href="#cb4-250" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-251"><a href="#cb4-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-252"><a href="#cb4-252" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Discussion of Step 2**</span></span>
-<span id="cb4-253"><a href="#cb4-253" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-254"><a href="#cb4-254" aria-hidden="true" tabindex="-1"></a>**Dr. Doub R. Obust** looks at the new power estimate and remarks:</span>
-<span id="cb4-255"><a href="#cb4-255" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-256"><a href="#cb4-256" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; “As you can see, once we account for clustering, the power is (usually) **lower** than in the flawed approach. That’s because those cluster-level similarities effectively reduce the amount of independent information we have. Our standard errors are bigger, so it’s harder to find significance unless the effect size or sample size is larger.”</span></span>
-<span id="cb4-257"><a href="#cb4-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-258"><a href="#cb4-258" aria-hidden="true" tabindex="-1"></a>**CEO Barnaby Beta** shakes his head: “But that means our study might be underpowered if we stick to our current budget!”</span>
-<span id="cb4-259"><a href="#cb4-259" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-260"><a href="#cb4-260" aria-hidden="true" tabindex="-1"></a>**Nurse Random** replies with a grin: “Don’t worry, we can plan more carefully. Otherwise, if we run a smaller study, we risk a **Type II error**—failing to reject the null hypothesis when there really is an effect. You know, like leaving the gold standard intervention on the shelf because we didn’t gather enough data to prove it works.”</span>
-<span id="cb4-261"><a href="#cb4-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-262"><a href="#cb4-262" aria-hidden="true" tabindex="-1"></a>**Dr. P-Hacker** interjects:</span>
+<span id="cb4-235"><a href="#cb4-235" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Adjust standard errors for clustering</span></span>
+<span id="cb4-236"><a href="#cb4-236" aria-hidden="true" tabindex="-1"></a>  robust_SE <span class="ot">&lt;-</span> <span class="fu">cluster.vcov</span>(fit, clusters<span class="sc">$</span>cluster, <span class="at">df_correction =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-237"><a href="#cb4-237" aria-hidden="true" tabindex="-1"></a>  robust_coef <span class="ot">&lt;-</span> <span class="fu">coeftest</span>(fit, robust_SE)</span>
+<span id="cb4-238"><a href="#cb4-238" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-239"><a href="#cb4-239" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get the p-value for the treatment coefficient</span></span>
+<span id="cb4-240"><a href="#cb4-240" aria-hidden="true" tabindex="-1"></a>  p_value <span class="ot">&lt;-</span> robust_coef[<span class="dv">2</span>,<span class="dv">4</span>]</span>
+<span id="cb4-241"><a href="#cb4-241" aria-hidden="true" tabindex="-1"></a>  reject_t[i] <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(p_value <span class="sc">&lt;</span> t_alpha, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb4-242"><a href="#cb4-242" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-243"><a href="#cb4-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-244"><a href="#cb4-244" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute estimated power with clustering</span></span>
+<span id="cb4-245"><a href="#cb4-245" aria-hidden="true" tabindex="-1"></a>power_clustered <span class="ot">&lt;-</span> <span class="fu">mean</span>(reject_t)</span>
+<span id="cb4-246"><a href="#cb4-246" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Estimated Power (Clustered):"</span>, power_clustered, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb4-247"><a href="#cb4-247" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-248"><a href="#cb4-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-249"><a href="#cb4-249" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Discussion of Step 2**</span></span>
+<span id="cb4-250"><a href="#cb4-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-251"><a href="#cb4-251" aria-hidden="true" tabindex="-1"></a>**Dr. Doub R. Obust** looks at the new power estimate and remarks:</span>
+<span id="cb4-252"><a href="#cb4-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-253"><a href="#cb4-253" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; “As you can see, once we account for clustering, the power is (usually) **lower** than in the flawed approach. That’s because those cluster-level similarities effectively reduce the amount of independent information we have. Our standard errors are bigger, so it’s harder to find significance unless the effect size or sample size is larger.”</span></span>
+<span id="cb4-254"><a href="#cb4-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-255"><a href="#cb4-255" aria-hidden="true" tabindex="-1"></a>**CEO Barnaby Beta** shakes his head: “But that means our study might be underpowered if we stick to our current budget!”</span>
+<span id="cb4-256"><a href="#cb4-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-257"><a href="#cb4-257" aria-hidden="true" tabindex="-1"></a>**Nurse Random** replies with a grin: “Don’t worry, we can plan more carefully. Otherwise, if we run a smaller study, we risk a **Type II error**—failing to reject the null hypothesis when there really is an effect. You know, like leaving the gold standard intervention on the shelf because we didn’t gather enough data to prove it works.”</span>
+<span id="cb4-258"><a href="#cb4-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-259"><a href="#cb4-259" aria-hidden="true" tabindex="-1"></a>**Dr. P-Hacker** interjects:</span>
+<span id="cb4-260"><a href="#cb4-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-261"><a href="#cb4-261" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; “And there’s always </span><span class="in">`p &lt; 0.10`</span><span class="at">, right? We can move our threshold for significance to get more ‘positive’ results!”</span>  </span>
+<span id="cb4-262"><a href="#cb4-262" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Nurse Random (scolding):** “That’s *literally* p-hacking. Please step away from the analysis, Doctor.”</span></span>
 <span id="cb4-263"><a href="#cb4-263" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-264"><a href="#cb4-264" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; “And there’s always </span><span class="in">`p &lt; 0.10`</span><span class="at">, right? We can move our threshold for significance to get more ‘positive’ results!”</span>  </span>
-<span id="cb4-265"><a href="#cb4-265" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Nurse Random (scolding):** “That’s *literally* p-hacking. Please step away from the analysis, Doctor.”</span></span>
-<span id="cb4-266"><a href="#cb4-266" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-267"><a href="#cb4-267" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb4-268"><a href="#cb4-268" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-269"><a href="#cb4-269" aria-hidden="true" tabindex="-1"></a><span class="fu">## **The Truth About *p*-Values**</span></span>
-<span id="cb4-270"><a href="#cb4-270" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-271"><a href="#cb4-271" aria-hidden="true" tabindex="-1"></a>A quick comedic break for a lesson on *p*-values:</span>
+<span id="cb4-264"><a href="#cb4-264" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-265"><a href="#cb4-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-266"><a href="#cb4-266" aria-hidden="true" tabindex="-1"></a><span class="fu">## **The Truth About *p*-Values**</span></span>
+<span id="cb4-267"><a href="#cb4-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-268"><a href="#cb4-268" aria-hidden="true" tabindex="-1"></a>A quick comedic break for a lesson on *p*-values:</span>
+<span id="cb4-269"><a href="#cb4-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-270"><a href="#cb4-270" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Dr. P-Hacker** keeps shouting that *p* &lt; 0.05 means there’s a 5% chance the null hypothesis is true.  </span>
+<span id="cb4-271"><a href="#cb4-271" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Nurse Random** corrects him: “No, no, no. A *p*-value is the probability of observing a result *at least as extreme as ours* if the null is true. It’s NOT the probability the null is true. You can’t interpret it that way.”</span>
 <span id="cb4-272"><a href="#cb4-272" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-273"><a href="#cb4-273" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Dr. P-Hacker** keeps shouting that *p* &lt; 0.05 means there’s a 5% chance the null hypothesis is true.  </span>
-<span id="cb4-274"><a href="#cb4-274" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Nurse Random** corrects him: “No, no, no. A *p*-value is the probability of observing a result *at least as extreme as ours* if the null is true. It’s NOT the probability the null is true. You can’t interpret it that way.”</span>
+<span id="cb4-273"><a href="#cb4-273" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Dr. P-Hacker**: “I was so sure it was the probability that *I* was right.”</span>  </span>
+<span id="cb4-274"><a href="#cb4-274" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Dr. Doub R. Obust**: “We live and learn, Doctor.”</span></span>
 <span id="cb4-275"><a href="#cb4-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-276"><a href="#cb4-276" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Dr. P-Hacker**: “I was so sure it was the probability that *I* was right.”</span>  </span>
-<span id="cb4-277"><a href="#cb4-277" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Dr. Doub R. Obust**: “We live and learn, Doctor.”</span></span>
-<span id="cb4-278"><a href="#cb4-278" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-279"><a href="#cb4-279" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb4-280"><a href="#cb4-280" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-281"><a href="#cb4-281" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Plotting the Minimum Detectable Effect (MDE)**</span></span>
-<span id="cb4-282"><a href="#cb4-282" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-283"><a href="#cb4-283" aria-hidden="true" tabindex="-1"></a>Because **CEO Barnaby Beta** wants to know how large an effect must be to have a reasonable chance of detection, you might want to simulate across a range of effect sizes and/or sample sizes. You can then plot the resulting power curves to see what the **Minimum Detectable Effect** (MDE) is for a given power requirement.</span>
+<span id="cb4-276"><a href="#cb4-276" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-277"><a href="#cb4-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-278"><a href="#cb4-278" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Plotting the Minimum Detectable Effect (MDE)**</span></span>
+<span id="cb4-279"><a href="#cb4-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-280"><a href="#cb4-280" aria-hidden="true" tabindex="-1"></a>Because **CEO Barnaby Beta** wants to know how large an effect must be to have a reasonable chance of detection, you might want to simulate across a range of effect sizes and/or sample sizes. You can then plot the resulting power curves to see what the **Minimum Detectable Effect** (MDE) is for a given power requirement.</span>
+<span id="cb4-281"><a href="#cb4-281" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-282"><a href="#cb4-282" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb4-283"><a href="#cb4-283" aria-hidden="true" tabindex="-1"></a><span class="fu">### Task 3: Create an MDE Plot</span></span>
 <span id="cb4-284"><a href="#cb4-284" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-285"><a href="#cb4-285" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb4-286"><a href="#cb4-286" aria-hidden="true" tabindex="-1"></a><span class="fu">### Task 3: Create an MDE Plot</span></span>
-<span id="cb4-287"><a href="#cb4-287" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-288"><a href="#cb4-288" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Loop over a grid of *effect sizes* (or sample sizes).  </span>
-<span id="cb4-289"><a href="#cb4-289" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>For each value, compute power using the cluster-based simulation approach.  </span>
-<span id="cb4-290"><a href="#cb4-290" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Plot the *effect size* on the x-axis and the corresponding *power* on the y-axis.</span>
-<span id="cb4-291"><a href="#cb4-291" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb4-292"><a href="#cb4-292" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-295"><a href="#cb4-295" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb4-296"><a href="#cb4-296" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb4-285"><a href="#cb4-285" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Loop over a grid of *effect sizes* (or sample sizes).  </span>
+<span id="cb4-286"><a href="#cb4-286" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>For each value, compute power using the cluster-based simulation approach.  </span>
+<span id="cb4-287"><a href="#cb4-287" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Plot the *effect size* on the x-axis and the corresponding *power* on the y-axis.</span>
+<span id="cb4-288"><a href="#cb4-288" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb4-289"><a href="#cb4-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-292"><a href="#cb4-292" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-293"><a href="#cb4-293" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb4-294"><a href="#cb4-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-295"><a href="#cb4-295" aria-hidden="true" tabindex="-1"></a><span class="co"># Example code snippet (feel free to modify)</span></span>
+<span id="cb4-296"><a href="#cb4-296" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb4-297"><a href="#cb4-297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-298"><a href="#cb4-298" aria-hidden="true" tabindex="-1"></a><span class="co"># Example code snippet (feel free to modify)</span></span>
-<span id="cb4-299"><a href="#cb4-299" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb4-298"><a href="#cb4-298" aria-hidden="true" tabindex="-1"></a>effect_sizes <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="at">by =</span> <span class="fl">0.05</span>) </span>
+<span id="cb4-299"><a href="#cb4-299" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">effect =</span> effect_sizes, <span class="at">power =</span> <span class="cn">NA_real_</span>)</span>
 <span id="cb4-300"><a href="#cb4-300" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-301"><a href="#cb4-301" aria-hidden="true" tabindex="-1"></a>effect_sizes <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="at">by =</span> <span class="fl">0.05</span>) </span>
-<span id="cb4-302"><a href="#cb4-302" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">effect =</span> effect_sizes, <span class="at">power =</span> <span class="cn">NA_real_</span>)</span>
-<span id="cb4-303"><a href="#cb4-303" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-304"><a href="#cb4-304" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (e <span class="cf">in</span> <span class="fu">seq_along</span>(effect_sizes)) {</span>
-<span id="cb4-305"><a href="#cb4-305" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Repeat your cluster simulation steps but with effect = effect_sizes[e]</span></span>
-<span id="cb4-306"><a href="#cb4-306" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ...</span></span>
-<span id="cb4-307"><a href="#cb4-307" aria-hidden="true" tabindex="-1"></a>  <span class="co"># store the average of reject_t in results$power[e]</span></span>
-<span id="cb4-308"><a href="#cb4-308" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ...</span></span>
-<span id="cb4-309"><a href="#cb4-309" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-310"><a href="#cb4-310" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-311"><a href="#cb4-311" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(results, <span class="fu">aes</span>(<span class="at">x =</span> effect, <span class="at">y =</span> power)) <span class="sc">+</span></span>
-<span id="cb4-312"><a href="#cb4-312" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb4-313"><a href="#cb4-313" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb4-314"><a href="#cb4-314" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb4-315"><a href="#cb4-315" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Power vs. Effect Size"</span>,</span>
-<span id="cb4-316"><a href="#cb4-316" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Effect Size"</span>,</span>
-<span id="cb4-317"><a href="#cb4-317" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Power"</span></span>
-<span id="cb4-318"><a href="#cb4-318" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb4-319"><a href="#cb4-319" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb4-320"><a href="#cb4-320" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-321"><a href="#cb4-321" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-322"><a href="#cb4-322" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb4-323"><a href="#cb4-323" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-324"><a href="#cb4-324" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Final Words from the Hospital Staff**</span></span>
-<span id="cb4-325"><a href="#cb4-325" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-326"><a href="#cb4-326" aria-hidden="true" tabindex="-1"></a>**CEO Barnaby Beta**: “Alright, so if we need to ensure we have enough clinics and participants to achieve our desired power, we may need a bigger budget than expected. Let’s not forget that ignoring clustering would have given us a false sense of security in our power. Now we know better.”</span>
-<span id="cb4-327"><a href="#cb4-327" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-328"><a href="#cb4-328" aria-hidden="true" tabindex="-1"></a>**Nurse Random**: “And no more Type I or Type II error confusion, Dr. P-Hacker. We must keep our definitions straight if we’re to have any credibility around here!”</span>
-<span id="cb4-329"><a href="#cb4-329" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-330"><a href="#cb4-330" aria-hidden="true" tabindex="-1"></a>**Dr. P-Hacker (sighing):** “Fine, fine. Guess I’ll tone down the p-value hype. But I’m keeping my neon sign.”</span>
-<span id="cb4-331"><a href="#cb4-331" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-332"><a href="#cb4-332" aria-hidden="true" tabindex="-1"></a>**Dr. Doub R. Obust (with a grin):** “We’ll allow the neon sign, as long as you promise to interpret it *correctly*.”</span>
-<span id="cb4-333"><a href="#cb4-333" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-334"><a href="#cb4-334" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb4-335"><a href="#cb4-335" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-336"><a href="#cb4-336" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Submission Instructions**</span></span>
-<span id="cb4-337"><a href="#cb4-337" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-338"><a href="#cb4-338" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Make sure your <span class="in">`.qmd`</span> file knits successfully (to <span class="in">`.pdf`</span> or <span class="in">`.html`</span>).  </span>
-<span id="cb4-339"><a href="#cb4-339" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Upload your compiled document to Gradescope:   </span>
-<span id="cb4-340"><a href="#cb4-340" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Include** your discussion of the results, your code, and your responses to the callout sections.</span>
-<span id="cb4-341"><a href="#cb4-341" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-342"><a href="#cb4-342" aria-hidden="true" tabindex="-1"></a>Remember, the moral of the story: **Always check who (or what) is being randomized, and account for clustering when necessary!** Otherwise, your study conclusions might be as random as Dr. P-Hacker’s next dinner choice.</span>
-<span id="cb4-343"><a href="#cb4-343" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-344"><a href="#cb4-344" aria-hidden="true" tabindex="-1"></a>**Good luck!**</span>
+<span id="cb4-301"><a href="#cb4-301" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (e <span class="cf">in</span> <span class="fu">seq_along</span>(effect_sizes)) {</span>
+<span id="cb4-302"><a href="#cb4-302" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Repeat your cluster simulation steps but with effect = effect_sizes[e]</span></span>
+<span id="cb4-303"><a href="#cb4-303" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ...</span></span>
+<span id="cb4-304"><a href="#cb4-304" aria-hidden="true" tabindex="-1"></a>  <span class="co"># store the average of reject_t in results$power[e]</span></span>
+<span id="cb4-305"><a href="#cb4-305" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ...</span></span>
+<span id="cb4-306"><a href="#cb4-306" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-307"><a href="#cb4-307" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-308"><a href="#cb4-308" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(results, <span class="fu">aes</span>(<span class="at">x =</span> effect, <span class="at">y =</span> power)) <span class="sc">+</span></span>
+<span id="cb4-309"><a href="#cb4-309" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb4-310"><a href="#cb4-310" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb4-311"><a href="#cb4-311" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-312"><a href="#cb4-312" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Power vs. Effect Size"</span>,</span>
+<span id="cb4-313"><a href="#cb4-313" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Effect Size"</span>,</span>
+<span id="cb4-314"><a href="#cb4-314" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Power"</span></span>
+<span id="cb4-315"><a href="#cb4-315" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-316"><a href="#cb4-316" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb4-317"><a href="#cb4-317" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-318"><a href="#cb4-318" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-319"><a href="#cb4-319" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-320"><a href="#cb4-320" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-321"><a href="#cb4-321" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Final Words from the Hospital Staff**</span></span>
+<span id="cb4-322"><a href="#cb4-322" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-323"><a href="#cb4-323" aria-hidden="true" tabindex="-1"></a>**CEO Barnaby Beta**: “Alright, so if we need to ensure we have enough clinics and participants to achieve our desired power, we may need a bigger budget than expected. Let’s not forget that ignoring clustering would have given us a false sense of security in our power. Now we know better.”</span>
+<span id="cb4-324"><a href="#cb4-324" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-325"><a href="#cb4-325" aria-hidden="true" tabindex="-1"></a>**Nurse Random**: “And no more Type I or Type II error confusion, Dr. P-Hacker. We must keep our definitions straight if we’re to have any credibility around here!”</span>
+<span id="cb4-326"><a href="#cb4-326" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-327"><a href="#cb4-327" aria-hidden="true" tabindex="-1"></a>**Dr. P-Hacker (sighing):** “Fine, fine. Guess I’ll tone down the p-value hype. But I’m keeping my neon sign.”</span>
+<span id="cb4-328"><a href="#cb4-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-329"><a href="#cb4-329" aria-hidden="true" tabindex="-1"></a>**Dr. Doub R. Obust (with a grin):** “We’ll allow the neon sign, as long as you promise to interpret it *correctly*.”</span>
+<span id="cb4-330"><a href="#cb4-330" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-331"><a href="#cb4-331" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-332"><a href="#cb4-332" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-333"><a href="#cb4-333" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Submission Instructions**</span></span>
+<span id="cb4-334"><a href="#cb4-334" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-335"><a href="#cb4-335" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Make sure your <span class="in">`.qmd`</span> file knits successfully (to <span class="in">`.pdf`</span> or <span class="in">`.html`</span>).  </span>
+<span id="cb4-336"><a href="#cb4-336" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Upload your compiled document to <span class="co">[</span><span class="ot">Gradescope</span><span class="co">](https://www.gradescope.com/courses/781406)</span>.   </span>
+<span id="cb4-337"><a href="#cb4-337" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Include** your discussion of the results, your code, and your responses to the callout sections.</span>
+<span id="cb4-338"><a href="#cb4-338" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-339"><a href="#cb4-339" aria-hidden="true" tabindex="-1"></a>Remember, the moral of the story: **Always check who (or what) is being randomized, and account for clustering when necessary!** Otherwise, your study conclusions might be as random as Dr. P-Hacker’s next dinner choice.</span>
+<span id="cb4-340"><a href="#cb4-340" aria-hidden="true" tabindex="-1"></a></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

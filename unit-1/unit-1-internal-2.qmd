@@ -28,7 +28,5 @@ draft: false
 ### Labs
 
 -   [Lab 2: Power Calculation by Simulation](/labs/lab-2-Power.qmd)
-    - Due by 11:59pm on Monday, February 17
-    - Submit on [Gradescope](https://www.gradescope.com/courses/1187218)
--   [Lab 2B (BONUS): Multiple Hypothesis Testing](/labs/lab-2B-MultipleHypothesis.qmd)
-    - Complete this to earn a 5 percentage point bonus on the first midterm exam!! 
+    -   Due by 11:59pm on Monday, February 17
+    -   Submit on [Gradescope](https://www.gradescope.com/courses/1187218)

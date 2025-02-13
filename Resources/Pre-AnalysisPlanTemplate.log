@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.1.1)  13 FEB 2025 06:46
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.2.13)  13 FEB 2025 07:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **Pre-AnalysisPlanTemplate.tex
 (./Pre-AnalysisPlanTemplate.tex
-LaTeX2e <2024-11-01> patch level 1
-L3 programming layer <2024-12-09>
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-01-18>
 (/Users/sysylvia/Library/TinyTeX/texmf-dist/tex/latex/koma-script/scrartcl.cls
 Document Class: scrartcl 2024/10/24 v3.43 KOMA-Script document class (article)
 (/Users/sysylvia/Library/TinyTeX/texmf-dist/tex/latex/koma-script/scrkbase.sty
@@ -192,7 +192,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 )) (/Users/sysylvia/Library/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2024/12/12 v1.0g TeX engine tests
 ) (/Users/sysylvia/Library/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math.sty (/Users/sysylvia/Library/TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2024-12-09 L3 programming layer (loader) 
+Package: expl3 2025-01-18 L3 programming layer (loader) 
 (/Users/sysylvia/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
 File: l3backend-xetex.def 2024-05-08 L3 backend support: XeTeX
 \g__graphics_track_int=\count279
@@ -276,34 +276,34 @@ Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verbat
 (/Users/sysylvia/Library/TinyTeX/texmf-dist/tex/latex/base/textcomp.sty
 Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
 )) (/Users/sysylvia/Library/TinyTeX/texmf-dist/tex/latex/microtype/microtype.sty
-Package: microtype 2024/12/12 v3.2 Micro-typographical refinements (RS)
+Package: microtype 2025/02/11 v3.2a Micro-typographical refinements (RS)
 (/Users/sysylvia/Library/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+Package: etoolbox 2025/02/11 v2.5l e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count296
 )
 \MT@toks=\toks23
 \MT@tempbox=\box57
 \MT@count=\count297
-LaTeX Info: Redefining \noprotrusionifhmode on input line 1075.
-LaTeX Info: Redefining \leftprotrusion on input line 1076.
+LaTeX Info: Redefining \noprotrusionifhmode on input line 1087.
+LaTeX Info: Redefining \leftprotrusion on input line 1088.
 \MT@prot@toks=\toks24
-LaTeX Info: Redefining \rightprotrusion on input line 1095.
-LaTeX Info: Redefining \textls on input line 1437.
+LaTeX Info: Redefining \rightprotrusion on input line 1107.
+LaTeX Info: Redefining \textls on input line 1449.
 \MT@outer@kern=\dimen154
-LaTeX Info: Redefining \microtypecontext on input line 2041.
-LaTeX Info: Redefining \textmicrotypecontext on input line 2058.
+LaTeX Info: Redefining \microtypecontext on input line 2053.
+LaTeX Info: Redefining \textmicrotypecontext on input line 2070.
 \MT@listname@count=\count298
 (/Users/sysylvia/Library/TinyTeX/texmf-dist/tex/latex/microtype/microtype-xetex.def
-File: microtype-xetex.def 2024/12/12 v3.2 Definitions specific to xetex (RS)
+File: microtype-xetex.def 2025/02/11 v3.2a Definitions specific to xetex (RS)
 LaTeX Info: Redefining \lsstyle on input line 443.
 LaTeX Info: Redefining \lslig on input line 451.
 \MT@outer@space=\skip68
 )
 Package microtype Info: Loading configuration file microtype.cfg.
 (/Users/sysylvia/Library/TinyTeX/texmf-dist/tex/latex/microtype/microtype.cfg
-File: microtype.cfg 2024/12/12 v3.2 microtype main configuration file (RS)
+File: microtype.cfg 2025/02/11 v3.2a microtype main configuration file (RS)
 )
-LaTeX Info: Redefining \microtypesetup on input line 3053.
+LaTeX Info: Redefining \microtypesetup on input line 3065.
 ) (/Users/sysylvia/Library/TinyTeX/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
 (/Users/sysylvia/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg
@@ -1140,12 +1140,12 @@ Type  H <return>  for immediate help.
 l.638 \end{CSLReferences}
                           
 Here is how much of TeX's memory you used:
- 38407 strings out of 475827
- 790858 string characters out of 5773173
- 1487746 words of memory out of 5000000
- 60785 multiletter control sequences out of 15000+600000
- 561665 words of font info for 69 fonts, out of 8000000 for 9000
+ 38409 strings out of 475785
+ 790753 string characters out of 5771844
+ 1488874 words of memory out of 5000000
+ 60832 multiletter control sequences out of 15000+600000
+ 562433 words of font info for 69 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 108i,7n,123p,10919b,945s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 108i,7n,114p,10919b,945s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on Pre-AnalysisPlanTemplate.pdf (5 pages).

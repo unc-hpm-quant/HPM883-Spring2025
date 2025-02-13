@@ -11,9 +11,6 @@ format:
     toc: true
     toc-depth: 2
     code-tools: true
-  pdf:
-    toc: true
-    toc-depth: 2
 editor: visual
 draft: false
 ---
@@ -27,6 +24,7 @@ In this lab, you will explore the concept of **statistical conclusion validity**
 3. Examine the impact of **sample size**, **effect size**, and **clustering** on statistical power, and visualize how minimum detectable effect sizes (MDE) change with sample size.
 
 By the end of this lab, you will have a deeper understanding of:
+
 - How **sources of uncertainty** (sampling variation, variance in potential outcomes across participants, and measurement error) affect your study’s outcomes.
 - Why we must beware of **Type I** (false positive) and **Type II** (false negative) errors—especially if Dr. P-Hacker is anywhere near our data.
 - How **p-values** should (and should not!) be interpreted.
@@ -142,9 +140,8 @@ Yes, indeed. If we disregard the **clustering** of patients, we risk making a **
 Before we fix our simulation, **Dr. Doub R. Obust** insists that you reflect on **why** ignoring clinic-level clustering is a problem. He ticks off sources of variability that a real experiment faces:
 
 1. **Sampling Variation**: Even if you have a large population of patients, the sample you select is just one draw from a bigger population. Different samples might give different estimates.  
-2. **Variance in Potential Outcomes**: Not all patients respond to treatments in the same way. Some might be strongly affected, some not at all—leading to variation in the outcomes.  
-3. **Measurement Error**: If your measurement tool for patient well-being is noisy (e.g., patients often mis-report how they feel, or staff record data incorrectly), it introduces extra variability that can muddy your effect estimates.  
-4. **Clustering**: Patients in the *same clinic* share certain characteristics, environmental factors, or staff practices. This correlation must be accounted for in the design and analysis.
+2. **Measurement Error**: If your measurement tool for patient well-being is noisy (e.g., patients often mis-report how they feel, or staff record data incorrectly), it introduces extra variability that can muddy your effect estimates. 
+3. **Variance in Potential Outcomes**: Not all patients respond to treatments in the same way. Some might be strongly affected, some not at all—leading to variation in the outcomes. This includes **clustering**: Patients in the *same clinic* share certain characteristics, environmental factors, or staff practices that can affect their potential outcomes. This correlation *must* be accounted for in the design and analysis.
 
 > **Nurse Random:** “So if we ignore that last point—clustering—our estimate of the variability (and thus the standard error) is off, and we might incorrectly claim significance. That’s basically p-hacking 101!”
 
@@ -330,9 +327,9 @@ ggplot(results, aes(x = effect, y = power)) +
 ## **Submission Instructions**
 
 1. Make sure your `.qmd` file knits successfully (to `.pdf` or `.html`).  
-2. Upload your compiled document to Gradescope:   
+2. Upload your compiled document to [Gradescope](https://www.gradescope.com/courses/781406).   
 3. **Include** your discussion of the results, your code, and your responses to the callout sections.
 
 Remember, the moral of the story: **Always check who (or what) is being randomized, and account for clustering when necessary!** Otherwise, your study conclusions might be as random as Dr. P-Hacker’s next dinner choice.
 
-**Good luck!**
+
