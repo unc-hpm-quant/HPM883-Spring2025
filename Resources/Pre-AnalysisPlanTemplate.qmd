@@ -2,7 +2,10 @@
 title: "Pre-Analysis Plan: Title of the Study"
 author: "Author's Name"
 date: "Date of Latest Draft"
-format: pdf
+format:
+    html:
+        toc: true
+        toc-depth: 2
 editor: visual
 ---
 
@@ -11,15 +14,15 @@ Template for a Pre-Analysis Plan (PAP) for a randomized experiment. This is modi
 
 Other Helpful Resources:
 
-For guidance on pre-analysis plans, refer to 
+For guidance on pre-analysis plans, refer to
 
-- the World Bank’s DIME Wiki: [Pre-Analysis Plan - DIME Wiki](https://dimewiki.worldbank.org/Pre-Analysis_Plan)
-- The J-Pal Research Resources Website: [J-Pal Research Resources](https://www.povertyactionlab.org/resource/pre-analysis-plans)
+-   the World Bank’s DIME Wiki: [Pre-Analysis Plan - DIME Wiki](https://dimewiki.worldbank.org/Pre-Analysis_Plan)
+-   The J-Pal Research Resources Website: [J-Pal Research Resources](https://www.povertyactionlab.org/resource/pre-analysis-plans)
 
 For examples of pre-analysis plans, explore the AEA’s RCT Registry: [AEA RCT Registry](https://www.socialscienceregistry.org/). Here are some of mine:
 
-- [Pay by Design Trial](https://www.socialscienceregistry.org/trials/411)
-- [Anemia P4P Trial](https://www.socialscienceregistry.org/trials/1469) 
+-   [Pay by Design Trial](https://www.socialscienceregistry.org/trials/411)
+-   [Anemia P4P Trial](https://www.socialscienceregistry.org/trials/1469)
 :::
 
 # Introduction
