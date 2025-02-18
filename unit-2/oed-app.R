@@ -401,37 +401,48 @@ server <- function(input, output, session) {
     # Final MDE
     mde <- (z_alpha + z_beta) * sqrt(var_term)
     
-    # Create step-by-step explanation
+    # Create step-by-step explanation with LaTeX
     tagList(
       withMathJax(),
+      h4("Step-by-Step Calculations:"),
+      
       h5("1. Sample Size Calculation:"),
       if (input$constraintType == "sample") {
-        p(sprintf("With total N = %d and ratio r = %.3f:", input$N, r),
-          sprintf("n_C = N/(r + 1) = %d/(%.3f + 1) = %.1f", input$N, r, n_C),
-          sprintf("n_T = r × n_C = %.3f × %.1f = %.1f", r, n_C, n_T))
+        tagList(
+          p(sprintf("With total N = %d and ratio r = %.3f:", input$N, r)),
+          withMathJax(sprintf("$$n_C = \\frac{N}{r + 1} = \\frac{%d}{%.3f + 1} = %.1f$$", input$N, r, n_C)),
+          withMathJax(sprintf("$$n_T = r \\cdot n_C = %.3f \\cdot %.1f = %.1f$$", r, n_C, n_T))
+        )
       } else {
-        p(sprintf("With budget = %d, c_T = %d, c_C = %d, and ratio r = %.3f:", 
-                  input$budget, input$costT, input$costC, r),
-          sprintf("n_C = budget/(r×c_T + c_C) = %d/(%.3f×%d + %d) = %.1f", 
-                  input$budget, r, input$costT, input$costC, n_C),
-          sprintf("n_T = r × n_C = %.3f × %.1f = %.1f", r, n_C, n_T))
+        tagList(
+          p(sprintf("With budget = %d, c_T = %d, c_C = %d, and ratio r = %.3f:", 
+                    input$budget, input$costT, input$costC, r)),
+          withMathJax(sprintf("$$n_C = \\frac{\\text{budget}}{rc_T + c_C} = \\frac{%d}{%.3f \\cdot %d + %d} = %.1f$$", 
+                               input$budget, r, input$costT, input$costC, n_C)),
+          withMathJax(sprintf("$$n_T = r \\cdot n_C = %.3f \\cdot %.1f = %.1f$$", r, n_C, n_T))
+        )
       },
+      
       h5("2. Variance Terms:"),
       if (input$outcomeType == "continuous") {
-        p(sprintf("σ²_T = %.3f, σ²_C = %.3f", varT, varC))
+        withMathJax(sprintf("$$\\sigma^2_T = %.3f, \\quad \\sigma^2_C = %.3f$$", varT, varC))
       } else {
-        p(sprintf("Var_T = p_T(1-p_T) = %.3f(1-%.3f) = %.3f", input$pT, input$pT, varT),
-          sprintf("Var_C = p_C(1-p_C) = %.3f(1-%.3f) = %.3f", input$pC, input$pC, varC))
+        tagList(
+          withMathJax(sprintf("$$\\text{Var}_T = p_T(1-p_T) = %.3f(1-%.3f) = %.3f$$", input$pT, input$pT, varT)),
+          withMathJax(sprintf("$$\\text{Var}_C = p_C(1-p_C) = %.3f(1-%.3f) = %.3f$$", input$pC, input$pC, varC))
+        )
       },
-      p(sprintf("Combined variance term = Var_T/n_T + Var_C/n_C = %.3f/%.1f + %.3f/%.1f = %.4f",
-                varT, n_T, varC, n_C, var_term)),
+      withMathJax(sprintf("$$\\text{Combined variance} = \\frac{\\text{Var}_T}{n_T} + \\frac{\\text{Var}_C}{n_C} = \\frac{%.3f}{%.1f} + \\frac{%.3f}{%.1f} = %.4f$$",
+                          varT, n_T, varC, n_C, var_term)),
+      
       h5("3. Critical Values:"),
-      p(sprintf("z_(1-α/2) = %.4f (for α = %.3f)", z_alpha, input$alpha),
-        sprintf("z_(1-β) = %.4f (for power = %.3f)", z_beta, input$power)),
+      withMathJax(sprintf("$$z_{1-\\alpha/2} = %.4f \\quad (\\text{for } \\alpha = %.3f)$$", z_alpha, input$alpha)),
+      withMathJax(sprintf("$$z_{1-\\beta} = %.4f \\quad (\\text{for power } = %.3f)$$", z_beta, input$power)),
+      
       h5("4. Final MDE Calculation:"),
-      p("MDE = (z_(1-α/2) + z_(1-β)) × √(Var_T/n_T + Var_C/n_C)"),
-      p(sprintf("MDE = (%.4f + %.4f) × √%.4f = %.4f", 
-                z_alpha, z_beta, var_term, mde))
+      withMathJax("$$\\text{MDE} = (z_{1-\\alpha/2} + z_{1-\\beta}) \\sqrt{\\frac{\\text{Var}_T}{n_T} + \\frac{\\text{Var}_C}{n_C}}$$"),
+      withMathJax(sprintf("$$\\text{MDE} = (%.4f + %.4f) \\sqrt{%.4f} = %.4f$$", 
+                          z_alpha, z_beta, var_term, mde))
     )
   })
   
@@ -448,33 +459,54 @@ server <- function(input, output, session) {
       r <- rTest[which.min(mdeTest)]
       n_C <- input$budget / (r * input$costT + input$costC)
       n_T <- r * n_C
+      total_cost <- input$costT * n_T + input$costC * n_C
       
       tagList(
         withMathJax(),
-        h5("Optimal Allocation Under Cost Constraint:"),
-        p(sprintf("Budget Constraint: %d = %d×n_T + %d×n_C", 
-                  input$budget, input$costT, input$costC)),
-        p(sprintf("Optimal ratio (r = n_T/n_C) = %.3f", r)),
-        p(sprintf("This gives:"),
-          sprintf("n_C = %.1f", n_C),
-          sprintf("n_T = %.1f", n_T)),
-        p(sprintf("Total cost = %d×%.1f + %d×%.1f = %d", 
-                  input$costT, n_T, input$costC, n_C, input$budget))
+        h4("Optimal Cost Allocation:"),
+        
+        h5("1. Budget Constraint:"),
+        withMathJax(sprintf("$$%d = %d n_T + %d n_C$$", 
+                           input$budget, input$costT, input$costC)),
+        
+        h5("2. Optimal Allocation Ratio:"),
+        withMathJax(sprintf("$$r = \\frac{n_T}{n_C} = %.3f$$", r)),
+        
+        h5("3. Sample Sizes:"),
+        withMathJax(sprintf("$$n_C = \\frac{\\text{budget}}{rc_T + c_C} = \\frac{%d}{%.3f \\cdot %d + %d} = %.1f$$",
+                           input$budget, r, input$costT, input$costC, n_C)),
+        withMathJax(sprintf("$$n_T = r \\cdot n_C = %.3f \\cdot %.1f = %.1f$$", 
+                           r, n_C, n_T)),
+        
+        h5("4. Cost Verification:"),
+        withMathJax(sprintf("$$\\text{Total cost} = c_T n_T + c_C n_C = %d \\cdot %.1f + %d \\cdot %.1f = %d$$",
+                           input$costT, n_T, input$costC, n_C, total_cost))
       )
     } else {
       n_C <- input$budget / (input$ratio * input$costT + input$costC)
       n_T <- input$ratio * n_C
+      total_cost <- input$costT * n_T + input$costC * n_C
       
       tagList(
         withMathJax(),
-        h5("Manual Allocation Under Cost Constraint:"),
-        p(sprintf("Budget Constraint: %d = %d×n_T + %d×n_C", 
-                  input$budget, input$costT, input$costC)),
-        p(sprintf("With ratio r = %.3f:", input$ratio)),
-        p(sprintf("n_C = %.1f", n_C),
-          sprintf("n_T = %.1f", n_T)),
-        p(sprintf("Total cost = %d×%.1f + %d×%.1f = %d", 
-                  input$costT, n_T, input$costC, n_C, input$budget))
+        h4("Manual Cost Allocation:"),
+        
+        h5("1. Budget Constraint:"),
+        withMathJax(sprintf("$$%d = %d n_T + %d n_C$$", 
+                           input$budget, input$costT, input$costC)),
+        
+        h5("2. Fixed Allocation Ratio:"),
+        withMathJax(sprintf("$$r = \\frac{n_T}{n_C} = %.3f$$", input$ratio)),
+        
+        h5("3. Sample Sizes:"),
+        withMathJax(sprintf("$$n_C = \\frac{\\text{budget}}{rc_T + c_C} = \\frac{%d}{%.3f \\cdot %d + %d} = %.1f$$",
+                           input$budget, input$ratio, input$costT, input$costC, n_C)),
+        withMathJax(sprintf("$$n_T = r \\cdot n_C = %.3f \\cdot %.1f = %.1f$$", 
+                           input$ratio, n_C, n_T)),
+        
+        h5("4. Cost Verification:"),
+        withMathJax(sprintf("$$\\text{Total cost} = c_T n_T + c_C n_C = %d \\cdot %.1f + %d \\cdot %.1f = %d$$",
+                           input$costT, n_T, input$costC, n_C, total_cost))
       )
     }
   })
