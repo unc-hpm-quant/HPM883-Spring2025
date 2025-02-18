@@ -55,3 +55,7 @@ rsconnect/
 # VSCode files
 .vscode/
 .code-workspace
+
+# Mac OS files
+.DS_Store
+

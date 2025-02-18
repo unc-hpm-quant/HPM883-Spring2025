@@ -36,5 +36,4 @@ draft: false
 ### Lab
 
 -   [Lab 1: The Hospital of Uncertain Outcomes](/labs/lab-1-InternalValidityPO.qmd)
-    - [Solutions](/labs/lab-1-InternalValidityPO_sols.qmd)
-
+    -   [Solutions](/labs/lab-1-InternalValidityPO_sols.qmd)
