@@ -1,8 +1,8 @@
 ---
-title: "Unit 2: Experimental Design"
-subtitle: "Lecture Notes"
+title: "Unit 2: Design of Experiments"
+Subtitle: "Optimal Experimental Design"
 author: "Sean Sylvia, Ph.D."
-date: February 3, 2025
+date: February 18, 2025
 format:
   html:
     toc: true

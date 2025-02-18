@@ -1,0 +1,447 @@
+---
+title: "Optimal Experiment Design App"
+format: html
+---
+
+## Overview
+
+This interactive tool helps you explore optimal experimental design for randomized controlled trials (RCTs) with one treatment and one control group. The app allows you to:
+
+1. Calculate optimal sample sizes for different effect sizes
+2. Compare different allocation ratios between treatment and control groups
+3. Explore cost-constrained designs
+
+## Key Statistical Concepts
+
+### Effect Size
+
+The effect size represents the magnitude of the difference between treatment and control groups. Understanding effect size is crucial for:
+1. Determining practical significance (not just statistical significance)
+2. Planning sample sizes
+3. Comparing results across different studies
+
+#### For Continuous Outcomes
+Measured as Cohen's d (standardized mean difference):
+
+$d = \frac{\mu_1 - \mu_0}{\sigma_{pooled}}$
+
+Typical interpretations:
+- **Small effect**: ~0.2 (e.g., a small improvement in test scores)
+- **Medium effect**: ~0.5 (e.g., noticeable improvement in patient outcomes)
+- **Large effect**: ~0.8 (e.g., dramatic improvement in treatment response)
+
+The standardization by pooled standard deviation (σ_pooled) allows comparison across different scales and measures.
+
+#### For Binary Outcomes
+Measured as the difference in proportions (p₁ - p₀):
+- p₁ is the success rate in the treatment group
+- p₀ is the success rate in the control group
+
+Example interpretations:
+- A difference of 0.05 (5 percentage points) might be meaningful for rare events
+- A difference of 0.20 (20 percentage points) might be expected for effective interventions
+
+The variance for binary outcomes follows the binomial distribution:
+- Var(p) = p(1-p)/n
+- Larger variance near p = 0.5
+- Smaller variance near p = 0 or p = 1
+
+### Statistical Power and Sample Size
+
+The interplay between power, sample size, and effect size forms the foundation of experimental design. These concepts are connected through a fundamental trade-off:
+
+#### Power (1-β)
+The probability of detecting a true effect when it exists:
+- **Definition**: Power = P(Reject H₀ | H₁ is true)
+- **Interpretation**: The probability of a study finding a real effect
+- **Typical value**: 0.80 (80%)
+  - Lower values (e.g., 70%) increase risk of missing real effects
+  - Higher values (e.g., 90%) require substantially larger sample sizes
+
+#### Type II Error (β)
+- **Definition**: β = P(Fail to reject H₀ | H₁ is true)
+- **Interpretation**: The probability of missing a real effect
+- **Relationship**: Power = 1 - β
+- **Example**: With 80% power, β = 20% chance of missing a real effect
+
+#### Significance Level (α)
+The probability of falsely claiming an effect exists:
+- **Definition**: α = P(Reject H₀ | H₀ is true)
+- **Interpretation**: Risk of false positive findings
+- **Common values**:
+  - 0.05 (5%): Standard for most research
+  - 0.01 (1%): More stringent, used for critical decisions
+  - 0.10 (10%): Sometimes used in pilot studies
+
+#### Trade-offs
+1. **Sample Size vs. Power**:
+   - Larger samples → Higher power
+   - Doubling power often requires more than doubling sample size
+
+2. **Effect Size vs. Sample Size**:
+   - Smaller effects require larger samples
+   - Relationship is quadratic (n ∝ 1/d²)
+
+3. **Type I vs. Type II Errors**:
+   - Reducing one type of error often increases the other
+   - Must balance based on consequences of each error type
+
+### Minimum Detectable Effect (MDE)
+
+The MDE is the smallest true effect size that can be detected with the specified power and significance level. For a two-sided test:
+
+MDE = (z₁₋ₐ/₂ + z₁₋β) × √(Var₁/n₁ + Var₀/n₀)
+
+where:
+- z₁₋ₐ/₂ is the critical value for significance level α
+- z₁₋β is the critical value for power 1-β
+- Var₁, Var₀ are the variances in treatment and control groups
+- n₁, n₀ are the sample sizes in treatment and control groups
+
+### Optimal Allocation
+
+The optimal allocation ratio between treatment and control groups depends on:
+
+1. **Equal Sample Sizes**: When costs are equal and variances are similar, a 1:1 ratio is optimal
+
+2. **Unequal Variances**: The optimal ratio is proportional to the standard deviations:
+   r = n₁/n₀ ∝ σ₁/σ₀
+
+3. **Unequal Costs**: When costs differ, the optimal ratio is:
+   r = n₁/n₀ ∝ (σ₁/σ₀) × √(c₀/c₁)
+   where c₁, c₀ are the per-unit costs
+
+## Using the App
+
+The app below allows you to explore these concepts interactively:
+
+```{r}
+#| context: setup
+library(shiny)
+```
+
+```{r}
+#| echo: false
+shinyAppFile(
+  "oed-app.R",
+  options = list(height = "800px")
+)
+#| context: setup
+library(shiny)
+```
+
+```{r}
+#| panel: sidebar
+  
+  titlePanel("Optimal Experimental Design for One Treatment vs. One Control"),
+  
+  sidebarLayout(
+    sidebarPanel(
+      # --- Choose outcome type (binary or continuous)
+      radioButtons(
+        inputId = "outcomeType", 
+        label = "Outcome Type",
+        choices = c("Binary" = "binary", "Continuous" = "continuous"),
+        selected = "continuous"
+      ),
+      
+      # --- Significance level (alpha)
+      sliderInput(
+        inputId = "alpha", 
+        label = "Significance level (alpha):",
+        min = 0.001, 
+        max = 0.10, 
+        step = 0.001,
+        value = 0.05
+      ),
+      
+      # --- Power (1 - beta)
+      sliderInput(
+        inputId = "power", 
+        label = "Statistical Power (1 - beta):",
+        min = 0.50, 
+        max = 0.99, 
+        step = 0.01,
+        value = 0.80
+      ),
+      
+      # --- Parameters for continuous outcome
+      conditionalPanel(
+        condition = "input.outcomeType == 'continuous'",
+        numericInput("sigmaT", "Treatment Variance (σ²_T):", 1),
+        numericInput("sigmaC", "Control Variance (σ²_C):", 1)
+      ),
+      
+      # --- Parameters for binary outcome
+      conditionalPanel(
+        condition = "input.outcomeType == 'binary'",
+        sliderInput("pT", "Treatment proportion (p_T):",
+                    min = 0, max = 1, step = 0.01, value = 0.3),
+        sliderInput("pC", "Control proportion (p_C):",
+                    min = 0, max = 1, step = 0.01, value = 0.3)
+      ),
+      
+      # --- Allocation: either fix total sample size or total cost
+      radioButtons(
+        inputId = "constraintType",
+        label = "Constraint Type:",
+        choices = c("Fixed Total Sample Size" = "sample",
+                    "Fixed Total Cost"        = "cost")
+      ),
+      
+      # --- If total sample size is the constraint
+      conditionalPanel(
+        condition = "input.constraintType == 'sample'",
+        numericInput("N", "Total Sample Size (N):", 200, min = 2, step = 1)
+      ),
+      
+      # --- If total cost is the constraint
+      conditionalPanel(
+        condition = "input.constraintType == 'cost'",
+        numericInput("costT", "Cost per Treatment Unit:", 2, min = 1, step = 1),
+        numericInput("costC", "Cost per Control Unit:", 1, min = 1, step = 1),
+        numericInput("budget", "Total Budget:", 300, min = 1, step = 1)
+      ),
+      
+      # --- Option to let the user pick ratio or find optimum
+      radioButtons(
+        inputId = "ratioChoice",
+        label = "Allocation Choice:",
+        choices = c("Manually Pick Ratio" = "manual",
+                    "Find Optimal Ratio"  = "optimal")
+      ),
+      
+      sliderInput(
+        inputId = "ratio",
+        label = "Treatment:Control Ratio (r = n_T / n_C):",
+        min = 0.1,
+        max = 10,
+        step = 0.1,
+        value = 1
+      )
+    ),
+    
+    mainPanel(
+      tabsetPanel(
+        tabPanel("MDE vs. Ratio", 
+                 plotOutput("plotMDE"),
+                 br(),
+                 verbatimTextOutput("textResult")
+        ),
+        tabPanel("Cost Allocation Plot",
+                 plotOutput("plotCost", height = "500px"),
+                 helpText("This plot shows the budget constraint line ",
+                          "and iso-MDE curves for different cost allocations ",
+                          "(c_C on the x-axis, c_T on the y-axis). ",
+                          "The red point indicates the optimal allocation ",
+                          "where MDE is minimized, if available.")
+        )
+      )
+    )
+  )
+)
+
+server <- function(input, output, session) {
+  
+  # Helper: z-value for alpha/2 (two-sided) and for power
+  zAlpha <- reactive({
+    qnorm(1 - input$alpha / 2)
+  })
+  zBeta <- reactive({
+    # For power (1 - beta), we want zBeta = z_{1 - beta}
+    # i.e., the critical value for the upper tail
+    qnorm(input$power)
+  })
+  
+  # Function to compute MDE given n_C, n_T (the sample sizes)
+  computeMDE_from_n <- function(nC, nT) {
+    if (input$outcomeType == "continuous") {
+      sigmaT <- input$sigmaT
+      sigmaC <- input$sigmaC
+      varTerm <- sigmaT^2 / nT + sigmaC^2 / nC
+    } else {
+      pT <- input$pT
+      pC <- input$pC
+      varTerm <- pT*(1 - pT)/nT + pC*(1 - pC)/nC
+    }
+    (zAlpha() + zBeta()) * sqrt(varTerm)
+  }
+  
+  # Function to compute MDE given a ratio (for either sample or cost constraint)
+  computeMDE_ratio <- function(r) {
+    # 1) Determine n_T and n_C based on constraints and ratio
+    if (input$constraintType == "sample") {
+      # n_T + n_C = N, and n_T / n_C = r
+      n_C <- input$N / (r + 1)
+      n_T <- r * n_C
+    } else {
+      # costT * n_T + costC * n_C = budget, n_T / n_C = r
+      # => n_T = r * n_C
+      # => costT * (r * n_C) + costC * n_C = budget
+      # => n_C (r*costT + costC) = budget
+      n_C <- input$budget / (r * input$costT + input$costC)
+      n_T <- r * n_C
+    }
+    
+    # 2) Compute MDE
+    computeMDE_from_n(n_C, n_T)
+  }
+  
+  # Plot: MDE vs. ratio
+  output$plotMDE <- renderPlot({
+    # We'll vary r from 0.1 to 10 in increments of 0.1
+    rVals <- seq(0.1, 10, by = 0.1)
+    mdeVals <- sapply(rVals, computeMDE_ratio)
+    
+    plot(rVals, mdeVals, type = "l", lwd = 2, 
+         xlab = "Ratio (n_T / n_C)", ylab = "MDE",
+         main = "Minimum Detectable Effect vs. Allocation Ratio")
+    
+    # If in manual mode, highlight user's chosen ratio
+    if (input$ratioChoice == "manual") {
+      rUser <- input$ratio
+      userMde <- computeMDE_ratio(rUser)
+      points(rUser, userMde, col = "red", pch = 19, cex = 1.5)
+    }
+  })
+  
+  # Text output: either user-chosen ratio or optimal ratio
+  output$textResult <- renderPrint({
+    if (input$ratioChoice == "optimal") {
+      # Find ratio that yields smallest MDE
+      rTest <- seq(0.1, 10, 0.01)
+      mdeTest <- sapply(rTest, computeMDE_ratio)
+      idxMin <- which.min(mdeTest)
+      rOpt <- rTest[idxMin]
+      mdeOpt <- mdeTest[idxMin]
+      
+      if (input$constraintType == "sample") {
+        n_C_opt <- input$N / (rOpt + 1)
+        n_T_opt <- rOpt * n_C_opt
+      } else {
+        n_C_opt <- input$budget / (rOpt * input$costT + input$costC)
+        n_T_opt <- rOpt * n_C_opt
+      }
+      
+      cat("Optimal ratio (n_T / n_C):", round(rOpt, 3), "\n")
+      cat("Minimized MDE:", round(mdeOpt, 4), "\n")
+      cat("n_T:", round(n_T_opt, 2), "| n_C:", round(n_C_opt, 2), "\n")
+      
+    } else {
+      # Manual ratio
+      rUser <- input$ratio
+      mdeUser <- computeMDE_ratio(rUser)
+      
+      if (input$constraintType == "sample") {
+        n_C_user <- input$N / (rUser + 1)
+        n_T_user <- rUser * n_C_user
+      } else {
+        n_C_user <- input$budget / (rUser * input$costT + input$costC)
+        n_T_user <- rUser * n_C_user
+      }
+      
+      cat("User-chosen ratio (n_T / n_C):", round(rUser, 3), "\n")
+      cat("MDE at this ratio:", round(mdeUser, 4), "\n")
+      cat("n_T:", round(n_T_user, 2), "| n_C:", round(n_C_user, 2), "\n")
+    }
+  })
+  
+  # ------------------------------------------------------
+  #  NEW PLOT: Cost Allocation (c_C on x-axis, c_T on y-axis)
+  # ------------------------------------------------------
+  
+  output$plotCost <- renderPlot({
+    
+    # Only show this plot if user is in "cost" constraint AND
+    # ratio choice is "optimal" (because we want to show the tangency)
+    # But we can still show some helpful info if user is in "manual" mode, too.
+    if (input$constraintType != "cost") {
+      plot.new()
+      text(0.5, 0.5, "Cost Allocation Plot is only relevant for a cost constraint.")
+      return(NULL)
+    }
+    
+    # We'll define a grid for c_C and c_T:
+    # Let c_C range from 0 to budget, let c_T range from 0 to budget
+    # feasible region is c_C + c_T <= budget.
+    budget <- input$budget
+    cC_vals <- seq(0, budget, length.out = 50)
+    cT_vals <- seq(0, budget, length.out = 50)
+    
+    # We'll compute MDE for each (c_C, c_T), provided it's feasible.
+    # c_C = costC * n_C => n_C = c_C / costC
+    # c_T = costT * n_T => n_T = c_T / costT
+    # Then MDE = (zAlpha + zBeta) * sqrt(...).
+    
+    costC <- input$costC
+    costT <- input$costT
+    
+    # Create a matrix for storing MDE
+    MDE_matrix <- matrix(NA, nrow = length(cC_vals), ncol = length(cT_vals))
+    
+    for (i in seq_along(cC_vals)) {
+      for (j in seq_along(cT_vals)) {
+        cC <- cC_vals[i]
+        cT <- cT_vals[j]
+        # Feasibility check:
+        if (cC + cT <= budget) {
+          nC <- cC / costC
+          nT <- cT / costT
+          # avoid zero or negative nC,nT
+          if (nC > 0 & nT > 0) {
+            MDE_matrix[i, j] <- computeMDE_from_n(nC, nT)
+          } else {
+            MDE_matrix[i, j] <- NA
+          }
+        } else {
+          MDE_matrix[i, j] <- NA
+        }
+      }
+    }
+    
+    # We'll make a filled contour or contour plot of MDE
+    # But first we want a minimal MDE for labeling
+    # (We can just find the min ignoring NAs.)
+    minMDE <- min(MDE_matrix, na.rm = TRUE)
+    maxMDE <- max(MDE_matrix, na.rm = TRUE)
+    
+    # Basic contour plot. We show c_C on x-axis, c_T on y-axis
+    contour(
+      x = cC_vals, y = cT_vals, z = MDE_matrix, 
+      levels = pretty(seq(minMDE, maxMDE, length.out = 10)), 
+      col = "blue", 
+      xlab = "Cost allocated to Control (c_C)", 
+      ylab = "Cost allocated to Treatment (c_T)",
+      main = "Iso-MDE Curves and Budget Constraint"
+    )
+    
+    # Add the budget line: c_T = budget - c_C
+    lines(cC_vals, budget - cC_vals, col = "red", lwd = 2)
+    
+    # If user is in "optimal" ratio mode, we find the optimum point and plot it
+    if (input$ratioChoice == "optimal") {
+      # We already find that ratio in textResult, but let's do it again here
+      rTest <- seq(0.1, 10, 0.01)
+      mdeTest <- sapply(rTest, computeMDE_ratio)
+      idxMin <- which.min(mdeTest)
+      rOpt <- rTest[idxMin]
+      
+      # Compute cC_opt and cT_opt at that ratio
+      # budget = costT*n_T + costC*n_C
+      # n_T / n_C = r => n_T = r*n_C
+      # => costT*(r*n_C) + costC*n_C = budget
+      # => n_C(r*costT + costC) = budget
+      # => n_C = budget / (r*costT + costC)
+      nC_opt <- budget / (rOpt * costT + costC)
+      nT_opt <- rOpt * nC_opt
+      
+      # => c_C_opt = costC * n_C_opt
+      # => c_T_opt = costT * n_T_opt
+      cC_opt <- costC * nC_opt
+      cT_opt <- costT * nT_opt
+      
+      # Add that point to the plot
+      points(cC_opt, cT_opt, col = "red", pch = 19, cex = 1.5)
+    }
+  })
+}

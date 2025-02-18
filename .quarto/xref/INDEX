@@ -137,5 +137,8 @@
   "Resources/Pre-AnalysisPlanTemplate.qmd": {
     "Pre-AnalysisPlanTemplate.html": "cd439bfc",
     "Pre-AnalysisPlanTemplate.tex": "94cf4037"
+  },
+  "unit-2/shiny-oed-app.qmd": {
+    "shiny-oed-app.html": "117e0b25"
   }
 }
