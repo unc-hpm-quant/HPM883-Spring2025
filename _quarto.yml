@@ -2,12 +2,18 @@ project:
   type: website
   output-dir: _site
 
+format:
+  html:
+    filters:
+      - shinylive
+    mainfont: "Times New Roman"
+    highlight-style: a11y-light
+
 website:
   page-navigation: true
   title: "HPM 883"
   description: "Homepage for HPM 883: Advanced Quantitative Methods for Health policy and Management"
   site-url: https://hpm883.github.io
-
   repo-url: https://github.com/hpm883
   repo-actions: [edit, issue]
 
@@ -105,11 +111,6 @@ website:
     left: "&copy; Copyright 2024, Sean Sylvia"
     background: "#F5F5F5"
 
-format:
-  html:
-    mainfont: "Times New Roman"
-    highlight-style: a11y-light
-
 theme:
   light: [cosmo, style/hpm883.scss]
   dark: [cosmo, style/hpm883-dark.scss]
@@ -123,6 +124,3 @@ execute:
   freeze: auto
 
 editor: visual
-
-
-

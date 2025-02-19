@@ -1,0 +1,22 @@
+---
+title: "Unit 2.1: Optimal Experimental Design"
+draft: false
+---
+
+## Unit Overview
+
+### Preparation
+
+-   Read:
+    -   [Declare Design Book: 5.1, 8.2, 10](https://book.declaredesign.org/declaration-diagnosis-redesign/crafting-data-strategy.html)
+-   Listen:
+    -   [Podcast](media/)
+
+### Class
+
+-   [Lecture: Optimal Experimental Design](/unit-2/lec-2-1.qmd)
+-   [Optimal Experimental Design Shiny App](/unit-2/shiny-oed-app.qmd)
+
+### Labs
+
+-   TBD

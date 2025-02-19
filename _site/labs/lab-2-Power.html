@@ -598,7 +598,7 @@ Task 2: Correcting the Simulation for Clustering
 <span>  <span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">outcome</span> <span class="op">~</span> <span class="va">treatment</span>, data <span class="op">=</span> <span class="va">clusters</span><span class="op">)</span></span>
 <span>  </span>
 <span>  <span class="co"># Adjust standard errors for clustering</span></span>
-<span>  <span class="va">robust_SE</span> <span class="op">&lt;-</span> <span class="fu">cluster.vcov</span><span class="op">(</span><span class="va">fit</span>, <span class="va">clusters</span><span class="op">$</span><span class="va">cluster</span>, df_correction <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="va">robust_SE</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/multiwayvcov/man/cluster.vcov.html">cluster.vcov</a></span><span class="op">(</span><span class="va">fit</span>, <span class="va">clusters</span><span class="op">$</span><span class="va">cluster</span>, df_correction <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span>  <span class="va">robust_coef</span> <span class="op">&lt;-</span> <span class="fu">coeftest</span><span class="op">(</span><span class="va">fit</span>, <span class="va">robust_SE</span><span class="op">)</span></span>
 <span>  </span>
 <span>  <span class="co"># Get the p-value for the treatment coefficient</span></span>

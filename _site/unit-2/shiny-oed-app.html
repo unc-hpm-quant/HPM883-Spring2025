@@ -69,7 +69,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-fd9528830c3bd10aadebefd30ea787ae.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-135ac4d113b30199e54d7437fe66c954.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-dark-135ac4d113b30199e54d7437fe66c954.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<meta name="shinylive:serviceworker_dir" content="..">
+<script src="../site_libs/quarto-contrib/shinylive-0.9.1/shinylive/load-shinylive-sw.js" type="module"></script>
+<script src="../site_libs/quarto-contrib/shinylive-0.9.1/shinylive/run-python-blocks.js" type="module"></script>
+<link href="../site_libs/quarto-contrib/shinylive-0.9.1/shinylive/shinylive.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/shinylive-quarto-css/shinylive-quarto.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -345,8 +350,28 @@ window.Quarto = {
 </div>
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+   
+  <ul>
+<li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li>
+<a href="#key-statistical-concepts" id="toc-key-statistical-concepts" class="nav-link" data-scroll-target="#key-statistical-concepts">Key Statistical Concepts</a>
+  <ul class="collapse">
+<li><a href="#effect-size" id="toc-effect-size" class="nav-link" data-scroll-target="#effect-size">Effect Size</a></li>
+  <li><a href="#statistical-power-and-sample-size" id="toc-statistical-power-and-sample-size" class="nav-link" data-scroll-target="#statistical-power-and-sample-size">Statistical Power and Sample Size</a></li>
+  <li><a href="#minimum-detectable-effect-mde" id="toc-minimum-detectable-effect-mde" class="nav-link" data-scroll-target="#minimum-detectable-effect-mde">Minimum Detectable Effect (MDE)</a></li>
+  <li><a href="#optimal-allocation" id="toc-optimal-allocation" class="nav-link" data-scroll-target="#optimal-allocation">Optimal Allocation</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#using-the-app" id="toc-using-the-app" class="nav-link" data-scroll-target="#using-the-app">Using the App</a>
+  <ul class="collapse">
+<li><a href="#local-rstudio-version" id="toc-local-rstudio-version" class="nav-link" data-scroll-target="#local-rstudio-version">Local RStudio Version</a></li>
+  </ul>
+</li>
+  <li><a href="#browser-version" id="toc-browser-version" class="nav-link" data-scroll-target="#browser-version">Browser Version</a></li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/hpm883/edit/main/unit-2/shiny-oed-app.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
@@ -364,300 +389,667 @@ window.Quarto = {
   
 
 
-</header><div class="cell" data-context="setup">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.posit.co/">shiny</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</header><section id="overview" class="level2"><h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This interactive tool helps you explore optimal experimental design for randomized controlled trials (RCTs) with one treatment and one control group. The app allows you to:</p>
+<ol type="1">
+<li>Calculate optimal sample sizes for different effect sizes</li>
+<li>Compare different allocation ratios between treatment and control groups</li>
+<li>Explore cost-constrained designs</li>
+</ol></section><section id="key-statistical-concepts" class="level2"><h2 class="anchored" data-anchor-id="key-statistical-concepts">Key Statistical Concepts</h2>
+<section id="effect-size" class="level3"><h3 class="anchored" data-anchor-id="effect-size">Effect Size</h3>
+<p>The effect size represents the magnitude of the difference between treatment and control groups. Understanding effect size is crucial for: 1. Determining practical significance (not just statistical significance) 2. Planning sample sizes 3. Comparing results across different studies</p>
+<section id="for-continuous-outcomes" class="level4"><h4 class="anchored" data-anchor-id="for-continuous-outcomes">For Continuous Outcomes</h4>
+<p>Measured as Cohen’s <span class="math inline">\(d\)</span> (standardized mean difference):</p>
+<p><span class="math display">\[d = \frac{\mu_T - \mu_C}{\sigma_{\text{pooled}}}\]</span></p>
+<p>Typical interpretations:</p>
+<ul>
+<li>
+<strong>Small effect</strong>: ~0.2 (e.g., a small improvement in test scores)</li>
+<li>
+<strong>Medium effect</strong>: ~0.5 (e.g., noticeable improvement in patient outcomes)</li>
+<li>
+<strong>Large effect</strong>: ~0.8 (e.g., dramatic improvement in treatment response)</li>
+</ul>
+<p>The standardization by pooled standard deviation (<span class="math inline">\(\sigma_{\text{pooled}}\)</span>) allows comparison across different scales and measures.</p>
+</section><section id="for-binary-outcomes" class="level4"><h4 class="anchored" data-anchor-id="for-binary-outcomes">For Binary Outcomes</h4>
+<p>Measured as the difference in proportions (<span class="math inline">\(p_T - p_C\)</span>):</p>
+<ul>
+<li>
+<span class="math inline">\(p_T\)</span> is the success rate in the treatment group</li>
+<li>
+<span class="math inline">\(p_C\)</span> is the success rate in the control group</li>
+</ul>
+<p>Example interpretations:</p>
+<ul>
+<li>A difference of 0.05 (5 percentage points) might be meaningful for rare events</li>
+<li>A difference of 0.20 (20 percentage points) might be expected for effective interventions</li>
+</ul>
+<p>The variance for binary outcomes follows the binomial distribution:</p>
+<ul>
+<li><span class="math inline">\(\text{Var}(p) = \frac{p(1-p)}{n}\)</span></li>
+<li>Larger variance near <span class="math inline">\(p = 0.5\)</span>
+</li>
+<li>Smaller variance near <span class="math inline">\(p = 0\)</span> or <span class="math inline">\(p = 1\)</span>
+</li>
+</ul></section></section><section id="statistical-power-and-sample-size" class="level3"><h3 class="anchored" data-anchor-id="statistical-power-and-sample-size">Statistical Power and Sample Size</h3>
+<p>The interplay between power, sample size, and effect size forms the foundation of experimental design. These concepts are connected through a fundamental trade-off:</p>
+<section id="power-1-beta" class="level4"><h4 class="anchored" data-anchor-id="power-1-beta">Power <span class="math inline">\((1-\beta)\)</span>
+</h4>
+<p>The probability of detecting a true effect when it exists:</p>
+<ul>
+<li><p><strong>Definition</strong>: Power <span class="math inline">\(= P(\text{Reject }H_0 \mid H_1 \text{ is true})\)</span></p></li>
+<li><p><strong>Interpretation</strong>: The probability of a study finding a real effect</p></li>
+<li>
+<p><strong>Typical value</strong>: <span class="math inline">\(0.80\)</span> (80%)</p>
+<ul>
+<li>Lower values (e.g., 70%) increase risk of missing real effects</li>
+<li>Higher values (e.g., 90%) require substantially larger sample sizes</li>
+</ul>
+</li>
+</ul></section><section id="type-ii-error-beta" class="level4"><h4 class="anchored" data-anchor-id="type-ii-error-beta">Type II Error <span class="math inline">\((\beta)\)</span>
+</h4>
+<ul>
+<li>
+<strong>Definition</strong>: <span class="math inline">\(\beta = P(\text{Fail to reject }H_0 \mid H_1 \text{ is true})\)</span>
+</li>
+<li>
+<strong>Interpretation</strong>: The probability of missing a real effect</li>
+<li>
+<strong>Relationship</strong>: Power <span class="math inline">\(= 1 - \beta\)</span>
+</li>
+<li>
+<strong>Example</strong>: With 80% power, β = 20% chance of missing a real effect</li>
+</ul></section><section id="significance-level-alpha" class="level4"><h4 class="anchored" data-anchor-id="significance-level-alpha">Significance Level <span class="math inline">\((\alpha)\)</span>
+</h4>
+<p>The probability of falsely claiming an effect exists:</p>
+<ul>
+<li><p><strong>Definition</strong>: <span class="math inline">\(\alpha = P(\text{Reject }H_0 \mid H_0 \text{ is true})\)</span></p></li>
+<li><p><strong>Interpretation</strong>: Risk of false positive findings</p></li>
+<li>
+<p><strong>Common values</strong>:</p>
+<ul>
+<li>0.05 (5%): Standard for most research</li>
+<li>0.01 (1%): More stringent, used for critical decisions</li>
+<li>0.10 (10%): Sometimes used in pilot studies</li>
+</ul>
+</li>
+</ul></section><section id="trade-offs" class="level4"><h4 class="anchored" data-anchor-id="trade-offs">Trade-offs</h4>
+<ol type="1">
+<li>
+<p><strong>Sample Size vs.&nbsp;Power</strong>:</p>
+<ul>
+<li>Larger samples → Higher power</li>
+<li>Doubling power often requires more than doubling sample size</li>
+</ul>
+</li>
+<li>
+<p><strong>Effect Size vs.&nbsp;Sample Size</strong>:</p>
+<ul>
+<li>Smaller effects require larger samples</li>
+<li>Relationship is quadratic <span class="math inline">\((n \propto 1/d^2)\)</span>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Type I vs.&nbsp;Type II Errors</strong>:</p>
+<ul>
+<li>Reducing one type of error often increases the other</li>
+<li>Must balance based on consequences of each error type</li>
+</ul>
+</li>
+</ol></section></section><section id="minimum-detectable-effect-mde" class="level3"><h3 class="anchored" data-anchor-id="minimum-detectable-effect-mde">Minimum Detectable Effect (MDE)</h3>
+<p>The MDE is the smallest true effect size that can be detected with the specified power and significance level. For a two-sided test:</p>
+<p><span class="math display">\[\text{MDE} = (z_{1-\alpha/2} + z_{1-\beta}) \sqrt{\frac{\text{Var}_T}{n_T} + \frac{\text{Var}_C}{n_C}}\]</span></p>
+<p>where:</p>
+<ul>
+<li>
+<span class="math inline">\(z_{1-\alpha/2}\)</span> is the critical value for significance level <span class="math inline">\(\alpha\)</span>
+</li>
+<li>
+<span class="math inline">\(z_{1-\beta}\)</span> is the critical value for power <span class="math inline">\(1-\beta\)</span>
+</li>
+<li>
+<span class="math inline">\(\text{Var}_T\)</span>, <span class="math inline">\(\text{Var}_C\)</span> are the variances in treatment and control groups</li>
+<li>
+<span class="math inline">\(n_T\)</span>, <span class="math inline">\(n_C\)</span> are the sample sizes in treatment and control groups</li>
+</ul></section><section id="optimal-allocation" class="level3"><h3 class="anchored" data-anchor-id="optimal-allocation">Optimal Allocation</h3>
+<p>The optimal allocation ratio between treatment and control groups depends on:</p>
+<ol type="1">
+<li><p><strong>Equal Sample Sizes</strong>: When costs are equal and variances are similar, a 1:1 ratio is optimal</p></li>
+<li><p><strong>Unequal Variances</strong>: The optimal ratio is proportional to the standard deviations: <span class="math display">\[\frac{n_T}{n_C} \propto \frac{\sigma_T}{\sigma_C}\]</span></p></li>
+<li><p><strong>Unequal Costs</strong>: When costs differ, the optimal ratio is: <span class="math display">\[\frac{n_T}{n_C} \propto \frac{\sigma_T}{\sigma_C} \sqrt{\frac{c_C}{c_T}}\]</span> where <span class="math inline">\(c_T\)</span>, <span class="math inline">\(c_C\)</span> are the per-unit costs</p></li>
+</ol></section></section><section id="using-the-app" class="level2"><h2 class="anchored" data-anchor-id="using-the-app">Using the App</h2>
+<section id="local-rstudio-version" class="level3"><h3 class="anchored" data-anchor-id="local-rstudio-version">Local RStudio Version</h3>
+<p>To run this app locally in RStudio:</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">shiny</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/runApp.html">runApp</a></span><span class="op">(</span><span class="st">"unit-2/oed-app.R"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>#| panel: sidebar</p>
-<p>titlePanel(“Optimal Experimental Design for One Treatment vs.&nbsp;One Control”),</p>
-<p>sidebarLayout( sidebarPanel( # — Choose outcome type (binary or continuous) radioButtons( inputId = “outcomeType”, label = “Outcome Type”, choices = c(“Binary” = “binary”, “Continuous” = “continuous”), selected = “continuous” ),</p>
-<pre><code>  # --- Significance level (alpha)
-  sliderInput(
-    inputId = "alpha", 
-    label = "Significance level (alpha):",
-    min = 0.001, 
-    max = 0.10, 
-    step = 0.001,
-    value = 0.05
-  ),
-  
-  # --- Power (1 - beta)
-  sliderInput(
-    inputId = "power", 
-    label = "Statistical Power (1 - beta):",
-    min = 0.50, 
-    max = 0.99, 
-    step = 0.01,
-    value = 0.80
-  ),
-  
-  # --- Parameters for continuous outcome
-  conditionalPanel(
-    condition = "input.outcomeType == 'continuous'",
-    numericInput("sigmaT", "Treatment Variance (σ²_T):", 1),
-    numericInput("sigmaC", "Control Variance (σ²_C):", 1)
-  ),
-  
-  # --- Parameters for binary outcome
-  conditionalPanel(
-    condition = "input.outcomeType == 'binary'",
-    sliderInput("pT", "Treatment proportion (p_T):",
-                min = 0, max = 1, step = 0.01, value = 0.3),
-    sliderInput("pC", "Control proportion (p_C):",
-                min = 0, max = 1, step = 0.01, value = 0.3)
-  ),
-  
-  # --- Allocation: either fix total sample size or total cost
-  radioButtons(
-    inputId = "constraintType",
-    label = "Constraint Type:",
-    choices = c("Fixed Total Sample Size" = "sample",
-                "Fixed Total Cost"        = "cost")
-  ),
-  
-  # --- If total sample size is the constraint
-  conditionalPanel(
-    condition = "input.constraintType == 'sample'",
-    numericInput("N", "Total Sample Size (N):", 200, min = 2, step = 1)
-  ),
-  
-  # --- If total cost is the constraint
-  conditionalPanel(
-    condition = "input.constraintType == 'cost'",
-    numericInput("costT", "Cost per Treatment Unit:", 2, min = 1, step = 1),
-    numericInput("costC", "Cost per Control Unit:", 1, min = 1, step = 1),
-    numericInput("budget", "Total Budget:", 300, min = 1, step = 1)
-  ),
-  
-  # --- Option to let the user pick ratio or find optimum
-  radioButtons(
-    inputId = "ratioChoice",
-    label = "Allocation Choice:",
-    choices = c("Manually Pick Ratio" = "manual",
-                "Find Optimal Ratio"  = "optimal")
-  ),
-  
-  sliderInput(
-    inputId = "ratio",
-    label = "Treatment:Control Ratio (r = n_T / n_C):",
-    min = 0.1,
-    max = 10,
-    step = 0.1,
-    value = 1
-  )
-),
+</section></section><section id="browser-version" class="level2"><h2 class="anchored" data-anchor-id="browser-version">Browser Version</h2>
+<pre class="shinylive-r" data-engine="r"><code><a href="https://shiny.posit.co/">#| '!! shinylive warning !!': |
+#|   shinylive does not work in self-contained HTML documents.
+#|   Please set `embed-resources: false` in your metadata.
+#| standalone: true
+#| viewerHeight: 1500
 
-mainPanel(
-  tabsetPanel(
-    tabPanel("MDE vs. Ratio", 
-             plotOutput("plotMDE"),
-             br(),
-             verbatimTextOutput("textResult")
+library(shiny)
+library(ggplot2)
+
+ui &lt;- fluidPage(
+  titlePanel("Optimal Experimental Design for One Treatment vs. One Control"),
+  
+  # Add help text at the top
+  fluidRow(
+    column(12,
+      h4("Understanding Power Analysis and Optimal Design"),
+      p("This app helps you determine optimal sample sizes and allocation ratios for experiments.",
+        "The calculations consider both statistical power and practical constraints."),
+      p("Key concepts:"),
+      tags$ul(
+        tags$li(strong("Minimum Detectable Effect (MDE):"), 
+               "The smallest true effect size that your study can reliably detect with the specified power."),
+        tags$li(strong("Optimal Allocation:"), 
+               "The best way to divide participants between treatment and control groups, considering:",
+               tags$ul(
+                 tags$li("Statistical efficiency (minimizing MDE)"),
+                 tags$li("Cost constraints"),
+                 tags$li("Practical implementation"))
+               ),
+        tags$li(strong("Power vs. Sample Size:"), 
+               "There's always a trade-off - higher power requires larger samples.")
+      ),
+      p("Adjust the parameters below to explore how different choices affect your study design."),
+      tags$hr()
+    )
+  ),
+  
+  sidebarLayout(
+    sidebarPanel(
+      # --- Choose outcome type (binary or continuous)
+      radioButtons(
+        inputId = "outcomeType", 
+        label = "Outcome Type",
+        choices = c("Binary" = "binary", "Continuous" = "continuous"),
+        selected = "continuous"
+      ),
+      div(class = "well",
+        h5("Outcome Types:"),
+        p(strong("Binary Outcomes:"),
+          "Measured as proportions or percentages (e.g., success rates, mortality rates).",
+          "The variance is determined by the proportion itself - highest at p=0.5."),
+        p(strong("Continuous Outcomes:"),
+          "Measured on a continuous scale (e.g., blood pressure, test scores).",
+          "Requires estimates of population variance in each group.")
+      ),
+      
+      # --- Significance level (alpha)
+      sliderInput(
+        inputId = "alpha", 
+        label = "Significance level (alpha):",
+        min = 0.001, 
+        max = 0.10, 
+        step = 0.001,
+        value = 0.05
+      ),
+      div(class = "well",
+        h5("Significance Level (α):"),
+        p("The probability of falsely concluding there is an effect when there isn't one (Type I error)."),
+        tags$ul(
+          tags$li(strong("0.05 (5%)"), ": Standard choice - 1 in 20 chance of false positive"),
+          tags$li(strong("0.01 (1%)"), ": More conservative - use for critical decisions"),
+          tags$li(strong("0.10 (10%)"), ": More liberal - might use in pilot studies")
+        )
+      ),
+      
+      # --- Power (1 - beta)
+      sliderInput(
+        inputId = "power", 
+        label = "Statistical Power (1 - beta):",
+        min = 0.50, 
+        max = 0.99, 
+        step = 0.01,
+        value = 0.80
+      ),
+      div(class = "well",
+        h5("Statistical Power (1-β):"),
+        p("The probability of detecting a true effect when it exists."),
+        tags$ul(
+          tags$li(strong("0.80 (80%)"), ": Standard choice - accepts 20% chance of missing real effects"),
+          tags$li(strong("0.90 (90%)"), ": Higher power - use for critical studies, but requires larger samples"),
+          tags$li(strong("0.70 (70%)"), ": Lower power - might use in pilot studies or with resource constraints")
+        ),
+        p("Remember: Increasing power requires larger sample sizes, often substantially.")
+      ),
+      
+      # --- Parameters for continuous outcome
+      conditionalPanel(
+        condition = "input.outcomeType == 'continuous'",
+        numericInput("sigmaT", "Treatment Variance (σ²_T):", 1),
+        numericInput("sigmaC", "Control Variance (σ²_C):", 1),
+        helpText("The expected variances in each group. If unknown, assume equal variances.")
+      ),
+      
+      # --- Parameters for binary outcome
+      conditionalPanel(
+        condition = "input.outcomeType == 'binary'",
+        sliderInput("pT", "Treatment proportion (p_T):",
+                    min = 0, max = 1, step = 0.01, value = 0.3),
+        sliderInput("pC", "Control proportion (p_C):",
+                    min = 0, max = 1, step = 0.01, value = 0.3),
+        helpText("The expected proportions in each group. For a new intervention,",
+                 "p_C might be known from historical data.")
+      ),
+      
+      # --- Allocation: either fix total sample size or total cost
+      radioButtons(
+        inputId = "constraintType",
+        label = "Constraint Type:",
+        choices = c("Fixed Total Sample Size" = "sample",
+                    "Fixed Total Cost"        = "cost")
+      ),
+      div(class = "well",
+        h5("Design Constraints:"),
+        p(strong("Fixed Total Sample Size:"),
+          "Use when you have a specific total number of participants available.",
+          "The app will help you determine the optimal split between groups."),
+        p(strong("Fixed Total Cost:"),
+          "Use when you have a fixed budget and different costs per group.",
+          "Common when treatment is more expensive than control, or when recruitment costs differ.")
+      ),
+      
+      # --- If total sample size is the constraint
+      conditionalPanel(
+        condition = "input.constraintType == 'sample'",
+        numericInput("N", "Total Sample Size (N):", 200, min = 2, step = 1)
+      ),
+      
+      # --- If total cost is the constraint
+      conditionalPanel(
+        condition = "input.constraintType == 'cost'",
+        numericInput("costT", "Cost per Treatment Unit:", 2, min = 1, step = 1),
+        numericInput("costC", "Cost per Control Unit:", 1, min = 1, step = 1),
+        numericInput("budget", "Total Budget:", 300, min = 1, step = 1)
+      ),
+      
+      # --- Option to let the user pick ratio or find optimum
+      radioButtons(
+        inputId = "ratioChoice",
+        label = "Allocation Choice:",
+        choices = c("Manually Pick Ratio" = "manual",
+                    "Find Optimal Ratio"  = "optimal")
+      ),
+      
+      sliderInput(
+        inputId = "ratio",
+        label = "Treatment:Control Ratio (r = n_T / n_C):",
+        min = 0.1,
+        max = 10,
+        step = 0.1,
+        value = 1
+      )
     ),
-    tabPanel("Cost Allocation Plot",
-             plotOutput("plotCost", height = "500px"),
-             helpText("This plot shows the budget constraint line ",
-                      "and iso-MDE curves for different cost allocations ",
-                      "(c_C on the x-axis, c_T on the y-axis). ",
-                      "The red point indicates the optimal allocation ",
-                      "where MDE is minimized, if available.")
+    
+    mainPanel(
+      tabsetPanel(
+        tabPanel("MDE vs. Ratio", 
+                 plotOutput("plotMDE"),
+                 br(),
+                 verbatimTextOutput("textResult"),
+                 br(),
+                 h4("Step-by-Step Calculations"),
+                 uiOutput("mdeCalcSteps")
+        ),
+        tabPanel("Cost Allocation Plot",
+                 plotOutput("plotCost", height = "500px"),
+                 br(),
+                 h4("Step-by-Step Calculations"),
+                 uiOutput("costCalcSteps"),
+                 br(),
+                 helpText("This plot shows the budget constraint line ",
+                          "and iso-MDE curves for different cost allocations ",
+                          "(c_C on the x-axis, c_T on the y-axis). ",
+                          "The red point indicates the optimal allocation ",
+                          "where MDE is minimized, if available.")
+        )
+      )
     )
   )
-)</code></pre>
-<p>) )</p>
-<p>server &lt;- function(input, output, session) {</p>
-<p># Helper: z-value for alpha/2 (two-sided) and for power zAlpha &lt;- reactive({ qnorm(1 - input<span class="math inline">\(alpha / 2)
-  })
-  zBeta &lt;- reactive({
-    # For power (1 - beta), we want zBeta = z_{1 - beta}
-    # i.e., the critical value for the upper tail
-    qnorm(input\)</span>power) })</p>
-<p># Function to compute MDE given n_C, n_T (the sample sizes) computeMDE_from_n &lt;- function(nC, nT) { if (input<span class="math inline">\(outcomeType == "continuous") {
-      sigmaT &lt;- input\)</span>sigmaT sigmaC &lt;- input<span class="math inline">\(sigmaC
-      varTerm &lt;- sigmaT^2 / nT + sigmaC^2 / nC
-    } else {
-      pT &lt;- input\)</span>pT pC &lt;- input$pC varTerm &lt;- pT<em>(1 - pT)/nT + pC</em>(1 - pC)/nC } (zAlpha() + zBeta()) * sqrt(varTerm) }</p>
-<p># Function to compute MDE given a ratio (for either sample or cost constraint) computeMDE_ratio &lt;- function(r) { # 1) Determine n_T and n_C based on constraints and ratio if (input<span class="math inline">\(constraintType == "sample") {
-      # n_T + n_C = N, and n_T / n_C = r
-      n_C &lt;- input\)</span>N / (r + 1) n_T &lt;- r * n_C } else { # costT * n_T + costC * n_C = budget, n_T / n_C = r # =&gt; n_T = r * n_C # =&gt; costT * (r * n_C) + costC * n_C = budget # =&gt; n_C (r<em>costT + costC) = budget n_C &lt;- input<span class="math inline">\(budget / (r * input\)</span>costT + input$costC) n_T &lt;- r </em> n_C }</p>
-<pre><code># 2) Compute MDE
-computeMDE_from_n(n_C, n_T)</code></pre>
-<p>}</p>
-<p># Plot: MDE vs.&nbsp;ratio output$plotMDE &lt;- renderPlot({ # We’ll vary r from 0.1 to 10 in increments of 0.1 rVals &lt;- seq(0.1, 10, by = 0.1) mdeVals &lt;- sapply(rVals, computeMDE_ratio)</p>
-<pre><code>plot(rVals, mdeVals, type = "l", lwd = 2, 
-     xlab = "Ratio (n_T / n_C)", ylab = "MDE",
-     main = "Minimum Detectable Effect vs. Allocation Ratio")
-
-# If in manual mode, highlight user's chosen ratio
-if (input$ratioChoice == "manual") {
-  rUser &lt;- input$ratio
-  userMde &lt;- computeMDE_ratio(rUser)
-  points(rUser, userMde, col = "red", pch = 19, cex = 1.5)
-}</code></pre>
-<p>})</p>
-<p># Text output: either user-chosen ratio or optimal ratio output<span class="math inline">\(textResult &lt;- renderPrint({
-    if (input\)</span>ratioChoice == “optimal”) { # Find ratio that yields smallest MDE rTest &lt;- seq(0.1, 10, 0.01) mdeTest &lt;- sapply(rTest, computeMDE_ratio) idxMin &lt;- which.min(mdeTest) rOpt &lt;- rTest[idxMin] mdeOpt &lt;- mdeTest[idxMin]</p>
-<pre><code>  if (input$constraintType == "sample") {
-    n_C_opt &lt;- input$N / (rOpt + 1)
-    n_T_opt &lt;- rOpt * n_C_opt
-  } else {
-    n_C_opt &lt;- input$budget / (rOpt * input$costT + input$costC)
-    n_T_opt &lt;- rOpt * n_C_opt
-  }
-  
-  cat("Optimal ratio (n_T / n_C):", round(rOpt, 3), "\n")
-  cat("Minimized MDE:", round(mdeOpt, 4), "\n")
-  cat("n_T:", round(n_T_opt, 2), "| n_C:", round(n_C_opt, 2), "\n")
-  
-} else {
-  # Manual ratio
-  rUser &lt;- input$ratio
-  mdeUser &lt;- computeMDE_ratio(rUser)
-  
-  if (input$constraintType == "sample") {
-    n_C_user &lt;- input$N / (rUser + 1)
-    n_T_user &lt;- rUser * n_C_user
-  } else {
-    n_C_user &lt;- input$budget / (rUser * input$costT + input$costC)
-    n_T_user &lt;- rUser * n_C_user
-  }
-  
-  cat("User-chosen ratio (n_T / n_C):", round(rUser, 3), "\n")
-  cat("MDE at this ratio:", round(mdeUser, 4), "\n")
-  cat("n_T:", round(n_T_user, 2), "| n_C:", round(n_C_user, 2), "\n")
-}</code></pre>
-<p>})</p>
-<p># —————————————————— # NEW PLOT: Cost Allocation (c_C on x-axis, c_T on y-axis) # ——————————————————</p>
-<p>output$plotCost &lt;- renderPlot({</p>
-<pre><code># Only show this plot if user is in "cost" constraint AND
-# ratio choice is "optimal" (because we want to show the tangency)
-# But we can still show some helpful info if user is in "manual" mode, too.
-if (input$constraintType != "cost") {
-  plot.new()
-  text(0.5, 0.5, "Cost Allocation Plot is only relevant for a cost constraint.")
-  return(NULL)
-}
-
-# We'll define a grid for c_C and c_T:
-# Let c_C range from 0 to budget, let c_T range from 0 to budget
-# feasible region is c_C + c_T &lt;= budget.
-budget &lt;- input$budget
-cC_vals &lt;- seq(0, budget, length.out = 50)
-cT_vals &lt;- seq(0, budget, length.out = 50)
-
-# We'll compute MDE for each (c_C, c_T), provided it's feasible.
-# c_C = costC * n_C =&gt; n_C = c_C / costC
-# c_T = costT * n_T =&gt; n_T = c_T / costT
-# Then MDE = (zAlpha + zBeta) * sqrt(...).
-
-costC &lt;- input$costC
-costT &lt;- input$costT
-
-# Create a matrix for storing MDE
-MDE_matrix &lt;- matrix(NA, nrow = length(cC_vals), ncol = length(cT_vals))
-
-for (i in seq_along(cC_vals)) {
-  for (j in seq_along(cT_vals)) {
-    cC &lt;- cC_vals[i]
-    cT &lt;- cT_vals[j]
-    # Feasibility check:
-    if (cC + cT &lt;= budget) {
-      nC &lt;- cC / costC
-      nT &lt;- cT / costT
-      # avoid zero or negative nC,nT
-      if (nC &gt; 0 &amp; nT &gt; 0) {
-        MDE_matrix[i, j] &lt;- computeMDE_from_n(nC, nT)
-      } else {
-        MDE_matrix[i, j] &lt;- NA
-      }
-    } else {
-      MDE_matrix[i, j] &lt;- NA
-    }
-  }
-}
-
-# We'll make a filled contour or contour plot of MDE
-# But first we want a minimal MDE for labeling
-# (We can just find the min ignoring NAs.)
-minMDE &lt;- min(MDE_matrix, na.rm = TRUE)
-maxMDE &lt;- max(MDE_matrix, na.rm = TRUE)
-
-# Basic contour plot. We show c_C on x-axis, c_T on y-axis
-contour(
-  x = cC_vals, y = cT_vals, z = MDE_matrix, 
-  levels = pretty(seq(minMDE, maxMDE, length.out = 10)), 
-  col = "blue", 
-  xlab = "Cost allocated to Control (c_C)", 
-  ylab = "Cost allocated to Treatment (c_T)",
-  main = "Iso-MDE Curves and Budget Constraint"
 )
 
-# Add the budget line: c_T = budget - c_C
-lines(cC_vals, budget - cC_vals, col = "red", lwd = 2)
-
-# If user is in "optimal" ratio mode, we find the optimum point and plot it
-if (input$ratioChoice == "optimal") {
-  # We already find that ratio in textResult, but let's do it again here
-  rTest &lt;- seq(0.1, 10, 0.01)
-  mdeTest &lt;- sapply(rTest, computeMDE_ratio)
-  idxMin &lt;- which.min(mdeTest)
-  rOpt &lt;- rTest[idxMin]
+server &lt;- function(input, output, session) {
   
-  # Compute cC_opt and cT_opt at that ratio
-  # budget = costT*n_T + costC*n_C
-  # n_T / n_C = r =&gt; n_T = r*n_C
-  # =&gt; costT*(r*n_C) + costC*n_C = budget
-  # =&gt; n_C(r*costT + costC) = budget
-  # =&gt; n_C = budget / (r*costT + costC)
-  nC_opt &lt;- budget / (rOpt * costT + costC)
-  nT_opt &lt;- rOpt * nC_opt
+  # Helper: z-value for alpha/2 (two-sided) and for power
+  zAlpha &lt;- reactive({
+    qnorm(1 - input$alpha / 2)
+  })
+  zBeta &lt;- reactive({
+    qnorm(input$power)
+  })
   
-  # =&gt; c_C_opt = costC * n_C_opt
-  # =&gt; c_T_opt = costT * n_T_opt
-  cC_opt &lt;- costC * nC_opt
-  cT_opt &lt;- costT * nT_opt
-  
-  # Add that point to the plot
-  points(cC_opt, cT_opt, col = "red", pch = 19, cex = 1.5)
-}</code></pre>
-<p>}) }</p>
-<p>
-<script type="application/shiny-prerendered" data-context="server-start">
-library(shiny)
-</script><script type="application/shiny-prerendered" data-context="server-extras">
-ojs_define <- function(..., .session = shiny::getDefaultReactiveDomain()) {
-  quos <- rlang::enquos(...)
-  vars <- rlang::list2(...)
-  nm <- names(vars)
-  if (is.null(nm)) {
-    nm <- rep_len("", length(vars))
-  }
-  mapply(function(q, nm, val) {
-    # Infer name, if possible
-    if (nm == "") {
-      tryCatch({
-        nm <- rlang::as_name(q)
-      }, error = function(e) {
-        code <- paste(collapse = "\n", deparse(rlang::f_rhs(q)))
-        stop("ojs_define() could not create a name for the argument: ", code)
-      })
+  # Function to compute MDE given n_C, n_T (the sample sizes)
+  computeMDE_from_n &lt;- function(nC, nT) {
+    if (input$outcomeType == "continuous") {
+      sigmaT &lt;- input$sigmaT
+      sigmaC &lt;- input$sigmaC
+      varTerm &lt;- sigmaT^2 / nT + sigmaC^2 / nC
+    } else {
+      pT &lt;- input$pT
+      pC &lt;- input$pC
+      varTerm &lt;- pT*(1 - pT)/nT + pC*(1 - pC)/nC
     }
-    .session$output[[nm]] <- val
-    outputOptions(.session$output, nm, suspendWhenHidden = FALSE)
-    .session$sendCustomMessage("ojs-export", list(name = nm))
-    NULL
-  }, quos, nm, vars, SIMPLIFY = FALSE, USE.NAMES = FALSE)
-  invisible()
+    (zAlpha() + zBeta()) * sqrt(varTerm)
+  }
+  
+  # Function to compute MDE given a ratio (for either sample or cost constraint)
+  computeMDE_ratio &lt;- function(r) {
+    # 1) Determine n_T and n_C based on constraints and ratio
+    if (input$constraintType == "sample") {
+      # n_T + n_C = N, and n_T / n_C = r
+      n_C &lt;- input$N / (r + 1)
+      n_T &lt;- r * n_C
+    } else {
+      # costT * n_T + costC * n_C = budget, n_T / n_C = r
+      n_C &lt;- input$budget / (r * input$costT + input$costC)
+      n_T &lt;- r * n_C
+    }
+    
+    # 2) Compute MDE
+    computeMDE_from_n(n_C, n_T)
+  }
+  
+  # Plot: MDE vs. ratio
+  output$plotMDE &lt;- renderPlot({
+    # We'll vary r from 0.1 to 10 in increments of 0.1
+    rVals &lt;- seq(0.1, 10, by = 0.1)
+    mdeVals &lt;- sapply(rVals, computeMDE_ratio)
+    
+    plot(rVals, mdeVals, type = "l", lwd = 2, 
+         xlab = "Ratio (n_T / n_C)", ylab = "MDE",
+         main = "Minimum Detectable Effect vs. Allocation Ratio")
+    
+    # If in manual mode, highlight user's chosen ratio
+    if (input$ratioChoice == "manual") {
+      rUser &lt;- input$ratio
+      userMde &lt;- computeMDE_ratio(rUser)
+      points(rUser, userMde, col = "red", pch = 19, cex = 1.5)
+    }
+  })
+  
+  # Helper function to format numbers nicely
+  format_num &lt;- function(x) format(round(x, 4), nsmall = 4)
+  
+  # Text output: either user-chosen ratio or optimal ratio
+  output$textResult &lt;- renderPrint({
+    if (input$ratioChoice == "optimal") {
+      # Find ratio that yields smallest MDE
+      rTest &lt;- seq(0.1, 10, 0.01)
+      mdeTest &lt;- sapply(rTest, computeMDE_ratio)
+      idxMin &lt;- which.min(mdeTest)
+      rOpt &lt;- rTest[idxMin]
+      mdeOpt &lt;- mdeTest[idxMin]
+      
+      if (input$constraintType == "sample") {
+        n_C_opt &lt;- input$N / (rOpt + 1)
+        n_T_opt &lt;- rOpt * n_C_opt
+      } else {
+        n_C_opt &lt;- input$budget / (rOpt * input$costT + input$costC)
+        n_T_opt &lt;- rOpt * n_C_opt
+      }
+      
+      cat("Optimal Allocation:\n")
+      cat("Optimal ratio (n_T / n_C):", round(rOpt, 3), "\n")
+      cat("Control group size (n_C):", round(n_C_opt), "\n")
+      cat("Treatment group size (n_T):", round(n_T_opt), "\n")
+      cat("Minimum Detectable Effect:", round(mdeOpt, 3), "\n")
+      
+    } else {
+      # User-chosen ratio
+      r &lt;- input$ratio
+      mde &lt;- computeMDE_ratio(r)
+      
+      if (input$constraintType == "sample") {
+        n_C &lt;- input$N / (r + 1)
+        n_T &lt;- r * n_C
+      } else {
+        n_C &lt;- input$budget / (r * input$costT + input$costC)
+        n_T &lt;- r * n_C
+      }
+      
+      cat("Current Allocation:\n")
+      cat("Ratio (n_T / n_C):", round(r, 3), "\n")
+      cat("Control group size (n_C):", round(n_C), "\n")
+      cat("Treatment group size (n_T):", round(n_T), "\n")
+      cat("Minimum Detectable Effect:", round(mde, 3), "\n")
+    }
+  })
+  
+  # Plot: Cost allocation
+  output$plotCost &lt;- renderPlot({
+    # Only show this plot if user is in "cost" constraint
+    if (input$constraintType == "cost") {
+      # Generate grid of n_C, n_T values across full plot range
+      max_n_C &lt;- input$budget/input$costC * 1.2  # Extend 20% beyond budget line
+      max_n_T &lt;- input$budget/input$costT * 1.2
+      n_C &lt;- seq(1, max_n_C, length.out = 100)
+      n_T &lt;- seq(1, max_n_T, length.out = 100)
+      
+      # Create matrix of MDE values
+      mde_matrix &lt;- matrix(NA, nrow = length(n_C), ncol = length(n_T))
+      for (i in 1:length(n_C)) {
+        for (j in 1:length(n_T)) {
+          mde_matrix[i,j] &lt;- computeMDE_from_n(n_C[i], n_T[j])
+        }
+      }
+      
+      # Find optimal allocation
+      rTest &lt;- seq(0.1, 10, 0.01)
+      mdeTest &lt;- sapply(rTest, computeMDE_ratio)
+      rOpt &lt;- rTest[which.min(mdeTest)]
+      n_C_opt &lt;- input$budget / (rOpt * input$costT + input$costC)
+      n_T_opt &lt;- rOpt * n_C_opt
+      mde_opt &lt;- computeMDE_from_n(n_C_opt, n_T_opt)
+      
+      # Create the plot
+      par(mar = c(5, 5, 4, 2))  # Increase margins for labels
+      
+      # Calculate reasonable MDE range for contours
+      min_mde &lt;- max(min(mde_matrix, na.rm = TRUE), mde_opt * 0.8)  # Don't go too far below optimal
+      max_mde &lt;- min(max(mde_matrix, na.rm = TRUE), mde_opt * 2.0)  # Don't show extremely large MDEs
+      
+      # Create evenly spaced levels, including the optimal MDE
+      contour_levels &lt;- sort(unique(c(
+        seq(min_mde, max_mde, length.out = 8),  # 8 regular levels
+        mde_opt  # Include the optimal MDE level
+      )))
+      
+      # Plot contours
+      contour(n_C, n_T, mde_matrix, 
+              xlab = "Control Group Size (n_C)",
+              ylab = "Treatment Group Size (n_T)",
+              main = "Cost-constrained Allocation",
+              levels = contour_levels,
+              labcex = 0.8,  # Slightly smaller contour labels
+              drawlabels = TRUE)
+      
+      # Add budget constraint line
+      budget_line_n_C &lt;- seq(0, max_n_C, length.out = 100)
+      budget_line_n_T &lt;- (input$budget - input$costC * budget_line_n_C) / input$costT
+      lines(budget_line_n_C, budget_line_n_T, col = "red", lwd = 2)
+      
+      # Add optimal MDE curve (the contour that passes through optimal point)
+      n_C_curve &lt;- seq(1, max_n_C, length.out = 200)
+      n_T_curve &lt;- numeric(length(n_C_curve))
+      for(i in 1:length(n_C_curve)) {
+        # Find n_T that gives the optimal MDE for this n_C
+        n_T_test &lt;- seq(1, max_n_T, length.out = 200)
+        mde_test &lt;- sapply(n_T_test, function(nt) computeMDE_from_n(n_C_curve[i], nt))
+        n_T_curve[i] &lt;- n_T_test[which.min(abs(mde_test - mde_opt))]
+      }
+      lines(n_C_curve, n_T_curve, col = "blue", lwd = 2, lty = 2)
+      
+      # Add optimal point
+      points(n_C_opt, n_T_opt, col = "red", pch = 19, cex = 1.5)
+      
+      # Add legend for optimal MDE curve
+      legend("topright", 
+             legend = sprintf("Optimal MDE = %.3f", mde_opt),
+             col = "blue", lwd = 2, lty = 2)
+    }
+  })
+  
+  # Render step-by-step MDE calculations
+  output$mdeCalcSteps &lt;- renderUI({
+    # Get current values
+    if (input$ratioChoice == "optimal") {
+      rTest &lt;- seq(0.1, 10, 0.01)
+      mdeTest &lt;- sapply(rTest, computeMDE_ratio)
+      r &lt;- rTest[which.min(mdeTest)]
+    } else {
+      r &lt;- input$ratio
+    }
+    
+    # Calculate sample sizes
+    if (input$constraintType == "sample") {
+      n_C &lt;- input$N / (r + 1)
+      n_T &lt;- r * n_C
+    } else {
+      n_C &lt;- input$budget / (r * input$costT + input$costC)
+      n_T &lt;- r * n_C
+    }
+    
+    # Calculate variances
+    if (input$outcomeType == "continuous") {
+      varT &lt;- input$sigmaT^2
+      varC &lt;- input$sigmaC^2
+      var_term &lt;- varT/n_T + varC/n_C
+    } else {
+      varT &lt;- input$pT * (1 - input$pT)
+      varC &lt;- input$pC * (1 - input$pC)
+      var_term &lt;- varT/n_T + varC/n_C
+    }
+    
+    # Critical values
+    z_alpha &lt;- qnorm(1 - input$alpha/2)
+    z_beta &lt;- qnorm(input$power)
+    
+    # Final MDE
+    mde &lt;- (z_alpha + z_beta) * sqrt(var_term)
+    
+    # Create step-by-step explanation with LaTeX
+    tagList(
+      withMathJax(),
+      h4("Step-by-Step Calculations:"),
+      
+      h5("1. Sample Size Calculation:"),
+      if (input$constraintType == "sample") {
+        tagList(
+          p(sprintf("With total N = %d and ratio r = %.3f:", input$N, r)),
+          withMathJax(sprintf("$$n_C = \\frac{N}{r + 1} = \\frac{%d}{%.3f + 1} = %.1f$$", input$N, r, n_C)),
+          withMathJax(sprintf("$$n_T = r \\cdot n_C = %.3f \\cdot %.1f = %.1f$$", r, n_C, n_T))
+        )
+      } else {
+        tagList(
+          p(sprintf("With budget = %d, c_T = %d, c_C = %d, and ratio r = %.3f:", 
+                    input$budget, input$costT, input$costC, r)),
+          withMathJax(sprintf("$$n_C = \\frac{\\text{budget}}{rc_T + c_C} = \\frac{%d}{%.3f \\cdot %d + %d} = %.1f$$", 
+                               input$budget, r, input$costT, input$costC, n_C)),
+          withMathJax(sprintf("$$n_T = r \\cdot n_C = %.3f \\cdot %.1f = %.1f$$", r, n_C, n_T))
+        )
+      },
+      
+      h5("2. Variance Terms:"),
+      if (input$outcomeType == "continuous") {
+        withMathJax(sprintf("$$\\sigma^2_T = %.3f, \\quad \\sigma^2_C = %.3f$$", varT, varC))
+      } else {
+        tagList(
+          withMathJax(sprintf("$$\\text{Var}_T = p_T(1-p_T) = %.3f(1-%.3f) = %.3f$$", input$pT, input$pT, varT)),
+          withMathJax(sprintf("$$\\text{Var}_C = p_C(1-p_C) = %.3f(1-%.3f) = %.3f$$", input$pC, input$pC, varC))
+        )
+      },
+      withMathJax(sprintf("$$\\text{Combined variance} = \\frac{\\text{Var}_T}{n_T} + \\frac{\\text{Var}_C}{n_C} = \\frac{%.3f}{%.1f} + \\frac{%.3f}{%.1f} = %.4f$$",
+                          varT, n_T, varC, n_C, var_term)),
+      
+      h5("3. Critical Values:"),
+      withMathJax(sprintf("$$z_{1-\\alpha/2} = %.4f \\quad (\\text{for } \\alpha = %.3f)$$", z_alpha, input$alpha)),
+      withMathJax(sprintf("$$z_{1-\\beta} = %.4f \\quad (\\text{for power } = %.3f)$$", z_beta, input$power)),
+      
+      h5("4. Final MDE Calculation:"),
+      withMathJax("$$\\text{MDE} = (z_{1-\\alpha/2} + z_{1-\\beta}) \\sqrt{\\frac{\\text{Var}_T}{n_T} + \\frac{\\text{Var}_C}{n_C}}$$"),
+      withMathJax(sprintf("$$\\text{MDE} = (%.4f + %.4f) \\sqrt{%.4f} = %.4f$$", 
+                          z_alpha, z_beta, var_term, mde))
+    )
+  })
+  
+  # Render step-by-step cost allocation calculations
+  output$costCalcSteps &lt;- renderUI({
+    if (input$constraintType != "cost") {
+      return(p("Step-by-step calculations are shown when using cost constraints."))
+    }
+    
+    # Get current optimal values if in optimal mode
+    if (input$ratioChoice == "optimal") {
+      rTest &lt;- seq(0.1, 10, 0.01)
+      mdeTest &lt;- sapply(rTest, computeMDE_ratio)
+      r &lt;- rTest[which.min(mdeTest)]
+      n_C &lt;- input$budget / (r * input$costT + input$costC)
+      n_T &lt;- r * n_C
+      total_cost &lt;- input$costT * n_T + input$costC * n_C
+      
+      tagList(
+        withMathJax(),
+        h4("Optimal Cost Allocation:"),
+        
+        h5("1. Budget Constraint:"),
+        withMathJax(sprintf("$$%d = %d n_T + %d n_C$$", 
+                           input$budget, input$costT, input$costC)),
+        
+        h5("2. Optimal Allocation Ratio:"),
+        withMathJax(sprintf("$$r = \\frac{n_T}{n_C} = %.3f$$", r)),
+        
+        h5("3. Sample Sizes:"),
+        withMathJax(sprintf("$$n_C = \\frac{\\text{budget}}{rc_T + c_C} = \\frac{%d}{%.3f \\cdot %d + %d} = %.1f$$",
+                           input$budget, r, input$costT, input$costC, n_C)),
+        withMathJax(sprintf("$$n_T = r \\cdot n_C = %.3f \\cdot %.1f = %.1f$$", 
+                           r, n_C, n_T)),
+        
+        h5("4. Cost Verification:"),
+        withMathJax(sprintf("$$\\text{Total cost} = c_T n_T + c_C n_C = %d \\cdot %.1f + %d \\cdot %.1f = %d$$",
+                           input$costT, n_T, input$costC, n_C, total_cost))
+      )
+    } else {
+      n_C &lt;- input$budget / (input$ratio * input$costT + input$costC)
+      n_T &lt;- input$ratio * n_C
+      total_cost &lt;- input$costT * n_T + input$costC * n_C
+      
+      tagList(
+        withMathJax(),
+        h4("Manual Cost Allocation:"),
+        
+        h5("1. Budget Constraint:"),
+        withMathJax(sprintf("$$%d = %d n_T + %d n_C$$", 
+                           input$budget, input$costT, input$costC)),
+        
+        h5("2. Fixed Allocation Ratio:"),
+        withMathJax(sprintf("$$r = \\frac{n_T}{n_C} = %.3f$$", input$ratio)),
+        
+        h5("3. Sample Sizes:"),
+        withMathJax(sprintf("$$n_C = \\frac{\\text{budget}}{rc_T + c_C} = \\frac{%d}{%.3f \\cdot %d + %d} = %.1f$$",
+                           input$budget, input$ratio, input$costT, input$costC, n_C)),
+        withMathJax(sprintf("$$n_T = r \\cdot n_C = %.3f \\cdot %.1f = %.1f$$", 
+                           input$ratio, n_C, n_T)),
+        
+        h5("4. Cost Verification:"),
+        withMathJax(sprintf("$$\\text{Total cost} = c_T n_T + c_C n_C = %d \\cdot %.1f + %d \\cdot %.1f = %d$$",
+                           input$costT, n_T, input$costC, n_C, total_cost))
+      )
+    }
+  })
 }
-</script></p>
-<!--html_preserve-->
-<script type="application/shiny-prerendered" data-context="dependencies">
-{"type":"list","attributes":{},"value":[]}
-</script><!--/html_preserve--><!--html_preserve--><script type="application/shiny-prerendered" data-context="execution_dependencies">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32]}},"value":[{"type":"character","attributes":{},"value":["base","cli","compiler","datasets","digest","evaluate","fastmap","graphics","grDevices","htmltools","htmlwidgets","httpuv","jsonlite","knitr","later","lifecycle","magrittr","methods","mime","promises","R6","Rcpp","renv","rlang","rmarkdown","shiny","stats","tools","utils","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["4.4.1","3.6.3","4.4.1","4.4.1","0.6.37","1.0.3","1.2.0","4.4.1","4.4.1","0.5.8.1","1.6.4","1.6.15","1.8.9","1.49","1.4.1","1.0.4","2.0.3","4.4.1","0.12","1.3.2","2.5.1","1.0.14","1.1.0","1.1.5","2.29","1.10.0","4.4.1","4.4.1","4.4.1","0.50","1.8-4","2.3.10"]}]}]}
-</script><!--/html_preserve-->
+
+shinyApp(ui = ui, server = server)
+</a></code></pre>
 
 
-</main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1225,7 +1617,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/hpm883/edit/main/unit-2/shiny-oed-app.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/hpm883/edit/main/unit-2/shiny-oed-app.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

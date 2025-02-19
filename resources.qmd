@@ -49,3 +49,14 @@ A global research center based at MIT's Economics Department that works to reduc
 [RCT Analysis Template Repository (GitHub)](https://github.com/unc-hpm-quant/rct-analysis-template)
 
 [J-Pal Sample Size and Power Repository](https://github.com/unc-hpm-quant/JPAL-Sample_Size_and_Power)
+
+## Interactive Tools
+
+[Optimal Experimental Design Calculator](unit-2/shiny-oed-app.qmd)
+
+An interactive tool to help you determine optimal sample sizes and allocation ratios for experiments. Features include:
+
+- Calculation of Minimum Detectable Effect (MDE)
+- Optimal allocation under cost constraints
+- Support for both binary and continuous outcomes
+- Step-by-step calculation explanations
