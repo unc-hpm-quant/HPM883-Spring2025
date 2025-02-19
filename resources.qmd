@@ -38,6 +38,10 @@ A global research center based at MIT's Economics Department that works to reduc
 
 [Stanford Social Impact Lab](https://www.gsb.stanford.edu/faculty-research/labs-initiatives/sil)
 
+[Melissa Dell's EconDL Website](https://econdl.github.io/)
+
+-   EconDL is a comprehensive resource detailing applications of Deep Learning in Economics. This is a companion website to the paper [Deep Learning for Economists](https://www.aeaweb.org/articles?id=10.1257/jel.20241733) and aims to be a go-to resource for economists and other social scientists for applying tools provided by deep learning in their research.
+
 ## Data
 
 [Stanford GSB Social Impact Lab Experiment Data](https://github.com/gsbDBI/ExperimentData)

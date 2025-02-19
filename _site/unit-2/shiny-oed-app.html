@@ -368,9 +368,9 @@ window.Quarto = {
 <a href="#using-the-app" id="toc-using-the-app" class="nav-link" data-scroll-target="#using-the-app">Using the App</a>
   <ul class="collapse">
 <li><a href="#local-rstudio-version" id="toc-local-rstudio-version" class="nav-link" data-scroll-target="#local-rstudio-version">Local RStudio Version</a></li>
+  <li><a href="#browser-version" id="toc-browser-version" class="nav-link" data-scroll-target="#browser-version">Browser Version</a></li>
   </ul>
 </li>
-  <li><a href="#browser-version" id="toc-browser-version" class="nav-link" data-scroll-target="#browser-version">Browser Version</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/hpm883/edit/main/unit-2/shiny-oed-app.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -524,7 +524,7 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">shiny</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/runApp.html">runApp</a></span><span class="op">(</span><span class="st">"unit-2/oed-app.R"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section></section><section id="browser-version" class="level2"><h2 class="anchored" data-anchor-id="browser-version">Browser Version</h2>
+</section><section id="browser-version" class="level3"><h3 class="anchored" data-anchor-id="browser-version">Browser Version</h3>
 <pre class="shinylive-r" data-engine="r"><code><a href="https://shiny.posit.co/">#| '!! shinylive warning !!': |
 #|   shinylive does not work in self-contained HTML documents.
 #|   Please set `embed-resources: false` in your metadata.
@@ -635,8 +635,8 @@ ui &lt;- fluidPage(
                     min = 0, max = 1, step = 0.01, value = 0.3),
         sliderInput("pC", "Control proportion (p_C):",
                     min = 0, max = 1, step = 0.01, value = 0.3),
-        helpText("The expected proportions in each group. For a new intervention,",
-                 "p_C might be known from historical data.")
+        helpText("Set the difference in these values to determine your minimum detectable effect (MDE).",
+                 "p_C might be derived from historical data.")
       ),
       
       # --- Allocation: either fix total sample size or total cost
@@ -937,7 +937,6 @@ server &lt;- function(input, output, session) {
     # Create step-by-step explanation with LaTeX
     tagList(
       withMathJax(),
-      h4("Step-by-Step Calculations:"),
       
       h5("1. Sample Size Calculation:"),
       if (input$constraintType == "sample") {
@@ -1049,7 +1048,7 @@ shinyApp(ui = ui, server = server)
 </a></code></pre>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");

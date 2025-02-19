@@ -172,7 +172,13 @@ However, while the estimator provides a point estimate of the treatment effect, 
 The fundamental question we seek to answer is:\
 **Can we be confident in detecting the reported effect size in our experimental results?**
 
-To do so, we frame our problem in terms of **hypothesis testing**: - We begin by specifying a **null hypothesis (**$H_0$), which typically asserts that the treatment has no effect ($\tau = 0$). - The **alternative hypothesis (**$H_A$) posits that there is a nonzero effect ($\tau \neq 0$). - Hypothesis testing allows us to assess whether the observed difference-in-means provides sufficient evidence to reject $H_0$.
+To do so, we frame our problem in terms of **hypothesis testing**:
+
+-   We begin by specifying a **null hypothesis (**$H_0$), which typically asserts that the treatment has no effect ($\tau = 0$).
+
+-   The **alternative hypothesis (**$H_A$) posits that there is a nonzero effect ($\tau \neq 0$).
+
+-   Hypothesis testing allows us to assess whether the observed difference-in-means provides sufficient evidence to reject $H_0$.
 
 The hypothesis test is based on the **sampling distribution** of the estimator. Because we assume random assignment, the **difference-in-means estimator follows a known distribution**, and we use this fact to determine whether the observed effect is large enough to be statistically significant.
 
