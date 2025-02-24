@@ -60,7 +60,7 @@ A global research center based at MIT's Economics Department that works to reduc
 
 An interactive tool to help you determine optimal sample sizes and allocation ratios for experiments. Features include:
 
-- Calculation of Minimum Detectable Effect (MDE)
-- Optimal allocation under cost constraints
-- Support for both binary and continuous outcomes
-- Step-by-step calculation explanations
+-   Calculation of Minimum Detectable Effect (MDE)
+-   Optimal allocation under cost constraints
+-   Support for both binary and continuous outcomes
+-   Step-by-step calculation explanations

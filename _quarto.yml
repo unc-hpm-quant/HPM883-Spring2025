@@ -89,21 +89,26 @@ website:
       - section: "Unit 0: Foundations"
         contents:
           - href: unit-0/unit-0-foundations-1.qmd
-            text: "Class 1: Introduction"
+            text: "Unit 0.0: Introduction"
           - href: unit-0/unit-0-foundations-2.qmd
-            text: "Class 2: A Field Experiment in Health Services Research"
+            text: "Unit 0.1: A Field Experiment in Health Services Research"
           - href: unit-0/unit-0-foundations-3.qmd
-            text: "Class 3: Computing for Reproducible Research"
+            text: "Unit 0.2: Computing for Reproducible Research"
       - section: "Unit 1: Internal Validity"
         contents:
           - href: unit-1/unit-1-internal-1.qmd
-            text: "Class 4: Internal Validity"
+            text: "Unit 1.0: Internal Validity"
           - href: labs/lab-1-InternalValidityPO.qmd
             text: "Lab 1: The Hospital of Uncertain Outcomes"
           - href: unit-1/unit-1-internal-2.qmd
-            text: "Class 5: Statistical Conclusion Validity"
+            text: "Unit 1.1: Statistical Conclusion Validity"
           - href: labs/lab-2-Power.qmd
             text: "Lab 2: Power by Simulation"
+      - section: "Unit 2: Design of Experiments"
+        contents:
+          - href: unit-2/unit-2-design-1.qmd
+            text: "Unit 2.0: Optimal Experimental Design"
+
       
 
   page-footer:

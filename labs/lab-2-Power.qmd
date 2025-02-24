@@ -19,31 +19,31 @@ draft: false
 
 In this lab, you will explore the concept of **statistical conclusion validity** by conducting **power calculations via simulation**. Specifically, you will:
 
-1. Conduct a power simulation for a simple randomized experiment **without clustering** (i.e., ignoring the fact that participants may be grouped within clinics).
-2. Extend that simulation to **account for clustering** (i.e., clinics as the unit of randomization).
-3. Examine the impact of **sample size**, **effect size**, and **clustering** on statistical power, and visualize how minimum detectable effect sizes (MDE) change with sample size.
+1.  Conduct a power simulation for a simple randomized experiment **without clustering** (i.e., ignoring the fact that participants may be grouped within clinics).
+2.  Extend that simulation to **account for clustering** (i.e., clinics as the unit of randomization).
+3.  Examine the impact of **sample size**, **effect size**, and **clustering** on statistical power, and visualize how minimum detectable effect sizes (MDE) change with sample size.
 
 By the end of this lab, you will have a deeper understanding of:
 
-- How **sources of uncertainty** (sampling variation, variance in potential outcomes across participants, and measurement error) affect your study’s outcomes.
-- Why we must beware of **Type I** (false positive) and **Type II** (false negative) errors—especially if Dr. P-Hacker is anywhere near our data.
-- How **p-values** should (and should not!) be interpreted.
-- How to **simulate data** that include cluster-level effects and adjust for these effects in your analysis.
+-   How **sources of uncertainty** (sampling variation, variance in potential outcomes across participants, and measurement error) affect your study’s outcomes.
+-   Why we must beware of **Type I** (false positive) and **Type II** (false negative) errors—especially if Dr. P-Hacker is anywhere near our data.
+-   How **p-values** should (and should not!) be interpreted.
+-   How to **simulate data** that include cluster-level effects and adjust for these effects in your analysis.
 
----
+------------------------------------------------------------------------
 
 ## **The Hospital Drama Begins**
 
 Welcome to **St. Null’s Memorial Hospital**, where a brand-new quality improvement intervention is about to be tested. The hospital’s network of clinics, collectively called **The Null Distribution**, is famous for its dedication to meticulous data collection—and also for some questionable statistical practices performed by a rather infamous staff member.
 
-- **CEO Barnaby Beta** has championed a new, cost-intensive intervention aimed at improving patient satisfaction. 
-- **Nurse Random** insists on conducting a proper **randomized control trial (RCT)**, but quickly realizes **Dr. P-Hacker** might have already meddled with the initial power calculations. 
-- **Dr. P-Hacker** is known to declare victory (“Significant at the 5% level!”) before even cleaning the data, and is rumored to own a golden “`p < 0.05`” sign that he waves in staff meetings.
-- **Dr. Doub R. Obust** is the voice of reason, reminding everyone of fundamental statistical principles. 
+-   **CEO Barnaby Beta** has championed a new, cost-intensive intervention aimed at improving patient satisfaction.
+-   **Nurse Random** insists on conducting a proper **randomized control trial (RCT)**, but quickly realizes **Dr. P-Hacker** might have already meddled with the initial power calculations.
+-   **Dr. P-Hacker** is known to declare victory (“Significant at the 5% level!”) before even cleaning the data, and is rumored to own a golden “`p < 0.05`” sign that he waves in staff meetings.
+-   **Dr. Doub R. Obust** is the voice of reason, reminding everyone of fundamental statistical principles.
 
 In this lab, you (the consultants) have been summoned to **salvage** the situation. Let’s see how this plays out.
 
----
+------------------------------------------------------------------------
 
 ## **The Plot Thickens: Power Calculations Without Clustering**
 
@@ -59,7 +59,7 @@ In this lab, you (the consultants) have been summoned to **salvage** the situati
 
 Nonetheless, **Dr. P-Hacker** shares his “method” with you first. Let’s start by **replicating** his approach (ignoring clustering). This will be our baseline—**what not to do** if clinics are truly the unit of randomization.
 
----
+------------------------------------------------------------------------
 
 ### **Step 1: Flawed Power Simulation (Ignoring Clustering)**
 
@@ -70,11 +70,11 @@ We’ll simulate a dataset **as if** individual patients are randomly assigned t
 
 Fill in the code below to acheive a power of around 0.8 (may not be exact, but get as close as you can):
 
-1. Set a **sample size** for the total number of patients.  
-2. Specify a **treatment effect** (`effect`).  
-3. Decide on the **proportion** of participants to receive treatment (`prop`).  
-4. Select a **significance level** (`t_alpha`).  
-5. Run multiple simulations (`sim.size`).  
+1.  Set a **sample size** for the total number of patients.\
+2.  Specify a **treatment effect** (`effect`).\
+3.  Decide on the **proportion** of participants to receive treatment (`prop`).\
+4.  Select a **significance level** (`t_alpha`).\
+5.  Run multiple simulations (`sim.size`).
 
 Then, run a linear regression on each simulated dataset, gather the *p*-values, and compute how often the null hypothesis is rejected (i.e., estimate power).
 
@@ -123,29 +123,29 @@ cat("Estimated Power (Ignoring Clustering):", power_flawed, "\n")
 
 ### **Discussion of Step 1**
 
-- **Nurse Random** sighs: “We got an estimated power of 0.8 (yours might be slightly different). But do we trust this number?”
-- **Dr. Doub R. Obust** chimes in: “Nope. We’re ignoring that patients within the same clinic might be more similar to each other than to patients in other clinics. Our standard errors are artificially small.”
+-   **Nurse Random** sighs: “We got an estimated power of 0.8 (yours might be slightly different). But do we trust this number?”
+-   **Dr. Doub R. Obust** chimes in: “Nope. We’re ignoring that patients within the same clinic might be more similar to each other than to patients in other clinics. Our standard errors are artificially small.”
 
 At this point, **CEO Barnaby Beta** perks up: “Artificially small standard errors? That means we’re basically claiming more precision than we actually have, right?”
 
 Yes, indeed. If we disregard the **clustering** of patients, we risk making a **Type I error** more often than we realize. Dr. P-Hacker, in typical fashion, responds:
 
-> **Dr. P-Hacker:** “Type I error? Isn’t that just when we see something interesting that’s obviously there?!”  
+> **Dr. P-Hacker:** “Type I error? Isn’t that just when we see something interesting that’s obviously there?!”\
 > **Dr. Doub R. Obust (groaning):** “No. A Type I error is a *false positive*—we conclude there *is* an effect even though, in truth, there isn’t. Like thinking you’ve discovered a rare golden banana flavor at the cafeteria soda machine when really it’s just seltzer water with a weird label!”
 
----
+------------------------------------------------------------------------
 
 ## **Understanding the Sources of Uncertainty**
 
 Before we fix our simulation, **Dr. Doub R. Obust** insists that you reflect on **why** ignoring clinic-level clustering is a problem. He ticks off sources of variability that a real experiment faces:
 
-1. **Sampling Variation**: Even if you have a large population of patients, the sample you select is just one draw from a bigger population. Different samples might give different estimates.  
-2. **Measurement Error**: If your measurement tool for patient well-being is noisy (e.g., patients often mis-report how they feel, or staff record data incorrectly), it introduces extra variability that can muddy your effect estimates. 
-3. **Variance in Potential Outcomes**: Not all patients respond to treatments in the same way. Some might be strongly affected, some not at all—leading to variation in the outcomes. This includes **clustering**: Patients in the *same clinic* share certain characteristics, environmental factors, or staff practices that can affect their potential outcomes. This correlation *must* be accounted for in the design and analysis.
+1.  **Sampling Variation**: Even if you have a large population of patients, the sample you select is just one draw from a bigger population. Different samples might give different estimates.\
+2.  **Measurement Error**: If your measurement tool for patient well-being is noisy (e.g., patients often mis-report how they feel, or staff record data incorrectly), it introduces extra variability that can muddy your effect estimates.
+3.  **Variance in Potential Outcomes**: Not all patients respond to treatments in the same way. Some might be strongly affected, some not at all—leading to variation in the outcomes. This includes **clustering**: Patients in the *same clinic* share certain characteristics, environmental factors, or staff practices that can affect their potential outcomes. This correlation *must* be accounted for in the design and analysis.
 
 > **Nurse Random:** “So if we ignore that last point—clustering—our estimate of the variability (and thus the standard error) is off, and we might incorrectly claim significance. That’s basically p-hacking 101!”
 
----
+------------------------------------------------------------------------
 
 ## **Power Calculations With Clustering**
 
@@ -153,26 +153,26 @@ Before we fix our simulation, **Dr. Doub R. Obust** insists that you reflect on 
 
 Now we come to the **correct** approach: our **unit of randomization** is the **clinic**, not the individual. That means each clinic either receives the intervention or does not, and all patients in a clinic share the same treatment assignment.
 
----
+------------------------------------------------------------------------
 
 ### **Step 2: Incorporating Clustering**
 
 We’ll model:
 
-- **`num_clusters`** = number of clinics.  
-- **`cluster_size`** = number of patients per clinic.  
-- **`icc`** (*Intraclass Correlation Coefficient*): A measure of how strongly patients in the same clinic resemble each other. High ICC means patients within a clinic are more correlated.  
-- We’ll generate clinic-level “random effects” and individual-level error terms to reflect **both** measurement error and the variability in potential outcomes across individuals.
+-   **`num_clusters`** = number of clinics.\
+-   **`cluster_size`** = number of patients per clinic.\
+-   **`icc`** (*Intraclass Correlation Coefficient*): A measure of how strongly patients in the same clinic resemble each other. High ICC means patients within a clinic are more correlated.\
+-   We’ll generate clinic-level “random effects” and individual-level error terms to reflect **both** measurement error and the variability in potential outcomes across individuals.
 
 ::: callout-note
 ## Task 2: Correcting the Simulation for Clustering
 
 Fill in the code below to acheive a power of 0.8:
 
-1. Define the **number of clinics** and the **number of patients per clinic**.  
-2. Assign each entire clinic to treatment or control.  
-3. Incorporate **cluster-level** random effects.  
-4. Fit the model but adjust standard errors for clustering.  
+1.  Define the **number of clinics** and the **number of patients per clinic**.\
+2.  Assign each entire clinic to treatment or control.\
+3.  Incorporate **cluster-level** random effects.\
+4.  Fit the model but adjust standard errors for clustering.\
 :::
 
 ```{r}
@@ -254,22 +254,22 @@ cat("Estimated Power (Clustered):", power_clustered, "\n")
 
 **Dr. P-Hacker** interjects:
 
-> “And there’s always `p < 0.10`, right? We can move our threshold for significance to get more ‘positive’ results!”  
+> “And there’s always `p < 0.10`, right? We can move our threshold for significance to get more ‘positive’ results!”\
 > **Nurse Random (scolding):** “That’s *literally* p-hacking. Please step away from the analysis, Doctor.”
 
----
+------------------------------------------------------------------------
 
 ## **The Truth About *p*-Values**
 
 A quick comedic break for a lesson on *p*-values:
 
-- **Dr. P-Hacker** keeps shouting that *p* < 0.05 means there’s a 5% chance the null hypothesis is true.  
-- **Nurse Random** corrects him: “No, no, no. A *p*-value is the probability of observing a result *at least as extreme as ours* if the null is true. It’s NOT the probability the null is true. You can’t interpret it that way.”
+-   **Dr. P-Hacker** keeps shouting that *p* \< 0.05 means there’s a 5% chance the null hypothesis is true.\
+-   **Nurse Random** corrects him: “No, no, no. A *p*-value is the probability of observing a result *at least as extreme as ours* if the null is true. It’s NOT the probability the null is true. You can’t interpret it that way.”
 
-> **Dr. P-Hacker**: “I was so sure it was the probability that *I* was right.”  
+> **Dr. P-Hacker**: “I was so sure it was the probability that *I* was right.”\
 > **Dr. Doub R. Obust**: “We live and learn, Doctor.”
 
----
+------------------------------------------------------------------------
 
 ## **Plotting the Minimum Detectable Effect (MDE)**
 
@@ -278,9 +278,9 @@ Because **CEO Barnaby Beta** wants to know how large an effect must be to have a
 ::: callout-note
 ### Task 3: Create an MDE Plot
 
-1. Loop over a grid of *effect sizes* (or sample sizes).  
-2. For each value, compute power using the cluster-based simulation approach.  
-3. Plot the *effect size* on the x-axis and the corresponding *power* on the y-axis.
+1.  Loop over a grid of *effect sizes* (or sample sizes).\
+2.  For each value, compute power using the cluster-based simulation approach.\
+3.  Plot the *effect size* on the x-axis and the corresponding *power* on the y-axis.
 :::
 
 ```{r}
@@ -310,7 +310,7 @@ ggplot(results, aes(x = effect, y = power)) +
   theme_minimal()
 ```
 
----
+------------------------------------------------------------------------
 
 ## **Final Words from the Hospital Staff**
 
@@ -322,14 +322,12 @@ ggplot(results, aes(x = effect, y = power)) +
 
 **Dr. Doub R. Obust (with a grin):** “We’ll allow the neon sign, as long as you promise to interpret it *correctly*.”
 
----
+------------------------------------------------------------------------
 
 ## **Submission Instructions**
 
-1. Make sure your `.qmd` file knits successfully (to `.pdf` or `.html`).  
-2. Upload your compiled document to [Gradescope](https://www.gradescope.com/courses/781406).   
-3. **Include** your discussion of the results, your code, and your responses to the callout sections.
+1.  Make sure your `.qmd` file knits successfully (to `.pdf` or `.html`).\
+2.  Upload your compiled document to [Gradescope](https://www.gradescope.com/courses/781406).\
+3.  **Include** your discussion of the results, your code, and your responses to the callout sections.
 
 Remember, the moral of the story: **Always check who (or what) is being randomized, and account for clustering when necessary!** Otherwise, your study conclusions might be as random as Dr. P-Hacker’s next dinner choice.
-
-

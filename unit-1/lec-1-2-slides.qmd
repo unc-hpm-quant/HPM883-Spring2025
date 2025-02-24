@@ -19,61 +19,56 @@ draft: true
 
 # Statistical Conclusion Validity
 
-- Due to the fundamental nature of potential outcomes, it is not
-possible to recover individual treatment effects
+-   Due to the fundamental nature of potential outcomes, it is not possible to recover individual treatment effects
 
-- Given specific assumptions and an appropriate assignment
-mechanism (what?), we can recover an average treatment effect
+-   Given specific assumptions and an appropriate assignment mechanism (what?), we can recover an average treatment effect
 
-- Now: brief, and selective, statistical background on how one
-    
-    - Estimates average treatment effects
-    - Quantifies the uncertainty in these estimates to ensure valid
-statistical conclusions (statistical conclusion validity
+-   Now: brief, and selective, statistical background on how one
 
-- focus on settings with a binary treatment and largely ignores the
-role of covariates to streamline the presentation
+    -   Estimates average treatment effects
+    -   Quantifies the uncertainty in these estimates to ensure valid statistical conclusions (statistical conclusion validity
 
----
+-   focus on settings with a binary treatment and largely ignores the role of covariates to streamline the presentation
+
+------------------------------------------------------------------------
 
 # Review: The Four Exclusion Restrictions
 
-1. Observability: Outcomes must be observed for all individuals; missing data can bias estimates.
-2. Complete Compliance: Those assigned to treatment must receive it, and those assigned to control must not.
-3. Statistical Independence: Treatment assignment is independent of potential outcomes.
-4. Stable Unit Treatment Value Assumption (SUTVA): The treatment of one individual must not affect another’s outcomes.
+1.  Observability: Outcomes must be observed for all individuals; missing data can bias estimates.
+2.  Complete Compliance: Those assigned to treatment must receive it, and those assigned to control must not.
+3.  Statistical Independence: Treatment assignment is independent of potential outcomes.
+4.  Stable Unit Treatment Value Assumption (SUTVA): The treatment of one individual must not affect another’s outcomes.
 
-- Given all 4 exclusion restrictions are good, we estimate ATE, can we reject null?
+-   Given all 4 exclusion restrictions are good, we estimate ATE, can we reject null?
 
----
+------------------------------------------------------------------------
 
 # Sources of Uncertainty
 
-- Sampling variation
-- Variance in potential outcomes
-- Measurement Error
+-   Sampling variation
+-   Variance in potential outcomes
+-   Measurement Error
 
 Can lead to low power in your study if sample size is too small.
 
----
+------------------------------------------------------------------------
 
 # What what is the consequence of low power?
 
-
----
+------------------------------------------------------------------------
 
 # Key Ideas/Learning Outcomes
 
-1. There is a general, and intuitive, relationship between design and sampling.
-2. Proper measurement requires linking consistent estimates of an expectation and estimating treatment effects.
-3. Two key pieces of measurement and inference are hypothesis testing and understanding error rates.
-4. In many cases, the researcher desires to test well-defined families of hypotheses; in such instances the researcher must now control the family-wise error rate (FWER).
+1.  There is a general, and intuitive, relationship between design and sampling.
+2.  Proper measurement requires linking consistent estimates of an expectation and estimating treatment effects.
+3.  Two key pieces of measurement and inference are hypothesis testing and understanding error rates.
+4.  In many cases, the researcher desires to test well-defined families of hypotheses; in such instances the researcher must now control the family-wise error rate (FWER).
 
----
+------------------------------------------------------------------------
 
 # Mind's Eye
 
-```mermaid
+``` mermaid
 graph TD;
     A[How can we estimate an average treatment effect?] -->|Super-Population Approach| B;
     A -->|Finite-Population Approach| C;
@@ -88,77 +83,73 @@ graph TD;
     H --> K[List et al. (2018; 2021) correction];
 ```
 
----
+------------------------------------------------------------------------
 
 # Running Examples
 
-Example 1: 
+Example 1:
 
 Example 2:
 
----
+------------------------------------------------------------------------
 
 # Super-Populations vs. Finite Population Approach
 
-- Sampling requires knowing what hypothesis we want to test
-- Deaton Critiques on the limitations of generalizability
+-   Sampling requires knowing what hypothesis we want to test
+-   Deaton Critiques on the limitations of generalizability
 
----
+------------------------------------------------------------------------
 
 # Hypothesis Testing - Single Hypothesis
 
-- Why difference-in-means?
-- Type I and Type II Error
+-   Why difference-in-means?
+-   Type I and Type II Error
 
----
+------------------------------------------------------------------------
 
 # Basic Intro to Power Calculation
 
-- Goal: Ensure sufficient sample size to detect effects
-- Defining parameters: effect size, significance level, and power
+-   Goal: Ensure sufficient sample size to detect effects
+-   Defining parameters: effect size, significance level, and power
 
----
+------------------------------------------------------------------------
 
 # Simple Example - Simulation
 
-- Individual-level randomization, single hypothesis 
-- Walkthrough of simulation illustrating key concepts
+-   Individual-level randomization, single hypothesis
+-   Walkthrough of simulation illustrating key concepts
 
----
+------------------------------------------------------------------------
 
 # Introducing Multiple Time Periods
 
-- Use difference-in-means or Difference-in-Differences if baseline covariates available?
-- Will cover in more detail later in the semester when discussing analysis
+-   Use difference-in-means or Difference-in-Differences if baseline covariates available?
+-   Will cover in more detail later in the semester when discussing analysis
 
----
+------------------------------------------------------------------------
 
 # Clustering
 
-- When and why clustering matters in experimental design
-- Adjustments for clustering in hypothesis testing
+-   When and why clustering matters in experimental design
+-   Adjustments for clustering in hypothesis testing
 
----
+------------------------------------------------------------------------
 
 # Multiple Hypotheses
 
-- Controlling for multiple comparisons
-- Strategies such as Bonferroni correction, Holm’s step-down procedure, and List et al. (2018; 2021) correction
+-   Controlling for multiple comparisons
+-   Strategies such as Bonferroni correction, Holm’s step-down procedure, and List et al. (2018; 2021) correction
 
----
+------------------------------------------------------------------------
 
 # Conclusion
 
-- Designing experiments for **valid statistical inference**
-- The need for robust methods for **multiple comparisons**
-- Best practices for estimating treatment effects
-- Open questions and future directions
+-   Designing experiments for **valid statistical inference**
+-   The need for robust methods for **multiple comparisons**
+-   Best practices for estimating treatment effects
+-   Open questions and future directions
 
----
-
-
-
-
+------------------------------------------------------------------------
 
 Briefing Document: Chapter 4 - Statistical Conclusion Validity
 
@@ -166,62 +157,6 @@ Overall Theme: Chapter 4 shifts the focus from internal validity (establishing a
 
 Key Concepts and Ideas:
 
-Uncertainty in Experimentation: The lecture highlights multiple sources of uncertainty that can impact the reliability of an estimated treatment effect:
-Sampling Variation: Uncertainty arising from the specific sample drawn. The lecturer emphasizes that the same treatment might yield different results in a different sample.
-Variance of Potential Outcomes: High variance in outcomes can make it difficult to reject a null hypothesis, indicating a lack of power in the study.
-Small Sample Sizes: Limited sample size reduces the ability to detect the true effect.
-Time: The need to incorporate time into the potential outcomes framework, especially with longitudinal designs.
-From ATE to Hypothesis Testing: The chapter transitions from estimating the ATE (tau) to hypothesis testing. The key question becomes: Can we reject the null hypothesis that the treatment has no effect (tau = 0)?
-Super Population vs. Finite Population Approaches:
-Super Population: Assumes an infinitely large, hypothetical population. The goal is to estimate individual treatment effects with a sample from this population. Focus is on the sampling variation and the variation due to ZI (random assignment)
-"So the super population approach is that you have an infinitely hypothetical sample that you're going to draw from and you're going to be able to observe individual treatment effects with this sample."
-Finite Population: Uses a specific, limited population (e.g., a convenience sample). Focus shifts to estimating the conditional expectation of means. Only one potential outcome is observed.
-"When it comes to a finite population sample, I'm back to estimating the difference in the potential outcomes for those that have been treated versus those that have not been treated."
-Examples of Empirical Studies:
-Amon north and Renschler (2019): Lab experiment at Baylor University where participants could donate jury pay to victims before a trial. Results varied by gender. Highlights the importance of the sample and the ability to generalize.
-"...they found that men crime with a pre decision donation find defendants guilty more often, the inverse being true for females. So this study, let's highlight the importance of which sample you draw from."
-Balboa et al (Econometrica): Field experiment in Paraguay, giving agricultural extension agents GPS enabled phones. Showed an increase in calls and responsiveness of some agents. Managers had insights into which agents would respond best. The covert design and policymaker input are highlighted.
-"...they find there's an increase in the share of farmers who receive house calls from these agents without any cost to the quality or to the duration of these calls. And this is driven entirely by these agents."
-"And what they interestingly found is that the managers or the people that are responsible for managing these agents had a really good understanding of which agents would respond best to this treatment or not."
-Hypothesis Testing:
-Null Hypothesis: The treatment effect is zero (tau=0).
-Alternative Hypothesis: The treatment effect is not zero (tau ≠ 0).
-Type 1 Error (False Positive): Rejecting the null when it's true.
-Type 2 Error (False Negative): Failing to reject the null when it's false.
-The lecturer highlights the standard levels: alpha = 0.05, Beta= 0.2 (80% power)
-Multiple Hypothesis Testing: This section emphasizes the challenges of testing multiple hypotheses within the same sampling framework and how this inflates the family-wise error rate.
-Family-Wise Error Rate: The probability of making at least one type 1 error across multiple tests.
-"So that family wise error rate could be if you have the same sample but two outcome variables, or you have the same sample but two treatment conditions, or you've got the same treatment and the same outcome, then you have multiple subpopulations."
-The Jelly Bean/Salmon Analogy: The lecturer uses these examples to illustrate how randomly, when running multiple tests, one will have a significant result which could be deemed as a "false discovery".
-"So this is published in a neurological journal. It won the Ig Nobel award in 2012. And what these scientists did is put a dead salmon in an FMRI scanner... And what they found is some pictures had a P value less than 0.05...."
-Types of Multiple Hypothesis Tests:
-Joint Test: At least one of several hypotheses (A and B) is true. Rejecting one hypothesis satisfies the test.
-Multiple Testing: All of the hypotheses (A and B) are simultaneously true.
-Adjusting for Multiple Hypothesis Testing:
-Bonferroni Adjustment: A conservative approach; the alpha value for each test is adjusted by dividing the family-wise error rate by the number of tests performed.
-"So your alpha that you're going to test in your study, it's going to be the family wise error rate of 0.05 divided by how many independent multiple hypotheses that you have in your paper. This is going to be your alpha divided by your K hypothesis."
-Holm-Bonferroni Adjustment: Less conservative than Bonferroni; the p-values are sorted and adjusted adaptively based on rank, accounting somewhat for dependence across tests.
-"So Homebonferoni is a method that says, well, let's take the Bonferroni method. Let's adaptively adjust it based on each p value that I observe in the dataset."
-List et al. (Chicago) Approach: More recent methods to consider the data's underlying dependence between tests, utilizing asymptotic theory. These methods are less conservative but computationally more intensive.
-"In John's approach, they look at more the data structure and how that can be helpful thinking about the dependence across tests."
-Defining the "Family" of Tests: The lecture highlights the subjective nature of deciding which hypotheses belong to the same "family" and should be adjusted together.
-Clear Cases: Single treatment, multiple outcomes and subpopulations usually belong in the same family. Single treatment, multiple outcomes are less clear. Multiple treatments, single outcome and subpopulation belongs in the same family.
-"But when you have multiple treatments, single outcomes, single subpopulation, think of the jellybeans, lightning and map and adjust for the family wise error rate in there."
-Time in Potential Outcomes Framework: The lecture introduces how time can be incorporated into the Rubin potential outcomes framework.
-Notation changes to Yit (potential outcome for individual I at time t).
-Discusses the difference-in-differences approach to account for changes across treatment groups and time.
-"So the potential occurrence framework can be used, can be adapted for varying time periods. And that's what the different diff. If you look at like Imbens and Ruben, that's what they discuss in their book. You can use the diff in diff framework to potential output."
-Fisher Randomization Inference: An alternative to standard hypothesis testing when sample sizes are small and distributional assumptions can't be made.
-It permutes treatment and control assignments to build a distribution of treatment effects based solely on observed data.
-It can test whether a treatment effect is likely different from zero without assuming a particular distribution.
-Pros: No distribution assumption, good in high dimensions, can incorporate multiple hypotheses.
-Cons: Not very informative (doesn't quantify the magnitude of the effect), computationally intensive for large datasets.
-"So what the Fisher test does is then takes every possible combination of treatment and control and then say what's the distribution of the individual treatment effects?
-"The pros are of the Fisher test... is that it imposes no distribution or no assumption of the distribution or random variables."
-Concluding Remarks:
+Uncertainty in Experimentation: The lecture highlights multiple sources of uncertainty that can impact the reliability of an estimated treatment effect: Sampling Variation: Uncertainty arising from the specific sample drawn. The lecturer emphasizes that the same treatment might yield different results in a different sample. Variance of Potential Outcomes: High variance in outcomes can make it difficult to reject a null hypothesis, indicating a lack of power in the study. Small Sample Sizes: Limited sample size reduces the ability to detect the true effect. Time: The need to incorporate time into the potential outcomes framework, especially with longitudinal designs. From ATE to Hypothesis Testing: The chapter transitions from estimating the ATE (tau) to hypothesis testing. The key question becomes: Can we reject the null hypothesis that the treatment has no effect (tau = 0)? Super Population vs. Finite Population Approaches: Super Population: Assumes an infinitely large, hypothetical population. The goal is to estimate individual treatment effects with a sample from this population. Focus is on the sampling variation and the variation due to ZI (random assignment) "So the super population approach is that you have an infinitely hypothetical sample that you're going to draw from and you're going to be able to observe individual treatment effects with this sample." Finite Population: Uses a specific, limited population (e.g., a convenience sample). Focus shifts to estimating the conditional expectation of means. Only one potential outcome is observed. "When it comes to a finite population sample, I'm back to estimating the difference in the potential outcomes for those that have been treated versus those that have not been treated." Examples of Empirical Studies: Amon north and Renschler (2019): Lab experiment at Baylor University where participants could donate jury pay to victims before a trial. Results varied by gender. Highlights the importance of the sample and the ability to generalize. "...they found that men crime with a pre decision donation find defendants guilty more often, the inverse being true for females. So this study, let's highlight the importance of which sample you draw from." Balboa et al (Econometrica): Field experiment in Paraguay, giving agricultural extension agents GPS enabled phones. Showed an increase in calls and responsiveness of some agents. Managers had insights into which agents would respond best. The covert design and policymaker input are highlighted. "...they find there's an increase in the share of farmers who receive house calls from these agents without any cost to the quality or to the duration of these calls. And this is driven entirely by these agents." "And what they interestingly found is that the managers or the people that are responsible for managing these agents had a really good understanding of which agents would respond best to this treatment or not." Hypothesis Testing: Null Hypothesis: The treatment effect is zero (tau=0). Alternative Hypothesis: The treatment effect is not zero (tau ≠ 0). Type 1 Error (False Positive): Rejecting the null when it's true. Type 2 Error (False Negative): Failing to reject the null when it's false. The lecturer highlights the standard levels: alpha = 0.05, Beta= 0.2 (80% power) Multiple Hypothesis Testing: This section emphasizes the challenges of testing multiple hypotheses within the same sampling framework and how this inflates the family-wise error rate. Family-Wise Error Rate: The probability of making at least one type 1 error across multiple tests. "So that family wise error rate could be if you have the same sample but two outcome variables, or you have the same sample but two treatment conditions, or you've got the same treatment and the same outcome, then you have multiple subpopulations." The Jelly Bean/Salmon Analogy: The lecturer uses these examples to illustrate how randomly, when running multiple tests, one will have a significant result which could be deemed as a "false discovery". "So this is published in a neurological journal. It won the Ig Nobel award in 2012. And what these scientists did is put a dead salmon in an FMRI scanner... And what they found is some pictures had a P value less than 0.05...." Types of Multiple Hypothesis Tests: Joint Test: At least one of several hypotheses (A and B) is true. Rejecting one hypothesis satisfies the test. Multiple Testing: All of the hypotheses (A and B) are simultaneously true. Adjusting for Multiple Hypothesis Testing: Bonferroni Adjustment: A conservative approach; the alpha value for each test is adjusted by dividing the family-wise error rate by the number of tests performed. "So your alpha that you're going to test in your study, it's going to be the family wise error rate of 0.05 divided by how many independent multiple hypotheses that you have in your paper. This is going to be your alpha divided by your K hypothesis." Holm-Bonferroni Adjustment: Less conservative than Bonferroni; the p-values are sorted and adjusted adaptively based on rank, accounting somewhat for dependence across tests. "So Homebonferoni is a method that says, well, let's take the Bonferroni method. Let's adaptively adjust it based on each p value that I observe in the dataset." List et al. (Chicago) Approach: More recent methods to consider the data's underlying dependence between tests, utilizing asymptotic theory. These methods are less conservative but computationally more intensive. "In John's approach, they look at more the data structure and how that can be helpful thinking about the dependence across tests." Defining the "Family" of Tests: The lecture highlights the subjective nature of deciding which hypotheses belong to the same "family" and should be adjusted together. Clear Cases: Single treatment, multiple outcomes and subpopulations usually belong in the same family. Single treatment, multiple outcomes are less clear. Multiple treatments, single outcome and subpopulation belongs in the same family. "But when you have multiple treatments, single outcomes, single subpopulation, think of the jellybeans, lightning and map and adjust for the family wise error rate in there." Time in Potential Outcomes Framework: The lecture introduces how time can be incorporated into the Rubin potential outcomes framework. Notation changes to Yit (potential outcome for individual I at time t). Discusses the difference-in-differences approach to account for changes across treatment groups and time. "So the potential occurrence framework can be used, can be adapted for varying time periods. And that's what the different diff. If you look at like Imbens and Ruben, that's what they discuss in their book. You can use the diff in diff framework to potential output." Fisher Randomization Inference: An alternative to standard hypothesis testing when sample sizes are small and distributional assumptions can't be made. It permutes treatment and control assignments to build a distribution of treatment effects based solely on observed data. It can test whether a treatment effect is likely different from zero without assuming a particular distribution. Pros: No distribution assumption, good in high dimensions, can incorporate multiple hypotheses. Cons: Not very informative (doesn't quantify the magnitude of the effect), computationally intensive for large datasets. "So what the Fisher test does is then takes every possible combination of treatment and control and then say what's the distribution of the individual treatment effects? "The pros are of the Fisher test... is that it imposes no distribution or no assumption of the distribution or random variables." Concluding Remarks:
 
-The lecture emphasizes the numerous uncertainties that can affect experimental results, and researchers should be aware of and address these during design and analysis.
-Multiple hypothesis testing is a major concern in empirical work and researchers should be more considered about the need to adjust for these.
-Choosing the correct approach (Bonferroni, Holm-Bonferroni, etc) is an ongoing area of research.
-The lecturer encourages more engagement with the research regarding false positives and family-wise errors.
-This briefing should give you a good grasp of the main points and key ideas in this lecture on statistical conclusion validity.
+The lecture emphasizes the numerous uncertainties that can affect experimental results, and researchers should be aware of and address these during design and analysis. Multiple hypothesis testing is a major concern in empirical work and researchers should be more considered about the need to adjust for these. Choosing the correct approach (Bonferroni, Holm-Bonferroni, etc) is an ongoing area of research. The lecturer encourages more engagement with the research regarding false positives and family-wise errors. This briefing should give you a good grasp of the main points and key ideas in this lecture on statistical conclusion validity.

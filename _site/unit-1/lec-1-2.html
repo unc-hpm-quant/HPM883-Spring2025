@@ -291,19 +291,19 @@ window.Quarto = {
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../unit-0/unit-0-foundations-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Class 1: Introduction</span></a>
+ <span class="menu-text">Unit 0.0: Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../unit-0/unit-0-foundations-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Class 2: A Field Experiment in Health Services Research</span></a>
+ <span class="menu-text">Unit 0.1: A Field Experiment in Health Services Research</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../unit-0/unit-0-foundations-3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Class 3: Computing for Reproducible Research</span></a>
+ <span class="menu-text">Unit 0.2: Computing for Reproducible Research</span></a>
   </div>
 </li>
       </ul>
@@ -320,7 +320,7 @@ window.Quarto = {
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../unit-1/unit-1-internal-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Class 4: Internal Validity</span></a>
+ <span class="menu-text">Unit 1.0: Internal Validity</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -332,13 +332,30 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../unit-1/unit-1-internal-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Class 5: Statistical Conclusion Validity</span></a>
+ <span class="menu-text">Unit 1.1: Statistical Conclusion Validity</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../labs/lab-2-Power.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 2: Power by Simulation</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Unit 2: Design of Experiments</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-2/unit-2-design-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Unit 2.0: Optimal Experimental Design</span></a>
   </div>
 </li>
       </ul>
@@ -519,7 +536,11 @@ E[Y(1) - Y(0)]
 \tau_{fp} = \frac{1}{N} \sum_{i=1}^{N} \left[Y_i(1) - Y_i(0)\right]
 \]</span></p>
 <p>where <span class="math inline">\(N\)</span> is the total number of units in the study. Unlike in the super-population approach, the potential outcomes in a finite population framework are <strong>fixed, not random</strong>. The treatment effect is then viewed as an empirical quantity to be estimated within the sample, rather than a parameter of an underlying distribution.</p>
-<p>A <strong>practical distinction</strong> between the two approaches is in their implications for statistical inference: - In the <strong>super-population approach</strong>, standard errors reflect both <strong>sampling variability</strong> and <strong>randomization-induced variation</strong>. - In the <strong>finite-population approach</strong>, standard errors are based only on the <strong>variation within the observed sample</strong>, without assuming a broader distribution.</p>
+<p>A <strong>practical distinction</strong> between the two approaches is in their implications for statistical inference:</p>
+<ul>
+<li><p>In the <strong>super-population approach</strong>, standard errors reflect both <strong>sampling variability</strong> and <strong>randomization-induced variation</strong>.</p></li>
+<li><p>In the <strong>finite-population approach</strong>, standard errors are based only on the <strong>variation within the observed sample</strong>, without assuming a broader distribution.</p></li>
+</ul>
 <p>This framework is particularly relevant when researchers are concerned with <strong>internal validity</strong> over generalizability, such as in <strong>program evaluations or field experiments</strong>.</p>
 </section><section id="subpopulations-in-the-super-population-framework" class="level2"><h2 class="anchored" data-anchor-id="subpopulations-in-the-super-population-framework"><strong>Subpopulations in the Super-Population Framework</strong></h2>
 <p>Within the super-population framework, researchers often refine their analysis by considering <strong>subpopulations</strong> to account for <strong>heterogeneous treatment effects</strong>. One important example is the <strong>Conditional Average Treatment Effect (CATE)</strong>:</p>
@@ -1628,347 +1649,351 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb18-134"><a href="#cb18-134" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-135"><a href="#cb18-135" aria-hidden="true" tabindex="-1"></a>where $N$ is the total number of units in the study. Unlike in the super-population approach, the potential outcomes in a finite population framework are **fixed, not random**. The treatment effect is then viewed as an empirical quantity to be estimated within the sample, rather than a parameter of an underlying distribution.</span>
 <span id="cb18-136"><a href="#cb18-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-137"><a href="#cb18-137" aria-hidden="true" tabindex="-1"></a>A **practical distinction** between the two approaches is in their implications for statistical inference: - In the **super-population approach**, standard errors reflect both **sampling variability** and **randomization-induced variation**. - In the **finite-population approach**, standard errors are based only on the **variation within the observed sample**, without assuming a broader distribution.</span>
+<span id="cb18-137"><a href="#cb18-137" aria-hidden="true" tabindex="-1"></a>A **practical distinction** between the two approaches is in their implications for statistical inference:</span>
 <span id="cb18-138"><a href="#cb18-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-139"><a href="#cb18-139" aria-hidden="true" tabindex="-1"></a>This framework is particularly relevant when researchers are concerned with **internal validity** over generalizability, such as in **program evaluations or field experiments**.</span>
+<span id="cb18-139"><a href="#cb18-139" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>In the **super-population approach**, standard errors reflect both **sampling variability** and **randomization-induced variation**.</span>
 <span id="cb18-140"><a href="#cb18-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-141"><a href="#cb18-141" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Subpopulations in the Super-Population Framework**</span></span>
+<span id="cb18-141"><a href="#cb18-141" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>In the **finite-population approach**, standard errors are based only on the **variation within the observed sample**, without assuming a broader distribution.</span>
 <span id="cb18-142"><a href="#cb18-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-143"><a href="#cb18-143" aria-hidden="true" tabindex="-1"></a>Within the super-population framework, researchers often refine their analysis by considering **subpopulations** to account for **heterogeneous treatment effects**. One important example is the **Conditional Average Treatment Effect (CATE)**:</span>
+<span id="cb18-143"><a href="#cb18-143" aria-hidden="true" tabindex="-1"></a>This framework is particularly relevant when researchers are concerned with **internal validity** over generalizability, such as in **program evaluations or field experiments**.</span>
 <span id="cb18-144"><a href="#cb18-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-145"><a href="#cb18-145" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-146"><a href="#cb18-146" aria-hidden="true" tabindex="-1"></a>E<span class="co">[</span><span class="ot">Y(1, X) - Y(0, X) | X</span><span class="co">]</span></span>
-<span id="cb18-147"><a href="#cb18-147" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-145"><a href="#cb18-145" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Subpopulations in the Super-Population Framework**</span></span>
+<span id="cb18-146"><a href="#cb18-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-147"><a href="#cb18-147" aria-hidden="true" tabindex="-1"></a>Within the super-population framework, researchers often refine their analysis by considering **subpopulations** to account for **heterogeneous treatment effects**. One important example is the **Conditional Average Treatment Effect (CATE)**:</span>
 <span id="cb18-148"><a href="#cb18-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-149"><a href="#cb18-149" aria-hidden="true" tabindex="-1"></a>where $X$ represents observed covariates that influence treatment effects. This approach allows for **differentiated insights** across groups, such as demographic segments in public health interventions.</span>
-<span id="cb18-150"><a href="#cb18-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-151"><a href="#cb18-151" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Choosing Between the Two Approaches**</span></span>
+<span id="cb18-149"><a href="#cb18-149" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-150"><a href="#cb18-150" aria-hidden="true" tabindex="-1"></a>E<span class="co">[</span><span class="ot">Y(1, X) - Y(0, X) | X</span><span class="co">]</span></span>
+<span id="cb18-151"><a href="#cb18-151" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb18-152"><a href="#cb18-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-153"><a href="#cb18-153" aria-hidden="true" tabindex="-1"></a>The choice between these sampling frameworks depends on the **research question**:</span>
+<span id="cb18-153"><a href="#cb18-153" aria-hidden="true" tabindex="-1"></a>where $X$ represents observed covariates that influence treatment effects. This approach allows for **differentiated insights** across groups, such as demographic segments in public health interventions.</span>
 <span id="cb18-154"><a href="#cb18-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-155"><a href="#cb18-155" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>If the goal is to make **generalizable claims** about a broader population, the **super-population approach** is preferred.</span>
-<span id="cb18-156"><a href="#cb18-156" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>If the study focuses on **a specific, finite group of units**, the **finite-population approach** is more appropriate.</span>
-<span id="cb18-157"><a href="#cb18-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-158"><a href="#cb18-158" aria-hidden="true" tabindex="-1"></a>Both perspectives provide valuable insights, and many empirical studies incorporate elements of both frameworks, particularly when considering **external validity and policy relevance**.</span>
-<span id="cb18-159"><a href="#cb18-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-160"><a href="#cb18-160" aria-hidden="true" tabindex="-1"></a><span class="fu"># Single Hypothesis Testing and Statistical Power</span></span>
+<span id="cb18-155"><a href="#cb18-155" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Choosing Between the Two Approaches**</span></span>
+<span id="cb18-156"><a href="#cb18-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-157"><a href="#cb18-157" aria-hidden="true" tabindex="-1"></a>The choice between these sampling frameworks depends on the **research question**:</span>
+<span id="cb18-158"><a href="#cb18-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-159"><a href="#cb18-159" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>If the goal is to make **generalizable claims** about a broader population, the **super-population approach** is preferred.</span>
+<span id="cb18-160"><a href="#cb18-160" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>If the study focuses on **a specific, finite group of units**, the **finite-population approach** is more appropriate.</span>
 <span id="cb18-161"><a href="#cb18-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-162"><a href="#cb18-162" aria-hidden="true" tabindex="-1"></a>With our sampling framework in mind, we can now turn to **single hypothesis testing** and **statistical power**. The first thing we need to do is choose an **estimator** of interest. If the estimand is an **Average Treatment Effect (ATE)**, then a reasonable choice is the **difference-in-means estimator**. This estimator compares the mean outcome of the treated group ($Y(1)$) and the control group ($Y(0)$):</span>
+<span id="cb18-162"><a href="#cb18-162" aria-hidden="true" tabindex="-1"></a>Both perspectives provide valuable insights, and many empirical studies incorporate elements of both frameworks, particularly when considering **external validity and policy relevance**.</span>
 <span id="cb18-163"><a href="#cb18-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-164"><a href="#cb18-164" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-165"><a href="#cb18-165" aria-hidden="true" tabindex="-1"></a>\hat{\tau} = \bar{Y}_1 - \bar{Y}_0</span>
-<span id="cb18-166"><a href="#cb18-166" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-164"><a href="#cb18-164" aria-hidden="true" tabindex="-1"></a><span class="fu"># Single Hypothesis Testing and Statistical Power</span></span>
+<span id="cb18-165"><a href="#cb18-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-166"><a href="#cb18-166" aria-hidden="true" tabindex="-1"></a>With our sampling framework in mind, we can now turn to **single hypothesis testing** and **statistical power**. The first thing we need to do is choose an **estimator** of interest. If the estimand is an **Average Treatment Effect (ATE)**, then a reasonable choice is the **difference-in-means estimator**. This estimator compares the mean outcome of the treated group ($Y(1)$) and the control group ($Y(0)$):</span>
 <span id="cb18-167"><a href="#cb18-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-168"><a href="#cb18-168" aria-hidden="true" tabindex="-1"></a>where $\bar{Y}_1$ and $\bar{Y}_0$ are the sample means of the treated and control groups, respectively. The difference-in-means estimator provides an unbiased estimate of the **Average Treatment Effect (ATE)** (the estimand) under the assumption of random assignment.</span>
-<span id="cb18-169"><a href="#cb18-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-170"><a href="#cb18-170" aria-hidden="true" tabindex="-1"></a>However, while the estimator provides a point estimate of the treatment effect, it does not convey **uncertainty**. To formally assess whether the estimated effect is significantly different from zero, we conduct a **statistical hypothesis test**.</span>
+<span id="cb18-168"><a href="#cb18-168" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-169"><a href="#cb18-169" aria-hidden="true" tabindex="-1"></a>\hat{\tau} = \bar{Y}_1 - \bar{Y}_0</span>
+<span id="cb18-170"><a href="#cb18-170" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb18-171"><a href="#cb18-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-172"><a href="#cb18-172" aria-hidden="true" tabindex="-1"></a>The fundamental question we seek to answer is:\</span>
-<span id="cb18-173"><a href="#cb18-173" aria-hidden="true" tabindex="-1"></a>**Can we be confident in detecting the reported effect size in our experimental results?**</span>
-<span id="cb18-174"><a href="#cb18-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-175"><a href="#cb18-175" aria-hidden="true" tabindex="-1"></a>To do so, we frame our problem in terms of **hypothesis testing**:</span>
-<span id="cb18-176"><a href="#cb18-176" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-177"><a href="#cb18-177" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>We begin by specifying a **null hypothesis (**$H_0$), which typically asserts that the treatment has no effect ($\tau = 0$).</span>
+<span id="cb18-172"><a href="#cb18-172" aria-hidden="true" tabindex="-1"></a>where $\bar{Y}_1$ and $\bar{Y}_0$ are the sample means of the treated and control groups, respectively. The difference-in-means estimator provides an unbiased estimate of the **Average Treatment Effect (ATE)** (the estimand) under the assumption of random assignment.</span>
+<span id="cb18-173"><a href="#cb18-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-174"><a href="#cb18-174" aria-hidden="true" tabindex="-1"></a>However, while the estimator provides a point estimate of the treatment effect, it does not convey **uncertainty**. To formally assess whether the estimated effect is significantly different from zero, we conduct a **statistical hypothesis test**.</span>
+<span id="cb18-175"><a href="#cb18-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-176"><a href="#cb18-176" aria-hidden="true" tabindex="-1"></a>The fundamental question we seek to answer is:\</span>
+<span id="cb18-177"><a href="#cb18-177" aria-hidden="true" tabindex="-1"></a>**Can we be confident in detecting the reported effect size in our experimental results?**</span>
 <span id="cb18-178"><a href="#cb18-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-179"><a href="#cb18-179" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The **alternative hypothesis (**$H_A$) posits that there is a nonzero effect ($\tau \neq 0$).</span>
+<span id="cb18-179"><a href="#cb18-179" aria-hidden="true" tabindex="-1"></a>To do so, we frame our problem in terms of **hypothesis testing**:</span>
 <span id="cb18-180"><a href="#cb18-180" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-181"><a href="#cb18-181" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Hypothesis testing allows us to assess whether the observed difference-in-means provides sufficient evidence to reject $H_0$.</span>
+<span id="cb18-181"><a href="#cb18-181" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>We begin by specifying a **null hypothesis (**$H_0$), which typically asserts that the treatment has no effect ($\tau = 0$).</span>
 <span id="cb18-182"><a href="#cb18-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-183"><a href="#cb18-183" aria-hidden="true" tabindex="-1"></a>The hypothesis test is based on the **sampling distribution** of the estimator. Because we assume random assignment, the **difference-in-means estimator follows a known distribution**, and we use this fact to determine whether the observed effect is large enough to be statistically significant.</span>
+<span id="cb18-183"><a href="#cb18-183" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The **alternative hypothesis (**$H_A$) posits that there is a nonzero effect ($\tau \neq 0$).</span>
 <span id="cb18-184"><a href="#cb18-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-185"><a href="#cb18-185" aria-hidden="true" tabindex="-1"></a><span class="fu">## Statistical Significance and the t-Statistic</span></span>
+<span id="cb18-185"><a href="#cb18-185" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Hypothesis testing allows us to assess whether the observed difference-in-means provides sufficient evidence to reject $H_0$.</span>
 <span id="cb18-186"><a href="#cb18-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-187"><a href="#cb18-187" aria-hidden="true" tabindex="-1"></a>To formally test the null hypothesis, we construct a **t-statistic**:</span>
+<span id="cb18-187"><a href="#cb18-187" aria-hidden="true" tabindex="-1"></a>The hypothesis test is based on the **sampling distribution** of the estimator. Because we assume random assignment, the **difference-in-means estimator follows a known distribution**, and we use this fact to determine whether the observed effect is large enough to be statistically significant.</span>
 <span id="cb18-188"><a href="#cb18-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-189"><a href="#cb18-189" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-190"><a href="#cb18-190" aria-hidden="true" tabindex="-1"></a>t = \frac{\hat{\tau}}{\text{SE}(\hat{\tau})}</span>
-<span id="cb18-191"><a href="#cb18-191" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-189"><a href="#cb18-189" aria-hidden="true" tabindex="-1"></a><span class="fu">## Statistical Significance and the t-Statistic</span></span>
+<span id="cb18-190"><a href="#cb18-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-191"><a href="#cb18-191" aria-hidden="true" tabindex="-1"></a>To formally test the null hypothesis, we construct a **t-statistic**:</span>
 <span id="cb18-192"><a href="#cb18-192" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-193"><a href="#cb18-193" aria-hidden="true" tabindex="-1"></a>where **SE(**$\hat{\tau}$) represents the standard error of the difference-in-means estimator. As the sample size grows, this t-statistic follows a standard normal distribution (or Student's t-distribution for small samples). A large absolute value of \$ t \$ provides evidence against the null hypothesis.</span>
-<span id="cb18-194"><a href="#cb18-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-195"><a href="#cb18-195" aria-hidden="true" tabindex="-1"></a>To determine whether the result is **statistically significant**, we compare the t-statistic to a **critical value** determined by our chosen **significance level** ($\alpha$, commonly set at 0.05). If the absolute value of the t-statistic exceeds this threshold, we reject the null hypothesis.</span>
+<span id="cb18-193"><a href="#cb18-193" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-194"><a href="#cb18-194" aria-hidden="true" tabindex="-1"></a>t = \frac{\hat{\tau}}{\text{SE}(\hat{\tau})}</span>
+<span id="cb18-195"><a href="#cb18-195" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb18-196"><a href="#cb18-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-197"><a href="#cb18-197" aria-hidden="true" tabindex="-1"></a><span class="fu">## Type I and Type II Errors</span></span>
+<span id="cb18-197"><a href="#cb18-197" aria-hidden="true" tabindex="-1"></a>where **SE(**$\hat{\tau}$) represents the standard error of the difference-in-means estimator. As the sample size grows, this t-statistic follows a standard normal distribution (or Student's t-distribution for small samples). A large absolute value of \$ t \$ provides evidence against the null hypothesis.</span>
 <span id="cb18-198"><a href="#cb18-198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-199"><a href="#cb18-199" aria-hidden="true" tabindex="-1"></a>While hypothesis testing provides a structured approach to evaluating treatment effects, errors can still occur:</span>
+<span id="cb18-199"><a href="#cb18-199" aria-hidden="true" tabindex="-1"></a>To determine whether the result is **statistically significant**, we compare the t-statistic to a **critical value** determined by our chosen **significance level** ($\alpha$, commonly set at 0.05). If the absolute value of the t-statistic exceeds this threshold, we reject the null hypothesis.</span>
 <span id="cb18-200"><a href="#cb18-200" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-201"><a href="#cb18-201" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Type I Error (**$\alpha$): Rejecting the null hypothesis when it is actually true (false positive).</span>
-<span id="cb18-202"><a href="#cb18-202" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Controlled by setting the significance level ($\alpha$), which determines the probability of mistakenly rejecting $H_0$.</span>
-<span id="cb18-203"><a href="#cb18-203" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Lower $\alpha$ reduces false positives but increases the risk of missing real effects.</span>
-<span id="cb18-204"><a href="#cb18-204" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Type II Error (**$\beta$): Failing to reject the null hypothesis when it is actually false (false negative).</span>
-<span id="cb18-205"><a href="#cb18-205" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Related to **statistical power**, which is the probability of detecting an effect when it truly exists.</span>
-<span id="cb18-206"><a href="#cb18-206" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-207"><a href="#cb18-207" aria-hidden="true" tabindex="-1"></a><span class="al">![Type 1 and Type 2 Errors](/unit-1/media/HypothesisTesting.png)</span></span>
-<span id="cb18-208"><a href="#cb18-208" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-209"><a href="#cb18-209" aria-hidden="true" tabindex="-1"></a><span class="fu">## Power Calculation: Ensuring Detectability</span></span>
+<span id="cb18-201"><a href="#cb18-201" aria-hidden="true" tabindex="-1"></a><span class="fu">## Type I and Type II Errors</span></span>
+<span id="cb18-202"><a href="#cb18-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-203"><a href="#cb18-203" aria-hidden="true" tabindex="-1"></a>While hypothesis testing provides a structured approach to evaluating treatment effects, errors can still occur:</span>
+<span id="cb18-204"><a href="#cb18-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-205"><a href="#cb18-205" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Type I Error (**$\alpha$): Rejecting the null hypothesis when it is actually true (false positive).</span>
+<span id="cb18-206"><a href="#cb18-206" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Controlled by setting the significance level ($\alpha$), which determines the probability of mistakenly rejecting $H_0$.</span>
+<span id="cb18-207"><a href="#cb18-207" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Lower $\alpha$ reduces false positives but increases the risk of missing real effects.</span>
+<span id="cb18-208"><a href="#cb18-208" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Type II Error (**$\beta$): Failing to reject the null hypothesis when it is actually false (false negative).</span>
+<span id="cb18-209"><a href="#cb18-209" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Related to **statistical power**, which is the probability of detecting an effect when it truly exists.</span>
 <span id="cb18-210"><a href="#cb18-210" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-211"><a href="#cb18-211" aria-hidden="true" tabindex="-1"></a>**Statistical power** refers to the ability of a test to correctly reject the null hypothesis when a true effect exists. Mathematically:</span>
+<span id="cb18-211"><a href="#cb18-211" aria-hidden="true" tabindex="-1"></a><span class="al">![Type 1 and Type 2 Errors](/unit-1/media/HypothesisTesting.png)</span></span>
 <span id="cb18-212"><a href="#cb18-212" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-213"><a href="#cb18-213" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-214"><a href="#cb18-214" aria-hidden="true" tabindex="-1"></a>\text{Power} = 1 - \beta</span>
-<span id="cb18-215"><a href="#cb18-215" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-213"><a href="#cb18-213" aria-hidden="true" tabindex="-1"></a><span class="fu">## Power Calculation: Ensuring Detectability</span></span>
+<span id="cb18-214"><a href="#cb18-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-215"><a href="#cb18-215" aria-hidden="true" tabindex="-1"></a>**Statistical power** refers to the ability of a test to correctly reject the null hypothesis when a true effect exists. Mathematically:</span>
 <span id="cb18-216"><a href="#cb18-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-217"><a href="#cb18-217" aria-hidden="true" tabindex="-1"></a>Factors influencing power:</span>
-<span id="cb18-218"><a href="#cb18-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-219"><a href="#cb18-219" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Effect size (**$\tau$): Larger effects are easier to detect.</span>
-<span id="cb18-220"><a href="#cb18-220" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Sample size (**$N$): Larger samples reduce variability, increasing power.</span>
-<span id="cb18-221"><a href="#cb18-221" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Significance level (**$\alpha$): Lowering $\alpha$ increases the risk of missing true effects.</span>
-<span id="cb18-222"><a href="#cb18-222" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Standard deviation of outcomes**: Higher variability in outcomes reduces power.</span>
-<span id="cb18-223"><a href="#cb18-223" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-224"><a href="#cb18-224" aria-hidden="true" tabindex="-1"></a>To achieve a well-powered experiment, researchers conduct **power calculations** before data collection to determine the minimum sample size required to detect an effect with reasonable confidence.</span>
-<span id="cb18-225"><a href="#cb18-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-226"><a href="#cb18-226" aria-hidden="true" tabindex="-1"></a><span class="fu">### A Simple Example</span></span>
+<span id="cb18-217"><a href="#cb18-217" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-218"><a href="#cb18-218" aria-hidden="true" tabindex="-1"></a>\text{Power} = 1 - \beta</span>
+<span id="cb18-219"><a href="#cb18-219" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-220"><a href="#cb18-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-221"><a href="#cb18-221" aria-hidden="true" tabindex="-1"></a>Factors influencing power:</span>
+<span id="cb18-222"><a href="#cb18-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-223"><a href="#cb18-223" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Effect size (**$\tau$): Larger effects are easier to detect.</span>
+<span id="cb18-224"><a href="#cb18-224" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Sample size (**$N$): Larger samples reduce variability, increasing power.</span>
+<span id="cb18-225"><a href="#cb18-225" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Significance level (**$\alpha$): Lowering $\alpha$ increases the risk of missing true effects.</span>
+<span id="cb18-226"><a href="#cb18-226" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Standard deviation of outcomes**: Higher variability in outcomes reduces power.</span>
 <span id="cb18-227"><a href="#cb18-227" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-228"><a href="#cb18-228" aria-hidden="true" tabindex="-1"></a>Let's consider a simple example of a power simulation using a simple random assignment to a treatment and control group, where the estimate is the **difference-in-means estimator**.</span>
+<span id="cb18-228"><a href="#cb18-228" aria-hidden="true" tabindex="-1"></a>To achieve a well-powered experiment, researchers conduct **power calculations** before data collection to determine the minimum sample size required to detect an effect with reasonable confidence.</span>
 <span id="cb18-229"><a href="#cb18-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-232"><a href="#cb18-232" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-233"><a href="#cb18-233" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb18-234"><a href="#cb18-234" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-235"><a href="#cb18-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-236"><a href="#cb18-236" aria-hidden="true" tabindex="-1"></a><span class="fu">#### **Step 1: Define Simulation Parameters**</span></span>
-<span id="cb18-237"><a href="#cb18-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-238"><a href="#cb18-238" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Let’s assume we have a total sample size of $N = 200$ individuals.</span>
-<span id="cb18-239"><a href="#cb18-239" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The treatment group receives an intervention, while the control group does not.</span>
-<span id="cb18-240"><a href="#cb18-240" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The true treatment effect is set to $\tau = 2$.</span>
-<span id="cb18-241"><a href="#cb18-241" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The outcome variable follows a normal distribution with mean 10 and standard deviation 4.</span>
-<span id="cb18-242"><a href="#cb18-242" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-245"><a href="#cb18-245" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-246"><a href="#cb18-246" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">072111</span>)  <span class="co"># Ensures reproducibility</span></span>
-<span id="cb18-247"><a href="#cb18-247" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-248"><a href="#cb18-248" aria-hidden="true" tabindex="-1"></a><span class="co"># Define parameters</span></span>
-<span id="cb18-249"><a href="#cb18-249" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">200</span>  <span class="co"># Total sample size</span></span>
-<span id="cb18-250"><a href="#cb18-250" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.5</span>  <span class="co"># Probability of assignment to treatment</span></span>
-<span id="cb18-251"><a href="#cb18-251" aria-hidden="true" tabindex="-1"></a>true_tau <span class="ot">&lt;-</span> <span class="dv">2</span>  <span class="co"># True treatment effect</span></span>
-<span id="cb18-252"><a href="#cb18-252" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">4</span>  <span class="co"># Standard deviation of outcome</span></span>
-<span id="cb18-253"><a href="#cb18-253" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-254"><a href="#cb18-254" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-255"><a href="#cb18-255" aria-hidden="true" tabindex="-1"></a><span class="fu">#### **Step 2: Simulate Data**</span></span>
-<span id="cb18-256"><a href="#cb18-256" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-257"><a href="#cb18-257" aria-hidden="true" tabindex="-1"></a>Now we can simulate the data using data.table:</span>
+<span id="cb18-230"><a href="#cb18-230" aria-hidden="true" tabindex="-1"></a><span class="fu">### A Simple Example</span></span>
+<span id="cb18-231"><a href="#cb18-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-232"><a href="#cb18-232" aria-hidden="true" tabindex="-1"></a>Let's consider a simple example of a power simulation using a simple random assignment to a treatment and control group, where the estimate is the **difference-in-means estimator**.</span>
+<span id="cb18-233"><a href="#cb18-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-236"><a href="#cb18-236" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-237"><a href="#cb18-237" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb18-238"><a href="#cb18-238" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-239"><a href="#cb18-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-240"><a href="#cb18-240" aria-hidden="true" tabindex="-1"></a><span class="fu">#### **Step 1: Define Simulation Parameters**</span></span>
+<span id="cb18-241"><a href="#cb18-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-242"><a href="#cb18-242" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Let’s assume we have a total sample size of $N = 200$ individuals.</span>
+<span id="cb18-243"><a href="#cb18-243" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The treatment group receives an intervention, while the control group does not.</span>
+<span id="cb18-244"><a href="#cb18-244" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The true treatment effect is set to $\tau = 2$.</span>
+<span id="cb18-245"><a href="#cb18-245" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The outcome variable follows a normal distribution with mean 10 and standard deviation 4.</span>
+<span id="cb18-246"><a href="#cb18-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-249"><a href="#cb18-249" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-250"><a href="#cb18-250" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">072111</span>)  <span class="co"># Ensures reproducibility</span></span>
+<span id="cb18-251"><a href="#cb18-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-252"><a href="#cb18-252" aria-hidden="true" tabindex="-1"></a><span class="co"># Define parameters</span></span>
+<span id="cb18-253"><a href="#cb18-253" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">200</span>  <span class="co"># Total sample size</span></span>
+<span id="cb18-254"><a href="#cb18-254" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.5</span>  <span class="co"># Probability of assignment to treatment</span></span>
+<span id="cb18-255"><a href="#cb18-255" aria-hidden="true" tabindex="-1"></a>true_tau <span class="ot">&lt;-</span> <span class="dv">2</span>  <span class="co"># True treatment effect</span></span>
+<span id="cb18-256"><a href="#cb18-256" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">4</span>  <span class="co"># Standard deviation of outcome</span></span>
+<span id="cb18-257"><a href="#cb18-257" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb18-258"><a href="#cb18-258" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-261"><a href="#cb18-261" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-262"><a href="#cb18-262" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate data using data.table</span></span>
-<span id="cb18-263"><a href="#cb18-263" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span>N)</span>
-<span id="cb18-264"><a href="#cb18-264" aria-hidden="true" tabindex="-1"></a>dt[, treatment <span class="sc">:</span><span class="er">=</span> <span class="fu">rbinom</span>(.N, <span class="dv">1</span>, p)]</span>
-<span id="cb18-265"><a href="#cb18-265" aria-hidden="true" tabindex="-1"></a>dt[, outcome <span class="sc">:</span><span class="er">=</span> <span class="dv">10</span> <span class="sc">+</span> true_tau <span class="sc">*</span> treatment <span class="sc">+</span> <span class="fu">rnorm</span>(.N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> sigma)]</span>
-<span id="cb18-266"><a href="#cb18-266" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-267"><a href="#cb18-267" aria-hidden="true" tabindex="-1"></a><span class="co">#display first few rows</span></span>
-<span id="cb18-268"><a href="#cb18-268" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span>
-<span id="cb18-269"><a href="#cb18-269" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-259"><a href="#cb18-259" aria-hidden="true" tabindex="-1"></a><span class="fu">#### **Step 2: Simulate Data**</span></span>
+<span id="cb18-260"><a href="#cb18-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-261"><a href="#cb18-261" aria-hidden="true" tabindex="-1"></a>Now we can simulate the data using data.table:</span>
+<span id="cb18-262"><a href="#cb18-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-265"><a href="#cb18-265" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-266"><a href="#cb18-266" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate data using data.table</span></span>
+<span id="cb18-267"><a href="#cb18-267" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span>N)</span>
+<span id="cb18-268"><a href="#cb18-268" aria-hidden="true" tabindex="-1"></a>dt[, treatment <span class="sc">:</span><span class="er">=</span> <span class="fu">rbinom</span>(.N, <span class="dv">1</span>, p)]</span>
+<span id="cb18-269"><a href="#cb18-269" aria-hidden="true" tabindex="-1"></a>dt[, outcome <span class="sc">:</span><span class="er">=</span> <span class="dv">10</span> <span class="sc">+</span> true_tau <span class="sc">*</span> treatment <span class="sc">+</span> <span class="fu">rnorm</span>(.N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> sigma)]</span>
 <span id="cb18-270"><a href="#cb18-270" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-271"><a href="#cb18-271" aria-hidden="true" tabindex="-1"></a><span class="fu">#### **Step 3: Estimate Treatment Effect**</span></span>
-<span id="cb18-272"><a href="#cb18-272" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-275"><a href="#cb18-275" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-276"><a href="#cb18-276" aria-hidden="true" tabindex="-1"></a>diff_means <span class="ot">&lt;-</span> dt[treatment <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">mean</span>(outcome)] <span class="sc">-</span> dt[treatment <span class="sc">==</span> <span class="dv">0</span>, <span class="fu">mean</span>(outcome)]</span>
-<span id="cb18-277"><a href="#cb18-277" aria-hidden="true" tabindex="-1"></a>SE <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(dt[treatment <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">var</span>(outcome)] <span class="sc">/</span> dt[treatment <span class="sc">==</span> <span class="dv">1</span>, .N] <span class="sc">+</span></span>
-<span id="cb18-278"><a href="#cb18-278" aria-hidden="true" tabindex="-1"></a>           dt[treatment <span class="sc">==</span> <span class="dv">0</span>, <span class="fu">var</span>(outcome)] <span class="sc">/</span> dt[treatment <span class="sc">==</span> <span class="dv">0</span>, .N])</span>
-<span id="cb18-279"><a href="#cb18-279" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-280"><a href="#cb18-280" aria-hidden="true" tabindex="-1"></a>t_stat <span class="ot">&lt;-</span> diff_means <span class="sc">/</span> SE  <span class="co"># Compute t-statistic</span></span>
-<span id="cb18-281"><a href="#cb18-281" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="fu">abs</span>(t_stat), <span class="at">df =</span> N <span class="sc">-</span> <span class="dv">2</span>))  <span class="co"># Two-tailed test</span></span>
-<span id="cb18-282"><a href="#cb18-282" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-283"><a href="#cb18-283" aria-hidden="true" tabindex="-1"></a><span class="co"># Display results</span></span>
-<span id="cb18-284"><a href="#cb18-284" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Estimated Treatment Effect:"</span>, diff_means, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb18-285"><a href="#cb18-285" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"p-value:"</span>, p_value, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb18-286"><a href="#cb18-286" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-287"><a href="#cb18-287" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-288"><a href="#cb18-288" aria-hidden="true" tabindex="-1"></a><span class="fu">#### **Step 4: Power Simulation**</span></span>
-<span id="cb18-289"><a href="#cb18-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-290"><a href="#cb18-290" aria-hidden="true" tabindex="-1"></a>First, let's consider how we will interpret the results:</span>
+<span id="cb18-271"><a href="#cb18-271" aria-hidden="true" tabindex="-1"></a><span class="co">#display first few rows</span></span>
+<span id="cb18-272"><a href="#cb18-272" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dt)</span>
+<span id="cb18-273"><a href="#cb18-273" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-274"><a href="#cb18-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-275"><a href="#cb18-275" aria-hidden="true" tabindex="-1"></a><span class="fu">#### **Step 3: Estimate Treatment Effect**</span></span>
+<span id="cb18-276"><a href="#cb18-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-279"><a href="#cb18-279" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-280"><a href="#cb18-280" aria-hidden="true" tabindex="-1"></a>diff_means <span class="ot">&lt;-</span> dt[treatment <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">mean</span>(outcome)] <span class="sc">-</span> dt[treatment <span class="sc">==</span> <span class="dv">0</span>, <span class="fu">mean</span>(outcome)]</span>
+<span id="cb18-281"><a href="#cb18-281" aria-hidden="true" tabindex="-1"></a>SE <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(dt[treatment <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">var</span>(outcome)] <span class="sc">/</span> dt[treatment <span class="sc">==</span> <span class="dv">1</span>, .N] <span class="sc">+</span></span>
+<span id="cb18-282"><a href="#cb18-282" aria-hidden="true" tabindex="-1"></a>           dt[treatment <span class="sc">==</span> <span class="dv">0</span>, <span class="fu">var</span>(outcome)] <span class="sc">/</span> dt[treatment <span class="sc">==</span> <span class="dv">0</span>, .N])</span>
+<span id="cb18-283"><a href="#cb18-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-284"><a href="#cb18-284" aria-hidden="true" tabindex="-1"></a>t_stat <span class="ot">&lt;-</span> diff_means <span class="sc">/</span> SE  <span class="co"># Compute t-statistic</span></span>
+<span id="cb18-285"><a href="#cb18-285" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="fu">abs</span>(t_stat), <span class="at">df =</span> N <span class="sc">-</span> <span class="dv">2</span>))  <span class="co"># Two-tailed test</span></span>
+<span id="cb18-286"><a href="#cb18-286" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-287"><a href="#cb18-287" aria-hidden="true" tabindex="-1"></a><span class="co"># Display results</span></span>
+<span id="cb18-288"><a href="#cb18-288" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Estimated Treatment Effect:"</span>, diff_means, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb18-289"><a href="#cb18-289" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"p-value:"</span>, p_value, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb18-290"><a href="#cb18-290" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb18-291"><a href="#cb18-291" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-292"><a href="#cb18-292" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>If the p-value is **less than 0.05**, we reject the null hypothesis and conclude that the treatment has a significant effect.</span>
-<span id="cb18-293"><a href="#cb18-293" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>If the p-value is **greater than 0.05**, we fail to reject the null, meaning we do not have enough evidence to confirm a treatment effect.</span>
-<span id="cb18-294"><a href="#cb18-294" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-295"><a href="#cb18-295" aria-hidden="true" tabindex="-1"></a>Now, let's simulate a power simulation:</span>
-<span id="cb18-296"><a href="#cb18-296" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-297"><a href="#cb18-297" aria-hidden="true" tabindex="-1"></a>First, define the power simulation function:</span>
+<span id="cb18-292"><a href="#cb18-292" aria-hidden="true" tabindex="-1"></a><span class="fu">#### **Step 4: Power Simulation**</span></span>
+<span id="cb18-293"><a href="#cb18-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-294"><a href="#cb18-294" aria-hidden="true" tabindex="-1"></a>First, let's consider how we will interpret the results:</span>
+<span id="cb18-295"><a href="#cb18-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-296"><a href="#cb18-296" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>If the p-value is **less than 0.05**, we reject the null hypothesis and conclude that the treatment has a significant effect.</span>
+<span id="cb18-297"><a href="#cb18-297" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>If the p-value is **greater than 0.05**, we fail to reject the null, meaning we do not have enough evidence to confirm a treatment effect.</span>
 <span id="cb18-298"><a href="#cb18-298" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-301"><a href="#cb18-301" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-302"><a href="#cb18-302" aria-hidden="true" tabindex="-1"></a>simulate_power <span class="ot">&lt;-</span> <span class="cf">function</span>(N, true_tau, sigma, p, alpha, <span class="at">reps =</span> <span class="dv">1000</span>) {</span>
-<span id="cb18-303"><a href="#cb18-303" aria-hidden="true" tabindex="-1"></a>  rejections <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb18-304"><a href="#cb18-304" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb18-305"><a href="#cb18-305" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>reps) {</span>
-<span id="cb18-306"><a href="#cb18-306" aria-hidden="true" tabindex="-1"></a>    dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span>N)</span>
-<span id="cb18-307"><a href="#cb18-307" aria-hidden="true" tabindex="-1"></a>    dt[, treatment <span class="sc">:</span><span class="er">=</span> <span class="fu">rbinom</span>(.N, <span class="dv">1</span>, p)]</span>
-<span id="cb18-308"><a href="#cb18-308" aria-hidden="true" tabindex="-1"></a>    dt[, outcome <span class="sc">:</span><span class="er">=</span> <span class="dv">10</span> <span class="sc">+</span> true_tau <span class="sc">*</span> treatment <span class="sc">+</span> <span class="fu">rnorm</span>(.N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> sigma)]</span>
-<span id="cb18-309"><a href="#cb18-309" aria-hidden="true" tabindex="-1"></a>    diff_means <span class="ot">&lt;-</span> dt[treatment <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">mean</span>(outcome)] <span class="sc">-</span> dt[treatment <span class="sc">==</span> <span class="dv">0</span>, <span class="fu">mean</span>(outcome)]</span>
-<span id="cb18-310"><a href="#cb18-310" aria-hidden="true" tabindex="-1"></a>    SE <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(dt[treatment <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">var</span>(outcome)] <span class="sc">/</span> dt[treatment <span class="sc">==</span> <span class="dv">1</span>, .N] <span class="sc">+</span></span>
-<span id="cb18-311"><a href="#cb18-311" aria-hidden="true" tabindex="-1"></a>               dt[treatment <span class="sc">==</span> <span class="dv">0</span>, <span class="fu">var</span>(outcome)] <span class="sc">/</span> dt[treatment <span class="sc">==</span> <span class="dv">0</span>, .N])</span>
-<span id="cb18-312"><a href="#cb18-312" aria-hidden="true" tabindex="-1"></a>    t_stat <span class="ot">&lt;-</span> diff_means <span class="sc">/</span> SE</span>
-<span id="cb18-313"><a href="#cb18-313" aria-hidden="true" tabindex="-1"></a>    p_value <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="fu">abs</span>(t_stat), <span class="at">df =</span> N <span class="sc">-</span> <span class="dv">2</span>))</span>
-<span id="cb18-314"><a href="#cb18-314" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb18-315"><a href="#cb18-315" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (p_value <span class="sc">&lt;</span> alpha) {</span>
-<span id="cb18-316"><a href="#cb18-316" aria-hidden="true" tabindex="-1"></a>      rejections <span class="ot">&lt;-</span> rejections <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb18-317"><a href="#cb18-317" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb18-318"><a href="#cb18-318" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb18-319"><a href="#cb18-319" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(rejections <span class="sc">/</span> reps)</span>
-<span id="cb18-320"><a href="#cb18-320" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb18-321"><a href="#cb18-321" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-322"><a href="#cb18-322" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-323"><a href="#cb18-323" aria-hidden="true" tabindex="-1"></a>Now, simulate this experiment **1,000 times**:</span>
-<span id="cb18-324"><a href="#cb18-324" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-327"><a href="#cb18-327" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-328"><a href="#cb18-328" aria-hidden="true" tabindex="-1"></a><span class="co"># Run power simulation</span></span>
-<span id="cb18-329"><a href="#cb18-329" aria-hidden="true" tabindex="-1"></a>power <span class="ot">&lt;-</span> <span class="fu">simulate_power</span>(<span class="at">N =</span> <span class="dv">200</span>, <span class="at">true_tau =</span> <span class="dv">2</span>, <span class="at">sigma =</span> <span class="dv">4</span>, <span class="at">p =</span> <span class="fl">0.5</span>, <span class="at">alpha =</span> <span class="fl">0.05</span>, <span class="at">reps =</span> <span class="dv">1000</span>)</span>
-<span id="cb18-330"><a href="#cb18-330" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Estimated Power:"</span>, power, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb18-331"><a href="#cb18-331" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-332"><a href="#cb18-332" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-333"><a href="#cb18-333" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Step 5: Interpreting Power Calculation**</span></span>
-<span id="cb18-334"><a href="#cb18-334" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-335"><a href="#cb18-335" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The **power** of the test is the proportion of simulations in which we correctly reject the null hypothesis when the treatment effect is truly $\tau = 2$.</span>
-<span id="cb18-336"><a href="#cb18-336" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>A power value close to **0.80 or higher** indicates that the experiment is well-powered.</span>
-<span id="cb18-337"><a href="#cb18-337" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-338"><a href="#cb18-338" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
-<span id="cb18-339"><a href="#cb18-339" aria-hidden="true" tabindex="-1"></a>Try changing the sample size or effect size, to see how the power changes.</span>
-<span id="cb18-340"><a href="#cb18-340" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb18-299"><a href="#cb18-299" aria-hidden="true" tabindex="-1"></a>Now, let's simulate a power simulation:</span>
+<span id="cb18-300"><a href="#cb18-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-301"><a href="#cb18-301" aria-hidden="true" tabindex="-1"></a>First, define the power simulation function:</span>
+<span id="cb18-302"><a href="#cb18-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-305"><a href="#cb18-305" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-306"><a href="#cb18-306" aria-hidden="true" tabindex="-1"></a>simulate_power <span class="ot">&lt;-</span> <span class="cf">function</span>(N, true_tau, sigma, p, alpha, <span class="at">reps =</span> <span class="dv">1000</span>) {</span>
+<span id="cb18-307"><a href="#cb18-307" aria-hidden="true" tabindex="-1"></a>  rejections <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb18-308"><a href="#cb18-308" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-309"><a href="#cb18-309" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>reps) {</span>
+<span id="cb18-310"><a href="#cb18-310" aria-hidden="true" tabindex="-1"></a>    dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span>N)</span>
+<span id="cb18-311"><a href="#cb18-311" aria-hidden="true" tabindex="-1"></a>    dt[, treatment <span class="sc">:</span><span class="er">=</span> <span class="fu">rbinom</span>(.N, <span class="dv">1</span>, p)]</span>
+<span id="cb18-312"><a href="#cb18-312" aria-hidden="true" tabindex="-1"></a>    dt[, outcome <span class="sc">:</span><span class="er">=</span> <span class="dv">10</span> <span class="sc">+</span> true_tau <span class="sc">*</span> treatment <span class="sc">+</span> <span class="fu">rnorm</span>(.N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> sigma)]</span>
+<span id="cb18-313"><a href="#cb18-313" aria-hidden="true" tabindex="-1"></a>    diff_means <span class="ot">&lt;-</span> dt[treatment <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">mean</span>(outcome)] <span class="sc">-</span> dt[treatment <span class="sc">==</span> <span class="dv">0</span>, <span class="fu">mean</span>(outcome)]</span>
+<span id="cb18-314"><a href="#cb18-314" aria-hidden="true" tabindex="-1"></a>    SE <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(dt[treatment <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">var</span>(outcome)] <span class="sc">/</span> dt[treatment <span class="sc">==</span> <span class="dv">1</span>, .N] <span class="sc">+</span></span>
+<span id="cb18-315"><a href="#cb18-315" aria-hidden="true" tabindex="-1"></a>               dt[treatment <span class="sc">==</span> <span class="dv">0</span>, <span class="fu">var</span>(outcome)] <span class="sc">/</span> dt[treatment <span class="sc">==</span> <span class="dv">0</span>, .N])</span>
+<span id="cb18-316"><a href="#cb18-316" aria-hidden="true" tabindex="-1"></a>    t_stat <span class="ot">&lt;-</span> diff_means <span class="sc">/</span> SE</span>
+<span id="cb18-317"><a href="#cb18-317" aria-hidden="true" tabindex="-1"></a>    p_value <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="fu">abs</span>(t_stat), <span class="at">df =</span> N <span class="sc">-</span> <span class="dv">2</span>))</span>
+<span id="cb18-318"><a href="#cb18-318" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-319"><a href="#cb18-319" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (p_value <span class="sc">&lt;</span> alpha) {</span>
+<span id="cb18-320"><a href="#cb18-320" aria-hidden="true" tabindex="-1"></a>      rejections <span class="ot">&lt;-</span> rejections <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb18-321"><a href="#cb18-321" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb18-322"><a href="#cb18-322" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb18-323"><a href="#cb18-323" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(rejections <span class="sc">/</span> reps)</span>
+<span id="cb18-324"><a href="#cb18-324" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-325"><a href="#cb18-325" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-326"><a href="#cb18-326" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-327"><a href="#cb18-327" aria-hidden="true" tabindex="-1"></a>Now, simulate this experiment **1,000 times**:</span>
+<span id="cb18-328"><a href="#cb18-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-331"><a href="#cb18-331" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-332"><a href="#cb18-332" aria-hidden="true" tabindex="-1"></a><span class="co"># Run power simulation</span></span>
+<span id="cb18-333"><a href="#cb18-333" aria-hidden="true" tabindex="-1"></a>power <span class="ot">&lt;-</span> <span class="fu">simulate_power</span>(<span class="at">N =</span> <span class="dv">200</span>, <span class="at">true_tau =</span> <span class="dv">2</span>, <span class="at">sigma =</span> <span class="dv">4</span>, <span class="at">p =</span> <span class="fl">0.5</span>, <span class="at">alpha =</span> <span class="fl">0.05</span>, <span class="at">reps =</span> <span class="dv">1000</span>)</span>
+<span id="cb18-334"><a href="#cb18-334" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Estimated Power:"</span>, power, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb18-335"><a href="#cb18-335" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-336"><a href="#cb18-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-337"><a href="#cb18-337" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Step 5: Interpreting Power Calculation**</span></span>
+<span id="cb18-338"><a href="#cb18-338" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-339"><a href="#cb18-339" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The **power** of the test is the proportion of simulations in which we correctly reject the null hypothesis when the treatment effect is truly $\tau = 2$.</span>
+<span id="cb18-340"><a href="#cb18-340" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>A power value close to **0.80 or higher** indicates that the experiment is well-powered.</span>
 <span id="cb18-341"><a href="#cb18-341" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-342"><a href="#cb18-342" aria-hidden="true" tabindex="-1"></a><span class="fu"># Simulations in Research Design</span></span>
-<span id="cb18-343"><a href="#cb18-343" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-344"><a href="#cb18-344" aria-hidden="true" tabindex="-1"></a>To fix ideas of what we're doing with simulations, it might be helpful to take a step back and view this in the context of an overall research design.</span>
+<span id="cb18-342"><a href="#cb18-342" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb18-343"><a href="#cb18-343" aria-hidden="true" tabindex="-1"></a>Try changing the sample size or effect size, to see how the power changes.</span>
+<span id="cb18-344"><a href="#cb18-344" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb18-345"><a href="#cb18-345" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-346"><a href="#cb18-346" aria-hidden="true" tabindex="-1"></a>We aim to generate empirical answers that closely approximate the true treatment effect. However, because we never observe both potential outcomes for an individual, we rely on statistical methods and experimental design to make **valid inferences**. Simulation plays a crucial role in assessing research designs, allowing us to compare **simulated answers** to possible true answers across multiple realizations of a study.</span>
+<span id="cb18-346"><a href="#cb18-346" aria-hidden="true" tabindex="-1"></a><span class="fu"># Simulations in Research Design</span></span>
 <span id="cb18-347"><a href="#cb18-347" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-348"><a href="#cb18-348" aria-hidden="true" tabindex="-1"></a>In empirical research, a design consists of two halves:</span>
+<span id="cb18-348"><a href="#cb18-348" aria-hidden="true" tabindex="-1"></a>To fix ideas of what we're doing with simulations, it might be helpful to take a step back and view this in the context of an overall research design.</span>
 <span id="cb18-349"><a href="#cb18-349" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-350"><a href="#cb18-350" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Theoretical Component**: Defines the inquiry using a model $M$.</span>
-<span id="cb18-351"><a href="#cb18-351" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Empirical Component**: Applies the data strategy $D$ to generate a dataset, then applies an estimation strategy $A$ to obtain the empirical answer $a_d$.</span>
-<span id="cb18-352"><a href="#cb18-352" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-353"><a href="#cb18-353" aria-hidden="true" tabindex="-1"></a>Simulation dissociates the design from reality, allowing researchers to assess how their chosen model performs across various possible scenarios, even when the true answer is unknown.</span>
-<span id="cb18-354"><a href="#cb18-354" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-355"><a href="#cb18-355" aria-hidden="true" tabindex="-1"></a><span class="fu">## The MIDA Framework for Simulation</span></span>
+<span id="cb18-350"><a href="#cb18-350" aria-hidden="true" tabindex="-1"></a>We aim to generate empirical answers that closely approximate the true treatment effect. However, because we never observe both potential outcomes for an individual, we rely on statistical methods and experimental design to make **valid inferences**. Simulation plays a crucial role in assessing research designs, allowing us to compare **simulated answers** to possible true answers across multiple realizations of a study.</span>
+<span id="cb18-351"><a href="#cb18-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-352"><a href="#cb18-352" aria-hidden="true" tabindex="-1"></a>In empirical research, a design consists of two halves:</span>
+<span id="cb18-353"><a href="#cb18-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-354"><a href="#cb18-354" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Theoretical Component**: Defines the inquiry using a model $M$.</span>
+<span id="cb18-355"><a href="#cb18-355" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Empirical Component**: Applies the data strategy $D$ to generate a dataset, then applies an estimation strategy $A$ to obtain the empirical answer $a_d$.</span>
 <span id="cb18-356"><a href="#cb18-356" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-357"><a href="#cb18-357" aria-hidden="true" tabindex="-1"></a>A structured way to think about research design and simulation is the **MIDA Framework**,<span class="ot">[^4]</span>(https://book.declaredesign.org/declaration-diagnosis-redesign/research-design.html)<span class="sc">\]</span> which consists of:</span>
+<span id="cb18-357"><a href="#cb18-357" aria-hidden="true" tabindex="-1"></a>Simulation dissociates the design from reality, allowing researchers to assess how their chosen model performs across various possible scenarios, even when the true answer is unknown.</span>
 <span id="cb18-358"><a href="#cb18-358" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-359"><a href="#cb18-359" aria-hidden="true" tabindex="-1"></a><span class="ot">[^4]: </span>Reference: Declaration Design</span>
+<span id="cb18-359"><a href="#cb18-359" aria-hidden="true" tabindex="-1"></a><span class="fu">## The MIDA Framework for Simulation</span></span>
 <span id="cb18-360"><a href="#cb18-360" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-361"><a href="#cb18-361" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**M**: The Model - The underlying data-generating process that defines the inquiry.</span>
-<span id="cb18-362"><a href="#cb18-362" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**I**: The Inquiry - The specific research question we are trying to answer.</span>
-<span id="cb18-363"><a href="#cb18-363" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**D**: The Data Strategy - The way we collect and structure data, including sampling and treatment assignment.</span>
-<span id="cb18-364"><a href="#cb18-364" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**A**: The Answer Strategy - The statistical method we use to estimate the effect.</span>
-<span id="cb18-365"><a href="#cb18-365" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-366"><a href="#cb18-366" aria-hidden="true" tabindex="-1"></a><span class="al">![MIDA Framework, Source: Declaration Design](/unit-1/media/MIDA.svg)</span></span>
-<span id="cb18-367"><a href="#cb18-367" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-368"><a href="#cb18-368" aria-hidden="true" tabindex="-1"></a><span class="al">![Elements of Research Design, Source: Declaration Design](/unit-1/media/RDElements.png)</span></span>
+<span id="cb18-361"><a href="#cb18-361" aria-hidden="true" tabindex="-1"></a>A structured way to think about research design and simulation is the **MIDA Framework**,<span class="ot">[^4]</span>(https://book.declaredesign.org/declaration-diagnosis-redesign/research-design.html)<span class="sc">\]</span> which consists of:</span>
+<span id="cb18-362"><a href="#cb18-362" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-363"><a href="#cb18-363" aria-hidden="true" tabindex="-1"></a><span class="ot">[^4]: </span>Reference: Declaration Design</span>
+<span id="cb18-364"><a href="#cb18-364" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-365"><a href="#cb18-365" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**M**: The Model - The underlying data-generating process that defines the inquiry.</span>
+<span id="cb18-366"><a href="#cb18-366" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**I**: The Inquiry - The specific research question we are trying to answer.</span>
+<span id="cb18-367"><a href="#cb18-367" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**D**: The Data Strategy - The way we collect and structure data, including sampling and treatment assignment.</span>
+<span id="cb18-368"><a href="#cb18-368" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**A**: The Answer Strategy - The statistical method we use to estimate the effect.</span>
 <span id="cb18-369"><a href="#cb18-369" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-370"><a href="#cb18-370" aria-hidden="true" tabindex="-1"></a>In a real-world study, we can only observe a single realization of the design and generate one empirical answer $a_d$. However, through **simulation**, we can consider many possible data realizations by repeatedly drawing from different models $m_1, m_2, ..., m_k$ within the model space $M$. This allows us to assess how our research design performs across different scenarios.</span>
+<span id="cb18-370"><a href="#cb18-370" aria-hidden="true" tabindex="-1"></a><span class="al">![MIDA Framework, Source: Declaration Design](/unit-1/media/MIDA.svg)</span></span>
 <span id="cb18-371"><a href="#cb18-371" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-372"><a href="#cb18-372" aria-hidden="true" tabindex="-1"></a><span class="fu">## Diagnosing Research Designs with Simulation</span></span>
+<span id="cb18-372"><a href="#cb18-372" aria-hidden="true" tabindex="-1"></a><span class="al">![Elements of Research Design, Source: Declaration Design](/unit-1/media/RDElements.png)</span></span>
 <span id="cb18-373"><a href="#cb18-373" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-374"><a href="#cb18-374" aria-hidden="true" tabindex="-1"></a>When we simulate a research design, we evaluate its **performance** by considering:</span>
+<span id="cb18-374"><a href="#cb18-374" aria-hidden="true" tabindex="-1"></a>In a real-world study, we can only observe a single realization of the design and generate one empirical answer $a_d$. However, through **simulation**, we can consider many possible data realizations by repeatedly drawing from different models $m_1, m_2, ..., m_k$ within the model space $M$. This allows us to assess how our research design performs across different scenarios.</span>
 <span id="cb18-375"><a href="#cb18-375" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-376"><a href="#cb18-376" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Bias**: How close is the empirical answer $a_d$ to the true answer $a_m$?</span>
-<span id="cb18-377"><a href="#cb18-377" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Variance**: How much do the empirical answers fluctuate across different realizations?</span>
-<span id="cb18-378"><a href="#cb18-378" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Coverage**: How often do confidence intervals include the true effect?</span>
-<span id="cb18-379"><a href="#cb18-379" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Power**: How frequently does the study correctly reject the null hypothesis when a true effect exists?</span>
-<span id="cb18-380"><a href="#cb18-380" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-381"><a href="#cb18-381" aria-hidden="true" tabindex="-1"></a>The bottom half of the figure below illustrates how simulation allows us to examine the research design across multiple models ($m_1, ..., m_k$), generating different answers ($a_{m_1}, a_{m_2}, ..., a_{m_k}$) and associated datasets ($d_1, d_2, ..., d_k$). The simulated research design does not have direct access to the true answer but can assess performance across the models under consideration.</span>
-<span id="cb18-382"><a href="#cb18-382" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-383"><a href="#cb18-383" aria-hidden="true" tabindex="-1"></a><span class="al">![Simulations in the MIDA Framework](/unit-1/media/MIDA-Simulation.svg)</span></span>
+<span id="cb18-376"><a href="#cb18-376" aria-hidden="true" tabindex="-1"></a><span class="fu">## Diagnosing Research Designs with Simulation</span></span>
+<span id="cb18-377"><a href="#cb18-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-378"><a href="#cb18-378" aria-hidden="true" tabindex="-1"></a>When we simulate a research design, we evaluate its **performance** by considering:</span>
+<span id="cb18-379"><a href="#cb18-379" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-380"><a href="#cb18-380" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Bias**: How close is the empirical answer $a_d$ to the true answer $a_m$?</span>
+<span id="cb18-381"><a href="#cb18-381" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Variance**: How much do the empirical answers fluctuate across different realizations?</span>
+<span id="cb18-382"><a href="#cb18-382" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Coverage**: How often do confidence intervals include the true effect?</span>
+<span id="cb18-383"><a href="#cb18-383" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Power**: How frequently does the study correctly reject the null hypothesis when a true effect exists?</span>
 <span id="cb18-384"><a href="#cb18-384" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-385"><a href="#cb18-385" aria-hidden="true" tabindex="-1"></a><span class="fu"># Multiple Hypothesis Testing</span></span>
+<span id="cb18-385"><a href="#cb18-385" aria-hidden="true" tabindex="-1"></a>The bottom half of the figure below illustrates how simulation allows us to examine the research design across multiple models ($m_1, ..., m_k$), generating different answers ($a_{m_1}, a_{m_2}, ..., a_{m_k}$) and associated datasets ($d_1, d_2, ..., d_k$). The simulated research design does not have direct access to the true answer but can assess performance across the models under consideration.</span>
 <span id="cb18-386"><a href="#cb18-386" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-387"><a href="#cb18-387" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Challenge of Multiple Hypothesis Testing</span></span>
+<span id="cb18-387"><a href="#cb18-387" aria-hidden="true" tabindex="-1"></a><span class="al">![Simulations in the MIDA Framework](/unit-1/media/MIDA-Simulation.svg)</span></span>
 <span id="cb18-388"><a href="#cb18-388" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-389"><a href="#cb18-389" aria-hidden="true" tabindex="-1"></a>In many empirical settings, researchers conduct **multiple hypothesis tests** rather than a single test. This introduces the risk of **false positives**, or mistakenly finding significant effects simply due to chance. Multiple hypothesis testing arises naturally in at least three key scenarios:</span>
+<span id="cb18-389"><a href="#cb18-389" aria-hidden="true" tabindex="-1"></a><span class="fu"># Multiple Hypothesis Testing</span></span>
 <span id="cb18-390"><a href="#cb18-390" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-391"><a href="#cb18-391" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Multiple Outcomes**: When we examine several outcomes ($Y_i$) to determine whether any are affected by the treatment.</span>
-<span id="cb18-392"><a href="#cb18-392" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Heterogeneous Treatment Effects (CATEs)**: When treatment effects vary across subgroups, and we want to assess which subgroups exhibit an effect.</span>
-<span id="cb18-393"><a href="#cb18-393" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Multiple Treatments**: When we compare multiple interventions ($D_i$) and want to test their effects relative to a control group or to each other.</span>
+<span id="cb18-391"><a href="#cb18-391" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Challenge of Multiple Hypothesis Testing</span></span>
+<span id="cb18-392"><a href="#cb18-392" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-393"><a href="#cb18-393" aria-hidden="true" tabindex="-1"></a>In many empirical settings, researchers conduct **multiple hypothesis tests** rather than a single test. This introduces the risk of **false positives**, or mistakenly finding significant effects simply due to chance. Multiple hypothesis testing arises naturally in at least three key scenarios:</span>
 <span id="cb18-394"><a href="#cb18-394" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-395"><a href="#cb18-395" aria-hidden="true" tabindex="-1"></a>To properly interpret results, we need statistical techniques that **adjust for multiple comparisons** and control the probability of **false discoveries**.</span>
-<span id="cb18-396"><a href="#cb18-396" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-397"><a href="#cb18-397" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb18-395"><a href="#cb18-395" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Multiple Outcomes**: When we examine several outcomes ($Y_i$) to determine whether any are affected by the treatment.</span>
+<span id="cb18-396"><a href="#cb18-396" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Heterogeneous Treatment Effects (CATEs)**: When treatment effects vary across subgroups, and we want to assess which subgroups exhibit an effect.</span>
+<span id="cb18-397"><a href="#cb18-397" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Multiple Treatments**: When we compare multiple interventions ($D_i$) and want to test their effects relative to a control group or to each other.</span>
 <span id="cb18-398"><a href="#cb18-398" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-399"><a href="#cb18-399" aria-hidden="true" tabindex="-1"></a><span class="fu">## Types of Multiple Hypothesis Tests</span></span>
+<span id="cb18-399"><a href="#cb18-399" aria-hidden="true" tabindex="-1"></a>To properly interpret results, we need statistical techniques that **adjust for multiple comparisons** and control the probability of **false discoveries**.</span>
 <span id="cb18-400"><a href="#cb18-400" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-401"><a href="#cb18-401" aria-hidden="true" tabindex="-1"></a>There are two broad types of statistical hypothesis testing frameworks when dealing with multiple comparisons:</span>
+<span id="cb18-401"><a href="#cb18-401" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
 <span id="cb18-402"><a href="#cb18-402" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-403"><a href="#cb18-403" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Joint Tests**: These assess whether at least one hypothesis is true (e.g., "Is at least one treatment effective?").</span>
-<span id="cb18-404"><a href="#cb18-404" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Simultaneous Tests**: These examine whether multiple hypotheses are true at the same time (e.g., "Are both Treatment A and Treatment B effective?").</span>
-<span id="cb18-405"><a href="#cb18-405" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-406"><a href="#cb18-406" aria-hidden="true" tabindex="-1"></a>When conducting multiple tests, researchers need to control for an increased **family-wise error rate (FWER)**, which is the probability of making at least one Type I error (false positive).</span>
-<span id="cb18-407"><a href="#cb18-407" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-408"><a href="#cb18-408" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb18-403"><a href="#cb18-403" aria-hidden="true" tabindex="-1"></a><span class="fu">## Types of Multiple Hypothesis Tests</span></span>
+<span id="cb18-404"><a href="#cb18-404" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-405"><a href="#cb18-405" aria-hidden="true" tabindex="-1"></a>There are two broad types of statistical hypothesis testing frameworks when dealing with multiple comparisons:</span>
+<span id="cb18-406"><a href="#cb18-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-407"><a href="#cb18-407" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Joint Tests**: These assess whether at least one hypothesis is true (e.g., "Is at least one treatment effective?").</span>
+<span id="cb18-408"><a href="#cb18-408" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Simultaneous Tests**: These examine whether multiple hypotheses are true at the same time (e.g., "Are both Treatment A and Treatment B effective?").</span>
 <span id="cb18-409"><a href="#cb18-409" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-410"><a href="#cb18-410" aria-hidden="true" tabindex="-1"></a><span class="fu">## Controlling the Family-Wise Error Rate (FWER)</span></span>
+<span id="cb18-410"><a href="#cb18-410" aria-hidden="true" tabindex="-1"></a>When conducting multiple tests, researchers need to control for an increased **family-wise error rate (FWER)**, which is the probability of making at least one Type I error (false positive).</span>
 <span id="cb18-411"><a href="#cb18-411" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-412"><a href="#cb18-412" aria-hidden="true" tabindex="-1"></a>A single hypothesis test controls the probability of a **Type I error** at a given significance level ($\alpha$). However, with multiple tests, the probability of making **at least one false rejection** increases:</span>
+<span id="cb18-412"><a href="#cb18-412" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
 <span id="cb18-413"><a href="#cb18-413" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-414"><a href="#cb18-414" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-415"><a href="#cb18-415" aria-hidden="true" tabindex="-1"></a>\text{FWER} = 1 - (1 - \alpha)^k</span>
-<span id="cb18-416"><a href="#cb18-416" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-414"><a href="#cb18-414" aria-hidden="true" tabindex="-1"></a><span class="fu">## Controlling the Family-Wise Error Rate (FWER)</span></span>
+<span id="cb18-415"><a href="#cb18-415" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-416"><a href="#cb18-416" aria-hidden="true" tabindex="-1"></a>A single hypothesis test controls the probability of a **Type I error** at a given significance level ($\alpha$). However, with multiple tests, the probability of making **at least one false rejection** increases:</span>
 <span id="cb18-417"><a href="#cb18-417" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-418"><a href="#cb18-418" aria-hidden="true" tabindex="-1"></a>where $k$ is the number of tests. For example, if we conduct **5 tests at** $\alpha = 0.05$, the probability of making **no Type I errors** across all tests is:</span>
-<span id="cb18-419"><a href="#cb18-419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-418"><a href="#cb18-418" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-419"><a href="#cb18-419" aria-hidden="true" tabindex="-1"></a>\text{FWER} = 1 - (1 - \alpha)^k</span>
 <span id="cb18-420"><a href="#cb18-420" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-421"><a href="#cb18-421" aria-hidden="true" tabindex="-1"></a>(1 - 0.05)^5 = 0.7738</span>
-<span id="cb18-422"><a href="#cb18-422" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-421"><a href="#cb18-421" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-422"><a href="#cb18-422" aria-hidden="true" tabindex="-1"></a>where $k$ is the number of tests. For example, if we conduct **5 tests at** $\alpha = 0.05$, the probability of making **no Type I errors** across all tests is:</span>
 <span id="cb18-423"><a href="#cb18-423" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-424"><a href="#cb18-424" aria-hidden="true" tabindex="-1"></a>Thus, the probability of making **at least one** Type I error is:</span>
-<span id="cb18-425"><a href="#cb18-425" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-424"><a href="#cb18-424" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-425"><a href="#cb18-425" aria-hidden="true" tabindex="-1"></a>(1 - 0.05)^5 = 0.7738</span>
 <span id="cb18-426"><a href="#cb18-426" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-427"><a href="#cb18-427" aria-hidden="true" tabindex="-1"></a>FWER = 1 - 0.7738 = 0.2262</span>
-<span id="cb18-428"><a href="#cb18-428" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-427"><a href="#cb18-427" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-428"><a href="#cb18-428" aria-hidden="true" tabindex="-1"></a>Thus, the probability of making **at least one** Type I error is:</span>
 <span id="cb18-429"><a href="#cb18-429" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-430"><a href="#cb18-430" aria-hidden="true" tabindex="-1"></a>This means there is a **22.62% chance** of mistakenly rejecting at least one null hypothesis across the five tests. If we perform **20 tests**, the FWER increases to **64%**.</span>
-<span id="cb18-431"><a href="#cb18-431" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-432"><a href="#cb18-432" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb18-430"><a href="#cb18-430" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-431"><a href="#cb18-431" aria-hidden="true" tabindex="-1"></a>FWER = 1 - 0.7738 = 0.2262</span>
+<span id="cb18-432"><a href="#cb18-432" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb18-433"><a href="#cb18-433" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-434"><a href="#cb18-434" aria-hidden="true" tabindex="-1"></a><span class="fu">## Approaches to Controlling the FWER</span></span>
+<span id="cb18-434"><a href="#cb18-434" aria-hidden="true" tabindex="-1"></a>This means there is a **22.62% chance** of mistakenly rejecting at least one null hypothesis across the five tests. If we perform **20 tests**, the FWER increases to **64%**.</span>
 <span id="cb18-435"><a href="#cb18-435" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-436"><a href="#cb18-436" aria-hidden="true" tabindex="-1"></a>To mitigate this issue, researchers employ various **multiple testing corrections**, such as:</span>
+<span id="cb18-436"><a href="#cb18-436" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
 <span id="cb18-437"><a href="#cb18-437" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-438"><a href="#cb18-438" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Bonferroni Correction**: Adjusts the significance level by dividing $\alpha$ by the number of tests: $\alpha^* = \alpha / k$. This is simple but conservative.</span>
-<span id="cb18-439"><a href="#cb18-439" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Holm Method**: A stepwise procedure that ranks p-values and adjusts them sequentially to control the FWER more efficiently.</span>
-<span id="cb18-440"><a href="#cb18-440" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Modern Approaches (e.g., Westfall-Young, Benjamini-Hochberg FDR control)**: These methods control for false discovery rates and are widely used in large-scale testing.</span>
+<span id="cb18-438"><a href="#cb18-438" aria-hidden="true" tabindex="-1"></a><span class="fu">## Approaches to Controlling the FWER</span></span>
+<span id="cb18-439"><a href="#cb18-439" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-440"><a href="#cb18-440" aria-hidden="true" tabindex="-1"></a>To mitigate this issue, researchers employ various **multiple testing corrections**, such as:</span>
 <span id="cb18-441"><a href="#cb18-441" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-442"><a href="#cb18-442" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
-<span id="cb18-443"><a href="#cb18-443" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-444"><a href="#cb18-444" aria-hidden="true" tabindex="-1"></a><span class="fu">## Simulating Multiple Hypothesis Testing in R</span></span>
+<span id="cb18-442"><a href="#cb18-442" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Bonferroni Correction**: Adjusts the significance level by dividing $\alpha$ by the number of tests: $\alpha^* = \alpha / k$. This is simple but conservative.</span>
+<span id="cb18-443"><a href="#cb18-443" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Holm Method**: A stepwise procedure that ranks p-values and adjusts them sequentially to control the FWER more efficiently.</span>
+<span id="cb18-444"><a href="#cb18-444" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Modern Approaches (e.g., Westfall-Young, Benjamini-Hochberg FDR control)**: These methods control for false discovery rates and are widely used in large-scale testing.</span>
 <span id="cb18-445"><a href="#cb18-445" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-446"><a href="#cb18-446" aria-hidden="true" tabindex="-1"></a>To illustrate the impact of multiple testing and FWER correction, let's do a simulation in R:</span>
+<span id="cb18-446"><a href="#cb18-446" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
 <span id="cb18-447"><a href="#cb18-447" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-450"><a href="#cb18-450" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-451"><a href="#cb18-451" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb18-452"><a href="#cb18-452" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">072111</span>)  <span class="co"># Ensures reproducibility</span></span>
-<span id="cb18-453"><a href="#cb18-453" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-454"><a href="#cb18-454" aria-hidden="true" tabindex="-1"></a><span class="co"># Define parameters</span></span>
-<span id="cb18-455"><a href="#cb18-455" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">200</span>  <span class="co"># Sample size</span></span>
-<span id="cb18-456"><a href="#cb18-456" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">10</span>  <span class="co"># Number of hypothesis tests</span></span>
-<span id="cb18-457"><a href="#cb18-457" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span>  <span class="co"># Significance level</span></span>
-<span id="cb18-458"><a href="#cb18-458" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-459"><a href="#cb18-459" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate k independent hypothesis tests</span></span>
-<span id="cb18-460"><a href="#cb18-460" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">test_id =</span> <span class="dv">1</span><span class="sc">:</span>k)</span>
-<span id="cb18-461"><a href="#cb18-461" aria-hidden="true" tabindex="-1"></a>dt[, p_value <span class="sc">:</span><span class="er">=</span> <span class="fu">runif</span>(.N, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">1</span>)]  <span class="co"># Generate uniform random p-values</span></span>
+<span id="cb18-448"><a href="#cb18-448" aria-hidden="true" tabindex="-1"></a><span class="fu">## Simulating Multiple Hypothesis Testing in R</span></span>
+<span id="cb18-449"><a href="#cb18-449" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-450"><a href="#cb18-450" aria-hidden="true" tabindex="-1"></a>To illustrate the impact of multiple testing and FWER correction, let's do a simulation in R:</span>
+<span id="cb18-451"><a href="#cb18-451" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-454"><a href="#cb18-454" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-455"><a href="#cb18-455" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb18-456"><a href="#cb18-456" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">072111</span>)  <span class="co"># Ensures reproducibility</span></span>
+<span id="cb18-457"><a href="#cb18-457" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-458"><a href="#cb18-458" aria-hidden="true" tabindex="-1"></a><span class="co"># Define parameters</span></span>
+<span id="cb18-459"><a href="#cb18-459" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">200</span>  <span class="co"># Sample size</span></span>
+<span id="cb18-460"><a href="#cb18-460" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">10</span>  <span class="co"># Number of hypothesis tests</span></span>
+<span id="cb18-461"><a href="#cb18-461" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span>  <span class="co"># Significance level</span></span>
 <span id="cb18-462"><a href="#cb18-462" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-463"><a href="#cb18-463" aria-hidden="true" tabindex="-1"></a>dt[, bonferroni <span class="sc">:</span><span class="er">=</span> p_value <span class="sc">&lt;</span> (alpha <span class="sc">/</span> k)]  <span class="co"># Bonferroni correction</span></span>
-<span id="cb18-464"><a href="#cb18-464" aria-hidden="true" tabindex="-1"></a>dt[, holm <span class="sc">:</span><span class="er">=</span> <span class="fu">p.adjust</span>(p_value, <span class="at">method =</span> <span class="st">"holm"</span>) <span class="sc">&lt;</span> alpha]  <span class="co"># Holm correction</span></span>
-<span id="cb18-465"><a href="#cb18-465" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-466"><a href="#cb18-466" aria-hidden="true" tabindex="-1"></a>dt[, naive_reject <span class="sc">:</span><span class="er">=</span> p_value <span class="sc">&lt;</span> alpha]  <span class="co"># Standard test (without correction)</span></span>
-<span id="cb18-467"><a href="#cb18-467" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-468"><a href="#cb18-468" aria-hidden="true" tabindex="-1"></a><span class="co"># Count false positives</span></span>
-<span id="cb18-469"><a href="#cb18-469" aria-hidden="true" tabindex="-1"></a>false_discoveries <span class="ot">&lt;-</span> dt[, <span class="fu">sum</span>(naive_reject)]</span>
-<span id="cb18-470"><a href="#cb18-470" aria-hidden="true" tabindex="-1"></a>adjusted_false_discoveries <span class="ot">&lt;-</span> dt[, <span class="fu">sum</span>(bonferroni)]</span>
-<span id="cb18-471"><a href="#cb18-471" aria-hidden="true" tabindex="-1"></a>holm_false_discoveries <span class="ot">&lt;-</span> dt[, <span class="fu">sum</span>(holm)]</span>
-<span id="cb18-472"><a href="#cb18-472" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-473"><a href="#cb18-473" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"False positives (no correction):"</span>, false_discoveries, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb18-474"><a href="#cb18-474" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"False positives (Bonferroni correction):"</span>, adjusted_false_discoveries, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb18-475"><a href="#cb18-475" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"False positives (Holm correction):"</span>, holm_false_discoveries, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb18-476"><a href="#cb18-476" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-477"><a href="#cb18-477" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-478"><a href="#cb18-478" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Interpreting the Simulation**</span></span>
-<span id="cb18-479"><a href="#cb18-479" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-480"><a href="#cb18-480" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Without correction**, we expect around $\alpha \times k$ false discoveries.</span>
-<span id="cb18-481"><a href="#cb18-481" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Bonferroni correction** sharply reduces false positives but may be overly conservative.</span>
-<span id="cb18-482"><a href="#cb18-482" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Holm correction** provides a better balance, controlling FWER while maintaining statistical power.</span>
+<span id="cb18-463"><a href="#cb18-463" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate k independent hypothesis tests</span></span>
+<span id="cb18-464"><a href="#cb18-464" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">test_id =</span> <span class="dv">1</span><span class="sc">:</span>k)</span>
+<span id="cb18-465"><a href="#cb18-465" aria-hidden="true" tabindex="-1"></a>dt[, p_value <span class="sc">:</span><span class="er">=</span> <span class="fu">runif</span>(.N, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">1</span>)]  <span class="co"># Generate uniform random p-values</span></span>
+<span id="cb18-466"><a href="#cb18-466" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-467"><a href="#cb18-467" aria-hidden="true" tabindex="-1"></a>dt[, bonferroni <span class="sc">:</span><span class="er">=</span> p_value <span class="sc">&lt;</span> (alpha <span class="sc">/</span> k)]  <span class="co"># Bonferroni correction</span></span>
+<span id="cb18-468"><a href="#cb18-468" aria-hidden="true" tabindex="-1"></a>dt[, holm <span class="sc">:</span><span class="er">=</span> <span class="fu">p.adjust</span>(p_value, <span class="at">method =</span> <span class="st">"holm"</span>) <span class="sc">&lt;</span> alpha]  <span class="co"># Holm correction</span></span>
+<span id="cb18-469"><a href="#cb18-469" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-470"><a href="#cb18-470" aria-hidden="true" tabindex="-1"></a>dt[, naive_reject <span class="sc">:</span><span class="er">=</span> p_value <span class="sc">&lt;</span> alpha]  <span class="co"># Standard test (without correction)</span></span>
+<span id="cb18-471"><a href="#cb18-471" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-472"><a href="#cb18-472" aria-hidden="true" tabindex="-1"></a><span class="co"># Count false positives</span></span>
+<span id="cb18-473"><a href="#cb18-473" aria-hidden="true" tabindex="-1"></a>false_discoveries <span class="ot">&lt;-</span> dt[, <span class="fu">sum</span>(naive_reject)]</span>
+<span id="cb18-474"><a href="#cb18-474" aria-hidden="true" tabindex="-1"></a>adjusted_false_discoveries <span class="ot">&lt;-</span> dt[, <span class="fu">sum</span>(bonferroni)]</span>
+<span id="cb18-475"><a href="#cb18-475" aria-hidden="true" tabindex="-1"></a>holm_false_discoveries <span class="ot">&lt;-</span> dt[, <span class="fu">sum</span>(holm)]</span>
+<span id="cb18-476"><a href="#cb18-476" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-477"><a href="#cb18-477" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"False positives (no correction):"</span>, false_discoveries, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb18-478"><a href="#cb18-478" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"False positives (Bonferroni correction):"</span>, adjusted_false_discoveries, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb18-479"><a href="#cb18-479" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"False positives (Holm correction):"</span>, holm_false_discoveries, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb18-480"><a href="#cb18-480" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-481"><a href="#cb18-481" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-482"><a href="#cb18-482" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Interpreting the Simulation**</span></span>
 <span id="cb18-483"><a href="#cb18-483" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-484"><a href="#cb18-484" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
-<span id="cb18-485"><a href="#cb18-485" aria-hidden="true" tabindex="-1"></a>Note: In the lab, we'll cover some modern approaches that are more powerful but a bit more complex.</span>
-<span id="cb18-486"><a href="#cb18-486" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb18-484"><a href="#cb18-484" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Without correction**, we expect around $\alpha \times k$ false discoveries.</span>
+<span id="cb18-485"><a href="#cb18-485" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Bonferroni correction** sharply reduces false positives but may be overly conservative.</span>
+<span id="cb18-486"><a href="#cb18-486" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Holm correction** provides a better balance, controlling FWER while maintaining statistical power.</span>
 <span id="cb18-487"><a href="#cb18-487" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-488"><a href="#cb18-488" aria-hidden="true" tabindex="-1"></a><span class="fu"># References</span></span>
-<span id="cb18-489"><a href="#cb18-489" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-490"><a href="#cb18-490" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span><span class="co">[</span><span class="ot">Wager Chapter 1</span><span class="co">](https://web.stanford.edu/~swager/causal_inf_book.pdf)</span></span>
-<span id="cb18-491"><a href="#cb18-491" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span><span class="co">[</span><span class="ot">Declare Design Book</span><span class="co">](https://book.declaredesign.org/declaration-diagnosis-redesign/declaring-designs.html)</span></span>
+<span id="cb18-488"><a href="#cb18-488" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb18-489"><a href="#cb18-489" aria-hidden="true" tabindex="-1"></a>Note: In the lab, we'll cover some modern approaches that are more powerful but a bit more complex.</span>
+<span id="cb18-490"><a href="#cb18-490" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb18-491"><a href="#cb18-491" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-492"><a href="#cb18-492" aria-hidden="true" tabindex="-1"></a><span class="fu"># References</span></span>
+<span id="cb18-493"><a href="#cb18-493" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-494"><a href="#cb18-494" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span><span class="co">[</span><span class="ot">Wager Chapter 1</span><span class="co">](https://web.stanford.edu/~swager/causal_inf_book.pdf)</span></span>
+<span id="cb18-495"><a href="#cb18-495" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span><span class="co">[</span><span class="ot">Declare Design Book</span><span class="co">](https://book.declaredesign.org/declaration-diagnosis-redesign/declaring-designs.html)</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

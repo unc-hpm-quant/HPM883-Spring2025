@@ -134,7 +134,11 @@ $$
 
 where $N$ is the total number of units in the study. Unlike in the super-population approach, the potential outcomes in a finite population framework are **fixed, not random**. The treatment effect is then viewed as an empirical quantity to be estimated within the sample, rather than a parameter of an underlying distribution.
 
-A **practical distinction** between the two approaches is in their implications for statistical inference: - In the **super-population approach**, standard errors reflect both **sampling variability** and **randomization-induced variation**. - In the **finite-population approach**, standard errors are based only on the **variation within the observed sample**, without assuming a broader distribution.
+A **practical distinction** between the two approaches is in their implications for statistical inference:
+
+-   In the **super-population approach**, standard errors reflect both **sampling variability** and **randomization-induced variation**.
+
+-   In the **finite-population approach**, standard errors are based only on the **variation within the observed sample**, without assuming a broader distribution.
 
 This framework is particularly relevant when researchers are concerned with **internal validity** over generalizability, such as in **program evaluations or field experiments**.
 
