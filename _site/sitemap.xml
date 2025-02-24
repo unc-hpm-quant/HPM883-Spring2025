@@ -1,23 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://hpm883.github.io/unit-1/unit-1-internal-1.html</loc>
-    <lastmod>2025-02-16T12:54:38.408Z</lastmod>
+    <loc>https://hpm883.github.io/unit-2/lec-2-1.html</loc>
+    <lastmod>2025-02-24T11:13:39.225Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hpm883.github.io/unit-2/unit-2-design-1.html</loc>
+    <lastmod>2025-02-24T11:12:19.515Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hpm883.github.io/resources.html</loc>
+    <lastmod>2025-02-23T12:44:27.503Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hpm883.github.io/project.html</loc>
+    <lastmod>2025-02-07T12:56:28.336Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hpm883.github.io/template-pap.html</loc>
+    <lastmod>2025-01-20T09:09:15.126Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hpm883.github.io/unit-1/lec-1-2.html</loc>
+    <lastmod>2025-02-23T18:27:40.160Z</lastmod>
   </url>
   <url>
     <loc>https://hpm883.github.io/unit-1/unit-1-internal-2.html</loc>
-    <lastmod>2025-02-24T11:38:30.211Z</lastmod>
+    <lastmod>2025-02-24T11:39:43.441Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hpm883.github.io/unit-1/unit-1-internal-1.html</loc>
+    <lastmod>2025-02-16T12:54:38.408Z</lastmod>
   </url>
   <url>
     <loc>https://hpm883.github.io/lab.html</loc>
     <lastmod>2024-12-31T12:18:13.023Z</lastmod>
   </url>
   <url>
+    <loc>https://hpm883.github.io/unit-0/lec-0.html</loc>
+    <lastmod>2025-02-14T12:49:27.081Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hpm883.github.io/unit-0/unit-0-foundations-2.html</loc>
+    <lastmod>2025-02-05T15:28:01.859Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hpm883.github.io/unit-0/prep-1.html</loc>
+    <lastmod>2024-12-31T14:32:04.143Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hpm883.github.io/ex-simulate.html</loc>
+    <lastmod>2025-01-20T09:09:15.125Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hpm883.github.io/course-communication.html</loc>
+    <lastmod>2025-01-30T19:39:14.498Z</lastmod>
+  </url>
+  <url>
     <loc>https://hpm883.github.io/labs/lab-2-Power.html</loc>
     <lastmod>2025-02-24T11:15:40.765Z</lastmod>
   </url>
   <url>
+    <loc>https://hpm883.github.io/labs/lab-1-InternalValidityPO_sols.html</loc>
+    <lastmod>2025-02-05T15:26:10.785Z</lastmod>
+  </url>
+  <url>
     <loc>https://hpm883.github.io/labs/lab-2-Power-sols.html</loc>
-    <lastmod>2025-02-24T11:37:24.434Z</lastmod>
+    <lastmod>2025-02-24T11:42:00.727Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hpm883.github.io/labs/lab-1-InternalValidityPO.html</loc>
+    <lastmod>2025-02-05T15:26:31.557Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hpm883.github.io/instructors.html</loc>
+    <lastmod>2025-01-11T03:22:56.477Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hpm883.github.io/Resources/Pre-AnalysisPlanTemplate.html</loc>
+    <lastmod>2025-02-14T10:00:31.901Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hpm883.github.io/unit-0/lec-0-3.html</loc>
+    <lastmod>2025-02-05T15:04:25.656Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hpm883.github.io/unit-0/unit-0-foundations-3.html</loc>
+    <lastmod>2025-02-05T15:04:16.908Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hpm883.github.io/unit-0/unit-0-foundations-1.html</loc>
+    <lastmod>2025-01-27T14:57:51.422Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hpm883.github.io/course-overview.html</loc>
+    <lastmod>2025-02-07T12:55:48.978Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hpm883.github.io/index.html</loc>
+    <lastmod>2025-01-11T11:28:06.967Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hpm883.github.io/unit-1/lec-1-1.html</loc>
+    <lastmod>2025-02-23T18:28:06.261Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hpm883.github.io/unit-1/HPM883 introductory analysis.html</loc>
+    <lastmod>2025-01-27T15:19:35.339Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hpm883.github.io/computing.html</loc>
+    <lastmod>2025-01-15T01:05:24.935Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hpm883.github.io/course-syllabus.html</loc>
+    <lastmod>2024-12-27T15:10:49.845Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hpm883.github.io/unit-2/shiny-oed-app.html</loc>
+    <lastmod>2025-02-20T21:49:34.186Z</lastmod>
   </url>
 </urlset>
