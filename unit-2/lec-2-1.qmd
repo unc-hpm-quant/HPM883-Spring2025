@@ -20,23 +20,25 @@ draft: false
 
 Welcome, dear students, to another joyous adventure in the realm of experimental design! In our previous sessions, we tackled the fundamentals of **statistical conclusion validity** and dipped our toes into **power calculations** and **simulation**. We even brushed up against the perils of **clustering**, which appears A LOT in health services research since this is how health care is organized -- think hospitals, clinics, communities, social networks, etc.
 
-Now, we turn the tables. Instead of passively accepting whatever nature (or large administrative database) throws at us, we’re in control. Unlike our secondary data analysis friends, we get to *design* our experiments to make the most of the resources we have. Specifically, we're interested in maximizing our abilitly to learn (i.e. statistical power) subject to our constraints (e.g. budget, logistical). 
+Now, we turn the tables. Instead of passively accepting whatever nature (or large administrative database) throws at us, we’re in control. Unlike our secondary data analysis friends, we get to *design* our experiments to make the most of the resources we have. Specifically, we’re interested in maximizing our abilitly to learn (i.e. statistical power) subject to our constraints (e.g. budget, logistical).
 
 Of course, nothing is for free; this is both a blessing and a curse. Tradeoffs abound as usual. We need a framework for thinking about how to optimally weigh costs and benefits. If only there was an entire discipline devoted to this.....OH, WAIT! (Yes, my friends, you are all economists now. You’re welcome.) As an experimentalist, you can optimize your design choices in ways our secondary-data-using colleagues can only dream of (or envy, or curse, depending on their temperament). So let’s dig in, shall we?
 
-::: {.callout-note}
+::: callout-note
 **Note:** Suboptimal design choices won’t necessarily ruin your study’s internal validity, but they will keep you from making the *best* inference possible. And that might cost you that sweet, sweet grant renewal next year.
 :::
 
----
+------------------------------------------------------------------------
 
 ## 1. Optimal Experimental Design: Insights from Econ 101
 
 ### 1.1 Our Objective
 
-Thinking back to Econ 101,^[If you were daydreaming in Econ 101, fear not. We’ll keep things simple.] recall that we can pose an optimization problem as maximizing (or minimizing) an objective function subject to constraints. In our case, we’ll use this to set up our experimental design problem, i.e,
+Thinking back to Econ 101,[^1] recall that we can pose an optimization problem as maximizing (or minimizing) an objective function subject to constraints. In our case, we’ll use this to set up our experimental design problem, i.e,
 
-> **Objective function:** Statistical power,  
+[^1]: If you were daydreaming in Econ 101, fear not. We’ll keep things simple.
+
+> **Objective function:** Statistical power,\
 > **Subject to:** Budget constraints.
 
 In other words, we want to choose our design to maximize power subject to our budget (or other) constraints. It turns out that there are loads of things in our control; usually the only things that aren't are feasibility and the budget we have to work with.
@@ -82,34 +84,33 @@ flowchart LR
     classDef tarHeelBlue fill:#7BAFD4,stroke:#13294B,stroke-width:1px,color:#FFFFFF
 ```
 
-
 ### 1.2 A Simple Setup
 
 To make this concrete, imagine you’ve received a research grant (yay!) or have a wealthy aunt who’s willing to bankroll your next foray into experimental design. You have two arms in your study:
 
-1. A **control** group (no intervention).  
-2. A **treatment** group (some fancy new health intervention).
+1.  A **control** group (no intervention).\
+2.  A **treatment** group (some fancy new health intervention).
 
-And you have a single, continuous outcome measure, say:  
+And you have a single, continuous outcome measure, say:\
 $$
 Y_i = \text{Health and Happiness Index}
 $$
 
-Now, your big question: **How many participants do you need?** How do you split that precious sample between treatment and control?  
+Now, your big question: **How many participants do you need?** How do you split that precious sample between treatment and control?
 
 ### 1.3 The Big Three Elements
 
 When computing your required sample size (or deciding the “optimal” split), there are three main ingredients:
 
-1. **Significance level** ($\alpha$): The probability of a false positive (rejecting the null when it’s actually true).  
-2. **Minimum Detectable Effect (MDE)**: The smallest true effect size you want to be able to detect with high probability.  
-3. **Power** ($1 - \beta$): The probability of detecting a true effect (i.e., rejecting the null when it’s false).
+1.  **Significance level** ($\alpha$): The probability of a false positive (rejecting the null when it’s actually true).\
+2.  **Minimum Detectable Effect (MDE)**: The smallest true effect size you want to be able to detect with high probability.\
+3.  **Power** ($1 - \beta$): The probability of detecting a true effect (i.e., rejecting the null when it’s false).
 
-::: {.callout-warning}
+::: callout-warning
 The MDE is **not** the effect you *expect* to see. It’s the smallest effect you *care* to rule in or rule out. People often mix these up, leading to underpowered studies, heartbreak, and wasted coffee budgets.
 :::
 
----
+------------------------------------------------------------------------
 
 ## 2. The Variance of the Average Treatment Effect (ATE) and the Minimum Detectable Effect (MDE)
 
@@ -119,10 +120,10 @@ At this point, you may be wondering: “Why do we keep obsessing about the varia
 
 Consider the outcome $Y_i$ for subject $i$. Under treatment $D=1$ and control $D=0$, $Y_i$ is influenced by:
 
-- **Observable variables** $\mathbf{X}_i$.  
-- **An unobserved effect** $\alpha_i$ (think “innate personal quirks”).  
-- **A person-specific treatment effect** $\tau_i$, whose expectation is zero ($\mathbb{E}[\tau_i] = 0$).  (We typically assume the average of these individual effects is our main parameter, $\bar{\tau}$.)  
-- **An error term** $\varepsilon_i$, assumed to be i.i.d. (pure luck-of-the-draw stuff).
+-   **Observable variables** $\mathbf{X}_i$.\
+-   **An unobserved effect** $\alpha_i$ (think “innate personal quirks”).\
+-   **A person-specific treatment effect** $\tau_i$, whose expectation is zero ($\mathbb{E}[\tau_i] = 0$). (We typically assume the average of these individual effects is our main parameter, $\bar{\tau}$.)\
+-   **An error term** $\varepsilon_i$, assumed to be i.i.d. (pure luck-of-the-draw stuff).
 
 So a possible model could be:
 
@@ -131,7 +132,7 @@ Y_{i} \;=\; \alpha_i \;+\; \mathbf{X}_i \,\beta \;+\; \bar{\tau} \,D_i \;+\; \ta
 \tag{1}
 $$
 
-Here, $\bar{\tau}$ is the “average” treatment effect across individuals (the main star of our show), and $\tau_i$ captures the idiosyncratic difference around that average.  
+Here, $\bar{\tau}$ is the “average” treatment effect across individuals (the main star of our show), and $\tau_i$ captures the idiosyncratic difference around that average.
 
 Because randomization ensures $D_i$ is (in expectation) independent of $\alpha_i, \tau_i,$ and $\varepsilon_i$, your estimator for the ATE:
 
@@ -158,22 +159,22 @@ $$
 
 Here,
 
-1. **$\mathrm{Var}(\varepsilon_i)$:** is the variance of the unobserved “noise” in outcomes. 
-2. **$N$:** is the total number of units (subjects).  
-3. **$\mathrm{Var}(D_i)$:** is the variance of your treatment assignment indicator. If the treatment is binary and $p$ is the fraction in treatment, then $\mathrm{Var}(D_i) = p(1-p)$. 
+1.  $\mathrm{Var}(\varepsilon_i)$: is the variance of the unobserved “noise” in outcomes.
+2.  $N$: is the total number of units (subjects).\
+3.  $\mathrm{Var}(D_i)$: is the variance of your treatment assignment indicator. If the treatment is binary and $p$ is the fraction in treatment, then $\mathrm{Var}(D_i) = p(1-p)$.
 
 Hence, $\mathrm{Var}(\hat{\tau})$ is:
 
-- **Increasing in** $\mathrm{Var}(\varepsilon_i)$: More “noise” = bigger standard errors.  
-- **Decreasing in** $N$: More data = smaller standard errors.  
-- **Decreasing in** $\mathrm{Var}(D_i)$
+-   **Increasing in** $\mathrm{Var}(\varepsilon_i)$: More “noise” = bigger standard errors.\
+-   **Decreasing in** $N$: More data = smaller standard errors.\
+-   **Decreasing in** $\mathrm{Var}(D_i)$
 
-If you only have one treatment arm with proportion \(p\) under treatment, then \(\mathrm{Var}(D_i) = p(1-p)\). So yes, that half-and-half split is not just for black-and-white cookies—it’s also a straightforward way to keep variance in check.
+If you only have one treatment arm with proportion (p) under treatment, then (\mathrm{Var}(D_i) = p(1-p)). So yes, that half-and-half split is not just for black-and-white cookies—it’s also a straightforward way to keep variance in check.
 
-That’s the core story. Once we drag real-world complexities in—like different costs per treatment participant, cluster randomization, or multiple waves of data—things get more involved. (Stay tuned!) But for now, remember:  
+That’s the core story. Once we drag real-world complexities in—like different costs per treatment participant, cluster randomization, or multiple waves of data—things get more involved. (Stay tuned!) But for now, remember:
 
-1. The formula $\mathrm{Var}(\hat{\tau}) = \sigma^2 / [N \,\mathrm{Var}(D)]$ is your guiding light.  
-2. Keep that variance down and your power up.
+1.  The formula $\mathrm{Var}(\hat{\tau}) = \sigma^2 / [N \,\mathrm{Var}(D)]$ is your guiding light.\
+2.  Keep that variance down and your power up.
 
 ## 2.2 The Minimum Detectible Effect (MDE)
 
@@ -201,8 +202,7 @@ $$
 
 (Exact form depends on one- or two-sided tests, but the gist is the same.)
 
-::: {.callout-note}
-
+::: callout-note
 To derive the above, start by defining the probability ($\alpha$) of a Type I error and the probability ($\beta$) of a Type II error as a function of $\bar{Y}_0 - \bar{Y}_1$:
 
 $$
@@ -224,7 +224,6 @@ and the MDE is:
 $$
 \text{MDE} = z_{1-\alpha/2} \sqrt{\frac{\sigma^2}{n_1} + \frac{\sigma^2}{n_0}} \;+\; z_{\beta} \sqrt{\frac{\sigma^2}{n_1} + \frac{\sigma^2}{n_0}}.
 $$
-
 :::
 
 Graphically, the MDE is effect size $\tau$ such that power has the same cutoff as the significance level:
@@ -235,7 +234,7 @@ Now to reiterate a very important point that people mess up all the time: **The 
 
 ## 3. Figuring Out Optimal Sample Sizes (a.k.a. Minimizing the MDE)
 
-Let’s turn now to the practical question on everyone’s mind: **How many participants should I recruit in each arm of my study?** Or put more formally, *How do I minimize the Minimum Detectable Effect (MDE) given constraints on my time, budget, and sanity?* 
+Let’s turn now to the practical question on everyone’s mind: **How many participants should I recruit in each arm of my study?** Or put more formally, *How do I minimize the Minimum Detectable Effect (MDE) given constraints on my time, budget, and sanity?*
 
 Assume that the **variances are equal** in the treatment and control group. We can rewrite the MDE formula as:
 
@@ -248,9 +247,8 @@ $$
 },
 $$
 
-where
-- $n_1$ is the sample size in treatment,  
-- $n_0$ is the sample size in control, and  
+where - $n_1$ is the sample size in treatment,\
+- $n_0$ is the sample size in control, and\
 - $\sigma^2$ is the **(common)** variance of the outcome.
 
 Because the stuff before the square root is just a constant, **minimizing** the $\text{MDE}$ with respect to $(n_0, n_1)$ subject to a total sample size $N = n_0 + n_1$, boils down to minimizing
@@ -259,7 +257,7 @@ $$
 \sqrt{\frac{1}{n_0} + \frac{1}{n_1}}.
 $$
 
-Then because 
+Then because
 
 $$
 \frac{1}{n_0} + \frac{1}{n_1}
@@ -269,7 +267,9 @@ $$
 \frac{N}{n_0\,n_1},
 $$
 
-we want to**maximize** $n_0\,n_1$ given $n_0 + n_1 = N$.^[if you want to maximize the product of two nonnegative numbers with a fixed sum, you set them equal.] 
+we want to**maximize** $n_0\,n_1$ given $n_0 + n_1 = N$.[^2]
+
+[^2]: if you want to maximize the product of two nonnegative numbers with a fixed sum, you set them equal.
 
 Hence, for **equal variances and no cost differences**, we end up with the classic result:
 
@@ -283,9 +283,9 @@ $$
 
 So a **50–50 split** is optimal under those assumptions. Easy enough!
 
----
+------------------------------------------------------------------------
 
-**But what if the variance in the treatment group, $\sigma_1^2$, differs from that in the control group, $\sigma_0^2$?** Then the formula for the MDE looks more like:
+**But what if the variance in the treatment group,** $\sigma_1^2$, differs from that in the control group, $\sigma_0^2$? Then the formula for the MDE looks more like:
 
 $$
 \text{MDE}
@@ -298,15 +298,15 @@ $$
 
 Minimizing that suggests you should **oversample** the group with the higher variance. (Intuition: you get more “statistical bang” for each extra participant in the group that has the largest contribution to the total standard error.)
 
-Of course, we rarely know $\sigma_0^2$ and $\sigma_1^2$ exactly in advance, so we often do a best guess from pilot studies, previous literature, or sheer optimism (spoiler: that last one sometimes backfires).  
+Of course, we rarely know $\sigma_0^2$ and $\sigma_1^2$ exactly in advance, so we often do a best guess from pilot studies, previous literature, or sheer optimism (spoiler: that last one sometimes backfires).
 
 ## 4. Enter the Budget Constraint (When Auntie’s Not *That* Rich)
 
 In real life, each participant in the treatment group might cost more because you have to fund the intervention (hire staff, buy supplies, bribe them with candy, etc.). Meanwhile, enrolling a control participant might be cheaper—*but still not free*, because you need them to fill out surveys or come in for labs. Let’s denote:
 
-- $c_0$: the cost per control participant,  
-- $c_1$: the cost per treatment participant, and  
-- $M$: your total budget.
+-   $c_0$: the cost per control participant,\
+-   $c_1$: the cost per treatment participant, and\
+-   $M$: your total budget.
 
 Now your problem is:
 
@@ -331,29 +331,28 @@ $$
 
 which tells us:
 
-1. **If $c_1$ is much higher** than $c_0$ (treatment is expensive!), you’ll want fewer participants in treatment.  
-2. **If $\sigma_0^2 > \sigma_1^2$** (control variance is larger), you might want more control participants.  
+1.  **If** $c_1$ is much higher than $c_0$ (treatment is expensive!), you’ll want fewer participants in treatment.\
+2.  **If** $\sigma_0^2 > \sigma_1^2$ (control variance is larger), you might want more control participants.
 
 Essentially, you compare the ratio of your *marginal benefit* (reducing variance) to your *marginal cost* (how expensive it is to add participants to each arm). You buy the “cheapest variance reduction” first—like a true economist.
 
 ### Practical Implications
 
-1. **No Free Lunch**: Even if you have philanthropic relatives, resources are finite. Incorporating cost differences can shift your allocation away from the standard 50–50.  
-2. **Pilot or Prior Data**: Because the formula involves $\sigma_0^2$ and $\sigma_1^2$, it helps to get decent estimates of group variances so you don’t design suboptimally.  
-3. **Sensitivity Checks**: If you’re not sure about the cost ratio or the variance ratio, do a few “what if” analyses or simulations to see how your MDE changes when you tweak these assumptions.
+1.  **No Free Lunch**: Even if you have philanthropic relatives, resources are finite. Incorporating cost differences can shift your allocation away from the standard 50–50.\
+2.  **Pilot or Prior Data**: Because the formula involves $\sigma_0^2$ and $\sigma_1^2$, it helps to get decent estimates of group variances so you don’t design suboptimally.\
+3.  **Sensitivity Checks**: If you’re not sure about the cost ratio or the variance ratio, do a few “what if” analyses or simulations to see how your MDE changes when you tweak these assumptions.
 
-::: {.callout-note}
+::: callout-note
 **Pro Tip**: In many health interventions, the cost difference can be huge—especially if the treatment requires lots of staff time, medical supplies, or specialized devices. Don’t ignore that in your design.
 :::
 
 ### Too much math?
 
-I know this is a lot of math, so to help you visualize what’s going on, I’ve created a Shiny app that lets you play around with different values and see how the “optimal” $n_0$ and $n_1$ changes. Play around with the parameters and see what happens. 
+I know this is a lot of math, so to help you visualize what’s going on, I’ve created a Shiny app that lets you play around with different values and see how the “optimal” $n_0$ and $n_1$ changes. Play around with the parameters and see what happens.
 
 You can access the app here: [Shiny App](shiny-oed-app.qmd)
 
-**Understanding these trade‐offs** is the heart of optimal experimental design. If your control group is nearly free, sample the heck out of it; if your intervention is super expensive, you might want fewer treatment participants *but* enough to be adequately powered. 
-
+**Understanding these trade‐offs** is the heart of optimal experimental design. If your control group is nearly free, sample the heck out of it; if your intervention is super expensive, you might want fewer treatment participants *but* enough to be adequately powered.
 
 ## 5. Design Extensions
 
@@ -365,31 +364,31 @@ When the outcome is binary (e.g., success/failure) and the null is that treatmen
 
 Now until now we've just considered one treatment group and one control group. There are some cases where instead of just estimating an effect of a treatment, we might be interested in estimating a dose response curve. So this would be like asking what is the effect of going from a dose of 100 milligrams to 200 milligrams, etc.
 
-Now if we only care about a linear effect, or more precisely, we are assuming that there's a linear effect in the dose, we really only need two  arms of the experiment, e.g. a zero dose (control) and 200 mg. This puts us back into the treatment and control scenario we saw before.
+Now if we only care about a linear effect, or more precisely, we are assuming that there's a linear effect in the dose, we really only need two arms of the experiment, e.g. a zero dose (control) and 200 mg. This puts us back into the treatment and control scenario we saw before.
 
 But often, and actually usually, it's not a good idea to assume a linear effect. For example, the effect of going from zero to 100 milligrams might be a lot larger than the effect of taking a patient from 100 milligrams to 200 milligrams.
 
 Now it turns out here as you expand treatment levels, the sample allocation is not equal even if you're assuming the same variances and have equal costs. Not assuming any funny business with differences in outcome variance or unequal costs, optimal allocations are as follows for different polynomials:
 
-| Highest & Only Polynomial Order | Number of Treatment Cells | Sample Allocation              |
-|---------------------------------|---------------------------|--------------------------------|
-| 1                               | 2                         | {1/2, 0, 1/2}                  |
-| 2                               | 3                         | {1/4, 1/2, 1/4}                |
-| 3                               | 4                         | {1/6, 1/3, 1/3, 1/6}           |
-| …                               | …                         | …                              |
-| 10                              | 11                        | {1/20, 1/10, …, 1/10, 1/20}    |
+| Highest & Only Polynomial Order | Number of Treatment Cells | Sample Allocation |
+|--------------------------|---------------------|-------------------------|
+| 1 | 2 | {1/2, 0, 1/2} |
+| 2 | 3 | {1/4, 1/2, 1/4} |
+| 3 | 4 | {1/6, 1/3, 1/3, 1/6} |
+| … | … | … |
+| 10 | 11 | {1/20, 1/10, …, 1/10, 1/20} |
 
 ### 5.3 Clustered Designs
 
 In many health economics studies, entire clinics, schools, or communities get randomized. Let $\rho$ be the intracluster correlation coefficient (ICC). A higher $\rho$ means participants within a cluster look more alike, so you effectively have fewer independent observations. That means you need a bigger total sample (and more clusters) to achieve the same power. The formula for the number of clusters needed often looks like:
 
-::: {.callout-note}
+::: callout-note
 ## Cluster Randomized Designs {#eq-cluster-design}
+
 $$
 n \;\approx\; \left(\frac{z_{1-\alpha/2} + z_{1-\beta}}{MDE}\right)^2 
 \bigl(1 + (\bar{m}-1)\rho\bigr)\sigma^2,
-$$
-where $MDE$ is your effect size and $\bar{m}$ is the average cluster size.
+$$ where $MDE$ is your effect size and $\bar{m}$ is the average cluster size.
 :::
 
 ## 6. Tips and Tricks to Increase Power
@@ -398,15 +397,17 @@ Lucky for us, there are several strategies to squeeze more power out of your des
 
 ### 6.1 Designing Your Study to Maximize Compliance
 
-Ensure high take-up rates of the treatment. Low participation dilutes the observable effect, making detection challenging. If only half the sample adopts the treatment, you would need **four times** as many units to detect the same effect as with full participation.^[see: [World Bank Blog](https://blogs.worldbank.org/en/impactevaluations/seven-ways-improve-statistical-power-your-experiment-without-increasing-n)]  
+Ensure high take-up rates of the treatment. Low participation dilutes the observable effect, making detection challenging. If only half the sample adopts the treatment, you would need **four times** as many units to detect the same effect as with full participation.[^3]
+
+[^3]: see: [World Bank Blog](https://blogs.worldbank.org/en/impactevaluations/seven-ways-improve-statistical-power-your-experiment-without-increasing-n)
 
 Consider strategies like smaller but more motivated populations, or supportive interventions that encourage use. Implementation scientists are your friends here (just feed them coffee and data).
 
 ### 6.2 Choosing (Less Noisy) Outcome Measures
 
-If your chosen outcome is extremely noisy (maybe self-reported “happiness” on a 0–100 scale?), you’ll need an enormous sample to detect moderate effects. 
+If your chosen outcome is extremely noisy (maybe self-reported “happiness” on a 0–100 scale?), you’ll need an enormous sample to detect moderate effects.
 
-Accurate measurements reduce variability in your data. Employ techniques such as embedding consistency checks in surveys, using anchoring and triangulation methods, and considering multiple questions to assess the same concept, thereby averaging out noise. 
+Accurate measurements reduce variability in your data. Employ techniques such as embedding consistency checks in surveys, using anchoring and triangulation methods, and considering multiple questions to assess the same concept, thereby averaging out noise.
 
 Another trick is to measure outcomes repeatedly and average them. For example, do two lab tests for the same biomarker and average them. Or measure mental health weekly for 4 weeks. Each additional measurerement can reduce the measurement error component.
 
@@ -414,21 +415,18 @@ Another trick is to measure outcomes repeatedly and average them. For example, d
 
 Collecting **more than one wave** of baseline and endline data can yield substantial power gains *if* your outcome is either noisy or only weakly autocorrelated. Here are the key ideas from the paper by McKenzie in the reading:
 
-1. **Why does it help?**  
-   - When outcomes are *less* autocorrelated (think sporadic monthly income or ephemeral daily health measures), a single baseline and a single endline might not capture the dynamic changes well. Multiple waves help average out the noise.  
-   - You can pick up more precise estimates of changes over time and reduce the standard error.
-
-2. **Practical considerations**  
-   - With a fixed budget, you often face a trade-off: *Do I survey the same individuals multiple times, or do I get more individuals in fewer waves?*  
-   - If your outcome is *highly autocorrelated* (e.g., certain test scores, stable biometrics), you might not gain as much from multiple waves.  
-   - If your outcome is *noisy* and *less autocorrelated*—like short-term business profits or daily stress measurements—multiple waves can dramatically reduce variance.
-
-3. **Implementation**  
-   - In practice, plan for multiple data collection rounds, at least for the key outcome variables. If your budget is tight, think carefully about the ratio of cross-sectional coverage (number of individuals) to time-series coverage (number of repeated measurements).
-
-4. **Analytical methods**  
-   - Using repeated measures properly often entails repeated-measures ANOVA or difference-in-differences approaches (when you have a baseline plus multiple follow-ups).  
-   - If the treatment might change the autocorrelation of the outcome, consider that in your power calculations (there are advanced methods for this, but the main takeaway: be mindful of potential changes in variance structure).
+1.  **Why does it help?**
+    -   When outcomes are *less* autocorrelated (think sporadic monthly income or ephemeral daily health measures), a single baseline and a single endline might not capture the dynamic changes well. Multiple waves help average out the noise.\
+    -   You can pick up more precise estimates of changes over time and reduce the standard error.
+2.  **Practical considerations**
+    -   With a fixed budget, you often face a trade-off: *Do I survey the same individuals multiple times, or do I get more individuals in fewer waves?*\
+    -   If your outcome is *highly autocorrelated* (e.g., certain test scores, stable biometrics), you might not gain as much from multiple waves.\
+    -   If your outcome is *noisy* and *less autocorrelated*—like short-term business profits or daily stress measurements—multiple waves can dramatically reduce variance.
+3.  **Implementation**
+    -   In practice, plan for multiple data collection rounds, at least for the key outcome variables. If your budget is tight, think carefully about the ratio of cross-sectional coverage (number of individuals) to time-series coverage (number of repeated measurements).
+4.  **Analytical methods**
+    -   Using repeated measures properly often entails repeated-measures ANOVA or difference-in-differences approaches (when you have a baseline plus multiple follow-ups).\
+    -   If the treatment might change the autocorrelation of the outcome, consider that in your power calculations (there are advanced methods for this, but the main takeaway: be mindful of potential changes in variance structure).
 
 In short: **More waves = more data points = smaller standard errors (usually)**. That’s a formula for improved power if the correlation structure isn’t working against you.
 
@@ -436,9 +434,9 @@ In short: **More waves = more data points = smaller standard errors (usually)**.
 
 If you can incorporate *pre-treatment* covariates that predict outcomes, you can reduce residual variance. Even though randomization ensures that *on average* groups are balanced, controlling for strong predictors of the outcome yields a more precise estimate.
 
-- **Pre-treatment outcomes** are gold if your outcome is stable over time.  
-- **Stratification variables** used in random assignment can (and often should) be controlled in analysis.  
-- **Baseline characteristics** that strongly predict your outcome.
+-   **Pre-treatment outcomes** are gold if your outcome is stable over time.\
+-   **Stratification variables** used in random assignment can (and often should) be controlled in analysis.\
+-   **Baseline characteristics** that strongly predict your outcome.
 
 Be warned: *never* include post-treatment variables that might be affected by the intervention. That’s a sure-fire path to bias.
 
@@ -446,7 +444,7 @@ Be warned: *never* include post-treatment variables that might be affected by th
 
 By dividing the sample into strata based on characteristics related to the outcome and randomizing within these strata, you can control for confounding variables and reduce variance, leading to more precise estimates.
 
-::: {.callout-note}
+::: callout-note
 This will be a major topic in the next unit.
 :::
 
@@ -454,14 +452,12 @@ This will be a major topic in the next unit.
 
 Experimentation is exciting because you control the design. Yet with great power comes great responsibility: you have to juggle sample sizes, cost constraints, intracluster correlations, multiple time points, and the dreaded compliance issue. The big takeaway is to think through these choices up front rather than scramble in the final hour.
 
-1.	Optimal sample size depends on the usual suspects: significance level, power, MDE, variance, and cost.
+1.  Optimal sample size depends on the usual suspects: significance level, power, MDE, variance, and cost.
 
-2.	Allocation across treatment arms is rarely a simple 50/50 if costs or variances differ.
+2.  Allocation across treatment arms is rarely a simple 50/50 if costs or variances differ.
 
-3.	Clustering matters—a lot—especially in health policy research.
+3.  Clustering matters—a lot—especially in health policy research.
 
-4.	Covariates, compliance, outcome selection, multiple waves are your friends when battling the tyranny of limited resources.
+4.  Covariates, compliance, outcome selection, multiple waves are your friends when battling the tyranny of limited resources.
 
-That’s it for now. Next time, we’ll look at more advanced randomization strategies (e.g., stratified, matched-pair, and adaptive designs) that can further improve your power. 
-
-
+That’s it for now. Next time, we’ll look at more advanced randomization strategies (e.g., stratified, matched-pair, and adaptive designs) that can further improve your power.

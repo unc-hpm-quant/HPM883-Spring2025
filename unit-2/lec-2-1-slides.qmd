@@ -1,0 +1,265 @@
+---
+title: "Unit 2.1: Optimal Experimental Design"
+author: "Sean Sylvia, Ph.D."
+date: February 18, 2025
+format:
+  revealjs:
+    theme: default
+    slide-number: true
+    chalkboard: true
+    transition: fade
+    progress: true
+    incremental: false
+    toc: false
+    scrollable: false
+    smaller: false
+    footer: "UNC HPM 883 - Advanced Quantitative Methods"
+---
+
+
+## Experimental Design: an Econ 101 Approach
+
+- Previously: statistical conclusion validity, power calculations, simulation
+- Now we're in control: designing experiments to maximize learning (i.e. statistical power)
+
+### **Key Question:** 
+
+How to design an experiment to maximize power subject to constraints (e.g. budget, logistical)?
+
+::: {.fragment}
+### **Answer:** 
+
+Learn some economics!
+:::
+
+::: {.notes}
+We've covered statistical conclusion validity, power calculations, and simulation. Now we're shifting to designing experiments.
+:::
+
+## (Back) to Econ 101
+
+### Optimize: Weighing costs and benefits
+
+- **Objective:** 
+
+    - Maximize statistical power
+    - Or minimize the smallest effect we can see (the Minimum Detectable Effect)
+
+- **Constraints:** 
+
+    - Research Budget
+    - logistical limitations
+
+
+## Key Elements in Sample Size Calculation
+
+::: {.incremental}
+
+1. Significance level ($\alpha$): The probability of a false positive (rejecting the null when it’s actually true).
+
+2. Minimum Detectable Effect (MDE): The smallest true effect size you want to be able to detect with high probability.
+
+3. Power ($1 - \beta$): The probability of detecting a true effect (i.e., rejecting the null when it’s false).
+:::
+
+::: {.fragment}
+::: {.callout-warning}
+MDE ≠ Expected effect size!!
+:::
+:::
+
+## A Simple Example
+
+- You've received a research grant for a two-arm study:
+  1. **Control** group (no intervention)
+  2. **Treatment** group (new health intervention)
+
+- Outcome measure: $$Y_i = \text{Health and Happiness Index}$$
+
+- Key questions:
+  - How many participants do you need?
+  - How to split the sample between treatment and control?
+
+
+## Outcome Model
+
+
+- $Y_i$: Outcome for subject $i$
+- $\mathbf{X}_i$: Observable variables
+- $\alpha_i$: Unobserved effect ("innate personal quirks")
+- $\tau_i$: Person-specific treatment effect ($\mathbb{E}[\tau_i] = 0$)
+- $\varepsilon_i$: i.i.d. error term
+
+$$Y_{i} \;=\; \alpha_i \;+\; \mathbf{X}_i \,\beta \;+\; \bar{\tau} \,D_i \;+\; \tau_i\,D_i \;+\; \varepsilon_i.\tag{1}$$
+
+- $\bar{\tau}$: Average treatment effect
+- $\tau_i$: Idiosyncratic difference around $\bar{\tau}$
+
+## Unbiased ATE Estimator
+
+$$\hat{\tau}\;=\; \mathbb{E}[Y_i \mid D_i=1]\;-\;\mathbb{E}[Y_i \mid D_i=0]$$
+
+- Unbiased due to randomization
+- $D_i$ independent of $\alpha_i, \tau_i,$ and $\varepsilon_i$
+
+Then we have the **Variance of Estimated ATE**
+
+$$\mathrm{Var}(\hat{\tau})\;=\;\frac{\sigma^2}{N}\;=\;\frac{\mathrm{Var}(\varepsilon_i)}{\;N \,\times\, \mathrm{Var}(D_i)\,}.\tag{2}$$
+
+- $\mathrm{Var}(\varepsilon_i)$: Variance of unobserved "noise"
+- $N$: Total number of units
+- $\mathrm{Var}(D_i)$: Variance of treatment assignment indicator
+
+## What influences $\mathrm{Var}(\hat{\tau})$?
+
+$$\mathrm{Var}(\hat{\tau})\;=\;\frac{\sigma^2}{N}\;=\;\frac{\mathrm{Var}(\varepsilon_i)}{\;N \,\times\, \mathrm{Var}(D_i)\,}.\tag{2}$$
+
+::: {.fragment}
+- Increases with $\mathrm{Var}(\varepsilon_i)$
+:::
+
+::: {.fragment}
+- Decreases with $N$
+:::
+
+::: {.fragment}
+- Decreases with $\mathrm{Var}(D_i)$
+:::
+
+
+## Minimum Detectable Effect (MDE) - the star of the show!
+
+Now let's assume that potential outcomes are conditional potential outcomes y0 and y1 that are normally distributed.
+
+$$
+Y_{i0} | X_i \sim \mathbb{N}(\mu_0, \sigma^2) \mid D_i=0
+$$
+
+$$
+Y_{i1} | X_i \sim \mathbb{N}(\mu_1, \sigma^2) \mid D_i=1.
+$$
+
+::: {.incremental}
+- **MDE:** Smallest effect $\mu_1 - \mu_0$ detectable with specified power
+- **Hypotheses:** $H_0: \mu_0 = 0 \quad \text{vs} \quad H_1: \mu_1 \neq 0$
+- **Estimator:** $\bar{Y}_1 - \bar{Y}_0$ for $\mu_1 - \mu_0$ (Assuming independent observations)
+::: 
+
+## MDE formula - the star of the show!
+$$
+\text{MDE} = (z_{1-\alpha/2} + z_{1-\beta}) \sqrt{\frac{\sigma^2}{n_1} + \frac{\sigma^2}{n_0}}
+$$
+
+- $n_1$: Treatment sample size
+- $n_0$: Control sample size
+- $\sigma^2$: Common outcome variance
+
+## MDE is effect size $\tau$ s.t. power has the same cutoff as the significance level
+
+![](/unit-1/media/HypothesisTesting.png)
+
+## How many participants should I recruit in each arm of our study?
+
+To find the optimal sample allocation, we need to minimize the MDE:
+
+$$ 
+\min_{n_0, n_1} \text{MDE}
+$$
+
+subject to $n_0 + n_1 = N$.
+
+## The Equal Variance Case
+
+- Assume equal variances in treatment and control (and no cost difference)
+
+$$\text{MDE} = (z_{1-\alpha/2} + z_{1-\beta})\sqrt{\frac{\sigma^2}{n_0} + \frac{\sigma^2}{n_1}}$$
+
+- $n_1$: Treatment sample size
+- $n_0$: Control sample size
+- $\sigma^2$: Common variance
+- Result: $n_0^* = n_1^* = \frac{N}{2}$
+- **Optimal allocation is a 50-50 split**
+
+
+## Unequal Variances
+But how often are variances likely to be equal?
+
+- With unequal variances, the MDE formula changes:
+
+$$\text{MDE} = (z_{1-\alpha/2} + z_{1-\beta})\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_0^2}{n_0}}$$
+
+- Strategy: Oversample group with higher variance
+- Challenges: Estimating $\sigma_0^2$ and $\sigma_1^2$ in advance
+
+## So. Much. Math. Let's make a calculator
+
+[Optimal Experimental Design Calculator](shiny-oed-app.qmd)
+
+
+## Real-world cost considerations
+
+- Treatment group: Higher cost ($c_1$)
+  - Intervention funding
+  - Staff hiring
+  - Supplies
+  - Participant incentives
+
+- Control group: Lower but non-zero cost ($c_0$)
+  - Survey administration
+  - Lab visits
+
+## Budget-constrained optimization
+
+$$
+\min_{n_0,\,n_1} \text{MDE} 
+\quad \text{subject to} \quad 
+c_0\,n_0 + c_1\,n_1 \;\le\; M
+$$
+
+- $c_0$: Cost per control participant
+- $c_1$: Cost per treatment participant
+- $M$: Total budget
+
+**Optimal allocation** 
+
+$$
+\frac{n_1}{n_0} \;=\; \sqrt{\frac{\sigma_1^2\,c_0}{\sigma_0^2\,c_1}}
+$$
+
+## What is the implication?
+
+$$
+\frac{n_1}{n_0} \;=\; \sqrt{\frac{\sigma_1^2\,c_0}{\sigma_0^2\,c_1}}
+$$
+
+
+**No Free Lunch**: Cost differences can shift your allocation away from the standard 50–50.
+
+- If $c_1 \gg c_0$: Fewer treatment participants
+- If $c_1 \ll c_0$: More treatment participants
+
+## Design Extensions
+
+See lecture notes for discussion of some extensions (The premise is the same)
+
+1. Dichotomous treatment with binomial outcome
+2. Multiple treatment arms
+3. Clustered designs
+
+## Strategies to Increase Power
+
+Also in notes, some strategies for increasing power with fixed n:
+
+1. Maximize compliance
+2. Choose less noisy outcome measures
+3. Multiple waves of baseline and endline data
+4. Include covariates in estimation
+5. Implement stratified randomization
+
+## Conclusion
+
+- One magical thing about experimentation: allows control over design, you're not just taking what the world gives you
+- Consider all factors: sample sizes, costs, clustering, compliance
+- Plan thoroughly to maximize power within constraints
+
+Next time: look at more advanced randomization strategies that can further improve your power

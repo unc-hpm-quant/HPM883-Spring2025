@@ -1540,5 +1540,201 @@
     "title": "Optimal Experiment Design App",
     "section": "Using the App",
     "text": "Using the App\nLocal RStudio Version\nTo run this app locally in RStudio:\n\nshiny::runApp(\"unit-2/oed-app.R\")\n\nBrowser Version\n#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 1500\n\nlibrary(shiny)\nlibrary(ggplot2)\n\nui &lt;- fluidPage(\n  titlePanel(\"Optimal Experimental Design for One Treatment vs. One Control\"),\n  \n  # Add help text at the top\n  fluidRow(\n    column(12,\n      h4(\"Understanding Power Analysis and Optimal Design\"),\n      p(\"This app helps you determine optimal sample sizes and allocation ratios for experiments.\",\n        \"The calculations consider both statistical power and practical constraints.\"),\n      p(\"Key concepts:\"),\n      tags$ul(\n        tags$li(strong(\"Minimum Detectable Effect (MDE):\"), \n               \"The smallest true effect size that your study can reliably detect with the specified power.\"),\n        tags$li(strong(\"Optimal Allocation:\"), \n               \"The best way to divide participants between treatment and control groups, considering:\",\n               tags$ul(\n                 tags$li(\"Statistical efficiency (minimizing MDE)\"),\n                 tags$li(\"Cost constraints\"),\n                 tags$li(\"Practical implementation\"))\n               ),\n        tags$li(strong(\"Power vs. Sample Size:\"), \n               \"There's always a trade-off - higher power requires larger samples.\")\n      ),\n      p(\"Adjust the parameters below to explore how different choices affect your study design.\"),\n      tags$hr()\n    )\n  ),\n  \n  sidebarLayout(\n    sidebarPanel(\n      # --- Choose outcome type (binary or continuous)\n      radioButtons(\n        inputId = \"outcomeType\", \n        label = \"Outcome Type\",\n        choices = c(\"Binary\" = \"binary\", \"Continuous\" = \"continuous\"),\n        selected = \"continuous\"\n      ),\n      div(class = \"well\",\n        h5(\"Outcome Types:\"),\n        p(strong(\"Binary Outcomes:\"),\n          \"Measured as proportions or percentages (e.g., success rates, mortality rates).\",\n          \"The variance is determined by the proportion itself - highest at p=0.5.\"),\n        p(strong(\"Continuous Outcomes:\"),\n          \"Measured on a continuous scale (e.g., blood pressure, test scores).\",\n          \"Requires estimates of population variance in each group.\")\n      ),\n      \n      # --- Significance level (alpha)\n      sliderInput(\n        inputId = \"alpha\", \n        label = \"Significance level (alpha):\",\n        min = 0.001, \n        max = 0.10, \n        step = 0.001,\n        value = 0.05\n      ),\n      div(class = \"well\",\n        h5(\"Significance Level (α):\"),\n        p(\"The probability of falsely concluding there is an effect when there isn't one (Type I error).\"),\n        tags$ul(\n          tags$li(strong(\"0.05 (5%)\"), \": Standard choice - 1 in 20 chance of false positive\"),\n          tags$li(strong(\"0.01 (1%)\"), \": More conservative - use for critical decisions\"),\n          tags$li(strong(\"0.10 (10%)\"), \": More liberal - might use in pilot studies\")\n        )\n      ),\n      \n      # --- Power (1 - beta)\n      sliderInput(\n        inputId = \"power\", \n        label = \"Statistical Power (1 - beta):\",\n        min = 0.50, \n        max = 0.99, \n        step = 0.01,\n        value = 0.80\n      ),\n      div(class = \"well\",\n        h5(\"Statistical Power (1-β):\"),\n        p(\"The probability of detecting a true effect when it exists.\"),\n        tags$ul(\n          tags$li(strong(\"0.80 (80%)\"), \": Standard choice - accepts 20% chance of missing real effects\"),\n          tags$li(strong(\"0.90 (90%)\"), \": Higher power - use for critical studies, but requires larger samples\"),\n          tags$li(strong(\"0.70 (70%)\"), \": Lower power - might use in pilot studies or with resource constraints\")\n        ),\n        p(\"Remember: Increasing power requires larger sample sizes, often substantially.\")\n      ),\n      \n      # --- Parameters for continuous outcome\n      conditionalPanel(\n        condition = \"input.outcomeType == 'continuous'\",\n        numericInput(\"sigmaT\", \"Treatment Variance (σ²_T):\", 1),\n        numericInput(\"sigmaC\", \"Control Variance (σ²_C):\", 1),\n        helpText(\"The expected variances in each group. If unknown, assume equal variances.\")\n      ),\n      \n      # --- Parameters for binary outcome\n      conditionalPanel(\n        condition = \"input.outcomeType == 'binary'\",\n        sliderInput(\"pT\", \"Treatment proportion (p_T):\",\n                    min = 0, max = 1, step = 0.01, value = 0.3),\n        sliderInput(\"pC\", \"Control proportion (p_C):\",\n                    min = 0, max = 1, step = 0.01, value = 0.3),\n        helpText(\"Set the difference in these values to determine your minimum detectable effect (MDE).\",\n                 \"p_C might be derived from historical data.\")\n      ),\n      \n      # --- Allocation: either fix total sample size or total cost\n      radioButtons(\n        inputId = \"constraintType\",\n        label = \"Constraint Type:\",\n        choices = c(\"Fixed Total Sample Size\" = \"sample\",\n                    \"Fixed Total Cost\"        = \"cost\")\n      ),\n      div(class = \"well\",\n        h5(\"Design Constraints:\"),\n        p(strong(\"Fixed Total Sample Size:\"),\n          \"Use when you have a specific total number of participants available.\",\n          \"The app will help you determine the optimal split between groups.\"),\n        p(strong(\"Fixed Total Cost:\"),\n          \"Use when you have a fixed budget and different costs per group.\",\n          \"Common when treatment is more expensive than control, or when recruitment costs differ.\")\n      ),\n      \n      # --- If total sample size is the constraint\n      conditionalPanel(\n        condition = \"input.constraintType == 'sample'\",\n        numericInput(\"N\", \"Total Sample Size (N):\", 200, min = 2, step = 1)\n      ),\n      \n      # --- If total cost is the constraint\n      conditionalPanel(\n        condition = \"input.constraintType == 'cost'\",\n        numericInput(\"costT\", \"Cost per Treatment Unit:\", 2, min = 1, step = 1),\n        numericInput(\"costC\", \"Cost per Control Unit:\", 1, min = 1, step = 1),\n        numericInput(\"budget\", \"Total Budget:\", 300, min = 1, step = 1)\n      ),\n      \n      # --- Option to let the user pick ratio or find optimum\n      radioButtons(\n        inputId = \"ratioChoice\",\n        label = \"Allocation Choice:\",\n        choices = c(\"Manually Pick Ratio\" = \"manual\",\n                    \"Find Optimal Ratio\"  = \"optimal\")\n      ),\n      \n      sliderInput(\n        inputId = \"ratio\",\n        label = \"Treatment:Control Ratio (r = n_T / n_C):\",\n        min = 0.1,\n        max = 10,\n        step = 0.1,\n        value = 1\n      )\n    ),\n    \n    mainPanel(\n      tabsetPanel(\n        tabPanel(\"MDE vs. Ratio\", \n                 plotOutput(\"plotMDE\"),\n                 br(),\n                 verbatimTextOutput(\"textResult\"),\n                 br(),\n                 h4(\"Step-by-Step Calculations\"),\n                 uiOutput(\"mdeCalcSteps\")\n        ),\n        tabPanel(\"Cost Allocation Plot\",\n                 plotOutput(\"plotCost\", height = \"500px\"),\n                 br(),\n                 h4(\"Step-by-Step Calculations\"),\n                 uiOutput(\"costCalcSteps\"),\n                 br(),\n                 helpText(\"This plot shows the budget constraint line \",\n                          \"and iso-MDE curves for different cost allocations \",\n                          \"(c_C on the x-axis, c_T on the y-axis). \",\n                          \"The red point indicates the optimal allocation \",\n                          \"where MDE is minimized, if available.\")\n        )\n      )\n    )\n  )\n)\n\nserver &lt;- function(input, output, session) {\n  \n  # Helper: z-value for alpha/2 (two-sided) and for power\n  zAlpha &lt;- reactive({\n    qnorm(1 - input$alpha / 2)\n  })\n  zBeta &lt;- reactive({\n    qnorm(input$power)\n  })\n  \n  # Function to compute MDE given n_C, n_T (the sample sizes)\n  computeMDE_from_n &lt;- function(nC, nT) {\n    if (input$outcomeType == \"continuous\") {\n      sigmaT &lt;- input$sigmaT\n      sigmaC &lt;- input$sigmaC\n      varTerm &lt;- sigmaT^2 / nT + sigmaC^2 / nC\n    } else {\n      pT &lt;- input$pT\n      pC &lt;- input$pC\n      varTerm &lt;- pT*(1 - pT)/nT + pC*(1 - pC)/nC\n    }\n    (zAlpha() + zBeta()) * sqrt(varTerm)\n  }\n  \n  # Function to compute MDE given a ratio (for either sample or cost constraint)\n  computeMDE_ratio &lt;- function(r) {\n    # 1) Determine n_T and n_C based on constraints and ratio\n    if (input$constraintType == \"sample\") {\n      # n_T + n_C = N, and n_T / n_C = r\n      n_C &lt;- input$N / (r + 1)\n      n_T &lt;- r * n_C\n    } else {\n      # costT * n_T + costC * n_C = budget, n_T / n_C = r\n      n_C &lt;- input$budget / (r * input$costT + input$costC)\n      n_T &lt;- r * n_C\n    }\n    \n    # 2) Compute MDE\n    computeMDE_from_n(n_C, n_T)\n  }\n  \n  # Plot: MDE vs. ratio\n  output$plotMDE &lt;- renderPlot({\n    # We'll vary r from 0.1 to 10 in increments of 0.1\n    rVals &lt;- seq(0.1, 10, by = 0.1)\n    mdeVals &lt;- sapply(rVals, computeMDE_ratio)\n    \n    plot(rVals, mdeVals, type = \"l\", lwd = 2, \n         xlab = \"Ratio (n_T / n_C)\", ylab = \"MDE\",\n         main = \"Minimum Detectable Effect vs. Allocation Ratio\")\n    \n    # If in manual mode, highlight user's chosen ratio\n    if (input$ratioChoice == \"manual\") {\n      rUser &lt;- input$ratio\n      userMde &lt;- computeMDE_ratio(rUser)\n      points(rUser, userMde, col = \"red\", pch = 19, cex = 1.5)\n    }\n  })\n  \n  # Helper function to format numbers nicely\n  format_num &lt;- function(x) format(round(x, 4), nsmall = 4)\n  \n  # Text output: either user-chosen ratio or optimal ratio\n  output$textResult &lt;- renderPrint({\n    if (input$ratioChoice == \"optimal\") {\n      # Find ratio that yields smallest MDE\n      rTest &lt;- seq(0.1, 10, 0.01)\n      mdeTest &lt;- sapply(rTest, computeMDE_ratio)\n      idxMin &lt;- which.min(mdeTest)\n      rOpt &lt;- rTest[idxMin]\n      mdeOpt &lt;- mdeTest[idxMin]\n      \n      if (input$constraintType == \"sample\") {\n        n_C_opt &lt;- input$N / (rOpt + 1)\n        n_T_opt &lt;- rOpt * n_C_opt\n      } else {\n        n_C_opt &lt;- input$budget / (rOpt * input$costT + input$costC)\n        n_T_opt &lt;- rOpt * n_C_opt\n      }\n      \n      cat(\"Optimal Allocation:\\n\")\n      cat(\"Optimal ratio (n_T / n_C):\", round(rOpt, 3), \"\\n\")\n      cat(\"Control group size (n_C):\", round(n_C_opt), \"\\n\")\n      cat(\"Treatment group size (n_T):\", round(n_T_opt), \"\\n\")\n      cat(\"Minimum Detectable Effect:\", round(mdeOpt, 3), \"\\n\")\n      \n    } else {\n      # User-chosen ratio\n      r &lt;- input$ratio\n      mde &lt;- computeMDE_ratio(r)\n      \n      if (input$constraintType == \"sample\") {\n        n_C &lt;- input$N / (r + 1)\n        n_T &lt;- r * n_C\n      } else {\n        n_C &lt;- input$budget / (r * input$costT + input$costC)\n        n_T &lt;- r * n_C\n      }\n      \n      cat(\"Current Allocation:\\n\")\n      cat(\"Ratio (n_T / n_C):\", round(r, 3), \"\\n\")\n      cat(\"Control group size (n_C):\", round(n_C), \"\\n\")\n      cat(\"Treatment group size (n_T):\", round(n_T), \"\\n\")\n      cat(\"Minimum Detectable Effect:\", round(mde, 3), \"\\n\")\n    }\n  })\n  \n  # Plot: Cost allocation\n  output$plotCost &lt;- renderPlot({\n    # Only show this plot if user is in \"cost\" constraint\n    if (input$constraintType == \"cost\") {\n      # Generate grid of n_C, n_T values across full plot range\n      max_n_C &lt;- input$budget/input$costC * 1.2  # Extend 20% beyond budget line\n      max_n_T &lt;- input$budget/input$costT * 1.2\n      n_C &lt;- seq(1, max_n_C, length.out = 100)\n      n_T &lt;- seq(1, max_n_T, length.out = 100)\n      \n      # Create matrix of MDE values\n      mde_matrix &lt;- matrix(NA, nrow = length(n_C), ncol = length(n_T))\n      for (i in 1:length(n_C)) {\n        for (j in 1:length(n_T)) {\n          mde_matrix[i,j] &lt;- computeMDE_from_n(n_C[i], n_T[j])\n        }\n      }\n      \n      # Find optimal allocation\n      rTest &lt;- seq(0.1, 10, 0.01)\n      mdeTest &lt;- sapply(rTest, computeMDE_ratio)\n      rOpt &lt;- rTest[which.min(mdeTest)]\n      n_C_opt &lt;- input$budget / (rOpt * input$costT + input$costC)\n      n_T_opt &lt;- rOpt * n_C_opt\n      mde_opt &lt;- computeMDE_from_n(n_C_opt, n_T_opt)\n      \n      # Create the plot\n      par(mar = c(5, 5, 4, 2))  # Increase margins for labels\n      \n      # Calculate reasonable MDE range for contours\n      min_mde &lt;- max(min(mde_matrix, na.rm = TRUE), mde_opt * 0.8)  # Don't go too far below optimal\n      max_mde &lt;- min(max(mde_matrix, na.rm = TRUE), mde_opt * 2.0)  # Don't show extremely large MDEs\n      \n      # Create evenly spaced levels, including the optimal MDE\n      contour_levels &lt;- sort(unique(c(\n        seq(min_mde, max_mde, length.out = 8),  # 8 regular levels\n        mde_opt  # Include the optimal MDE level\n      )))\n      \n      # Plot contours\n      contour(n_C, n_T, mde_matrix, \n              xlab = \"Control Group Size (n_C)\",\n              ylab = \"Treatment Group Size (n_T)\",\n              main = \"Cost-constrained Allocation\",\n              levels = contour_levels,\n              labcex = 0.8,  # Slightly smaller contour labels\n              drawlabels = TRUE)\n      \n      # Add budget constraint line\n      budget_line_n_C &lt;- seq(0, max_n_C, length.out = 100)\n      budget_line_n_T &lt;- (input$budget - input$costC * budget_line_n_C) / input$costT\n      lines(budget_line_n_C, budget_line_n_T, col = \"red\", lwd = 2)\n      \n      # Add optimal MDE curve (the contour that passes through optimal point)\n      n_C_curve &lt;- seq(1, max_n_C, length.out = 200)\n      n_T_curve &lt;- numeric(length(n_C_curve))\n      for(i in 1:length(n_C_curve)) {\n        # Find n_T that gives the optimal MDE for this n_C\n        n_T_test &lt;- seq(1, max_n_T, length.out = 200)\n        mde_test &lt;- sapply(n_T_test, function(nt) computeMDE_from_n(n_C_curve[i], nt))\n        n_T_curve[i] &lt;- n_T_test[which.min(abs(mde_test - mde_opt))]\n      }\n      lines(n_C_curve, n_T_curve, col = \"blue\", lwd = 2, lty = 2)\n      \n      # Add optimal point\n      points(n_C_opt, n_T_opt, col = \"red\", pch = 19, cex = 1.5)\n      \n      # Add legend for optimal MDE curve\n      legend(\"topright\", \n             legend = sprintf(\"Optimal MDE = %.3f\", mde_opt),\n             col = \"blue\", lwd = 2, lty = 2)\n    }\n  })\n  \n  # Render step-by-step MDE calculations\n  output$mdeCalcSteps &lt;- renderUI({\n    # Get current values\n    if (input$ratioChoice == \"optimal\") {\n      rTest &lt;- seq(0.1, 10, 0.01)\n      mdeTest &lt;- sapply(rTest, computeMDE_ratio)\n      r &lt;- rTest[which.min(mdeTest)]\n    } else {\n      r &lt;- input$ratio\n    }\n    \n    # Calculate sample sizes\n    if (input$constraintType == \"sample\") {\n      n_C &lt;- input$N / (r + 1)\n      n_T &lt;- r * n_C\n    } else {\n      n_C &lt;- input$budget / (r * input$costT + input$costC)\n      n_T &lt;- r * n_C\n    }\n    \n    # Calculate variances\n    if (input$outcomeType == \"continuous\") {\n      varT &lt;- input$sigmaT^2\n      varC &lt;- input$sigmaC^2\n      var_term &lt;- varT/n_T + varC/n_C\n    } else {\n      varT &lt;- input$pT * (1 - input$pT)\n      varC &lt;- input$pC * (1 - input$pC)\n      var_term &lt;- varT/n_T + varC/n_C\n    }\n    \n    # Critical values\n    z_alpha &lt;- qnorm(1 - input$alpha/2)\n    z_beta &lt;- qnorm(input$power)\n    \n    # Final MDE\n    mde &lt;- (z_alpha + z_beta) * sqrt(var_term)\n    \n    # Create step-by-step explanation with LaTeX\n    tagList(\n      withMathJax(),\n      \n      h5(\"1. Sample Size Calculation:\"),\n      if (input$constraintType == \"sample\") {\n        tagList(\n          p(sprintf(\"With total N = %d and ratio r = %.3f:\", input$N, r)),\n          withMathJax(sprintf(\"$$n_C = \\\\frac{N}{r + 1} = \\\\frac{%d}{%.3f + 1} = %.1f$$\", input$N, r, n_C)),\n          withMathJax(sprintf(\"$$n_T = r \\\\cdot n_C = %.3f \\\\cdot %.1f = %.1f$$\", r, n_C, n_T))\n        )\n      } else {\n        tagList(\n          p(sprintf(\"With budget = %d, c_T = %d, c_C = %d, and ratio r = %.3f:\", \n                    input$budget, input$costT, input$costC, r)),\n          withMathJax(sprintf(\"$$n_C = \\\\frac{\\\\text{budget}}{rc_T + c_C} = \\\\frac{%d}{%.3f \\\\cdot %d + %d} = %.1f$$\", \n                               input$budget, r, input$costT, input$costC, n_C)),\n          withMathJax(sprintf(\"$$n_T = r \\\\cdot n_C = %.3f \\\\cdot %.1f = %.1f$$\", r, n_C, n_T))\n        )\n      },\n      \n      h5(\"2. Variance Terms:\"),\n      if (input$outcomeType == \"continuous\") {\n        withMathJax(sprintf(\"$$\\\\sigma^2_T = %.3f, \\\\quad \\\\sigma^2_C = %.3f$$\", varT, varC))\n      } else {\n        tagList(\n          withMathJax(sprintf(\"$$\\\\text{Var}_T = p_T(1-p_T) = %.3f(1-%.3f) = %.3f$$\", input$pT, input$pT, varT)),\n          withMathJax(sprintf(\"$$\\\\text{Var}_C = p_C(1-p_C) = %.3f(1-%.3f) = %.3f$$\", input$pC, input$pC, varC))\n        )\n      },\n      withMathJax(sprintf(\"$$\\\\text{Combined variance} = \\\\frac{\\\\text{Var}_T}{n_T} + \\\\frac{\\\\text{Var}_C}{n_C} = \\\\frac{%.3f}{%.1f} + \\\\frac{%.3f}{%.1f} = %.4f$$\",\n                          varT, n_T, varC, n_C, var_term)),\n      \n      h5(\"3. Critical Values:\"),\n      withMathJax(sprintf(\"$$z_{1-\\\\alpha/2} = %.4f \\\\quad (\\\\text{for } \\\\alpha = %.3f)$$\", z_alpha, input$alpha)),\n      withMathJax(sprintf(\"$$z_{1-\\\\beta} = %.4f \\\\quad (\\\\text{for power } = %.3f)$$\", z_beta, input$power)),\n      \n      h5(\"4. Final MDE Calculation:\"),\n      withMathJax(\"$$\\\\text{MDE} = (z_{1-\\\\alpha/2} + z_{1-\\\\beta}) \\\\sqrt{\\\\frac{\\\\text{Var}_T}{n_T} + \\\\frac{\\\\text{Var}_C}{n_C}}$$\"),\n      withMathJax(sprintf(\"$$\\\\text{MDE} = (%.4f + %.4f) \\\\sqrt{%.4f} = %.4f$$\", \n                          z_alpha, z_beta, var_term, mde))\n    )\n  })\n  \n  # Render step-by-step cost allocation calculations\n  output$costCalcSteps &lt;- renderUI({\n    if (input$constraintType != \"cost\") {\n      return(p(\"Step-by-step calculations are shown when using cost constraints.\"))\n    }\n    \n    # Get current optimal values if in optimal mode\n    if (input$ratioChoice == \"optimal\") {\n      rTest &lt;- seq(0.1, 10, 0.01)\n      mdeTest &lt;- sapply(rTest, computeMDE_ratio)\n      r &lt;- rTest[which.min(mdeTest)]\n      n_C &lt;- input$budget / (r * input$costT + input$costC)\n      n_T &lt;- r * n_C\n      total_cost &lt;- input$costT * n_T + input$costC * n_C\n      \n      tagList(\n        withMathJax(),\n        h4(\"Optimal Cost Allocation:\"),\n        \n        h5(\"1. Budget Constraint:\"),\n        withMathJax(sprintf(\"$$%d = %d n_T + %d n_C$$\", \n                           input$budget, input$costT, input$costC)),\n        \n        h5(\"2. Optimal Allocation Ratio:\"),\n        withMathJax(sprintf(\"$$r = \\\\frac{n_T}{n_C} = %.3f$$\", r)),\n        \n        h5(\"3. Sample Sizes:\"),\n        withMathJax(sprintf(\"$$n_C = \\\\frac{\\\\text{budget}}{rc_T + c_C} = \\\\frac{%d}{%.3f \\\\cdot %d + %d} = %.1f$$\",\n                           input$budget, r, input$costT, input$costC, n_C)),\n        withMathJax(sprintf(\"$$n_T = r \\\\cdot n_C = %.3f \\\\cdot %.1f = %.1f$$\", \n                           r, n_C, n_T)),\n        \n        h5(\"4. Cost Verification:\"),\n        withMathJax(sprintf(\"$$\\\\text{Total cost} = c_T n_T + c_C n_C = %d \\\\cdot %.1f + %d \\\\cdot %.1f = %d$$\",\n                           input$costT, n_T, input$costC, n_C, total_cost))\n      )\n    } else {\n      n_C &lt;- input$budget / (input$ratio * input$costT + input$costC)\n      n_T &lt;- input$ratio * n_C\n      total_cost &lt;- input$costT * n_T + input$costC * n_C\n      \n      tagList(\n        withMathJax(),\n        h4(\"Manual Cost Allocation:\"),\n        \n        h5(\"1. Budget Constraint:\"),\n        withMathJax(sprintf(\"$$%d = %d n_T + %d n_C$$\", \n                           input$budget, input$costT, input$costC)),\n        \n        h5(\"2. Fixed Allocation Ratio:\"),\n        withMathJax(sprintf(\"$$r = \\\\frac{n_T}{n_C} = %.3f$$\", input$ratio)),\n        \n        h5(\"3. Sample Sizes:\"),\n        withMathJax(sprintf(\"$$n_C = \\\\frac{\\\\text{budget}}{rc_T + c_C} = \\\\frac{%d}{%.3f \\\\cdot %d + %d} = %.1f$$\",\n                           input$budget, input$ratio, input$costT, input$costC, n_C)),\n        withMathJax(sprintf(\"$$n_T = r \\\\cdot n_C = %.3f \\\\cdot %.1f = %.1f$$\", \n                           input$ratio, n_C, n_T)),\n        \n        h5(\"4. Cost Verification:\"),\n        withMathJax(sprintf(\"$$\\\\text{Total cost} = c_T n_T + c_C n_C = %d \\\\cdot %.1f + %d \\\\cdot %.1f = %d$$\",\n                           input$costT, n_T, input$costC, n_C, total_cost))\n      )\n    }\n  })\n}\n\nshinyApp(ui = ui, server = server)"
+  },
+  {
+    "objectID": "unit-2/lec-2-1-slides.html#experimental-design-an-econ-101-approach",
+    "href": "unit-2/lec-2-1-slides.html#experimental-design-an-econ-101-approach",
+    "title": "Unit 2.1: Optimal Experimental Design",
+    "section": "Experimental Design: an Econ 101 Approach",
+    "text": "Experimental Design: an Econ 101 Approach\n\nPreviously: statistical conclusion validity, power calculations, simulation\nNow we’re in control: designing experiments to maximize learning (i.e. statistical power)\n\nKey Question:\nHow to design an experiment to maximize power subject to constraints (e.g. budget, logistical)?\n\nAnswer:\nLearn some economics!\n\n\nWe’ve covered statistical conclusion validity, power calculations, and simulation. Now we’re shifting to designing experiments."
+  },
+  {
+    "objectID": "unit-2/lec-2-1-slides.html#back-to-econ-101",
+    "href": "unit-2/lec-2-1-slides.html#back-to-econ-101",
+    "title": "Unit 2.1: Optimal Experimental Design",
+    "section": "(Back) to Econ 101",
+    "text": "(Back) to Econ 101\nOptimize: Weighing costs and benefits\n\nObjective:\n\nMaximize statistical power\nOr minimize the smallest effect we can see (the Minimum Detectable Effect)\n\nConstraints:\n\nResearch Budget\nlogistical limitations"
+  },
+  {
+    "objectID": "unit-2/lec-2-1-slides.html#key-elements-in-sample-size-calculation",
+    "href": "unit-2/lec-2-1-slides.html#key-elements-in-sample-size-calculation",
+    "title": "Unit 2.1: Optimal Experimental Design",
+    "section": "Key Elements in Sample Size Calculation",
+    "text": "Key Elements in Sample Size Calculation\n\n\nSignificance level (\\(\\alpha\\)): The probability of a false positive (rejecting the null when it’s actually true).\nMinimum Detectable Effect (MDE): The smallest true effect size you want to be able to detect with high probability.\nPower (\\(1 - \\beta\\)): The probability of detecting a true effect (i.e., rejecting the null when it’s false).\n\n\n\n\n\n\n\n\n\nWarning\n\n\nMDE ≠ Expected effect size!!"
+  },
+  {
+    "objectID": "unit-2/lec-2-1-slides.html#a-simple-example",
+    "href": "unit-2/lec-2-1-slides.html#a-simple-example",
+    "title": "Unit 2.1: Optimal Experimental Design",
+    "section": "A Simple Example",
+    "text": "A Simple Example\n\nYou’ve received a research grant for a two-arm study:\n\nControl group (no intervention)\nTreatment group (new health intervention)\n\nOutcome measure: \\[Y_i = \\text{Health and Happiness Index}\\]\nKey questions:\n\nHow many participants do you need?\nHow to split the sample between treatment and control?"
+  },
+  {
+    "objectID": "unit-2/lec-2-1-slides.html#setting-up-the-outcome-model",
+    "href": "unit-2/lec-2-1-slides.html#setting-up-the-outcome-model",
+    "title": "Unit 2.1: Optimal Experimental Design",
+    "section": "Setting Up the Outcome Model",
+    "text": "Setting Up the Outcome Model\nComponents of the Outcome\n\n\\(Y_i\\): Outcome for subject \\(i\\)\n\\(\\mathbf{X}_i\\): Observable variables\n\\(\\alpha_i\\): Unobserved effect (“innate personal quirks”)\n\\(\\tau_i\\): Person-specific treatment effect (\\(\\mathbb{E}[\\tau_i] = 0\\))\n\\(\\varepsilon_i\\): i.i.d. error term\n\nOutcome Model\n\\[Y_{i} \\;=\\; \\alpha_i \\;+\\; \\mathbf{X}_i \\,\\beta \\;+\\; \\bar{\\tau} \\,D_i \\;+\\; \\tau_i\\,D_i \\;+\\; \\varepsilon_i.\\tag{1}\\]\n\n\\(\\bar{\\tau}\\): Average treatment effect\n\\(\\tau_i\\): Idiosyncratic difference around \\(\\bar{\\tau}\\)"
+  },
+  {
+    "objectID": "unit-2/lec-2-1-slides.html#estimating-the-average-treatment-effect-ate",
+    "href": "unit-2/lec-2-1-slides.html#estimating-the-average-treatment-effect-ate",
+    "title": "Unit 2.1: Optimal Experimental Design",
+    "section": "Estimating the Average Treatment Effect (ATE)",
+    "text": "Estimating the Average Treatment Effect (ATE)\nUnbiased ATE Estimator\n\\[\\hat{\\tau}\\;=\\; \\mathbb{E}[Y_i \\mid D_i=1]\\;-\\;\\mathbb{E}[Y_i \\mid D_i=0]\\]\n\nUnbiased due to randomization\n\\(D_i\\) independent of \\(\\alpha_i, \\tau_i,\\) and \\(\\varepsilon_i\\)\n\nVariance of Estimated ATE\n\\[\\mathrm{Var}(\\hat{\\tau})\\;=\\;\\frac{\\sigma^2}{N}\\;=\\;\\frac{\\mathrm{Var}(\\varepsilon_i)}{\\;N \\,\\times\\, \\mathrm{Var}(D_i)\\,}.\\tag{2}\\]\n\n\\(\\mathrm{Var}(\\varepsilon_i)\\): Variance of unobserved “noise”\n\\(N\\): Total number of units\n\\(\\mathrm{Var}(D_i)\\): Variance of treatment assignment indicator\n\nProperties of \\(\\mathrm{Var}(\\hat{\\tau})\\)?\n\n\nIncreases with \\(\\mathrm{Var}(\\varepsilon_i)\\)\n\n\n\n\nDecreases with \\(N\\)\n\n\n\n\nDecreases with \\(\\mathrm{Var}(D_i)\\)\n\n\n\nThis slide explains the components of the outcome model, how we estimate the ATE, and the factors affecting the variance of our estimate."
+  },
+  {
+    "objectID": "unit-2/lec-2-1-slides.html#minimum-detectable-effect-mde---the-star-of-the-show",
+    "href": "unit-2/lec-2-1-slides.html#minimum-detectable-effect-mde---the-star-of-the-show",
+    "title": "Unit 2.1: Optimal Experimental Design",
+    "section": "Minimum Detectable Effect (MDE) - the star of the show!",
+    "text": "Minimum Detectable Effect (MDE) - the star of the show!\nNow let’s assume that potential outcomes are conditional potential outcomes y0 and y1 that are normally distributed.\n\\[\nY_{i0} | X_i \\sim \\mathbb{N}(\\mu_0, \\sigma^2) \\mid D_i=0\n\\]\n\\[\nY_{i1} | X_i \\sim \\mathbb{N}(\\mu_1, \\sigma^2) \\mid D_i=1.\n\\]\n\n\nMDE: Smallest effect \\(\\mu_1 - \\mu_0\\) detectable with specified power\nHypotheses: \\(H_0: \\mu_0 = 0 \\quad \\text{vs} \\quad H_1: \\mu_1 \\neq 0\\)\nEstimator: \\(\\bar{Y}_1 - \\bar{Y}_0\\) for \\(\\mu_1 - \\mu_0\\) (Assuming independent observations)"
+  },
+  {
+    "objectID": "unit-2/lec-2-1-slides.html#minimum-detectable-effect-mde",
+    "href": "unit-2/lec-2-1-slides.html#minimum-detectable-effect-mde",
+    "title": "Unit 2.1: Optimal Experimental Design",
+    "section": "Minimum Detectable Effect (MDE)",
+    "text": "Minimum Detectable Effect (MDE)\n\nMDE: Smallest effect \\(\\mu_1 - \\mu_0\\) detectable with specified power\nHypotheses: \\[H_0: \\mu_0 = 0 \\quad \\text{vs} \\quad H_1: \\mu_1 \\neq 0\\]\nFor independent observations:\n\nEstimator: \\(\\bar{Y}_1 - \\bar{Y}_0\\) for \\(\\mu_1 - \\mu_0\\)"
+  },
+  {
+    "objectID": "unit-2/lec-2-1-slides.html#mde-formula---the-star-of-the-show",
+    "href": "unit-2/lec-2-1-slides.html#mde-formula---the-star-of-the-show",
+    "title": "Unit 2.1: Optimal Experimental Design",
+    "section": "MDE formula - the star of the show!",
+    "text": "MDE formula - the star of the show!\n\\[\n\\text{MDE} = (z_{1-\\alpha/2} + z_{1-\\beta}) \\sqrt{\\frac{\\sigma^2}{n_1} + \\frac{\\sigma^2}{n_0}}\n\\]\n\n\\(n_1\\): Treatment sample size\n\\(n_0\\): Control sample size\n\\(\\sigma^2\\): Common outcome variance"
+  },
+  {
+    "objectID": "unit-2/lec-2-1-slides.html#mde-is-effect-size-tau-such-that-power-has-the-same-cutoff-as-the-significance-level",
+    "href": "unit-2/lec-2-1-slides.html#mde-is-effect-size-tau-such-that-power-has-the-same-cutoff-as-the-significance-level",
+    "title": "Unit 2.1: Optimal Experimental Design",
+    "section": "MDE is effect size \\(\\tau\\) such that power has the same cutoff as the significance level",
+    "text": "MDE is effect size \\(\\tau\\) such that power has the same cutoff as the significance level\n#| fig-align: center #| out-width: “80%” knitr::include_graphics(“/unit-1/media/HypothesisTesting.png”)"
+  },
+  {
+    "objectID": "unit-2/lec-2-1-slides.html#how-many-participants-should-i-recruit-in-each-arm-of-our-study",
+    "href": "unit-2/lec-2-1-slides.html#how-many-participants-should-i-recruit-in-each-arm-of-our-study",
+    "title": "Unit 2.1: Optimal Experimental Design",
+    "section": "How many participants should I recruit in each arm of our study?",
+    "text": "How many participants should I recruit in each arm of our study?\nTo find the optimal sample allocation, we need to minimize the MDE:\n\\[\n\\min_{n_0, n_1} \\text{MDE}\n\\]\nsubject to \\(n_0 + n_1 = N\\)."
+  },
+  {
+    "objectID": "unit-2/lec-2-1-slides.html#with-budget-constraint",
+    "href": "unit-2/lec-2-1-slides.html#with-budget-constraint",
+    "title": "Unit 2.1: Optimal Experimental Design",
+    "section": "With budget constraint:",
+    "text": "With budget constraint:\nReal-world cost considerations\n\nTreatment group: Higher cost (\\(c_1\\))\n\nIntervention funding\nStaff hiring\nSupplies\nParticipant incentives\n\nControl group: Lower but non-zero cost (\\(c_0\\))\n\nSurvey administration\nLab visits\n\n\nBudget-constrained optimization\n\\[\n\\min_{n_0,\\,n_1} \\text{MDE}\n\\quad \\text{subject to} \\quad\nc_0\\,n_0 + c_1\\,n_1 \\;\\le\\; M\n\\]\n\n\\(c_0\\): Cost per control participant\n\\(c_1\\): Cost per treatment participant\n\\(M\\): Total budget\n\nOptimal allocation solution\n\\[\n\\frac{n_1}{n_0} \\;=\\; \\sqrt{\\frac{\\sigma_1^2\\,c_0}{\\sigma_0^2\\,c_1}}\n\\]\nImplications\n\nIf \\(c_1 \\gg c_0\\): Fewer treatment participants\nIf \\(\\sigma_0^2 &gt; \\sigma_1^2\\): More control participants\n\nEconomic interpretation\n\nCompare marginal benefit (variance reduction) to marginal cost\nPrioritize “cheapest variance reduction”\n\nPractical considerations\n\nEstimate costs accurately\nConsider pilot studies for variance estimation\nConduct sensitivity analyses"
+  },
+  {
+    "objectID": "unit-2/lec-2-1-slides.html#design-extensions",
+    "href": "unit-2/lec-2-1-slides.html#design-extensions",
+    "title": "Unit 2.1: Optimal Experimental Design",
+    "section": "Design Extensions",
+    "text": "Design Extensions\nSee lecture notes for discussion of some extensions (The premise is the same)\n\nDichotomous treatment with binomial outcome\nMultiple treatment arms\nClustered designs"
+  },
+  {
+    "objectID": "unit-2/lec-2-1-slides.html#strategies-to-increase-power",
+    "href": "unit-2/lec-2-1-slides.html#strategies-to-increase-power",
+    "title": "Unit 2.1: Optimal Experimental Design",
+    "section": "Strategies to Increase Power",
+    "text": "Strategies to Increase Power\nAlso in notes, some strategies for increasing power with fixed n:\n\nMaximize compliance\nChoose less noisy outcome measures\nMultiple waves of baseline and endline data\nInclude covariates in estimation\nImplement stratified randomization"
+  },
+  {
+    "objectID": "unit-2/lec-2-1-slides.html#conclusion",
+    "href": "unit-2/lec-2-1-slides.html#conclusion",
+    "title": "Unit 2.1: Optimal Experimental Design",
+    "section": "Conclusion",
+    "text": "Conclusion\n\nOne magical thing about experimentation: allows control over design, you’re not just taking what the world gives you\nConsider all factors: sample sizes, costs, clustering, compliance\nPlan thoroughly to maximize power within constraints\n\nNext time: look at more advanced randomization strategies that can further improve your power"
+  },
+  {
+    "objectID": "unit-2/lec-2-1-slides.html#objective-maximize-statistical-power",
+    "href": "unit-2/lec-2-1-slides.html#objective-maximize-statistical-power",
+    "title": "Unit 2.1: Optimal Experimental Design",
+    "section": "Objective: Maximize statistical power",
+    "text": "Objective: Maximize statistical power"
+  },
+  {
+    "objectID": "unit-2/lec-2-1-slides.html#constraints-budget-and-logistical-limitations",
+    "href": "unit-2/lec-2-1-slides.html#constraints-budget-and-logistical-limitations",
+    "title": "Unit 2.1: Optimal Experimental Design",
+    "section": "Constraints: Budget and logistical limitations",
+    "text": "Constraints: Budget and logistical limitations\nOptimize: Weighing costs and benefits\n\nWe’re applying economic principles to optimize our experimental design within constraints."
+  },
+  {
+    "objectID": "unit-2/lec-2-1-slides.html#outcome-model",
+    "href": "unit-2/lec-2-1-slides.html#outcome-model",
+    "title": "Unit 2.1: Optimal Experimental Design",
+    "section": "Outcome Model",
+    "text": "Outcome Model\n\n\\(Y_i\\): Outcome for subject \\(i\\)\n\\(\\mathbf{X}_i\\): Observable variables\n\\(\\alpha_i\\): Unobserved effect (“innate personal quirks”)\n\\(\\tau_i\\): Person-specific treatment effect (\\(\\mathbb{E}[\\tau_i] = 0\\))\n\\(\\varepsilon_i\\): i.i.d. error term\n\n\\[Y_{i} \\;=\\; \\alpha_i \\;+\\; \\mathbf{X}_i \\,\\beta \\;+\\; \\bar{\\tau} \\,D_i \\;+\\; \\tau_i\\,D_i \\;+\\; \\varepsilon_i.\\tag{1}\\]\n\n\\(\\bar{\\tau}\\): Average treatment effect\n\\(\\tau_i\\): Idiosyncratic difference around \\(\\bar{\\tau}\\)"
+  },
+  {
+    "objectID": "unit-2/lec-2-1-slides.html#unbiased-ate-estimator",
+    "href": "unit-2/lec-2-1-slides.html#unbiased-ate-estimator",
+    "title": "Unit 2.1: Optimal Experimental Design",
+    "section": "Unbiased ATE Estimator",
+    "text": "Unbiased ATE Estimator\n\\[\\hat{\\tau}\\;=\\; \\mathbb{E}[Y_i \\mid D_i=1]\\;-\\;\\mathbb{E}[Y_i \\mid D_i=0]\\]\n\nUnbiased due to randomization\n\\(D_i\\) independent of \\(\\alpha_i, \\tau_i,\\) and \\(\\varepsilon_i\\)\n\nThen we have the Variance of Estimated ATE\n\\[\\mathrm{Var}(\\hat{\\tau})\\;=\\;\\frac{\\sigma^2}{N}\\;=\\;\\frac{\\mathrm{Var}(\\varepsilon_i)}{\\;N \\,\\times\\, \\mathrm{Var}(D_i)\\,}.\\tag{2}\\]\n\n\\(\\mathrm{Var}(\\varepsilon_i)\\): Variance of unobserved “noise”\n\\(N\\): Total number of units\n\\(\\mathrm{Var}(D_i)\\): Variance of treatment assignment indicator"
+  },
+  {
+    "objectID": "unit-2/lec-2-1-slides.html#properties-of-mathrmvarhattau",
+    "href": "unit-2/lec-2-1-slides.html#properties-of-mathrmvarhattau",
+    "title": "Unit 2.1: Optimal Experimental Design",
+    "section": "Properties of \\(\\mathrm{Var}(\\hat{\\tau})\\)?",
+    "text": "Properties of \\(\\mathrm{Var}(\\hat{\\tau})\\)?\n\n\nIncreases with \\(\\mathrm{Var}(\\varepsilon_i)\\)\n\n\n\n\nDecreases with \\(N\\)\n\n\n\n\nDecreases with \\(\\mathrm{Var}(D_i)\\)\n\n\n\nThis slide explains the components of the outcome model, how we estimate the ATE, and the factors affecting the variance of our estimate."
+  },
+  {
+    "objectID": "unit-2/lec-2-1-slides.html#what-influences-mathrmvarhattau",
+    "href": "unit-2/lec-2-1-slides.html#what-influences-mathrmvarhattau",
+    "title": "Unit 2.1: Optimal Experimental Design",
+    "section": "What influences \\(\\mathrm{Var}(\\hat{\\tau})\\)?",
+    "text": "What influences \\(\\mathrm{Var}(\\hat{\\tau})\\)?\n\\[\\mathrm{Var}(\\hat{\\tau})\\;=\\;\\frac{\\sigma^2}{N}\\;=\\;\\frac{\\mathrm{Var}(\\varepsilon_i)}{\\;N \\,\\times\\, \\mathrm{Var}(D_i)\\,}.\\tag{2}\\]\n\n\nIncreases with \\(\\mathrm{Var}(\\varepsilon_i)\\)\n\n\n\n\nDecreases with \\(N\\)\n\n\n\n\nDecreases with \\(\\mathrm{Var}(D_i)\\)"
+  },
+  {
+    "objectID": "unit-2/lec-2-1-slides.html#mde-is-effect-size-tau-s.t.-power-has-the-same-cutoff-as-the-significance-level",
+    "href": "unit-2/lec-2-1-slides.html#mde-is-effect-size-tau-s.t.-power-has-the-same-cutoff-as-the-significance-level",
+    "title": "Unit 2.1: Optimal Experimental Design",
+    "section": "MDE is effect size \\(\\tau\\) s.t. power has the same cutoff as the significance level",
+    "text": "MDE is effect size \\(\\tau\\) s.t. power has the same cutoff as the significance level"
+  },
+  {
+    "objectID": "unit-2/lec-2-1-slides.html#the-equal-variance-case",
+    "href": "unit-2/lec-2-1-slides.html#the-equal-variance-case",
+    "title": "Unit 2.1: Optimal Experimental Design",
+    "section": "The Equal Variance Case",
+    "text": "The Equal Variance Case\n\nAssume equal variances in treatment and control (and no cost difference)\n\n\\[\\text{MDE} = (z_{1-\\alpha/2} + z_{1-\\beta})\\sqrt{\\frac{\\sigma^2}{n_0} + \\frac{\\sigma^2}{n_1}}\\]\n\n\\(n_1\\): Treatment sample size\n\\(n_0\\): Control sample size\n\\(\\sigma^2\\): Common variance\nResult: \\(n_0^* = n_1^* = \\frac{N}{2}\\)\nOptimal allocation is a 50-50 split"
+  },
+  {
+    "objectID": "unit-2/lec-2-1-slides.html#unequal-variances",
+    "href": "unit-2/lec-2-1-slides.html#unequal-variances",
+    "title": "Unit 2.1: Optimal Experimental Design",
+    "section": "Unequal Variances",
+    "text": "Unequal Variances\nBut how often are variances likely to be equal?\n\nWith unequal variances, the MDE formula changes:\n\n\\[\\text{MDE} = (z_{1-\\alpha/2} + z_{1-\\beta})\\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_0^2}{n_0}}\\]\n\nStrategy: Oversample group with higher variance\nChallenges: Estimating \\(\\sigma_0^2\\) and \\(\\sigma_1^2\\) in advance"
+  },
+  {
+    "objectID": "unit-2/lec-2-1-slides.html#so.-much.-math.-lets-make-a-calculator",
+    "href": "unit-2/lec-2-1-slides.html#so.-much.-math.-lets-make-a-calculator",
+    "title": "Unit 2.1: Optimal Experimental Design",
+    "section": "So. Much. Math. Let’s make a calculator",
+    "text": "So. Much. Math. Let’s make a calculator\nOptimal Experimental Design Calculator"
+  },
+  {
+    "objectID": "unit-2/lec-2-1-slides.html#real-world-cost-considerations",
+    "href": "unit-2/lec-2-1-slides.html#real-world-cost-considerations",
+    "title": "Unit 2.1: Optimal Experimental Design",
+    "section": "Real-world cost considerations",
+    "text": "Real-world cost considerations\n\nTreatment group: Higher cost (\\(c_1\\))\n\nIntervention funding\nStaff hiring\nSupplies\nParticipant incentives\n\nControl group: Lower but non-zero cost (\\(c_0\\))\n\nSurvey administration\nLab visits"
+  },
+  {
+    "objectID": "unit-2/lec-2-1-slides.html#budget-constrained-optimization",
+    "href": "unit-2/lec-2-1-slides.html#budget-constrained-optimization",
+    "title": "Unit 2.1: Optimal Experimental Design",
+    "section": "Budget-constrained optimization",
+    "text": "Budget-constrained optimization\n\\[\n\\min_{n_0,\\,n_1} \\text{MDE}\n\\quad \\text{subject to} \\quad\nc_0\\,n_0 + c_1\\,n_1 \\;\\le\\; M\n\\]\n\n\\(c_0\\): Cost per control participant\n\\(c_1\\): Cost per treatment participant\n\\(M\\): Total budget\n\nOptimal allocation\n\\[\n\\frac{n_1}{n_0} \\;=\\; \\sqrt{\\frac{\\sigma_1^2\\,c_0}{\\sigma_0^2\\,c_1}}\n\\]"
+  },
+  {
+    "objectID": "unit-2/lec-2-1-slides.html#what-is-the-implication",
+    "href": "unit-2/lec-2-1-slides.html#what-is-the-implication",
+    "title": "Unit 2.1: Optimal Experimental Design",
+    "section": "What is the implication?",
+    "text": "What is the implication?\n\\[\n\\frac{n_1}{n_0} \\;=\\; \\sqrt{\\frac{\\sigma_1^2\\,c_0}{\\sigma_0^2\\,c_1}}\n\\]\nNo Free Lunch: Cost differences can shift your allocation away from the standard 50–50.\n\nIf \\(c_1 \\gg c_0\\): Fewer treatment participants\nIf \\(c_1 \\ll c_0\\): More treatment participants"
   }
 ]

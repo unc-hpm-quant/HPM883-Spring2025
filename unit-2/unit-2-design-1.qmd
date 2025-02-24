@@ -9,16 +9,19 @@ draft: false
 
 -   Read:
     -   [List, Sadoff, Wagner, "So you want to run an experiment, now what? Some simple rules of thumb for optimal experimental design"](https://app.perusall.com/courses/hpm-883/so-you-want-to-run-an-experiment-now-what-some-simple-rules-of-thumb-for-optimal-experimental-design)
-    - Optional:
+    -   Optional:
         -   [Section 4 of Duflo, Glennerster, and Kremer, "USING RANDOMIZATION IN DEVELOPMENT ECONOMICS RESEARCH: A TOOLKIT"](https://app.perusall.com/courses/hpm-883/chapter-61-using-randomization-in-development-economics-research-a-toolkit)
         -   [McKenzie,Beyond baseline and follow-up: The case for more T in experiments](https://app.perusall.com/courses/hpm-883/beyond-baseline-and-follow-up-the-case-for-more-t-in-experiments)
-        -  [World Bank Blog: Seven Ways to Improve Statistical Power without Increasing n](https://blogs.worldbank.org/en/impactevaluations/seven-ways-improve-statistical-power-your-experiment-without-increasing-n)
+        -   [World Bank Blog: Seven Ways to Improve Statistical Power without Increasing n](https://blogs.worldbank.org/en/impactevaluations/seven-ways-improve-statistical-power-your-experiment-without-increasing-n)
 
 ### Class
 
--   [Lecture: Optimal Experimental Design](/unit-2/lec-2-1.qmd)
+-   [Lecture Notes: Optimal Experimental Design](/unit-2/lec-2-1.qmd)
+
+    -   [Lecture Slides](/unit-2/lec-2-1-slides.qmd)
+
 -   [Optimal Experimental Design Shiny App](/unit-2/shiny-oed-app.qmd)
 
 ### Labs
 
--   TBD
+-   None yet!
