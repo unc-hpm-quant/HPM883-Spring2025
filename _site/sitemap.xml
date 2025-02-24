@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://hpm883.github.io/unit-2/lec-2-1.html</loc>
+    <lastmod>2025-02-24T00:34:25.784Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hpm883.github.io/unit-2/unit-2-design-1.html</loc>
+    <lastmod>2025-02-24T09:37:39.192Z</lastmod>
+  </url>
+  <url>
     <loc>https://hpm883.github.io/resources.html</loc>
     <lastmod>2025-02-23T12:44:27.503Z</lastmod>
   </url>
@@ -18,7 +26,7 @@
   </url>
   <url>
     <loc>https://hpm883.github.io/unit-1/unit-1-internal-2.html</loc>
-    <lastmod>2025-02-17T09:12:14.491Z</lastmod>
+    <lastmod>2025-02-24T09:36:26.496Z</lastmod>
   </url>
   <url>
     <loc>https://hpm883.github.io/unit-1/unit-1-internal-1.html</loc>
@@ -50,7 +58,7 @@
   </url>
   <url>
     <loc>https://hpm883.github.io/labs/lab-2-Power.html</loc>
-    <lastmod>2025-02-13T12:49:42.444Z</lastmod>
+    <lastmod>2025-02-23T12:03:39.521Z</lastmod>
   </url>
   <url>
     <loc>https://hpm883.github.io/labs/lab-1-InternalValidityPO_sols.html</loc>
@@ -107,13 +115,5 @@
   <url>
     <loc>https://hpm883.github.io/unit-2/shiny-oed-app.html</loc>
     <lastmod>2025-02-20T21:49:34.186Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hpm883.github.io/unit-2/unit-2-design-1.html</loc>
-    <lastmod>2025-02-24T09:31:07.144Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hpm883.github.io/unit-2/lec-2-1.html</loc>
-    <lastmod>2025-02-24T00:34:25.784Z</lastmod>
   </url>
 </urlset>

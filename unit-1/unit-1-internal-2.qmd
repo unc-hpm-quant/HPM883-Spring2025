@@ -1,6 +1,5 @@
 ---
 title: "Unit 1.2: Statistical Conclusion  Validity"
-subtitle: "Class 5: Statistical Conclusion Validity"
 draft: false
 ---
 
