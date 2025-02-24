@@ -8,9 +8,11 @@ draft: false
 ### Preparation
 
 -   Read:
-    -   [Declare Design Book: 5.1, 8.2, 10](https://book.declaredesign.org/declaration-diagnosis-redesign/crafting-data-strategy.html)
--   Listen:
-    -   [Podcast](media/)
+    -   [List, Sadoff, Wagner, "So you want to run an experiment, now what? Some simple rules of thumb for optimal experimental design"](https://app.perusall.com/courses/hpm-883/so-you-want-to-run-an-experiment-now-what-some-simple-rules-of-thumb-for-optimal-experimental-design)
+    - Optional:
+        -   [Section 4 of Duflo, Glennerster, and Kremer, "USING RANDOMIZATION IN DEVELOPMENT ECONOMICS RESEARCH: A TOOLKIT"](https://app.perusall.com/courses/hpm-883/chapter-61-using-randomization-in-development-economics-research-a-toolkit)
+        -   [McKenzie,Beyond baseline and follow-up: The case for more T in experiments](https://app.perusall.com/courses/hpm-883/beyond-baseline-and-follow-up-the-case-for-more-t-in-experiments)
+        -  [World Bank Blog: Seven Ways to Improve Statistical Power without Increasing n](https://blogs.worldbank.org/en/impactevaluations/seven-ways-improve-statistical-power-your-experiment-without-increasing-n)
 
 ### Class
 

@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Sean Sylvia, Ph.D.">
+<meta name="dcterms.date" content="2025-01-16">
 
-<title>Unit 2.1: Optimal Experimental Design – HPM 883</title>
+<title>Unit 1: Internal Validity – HPM 883</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,7 +31,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../labs/lab-2-Power.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -68,7 +69,39 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -81,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../unit-2/unit-2-design-1.html">Unit 2: Design of Experiments</a></li><li class="breadcrumb-item"><a href="../unit-2/unit-2-design-1.html">Unit 2.0: Optimal Experimental Design</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Unit 1: Internal Validity</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -300,16 +333,16 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
  <span class="menu-text">Unit 2: Design of Experiments</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../unit-2/unit-2-design-1.html" class="sidebar-item-text sidebar-link active">
+  <a href="../unit-2/unit-2-design-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Unit 2.0: Optimal Experimental Design</span></a>
   </div>
 </li>
@@ -324,29 +357,52 @@ ul.task-list li input[type="checkbox"] {
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
-  <ul>
-  <li><a href="#unit-overview" id="toc-unit-overview" class="nav-link active" data-scroll-target="#unit-overview">Unit Overview</a>
   <ul class="collapse">
-  <li><a href="#preparation" id="toc-preparation" class="nav-link" data-scroll-target="#preparation">Preparation</a></li>
-  <li><a href="#class" id="toc-class" class="nav-link" data-scroll-target="#class">Class</a></li>
-  <li><a href="#labs" id="toc-labs" class="nav-link" data-scroll-target="#labs">Labs</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts">Key Concepts</a></li>
+  <li><a href="#concept-map" id="toc-concept-map" class="nav-link" data-scroll-target="#concept-map">Concept Map</a></li>
+  <li><a href="#two-scenarios" id="toc-two-scenarios" class="nav-link" data-scroll-target="#two-scenarios">Two scenarios</a>
+  <ul class="collapse">
+  <li><a href="#scenario-1" id="toc-scenario-1" class="nav-link" data-scroll-target="#scenario-1">Scenario 1</a></li>
+  <li><a href="#scenario-2" id="toc-scenario-2" class="nav-link" data-scroll-target="#scenario-2">Scenario 2</a></li>
+  <li><a href="#explanation" id="toc-explanation" class="nav-link" data-scroll-target="#explanation">Explanation</a></li>
   </ul></li>
+  <li><a href="#the-potential-outcomes-framework" id="toc-the-potential-outcomes-framework" class="nav-link" data-scroll-target="#the-potential-outcomes-framework">The Potential Outcomes Framework</a></li>
+  <li><a href="#assignment-mechanism" id="toc-assignment-mechanism" class="nav-link" data-scroll-target="#assignment-mechanism">Assignment Mechanism</a>
+  <ul class="collapse">
+  <li><a href="#randomization" id="toc-randomization" class="nav-link" data-scroll-target="#randomization">Randomization</a></li>
+  </ul></li>
+  <li><a href="#exclusion-restrictions" id="toc-exclusion-restrictions" class="nav-link" data-scroll-target="#exclusion-restrictions">Exclusion Restrictions</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/hpm883/edit/main/unit-2/unit-2-design-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/hpm883/edit/main/unit-1/lec-1-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../unit-2/unit-2-design-1.html">Unit 2: Design of Experiments</a></li><li class="breadcrumb-item"><a href="../unit-2/unit-2-design-1.html">Unit 2.0: Optimal Experimental Design</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Unit 2.1: Optimal Experimental Design</h1>
+<h1 class="title">Unit 1: Internal Validity</h1>
+<p class="subtitle lead">Lecture Notes</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sean Sylvia, Ph.D. </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 16, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -356,41 +412,209 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="unit-overview" class="level2">
-<h2 class="anchored" data-anchor-id="unit-overview">Unit Overview</h2>
-<section id="preparation" class="level3">
-<h3 class="anchored" data-anchor-id="preparation">Preparation</h3>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>Internal validity is the cornerstone of experimental design, crucial for establishing a causal relationship between treatment and outcome. It ensures that the observed effects in an experiment can be confidently attributed to the treatment rather than other confounding factors. This lecture explores the core principles and challenges of internal validity, including the role of randomization, exclusion restrictions, and the assignment mechanism. We also discuss practical applications and the complexities of ensuring compliance and observability in experimental settings.</p>
+</section>
+<section id="learning-objectives" class="level1">
+<h1>Learning Objectives</h1>
+<p>By the end of this lecture, you should be able to:</p>
 <ul>
-<li>Read:
+<li>Understand the potential outcomes framework and its relevance in causal inference.</li>
+<li>Explain the role of the assignment mechanism in maintaining internal validity.</li>
+<li>Identify and address violations of key exclusion restrictions.</li>
+<li>Distinguish between individual and average treatment effects.</li>
+<li>Recognize the practical challenges of experimental design, including compliance and attrition.</li>
+</ul>
+</section>
+<section id="key-concepts" class="level1">
+<h1>Key Concepts</h1>
 <ul>
-<li><a href="https://app.perusall.com/courses/hpm-883/so-you-want-to-run-an-experiment-now-what-some-simple-rules-of-thumb-for-optimal-experimental-design">List, Sadoff, Wagner, “So you want to run an experiment, now what? Some simple rules of thumb for optimal experimental design”</a></li>
-<li>Optional:
+<li>The <strong>Potential Outcomes Framework</strong> is a useful way to understand causal inference.
 <ul>
-<li><a href="https://app.perusall.com/courses/hpm-883/chapter-61-using-randomization-in-development-economics-research-a-toolkit">Section 4 of Duflo, Glennerster, and Kremer, “USING RANDOMIZATION IN DEVELOPMENT ECONOMICS RESEARCH: A TOOLKIT”</a></li>
-<li><a href="https://app.perusall.com/courses/hpm-883/beyond-baseline-and-follow-up-the-case-for-more-t-in-experiments">McKenzie,Beyond baseline and follow-up: The case for more T in experiments</a></li>
-<li><a href="https://blogs.worldbank.org/en/impactevaluations/seven-ways-improve-statistical-power-your-experiment-without-increasing-n">World Bank Blog: Seven Ways to Improve Statistical Power without Increasing n</a></li>
+<li>Causal inference is a missing data problem.</li>
 </ul></li>
-</ul></li>
+<li>When an <strong>Assignment Mechanism</strong> is known and controlled by the researcher, we can recover internally valid estimates of causal effects.</li>
+<li>Four key <strong>Exclusion Restrictions</strong> allow for experiments to estimate causal effects.</li>
+<li>When these assumptions are not satisfied, we might not be able to recover the Average Treatment Effect (ATE), but can still learn certain things about causal effects.</li>
 </ul>
 </section>
-<section id="class" class="level3">
-<h3 class="anchored" data-anchor-id="class">Class</h3>
-<ul>
-<li><a href="../unit-2/lec-2-1.html">Lecture: Optimal Experimental Design</a></li>
-<li><a href="../unit-2/shiny-oed-app.html">Optimal Experimental Design Shiny App</a></li>
-</ul>
+<section id="concept-map" class="level1">
+<h1>Concept Map</h1>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    A["Difference in Conditional Expectations"]
+    subgraph AssignmentMechanism [Assignment Mechanism]
+        direction TB
+        B1[Non-zero Probability Condition]
+        B1 --&gt; B2[Individualism]
+        B2 --&gt; B3[Unconfoundedness]
+    end
+    subgraph ExclusionRestrictions [Exclusion Restrictions]
+    direction TB
+        C1[SUTVA]
+        C1 --&gt; C2[Observability]
+        C2 --&gt; C3[Complete Compliance]
+        C3 --&gt; C4[Statistical Independence]
+    end
+A --&gt; AssignmentMechanism --&gt; ExclusionRestrictions --&gt; D["Average Treatment Effect $$(\tau)$$"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 </section>
-<section id="labs" class="level3">
-<h3 class="anchored" data-anchor-id="labs">Labs</h3>
-<ul>
-<li>TBD</li>
-</ul>
+<section id="two-scenarios" class="level1">
+<h1>Two scenarios</h1>
+<section id="scenario-1" class="level2">
+<h2 class="anchored" data-anchor-id="scenario-1">Scenario 1</h2>
+<p>Suppose you are considering whether a new diet is linked to lower risk of inflammatory arthritis.</p>
+<p>You observe that in a given sample: - A small fraction of individuals on the diet have inflammatory arthritis. - A large fraction of individuals not on the diet have inflammatory arthritis.</p>
+<p>Based on this, you recommend that everyone pursue this new diet, but rates of inflammatory arthritis are unaffected.</p>
+<p>What happened?</p>
+</section>
+<section id="scenario-2" class="level2">
+<h2 class="anchored" data-anchor-id="scenario-2">Scenario 2</h2>
+<p>Consider a policy designed to reduce emergency room visits by offering free preventive care check-ups. Policymakers observed that communities with higher uptake of preventive care have fewer emergency visits. They implement the policy nationwide, expecting a significant reduction in emergency room visits. However, the policy shows no measurable impact.</p>
+<p>What happened?</p>
+</section>
+<section id="explanation" class="level2">
+<h2 class="anchored" data-anchor-id="explanation">Explanation</h2>
+<p>In each case, you were unable to see what would have happened to each individual if the alternative action had been applied.</p>
+<p>In scenario 1, it could be that individuals who chose the diet may already have healthier lifestyles, including better exercise and reduced stress levels, which are known to reduce the risk of inflammatory arthritis. The observed differences may be due to these factors rather than the diet itself. Without randomization or controlling for confounding factors, you cannot attribute causality to the diet. The association observed may not reflect the causal effect of the diet.</p>
+<p>In scenario 2, the observed association between preventive care and lower emergency room visits may reflect that communities with higher uptake of preventive care might already have better healthcare access, socioeconomic conditions, or health awareness—all factors that independently reduce emergency visits. Implementing the policy broadly, without considering these confounders, does not account for the variation in baseline conditions.</p>
+<p><strong>The lack of this information is what prevents inference about causation from association.</strong></p>
+</section>
+</section>
+<section id="the-potential-outcomes-framework" class="level1">
+<h1>The Potential Outcomes Framework</h1>
+<p>In our examples, the unseen information about each individual is the <strong>counterfactual</strong>. Without reasoning about the counterfactual, we can’t draw causal inferences—or worse, we draw the wrong causal inferences!</p>
+<p>The potential outcomes model is a way to formally think about counterfactuals and causal inference.</p>
+<p>Now let’s formalize the Potential Outcomes Framework. Suppose there are two possible actions that can be assigned to an individual:</p>
+<p><span class="math display">\[
+D_{i,t} =
+\begin{cases}
+1 \text{ if "Treatment"} \\
+0 \text{ if "Control"}
+\end{cases}
+\]</span></p>
+<p><span class="math inline">\(D_{i,t}\)</span> is a binary variable defining treatment, where <span class="math inline">\(i\)</span> indexes an individual unit, such as a person.</p>
+<p>What would this be for Scenario 1?</p>
+<p><span class="math display">\[
+D_{i,t} =
+\begin{cases}
+1 \text{ if placed on diet at time $t$} \\
+0 \text{ if not placed on diet at time $t$}
+\end{cases}
+\]</span></p>
+<p>Now, <em>prior to treatment</em> there are two <strong>Potential Outcomes</strong> for an individual:</p>
+<p><span class="math display">\[
+Y_{i,t}^j =
+\begin{cases}
+1 \text{ outcome if assigned to "Treatment" at time $t$} \\
+0 \text{ outcome if assigned to "Control" at time $t$}
+\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+Y_{i,t}^j =
+\begin{cases}
+1 \text{ health if placed on diet at time $t$} \\
+0 \text{ health if not placed on diet at time $t$}
+\end{cases}
+\]</span></p>
+<p>In other words, there are two <strong>Potential Outcomes</strong> for an individual: one that would happen if they were assigned to the “Treatment” action (<span class="math inline">\(Y_{i,t}^1\)</span>), and one if they were assigned to the “Control” action (<span class="math inline">\(Y_{i,t}^0\)</span>).</p>
+<p>The potential outcomes framework formalizes causal inference by defining two potential outcomes for each individual: (<span class="math inline">\(Y_{i,t}^1\)</span>), the outcome if treated, and (<span class="math inline">\(Y_{i,t}^0\)</span>), the outcome if untreated. Observing only one of these outcomes creates the <strong>missing data problem</strong>, central to causal inference.</p>
+<p>Note that potential outcomes are different from realized outcomes. The potential outcomes are defined even <em>prior to treatment</em>. One an individual is assigned to treatment or control wee can then observe their realized outcome.</p>
+</section>
+<section id="assignment-mechanism" class="level1">
+<h1>Assignment Mechanism</h1>
+<p>The assignment mechanism is a crucial component of internal validity. It describes how an individual was assigned to receive treatment.</p>
+<p>This could be due to a choice. Did a doctor choose to do it? Did the patient choose to do it? Did an algorithm choose to do it?</p>
+<p>What is important here is <strong>why</strong> a particular choice was made. For instance, a doctor may choose to assign a patient to treatment based on their perception of treatment efficacy for that patient, or a patient may choose to assign themselves to treatment based on their perceived health benefits.</p>
+<p>I.E. the assignmment may have been made based on someone, perception of the <strong>individual treatment effect,</strong> <span class="math inline">\(\delta_{i}\)</span>:</p>
+<p><span class="math display">\[
+\delta_{i} = Y_{i,t}^1 - Y_{i,t}^0
+\]</span></p>
+<p>This individual’s health outcome at time <span class="math inline">\(t\)</span> would then be determined by the switching equation:</p>
+<p><span class="math display">\[
+Y_{i} = D_{i}Y_{i,t}^1 + (1 - D_{i})Y_{i,t}^0
+\]</span></p>
+<p>where <span class="math inline">\(Y_{i} = Y_{i,t}^1\)</span> if <span class="math inline">\(D_{i} = 1\)</span> and <span class="math inline">\(Y_{i} = Y_{i,t}^0\)</span> if <span class="math inline">\(D_{i} = 0\)</span>.</p>
+<p>Because <span class="math inline">\(D_{i}\)</span> can only be 1 or 0, we cannot directly observe <span class="math inline">\(delta_{i}\)</span>. This is the <strong>Fundamental Problem of Causal Inference</strong>: it is a problem of missing data.</p>
+<p>In a population, we are interested in the population <strong>average treatment effect (ATE)</strong>, <span class="math inline">\(E[\delta]\)</span>:</p>
+<p><span class="math display">\[
+\begin{align}
+E[\delta] = E[\delta] = E[Y^1 - Y^0]
+&amp;= E[Y^1] - E[Y^0]
+\end{align}
+\]</span></p>
+<p>But we cannot calculate this because <span class="math inline">\(Y_{i}^1\)</span> and <span class="math inline">\(Y_{i}^0\)</span> do not exist for the same individual <span class="math inline">\(i\)</span>.</p>
+<p>To see this more concretely, consider the following example: Assume a doctor sees patients, knows each person’s treatment effects, despite counterfactuals, and assigns treatment based on whether gains are positive or not.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>Navigate to this shared spreadsheet and follow instructions.</p>
+<p><a href="https://docs.google.com/spreadsheets/d/1sC3PozGnqZXEVA9P1lRMpm8wp8w8huewaaSQIrUfY8Y/edit?gid=2087709103#gid=2087709103">Perfect Doctor Exercise</a></p>
+<section id="randomization" class="level2">
+<h2 class="anchored" data-anchor-id="randomization">Randomization</h2>
+<p>As we saw, the key source of bias arises from the assignment mechanism, or why a unit is assigned to treatment or control. Endogeneity can arise from units being assigned logically or based on percieved benefit, which is a function of their characteristics. There are two basic approaches to dealing with endogeneity:</p>
+<ol type="1">
+<li>Model-based methods: Model the selection bias and then remove it mechanically</li>
+<li>Design-based methods: Use the design of the experiment and randomization to remove selection bias</li>
+</ol>
+<p><strong>In randomized experiments, the assignment mechanism is controlled, and therefore known, by the researcher.</strong> This is a unique and key difference from naturally-occuring data where the assignment mechanisms is neither controlled nor typically known. The experimental apporach is often referred to as the “gold standard” for estimating casual effects because randomization can be made to ensure that the assignment is independent of individual characteristics, eliminating bias.</p>
+<p>To satisfy, the basic restrictions on the assignment mechanism for randomized experiments are:</p>
+<section id="three-conditions-for-a-valid-assignment-mechanism" class="level3">
+<h3 class="anchored" data-anchor-id="three-conditions-for-a-valid-assignment-mechanism">Three Conditions for a Valid Assignment Mechanism</h3>
+<ol type="1">
+<li><strong>Non-zero probability</strong>: Each individual has a positive probability of being assigned to treatment or control.</li>
+<li><strong>Individualism</strong>: Assignments are independent across individuals and do not depend on others’ potential outcomes.</li>
+<li><strong>Unconfoundedness</strong>: Treatment assignment is orthogonal to potential outcomes.</li>
+</ol>
+<p>These conditions ensure that observed differences between groups are attributable to the treatment rather than pre-existing differences.</p>
+</section>
+</section>
+</section>
+<section id="exclusion-restrictions" class="level1">
+<h1>Exclusion Restrictions</h1>
+<p>In an experiment, four key exclusion restrictions must be satisfied in order for results to be valid:</p>
+<section id="four-key-exclusion-restrictions" class="level3">
+<h3 class="anchored" data-anchor-id="four-key-exclusion-restrictions">Four Key Exclusion Restrictions</h3>
+<ol type="1">
+<li><strong>Observability</strong>: Outcomes must be observed for all individuals; missing data can bias estimates.</li>
+<li><strong>Complete Compliance</strong>: Those assigned to treatment must receive it, and those assigned to control must not.</li>
+<li><strong>Statistical Independence</strong>: Treatment assignment is independent of potential outcomes.</li>
+<li><strong>Stable Unit Treatment Value Assumption (SUTVA)</strong>: The treatment of one individual must not affect another’s outcomes.</li>
+</ol>
+<p>When these conditions are met, researchers can confidently attribute differences in outcomes to the treatment. Violations can compromise the validity of results, so careful attention is needed to satisfy these conditions.</p>
+<p>Several practical challenges can arise in an experiment that threaten internal validity by compromising teh satisfaction of these exclusion restrictions.</p>
+</section>
+<section id="attrition" class="level3">
+<h3 class="anchored" data-anchor-id="attrition">Attrition</h3>
+<p>Attrition arises when participants drop out of a study, leading to missing data. This challenges the observability assumption and may bias results.</p>
+</section>
+<section id="non-compliance" class="level3">
+<h3 class="anchored" data-anchor-id="non-compliance">Non-compliance</h3>
+<p>Non-compliance occurs when individuals assigned to treatment do not receive it or those assigned to control obtain the treatment. This can distort estimates of the treatment effect.</p>
+</section>
+<section id="contamination-or-spillovers" class="level3">
+<h3 class="anchored" data-anchor-id="contamination-or-spillovers">Contamination or Spillovers</h3>
+<p>Contamination refers to instances where the assignment of one individual to treatment may have consequences for others, leading to bias in the estimated treatment effect.</p>
+<p>Later in the course, we’ll cover strategies for addressing these challenges in detail.</p>
 
 
 </section>
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>This example is adapted from Scott Cunninham’s example in the Mixtape book.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -952,15 +1176,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../labs/lab-2-Power.html" class="pagination-link" aria-label="Lab 2: Power by Simulation">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 2: Power by Simulation</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -969,7 +1184,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/hpm883/edit/main/unit-2/unit-2-design-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/hpm883/edit/main/unit-1/lec-1-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

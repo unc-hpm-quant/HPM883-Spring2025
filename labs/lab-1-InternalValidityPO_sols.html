@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Sean Sylvia">
+<meta name="dcterms.date" content="2025-01-22">
+<meta name="description" content="Internal Validity, Potential Outcomes">
+<title>Lab 1 Solutions – HPM 883</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dece3bd051e391dd7205a6b15f93dc59.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-dece3bd051e391dd7205a6b15f93dc59.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-fd9528830c3bd10aadebefd30ea787ae.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-135ac4d113b30199e54d7437fe66c954.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+</head>
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Lab 1 Solutions</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
+      <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/hpm883" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+    <a href="https://rstudio.cloud/" title="Rstudio Cloud" class="quarto-navigation-tool px-1" aria-label="Rstudio Cloud"><i class="bi bi-code-square"></i></a>
+    <div class="dropdown">
+      <a href="" title="Support" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Support"><i class="bi bi-life-preserver"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+<li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://placeholder.link/office-hours">
+              <i class="bi bi-person-raised-hand pe-1"></i>
+            Office hours
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://placeholder.link/help-humans">
+              <i class="bi bi-people-fill pe-1"></i>
+            Help from humans
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://placeholder.link/chatbot">
+              <i class="bi bi-robot pe-1"></i>
+            Help from AI (Chatbot)
+            </a>
+          </li>
+      </ul>
+</div>
+    <a href="https://hpm883.slack.com" title="Slack" class="quarto-navigation-tool px-1" aria-label="Slack"><i class="bi bi-slack"></i></a>
+    <div class="dropdown">
+      <a href="" title="Canvas" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Canvas"><i class="bi bi-file-check-fill"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+<li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://placeholder.link/announcements">
+              <i class="bi bi-megaphone-fill pe-1"></i>
+            Announcements
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://placeholder.link/gradescope">
+              <i class="bi bi-file-arrow-up-fill pe-1"></i>
+            Gradescope
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://placeholder.link/gradebook">
+              <i class="bi bi-alphabet-uppercase pe-1"></i>
+            Gradebook
+            </a>
+          </li>
+      </ul>
+</div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course Schedule</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Course Information</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Syllabus</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../instructors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Instructors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-communication.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Communication</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Semester Project</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../project.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project Description</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ex-simulate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Simulation Example</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Resources</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../computing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Computing</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Unit 0: Foundations</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-0/unit-0-foundations-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Unit 0.0: Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-0/unit-0-foundations-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Unit 0.1: A Field Experiment in Health Services Research</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-0/unit-0-foundations-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Unit 0.2: Computing for Reproducible Research</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Unit 1: Internal Validity</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-1/unit-1-internal-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Unit 1.0: Internal Validity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-1-InternalValidityPO.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 1: The Hospital of Uncertain Outcomes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-1/unit-1-internal-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Unit 1.1: Statistical Conclusion Validity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-2-Power.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 2: Power by Simulation</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Unit 2: Design of Experiments</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-2/unit-2-design-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Unit 2.0: Optimal Experimental Design</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+   
+  <ul>
+<li>
+<a href="#lab-1-the-hospital-of-uncertain-outcomes" id="toc-lab-1-the-hospital-of-uncertain-outcomes" class="nav-link active" data-scroll-target="#lab-1-the-hospital-of-uncertain-outcomes">Lab 1: The Hospital of Uncertain Outcomes</a>
+  <ul class="collapse">
+<li><a href="#overview-and-learning-objectives" id="toc-overview-and-learning-objectives" class="nav-link" data-scroll-target="#overview-and-learning-objectives">Overview and Learning Objectives</a></li>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link" data-scroll-target="#instructions">Instructions</a></li>
+  <li>
+<a href="#scenario" id="toc-scenario" class="nav-link" data-scroll-target="#scenario">Scenario</a>
+  <ul class="collapse">
+<li><a href="#the-hospital-of-uncertain-outcomes" id="toc-the-hospital-of-uncertain-outcomes" class="nav-link" data-scroll-target="#the-hospital-of-uncertain-outcomes">The Hospital of Uncertain Outcomes</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#your-mission" id="toc-your-mission" class="nav-link" data-scroll-target="#your-mission">Your Mission</a>
+  <ul class="collapse">
+<li><a href="#the-pandemic-mystery-at-st.-nulls" id="toc-the-pandemic-mystery-at-st.-nulls" class="nav-link" data-scroll-target="#the-pandemic-mystery-at-st.-nulls">The Pandemic Mystery at St.&nbsp;Null’s</a></li>
+  </ul>
+</li>
+  </ul>
+</li>
+  <li>
+<a href="#install-packages-if-not-installed" id="toc-install-packages-if-not-installed" class="nav-link" data-scroll-target="#install-packages-if-not-installed">Install Packages if not installed</a>
+  <ul class="collapse">
+<li><a href="#step-1-simulating-the-dataset" id="toc-step-1-simulating-the-dataset" class="nav-link" data-scroll-target="#step-1-simulating-the-dataset">Step 1: Simulating the Dataset</a></li>
+  <li>
+<a href="#step-2-the-two-doctors" id="toc-step-2-the-two-doctors" class="nav-link" data-scroll-target="#step-2-the-two-doctors">Step 2: The Two Doctors</a>
+  <ul class="collapse">
+<li><a href="#step-2a-assigning-doctors" id="toc-step-2a-assigning-doctors" class="nav-link" data-scroll-target="#step-2a-assigning-doctors">Step 2a: Assigning Doctors</a></li>
+  <li><a href="#step-2b-assigning-ventilators" id="toc-step-2b-assigning-ventilators" class="nav-link" data-scroll-target="#step-2b-assigning-ventilators">Step 2b: Assigning Ventilators</a></li>
+  </ul>
+</li>
+  <li><a href="#step-3-computing-causal-parameters" id="toc-step-3-computing-causal-parameters" class="nav-link" data-scroll-target="#step-3-computing-causal-parameters">Step 3: Computing Causal Parameters</a></li>
+  <li>
+<a href="#step-4-selection-bias-and-realized-outcomes" id="toc-step-4-selection-bias-and-realized-outcomes" class="nav-link" data-scroll-target="#step-4-selection-bias-and-realized-outcomes">Step 4: Selection Bias and Realized Outcomes</a>
+  <ul class="collapse">
+<li><a href="#selection-bias-calculation" id="toc-selection-bias-calculation" class="nav-link" data-scroll-target="#selection-bias-calculation">Selection Bias Calculation</a></li>
+  </ul>
+</li>
+  <li><a href="#step-5-comparing-outcomes-between-groups" id="toc-step-5-comparing-outcomes-between-groups" class="nav-link" data-scroll-target="#step-5-comparing-outcomes-between-groups">Step 5: Comparing Outcomes Between Groups</a></li>
+  <li><a href="#step-6-estimating-the-effect-with-regression" id="toc-step-6-estimating-the-effect-with-regression" class="nav-link" data-scroll-target="#step-6-estimating-the-effect-with-regression">Step 6: Estimating the Effect with Regression</a></li>
+  <li>
+<a href="#step-7-validating-the-decomposition" id="toc-step-7-validating-the-decomposition" class="nav-link" data-scroll-target="#step-7-validating-the-decomposition">Step 7: Validating the Decomposition</a>
+  <ul class="collapse">
+<li><a href="#reflection" id="toc-reflection" class="nav-link" data-scroll-target="#reflection">Reflection</a></li>
+  </ul>
+</li>
+  </ul>
+</li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/hpm883/edit/main/labs/lab-1-InternalValidityPO_sols.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">Lab 1 Solutions</h1>
+<p class="subtitle lead">The Hospital of Uncertain Outcomes</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Lab</div>
+    <div class="quarto-category">Internal Validity</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Internal Validity, Potential Outcomes
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sean Sylvia </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 22, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header><div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Results may differ
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is only one of many possible ways to complete this lab. Your final code may look different, which is fine! In fact, it is good practice to experiment with different approaches.</p>
+</div>
+</div>
+<section id="lab-1-the-hospital-of-uncertain-outcomes" class="level1"><h1>Lab 1: The Hospital of Uncertain Outcomes</h1>
+<section id="overview-and-learning-objectives" class="level2"><h2 class="anchored" data-anchor-id="overview-and-learning-objectives">Overview and Learning Objectives</h2>
+<p>In this lab, we will explore <strong>internal validity</strong> and the <strong>potential outcomes framework</strong> using simulated health data from the endlessly eventful <strong>St.&nbsp;Null’s Memorial Hospital</strong>. Specifically, we will recreate a scenario where a new intervention (putting patients on ventilators) may or may not reduce patient mortality. As you’ll discover, chaos at the hospital has made it far from straightforward to identify causal effects.</p>
+<p>By the end of this lab, you will be able to:</p>
+<ul>
+<li>Understand the concept of <strong>potential outcomes</strong> and <strong>causal effects</strong>.</li>
+<li>Apply <strong>randomization inference</strong> to estimate treatment effects.</li>
+<li>Identify <strong>threats to internal validity</strong> and explore possible solutions.</li>
+<li>Implement basic <strong>difference-in-means estimation</strong> in R.</li>
+<li>Use the <strong>WebR</strong> package to interactively run and modify code.</li>
+</ul></section><section id="instructions" class="level2"><h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<ol type="1">
+<li>Open this <code>.qmd</code> file in RStudio or another Quarto-supported editor.</li>
+<li>Follow the guided coding prompts below, completing the missing code blocks.</li>
+<li>Submit your completed lab on <strong>Gradescope</strong> [Insert Link Here] by <strong>[Insert Deadline Here]</strong>.</li>
+</ol></section><section id="scenario" class="level2"><h2 class="anchored" data-anchor-id="scenario">Scenario</h2>
+<section id="the-hospital-of-uncertain-outcomes" class="level3"><h3 class="anchored" data-anchor-id="the-hospital-of-uncertain-outcomes">The Hospital of Uncertain Outcomes</h3>
+<p>Welcome to St.&nbsp;Null’s Memorial Hospital—an institution where the only constant is confusion. The hospital board—led by the well-meaning but trend-obsessed CEO, <strong>Barnaby Beta</strong>—changes policies so often that nobody knows what’s going on.</p>
+<p>Worse yet is Dr.&nbsp;P-Hacker, a “data guru” who prefers p-values to patients. He mines the electronic health records (EHR) until something (anything!) is “significant.” Meanwhile, <strong>Nurse Random</strong> tries to keep everything on track, pointing out that good causal methods can be more important than good vibes. Lastly, <strong>Dr.&nbsp;Doub R. Obust</strong> lurks in the background, waiting for a chance to champion doubly robust methods that might someday save everyone’s sanity.</p>
+<div style="float: right; width: 480px; margin: 1em;">
+<iframe src="https://drive.google.com/file/d/1-F2hSgH6J7OKh0a_VwE8pXz3v9fFZAgT/preview" width="480" height="270" allow="autoplay">
+</iframe>
+</div>
+<p>You and your team of budding methodologists are the new consultants hired to impose some order on this bedlam. In each module, you’ll tackle another fiasco at St.&nbsp;Null’s—from overfitted AI catastrophes to weird missing-data mishaps—and attempt to restore some semblance of methodological rigor. Good luck!</p>
+</section></section><section id="your-mission" class="level2"><h2 class="anchored" data-anchor-id="your-mission">Your Mission</h2>
+<section id="the-pandemic-mystery-at-st.-nulls" class="level3"><h3 class="anchored" data-anchor-id="the-pandemic-mystery-at-st.-nulls">The Pandemic Mystery at St.&nbsp;Null’s</h3>
+<p>A mysterious respiratory illness has swept through St.&nbsp;Null’s, leaving every ward scrambling. The question at hand is whether putting these patients on ventilators prolongs their lifespans. CEO Barnaby Beta wants quick answers (“If TikTok can do it, so can we!”). Dr.&nbsp;P-Hacker gleefully promises “instant significance,” claiming all he needs is the hospital’s EHR from the past week.</p>
+<p>But Nurse Random, unimpressed, insists that the hospital’s chaotic, ad hoc ventilator assignments will cloud any conclusions. Dr.&nbsp;Doub R. Obust nods knowingly. They call in your team for an unbiased, data-driven approach.</p>
+<p>In this lab, you’ll <strong>simulate a dataset</strong> of 100,000 patients that captures both “potential outcomes” (i.e., what would happen if a patient were ventilated vs.&nbsp;not ventilated). This magical glimpse at parallel universes is impossible in real-world data, but here it will let us see exactly how different analytic approaches fare in the face of selection bias.</p>
+</section></section></section><section id="install-packages-if-not-installed" class="level1"><h1>Install Packages if not installed</h1>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">required_packages</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"fixest"</span>, <span class="st">"data.table"</span><span class="op">)</span></span>
+<span><span class="kw">for</span><span class="op">(</span><span class="va">pkg</span> <span class="kw">in</span> <span class="va">required_packages</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">pkg</span>, character.only <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="va">pkg</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: fixest</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: data.table</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Explanation:</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>This code first defines a vector <code>required_packages</code> containing the package names <code>"fixest"</code> and <code>"data.table"</code>.</p></li>
+<li>
+<p>Then, it loops through each package:</p>
+<ul>
+<li><p>It checks if the package is already installed using <code><a href="https://rdrr.io/r/base/library.html">require(pkg, character.only = TRUE)</a></code>.</p></li>
+<li><p>If the package is not installed, it installs it using <code>install.packages(pkg)</code>.</p></li>
+</ul>
+</li>
+<li><p>This ensures that all necessary packages are available for use.</p></li>
+</ol>
+</div>
+</div>
+<section id="step-1-simulating-the-dataset" class="level2"><h2 class="anchored" data-anchor-id="step-1-simulating-the-dataset">Step 1: Simulating the Dataset</h2>
+<p>Because the EHR system at St.&nbsp;Null’s is, in a word, “unreliable” (or, in two words, “utterly broken”), we’ll create our own dataset in R.</p>
+<p>Run the following code to generate 100,000 patient records along with <strong>potential outcomes</strong> (<code>y0</code> if no ventilator, <code>y1</code> if ventilated). Each outcome is the patient’s lifespan (in some made-up units). Note that lifespans below zero are set to zero—any negative numbers would just be an artifact of Dr.&nbsp;P-Hacker’s bizarre data extraction methods.</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lrberge.github.io/fixest/">fixest</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-datatable.com">data.table</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">072121</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># 100,000 people with differing levels of covid symptoms</span></span>
+<span><span class="va">N_people</span> <span class="op">=</span> <span class="fl">100000</span></span>
+<span><span class="va">df</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op">(</span>person <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">N_people</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Potential outcomes (Y0): life-span if no vent</span></span>
+<span><span class="va">df</span><span class="op">[</span>, <span class="va">y0</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">N_people</span>, <span class="fl">9.4</span>, <span class="fl">4</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="va">df</span><span class="op">[</span><span class="va">y0</span> <span class="op">&lt;</span> <span class="fl">0</span>, <span class="va">y0</span> <span class="op">:=</span> <span class="fl">0</span><span class="op">]</span></span>
+<span></span>
+<span><span class="co"># Potential outcomes (Y1): life-span if assigned to vents</span></span>
+<span><span class="va">df</span><span class="op">[</span>, <span class="va">y1</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">N_people</span>, <span class="fl">10</span>, <span class="fl">4</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="va">df</span><span class="op">[</span><span class="va">y1</span> <span class="op">&lt;</span> <span class="fl">0</span>, <span class="va">y1</span> <span class="op">:=</span> <span class="fl">0</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Explanation:</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>The necessary packages (<code>fixest</code> and <code>data.table</code>) are loaded.</p></li>
+<li><p>The <code>set.seed(072121)</code> ensures reproducibility, meaning the random numbers generated will be the same every time the code is run.</p></li>
+<li><p>A dataset <code>df</code> is created using <code>data.table</code> with 100,000 individuals (each represented by a row).</p></li>
+<li>
+<p><strong>Simulating Potential Outcomes:</strong></p>
+<ul>
+<li>
+<p><code>y0</code> represents the expected lifespan (in years) if no ventilator treatment is given. It is drawn from a normal distribution with:</p>
+<ul>
+<li><p>Mean: 9.4 years</p></li>
+<li><p>Standard deviation: 4 years</p></li>
+</ul>
+</li>
+<li><p>Any <code>y0</code> values below 0 (i.e., negative lifespans) are set to zero.</p></li>
+<li><p><code>y1</code> represents the expected lifespan if assigned to a ventilator. It is similarly drawn from a normal distribution but with a slightly higher mean of 10 years.</p></li>
+<li><p>Again, negative lifespan values are replaced with 0.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+<p>We also define the <strong>individual treatment effect</strong> for each patient. Dr.&nbsp;Doub R. Obust is thrilled, because for once, we have both <code>y0</code> and <code>y1</code> simultaneously—an impossible dream in real life!</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define individual treatment effect</span></span>
+<span><span class="va">df</span><span class="op">[</span>, <span class="va">delta</span> <span class="op">:=</span> <span class="va">y1</span> <span class="op">-</span> <span class="va">y0</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Explanation:</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>A new column <code>delta</code> is created, which represents the individual treatment effect (ITE) for each person.</p></li>
+<li><p>The ITE is calculated as the difference between the potential outcome under treatment (<code>y1</code>) and the potential outcome under control (<code>y0</code>).</p></li>
+<li><p>This measures how much additional lifespan (if any) the ventilator treatment provides.</p></li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Alternative Approach
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>
+<p>The column can be created using <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> from <code>dplyr</code> if using <code>tidyverse</code>:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>delta <span class="op">=</span> <span class="va">y1</span> <span class="op">-</span> <span class="va">y0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</li>
+</ul>
+</div>
+</div>
+</section><section id="step-2-the-two-doctors" class="level2"><h2 class="anchored" data-anchor-id="step-2-the-two-doctors">Step 2: The Two Doctors</h2>
+<p>St.&nbsp;Null’s has two very different doctors assigning ventilators:</p>
+<ul>
+<li>
+<strong>Dr.&nbsp;Perfect:</strong> A mystical being who can see into each patient’s future and only gives ventilators to those who would benefit from them.</li>
+<li>
+<strong>Dr.&nbsp;Bad:</strong> The name says it all. This doctor assigns ventilators randomly—could be beneficial, could not be. Who knows?</li>
+</ul>
+<section id="step-2a-assigning-doctors" class="level3"><h3 class="anchored" data-anchor-id="step-2a-assigning-doctors">Step 2a: Assigning Doctors</h3>
+<p>First, we randomly assign each patient to one of these two doctors. (No wonder this hospital is chaotic…)</p>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Assign doctors randomly</span></span>
+<span><span class="va">df</span><span class="op">[</span>, <span class="va">doctor</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"perfect"</span>, <span class="st">"bad"</span><span class="op">)</span>, <span class="va">N_people</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Explanation</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>
+<p><strong><code>sample(c("perfect", "bad"), N_people, replace = TRUE)</code></strong></p>
+<ul>
+<li><p><code>sample(x, size, replace)</code> randomly selects <code>size</code> elements from the vector <code>x</code>.</p></li>
+<li><p>Here, <code>x = c("perfect", "bad")</code>, meaning we are choosing between <code>"perfect"</code> and <code>"bad"</code>.</p></li>
+<li><p><code>size = N_people</code> ensures that we assign a doctor to all <code>N_people</code> individuals.</p></li>
+<li><p><code>replace = TRUE</code> allows values to be selected independently, meaning each person is assigned a doctor without affecting others.</p></li>
+</ul>
+</li>
+<li>
+<p><strong><code>df[, doctor := ...]</code> (Data.table Syntax)</strong></p>
+<ul>
+<li><p><code>df[, column_name := value]</code> is <code>data.table</code>’s syntax for adding or modifying a column.</p></li>
+<li><p>Here, <code>doctor</code> is created and populated with <code>"perfect"</code> or <code>"bad"</code> based on the <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> function.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Alternative Approach:</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>
+<p>Using <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> from <code>dplyr</code>:</p>
+<pre><code>df &lt;- df %&gt;%
+  mutate(doctor = sample(c("perfect", "bad"), N_people, replace = TRUE))</code></pre>
+</li>
+<li>
+<p>Instead of using <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code>, one could use <code><a href="https://rdrr.io/r/stats/Uniform.html">runif()</a></code> :</p>
+<pre><code>df[, doctor := ifelse(runif(N_people) &gt; 0.5, "perfect", "bad")]</code></pre>
+<p>This approach provides more flexibility if you want to adjust the probability of assigning each type of doctor.</p>
+</li>
+</ul>
+</div>
+</div>
+</section><section id="step-2b-assigning-ventilators" class="level3"><h3 class="anchored" data-anchor-id="step-2b-assigning-ventilators">Step 2b: Assigning Ventilators</h3>
+<p>Next, each doctor does what they do best. Dr.&nbsp;Perfect uses clairvoyance to treat only those who stand to gain (<code>delta &gt; 0</code>). Dr.&nbsp;Bad flips a metaphorical coin:</p>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Perfect doctor assigns vents only to those who benefit</span></span>
+<span><span class="va">df</span><span class="op">[</span><span class="va">doctor</span> <span class="op">==</span> <span class="st">"perfect"</span>, <span class="va">vents</span> <span class="op">:=</span> <span class="op">(</span><span class="va">delta</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span><span class="op">]</span></span>
+<span></span>
+<span><span class="co"># Random doctor assigns vents randomly</span></span>
+<span><span class="va">df</span><span class="op">[</span><span class="va">doctor</span> <span class="op">==</span> <span class="st">"bad"</span>, <span class="va">vents</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span><span class="op">)</span>, <span class="va">.N</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Explanation:</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>
+<p><strong><code>df[doctor == "perfect", vents := (delta &gt; 0)]</code></strong></p>
+<ul>
+<li><p><code>df[...]</code> is <code>data.table</code>’s way of selecting rows where <code>doctor == "perfect"</code>.</p></li>
+<li><p><code>vents := (delta &gt; 0)</code> assigns <code>TRUE</code> if <code>delta &gt; 0</code>, meaning treatment is given if the patient benefits.</p></li>
+<li><p>The <code>:=</code> operator modifies the column <strong>in place</strong>, making it more memory-efficient than base R.</p></li>
+</ul>
+</li>
+<li>
+<p><strong><code>df[doctor == "bad", vents := sample(c(TRUE, FALSE), .N, replace = TRUE)]</code></strong></p>
+<ul>
+<li><p><code>.N</code> represents the number of rows in the subset (<code>doctor == "bad"</code>), ensuring the right number of values is generated.</p></li>
+<li><p><code>sample(c(TRUE, FALSE), .N, replace = TRUE)</code> randomly assigns <code>TRUE</code> (ventilator given) or <code>FALSE</code> (no ventilator) to these individuals.</p></li>
+<li><p>Each person is assigned independently due to <code>replace = TRUE</code>.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>It’s not exactly a model of ethical clarity, but it certainly demonstrates the complications of “treatment assignment” in the real world (or the real St.&nbsp;Null’s world).</p>
+</section></section><section id="step-3-computing-causal-parameters" class="level2"><h2 class="anchored" data-anchor-id="step-3-computing-causal-parameters">Step 3: Computing Causal Parameters</h2>
+<p>Now, let’s calculate the key causal parameters:</p>
+<ul>
+<li>
+<strong>Average Treatment Effect (ATE)</strong>: The overall difference in outcomes if everyone were ventilated vs.&nbsp;if no one were ventilated.</li>
+<li>
+<strong>Average Treatment Effect on the Treated (ATT)</strong>: The effect of ventilation on those who actually <em>received</em> ventilation.</li>
+<li>
+<strong>Average Treatment Effect on the Untreated (ATU)</strong>: The effect of ventilation on those who were <em>not</em> ventilated.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Calculate all aggregate Causal Parameters (ATE, ATT, ATU)</span></span>
+<span><span class="va">ate</span> <span class="op">=</span> <span class="va">df</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="va">att</span> <span class="op">=</span> <span class="va">df</span><span class="op">[</span><span class="va">vents</span> <span class="op">==</span> <span class="cn">TRUE</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="va">atu</span> <span class="op">=</span> <span class="va">df</span><span class="op">[</span><span class="va">vents</span> <span class="op">==</span> <span class="cn">FALSE</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span><span class="op">]</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"ATE = %.03f</span></span>
+<span><span class="st">"</span>, <span class="va">ate</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ATE = 0.602</code></pre>
+</div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"ATT = %.03f</span></span>
+<span><span class="st">"</span>, <span class="va">att</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ATT = 2.748</code></pre>
+</div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"ATU = %.03f</span></span>
+<span><span class="st">"</span>, <span class="va">atu</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ATU = -1.711</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Explanation:</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>
+<p><strong><code>df[, mean(delta)]</code></strong></p>
+<ul>
+<li><p><code>mean(delta)</code> computes the average of <code>delta</code>, which represents the <strong>Average Treatment Effect (ATE)</strong>.</p></li>
+<li><p>Since no filtering is applied, it considers all individuals in the dataset.</p></li>
+</ul>
+</li>
+<li>
+<p><strong><code>df[vents == TRUE, mean(delta)]</code></strong></p>
+<ul>
+<li><p><code>df[...]</code> selects rows where <code>vents == TRUE</code> (patients who received ventilation).</p></li>
+<li><p><code>mean(delta)</code> then computes the <strong>Average Treatment Effect on the Treated (ATT)</strong>.</p></li>
+</ul>
+</li>
+<li>
+<p><strong><code>df[vents == FALSE, mean(delta)]</code></strong></p>
+<ul>
+<li><p>This selects individuals <strong>who were not treated</strong> (<code>vents == FALSE</code>).</p></li>
+<li><p><code>mean(delta)</code> calculates the <strong>Average Treatment Effect on the Untreated (ATU)</strong>.</p></li>
+</ul>
+</li>
+<li>
+<p><strong><code>cat(sprintf("ATE = %.03f\n", ate))</code></strong></p>
+<ul>
+<li><p><code>sprintf("ATE = %.03f\n", ate)</code> formats <code>ate</code> to <strong>3 decimal places</strong>.</p></li>
+<li><p><code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> prints the formatted result to the console.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+<p>Dr.&nbsp;P-Hacker would stop right here and rejoice: “We have all the significance we need!” But hold your celebratory balloon drop—there’s more to do.</p>
+</section><section id="step-4-selection-bias-and-realized-outcomes" class="level2"><h2 class="anchored" data-anchor-id="step-4-selection-bias-and-realized-outcomes">Step 4: Selection Bias and Realized Outcomes</h2>
+<p>Although the dataset has both <code>y0</code> and <code>y1</code>, in the real world, a patient’s outcome is observed under only one condition (treated or untreated). Let’s capture <em>which</em> outcome we’d actually see based on the ventilator assignment:</p>
+<div class="cell">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Use the switching equation to select realized outcomes from potential outcomes based on treatment assignment</span></span>
+<span><span class="va">df</span><span class="op">[</span>, <span class="va">y</span> <span class="op">:=</span> <span class="va">vents</span> <span class="op">*</span> <span class="va">y1</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">vents</span><span class="op">)</span> <span class="op">*</span> <span class="va">y0</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Explanation :</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>
+<p><strong><code>vents * y1 + (1 - vents) * y0</code></strong></p>
+<ul>
+<li><p>This applies the <strong>switching equation</strong>, which determines the observed outcome (<code>y</code>) based on whether an individual received treatment.</p></li>
+<li><p>If <code>vents == TRUE</code> (1), the observed outcome is <code>y1</code> (the treated potential outcome).</p></li>
+<li><p>If <code>vents == FALSE</code> (0), the observed outcome is <code>y0</code> (the untreated potential outcome).</p></li>
+<li>
+<p>Mathematically, this follows:</p>
+<ul>
+<li>y=vents×y1+(1−vents)×y0</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>df[, y := ...]</code></strong></p>
+<ul>
+<li><p>This is <code>data.table</code> syntax for creating or modifying a column in place.</p></li>
+<li><p>The new column <code>y</code> represents the <strong>observed lifespan</strong> for each individual.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+<section id="selection-bias-calculation" class="level3"><h3 class="anchored" data-anchor-id="selection-bias-calculation">Selection Bias Calculation</h3>
+<p>We’ll see if there is selection bias by comparing the expected lifespan of ventilated patients <em>had they not been ventilated</em> to the expected lifespan of non-ventilated patients.</p>
+<div class="cell">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Calculate EY0 for vent group and no vent group</span></span>
+<span><span class="va">ey01</span> <span class="op">=</span> <span class="va">df</span><span class="op">[</span><span class="va">vents</span> <span class="op">==</span> <span class="cn">TRUE</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span><span class="op">]</span>  </span>
+<span><span class="va">ey00</span> <span class="op">=</span> <span class="va">df</span><span class="op">[</span><span class="va">vents</span> <span class="op">==</span> <span class="cn">FALSE</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span><span class="op">]</span> </span>
+<span></span>
+<span><span class="co"># Calculate selection bias</span></span>
+<span><span class="va">selection_bias</span> <span class="op">=</span> <span class="op">(</span><span class="va">ey01</span> <span class="op">-</span> <span class="va">ey00</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span></span>
+<span>  <span class="st">"Selection Bias = %.03f - %.03f = %.03f </span></span>
+<span><span class="st">"</span>, </span>
+<span>  <span class="va">ey01</span>, <span class="va">ey00</span>, <span class="va">selection_bias</span></span>
+<span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Selection Bias = 8.334 - 10.574 = -2.240 </code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Detailed Explanation of Commands:</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>
+<p><strong><code>df[vents == TRUE, mean(y0)]</code></strong></p>
+<ul>
+<li><p>This calculates the expected <code>y0</code> (lifespan without ventilation) <strong>for people who actually received a ventilator</strong>.</p></li>
+<li><p>It measures the <strong>counterfactual</strong> lifespan if the treated group had not received treatment.</p></li>
+</ul>
+</li>
+<li>
+<p><strong><code>df[vents == FALSE, mean(y0)]</code></strong></p>
+<ul>
+<li><p>This calculates the expected <code>y0</code> <strong>for people who did not receive a ventilator</strong>.</p></li>
+<li><p>It represents their actual untreated lifespan.</p></li>
+</ul>
+</li>
+<li>
+<p><strong>Selection Bias Calculation</strong></p>
+<ul>
+<li><p><code>selection_bias = (ey01 - ey00)</code> compares these two means.</p></li>
+<li><p>If selection into treatment is <strong>not random</strong>, then the untreated potential outcome (<code>y0</code>) may differ between the treated and untreated groups.</p></li>
+</ul>
+</li>
+<li>
+<p><strong>Formatted Output Using <code><a href="https://rdrr.io/r/base/sprintf.html">sprintf()</a></code></strong></p>
+<ul>
+<li><p><code><a href="https://rdrr.io/r/base/sprintf.html">sprintf()</a></code> formats the output to three decimal places.</p></li>
+<li><p><code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> prints the formatted text to the console.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+<p>If Dr.&nbsp;Perfect is involved, we’d expect some big differences here. Dr.&nbsp;P-Hacker would probably ignore that and claim victory anyway. (He likes ignoring inconvenient truths.)</p>
+</section></section><section id="step-5-comparing-outcomes-between-groups" class="level2"><h2 class="anchored" data-anchor-id="step-5-comparing-outcomes-between-groups">Step 5: Comparing Outcomes Between Groups</h2>
+<p>One of the simplest ways to estimate the treatment effect is to look at the <strong>Simple Difference in Outcomes (SDO)</strong>—the difference in the observed mean outcome between those who got the treatment (ventilators) and those who did not.</p>
+<div class="cell">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Calculate the share of units treated with vents (pi)</span></span>
+<span><span class="va">pi</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">vents</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Manually calculate the simple difference in mean health outcomes</span></span>
+<span><span class="va">ey1</span> <span class="op">=</span> <span class="va">df</span><span class="op">[</span><span class="va">vents</span> <span class="op">==</span> <span class="cn">TRUE</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="va">ey0</span> <span class="op">=</span> <span class="va">df</span><span class="op">[</span><span class="va">vents</span> <span class="op">==</span> <span class="cn">FALSE</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="va">sdo</span> <span class="op">=</span> <span class="va">ey1</span> <span class="op">-</span> <span class="va">ey0</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span></span>
+<span>  <span class="st">"Simple Difference-in-Outcomes = %.03f - %.03f = %.03f </span></span>
+<span><span class="st">"</span>, </span>
+<span>  <span class="va">ey1</span>, <span class="va">ey0</span>, <span class="va">sdo</span></span>
+<span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple Difference-in-Outcomes = 11.082 - 10.574 = 0.509 </code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Explanation:</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>
+<p><strong><code>pi = mean(df$vents)</code></strong></p>
+<ul>
+<li><p><code>df$vents</code> extracts the <code>vents</code> column as a vector.</p></li>
+<li><p><code>mean(df$vents)</code> computes the proportion of individuals who received ventilation (<code>TRUE</code> is treated as 1, <code>FALSE</code> as 0).</p></li>
+<li><p>This provides <strong>π (pi), the treatment probability</strong>.</p></li>
+</ul>
+</li>
+<li>
+<p><strong><code>df[vents == TRUE, mean(y)]</code></strong></p>
+<ul>
+<li>Calculates the mean observed outcome <code>y</code> (lifespan) <strong>for the treated group</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>df[vents == FALSE, mean(y)]</code></strong></p>
+<ul>
+<li>Calculates the mean observed outcome <code>y</code> <strong>for the untreated group</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Simple Difference in Outcomes (SDO)</strong></p>
+<ul>
+<li><p><code>sdo = ey1 - ey0</code> computes the naive difference in means.</p></li>
+<li><p>This is an <strong>unadjusted estimate of the treatment effect</strong>, which may be biased if treatment selection was non-random.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+<p>Dr.&nbsp;P-Hacker would run around shouting: “Aha! This difference proves the intervention works!” or “Aha! It’s not significant!” depending on the p-value. Let’s see if we can do better.</p>
+</section><section id="step-6-estimating-the-effect-with-regression" class="level2"><h2 class="anchored" data-anchor-id="step-6-estimating-the-effect-with-regression">Step 6: Estimating the Effect with Regression</h2>
+<p>To confirm our findings, let’s do an <strong>Ordinary Least Squares (OLS)</strong> regression of the realized outcome on the ventilator indicator:</p>
+<div class="cell">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Estimate the treatment effect using OLS</span></span>
+<span><span class="va">reg</span> <span class="op">=</span> <span class="fu"><a href="https://lrberge.github.io/fixest/reference/feols.html">feols</a></span><span class="op">(</span></span>
+<span>  <span class="va">y</span> <span class="op">~</span> <span class="va">vents</span>, data <span class="op">=</span> <span class="va">df</span>, </span>
+<span>  vcov <span class="op">=</span> <span class="st">"hc1"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"</span></span>
+<span><span class="st">"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">reg</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>OLS estimation, Dep. Var.: y
+Observations: 100,000
+Standard-errors: Heteroskedasticity-robust 
+             Estimate Std. Error  t value  Pr(&gt;|t|)    
+(Intercept) 10.573703   0.017534 603.0511 &lt; 2.2e-16 ***
+ventsTRUE    0.508554   0.024209  21.0072 &lt; 2.2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+RMSE: 3.82331   Adj. R2: 0.004388</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Explanation :</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>
+<p><strong><code>feols(y ~ vents, data = df, vcov = "hc1")</code></strong></p>
+<ul>
+<li><p><code><a href="https://lrberge.github.io/fixest/reference/feols.html">feols()</a></code> from the <code>fixest</code> package estimates an <strong>Ordinary Least Squares (OLS) regression</strong>.</p></li>
+<li><p>The formula <code>y ~ vents</code> models the observed outcome (<code>y</code>) as a function of treatment (<code>vents</code>).</p></li>
+<li><p>This provides an estimate of the <strong>average treatment effect (ATE)</strong> under the assumption of unconfoundedness (i.e., no omitted variables affecting both treatment and outcome).</p></li>
+<li><p><strong><code>vcov = "hc1"</code></strong> specifies robust standard errors (Huber-White correction), which adjust for heteroskedasticity in the residuals.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Alternative Approach:</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>
+<p>Using <code>tidyverse</code> with <code>broom</code>:</p>
+<pre><code><a href="https://broom.tidymodels.org/">library(broom)
+reg %&gt;% tidy()</a></code></pre>
+</li>
+<li>
+<p>If clustering standard errors is needed:</p>
+<pre><code>reg = feols(y ~ vents, data = df, vcov = "cluster")</code></pre>
+</li>
+</ul>
+</div>
+</div>
+<p>This approach, while straightforward, is still subject to any biases from non-random assignment—like, say, Dr.&nbsp;Perfect or Dr.&nbsp;Bad being in charge.</p>
+</section><section id="step-7-validating-the-decomposition" class="level2"><h2 class="anchored" data-anchor-id="step-7-validating-the-decomposition">Step 7: Validating the Decomposition</h2>
+<p>At this point, we’d like to see if the <strong>Simple Difference in Outcomes (SDO)</strong> can be broken down into our measured parameters. You’ll fill in a table comparing <strong>Dr.&nbsp;Perfect</strong> to <strong>Dr.&nbsp;Bad</strong>, computing the ATE, ATT, ATU, selection bias, SDO, and so on.</p>
+<p>Below is a quick consistency check to see if the SDO lines up with our theoretical decomposition:</p>
+<div class="cell">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Decomposition check</span></span>
+<span><span class="va">sdo_check</span> <span class="op">=</span> <span class="va">ate</span> <span class="op">+</span> <span class="va">selection_bias</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">pi</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="va">att</span> <span class="op">-</span> <span class="va">atu</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"SDO Check = %.03f </span></span>
+<span><span class="st">"</span>, <span class="va">sdo_check</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>SDO Check = 0.509 </code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Detailed Explanation of Commands:</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>
+<p><strong>Decomposition Formula:</strong></p>
+<ul>
+<li>
+<p>The simple difference in outcomes (SDO) can be decomposed into:</p>
+<p> = + + (1 - ) ( - )</p>
+</li>
+<li><p>This checks whether our earlier calculations are consistent with theoretical expectations.</p></li>
+</ul>
+</li>
+<li>
+<p><strong><code>sdo_check = ate + selection_bias + (1 - pi) * (att - atu)</code></strong></p>
+<ul>
+<li><p><code>ate</code>: The overall average treatment effect.</p></li>
+<li><p><code>selection_bias</code>: The difference in untreated potential outcomes between treated and untreated individuals.</p></li>
+<li><p><code>(1 - pi) * (att - atu)</code>: Adjusts for differences in treatment assignment proportions.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+<p>When you fill out the table, you should include:</p>
+<table class="caption-top table">
+<thead><tr class="header">
+<th>Perfect Doctor</th>
+<th>Bad Doctor</th>
+<th>Causal Parameter</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>ATE</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>ATT</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>ATU</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Selection bias terms</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>E[Y0 | D=1]</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>E[Y0 | D=0]</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Selection bias</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Calculations</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Pi (share on vents)</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>SDO manual</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>SDO OLS</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>SDO Decomposition</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Obs</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<section id="reflection" class="level3"><h3 class="anchored" data-anchor-id="reflection">Reflection</h3>
+<p>Finally, reflect on these questions:</p>
+<ul>
+<li>Is the <strong>Simple Difference in Outcomes (SDO)</strong> enough to identify the <strong>ATE</strong>, <strong>ATT</strong>, or <strong>ATU</strong>?</li>
+<li>How does <strong>selection bias</strong> play into interpreting the SDO?</li>
+<li>What lessons would Nurse Random want Dr.&nbsp;P-Hacker to learn about data and design?</li>
+</ul>
+<p>(Extra credit if you can imagine the dramatic showdown when Dr.&nbsp;Doub R. Obust finally unveils a doubly robust method that saves the day—but that’s a story for a future lab!)</p>
+<p>That’s it! You’ve run the gauntlet of the Hospital of Uncertain Outcomes and lived to tell the tale. Now submit your work, and good luck diagnosing more of St.&nbsp;Null’s methodological maladies!</p>
+
+
+</section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/hpm883\.github\.io");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2024, Sean Sylvia</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/hpm883/edit/main/labs/lab-1-InternalValidityPO_sols.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This page is built with <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+</body></html>

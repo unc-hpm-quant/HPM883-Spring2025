@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Sean Sylvia">
+<meta name="dcterms.date" content="2025-01-11">
 
-<title>Unit 2.1: Optimal Experimental Design – HPM 883</title>
+<title>Computing – HPM 883</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +22,64 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../labs/lab-2-Power.html" rel="prev">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dece3bd051e391dd7205a6b15f93dc59.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-dece3bd051e391dd7205a6b15f93dc59.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-fd9528830c3bd10aadebefd30ea787ae.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-135ac4d113b30199e54d7437fe66c954.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./unit-0/unit-0-foundations-1.html" rel="next">
+<link href="./resources.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dece3bd051e391dd7205a6b15f93dc59.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-dece3bd051e391dd7205a6b15f93dc59.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-fd9528830c3bd10aadebefd30ea787ae.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-135ac4d113b30199e54d7437fe66c954.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -81,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../unit-2/unit-2-design-1.html">Unit 2: Design of Experiments</a></li><li class="breadcrumb-item"><a href="../unit-2/unit-2-design-1.html">Unit 2.0: Optimal Experimental Design</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./computing.html">Computing</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -95,8 +134,8 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
-      <a href="../index.html" class="sidebar-logo-link">
-      <img src="../images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/hpm883" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
@@ -160,7 +199,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course Schedule</span></a>
   </div>
 </li>
@@ -175,25 +214,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../course-overview.html" class="sidebar-item-text sidebar-link">
+  <a href="./course-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../course-syllabus.html" class="sidebar-item-text sidebar-link">
+  <a href="./course-syllabus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Syllabus</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../instructors.html" class="sidebar-item-text sidebar-link">
+  <a href="./instructors.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Instructors</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../course-communication.html" class="sidebar-item-text sidebar-link">
+  <a href="./course-communication.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Communication</span></a>
   </div>
 </li>
@@ -210,13 +249,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../project.html" class="sidebar-item-text sidebar-link">
+  <a href="./project.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Project Description</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../ex-simulate.html" class="sidebar-item-text sidebar-link">
+  <a href="./ex-simulate.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Simulation Example</span></a>
   </div>
 </li>
@@ -224,13 +263,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../resources.html" class="sidebar-item-text sidebar-link">
+  <a href="./resources.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Resources</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../computing.html" class="sidebar-item-text sidebar-link">
+  <a href="./computing.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Computing</span></a>
   </div>
 </li>
@@ -245,19 +284,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../unit-0/unit-0-foundations-1.html" class="sidebar-item-text sidebar-link">
+  <a href="./unit-0/unit-0-foundations-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Unit 0.0: Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../unit-0/unit-0-foundations-2.html" class="sidebar-item-text sidebar-link">
+  <a href="./unit-0/unit-0-foundations-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Unit 0.1: A Field Experiment in Health Services Research</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../unit-0/unit-0-foundations-3.html" class="sidebar-item-text sidebar-link">
+  <a href="./unit-0/unit-0-foundations-3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Unit 0.2: Computing for Reproducible Research</span></a>
   </div>
 </li>
@@ -274,25 +313,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../unit-1/unit-1-internal-1.html" class="sidebar-item-text sidebar-link">
+  <a href="./unit-1/unit-1-internal-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Unit 1.0: Internal Validity</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-1-InternalValidityPO.html" class="sidebar-item-text sidebar-link">
+  <a href="./labs/lab-1-InternalValidityPO.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 1: The Hospital of Uncertain Outcomes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../unit-1/unit-1-internal-2.html" class="sidebar-item-text sidebar-link">
+  <a href="./unit-1/unit-1-internal-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Unit 1.1: Statistical Conclusion Validity</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-2-Power.html" class="sidebar-item-text sidebar-link">
+  <a href="./labs/lab-2-Power.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 2: Power by Simulation</span></a>
   </div>
 </li>
@@ -300,16 +339,16 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
  <span class="menu-text">Unit 2: Design of Experiments</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../unit-2/unit-2-design-1.html" class="sidebar-item-text sidebar-link active">
+  <a href="./unit-2/unit-2-design-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Unit 2.0: Optimal Experimental Design</span></a>
   </div>
 </li>
@@ -325,28 +364,55 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#unit-overview" id="toc-unit-overview" class="nav-link active" data-scroll-target="#unit-overview">Unit Overview</a>
+  <li><a href="#class-computing-guide-and-tips" id="toc-class-computing-guide-and-tips" class="nav-link active" data-scroll-target="#class-computing-guide-and-tips">Class Computing Guide and Tips</a>
   <ul class="collapse">
-  <li><a href="#preparation" id="toc-preparation" class="nav-link" data-scroll-target="#preparation">Preparation</a></li>
-  <li><a href="#class" id="toc-class" class="nav-link" data-scroll-target="#class">Class</a></li>
-  <li><a href="#labs" id="toc-labs" class="nav-link" data-scroll-target="#labs">Labs</a></li>
+  <li><a href="#useful-guides" id="toc-useful-guides" class="nav-link" data-scroll-target="#useful-guides">Useful Guides</a></li>
+  <li><a href="#computer-setup" id="toc-computer-setup" class="nav-link" data-scroll-target="#computer-setup">Computer Setup</a>
+  <ul class="collapse">
+  <li><a href="#using-a-package-manager" id="toc-using-a-package-manager" class="nav-link" data-scroll-target="#using-a-package-manager">Using a Package Manager</a></li>
+  <li><a href="#installing-r" id="toc-installing-r" class="nav-link" data-scroll-target="#installing-r">Installing R</a></li>
+  </ul></li>
+  <li><a href="#git-and-github" id="toc-git-and-github" class="nav-link" data-scroll-target="#git-and-github">Git and GitHub</a></li>
+  <li><a href="#using-r" id="toc-using-r" class="nav-link" data-scroll-target="#using-r">Using R</a>
+  <ul class="collapse">
+  <li><a href="#r-for-stata-users" id="toc-r-for-stata-users" class="nav-link" data-scroll-target="#r-for-stata-users">R for Stata users</a></li>
+  </ul></li>
+  <li><a href="#ides" id="toc-ides" class="nav-link" data-scroll-target="#ides">IDEs</a>
+  <ul class="collapse">
+  <li><a href="#the-rstudio-ide" id="toc-the-rstudio-ide" class="nav-link" data-scroll-target="#the-rstudio-ide">The RStudio IDE</a></li>
+  <li><a href="#visual-studio-code-vscode" id="toc-visual-studio-code-vscode" class="nav-link" data-scroll-target="#visual-studio-code-vscode">Visual Studio Code (VSCode)</a></li>
+  </ul></li>
+  <li><a href="#literate-programming-and-quarto" id="toc-literate-programming-and-quarto" class="nav-link" data-scroll-target="#literate-programming-and-quarto">Literate Programming and Quarto</a></li>
+  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">Bibliography</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/hpm883/edit/main/unit-2/unit-2-design-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/hpm883/edit/main/computing.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../unit-2/unit-2-design-1.html">Unit 2: Design of Experiments</a></li><li class="breadcrumb-item"><a href="../unit-2/unit-2-design-1.html">Unit 2.0: Optimal Experimental Design</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Unit 2.1: Optimal Experimental Design</h1>
+<h1 class="title">Computing</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sean Sylvia </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 11, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -356,35 +422,118 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="unit-overview" class="level2">
-<h2 class="anchored" data-anchor-id="unit-overview">Unit Overview</h2>
-<section id="preparation" class="level3">
-<h3 class="anchored" data-anchor-id="preparation">Preparation</h3>
+<section id="class-computing-guide-and-tips" class="level1">
+<h1>Class Computing Guide and Tips</h1>
+<p>This page is a guide for “best practices” for writing code and working with data. It is a work in progress, so please let Sean or the TA know if you have any suggestions for improvement.</p>
+<div class="callout callout-style-simple callout-note" style="color: #002D72">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>This is meant as a general quide. For specific instructions on completing labs and assignments, please refer to the lab and assignment instructions.</p>
+</div>
+</div>
+</div>
+<section id="useful-guides" class="level2">
+<h2 class="anchored" data-anchor-id="useful-guides">Useful Guides</h2>
 <ul>
-<li>Read:
-<ul>
-<li><a href="https://app.perusall.com/courses/hpm-883/so-you-want-to-run-an-experiment-now-what-some-simple-rules-of-thumb-for-optimal-experimental-design">List, Sadoff, Wagner, “So you want to run an experiment, now what? Some simple rules of thumb for optimal experimental design”</a></li>
-<li>Optional:
-<ul>
-<li><a href="https://app.perusall.com/courses/hpm-883/chapter-61-using-randomization-in-development-economics-research-a-toolkit">Section 4 of Duflo, Glennerster, and Kremer, “USING RANDOMIZATION IN DEVELOPMENT ECONOMICS RESEARCH: A TOOLKIT”</a></li>
-<li><a href="https://app.perusall.com/courses/hpm-883/beyond-baseline-and-follow-up-the-case-for-more-t-in-experiments">McKenzie,Beyond baseline and follow-up: The case for more T in experiments</a></li>
-<li><a href="https://blogs.worldbank.org/en/impactevaluations/seven-ways-improve-statistical-power-your-experiment-without-increasing-n">World Bank Blog: Seven Ways to Improve Statistical Power without Increasing n</a></li>
-</ul></li>
-</ul></li>
+<li><a href="https://povertyaction.github.io/ipa-data-tech-handbook/index.html">IPA Data Science, Engineering, and Technology Handbook</a></li>
+<li><a href="https://aeturrell.github.io/coding-for-economists/intro.html">Coding for Economists</a></li>
 </ul>
 </section>
-<section id="class" class="level3">
-<h3 class="anchored" data-anchor-id="class">Class</h3>
+<section id="computer-setup" class="level2">
+<h2 class="anchored" data-anchor-id="computer-setup">Computer Setup</h2>
+<section id="using-a-package-manager" class="level3">
+<h3 class="anchored" data-anchor-id="using-a-package-manager">Using a Package Manager</h3>
+<p>A package manager helps to standardize how you install and update software on your computer. Generally, you want to use a package manager to install any programs that are used globally on your computer. By “globally”, we mean that it is a program that is used across many projects and computing environments.</p>
+<section id="windows" class="level4">
+<h4 class="anchored" data-anchor-id="windows">Windows</h4>
+<p>If using a Windows computer with Windows 10 or later, use the Windows Package Manager, <a href="https://learn.microsoft.com/en-us/windows/package-manager/winget/">winget</a>.</p>
+<p>Example:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install a single program (e.g. GitHub for command line)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">winget</span> install GitHub.cli</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="macos" class="level4">
+<h4 class="anchored" data-anchor-id="macos">macOS</h4>
+<p>If using a macOS computer, use Homebrew.</p>
+<p>Example:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install a single program (e.g. GitHub for command line)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install gh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="installing-r" class="level3">
+<h3 class="anchored" data-anchor-id="installing-r">Installing R</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Windows Install r</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">winget</span> install <span class="at">--id</span> R-project.R</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># macOS Install R</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install <span class="at">--cask</span> r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="git-and-github" class="level2">
+<h2 class="anchored" data-anchor-id="git-and-github">Git and GitHub</h2>
+</section>
+<section id="using-r" class="level2">
+<h2 class="anchored" data-anchor-id="using-r">Using R</h2>
+<p>Scared of R? Not to worry! You’ll pick it up as we go - I promise! During class we will go through code slowly at first and spend some time explaining what each line of code does. You’ll be R literate in no time!</p>
+<p>If you do want to learn a bit of R on your own, here are some excellent resources:</p>
 <ul>
-<li><a href="../unit-2/lec-2-1.html">Lecture: Optimal Experimental Design</a></li>
-<li><a href="../unit-2/shiny-oed-app.html">Optimal Experimental Design Shiny App</a></li>
+<li><a href="https://r4ds.had.co.nz/">R for Data Science</a> by Hadley Wickham</li>
+</ul>
+<section id="r-for-stata-users" class="level3">
+<h3 class="anchored" data-anchor-id="r-for-stata-users">R for Stata users</h3>
+<p><strong>Nope, you cannot turn in assignments in Stata, sorry!</strong> <i class="fa-solid fa-face-smile" aria-label="face-smile"></i> Why? It’s not just that it’s much harder to run the class when we’re using different software (it is!), but there are several reasons that I strongly believe it is best for you to become comfortable with R:</p>
+<ul>
+<li>R is FREEEEE</li>
+<li>R has an open source ecosystem. This means
+<ul>
+<li>Immediate access to cutting-edge statistical methods through community contributions</li>
+<li>Extensive library of packages for specialized analyses</li>
+<li>Integration capabilities with other tools like Git, Python, and database systems</li>
+</ul></li>
+<li>R is just better for advanced data analysis
+<ul>
+<li>Ability to handle multiple datasets simultaneously</li>
+<li>Superior graphical capabilities</li>
+<li>Better tools for web scraping, JSON parsing, and database querying</li>
+</ul></li>
+<li>In industry, evidence that <a href="https://www.r-bloggers.com/2022/10/data-science-software-popularity-update/">R has 5x greater demand than Stata</a> on the job market</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Learning Strategy
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Rather than directly mapping Stata commands to R, it’s more effective to first understand R’s fundamental concepts and then gradually build up to specific tasks like data management and regression models.</p>
+</div>
+</div>
+<p>Here are some excellent tools for Stata people to learn R:</p>
+<ul>
+<li><a href="https://stata2r.github.io/">Stata2R Website</a></li>
+<li><a href="https://osf.io/nj6bf/">World Bank DIME R for Advanced Stata Users Workshop</a></li>
 </ul>
 </section>
-<section id="labs" class="level3">
-<h3 class="anchored" data-anchor-id="labs">Labs</h3>
-<ul>
-<li>TBD</li>
-</ul>
+</section>
+<section id="ides" class="level2">
+<h2 class="anchored" data-anchor-id="ides">IDEs</h2>
+<section id="the-rstudio-ide" class="level3">
+<h3 class="anchored" data-anchor-id="the-rstudio-ide">The RStudio IDE</h3>
+</section>
+<section id="visual-studio-code-vscode" class="level3">
+<h3 class="anchored" data-anchor-id="visual-studio-code-vscode">Visual Studio Code (VSCode)</h3>
+</section>
+</section>
+<section id="literate-programming-and-quarto" class="level2">
+<h2 class="anchored" data-anchor-id="literate-programming-and-quarto">Literate Programming and Quarto</h2>
+</section>
+<section id="bibliography" class="level2">
+<h2 class="anchored" data-anchor-id="bibliography">Bibliography</h2>
 
 
 </section>
@@ -954,11 +1103,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../labs/lab-2-Power.html" class="pagination-link" aria-label="Lab 2: Power by Simulation">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 2: Power by Simulation</span>
+      <a href="./resources.html" class="pagination-link" aria-label="Resources">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Resources</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./unit-0/unit-0-foundations-1.html" class="pagination-link" aria-label="Unit 0.0: Introduction">
+        <span class="nav-page-text">Unit 0.0: Introduction</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -969,7 +1121,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/hpm883/edit/main/unit-2/unit-2-design-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/hpm883/edit/main/computing.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

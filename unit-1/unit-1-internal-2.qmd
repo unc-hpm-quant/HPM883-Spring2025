@@ -29,3 +29,4 @@ draft: false
 -   [Lab 2: Power Calculation by Simulation](/labs/lab-2-Power.qmd)
     -   Due by 11:59pm on Monday, February 17
     -   Submit on [Gradescope](https://www.gradescope.com/courses/1187218)
+    -   Solutions: [lab-2-Power-sols.qmd](/labs/lab-2-Power-sols.qmd)

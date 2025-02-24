@@ -8,6 +8,7 @@ format:
     toc: true
     toc-depth: 2
     code-fold: true
+    code-tools: true
 execute:
   echo: true
   warning: false
@@ -395,28 +396,23 @@ where $MDE$ is your effect size and $\bar{m}$ is the average cluster size.
 
 Lucky for us, there are several strategies to squeeze more power out of your design. We’ll focus on a few big ones.
 
-### 6.1 Including Covariates in the Estimation Model
+### 6.1 Designing Your Study to Maximize Compliance
 
-If you can incorporate *pre-treatment* covariates that predict outcomes, you can reduce residual variance. Even though randomization ensures that *on average* groups are balanced, controlling for strong predictors of the outcome yields a more precise estimate.
+Ensure high take-up rates of the treatment. Low participation dilutes the observable effect, making detection challenging. If only half the sample adopts the treatment, you would need **four times** as many units to detect the same effect as with full participation.^[see: [World Bank Blog](https://blogs.worldbank.org/en/impactevaluations/seven-ways-improve-statistical-power-your-experiment-without-increasing-n)]  
 
-- **Pre-treatment outcomes** are gold if your outcome is stable over time.  
-- **Stratification variables** used in random assignment can (and often should) be controlled in analysis.  
-- **Baseline characteristics** that strongly predict your outcome.
-
-Be warned: *never* include post-treatment variables that might be affected by the intervention. That’s a sure-fire path to bias.
-
-### 6.2 Designing Your Study to Maximize Compliance
-
-If half your participants in the treatment arm ignore the intervention, your effective sample is basically shrunk. Low compliance or high crossover means your *intent-to-treat* effect is diluted.  
 Consider strategies like smaller but more motivated populations, or supportive interventions that encourage use. Implementation scientists are your friends here (just feed them coffee and data).
 
-### 6.3 Choosing (Less Noisy) Outcome Measures
+### 6.2 Choosing (Less Noisy) Outcome Measures
 
-If your chosen outcome is extremely noisy (maybe self-reported “happiness” on a 0–100 scale?), you’ll need an enormous sample to detect moderate effects. One trick is to measure outcomes repeatedly and average them. For example, do two lab tests for the same biomarker and average them. Or measure mental health weekly for 4 weeks. Each additional measurerement can reduce the measurement error component.
+If your chosen outcome is extremely noisy (maybe self-reported “happiness” on a 0–100 scale?), you’ll need an enormous sample to detect moderate effects. 
 
-### 6.4 Multiple Waves of Baseline **and** Endline Data
+Accurate measurements reduce variability in your data. Employ techniques such as embedding consistency checks in surveys, using anchoring and triangulation methods, and considering multiple questions to assess the same concept, thereby averaging out noise. 
 
-Recent insights—particularly from the work of [David McKenzie (2012)](#ref-McKenzie2012)—suggest that collecting **more than one wave** of baseline and endline data can yield substantial power gains *if* your outcome is either noisy or only weakly autocorrelated. Let’s break down the key ideas:
+Another trick is to measure outcomes repeatedly and average them. For example, do two lab tests for the same biomarker and average them. Or measure mental health weekly for 4 weeks. Each additional measurerement can reduce the measurement error component.
+
+### 6.3 Multiple Waves of Baseline **and** Endline Data
+
+Collecting **more than one wave** of baseline and endline data can yield substantial power gains *if* your outcome is either noisy or only weakly autocorrelated. Here are the key ideas from the paper by McKenzie in the reading:
 
 1. **Why does it help?**  
    - When outcomes are *less* autocorrelated (think sporadic monthly income or ephemeral daily health measures), a single baseline and a single endline might not capture the dynamic changes well. Multiple waves help average out the noise.  
@@ -436,7 +432,23 @@ Recent insights—particularly from the work of [David McKenzie (2012)](#ref-McK
 
 In short: **More waves = more data points = smaller standard errors (usually)**. That’s a formula for improved power if the correlation structure isn’t working against you.
 
-[ADD SIMULATION CODE]
+### 6.4 Including Covariates in the Estimation Model
+
+If you can incorporate *pre-treatment* covariates that predict outcomes, you can reduce residual variance. Even though randomization ensures that *on average* groups are balanced, controlling for strong predictors of the outcome yields a more precise estimate.
+
+- **Pre-treatment outcomes** are gold if your outcome is stable over time.  
+- **Stratification variables** used in random assignment can (and often should) be controlled in analysis.  
+- **Baseline characteristics** that strongly predict your outcome.
+
+Be warned: *never* include post-treatment variables that might be affected by the intervention. That’s a sure-fire path to bias.
+
+### 6.5 Implement Stratified Randomization
+
+By dividing the sample into strata based on characteristics related to the outcome and randomizing within these strata, you can control for confounding variables and reduce variance, leading to more precise estimates.
+
+::: {.callout-note}
+This will be a major topic in the next unit.
+:::
 
 ## 7. Concluding Thoughts
 

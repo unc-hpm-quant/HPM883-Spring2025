@@ -409,7 +409,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Unit 2: Design of Experiments</h1>
+<div class="quarto-title-block"><div><h1 class="title">Unit 2: Design of Experiments</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -903,30 +903,20 @@ n \;\approx\; \left(\frac{z_{1-\alpha/2} + z_{1-\beta}}{MDE}\right)^2
 <section id="tips-and-tricks-to-increase-power" class="level2">
 <h2 class="anchored" data-anchor-id="tips-and-tricks-to-increase-power">6. Tips and Tricks to Increase Power</h2>
 <p>Lucky for us, there are several strategies to squeeze more power out of your design. We’ll focus on a few big ones.</p>
-<section id="including-covariates-in-the-estimation-model" class="level3">
-<h3 class="anchored" data-anchor-id="including-covariates-in-the-estimation-model">6.1 Including Covariates in the Estimation Model</h3>
-<p>If you can incorporate <em>pre-treatment</em> covariates that predict outcomes, you can reduce residual variance. Even though randomization ensures that <em>on average</em> groups are balanced, controlling for strong predictors of the outcome yields a more precise estimate.</p>
-<ul>
-<li><strong>Pre-treatment outcomes</strong> are gold if your outcome is stable over time.<br>
-</li>
-<li><strong>Stratification variables</strong> used in random assignment can (and often should) be controlled in analysis.<br>
-</li>
-<li><strong>Baseline characteristics</strong> that strongly predict your outcome.</li>
-</ul>
-<p>Be warned: <em>never</em> include post-treatment variables that might be affected by the intervention. That’s a sure-fire path to bias.</p>
-</section>
 <section id="designing-your-study-to-maximize-compliance" class="level3">
-<h3 class="anchored" data-anchor-id="designing-your-study-to-maximize-compliance">6.2 Designing Your Study to Maximize Compliance</h3>
-<p>If half your participants in the treatment arm ignore the intervention, your effective sample is basically shrunk. Low compliance or high crossover means your <em>intent-to-treat</em> effect is diluted.<br>
-Consider strategies like smaller but more motivated populations, or supportive interventions that encourage use. Implementation scientists are your friends here (just feed them coffee and data).</p>
+<h3 class="anchored" data-anchor-id="designing-your-study-to-maximize-compliance">6.1 Designing Your Study to Maximize Compliance</h3>
+<p>Ensure high take-up rates of the treatment. Low participation dilutes the observable effect, making detection challenging. If only half the sample adopts the treatment, you would need <strong>four times</strong> as many units to detect the same effect as with full participation.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p>Consider strategies like smaller but more motivated populations, or supportive interventions that encourage use. Implementation scientists are your friends here (just feed them coffee and data).</p>
 </section>
 <section id="choosing-less-noisy-outcome-measures" class="level3">
-<h3 class="anchored" data-anchor-id="choosing-less-noisy-outcome-measures">6.3 Choosing (Less Noisy) Outcome Measures</h3>
-<p>If your chosen outcome is extremely noisy (maybe self-reported “happiness” on a 0–100 scale?), you’ll need an enormous sample to detect moderate effects. One trick is to measure outcomes repeatedly and average them. For example, do two lab tests for the same biomarker and average them. Or measure mental health weekly for 4 weeks. Each additional measurerement can reduce the measurement error component.</p>
+<h3 class="anchored" data-anchor-id="choosing-less-noisy-outcome-measures">6.2 Choosing (Less Noisy) Outcome Measures</h3>
+<p>If your chosen outcome is extremely noisy (maybe self-reported “happiness” on a 0–100 scale?), you’ll need an enormous sample to detect moderate effects.</p>
+<p>Accurate measurements reduce variability in your data. Employ techniques such as embedding consistency checks in surveys, using anchoring and triangulation methods, and considering multiple questions to assess the same concept, thereby averaging out noise.</p>
+<p>Another trick is to measure outcomes repeatedly and average them. For example, do two lab tests for the same biomarker and average them. Or measure mental health weekly for 4 weeks. Each additional measurerement can reduce the measurement error component.</p>
 </section>
 <section id="multiple-waves-of-baseline-and-endline-data" class="level3">
-<h3 class="anchored" data-anchor-id="multiple-waves-of-baseline-and-endline-data">6.4 Multiple Waves of Baseline <strong>and</strong> Endline Data</h3>
-<p>Recent insights—particularly from the work of <a href="#ref-McKenzie2012">David McKenzie (2012)</a>—suggest that collecting <strong>more than one wave</strong> of baseline and endline data can yield substantial power gains <em>if</em> your outcome is either noisy or only weakly autocorrelated. Let’s break down the key ideas:</p>
+<h3 class="anchored" data-anchor-id="multiple-waves-of-baseline-and-endline-data">6.3 Multiple Waves of Baseline <strong>and</strong> Endline Data</h3>
+<p>Collecting <strong>more than one wave</strong> of baseline and endline data can yield substantial power gains <em>if</em> your outcome is either noisy or only weakly autocorrelated. Here are the key ideas from the paper by McKenzie in the reading:</p>
 <ol type="1">
 <li><strong>Why does it help?</strong>
 <ul>
@@ -954,7 +944,35 @@ Consider strategies like smaller but more motivated populations, or supportive i
 </ul></li>
 </ol>
 <p>In short: <strong>More waves = more data points = smaller standard errors (usually)</strong>. That’s a formula for improved power if the correlation structure isn’t working against you.</p>
-<p>[ADD SIMULATION CODE]</p>
+</section>
+<section id="including-covariates-in-the-estimation-model" class="level3">
+<h3 class="anchored" data-anchor-id="including-covariates-in-the-estimation-model">6.4 Including Covariates in the Estimation Model</h3>
+<p>If you can incorporate <em>pre-treatment</em> covariates that predict outcomes, you can reduce residual variance. Even though randomization ensures that <em>on average</em> groups are balanced, controlling for strong predictors of the outcome yields a more precise estimate.</p>
+<ul>
+<li><strong>Pre-treatment outcomes</strong> are gold if your outcome is stable over time.<br>
+</li>
+<li><strong>Stratification variables</strong> used in random assignment can (and often should) be controlled in analysis.<br>
+</li>
+<li><strong>Baseline characteristics</strong> that strongly predict your outcome.</li>
+</ul>
+<p>Be warned: <em>never</em> include post-treatment variables that might be affected by the intervention. That’s a sure-fire path to bias.</p>
+</section>
+<section id="implement-stratified-randomization" class="level3">
+<h3 class="anchored" data-anchor-id="implement-stratified-randomization">6.5 Implement Stratified Randomization</h3>
+<p>By dividing the sample into strata based on characteristics related to the outcome and randomizing within these strata, you can control for confounding variables and reduce variance, leading to more precise estimates.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This will be a major topic in the next unit.</p>
+</div>
+</div>
 </section>
 </section>
 <section id="concluding-thoughts" class="level2">
@@ -969,6 +987,8 @@ Consider strategies like smaller but more motivated populations, or supportive i
 <p>That’s it for now. Next time, we’ll look at more advanced randomization strategies (e.g., stratified, matched-pair, and adaptive designs) that can further improve your power.</p>
 
 
+<!-- -->
+
 </section>
 
 
@@ -977,6 +997,7 @@ Consider strategies like smaller but more motivated populations, or supportive i
 <ol>
 <li id="fn1"><p>If you were daydreaming in Econ 101, fear not. We’ll keep things simple.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>if you want to maximize the product of two nonnegative numbers with a fixed sum, you set them equal.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>see: <a href="https://blogs.worldbank.org/en/impactevaluations/seven-ways-improve-statistical-power-your-experiment-without-increasing-n">World Bank Blog</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1210,6 +1231,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       container: window.document.getElementById('quarto-embedded-source-code-modal')
     });
     clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
@@ -1539,7 +1611,474 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Unit 2: Design of Experiments"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">Subtitle:</span><span class="co"> "Optimal Experimental Design"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Sean Sylvia, Ph.D."</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> February 18, 2025</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-depth: 2</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: true</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">  message: false</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="an">draft:</span><span class="co"> false</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>Welcome, dear students, to another joyous adventure in the realm of experimental design! In our previous sessions, we tackled the fundamentals of **statistical conclusion validity** and dipped our toes into **power calculations** and **simulation**. We even brushed up against the perils of **clustering**, which appears A LOT in health services research since this is how health care is organized -- think hospitals, clinics, communities, social networks, etc.</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>Now, we turn the tables. Instead of passively accepting whatever nature (or large administrative database) throws at us, we’re in control. Unlike our secondary data analysis friends, we get to *design* our experiments to make the most of the resources we have. Specifically, we're interested in maximizing our abilitly to learn (i.e. statistical power) subject to our constraints (e.g. budget, logistical). </span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>Of course, nothing is for free; this is both a blessing and a curse. Tradeoffs abound as usual. We need a framework for thinking about how to optimally weigh costs and benefits. If only there was an entire discipline devoted to this.....OH, WAIT! (Yes, my friends, you are all economists now. You’re welcome.) As an experimentalist, you can optimize your design choices in ways our secondary-data-using colleagues can only dream of (or envy, or curse, depending on their temperament). So let’s dig in, shall we?</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>**Note:** Suboptimal design choices won’t necessarily ruin your study’s internal validity, but they will keep you from making the *best* inference possible. And that might cost you that sweet, sweet grant renewal next year.</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="fu">## 1. Optimal Experimental Design: Insights from Econ 101</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1.1 Our Objective</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>Thinking back to Econ 101,^<span class="co">[</span><span class="ot">If you were daydreaming in Econ 101, fear not. We’ll keep things simple.</span><span class="co">]</span> recall that we can pose an optimization problem as maximizing (or minimizing) an objective function subject to constraints. In our case, we’ll use this to set up our experimental design problem, i.e,</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Objective function:** Statistical power,</span>  </span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Subject to:** Budget constraints.</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>In other words, we want to choose our design to maximize power subject to our budget (or other) constraints. It turns out that there are loads of things in our control; usually the only things that aren't are feasibility and the budget we have to work with.</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>**Concept Map**</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="in">```{mermaid}</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="in">flowchart LR</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="in">   %% Nodes</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="in">    A(("To calculate optimal sample sizes")):::navy</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="in">    B["Desired significance level"]:::carolinaBlue</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="in">    C["Desired statistical power"]:::carolinaBlue</span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="in">    D["Minimum detectable effect size"]:::carolinaBlue</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="in">    E["Experimental budget and treatment costs"]:::carolinaBlue</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="in">    F["How the data will be analyzed"]:::carolinaBlue</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="in">    G["Available pre-treatment covariates"]:::carolinaBlue</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="in">    H["Unit of assignment"]:::teal</span></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="in">    I["Number of distinct outcomes of interest"]:::teal</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="in">    J(["Design with clustered assignment"]):::tarHeelBlue</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="in">    K(["Design for multiple hypothesis testing"]):::tarHeelBlue</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="in">    %% Edges</span></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="in">    A --&gt; B</span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="in">    A --&gt; C</span></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a><span class="in">    A --&gt; D</span></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="in">    A --&gt; E</span></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a><span class="in">    A --&gt; F</span></span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a><span class="in">    A --&gt; G</span></span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a><span class="in">    F --&gt; H</span></span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a><span class="in">    F --&gt; I</span></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a><span class="in">    H --&gt; J</span></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="in">    I --&gt; K</span></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="in">    %% UNC Brand Colors</span></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="in">    classDef navy fill:#13294B,stroke:#13294B,stroke-width:1px,color:#FFFFFF</span></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a><span class="in">    classDef carolinaBlue fill:#4B9CD3,stroke:#13294B,stroke-width:1px,color:#FFFFFF</span></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a><span class="in">    classDef teal fill:#00788C,stroke:#13294B,stroke-width:1px,color:#FFFFFF</span></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a><span class="in">    classDef tarHeelBlue fill:#7BAFD4,stroke:#13294B,stroke-width:1px,color:#FFFFFF</span></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1.2 A Simple Setup</span></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>To make this concrete, imagine you’ve received a research grant (yay!) or have a wealthy aunt who’s willing to bankroll your next foray into experimental design. You have two arms in your study:</span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>A **control** group (no intervention).  </span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>A **treatment** group (some fancy new health intervention).</span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>And you have a single, continuous outcome measure, say:  </span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>Y_i = \text{Health and Happiness Index}</span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>Now, your big question: **How many participants do you need?** How do you split that precious sample between treatment and control?  </span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1.3 The Big Three Elements</span></span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>When computing your required sample size (or deciding the “optimal” split), there are three main ingredients:</span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Significance level** ($\alpha$): The probability of a false positive (rejecting the null when it’s actually true).  </span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Minimum Detectable Effect (MDE)**: The smallest true effect size you want to be able to detect with high probability.  </span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Power** ($1 - \beta$): The probability of detecting a true effect (i.e., rejecting the null when it’s false).</span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>::: {.callout-warning}</span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>The MDE is **not** the effect you *expect* to see. It’s the smallest effect you *care* to rule in or rule out. People often mix these up, leading to underpowered studies, heartbreak, and wasted coffee budgets.</span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a><span class="fu">## 2. The Variance of the Average Treatment Effect (ATE) and the Minimum Detectable Effect (MDE)</span></span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>At this point, you may be wondering: “Why do we keep obsessing about the variance of our estimated effect?” Because **variance** is basically the Grim Reaper of statistical power—bigger variance, bigger standard errors, lower power. So let’s peek under the hood of our ATE estimator.</span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2.1 Setting Up the Outcome Model</span></span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a>Consider the outcome $Y_i$ for subject $i$. Under treatment $D=1$ and control $D=0$, $Y_i$ is influenced by:</span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Observable variables** $\mathbf{X}_i$.  </span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**An unobserved effect** $\alpha_i$ (think “innate personal quirks”).  </span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**A person-specific treatment effect** $\tau_i$, whose expectation is zero ($\mathbb{E}<span class="co">[</span><span class="ot">\tau_i</span><span class="co">]</span> = 0$).  (We typically assume the average of these individual effects is our main parameter, $\bar{\tau}$.)  </span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**An error term** $\varepsilon_i$, assumed to be i.i.d. (pure luck-of-the-draw stuff).</span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>So a possible model could be:</span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a>Y_{i} \;=\; \alpha_i \;+\; \mathbf{X}_i \,\beta \;+\; \bar{\tau} \,D_i \;+\; \tau_i\,D_i \;+\; \varepsilon_i.</span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>\tag{1}</span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a>Here, $\bar{\tau}$ is the “average” treatment effect across individuals (the main star of our show), and $\tau_i$ captures the idiosyncratic difference around that average.  </span>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a>Because randomization ensures $D_i$ is (in expectation) independent of $\alpha_i, \tau_i,$ and $\varepsilon_i$, your estimator for the ATE:</span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>\hat{\tau}</span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a>\;=\; </span>
+<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a>\mathbb{E}<span class="co">[</span><span class="ot">Y_i \mid D_i=1</span><span class="co">]</span></span>
+<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a>\;-\;</span>
+<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a>\mathbb{E}<span class="co">[</span><span class="ot">Y_i \mid D_i=0</span><span class="co">]</span>,</span>
+<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a>is **unbiased**. Translation: *we’re not systematically off the mark*. If the true effect is 2, we’re not going to estimate 1.6 or 2.7 just because the allocation was rigged.</span>
+<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a>But to actually **detect** $\hat{\tau}$ in a statistical test, we need the noise to be sufficiently small relative to the signal. Enter the variance of the estimated ATE:</span>
+<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a>\mathrm{Var}(\hat{\tau})</span>
+<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a>\;=\;</span>
+<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a>\frac{\sigma^2}{N}</span>
+<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a>\;=\;</span>
+<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a>\frac{\mathrm{Var}(\varepsilon_i)}{\;N \,\times\, \mathrm{Var}(D_i)\,}.</span>
+<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a>\tag{2}</span>
+<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a>Here,</span>
+<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**$\mathrm{Var}(\varepsilon_i)$:** is the variance of the unobserved “noise” in outcomes. </span>
+<span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**$N$:** is the total number of units (subjects).  </span>
+<span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**$\mathrm{Var}(D_i)$:** is the variance of your treatment assignment indicator. If the treatment is binary and $p$ is the fraction in treatment, then $\mathrm{Var}(D_i) = p(1-p)$. </span>
+<span id="cb2-165"><a href="#cb2-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a>Hence, $\mathrm{Var}(\hat{\tau})$ is:</span>
+<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Increasing in** $\mathrm{Var}(\varepsilon_i)$: More “noise” = bigger standard errors.  </span>
+<span id="cb2-169"><a href="#cb2-169" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Decreasing in** $N$: More data = smaller standard errors.  </span>
+<span id="cb2-170"><a href="#cb2-170" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Decreasing in** $\mathrm{Var}(D_i)$</span>
+<span id="cb2-171"><a href="#cb2-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-172"><a href="#cb2-172" aria-hidden="true" tabindex="-1"></a>If you only have one treatment arm with proportion <span class="sc">\(</span>p<span class="sc">\)</span> under treatment, then <span class="sc">\(</span>\mathrm{Var}(D_i) = p(1-p)<span class="sc">\)</span>. So yes, that half-and-half split is not just for black-and-white cookies—it’s also a straightforward way to keep variance in check.</span>
+<span id="cb2-173"><a href="#cb2-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-174"><a href="#cb2-174" aria-hidden="true" tabindex="-1"></a>That’s the core story. Once we drag real-world complexities in—like different costs per treatment participant, cluster randomization, or multiple waves of data—things get more involved. (Stay tuned!) But for now, remember:  </span>
+<span id="cb2-175"><a href="#cb2-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-176"><a href="#cb2-176" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>The formula $\mathrm{Var}(\hat{\tau}) = \sigma^2 / <span class="co">[</span><span class="ot">N \,\mathrm{Var}(D)</span><span class="co">]</span>$ is your guiding light.  </span>
+<span id="cb2-177"><a href="#cb2-177" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Keep that variance down and your power up.</span>
+<span id="cb2-178"><a href="#cb2-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-179"><a href="#cb2-179" aria-hidden="true" tabindex="-1"></a><span class="fu">## 2.2 The Minimum Detectible Effect (MDE)</span></span>
+<span id="cb2-180"><a href="#cb2-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-181"><a href="#cb2-181" aria-hidden="true" tabindex="-1"></a>Now for our simple case, let's assume that a single treatment results in (conditional) outcomes $Y_0$ and $Y_1$ that are normally distributed for simplicity, i.e.:</span>
+<span id="cb2-182"><a href="#cb2-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-183"><a href="#cb2-183" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-184"><a href="#cb2-184" aria-hidden="true" tabindex="-1"></a>Y_{i0} | X_i \sim \mathcal{N}(\mu_0, \sigma^2) if D_i=0; </span>
+<span id="cb2-185"><a href="#cb2-185" aria-hidden="true" tabindex="-1"></a>Y_{i1} | X_i \sim \mathcal{N}(\mu_1, \sigma^2) if D_i=1.</span>
+<span id="cb2-186"><a href="#cb2-186" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-187"><a href="#cb2-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-188"><a href="#cb2-188" aria-hidden="true" tabindex="-1"></a>Here, $\mu_0$ and $\mu_1$ are the treatment effects, and $\sigma^2$ is the variance of the outcome.</span>
+<span id="cb2-189"><a href="#cb2-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-190"><a href="#cb2-190" aria-hidden="true" tabindex="-1"></a>We can now define the **minimum detectable effect (MDE)** as the smallest effect $\mu_1 - \mu_0$ that we can detect with a specified level of statistical power. Remember, to calculate statistical power, we need to specify a null hypothesis and an alternative hypothesis:</span>
+<span id="cb2-191"><a href="#cb2-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-192"><a href="#cb2-192" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-193"><a href="#cb2-193" aria-hidden="true" tabindex="-1"></a>H_0: \mu_0 = 0</span>
+<span id="cb2-194"><a href="#cb2-194" aria-hidden="true" tabindex="-1"></a>H_1: \mu_1 \neq 0</span>
+<span id="cb2-195"><a href="#cb2-195" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-196"><a href="#cb2-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-197"><a href="#cb2-197" aria-hidden="true" tabindex="-1"></a>If observations are independent, then the difference in sample means ($\bar{Y}_0 - \bar{Y}_1$) is our estimator of $\mu_1 - \mu_0$. we can define the MDE as:</span>
+<span id="cb2-198"><a href="#cb2-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-199"><a href="#cb2-199" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-200"><a href="#cb2-200" aria-hidden="true" tabindex="-1"></a>\text{MDE} = z_{1-\alpha/2} \sqrt{\frac{\sigma^2}{n_1} + \frac{\sigma^2}{n_0}} \;+\; z_{1-\beta} \sqrt{\frac{\sigma^2}{n_1} + \frac{\sigma^2}{n_0}}.</span>
+<span id="cb2-201"><a href="#cb2-201" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-202"><a href="#cb2-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-203"><a href="#cb2-203" aria-hidden="true" tabindex="-1"></a>(Exact form depends on one- or two-sided tests, but the gist is the same.)</span>
+<span id="cb2-204"><a href="#cb2-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-205"><a href="#cb2-205" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb2-206"><a href="#cb2-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-207"><a href="#cb2-207" aria-hidden="true" tabindex="-1"></a>To derive the above, start by defining the probability ($\alpha$) of a Type I error and the probability ($\beta$) of a Type II error as a function of $\bar{Y}_0 - \bar{Y}_1$:</span>
+<span id="cb2-208"><a href="#cb2-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-209"><a href="#cb2-209" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-210"><a href="#cb2-210" aria-hidden="true" tabindex="-1"></a>z_{1-\alpha/2} = \frac{\bar{Y}_0 - \bar{Y}_1}{\sqrt{\frac{\sigma_0^2}{n_0} + \frac{\sigma_1 ^2}{n_1}}} \implies</span>
+<span id="cb2-211"><a href="#cb2-211" aria-hidden="true" tabindex="-1"></a>\bar{Y}_0 - \bar{Y}_1 \;=\; z_{1-\alpha/2} \sqrt{\frac{\sigma_0^2}{n_0} + \frac{\sigma_1 ^2}{n_1}}</span>
+<span id="cb2-212"><a href="#cb2-212" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-213"><a href="#cb2-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-214"><a href="#cb2-214" aria-hidden="true" tabindex="-1"></a>where $n_0$ and $n_1$ are the sample sizes in each group and $\sigma_0^2$ and $\sigma_1^2$ are the (conditional) variances of the outcomes in each group.</span>
+<span id="cb2-215"><a href="#cb2-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-216"><a href="#cb2-216" aria-hidden="true" tabindex="-1"></a>The probability, $\beta$, of a Type II error is:</span>
+<span id="cb2-217"><a href="#cb2-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-218"><a href="#cb2-218" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-219"><a href="#cb2-219" aria-hidden="true" tabindex="-1"></a>z_{\beta} = \frac{\bar{Y}_0 - \bar{Y}_1 - MDE}{\sqrt{\frac{\sigma_0^2}{n_0} + \frac{\sigma_1 ^2}{n_1}}} \implies</span>
+<span id="cb2-220"><a href="#cb2-220" aria-hidden="true" tabindex="-1"></a>\bar{Y}_0 - \bar{Y}_1 \;=\; MDE - z_{\beta} \sqrt{\frac{\sigma_0^2}{n_0} + \frac{\sigma_1 ^2}{n_1}}</span>
+<span id="cb2-221"><a href="#cb2-221" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-222"><a href="#cb2-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-223"><a href="#cb2-223" aria-hidden="true" tabindex="-1"></a>and the MDE is:</span>
+<span id="cb2-224"><a href="#cb2-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-225"><a href="#cb2-225" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-226"><a href="#cb2-226" aria-hidden="true" tabindex="-1"></a>\text{MDE} = z_{1-\alpha/2} \sqrt{\frac{\sigma^2}{n_1} + \frac{\sigma^2}{n_0}} \;+\; z_{\beta} \sqrt{\frac{\sigma^2}{n_1} + \frac{\sigma^2}{n_0}}.</span>
+<span id="cb2-227"><a href="#cb2-227" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-228"><a href="#cb2-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-229"><a href="#cb2-229" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-230"><a href="#cb2-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-231"><a href="#cb2-231" aria-hidden="true" tabindex="-1"></a>Graphically, the MDE is effect size $\tau$ such that power has the same cutoff as the significance level:</span>
+<span id="cb2-232"><a href="#cb2-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-233"><a href="#cb2-233" aria-hidden="true" tabindex="-1"></a><span class="al">![Type 1 and Type 2 Errors](/unit-1/media/HypothesisTesting.png)</span></span>
+<span id="cb2-234"><a href="#cb2-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-235"><a href="#cb2-235" aria-hidden="true" tabindex="-1"></a>Now to reiterate a very important point that people mess up all the time: **The MDE is not the expected effect size.** It is the minimum effect size that you want to be able to detect. Think about how much underpowered research is out there because people make this simple mistake.</span>
+<span id="cb2-236"><a href="#cb2-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-237"><a href="#cb2-237" aria-hidden="true" tabindex="-1"></a><span class="fu">## 3. Figuring Out Optimal Sample Sizes (a.k.a. Minimizing the MDE)</span></span>
+<span id="cb2-238"><a href="#cb2-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-239"><a href="#cb2-239" aria-hidden="true" tabindex="-1"></a>Let’s turn now to the practical question on everyone’s mind: **How many participants should I recruit in each arm of my study?** Or put more formally, *How do I minimize the Minimum Detectable Effect (MDE) given constraints on my time, budget, and sanity?* </span>
+<span id="cb2-240"><a href="#cb2-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-241"><a href="#cb2-241" aria-hidden="true" tabindex="-1"></a>Assume that the **variances are equal** in the treatment and control group. We can rewrite the MDE formula as:</span>
+<span id="cb2-242"><a href="#cb2-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-243"><a href="#cb2-243" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-244"><a href="#cb2-244" aria-hidden="true" tabindex="-1"></a>\text{MDE} </span>
+<span id="cb2-245"><a href="#cb2-245" aria-hidden="true" tabindex="-1"></a>\;=\;</span>
+<span id="cb2-246"><a href="#cb2-246" aria-hidden="true" tabindex="-1"></a>\bigl(z_{1-\alpha/2} + z_{1-\beta}\bigr)</span>
+<span id="cb2-247"><a href="#cb2-247" aria-hidden="true" tabindex="-1"></a>\sqrt{</span>
+<span id="cb2-248"><a href="#cb2-248" aria-hidden="true" tabindex="-1"></a>  \frac{\sigma^2}{n_0} + \frac{\sigma^2}{n_1}</span>
+<span id="cb2-249"><a href="#cb2-249" aria-hidden="true" tabindex="-1"></a>},</span>
+<span id="cb2-250"><a href="#cb2-250" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-251"><a href="#cb2-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-252"><a href="#cb2-252" aria-hidden="true" tabindex="-1"></a>where</span>
+<span id="cb2-253"><a href="#cb2-253" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$n_1$ is the sample size in treatment,  </span>
+<span id="cb2-254"><a href="#cb2-254" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$n_0$ is the sample size in control, and  </span>
+<span id="cb2-255"><a href="#cb2-255" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\sigma^2$ is the **(common)** variance of the outcome.</span>
+<span id="cb2-256"><a href="#cb2-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-257"><a href="#cb2-257" aria-hidden="true" tabindex="-1"></a>Because the stuff before the square root is just a constant, **minimizing** the $\text{MDE}$ with respect to $(n_0, n_1)$ subject to a total sample size $N = n_0 + n_1$, boils down to minimizing</span>
+<span id="cb2-258"><a href="#cb2-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-259"><a href="#cb2-259" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-260"><a href="#cb2-260" aria-hidden="true" tabindex="-1"></a>\sqrt{\frac{1}{n_0} + \frac{1}{n_1}}.</span>
+<span id="cb2-261"><a href="#cb2-261" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-262"><a href="#cb2-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-263"><a href="#cb2-263" aria-hidden="true" tabindex="-1"></a>Then because </span>
+<span id="cb2-264"><a href="#cb2-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-265"><a href="#cb2-265" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-266"><a href="#cb2-266" aria-hidden="true" tabindex="-1"></a>\frac{1}{n_0} + \frac{1}{n_1}</span>
+<span id="cb2-267"><a href="#cb2-267" aria-hidden="true" tabindex="-1"></a>\;=\;</span>
+<span id="cb2-268"><a href="#cb2-268" aria-hidden="true" tabindex="-1"></a>\frac{n_0 + n_1}{n_0 \,n_1}</span>
+<span id="cb2-269"><a href="#cb2-269" aria-hidden="true" tabindex="-1"></a>\;=\;</span>
+<span id="cb2-270"><a href="#cb2-270" aria-hidden="true" tabindex="-1"></a>\frac{N}{n_0\,n_1},</span>
+<span id="cb2-271"><a href="#cb2-271" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-272"><a href="#cb2-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-273"><a href="#cb2-273" aria-hidden="true" tabindex="-1"></a>we want to**maximize** $n_0\,n_1$ given $n_0 + n_1 = N$.^<span class="co">[</span><span class="ot">if you want to maximize the product of two nonnegative numbers with a fixed sum, you set them equal.</span><span class="co">]</span> </span>
+<span id="cb2-274"><a href="#cb2-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-275"><a href="#cb2-275" aria-hidden="true" tabindex="-1"></a>Hence, for **equal variances and no cost differences**, we end up with the classic result:</span>
+<span id="cb2-276"><a href="#cb2-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-277"><a href="#cb2-277" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-278"><a href="#cb2-278" aria-hidden="true" tabindex="-1"></a>n_0^* </span>
+<span id="cb2-279"><a href="#cb2-279" aria-hidden="true" tabindex="-1"></a>\;=\; </span>
+<span id="cb2-280"><a href="#cb2-280" aria-hidden="true" tabindex="-1"></a>n_1^*</span>
+<span id="cb2-281"><a href="#cb2-281" aria-hidden="true" tabindex="-1"></a>\;=\;</span>
+<span id="cb2-282"><a href="#cb2-282" aria-hidden="true" tabindex="-1"></a>\frac{N}{2}.</span>
+<span id="cb2-283"><a href="#cb2-283" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-284"><a href="#cb2-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-285"><a href="#cb2-285" aria-hidden="true" tabindex="-1"></a>So a **50–50 split** is optimal under those assumptions. Easy enough!</span>
+<span id="cb2-286"><a href="#cb2-286" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-287"><a href="#cb2-287" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-288"><a href="#cb2-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-289"><a href="#cb2-289" aria-hidden="true" tabindex="-1"></a>**But what if the variance in the treatment group, $\sigma_1^2$, differs from that in the control group, $\sigma_0^2$?** Then the formula for the MDE looks more like:</span>
+<span id="cb2-290"><a href="#cb2-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-291"><a href="#cb2-291" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-292"><a href="#cb2-292" aria-hidden="true" tabindex="-1"></a>\text{MDE}</span>
+<span id="cb2-293"><a href="#cb2-293" aria-hidden="true" tabindex="-1"></a>\;=\;</span>
+<span id="cb2-294"><a href="#cb2-294" aria-hidden="true" tabindex="-1"></a>\bigl(z_{1-\alpha/2} + z_{1-\beta}\bigr)</span>
+<span id="cb2-295"><a href="#cb2-295" aria-hidden="true" tabindex="-1"></a>\sqrt{</span>
+<span id="cb2-296"><a href="#cb2-296" aria-hidden="true" tabindex="-1"></a>  \frac{\sigma_1^2}{n_1} + \frac{\sigma_0^2}{n_0}</span>
+<span id="cb2-297"><a href="#cb2-297" aria-hidden="true" tabindex="-1"></a>}.</span>
+<span id="cb2-298"><a href="#cb2-298" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-299"><a href="#cb2-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-300"><a href="#cb2-300" aria-hidden="true" tabindex="-1"></a>Minimizing that suggests you should **oversample** the group with the higher variance. (Intuition: you get more “statistical bang” for each extra participant in the group that has the largest contribution to the total standard error.)</span>
+<span id="cb2-301"><a href="#cb2-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-302"><a href="#cb2-302" aria-hidden="true" tabindex="-1"></a>Of course, we rarely know $\sigma_0^2$ and $\sigma_1^2$ exactly in advance, so we often do a best guess from pilot studies, previous literature, or sheer optimism (spoiler: that last one sometimes backfires).  </span>
+<span id="cb2-303"><a href="#cb2-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-304"><a href="#cb2-304" aria-hidden="true" tabindex="-1"></a><span class="fu">## 4. Enter the Budget Constraint (When Auntie’s Not *That* Rich)</span></span>
+<span id="cb2-305"><a href="#cb2-305" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-306"><a href="#cb2-306" aria-hidden="true" tabindex="-1"></a>In real life, each participant in the treatment group might cost more because you have to fund the intervention (hire staff, buy supplies, bribe them with candy, etc.). Meanwhile, enrolling a control participant might be cheaper—*but still not free*, because you need them to fill out surveys or come in for labs. Let’s denote:</span>
+<span id="cb2-307"><a href="#cb2-307" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-308"><a href="#cb2-308" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$c_0$: the cost per control participant,  </span>
+<span id="cb2-309"><a href="#cb2-309" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$c_1$: the cost per treatment participant, and  </span>
+<span id="cb2-310"><a href="#cb2-310" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$M$: your total budget.</span>
+<span id="cb2-311"><a href="#cb2-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-312"><a href="#cb2-312" aria-hidden="true" tabindex="-1"></a>Now your problem is:</span>
+<span id="cb2-313"><a href="#cb2-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-314"><a href="#cb2-314" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-315"><a href="#cb2-315" aria-hidden="true" tabindex="-1"></a>\min_{n_0,\,n_1}</span>
+<span id="cb2-316"><a href="#cb2-316" aria-hidden="true" tabindex="-1"></a>\text{MDE}</span>
+<span id="cb2-317"><a href="#cb2-317" aria-hidden="true" tabindex="-1"></a>\quad</span>
+<span id="cb2-318"><a href="#cb2-318" aria-hidden="true" tabindex="-1"></a>\text{subject to}</span>
+<span id="cb2-319"><a href="#cb2-319" aria-hidden="true" tabindex="-1"></a>\quad</span>
+<span id="cb2-320"><a href="#cb2-320" aria-hidden="true" tabindex="-1"></a>c_0\,n_0 + c_1\,n_1 \;\le\; M.</span>
+<span id="cb2-321"><a href="#cb2-321" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-322"><a href="#cb2-322" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-323"><a href="#cb2-323" aria-hidden="true" tabindex="-1"></a>Solving for $n_0$ and $n_1$ yields:</span>
+<span id="cb2-324"><a href="#cb2-324" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-325"><a href="#cb2-325" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-326"><a href="#cb2-326" aria-hidden="true" tabindex="-1"></a>\frac{n_1}{n_0}</span>
+<span id="cb2-327"><a href="#cb2-327" aria-hidden="true" tabindex="-1"></a>\;=\;</span>
+<span id="cb2-328"><a href="#cb2-328" aria-hidden="true" tabindex="-1"></a>\sqrt{</span>
+<span id="cb2-329"><a href="#cb2-329" aria-hidden="true" tabindex="-1"></a>  \frac{\sigma_1^2\,c_0}{\sigma_0^2\,c_1}</span>
+<span id="cb2-330"><a href="#cb2-330" aria-hidden="true" tabindex="-1"></a>},</span>
+<span id="cb2-331"><a href="#cb2-331" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-332"><a href="#cb2-332" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-333"><a href="#cb2-333" aria-hidden="true" tabindex="-1"></a>which tells us:</span>
+<span id="cb2-334"><a href="#cb2-334" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-335"><a href="#cb2-335" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**If $c_1$ is much higher** than $c_0$ (treatment is expensive!), you’ll want fewer participants in treatment.  </span>
+<span id="cb2-336"><a href="#cb2-336" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**If $\sigma_0^2 &gt; \sigma_1^2$** (control variance is larger), you might want more control participants.  </span>
+<span id="cb2-337"><a href="#cb2-337" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-338"><a href="#cb2-338" aria-hidden="true" tabindex="-1"></a>Essentially, you compare the ratio of your *marginal benefit* (reducing variance) to your *marginal cost* (how expensive it is to add participants to each arm). You buy the “cheapest variance reduction” first—like a true economist.</span>
+<span id="cb2-339"><a href="#cb2-339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-340"><a href="#cb2-340" aria-hidden="true" tabindex="-1"></a><span class="fu">### Practical Implications</span></span>
+<span id="cb2-341"><a href="#cb2-341" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-342"><a href="#cb2-342" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**No Free Lunch**: Even if you have philanthropic relatives, resources are finite. Incorporating cost differences can shift your allocation away from the standard 50–50.  </span>
+<span id="cb2-343"><a href="#cb2-343" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Pilot or Prior Data**: Because the formula involves $\sigma_0^2$ and $\sigma_1^2$, it helps to get decent estimates of group variances so you don’t design suboptimally.  </span>
+<span id="cb2-344"><a href="#cb2-344" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Sensitivity Checks**: If you’re not sure about the cost ratio or the variance ratio, do a few “what if” analyses or simulations to see how your MDE changes when you tweak these assumptions.</span>
+<span id="cb2-345"><a href="#cb2-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-346"><a href="#cb2-346" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb2-347"><a href="#cb2-347" aria-hidden="true" tabindex="-1"></a>**Pro Tip**: In many health interventions, the cost difference can be huge—especially if the treatment requires lots of staff time, medical supplies, or specialized devices. Don’t ignore that in your design.</span>
+<span id="cb2-348"><a href="#cb2-348" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-349"><a href="#cb2-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-350"><a href="#cb2-350" aria-hidden="true" tabindex="-1"></a><span class="fu">### Too much math?</span></span>
+<span id="cb2-351"><a href="#cb2-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-352"><a href="#cb2-352" aria-hidden="true" tabindex="-1"></a>I know this is a lot of math, so to help you visualize what’s going on, I’ve created a Shiny app that lets you play around with different values and see how the “optimal” $n_0$ and $n_1$ changes. Play around with the parameters and see what happens. </span>
+<span id="cb2-353"><a href="#cb2-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-354"><a href="#cb2-354" aria-hidden="true" tabindex="-1"></a>You can access the app here: <span class="co">[</span><span class="ot">Shiny App</span><span class="co">](shiny-oed-app.qmd)</span></span>
+<span id="cb2-355"><a href="#cb2-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-356"><a href="#cb2-356" aria-hidden="true" tabindex="-1"></a>**Understanding these trade‐offs** is the heart of optimal experimental design. If your control group is nearly free, sample the heck out of it; if your intervention is super expensive, you might want fewer treatment participants *but* enough to be adequately powered. </span>
+<span id="cb2-357"><a href="#cb2-357" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-358"><a href="#cb2-358" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-359"><a href="#cb2-359" aria-hidden="true" tabindex="-1"></a><span class="fu">## 5. Design Extensions</span></span>
+<span id="cb2-360"><a href="#cb2-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-361"><a href="#cb2-361" aria-hidden="true" tabindex="-1"></a><span class="fu">### 5.1 Dichotomous Treatment with a Binomial Outcome</span></span>
+<span id="cb2-362"><a href="#cb2-362" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-363"><a href="#cb2-363" aria-hidden="true" tabindex="-1"></a>When the outcome is binary (e.g., success/failure) and the null is that treatment = control, variance depends on the underlying mean. If $\bar{p}_1$ and $\bar{p}_0$ differ, you get different variances. *Optimal* allocation tries to oversample the arm whose proportion is nearer 0.5, because that’s where variance is highest.</span>
+<span id="cb2-364"><a href="#cb2-364" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-365"><a href="#cb2-365" aria-hidden="true" tabindex="-1"></a><span class="fu">### 5.2 Multiple Treatment Arms or “Dose-Response” Designs</span></span>
+<span id="cb2-366"><a href="#cb2-366" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-367"><a href="#cb2-367" aria-hidden="true" tabindex="-1"></a>Now until now we've just considered one treatment group and one control group. There are some cases where instead of just estimating an effect of a treatment, we might be interested in estimating a dose response curve. So this would be like asking what is the effect of going from a dose of 100 milligrams to 200 milligrams, etc.</span>
+<span id="cb2-368"><a href="#cb2-368" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-369"><a href="#cb2-369" aria-hidden="true" tabindex="-1"></a>Now if we only care about a linear effect, or more precisely, we are assuming that there's a linear effect in the dose, we really only need two  arms of the experiment, e.g. a zero dose (control) and 200 mg. This puts us back into the treatment and control scenario we saw before.</span>
+<span id="cb2-370"><a href="#cb2-370" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-371"><a href="#cb2-371" aria-hidden="true" tabindex="-1"></a>But often, and actually usually, it's not a good idea to assume a linear effect. For example, the effect of going from zero to 100 milligrams might be a lot larger than the effect of taking a patient from 100 milligrams to 200 milligrams.</span>
+<span id="cb2-372"><a href="#cb2-372" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-373"><a href="#cb2-373" aria-hidden="true" tabindex="-1"></a>Now it turns out here as you expand treatment levels, the sample allocation is not equal even if you're assuming the same variances and have equal costs. Not assuming any funny business with differences in outcome variance or unequal costs, optimal allocations are as follows for different polynomials:</span>
+<span id="cb2-374"><a href="#cb2-374" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-375"><a href="#cb2-375" aria-hidden="true" tabindex="-1"></a>| Highest &amp; Only Polynomial Order | Number of Treatment Cells | Sample Allocation              |</span>
+<span id="cb2-376"><a href="#cb2-376" aria-hidden="true" tabindex="-1"></a>|---------------------------------|---------------------------|--------------------------------|</span>
+<span id="cb2-377"><a href="#cb2-377" aria-hidden="true" tabindex="-1"></a>| 1                               | 2                         | {1/2, 0, 1/2}                  |</span>
+<span id="cb2-378"><a href="#cb2-378" aria-hidden="true" tabindex="-1"></a>| 2                               | 3                         | {1/4, 1/2, 1/4}                |</span>
+<span id="cb2-379"><a href="#cb2-379" aria-hidden="true" tabindex="-1"></a>| 3                               | 4                         | {1/6, 1/3, 1/3, 1/6}           |</span>
+<span id="cb2-380"><a href="#cb2-380" aria-hidden="true" tabindex="-1"></a>| …                               | …                         | …                              |</span>
+<span id="cb2-381"><a href="#cb2-381" aria-hidden="true" tabindex="-1"></a>| 10                              | 11                        | {1/20, 1/10, …, 1/10, 1/20}    |</span>
+<span id="cb2-382"><a href="#cb2-382" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-383"><a href="#cb2-383" aria-hidden="true" tabindex="-1"></a><span class="fu">### 5.3 Clustered Designs</span></span>
+<span id="cb2-384"><a href="#cb2-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-385"><a href="#cb2-385" aria-hidden="true" tabindex="-1"></a>In many health economics studies, entire clinics, schools, or communities get randomized. Let $\rho$ be the intracluster correlation coefficient (ICC). A higher $\rho$ means participants within a cluster look more alike, so you effectively have fewer independent observations. That means you need a bigger total sample (and more clusters) to achieve the same power. The formula for the number of clusters needed often looks like:</span>
+<span id="cb2-386"><a href="#cb2-386" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-387"><a href="#cb2-387" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb2-388"><a href="#cb2-388" aria-hidden="true" tabindex="-1"></a><span class="fu">## Cluster Randomized Designs {#eq-cluster-design}</span></span>
+<span id="cb2-389"><a href="#cb2-389" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-390"><a href="#cb2-390" aria-hidden="true" tabindex="-1"></a>n \;\approx\; \left(\frac{z_{1-\alpha/2} + z_{1-\beta}}{MDE}\right)^2 </span>
+<span id="cb2-391"><a href="#cb2-391" aria-hidden="true" tabindex="-1"></a>\bigl(1 + (\bar{m}-1)\rho\bigr)\sigma^2,</span>
+<span id="cb2-392"><a href="#cb2-392" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-393"><a href="#cb2-393" aria-hidden="true" tabindex="-1"></a>where $MDE$ is your effect size and $\bar{m}$ is the average cluster size.</span>
+<span id="cb2-394"><a href="#cb2-394" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-395"><a href="#cb2-395" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-396"><a href="#cb2-396" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6. Tips and Tricks to Increase Power</span></span>
+<span id="cb2-397"><a href="#cb2-397" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-398"><a href="#cb2-398" aria-hidden="true" tabindex="-1"></a>Lucky for us, there are several strategies to squeeze more power out of your design. We’ll focus on a few big ones.</span>
+<span id="cb2-399"><a href="#cb2-399" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-400"><a href="#cb2-400" aria-hidden="true" tabindex="-1"></a><span class="fu">### 6.1 Designing Your Study to Maximize Compliance</span></span>
+<span id="cb2-401"><a href="#cb2-401" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-402"><a href="#cb2-402" aria-hidden="true" tabindex="-1"></a>Ensure high take-up rates of the treatment. Low participation dilutes the observable effect, making detection challenging. If only half the sample adopts the treatment, you would need **four times** as many units to detect the same effect as with full participation.^<span class="co">[</span><span class="ot">see: [World Bank Blog](https://blogs.worldbank.org/en/impactevaluations/seven-ways-improve-statistical-power-your-experiment-without-increasing-n)</span><span class="co">]</span>  </span>
+<span id="cb2-403"><a href="#cb2-403" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-404"><a href="#cb2-404" aria-hidden="true" tabindex="-1"></a>Consider strategies like smaller but more motivated populations, or supportive interventions that encourage use. Implementation scientists are your friends here (just feed them coffee and data).</span>
+<span id="cb2-405"><a href="#cb2-405" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-406"><a href="#cb2-406" aria-hidden="true" tabindex="-1"></a><span class="fu">### 6.2 Choosing (Less Noisy) Outcome Measures</span></span>
+<span id="cb2-407"><a href="#cb2-407" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-408"><a href="#cb2-408" aria-hidden="true" tabindex="-1"></a>If your chosen outcome is extremely noisy (maybe self-reported “happiness” on a 0–100 scale?), you’ll need an enormous sample to detect moderate effects. </span>
+<span id="cb2-409"><a href="#cb2-409" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-410"><a href="#cb2-410" aria-hidden="true" tabindex="-1"></a>Accurate measurements reduce variability in your data. Employ techniques such as embedding consistency checks in surveys, using anchoring and triangulation methods, and considering multiple questions to assess the same concept, thereby averaging out noise. </span>
+<span id="cb2-411"><a href="#cb2-411" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-412"><a href="#cb2-412" aria-hidden="true" tabindex="-1"></a>Another trick is to measure outcomes repeatedly and average them. For example, do two lab tests for the same biomarker and average them. Or measure mental health weekly for 4 weeks. Each additional measurerement can reduce the measurement error component.</span>
+<span id="cb2-413"><a href="#cb2-413" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-414"><a href="#cb2-414" aria-hidden="true" tabindex="-1"></a><span class="fu">### 6.3 Multiple Waves of Baseline **and** Endline Data</span></span>
+<span id="cb2-415"><a href="#cb2-415" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-416"><a href="#cb2-416" aria-hidden="true" tabindex="-1"></a>Collecting **more than one wave** of baseline and endline data can yield substantial power gains *if* your outcome is either noisy or only weakly autocorrelated. Here are the key ideas from the paper by McKenzie in the reading:</span>
+<span id="cb2-417"><a href="#cb2-417" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-418"><a href="#cb2-418" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Why does it help?**  </span>
+<span id="cb2-419"><a href="#cb2-419" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>When outcomes are *less* autocorrelated (think sporadic monthly income or ephemeral daily health measures), a single baseline and a single endline might not capture the dynamic changes well. Multiple waves help average out the noise.  </span>
+<span id="cb2-420"><a href="#cb2-420" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>You can pick up more precise estimates of changes over time and reduce the standard error.</span>
+<span id="cb2-421"><a href="#cb2-421" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-422"><a href="#cb2-422" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Practical considerations**  </span>
+<span id="cb2-423"><a href="#cb2-423" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>With a fixed budget, you often face a trade-off: *Do I survey the same individuals multiple times, or do I get more individuals in fewer waves?*  </span>
+<span id="cb2-424"><a href="#cb2-424" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>If your outcome is *highly autocorrelated* (e.g., certain test scores, stable biometrics), you might not gain as much from multiple waves.  </span>
+<span id="cb2-425"><a href="#cb2-425" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>If your outcome is *noisy* and *less autocorrelated*—like short-term business profits or daily stress measurements—multiple waves can dramatically reduce variance.</span>
+<span id="cb2-426"><a href="#cb2-426" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-427"><a href="#cb2-427" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Implementation**  </span>
+<span id="cb2-428"><a href="#cb2-428" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>In practice, plan for multiple data collection rounds, at least for the key outcome variables. If your budget is tight, think carefully about the ratio of cross-sectional coverage (number of individuals) to time-series coverage (number of repeated measurements).</span>
+<span id="cb2-429"><a href="#cb2-429" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-430"><a href="#cb2-430" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Analytical methods**  </span>
+<span id="cb2-431"><a href="#cb2-431" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Using repeated measures properly often entails repeated-measures ANOVA or difference-in-differences approaches (when you have a baseline plus multiple follow-ups).  </span>
+<span id="cb2-432"><a href="#cb2-432" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>If the treatment might change the autocorrelation of the outcome, consider that in your power calculations (there are advanced methods for this, but the main takeaway: be mindful of potential changes in variance structure).</span>
+<span id="cb2-433"><a href="#cb2-433" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-434"><a href="#cb2-434" aria-hidden="true" tabindex="-1"></a>In short: **More waves = more data points = smaller standard errors (usually)**. That’s a formula for improved power if the correlation structure isn’t working against you.</span>
+<span id="cb2-435"><a href="#cb2-435" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-436"><a href="#cb2-436" aria-hidden="true" tabindex="-1"></a><span class="fu">### 6.4 Including Covariates in the Estimation Model</span></span>
+<span id="cb2-437"><a href="#cb2-437" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-438"><a href="#cb2-438" aria-hidden="true" tabindex="-1"></a>If you can incorporate *pre-treatment* covariates that predict outcomes, you can reduce residual variance. Even though randomization ensures that *on average* groups are balanced, controlling for strong predictors of the outcome yields a more precise estimate.</span>
+<span id="cb2-439"><a href="#cb2-439" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-440"><a href="#cb2-440" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Pre-treatment outcomes** are gold if your outcome is stable over time.  </span>
+<span id="cb2-441"><a href="#cb2-441" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Stratification variables** used in random assignment can (and often should) be controlled in analysis.  </span>
+<span id="cb2-442"><a href="#cb2-442" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Baseline characteristics** that strongly predict your outcome.</span>
+<span id="cb2-443"><a href="#cb2-443" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-444"><a href="#cb2-444" aria-hidden="true" tabindex="-1"></a>Be warned: *never* include post-treatment variables that might be affected by the intervention. That’s a sure-fire path to bias.</span>
+<span id="cb2-445"><a href="#cb2-445" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-446"><a href="#cb2-446" aria-hidden="true" tabindex="-1"></a><span class="fu">### 6.5 Implement Stratified Randomization</span></span>
+<span id="cb2-447"><a href="#cb2-447" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-448"><a href="#cb2-448" aria-hidden="true" tabindex="-1"></a>By dividing the sample into strata based on characteristics related to the outcome and randomizing within these strata, you can control for confounding variables and reduce variance, leading to more precise estimates.</span>
+<span id="cb2-449"><a href="#cb2-449" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-450"><a href="#cb2-450" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb2-451"><a href="#cb2-451" aria-hidden="true" tabindex="-1"></a>This will be a major topic in the next unit.</span>
+<span id="cb2-452"><a href="#cb2-452" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-453"><a href="#cb2-453" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-454"><a href="#cb2-454" aria-hidden="true" tabindex="-1"></a><span class="fu">## 7. Concluding Thoughts</span></span>
+<span id="cb2-455"><a href="#cb2-455" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-456"><a href="#cb2-456" aria-hidden="true" tabindex="-1"></a>Experimentation is exciting because you control the design. Yet with great power comes great responsibility: you have to juggle sample sizes, cost constraints, intracluster correlations, multiple time points, and the dreaded compliance issue. The big takeaway is to think through these choices up front rather than scramble in the final hour.</span>
+<span id="cb2-457"><a href="#cb2-457" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-458"><a href="#cb2-458" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Optimal sample size depends on the usual suspects: significance level, power, MDE, variance, and cost.</span>
+<span id="cb2-459"><a href="#cb2-459" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-460"><a href="#cb2-460" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Allocation across treatment arms is rarely a simple 50/50 if costs or variances differ.</span>
+<span id="cb2-461"><a href="#cb2-461" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-462"><a href="#cb2-462" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Clustering matters—a lot—especially in health policy research.</span>
+<span id="cb2-463"><a href="#cb2-463" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-464"><a href="#cb2-464" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>Covariates, compliance, outcome selection, multiple waves are your friends when battling the tyranny of limited resources.</span>
+<span id="cb2-465"><a href="#cb2-465" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-466"><a href="#cb2-466" aria-hidden="true" tabindex="-1"></a>That’s it for now. Next time, we’ll look at more advanced randomization strategies (e.g., stratified, matched-pair, and adaptive designs) that can further improve your power. </span>
+<span id="cb2-467"><a href="#cb2-467" aria-hidden="true" tabindex="-1"></a></span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
