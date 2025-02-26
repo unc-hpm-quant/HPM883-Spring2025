@@ -1,0 +1,23 @@
+---
+title: "Unit 2.2: How to Randomize"
+draft: false
+---
+
+## Unit Overview
+
+### Preparation
+
+-   Read:
+    -   [J-Pal Web Guide on Randomization](https://www.povertyactionlab.org/resource/randomization)
+    -   [EGAP: 10 Things to Know about Randomization](https://egap.org/resource/10-things-to-know-about-randomization/)
+    -   [Bruhn and McKenzie, "In Pursuit of Balance"](https://app.perusall.com/courses/hpm-883/bruhn-pursuitbalancerandomization-2009-1)
+
+### Class
+
+-   [Lecture Notes: Randomization Techniques](/unit-2/lec-2-2.qmd)
+
+    -   [Lecture Slides](/unit-2/lec-2-2-slides.qmd)
+
+### Labs
+
+-   None yet!

@@ -1680,5 +1680,278 @@
     "title": "Optimal Experiment Design App",
     "section": "Using the App",
     "text": "Using the App\nLocal RStudio Version\nTo run this app locally in RStudio:\n\nshiny::runApp(\"unit-2/oed-app.R\")\n\nBrowser Version\n#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 1500\n\nlibrary(shiny)\nlibrary(ggplot2)\n\nui &lt;- fluidPage(\n  titlePanel(\"Optimal Experimental Design for One Treatment vs. One Control\"),\n  \n  # Add help text at the top\n  fluidRow(\n    column(12,\n      h4(\"Understanding Power Analysis and Optimal Design\"),\n      p(\"This app helps you determine optimal sample sizes and allocation ratios for experiments.\",\n        \"The calculations consider both statistical power and practical constraints.\"),\n      p(\"Key concepts:\"),\n      tags$ul(\n        tags$li(strong(\"Minimum Detectable Effect (MDE):\"), \n               \"The smallest true effect size that your study can reliably detect with the specified power.\"),\n        tags$li(strong(\"Optimal Allocation:\"), \n               \"The best way to divide participants between treatment and control groups, considering:\",\n               tags$ul(\n                 tags$li(\"Statistical efficiency (minimizing MDE)\"),\n                 tags$li(\"Cost constraints\"),\n                 tags$li(\"Practical implementation\"))\n               ),\n        tags$li(strong(\"Power vs. Sample Size:\"), \n               \"There's always a trade-off - higher power requires larger samples.\")\n      ),\n      p(\"Adjust the parameters below to explore how different choices affect your study design.\"),\n      tags$hr()\n    )\n  ),\n  \n  sidebarLayout(\n    sidebarPanel(\n      # --- Choose outcome type (binary or continuous)\n      radioButtons(\n        inputId = \"outcomeType\", \n        label = \"Outcome Type\",\n        choices = c(\"Binary\" = \"binary\", \"Continuous\" = \"continuous\"),\n        selected = \"continuous\"\n      ),\n      div(class = \"well\",\n        h5(\"Outcome Types:\"),\n        p(strong(\"Binary Outcomes:\"),\n          \"Measured as proportions or percentages (e.g., success rates, mortality rates).\",\n          \"The variance is determined by the proportion itself - highest at p=0.5.\"),\n        p(strong(\"Continuous Outcomes:\"),\n          \"Measured on a continuous scale (e.g., blood pressure, test scores).\",\n          \"Requires estimates of population variance in each group.\")\n      ),\n      \n      # --- Significance level (alpha)\n      sliderInput(\n        inputId = \"alpha\", \n        label = \"Significance level (alpha):\",\n        min = 0.001, \n        max = 0.10, \n        step = 0.001,\n        value = 0.05\n      ),\n      div(class = \"well\",\n        h5(\"Significance Level (α):\"),\n        p(\"The probability of falsely concluding there is an effect when there isn't one (Type I error).\"),\n        tags$ul(\n          tags$li(strong(\"0.05 (5%)\"), \": Standard choice - 1 in 20 chance of false positive\"),\n          tags$li(strong(\"0.01 (1%)\"), \": More conservative - use for critical decisions\"),\n          tags$li(strong(\"0.10 (10%)\"), \": More liberal - might use in pilot studies\")\n        )\n      ),\n      \n      # --- Power (1 - beta)\n      sliderInput(\n        inputId = \"power\", \n        label = \"Statistical Power (1 - beta):\",\n        min = 0.50, \n        max = 0.99, \n        step = 0.01,\n        value = 0.80\n      ),\n      div(class = \"well\",\n        h5(\"Statistical Power (1-β):\"),\n        p(\"The probability of detecting a true effect when it exists.\"),\n        tags$ul(\n          tags$li(strong(\"0.80 (80%)\"), \": Standard choice - accepts 20% chance of missing real effects\"),\n          tags$li(strong(\"0.90 (90%)\"), \": Higher power - use for critical studies, but requires larger samples\"),\n          tags$li(strong(\"0.70 (70%)\"), \": Lower power - might use in pilot studies or with resource constraints\")\n        ),\n        p(\"Remember: Increasing power requires larger sample sizes, often substantially.\")\n      ),\n      \n      # --- Parameters for continuous outcome\n      conditionalPanel(\n        condition = \"input.outcomeType == 'continuous'\",\n        numericInput(\"sigmaT\", \"Treatment Variance (σ²_T):\", 1),\n        numericInput(\"sigmaC\", \"Control Variance (σ²_C):\", 1),\n        helpText(\"The expected variances in each group. If unknown, assume equal variances.\")\n      ),\n      \n      # --- Parameters for binary outcome\n      conditionalPanel(\n        condition = \"input.outcomeType == 'binary'\",\n        sliderInput(\"pT\", \"Treatment proportion (p_T):\",\n                    min = 0, max = 1, step = 0.01, value = 0.3),\n        sliderInput(\"pC\", \"Control proportion (p_C):\",\n                    min = 0, max = 1, step = 0.01, value = 0.3),\n        helpText(\"Set the difference in these values to determine your minimum detectable effect (MDE).\",\n                 \"p_C might be derived from historical data.\")\n      ),\n      \n      # --- Allocation: either fix total sample size or total cost\n      radioButtons(\n        inputId = \"constraintType\",\n        label = \"Constraint Type:\",\n        choices = c(\"Fixed Total Sample Size\" = \"sample\",\n                    \"Fixed Total Cost\"        = \"cost\")\n      ),\n      div(class = \"well\",\n        h5(\"Design Constraints:\"),\n        p(strong(\"Fixed Total Sample Size:\"),\n          \"Use when you have a specific total number of participants available.\",\n          \"The app will help you determine the optimal split between groups.\"),\n        p(strong(\"Fixed Total Cost:\"),\n          \"Use when you have a fixed budget and different costs per group.\",\n          \"Common when treatment is more expensive than control, or when recruitment costs differ.\")\n      ),\n      \n      # --- If total sample size is the constraint\n      conditionalPanel(\n        condition = \"input.constraintType == 'sample'\",\n        numericInput(\"N\", \"Total Sample Size (N):\", 200, min = 2, step = 1)\n      ),\n      \n      # --- If total cost is the constraint\n      conditionalPanel(\n        condition = \"input.constraintType == 'cost'\",\n        numericInput(\"costT\", \"Cost per Treatment Unit:\", 2, min = 1, step = 1),\n        numericInput(\"costC\", \"Cost per Control Unit:\", 1, min = 1, step = 1),\n        numericInput(\"budget\", \"Total Budget:\", 300, min = 1, step = 1)\n      ),\n      \n      # --- Option to let the user pick ratio or find optimum\n      radioButtons(\n        inputId = \"ratioChoice\",\n        label = \"Allocation Choice:\",\n        choices = c(\"Manually Pick Ratio\" = \"manual\",\n                    \"Find Optimal Ratio\"  = \"optimal\")\n      ),\n      \n      sliderInput(\n        inputId = \"ratio\",\n        label = \"Treatment:Control Ratio (r = n_T / n_C):\",\n        min = 0.1,\n        max = 10,\n        step = 0.1,\n        value = 1\n      )\n    ),\n    \n    mainPanel(\n      tabsetPanel(\n        tabPanel(\"MDE vs. Ratio\", \n                 plotOutput(\"plotMDE\"),\n                 br(),\n                 verbatimTextOutput(\"textResult\"),\n                 br(),\n                 h4(\"Step-by-Step Calculations\"),\n                 uiOutput(\"mdeCalcSteps\")\n        ),\n        tabPanel(\"Cost Allocation Plot\",\n                 plotOutput(\"plotCost\", height = \"500px\"),\n                 br(),\n                 h4(\"Step-by-Step Calculations\"),\n                 uiOutput(\"costCalcSteps\"),\n                 br(),\n                 helpText(\"This plot shows the budget constraint line \",\n                          \"and iso-MDE curves for different cost allocations \",\n                          \"(c_C on the x-axis, c_T on the y-axis). \",\n                          \"The red point indicates the optimal allocation \",\n                          \"where MDE is minimized, if available.\")\n        )\n      )\n    )\n  )\n)\n\nserver &lt;- function(input, output, session) {\n  \n  # Helper: z-value for alpha/2 (two-sided) and for power\n  zAlpha &lt;- reactive({\n    qnorm(1 - input$alpha / 2)\n  })\n  zBeta &lt;- reactive({\n    qnorm(input$power)\n  })\n  \n  # Function to compute MDE given n_C, n_T (the sample sizes)\n  computeMDE_from_n &lt;- function(nC, nT) {\n    if (input$outcomeType == \"continuous\") {\n      sigmaT &lt;- input$sigmaT\n      sigmaC &lt;- input$sigmaC\n      varTerm &lt;- sigmaT^2 / nT + sigmaC^2 / nC\n    } else {\n      pT &lt;- input$pT\n      pC &lt;- input$pC\n      varTerm &lt;- pT*(1 - pT)/nT + pC*(1 - pC)/nC\n    }\n    (zAlpha() + zBeta()) * sqrt(varTerm)\n  }\n  \n  # Function to compute MDE given a ratio (for either sample or cost constraint)\n  computeMDE_ratio &lt;- function(r) {\n    # 1) Determine n_T and n_C based on constraints and ratio\n    if (input$constraintType == \"sample\") {\n      # n_T + n_C = N, and n_T / n_C = r\n      n_C &lt;- input$N / (r + 1)\n      n_T &lt;- r * n_C\n    } else {\n      # costT * n_T + costC * n_C = budget, n_T / n_C = r\n      n_C &lt;- input$budget / (r * input$costT + input$costC)\n      n_T &lt;- r * n_C\n    }\n    \n    # 2) Compute MDE\n    computeMDE_from_n(n_C, n_T)\n  }\n  \n  # Plot: MDE vs. ratio\n  output$plotMDE &lt;- renderPlot({\n    # We'll vary r from 0.1 to 10 in increments of 0.1\n    rVals &lt;- seq(0.1, 10, by = 0.1)\n    mdeVals &lt;- sapply(rVals, computeMDE_ratio)\n    \n    plot(rVals, mdeVals, type = \"l\", lwd = 2, \n         xlab = \"Ratio (n_T / n_C)\", ylab = \"MDE\",\n         main = \"Minimum Detectable Effect vs. Allocation Ratio\")\n    \n    # If in manual mode, highlight user's chosen ratio\n    if (input$ratioChoice == \"manual\") {\n      rUser &lt;- input$ratio\n      userMde &lt;- computeMDE_ratio(rUser)\n      points(rUser, userMde, col = \"red\", pch = 19, cex = 1.5)\n    }\n  })\n  \n  # Helper function to format numbers nicely\n  format_num &lt;- function(x) format(round(x, 4), nsmall = 4)\n  \n  # Text output: either user-chosen ratio or optimal ratio\n  output$textResult &lt;- renderPrint({\n    if (input$ratioChoice == \"optimal\") {\n      # Find ratio that yields smallest MDE\n      rTest &lt;- seq(0.1, 10, 0.01)\n      mdeTest &lt;- sapply(rTest, computeMDE_ratio)\n      idxMin &lt;- which.min(mdeTest)\n      rOpt &lt;- rTest[idxMin]\n      mdeOpt &lt;- mdeTest[idxMin]\n      \n      if (input$constraintType == \"sample\") {\n        n_C_opt &lt;- input$N / (rOpt + 1)\n        n_T_opt &lt;- rOpt * n_C_opt\n      } else {\n        n_C_opt &lt;- input$budget / (rOpt * input$costT + input$costC)\n        n_T_opt &lt;- rOpt * n_C_opt\n      }\n      \n      cat(\"Optimal Allocation:\\n\")\n      cat(\"Optimal ratio (n_T / n_C):\", round(rOpt, 3), \"\\n\")\n      cat(\"Control group size (n_C):\", round(n_C_opt), \"\\n\")\n      cat(\"Treatment group size (n_T):\", round(n_T_opt), \"\\n\")\n      cat(\"Minimum Detectable Effect:\", round(mdeOpt, 3), \"\\n\")\n      \n    } else {\n      # User-chosen ratio\n      r &lt;- input$ratio\n      mde &lt;- computeMDE_ratio(r)\n      \n      if (input$constraintType == \"sample\") {\n        n_C &lt;- input$N / (r + 1)\n        n_T &lt;- r * n_C\n      } else {\n        n_C &lt;- input$budget / (r * input$costT + input$costC)\n        n_T &lt;- r * n_C\n      }\n      \n      cat(\"Current Allocation:\\n\")\n      cat(\"Ratio (n_T / n_C):\", round(r, 3), \"\\n\")\n      cat(\"Control group size (n_C):\", round(n_C), \"\\n\")\n      cat(\"Treatment group size (n_T):\", round(n_T), \"\\n\")\n      cat(\"Minimum Detectable Effect:\", round(mde, 3), \"\\n\")\n    }\n  })\n  \n  # Plot: Cost allocation\n  output$plotCost &lt;- renderPlot({\n    # Only show this plot if user is in \"cost\" constraint\n    if (input$constraintType == \"cost\") {\n      # Generate grid of n_C, n_T values across full plot range\n      max_n_C &lt;- input$budget/input$costC * 1.2  # Extend 20% beyond budget line\n      max_n_T &lt;- input$budget/input$costT * 1.2\n      n_C &lt;- seq(1, max_n_C, length.out = 100)\n      n_T &lt;- seq(1, max_n_T, length.out = 100)\n      \n      # Create matrix of MDE values\n      mde_matrix &lt;- matrix(NA, nrow = length(n_C), ncol = length(n_T))\n      for (i in 1:length(n_C)) {\n        for (j in 1:length(n_T)) {\n          mde_matrix[i,j] &lt;- computeMDE_from_n(n_C[i], n_T[j])\n        }\n      }\n      \n      # Find optimal allocation\n      rTest &lt;- seq(0.1, 10, 0.01)\n      mdeTest &lt;- sapply(rTest, computeMDE_ratio)\n      rOpt &lt;- rTest[which.min(mdeTest)]\n      n_C_opt &lt;- input$budget / (rOpt * input$costT + input$costC)\n      n_T_opt &lt;- rOpt * n_C_opt\n      mde_opt &lt;- computeMDE_from_n(n_C_opt, n_T_opt)\n      \n      # Create the plot\n      par(mar = c(5, 5, 4, 2))  # Increase margins for labels\n      \n      # Calculate reasonable MDE range for contours\n      min_mde &lt;- max(min(mde_matrix, na.rm = TRUE), mde_opt * 0.8)  # Don't go too far below optimal\n      max_mde &lt;- min(max(mde_matrix, na.rm = TRUE), mde_opt * 2.0)  # Don't show extremely large MDEs\n      \n      # Create evenly spaced levels, including the optimal MDE\n      contour_levels &lt;- sort(unique(c(\n        seq(min_mde, max_mde, length.out = 8),  # 8 regular levels\n        mde_opt  # Include the optimal MDE level\n      )))\n      \n      # Plot contours\n      contour(n_C, n_T, mde_matrix, \n              xlab = \"Control Group Size (n_C)\",\n              ylab = \"Treatment Group Size (n_T)\",\n              main = \"Cost-constrained Allocation\",\n              levels = contour_levels,\n              labcex = 0.8,  # Slightly smaller contour labels\n              drawlabels = TRUE)\n      \n      # Add budget constraint line\n      budget_line_n_C &lt;- seq(0, max_n_C, length.out = 100)\n      budget_line_n_T &lt;- (input$budget - input$costC * budget_line_n_C) / input$costT\n      lines(budget_line_n_C, budget_line_n_T, col = \"red\", lwd = 2)\n      \n      # Add optimal MDE curve (the contour that passes through optimal point)\n      n_C_curve &lt;- seq(1, max_n_C, length.out = 200)\n      n_T_curve &lt;- numeric(length(n_C_curve))\n      for(i in 1:length(n_C_curve)) {\n        # Find n_T that gives the optimal MDE for this n_C\n        n_T_test &lt;- seq(1, max_n_T, length.out = 200)\n        mde_test &lt;- sapply(n_T_test, function(nt) computeMDE_from_n(n_C_curve[i], nt))\n        n_T_curve[i] &lt;- n_T_test[which.min(abs(mde_test - mde_opt))]\n      }\n      lines(n_C_curve, n_T_curve, col = \"blue\", lwd = 2, lty = 2)\n      \n      # Add optimal point\n      points(n_C_opt, n_T_opt, col = \"red\", pch = 19, cex = 1.5)\n      \n      # Add legend for optimal MDE curve\n      legend(\"topright\", \n             legend = sprintf(\"Optimal MDE = %.3f\", mde_opt),\n             col = \"blue\", lwd = 2, lty = 2)\n    }\n  })\n  \n  # Render step-by-step MDE calculations\n  output$mdeCalcSteps &lt;- renderUI({\n    # Get current values\n    if (input$ratioChoice == \"optimal\") {\n      rTest &lt;- seq(0.1, 10, 0.01)\n      mdeTest &lt;- sapply(rTest, computeMDE_ratio)\n      r &lt;- rTest[which.min(mdeTest)]\n    } else {\n      r &lt;- input$ratio\n    }\n    \n    # Calculate sample sizes\n    if (input$constraintType == \"sample\") {\n      n_C &lt;- input$N / (r + 1)\n      n_T &lt;- r * n_C\n    } else {\n      n_C &lt;- input$budget / (r * input$costT + input$costC)\n      n_T &lt;- r * n_C\n    }\n    \n    # Calculate variances\n    if (input$outcomeType == \"continuous\") {\n      varT &lt;- input$sigmaT^2\n      varC &lt;- input$sigmaC^2\n      var_term &lt;- varT/n_T + varC/n_C\n    } else {\n      varT &lt;- input$pT * (1 - input$pT)\n      varC &lt;- input$pC * (1 - input$pC)\n      var_term &lt;- varT/n_T + varC/n_C\n    }\n    \n    # Critical values\n    z_alpha &lt;- qnorm(1 - input$alpha/2)\n    z_beta &lt;- qnorm(input$power)\n    \n    # Final MDE\n    mde &lt;- (z_alpha + z_beta) * sqrt(var_term)\n    \n    # Create step-by-step explanation with LaTeX\n    tagList(\n      withMathJax(),\n      \n      h5(\"1. Sample Size Calculation:\"),\n      if (input$constraintType == \"sample\") {\n        tagList(\n          p(sprintf(\"With total N = %d and ratio r = %.3f:\", input$N, r)),\n          withMathJax(sprintf(\"$$n_C = \\\\frac{N}{r + 1} = \\\\frac{%d}{%.3f + 1} = %.1f$$\", input$N, r, n_C)),\n          withMathJax(sprintf(\"$$n_T = r \\\\cdot n_C = %.3f \\\\cdot %.1f = %.1f$$\", r, n_C, n_T))\n        )\n      } else {\n        tagList(\n          p(sprintf(\"With budget = %d, c_T = %d, c_C = %d, and ratio r = %.3f:\", \n                    input$budget, input$costT, input$costC, r)),\n          withMathJax(sprintf(\"$$n_C = \\\\frac{\\\\text{budget}}{rc_T + c_C} = \\\\frac{%d}{%.3f \\\\cdot %d + %d} = %.1f$$\", \n                               input$budget, r, input$costT, input$costC, n_C)),\n          withMathJax(sprintf(\"$$n_T = r \\\\cdot n_C = %.3f \\\\cdot %.1f = %.1f$$\", r, n_C, n_T))\n        )\n      },\n      \n      h5(\"2. Variance Terms:\"),\n      if (input$outcomeType == \"continuous\") {\n        withMathJax(sprintf(\"$$\\\\sigma^2_T = %.3f, \\\\quad \\\\sigma^2_C = %.3f$$\", varT, varC))\n      } else {\n        tagList(\n          withMathJax(sprintf(\"$$\\\\text{Var}_T = p_T(1-p_T) = %.3f(1-%.3f) = %.3f$$\", input$pT, input$pT, varT)),\n          withMathJax(sprintf(\"$$\\\\text{Var}_C = p_C(1-p_C) = %.3f(1-%.3f) = %.3f$$\", input$pC, input$pC, varC))\n        )\n      },\n      withMathJax(sprintf(\"$$\\\\text{Combined variance} = \\\\frac{\\\\text{Var}_T}{n_T} + \\\\frac{\\\\text{Var}_C}{n_C} = \\\\frac{%.3f}{%.1f} + \\\\frac{%.3f}{%.1f} = %.4f$$\",\n                          varT, n_T, varC, n_C, var_term)),\n      \n      h5(\"3. Critical Values:\"),\n      withMathJax(sprintf(\"$$z_{1-\\\\alpha/2} = %.4f \\\\quad (\\\\text{for } \\\\alpha = %.3f)$$\", z_alpha, input$alpha)),\n      withMathJax(sprintf(\"$$z_{1-\\\\beta} = %.4f \\\\quad (\\\\text{for power } = %.3f)$$\", z_beta, input$power)),\n      \n      h5(\"4. Final MDE Calculation:\"),\n      withMathJax(\"$$\\\\text{MDE} = (z_{1-\\\\alpha/2} + z_{1-\\\\beta}) \\\\sqrt{\\\\frac{\\\\text{Var}_T}{n_T} + \\\\frac{\\\\text{Var}_C}{n_C}}$$\"),\n      withMathJax(sprintf(\"$$\\\\text{MDE} = (%.4f + %.4f) \\\\sqrt{%.4f} = %.4f$$\", \n                          z_alpha, z_beta, var_term, mde))\n    )\n  })\n  \n  # Render step-by-step cost allocation calculations\n  output$costCalcSteps &lt;- renderUI({\n    if (input$constraintType != \"cost\") {\n      return(p(\"Step-by-step calculations are shown when using cost constraints.\"))\n    }\n    \n    # Get current optimal values if in optimal mode\n    if (input$ratioChoice == \"optimal\") {\n      rTest &lt;- seq(0.1, 10, 0.01)\n      mdeTest &lt;- sapply(rTest, computeMDE_ratio)\n      r &lt;- rTest[which.min(mdeTest)]\n      n_C &lt;- input$budget / (r * input$costT + input$costC)\n      n_T &lt;- r * n_C\n      total_cost &lt;- input$costT * n_T + input$costC * n_C\n      \n      tagList(\n        withMathJax(),\n        h4(\"Optimal Cost Allocation:\"),\n        \n        h5(\"1. Budget Constraint:\"),\n        withMathJax(sprintf(\"$$%d = %d n_T + %d n_C$$\", \n                           input$budget, input$costT, input$costC)),\n        \n        h5(\"2. Optimal Allocation Ratio:\"),\n        withMathJax(sprintf(\"$$r = \\\\frac{n_T}{n_C} = %.3f$$\", r)),\n        \n        h5(\"3. Sample Sizes:\"),\n        withMathJax(sprintf(\"$$n_C = \\\\frac{\\\\text{budget}}{rc_T + c_C} = \\\\frac{%d}{%.3f \\\\cdot %d + %d} = %.1f$$\",\n                           input$budget, r, input$costT, input$costC, n_C)),\n        withMathJax(sprintf(\"$$n_T = r \\\\cdot n_C = %.3f \\\\cdot %.1f = %.1f$$\", \n                           r, n_C, n_T)),\n        \n        h5(\"4. Cost Verification:\"),\n        withMathJax(sprintf(\"$$\\\\text{Total cost} = c_T n_T + c_C n_C = %d \\\\cdot %.1f + %d \\\\cdot %.1f = %d$$\",\n                           input$costT, n_T, input$costC, n_C, total_cost))\n      )\n    } else {\n      n_C &lt;- input$budget / (input$ratio * input$costT + input$costC)\n      n_T &lt;- input$ratio * n_C\n      total_cost &lt;- input$costT * n_T + input$costC * n_C\n      \n      tagList(\n        withMathJax(),\n        h4(\"Manual Cost Allocation:\"),\n        \n        h5(\"1. Budget Constraint:\"),\n        withMathJax(sprintf(\"$$%d = %d n_T + %d n_C$$\", \n                           input$budget, input$costT, input$costC)),\n        \n        h5(\"2. Fixed Allocation Ratio:\"),\n        withMathJax(sprintf(\"$$r = \\\\frac{n_T}{n_C} = %.3f$$\", input$ratio)),\n        \n        h5(\"3. Sample Sizes:\"),\n        withMathJax(sprintf(\"$$n_C = \\\\frac{\\\\text{budget}}{rc_T + c_C} = \\\\frac{%d}{%.3f \\\\cdot %d + %d} = %.1f$$\",\n                           input$budget, input$ratio, input$costT, input$costC, n_C)),\n        withMathJax(sprintf(\"$$n_T = r \\\\cdot n_C = %.3f \\\\cdot %.1f = %.1f$$\", \n                           input$ratio, n_C, n_T)),\n        \n        h5(\"4. Cost Verification:\"),\n        withMathJax(sprintf(\"$$\\\\text{Total cost} = c_T n_T + c_C n_C = %d \\\\cdot %.1f + %d \\\\cdot %.1f = %d$$\",\n                           input$costT, n_T, input$costC, n_C, total_cost))\n      )\n    }\n  })\n}\n\nshinyApp(ui = ui, server = server)"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#randomization-the-foundation-of-causal-inference",
+    "href": "unit-2/lec-2-2-slides.html#randomization-the-foundation-of-causal-inference",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Randomization: The Foundation of Causal Inference",
+    "text": "Randomization: The Foundation of Causal Inference\n\n\nLast session: Maximizing power through optimal experimental design\nToday: The art and science of randomization\nRandomization enables causal claims by balancing all factors:\n\nObservable characteristics\nUnobservable characteristics\nPotential outcomes\n\n\n\n\nEmphasize that randomization is what allows us to make causal claims - it’s the key distinction between experimental and observational studies."
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#why-does-randomization-work",
+    "href": "unit-2/lec-2-2-slides.html#why-does-randomization-work",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Why Does Randomization Work?",
+    "text": "Why Does Randomization Work?\nBecause it ensures:\n\n\nNon-zero probability condition: Everyone has a chance of treatment\nIndividualism: Independence across units\nUnconfoundedness: Balance on observed/unobserved covariates\n\n\n\\[E[Y_i(0)|D_i=1] = E[Y_i(0)|D_i=0]\\]\n\nThe untreated potential outcomes are the same in both groups!"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#what-you-need-for-randomization",
+    "href": "unit-2/lec-2-2-slides.html#what-you-need-for-randomization",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "What You Need for Randomization",
+    "text": "What You Need for Randomization\n\n\nSample of units: Who or what will be randomized\nAllocation ratio: How many units to each condition\nRandomization device: Physical or computational\nBaseline covariates: (for some approaches)"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#choosing-the-unit-of-randomization",
+    "href": "unit-2/lec-2-2-slides.html#choosing-the-unit-of-randomization",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Choosing the Unit of Randomization",
+    "text": "Choosing the Unit of Randomization\n\n\nKey Considerations\n\nShould match observational unit when possible\nMust align with treatment delivery\nNeed to minimize spillovers\nConsider statistical power\n\n\nCommon Units\n\nIndividual: Patients, students\nCluster: Villages, clinics, schools\nTime periods: Days, weeks, shifts\nNetworks: Households, peer groups\n\n\n\nCritical trade-off: Statistical power vs. internal validity"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#the-spillover-problem",
+    "href": "unit-2/lec-2-2-slides.html#the-spillover-problem",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "The Spillover Problem",
+    "text": "The Spillover Problem\n\n\nSpillovers occur when treatment affects untreated units\nTypes of spillovers:\n\nDirect interaction between units\nGeneral equilibrium effects\nInformation diffusion\nResource competition\n\n\n\n\nRandomization at a higher level (clustering) can minimize unwanted spillovers."
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#measuring-spillovers-two-stage-randomization",
+    "href": "unit-2/lec-2-2-slides.html#measuring-spillovers-two-stage-randomization",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Measuring Spillovers: Two-Stage Randomization",
+    "text": "Measuring Spillovers: Two-Stage Randomization\n\nTwo-Stage Randomization for Spillovers\nExplain how first randomizing clusters, then individuals within clusters allows for spillover measurement."
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#classical-assignment-mechanisms",
+    "href": "unit-2/lec-2-2-slides.html#classical-assignment-mechanisms",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Classical Assignment Mechanisms",
+    "text": "Classical Assignment Mechanisms\n\nBernoulli Trials\nComplete Randomization\nRe-randomization\nStratified Randomization\nMatched-Pair Designs"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#bernoulli-trials",
+    "href": "unit-2/lec-2-2-slides.html#bernoulli-trials",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Bernoulli Trials",
+    "text": "Bernoulli Trials\n\nSimplest approach: independent coin flips\n\\(P(Z_i = 1) = p\\) for all units \\(i\\)\n\n\nAdvantages: * Simple to implement * Can randomize as participants arrive * No baseline data needed\n\n\nDisadvantages: * Random group sizes * Potential imbalance on key covariates * Implementation vulnerability"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#case-study-the-canadian-national-breast-screening-study",
+    "href": "unit-2/lec-2-2-slides.html#case-study-the-canadian-national-breast-screening-study",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Case Study: The Canadian National Breast Screening Study",
+    "text": "Case Study: The Canadian National Breast Screening Study\n\n\nMajor randomized trial evaluating mammography screening effectiveness\nUsed alternating assignment (first to treatment, second to control)\nDesign flaw: clinical breast exams conducted before randomization\nNurses and physicians could (and did) influence group assignments\n\n\n\nThe randomization process was compromised in several ways"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#cnbss-randomization-failures",
+    "href": "unit-2/lec-2-2-slides.html#cnbss-randomization-failures",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "CNBSS: Randomization Failures",
+    "text": "CNBSS: Randomization Failures\n\n\nPre-randomization examination: Detected suspicious lumps before group assignment\nSelection bias: Women with palpable lumps disproportionately assigned to mammography group\nInadequate concealment: Study staff could influence group assignments\nEvidence of manipulation: Names overwritten, identities reversed, lines skipped\n\n\n\nResult: Mammography group had 68% higher incidence of advanced cancers at baseline!"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#cnbss-impact-on-study-validity",
+    "href": "unit-2/lec-2-2-slides.html#cnbss-impact-on-study-validity",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "CNBSS: Impact on Study Validity",
+    "text": "CNBSS: Impact on Study Validity\n\n\nStudy reported no mortality benefit from mammography screening\nHowever: The randomization bias likely masked true benefits\nHigher-risk patients concentrated in treatment group\nControl group contamination: ~25% received mammograms outside the study\n\n\n\nBroader lesson: Compromise in randomization can fundamentally undermine study validity and lead to decades of scientific controversy"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#complete-randomization",
+    "href": "unit-2/lec-2-2-slides.html#complete-randomization",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Complete Randomization",
+    "text": "Complete Randomization\n\nset.seed(072311)  # Set seed for reproducibility\n\n# Parameters\nN &lt;- 100          # Total number of units\np &lt;- 0.5          # Proportion to assign to treatment\n\n# Generate random numbers and sort\nunits &lt;- data.frame(\n  id = 1:N,\n  random_num = runif(N)\n)\nunits &lt;- units[order(units$random_num),]\n\n# Assign first p% to treatment\nunits$treatment &lt;- 0\nunits$treatment[1:(N*p)] &lt;- 1\n\n# Check resulting allocation\ntable(units$treatment)\n\n\n 0  1 \n50 50 \n\n\nEach participant has fixed probability of assignment, with total group sizes fixed in advance."
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#chance-imbalance-with-complete-randomization",
+    "href": "unit-2/lec-2-2-slides.html#chance-imbalance-with-complete-randomization",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Chance Imbalance with Complete Randomization",
+    "text": "Chance Imbalance with Complete Randomization\n\n\nEven with perfect implementation, covariates may be imbalanced\nExample: In a study of 722 people (NLSY data):\n\n~45% of randomizations had all covariates balanced\n~30% had one imbalanced covariate\nRemaining had multiple imbalanced covariates\n\n\n\n\nThis raises two critical questions: 1. How can we ensure better balance in design? 2. What do we do if imbalance occurs?"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#re-randomization",
+    "href": "unit-2/lec-2-2-slides.html#re-randomization",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Re-randomization",
+    "text": "Re-randomization\n\n\nGenerate multiple randomizations\nKeep only those with good balance\nApproach 1: All p-values &gt; threshold (e.g., 0.05)\nApproach 2: Choose iteration with best overall balance\n\n\n\nbalance_check &lt;- function(data, treatment_var, balance_vars) {\n  # Initialize minimum p-value\n  min_pval &lt;- 1\n  \n  # Check each covariate\n  for (var in balance_vars) {\n    # T-test for continuous variables\n    t_result &lt;- t.test(data[[var]] ~ data[[treatment_var]])\n    min_pval &lt;- min(min_pval, t_result$p.value)\n  }\n  \n  return(min_pval)\n}\n\n# Re-randomization function\nrerandomize &lt;- function(data, p_threshold = 0.1, max_attempts = 1000) {\n  n &lt;- nrow(data)\n  n_treat &lt;- floor(n * 0.5)  # 50% to treatment\n  attempts &lt;- 0\n  \n  repeat {\n    # Generate a new randomization\n    treatment &lt;- rep(0, n)\n    treatment[sample(1:n, n_treat)] &lt;- 1\n    data$treatment &lt;- treatment\n    \n    # Check balance\n    pval &lt;- balance_check(data, \"treatment\", c(\"age\", \"income\", \"education\"))\n    \n    attempts &lt;- attempts + 1\n    \n    # Accept if p-value threshold met or max attempts reached\n    if (pval &gt; p_threshold || attempts &gt;= max_attempts) {\n      break\n    }\n  }\n  \n  return(list(treatment = data$treatment, attempts = attempts, min_pval = pval))\n}\n\nThis function repeats randomization until finding one where all p-values exceed our threshold."
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#drawbacks-of-re-randomization",
+    "href": "unit-2/lec-2-2-slides.html#drawbacks-of-re-randomization",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Drawbacks of Re-randomization",
+    "text": "Drawbacks of Re-randomization\n\n\nOpaque constraints: “Black box” process\nUnusual handling of outliers\nComputationally expensive\nCould run forever if criteria too strict\nStatistical inference must account for the procedure\nCannot balance on unobserved covariates"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#stratified-block-randomization",
+    "href": "unit-2/lec-2-2-slides.html#stratified-block-randomization",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Stratified (Block) Randomization",
+    "text": "Stratified (Block) Randomization\n\nStratified Randomization\n\nDivide sample into strata based on covariates\nRandomize separately within each stratum\nPerfect balance on stratification variables"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#implementing-stratified-randomization",
+    "href": "unit-2/lec-2-2-slides.html#implementing-stratified-randomization",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Implementing Stratified Randomization",
+    "text": "Implementing Stratified Randomization\n\nset.seed(072311)\n\n# Create example data with categorical covariates\ndata &lt;- data.frame(\n  id = 1:100,\n  gender = sample(c(\"Male\", \"Female\"), 100, replace = TRUE),\n  age_group = sample(c(\"Under 30\", \"30-50\", \"Over 50\"), 100, replace = TRUE),\n  stringsAsFactors = FALSE\n)\n\n# Create strata based on combinations of covariates\ndata$stratum &lt;- paste(data$gender, data$age_group, sep = \"_\")\n\n# Function for stratified randomization\nstratified_randomize &lt;- function(data, strata_var, p = 0.5) {\n  # Initialize assignment vector\n  assignment &lt;- rep(NA, nrow(data))\n  \n  # Get unique strata\n  strata &lt;- unique(data[[strata_var]])\n  \n  # Randomize within each stratum\n  for (s in strata) {\n    # Get indices for this stratum\n    indices &lt;- which(data[[strata_var]] == s)\n    n_stratum &lt;- length(indices)\n    \n    # Calculate number to assign to treatment\n    n_treat &lt;- round(n_stratum * p)\n    \n    # Ensure at least one in each group if possible\n    if (n_stratum &gt; 1) {\n      n_treat &lt;- min(max(n_treat, 1), n_stratum - 1)\n    } else {\n      n_treat &lt;- sample(0:1, 1)  # Random for singletons\n    }\n    \n    # Perform randomization within stratum\n    treat_indices &lt;- sample(indices, n_treat)\n    assignment[indices] &lt;- 0\n    assignment[treat_indices] &lt;- 1\n  }\n  \n  return(assignment)\n}\n\n# Apply stratified randomization\ndata$treatment &lt;- stratified_randomize(data, \"stratum\")\n\n# Check balance by strata\ntable(data$stratum, data$treatment)\n\n                 \n                   0  1\n  Female_30-50    11 10\n  Female_Over 50   8  8\n  Female_Under 30  7  7\n  Male_30-50       9  9\n  Male_Over 50     7  8\n  Male_Under 30    8  8\n\n\nThis code creates strata from combinations of gender and age group, then randomizes within each stratum."
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#selecting-stratification-variables",
+    "href": "unit-2/lec-2-2-slides.html#selecting-stratification-variables",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Selecting Stratification Variables",
+    "text": "Selecting Stratification Variables\n\n\nDiscrete variables are easier to implement\nPrioritize variables that strongly predict outcomes\nInclude variables where heterogeneous effects are expected\nBe careful of too many strata - causes “small cell” problems\n\n\n\nHandling “misfits” (when strata size not divisible by treatments): * Remove units randomly * Create separate strata for misfits * Use different randomization approach for misfits"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#matched-pairs-randomization",
+    "href": "unit-2/lec-2-2-slides.html#matched-pairs-randomization",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Matched Pairs Randomization",
+    "text": "Matched Pairs Randomization\n\n\nCreate pairs of similar units\nRandomize one to treatment within each pair\nLike stratification taken to the extreme\nPerfect for continuous covariates"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#implementing-matched-pairs",
+    "href": "unit-2/lec-2-2-slides.html#implementing-matched-pairs",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Implementing Matched Pairs",
+    "text": "Implementing Matched Pairs\n\nlibrary(optmatch)  # For optimal matching\n\n# Generate example data\nset.seed(072311)\ndata &lt;- data.frame(\n  id = 1:100,\n  age = rnorm(100, 45, 10),\n  income = rnorm(100, 50000, 15000),\n  health_score = rnorm(100, 70, 15)\n)\n\n# Create distance matrix based on covariates\nX &lt;- as.matrix(data[, c(\"age\", \"income\", \"health_score\")])\nX_scaled &lt;- scale(X)  # Standardize to have equal importance\ndist_matrix &lt;- dist(X_scaled)\n\n# Create optimal matches\nmatches &lt;- pairmatch(dist_matrix, data = data)\ndata$pair_id &lt;- matches\n\n# Randomize within pairs\npair_randomize &lt;- function(data, pair_var) {\n  # Initialize assignment vector\n  assignment &lt;- rep(NA, nrow(data))\n  \n  # Get unique pairs\n  pairs &lt;- unique(data[[pair_var]])\n  pairs &lt;- pairs[!is.na(pairs)]  # Remove NA pairs\n  \n  # Randomize within each pair\n  for (p in pairs) {\n    # Get indices for this pair\n    indices &lt;- which(data[[pair_var]] == p)\n    \n    # Skip if not exactly 2 units\n    if (length(indices) != 2) next\n    \n    # Randomly assign one to treatment\n    treat_index &lt;- sample(indices, 1)\n    assignment[indices] &lt;- 0\n    assignment[treat_index] &lt;- 1\n  }\n  \n  return(assignment)\n}\n\n# Apply pair randomization\ndata$treatment &lt;- pair_randomize(data, \"pair_id\")\n\nThis code matches participants based on age, income, and health score, then randomizes one member of each pair to treatment."
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#balance-tests-approaches-for-verification",
+    "href": "unit-2/lec-2-2-slides.html#balance-tests-approaches-for-verification",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Balance Tests: Approaches for Verification",
+    "text": "Balance Tests: Approaches for Verification\n\n\nIndividual covariate tests: t-tests, Chi-square tests\nJoint omnibus tests: F-tests testing multiple covariates simultaneously\nRegression-based tests: Regress treatment on covariates\nStandardized differences: Sample size-independent assessment"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#standardized-differences-for-large-samples",
+    "href": "unit-2/lec-2-2-slides.html#standardized-differences-for-large-samples",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Standardized Differences for Large Samples",
+    "text": "Standardized Differences for Large Samples\n\n\nProblem with p-values: With large samples, tiny imbalances become “significant”\nSolution: Standardized mean difference (SMD)\n\n\n\\[SMD = \\frac{\\bar{X}_{treatment} - \\bar{X}_{control}}{\\sqrt{\\frac{s^2_{treatment} + s^2_{control}}{2}}}\\]\n\n\nScale-free measure of imbalance\nIndependent of sample size\nRule of thumb: |SMD| &lt; 0.1 is negligible imbalance"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#the-table-1-debate",
+    "href": "unit-2/lec-2-2-slides.html#the-table-1-debate",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "The “Table 1” Debate",
+    "text": "The “Table 1” Debate\n\n\nFor Including\n\nTransparency\nDemonstrates randomization effectiveness\nProvides context for readers\nShows extent of imbalance\n\n\nAgainst Including\n\nRandomization guarantees balance in expectation\nOveremphasis on statistically significant differences\nCan lead to inappropriate adjustments\nJournal space limitations\n\n\n\nCompromise: Report balance without p-values, use standardized differences"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#design-based-inference",
+    "href": "unit-2/lec-2-2-slides.html#design-based-inference",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Design-Based Inference",
+    "text": "Design-Based Inference\n\n\nRandomization creates the foundation for inference\nFisher’s approach: Test sharp null that treatment has no effect on any unit\nRandomization distribution: Generate distribution of test statistics under all possible randomizations\nPermutation tests: Compare observed statistic to randomization distribution"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#complex-experimental-designs",
+    "href": "unit-2/lec-2-2-slides.html#complex-experimental-designs",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Complex Experimental Designs",
+    "text": "Complex Experimental Designs\n\nUnits of Randomization & Spillovers\nCluster Randomization\nFactorial Designs\nFractional Factorial Designs\n\nWithin-Subject vs. Between-Subject\nRandomized Phase-in\nAdaptive Designs\nVariable Treatment Probabilities"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#factorial-designs-testing-multiple-treatments",
+    "href": "unit-2/lec-2-2-slides.html#factorial-designs-testing-multiple-treatments",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Factorial Designs: Testing Multiple Treatments",
+    "text": "Factorial Designs: Testing Multiple Treatments\n\n2×2 Factorial Design\n\nTest multiple treatments simultaneously\nEstimate main effects AND interactions\nEfficient use of resources\nExample: Two interventions with four groups\n\nNo intervention (control)\nIntervention A only\nIntervention B only\nBoth A and B"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#randomized-phase-in-designs",
+    "href": "unit-2/lec-2-2-slides.html#randomized-phase-in-designs",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Randomized Phase-in Designs",
+    "text": "Randomized Phase-in Designs\n\n\nAll units eventually receive treatment\nRandomize the timing of treatment\nAdvantages:\n\nBetter compliance (everyone gets treatment eventually)\nClear for partners with resource constraints\nPolitically appealing compromise\n\n\n\n\nBut watch out for: * Anticipation effects * Limited long-term impact measurement"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#adaptive-randomization",
+    "href": "unit-2/lec-2-2-slides.html#adaptive-randomization",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Adaptive Randomization",
+    "text": "Adaptive Randomization\n\n\nUpdates assignment probabilities based on accumulated data\nBalances:\n\nExploration: Learning which treatment works best\nExploitation: Assigning more units to better treatments\n\nKey ethical advantage: Fewer participants receive inferior treatments\n\n\n\nNote: We’ll cover adaptive designs in more detail in a future lecture"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#variable-treatment-probabilities",
+    "href": "unit-2/lec-2-2-slides.html#variable-treatment-probabilities",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Variable Treatment Probabilities",
+    "text": "Variable Treatment Probabilities\n\n\nUnits can have different probabilities of assignment\nRequirements:\n\nProbabilities must be between 0 and 1\nProbabilities must be known\n\nAnalysis using inverse probability weighting:\n\n\n\\[\\hat{\\tau}_{IPW} = \\frac{1}{N}\\sum_{i=1}^N \\frac{D_i Y_i}{p_i} - \\frac{(1-D_i)Y_i}{1-p_i}\\]"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#practical-implementation",
+    "href": "unit-2/lec-2-2-slides.html#practical-implementation",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Practical Implementation",
+    "text": "Practical Implementation\n\n\nCreate single entry per randomization unit\nSort file in reproducible way\nSet and preserve random seed\nAssign treatments\nSave assignments securely\nTest balance extensively\n\n\n\n# Basic randomization procedure\nset.seed(20250225)  # Always set and record seed\nN &lt;- 1000\ndata &lt;- data.frame(id = 1:N)\ndata$treatment &lt;- sample(c(0,1), N, replace=TRUE, prob=c(0.5,0.5))\ntable(data$treatment)\n\n\n  0   1 \n496 504 \n\n\nAlways document your randomization procedure thoroughly!"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#ethical-considerations",
+    "href": "unit-2/lec-2-2-slides.html#ethical-considerations",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Ethical Considerations",
+    "text": "Ethical Considerations\n\n\nLong-term benefits vs. short-term resource distribution\nEquity in who receives potentially beneficial treatments\nTransparency with participants about randomization\nMinimize harm from potentially ineffective interventions\n\n\n\nNo experiment exists in an ethical vacuum!"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#combining-randomization-approaches",
+    "href": "unit-2/lec-2-2-slides.html#combining-randomization-approaches",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Combining Randomization Approaches",
+    "text": "Combining Randomization Approaches\n\n\nStratify on discrete variables\nRe-randomize on continuous variables within strata\nUse matched pairs for important continuous variables\nAdapt to your specific context and constraints\n\n\n\nThere is no one-size-fits-all approach!"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#key-takeaways",
+    "href": "unit-2/lec-2-2-slides.html#key-takeaways",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Key Takeaways",
+    "text": "Key Takeaways\n\n\nChoose randomization unit carefully (individual vs. cluster)\nBalance variables that strongly predict outcomes\nUse re-randomization, stratification, or matching when feasible\nDocument your randomization procedure completely\nTest balance appropriately for your sample size\nAccount for your randomization procedure in analysis"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#which-method-when",
+    "href": "unit-2/lec-2-2-slides.html#which-method-when",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Which Method When?",
+    "text": "Which Method When?\n\n\n\nApproach\nWhen to Use\nKey Consideration\n\n\n\n\nSimple\nLarge samples\nSimplicity\n\n\nStratified\nStrong predictors known\nNumber of strata\n\n\nMatched-Pair\nSmall samples\nFinding good matches\n\n\nRe-randomization\nBalance is critical\nComplexity of inference\n\n\nCluster\nGroup-level intervention\nICC and number of clusters"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#next-time-machine-learning-for-causal-inference",
+    "href": "unit-2/lec-2-2-slides.html#next-time-machine-learning-for-causal-inference",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Next Time: Machine Learning for Causal Inference",
+    "text": "Next Time: Machine Learning for Causal Inference\nWe’ll explore how modern prediction algorithms can enhance our ability to:\n\n\nEstimate average treatment effects more precisely\nDiscover heterogeneous treatment effects\nSelect optimal treatments for individuals"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#questions",
+    "href": "unit-2/lec-2-2-slides.html#questions",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Questions?",
+    "text": "Questions?"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#classical-assignment-mechanisms-framework",
+    "href": "unit-2/lec-2-2-slides.html#classical-assignment-mechanisms-framework",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Classical Assignment Mechanisms Framework",
+    "text": "Classical Assignment Mechanisms Framework\n\n\n\n\n\nflowchart TD\n    %% Top nodes - conditions\n    A[Non-zero probability condition]:::gold\n    B[Individualism condition]:::gold\n    C[Unconfoundedness condition]:::gold\n    \n    %% Middle node - mechanisms\n    D((Classical Random\\nAssignment\\nMechanisms)):::tarHeelRed\n    \n    %% Assignment types\n    E[Bernoulli Trial]:::carolinaBlue\n    F[Complete Randomized\\nExperiment (CRE)]:::carolinaBlue\n    G[Stratified\\nRandomization]:::carolinaBlue\n    H[Rerandomization]:::carolinaBlue\n    I[Matched Pairs]:::carolinaBlue\n    \n    %% Bottom node - inference\n    J((Design-conscious\\nInference)):::uncGreen\n    \n    %% Connections\n    A --&gt; D\n    B --&gt; D\n    C --&gt; D\n    \n    D --&gt; E\n    D --&gt; F\n    D --&gt; G\n    D --&gt; H\n    D --&gt; I\n    \n    E --&gt; J\n    F --&gt; J\n    G --&gt; J\n    H --&gt; J\n    I --&gt; J\n    \n    %% UNC Brand Colors\n    classDef gold fill:#FFD100,stroke:#13294B,stroke-width:1px,color:#13294B\n    classDef tarHeelRed fill:#DC143C,stroke:#13294B,stroke-width:1px,color:#FFFFFF\n    classDef carolinaBlue fill:#4B9CD3,stroke:#13294B,stroke-width:1px,color:#FFFFFF\n    classDef uncGreen fill:#8DB434,stroke:#13294B,stroke-width:1px,color:#FFFFFF"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#cluster-randomization",
+    "href": "unit-2/lec-2-2-slides.html#cluster-randomization",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Cluster Randomization",
+    "text": "Cluster Randomization\n\n\nDefinition: Randomize groups (clusters) rather than individuals\nCommon clusters: Schools, clinics, villages, neighborhoods\nKey parameter: Intraclass correlation coefficient (ICC)\nDesign effect: \\(DE = 1 + (m-1) \\times ICC\\)\n\n\\(m\\) = average cluster size\nIncreases required sample size\n\n\n\n\nAnalysis must account for clustering! * Cluster-robust standard errors * Mixed-effects models * GEE approaches"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#random-sampling-vs.-random-assignment",
+    "href": "unit-2/lec-2-2-slides.html#random-sampling-vs.-random-assignment",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Random Sampling vs. Random Assignment",
+    "text": "Random Sampling vs. Random Assignment\n\n\n\n\n\nflowchart TD\n    %% Nodes\n    A[Target Population]:::carolina_blue\n    B[Random Sampling]:::navy\n    C[Evaluation Sample]:::carolina_blue\n    D[Not in Evaluation]:::carolina_blue\n    E[Random Assignment]:::navy\n    F[Treatment Group]:::carolina_blue\n    G[Control Group]:::carolina_blue\n    \n    %% External and internal validity labels\n    EV[external validity]:::label\n    IV[internal validity]:::label\n    \n    %% Connections\n    A --&gt; B\n    B --&gt; C\n    B --&gt; D\n    C --&gt; E\n    E --&gt; F\n    E --&gt; G\n    \n    %% Arrows pointing to validity concepts\n    B -.-&gt; EV\n    E -.-&gt; IV\n    \n    %% Styling\n    classDef carolina_blue fill:#4B9CD3,stroke:#13294B,stroke-width:2px,color:#FFFFFF,font-size:14px\n    classDef navy fill:#13294B,stroke:#4B9CD3,stroke-width:2px,color:#FFFFFF,font-size:14px\n    classDef label fill:none,stroke:none,color:#4B9CD3,font-size:16px\n    \n    %% Make Random Sampling box dashed\n    style B stroke-dasharray: 5 5"
   }
 ]
