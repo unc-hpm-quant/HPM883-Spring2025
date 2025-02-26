@@ -6,18 +6,18 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.6.40">
-
-  <meta name="author" content="Sean Sylvia, Ph.D.">
-  <meta name="dcterms.date" content="2025-02-25">
-  <title>HPM 883 – Unit 2.2: Advanced Randomization Techniques</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
-  <style>
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+<meta name="author" content="Sean Sylvia, Ph.D.">
+<meta name="dcterms.date" content="2025-02-25">
+<title>HPM 883 – Unit 2.2: Advanced Randomization Techniques</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+<link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+<style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -95,14 +95,14 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-13595ff2e4cbac7dab0098cea5cc2dfd.css">
-  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
+<link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-13595ff2e4cbac7dab0098cea5cc2dfd.css">
+<link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+<style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
       overflow: auto;
@@ -189,16 +189,13 @@
       margin-right: 0; 
     }
   </style>
-  <script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
-  <script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
-  <link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script><script src="../site_libs/quarto-diagram/mermaid-init.js"></script><link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Unit 2.2: Advanced Randomization Techniques</h1>
+<section id="title-slide" class="quarto-title-block center"><h1 class="title">Unit 2.2: Advanced Randomization Techniques</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -209,9 +206,7 @@ Sean Sylvia, Ph.D.
 </div>
 
   <p class="date">2025-02-25</p>
-</section>
-<section id="randomization-the-foundation-of-causal-inference" class="slide level2">
-<h2>Randomization: The Foundation of Causal Inference</h2>
+</section><section id="randomization-the-foundation-of-causal-inference" class="slide level2"><h2>Randomization: The Foundation of Causal Inference</h2>
 <div>
 <ul>
 <li class="fragment">Last session: Maximizing power through optimal experimental design</li>
@@ -221,11 +216,11 @@ Sean Sylvia, Ph.D.
 <li class="fragment">Observable characteristics</li>
 <li class="fragment">Unobservable characteristics</li>
 <li class="fragment">Potential outcomes</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 </div>
-<aside class="notes">
-<p>Emphasize that randomization is what allows us to make causal claims - it’s the key distinction between experimental and observational studies.</p>
+<aside class="notes"><p>Emphasize that randomization is what allows us to make causal claims - it’s the key distinction between experimental and observational studies.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -236,44 +231,42 @@ Sean Sylvia, Ph.D.
           width: 1px!important;
           overflow: hidden!important;
           display:block!important;
-      }</style></aside>
-</section>
-<section id="why-does-randomization-work" class="slide level2">
-<h2>Why Does Randomization Work?</h2>
+      }</style></aside></section><section id="why-does-randomization-work" class="slide level2"><h2>Why Does Randomization Work?</h2>
 <p>Because it ensures:</p>
 <div>
 <ol type="1">
-<li class="fragment"><strong>Non-zero probability condition</strong>: Everyone has a chance of treatment</li>
-<li class="fragment"><strong>Individualism</strong>: Independence across units</li>
-<li class="fragment"><strong>Unconfoundedness</strong>: Balance on observed/unobserved covariates</li>
+<li class="fragment">
+<strong>Non-zero probability condition</strong>: Everyone has a chance of treatment</li>
+<li class="fragment">
+<strong>Individualism</strong>: Independence across units</li>
+<li class="fragment">
+<strong>Unconfoundedness</strong>: Balance on observed/unobserved covariates</li>
 </ol>
 </div>
 <p><span class="math display">\[E[Y_i(0)|D_i=1] = E[Y_i(0)|D_i=0]\]</span></p>
 <div class="fragment">
 <p>The untreated potential outcomes are the same in both groups!</p>
 </div>
-</section>
-<section id="what-you-need-for-randomization" class="slide level2">
-<h2>What You Need for Randomization</h2>
+</section><section id="what-you-need-for-randomization" class="slide level2"><h2>What You Need for Randomization</h2>
 <div>
 <ol type="1">
-<li class="fragment"><strong>Sample of units</strong>: Who or what will be randomized</li>
-<li class="fragment"><strong>Allocation ratio</strong>: How many units to each condition</li>
-<li class="fragment"><strong>Randomization device</strong>: Physical or computational</li>
-<li class="fragment"><strong>Baseline covariates</strong>: (for some approaches)</li>
+<li class="fragment">
+<strong>Sample of units</strong>: Who or what will be randomized</li>
+<li class="fragment">
+<strong>Allocation ratio</strong>: How many units to each condition</li>
+<li class="fragment">
+<strong>Randomization device</strong>: Physical or computational</li>
+<li class="fragment">
+<strong>Baseline covariates</strong>: (for some approaches)</li>
 </ol>
 </div>
-</section>
-<section id="random-sampling-vs.-random-assignment" class="slide level2">
-<h2>Random Sampling vs.&nbsp;Random Assignment</h2>
+</section><section id="random-sampling-vs.-random-assignment" class="slide level2"><h2>Random Sampling vs.&nbsp;Random Assignment</h2>
 
-<img data-src="media/SamplingVRandom.png" class="r-stretch quarto-figure-center"><p class="caption">Random Sampling vs.&nbsp;Random Assignment</p></section>
-<section id="classical-assignment-mechanisms-framework" class="slide level2">
-<h2>Classical Assignment Mechanisms Framework</h2>
+<img data-src="media/SamplingVRandom.png" class="r-stretch quarto-figure-center"><p class="caption">Random Sampling vs.&nbsp;Random Assignment</p></section><section id="classical-assignment-mechanisms-framework" class="slide level2"><h2>Classical Assignment Mechanisms Framework</h2>
 <div class="cell" data-reveal="true" data-layout-align="default">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
+<p></p><figure class=""></figure><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart TD
     %% Top nodes - conditions
@@ -318,26 +311,23 @@ Sean Sylvia, Ph.D.
     classDef uncGreen fill:#8DB434,stroke:#13294B,stroke-width:1px,color:#FFFFFF
 </pre>
 </div>
-<p></p></figure><p></p>
+<p></p>
 </div>
 </div>
 </div>
-</section>
-<section id="classical-assignment-mechanisms" class="slide level2">
-<h2>Classical Assignment Mechanisms</h2>
+</section><section id="classical-assignment-mechanisms" class="slide level2"><h2>Classical Assignment Mechanisms</h2>
 <ol type="1">
 <li>Bernoulli Trials</li>
 <li>Complete Randomization</li>
 <li>Re-randomization</li>
 <li>Stratified Randomization</li>
 <li>Matched-Pair Designs</li>
-</ol>
-</section>
-<section id="bernoulli-trials" class="slide level2">
-<h2>Bernoulli Trials</h2>
+</ol></section><section id="bernoulli-trials" class="slide level2"><h2>Bernoulli Trials</h2>
 <ul>
 <li>Simplest approach: independent coin flips</li>
-<li><span class="math inline">\(P(Z_i = 1) = p\)</span> for all units <span class="math inline">\(i\)</span></li>
+<li>
+<span class="math inline">\(P(Z_i = 1) = p\)</span> for all units <span class="math inline">\(i\)</span>
+</li>
 </ul>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -359,9 +349,7 @@ Sean Sylvia, Ph.D.
 </ul>
 </div>
 </div></div>
-</section>
-<section id="case-study-the-canadian-national-breast-screening-study" class="slide level2">
-<h2>Case Study: The Canadian National Breast Screening Study</h2>
+</section><section id="case-study-the-canadian-national-breast-screening-study" class="slide level2"><h2>Case Study: The Canadian National Breast Screening Study</h2>
 <div>
 <ul>
 <li class="fragment">Major randomized trial evaluating mammography screening effectiveness</li>
@@ -370,27 +358,28 @@ Sean Sylvia, Ph.D.
 <li class="fragment">Nurses and physicians could (and did) influence group assignments</li>
 </ul>
 </div>
-</section>
-<section id="cnbss-randomization-failures" class="slide level2">
-<h2>CNBSS: Randomization Failures</h2>
+</section><section id="cnbss-randomization-failures" class="slide level2"><h2>CNBSS: Randomization Failures</h2>
 <div>
 <ul>
-<li class="fragment"><strong>Pre-randomization examination</strong>: Detected suspicious lumps before group assignment</li>
-<li class="fragment"><strong>Selection bias</strong>: Women with palpable lumps disproportionately assigned to mammography group</li>
-<li class="fragment"><strong>Inadequate concealment</strong>: Study staff could influence group assignments</li>
-<li class="fragment"><strong>Evidence of manipulation</strong>: Names overwritten, identities reversed, lines skipped</li>
+<li class="fragment">
+<strong>Pre-randomization examination</strong>: Detected suspicious lumps before group assignment</li>
+<li class="fragment">
+<strong>Selection bias</strong>: Women with palpable lumps disproportionately assigned to mammography group</li>
+<li class="fragment">
+<strong>Inadequate concealment</strong>: Study staff could influence group assignments</li>
+<li class="fragment">
+<strong>Evidence of manipulation</strong>: Names overwritten, identities reversed, lines skipped</li>
 </ul>
 </div>
 <div class="fragment">
 <p>Result: Mammography group had 68% higher incidence of advanced cancers at baseline!</p>
 </div>
-</section>
-<section id="cnbss-impact-on-study-validity" class="slide level2">
-<h2>CNBSS: Impact on Study Validity</h2>
+</section><section id="cnbss-impact-on-study-validity" class="slide level2"><h2>CNBSS: Impact on Study Validity</h2>
 <div>
 <ul>
 <li class="fragment">Study reported no mortality benefit from mammography screening</li>
-<li class="fragment"><strong>However</strong>: The randomization bias likely masked true benefits</li>
+<li class="fragment">
+<strong>However</strong>: The randomization bias likely masked true benefits</li>
 <li class="fragment">Higher-risk patients concentrated in treatment group</li>
 <li class="fragment">Control group contamination: ~25% received mammograms outside the study</li>
 </ul>
@@ -398,9 +387,7 @@ Sean Sylvia, Ph.D.
 <div class="fragment">
 <p><strong>Broader lesson</strong>: Compromise in randomization can fundamentally undermine study validity and lead to decades of scientific controversy</p>
 </div>
-</section>
-<section id="complete-randomization" class="slide level2">
-<h2>Complete Randomization</h2>
+</section><section id="complete-randomization" class="slide level2"><h2>Complete Randomization</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">set.seed</span>(<span class="dv">072311</span>)  <span class="co"># Set seed for reproducibility</span></span>
 <span id="cb1-2"><a></a></span>
@@ -428,26 +415,24 @@ Sean Sylvia, Ph.D.
 </div>
 </div>
 <p>Each participant has fixed probability of assignment, with total group sizes fixed in advance.</p>
-</section>
-<section id="chance-imbalance-with-complete-randomization" class="slide level2">
-<h2>Chance Imbalance with Complete Randomization</h2>
+</section><section id="chance-imbalance-with-complete-randomization" class="slide level2"><h2>Chance Imbalance with Complete Randomization</h2>
 <div>
 <ul>
 <li class="fragment"><p>Even with perfect implementation, covariates may be imbalanced</p></li>
-<li class="fragment"><p>Example: In a study of 722 people (NLSY data):</p>
+<li class="fragment">
+<p>Example: In a study of 722 people (NLSY data):</p>
 <ul>
 <li class="fragment">~45% of randomizations had all covariates balanced</li>
 <li class="fragment">~30% had one imbalanced covariate</li>
 <li class="fragment">Remaining had multiple imbalanced covariates</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="fragment">
 <p>This raises two critical questions: 1. How can we ensure better balance in design? 2. What do we do if imbalance occurs?</p>
 </div>
-</section>
-<section id="re-randomization" class="slide level2">
-<h2>Re-randomization</h2>
+</section><section id="re-randomization" class="slide level2"><h2>Re-randomization</h2>
 <div>
 <ul>
 <li class="fragment">Generate multiple randomizations</li>
@@ -456,9 +441,7 @@ Sean Sylvia, Ph.D.
 <li class="fragment">Approach 2: Choose iteration with best overall balance</li>
 </ul>
 </div>
-</section>
-<section id="re-randomization-code" class="slide level2">
-<h2>Re-randomization Code</h2>
+</section><section id="re-randomization-code" class="slide level2"><h2>Re-randomization Code</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>balance_check <span class="ot">&lt;-</span> <span class="cf">function</span>(data, treatment_var, balance_vars) {</span>
 <span id="cb3-2"><a></a>  <span class="co"># Initialize minimum p-value</span></span>
@@ -501,9 +484,7 @@ Sean Sylvia, Ph.D.
 <span id="cb3-39"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This function repeats randomization until finding one where all p-values exceed our threshold.</p>
-</section>
-<section id="drawbacks-of-re-randomization" class="slide level2">
-<h2>Drawbacks of Re-randomization</h2>
+</section><section id="drawbacks-of-re-randomization" class="slide level2"><h2>Drawbacks of Re-randomization</h2>
 <div>
 <ul>
 <li class="fragment">Opaque constraints: “Black box” process</li>
@@ -514,16 +495,12 @@ Sean Sylvia, Ph.D.
 <li class="fragment">Cannot balance on unobserved covariates</li>
 </ul>
 </div>
-</section>
-<section id="stratified-block-randomization" class="slide level2">
-<h2>Stratified (Block) Randomization</h2>
+</section><section id="stratified-block-randomization" class="slide level2"><h2>Stratified (Block) Randomization</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../unit-2/media/BlockRandom.png"></p>
-<figcaption>Stratified Randomization</figcaption>
-</figure>
+<figure><p><img data-src="../unit-2/media/BlockRandom.png"></p>
+<figcaption>Stratified Randomization</figcaption></figure>
 </div>
 </div><div class="column" style="width:50%;">
 <div>
@@ -534,9 +511,7 @@ Sean Sylvia, Ph.D.
 </ol>
 </div>
 </div></div>
-</section>
-<section id="implementing-stratified-randomization" class="slide level2">
-<h2>Implementing Stratified Randomization</h2>
+</section><section id="implementing-stratified-randomization" class="slide level2"><h2>Implementing Stratified Randomization</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">set.seed</span>(<span class="dv">072311</span>)</span>
 <span id="cb4-2"><a></a></span>
@@ -601,13 +576,13 @@ Sean Sylvia, Ph.D.
 </div>
 </div>
 <p>This code creates strata from combinations of gender and age group, then randomizes within each stratum.</p>
-</section>
-<section id="selecting-stratification-variables" class="slide level2">
-<h2>Selecting Stratification Variables</h2>
+</section><section id="selecting-stratification-variables" class="slide level2"><h2>Selecting Stratification Variables</h2>
 <div>
 <ul>
-<li class="fragment"><strong>Discrete variables</strong> are easier to implement</li>
-<li class="fragment">Prioritize variables that <strong>strongly predict outcomes</strong></li>
+<li class="fragment">
+<strong>Discrete variables</strong> are easier to implement</li>
+<li class="fragment">Prioritize variables that <strong>strongly predict outcomes</strong>
+</li>
 <li class="fragment">Include variables where <strong>heterogeneous effects</strong> are expected</li>
 <li class="fragment">Be careful of <strong>too many strata</strong> - causes “small cell” problems</li>
 </ul>
@@ -620,9 +595,7 @@ Sean Sylvia, Ph.D.
 <li>Use different randomization approach for misfits</li>
 </ul>
 </div>
-</section>
-<section id="matched-pairs-randomization" class="slide level2">
-<h2>Matched Pairs Randomization</h2>
+</section><section id="matched-pairs-randomization" class="slide level2"><h2>Matched Pairs Randomization</h2>
 <div>
 <ul>
 <li class="fragment">Create pairs of similar units</li>
@@ -631,9 +604,7 @@ Sean Sylvia, Ph.D.
 <li class="fragment">Perfect for continuous covariates</li>
 </ul>
 </div>
-</section>
-<section id="implementing-matched-pairs" class="slide level2">
-<h2>Implementing Matched Pairs</h2>
+</section><section id="implementing-matched-pairs" class="slide level2"><h2>Implementing Matched Pairs</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">library</span>(optmatch)  <span class="co"># For optimal matching</span></span>
 <span id="cb6-2"><a></a></span>
@@ -685,23 +656,25 @@ Sean Sylvia, Ph.D.
 <span id="cb6-48"><a></a>data<span class="sc">$</span>treatment <span class="ot">&lt;-</span> <span class="fu">pair_randomize</span>(data, <span class="st">"pair_id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This code matches participants based on age, income, and health score, then randomizes one member of each pair to treatment.</p>
-</section>
-<section id="balance-tests-approaches-for-verification" class="slide level2">
-<h2>Balance Tests: Approaches for Verification</h2>
+</section><section id="balance-tests-approaches-for-verification" class="slide level2"><h2>Balance Tests: Approaches for Verification</h2>
 <div>
 <ul>
-<li class="fragment"><strong>Individual covariate tests</strong>: t-tests, Chi-square tests</li>
-<li class="fragment"><strong>Joint omnibus tests</strong>: F-tests testing multiple covariates simultaneously</li>
-<li class="fragment"><strong>Regression-based tests</strong>: Regress treatment on covariates</li>
-<li class="fragment"><strong>Standardized differences</strong>: Sample size-independent assessment</li>
+<li class="fragment">
+<strong>Individual covariate tests</strong>: t-tests, Chi-square tests</li>
+<li class="fragment">
+<strong>Joint omnibus tests</strong>: F-tests testing multiple covariates simultaneously</li>
+<li class="fragment">
+<strong>Regression-based tests</strong>: Regress treatment on covariates</li>
+<li class="fragment">
+<strong>Standardized differences</strong>: Sample size-independent assessment</li>
 </ul>
 </div>
-</section>
-<section id="standardized-differences-for-large-samples" class="slide level2">
-<h2>Standardized Differences for Large Samples</h2>
+</section><section id="standardized-differences-for-large-samples" class="slide level2"><h2>Standardized Differences for Large Samples</h2>
 <ul>
-<li><strong>Problem with p-values</strong>: With large samples, tiny imbalances become “significant”</li>
-<li><strong>Solution</strong>: Standardized mean difference (SMD)</li>
+<li>
+<strong>Problem with p-values</strong>: With large samples, tiny imbalances become “significant”</li>
+<li>
+<strong>Solution</strong>: Standardized mean difference (SMD)</li>
 </ul>
 <p><span class="math display">\[SMD = \frac{\bar{X}_{treatment} - \bar{X}_{control}}{\sqrt{\frac{s^2_{treatment} + s^2_{control}}{2}}}\]</span></p>
 <div class="fragment">
@@ -711,9 +684,7 @@ Sean Sylvia, Ph.D.
 <li>Rule of thumb: |SMD| &lt; 0.1 is negligible imbalance</li>
 </ul>
 </div>
-</section>
-<section id="the-table-1-debate" class="slide level2">
-<h2>The “Table 1” Debate</h2>
+</section><section id="the-table-1-debate" class="slide level2"><h2>The “Table 1” Debate</h2>
 <div class="columns}">
 <div class="column" style="width:50%;">
 <h3 id="for-including">For Including</h3>
@@ -735,20 +706,19 @@ Sean Sylvia, Ph.D.
 <div class="fragment">
 <p><strong>Compromise</strong>: Report balance without p-values, use standardized differences</p>
 </div>
-</section>
-<section id="design-based-inference" class="slide level2">
-<h2>Design-Based Inference</h2>
+</section><section id="design-based-inference" class="slide level2"><h2>Design-Based Inference</h2>
 <div>
 <ul>
 <li class="fragment">Randomization creates the foundation for inference</li>
-<li class="fragment"><strong>Fisher’s approach</strong>: Test sharp null that treatment has no effect on any unit</li>
-<li class="fragment"><strong>Randomization distribution</strong>: Generate distribution of test statistics under all possible randomizations</li>
-<li class="fragment"><strong>Permutation tests</strong>: Compare observed statistic to randomization distribution</li>
+<li class="fragment">
+<strong>Fisher’s approach</strong>: Test sharp null that treatment has no effect on any unit</li>
+<li class="fragment">
+<strong>Randomization distribution</strong>: Generate distribution of test statistics under all possible randomizations</li>
+<li class="fragment">
+<strong>Permutation tests</strong>: Compare observed statistic to randomization distribution</li>
 </ul>
 </div>
-</section>
-<section id="complex-experimental-designs" class="slide level2">
-<h2>Complex Experimental Designs</h2>
+</section><section id="complex-experimental-designs" class="slide level2"><h2>Complex Experimental Designs</h2>
 <ol type="1">
 <li>Units of Randomization &amp; Spillovers</li>
 <li>Cluster Randomization</li>
@@ -759,10 +729,7 @@ Sean Sylvia, Ph.D.
 <li>Randomized Phase-in</li>
 <li>Adaptive Designs</li>
 <li>Variable Treatment Probabilities</li>
-</ol>
-</section>
-<section id="choosing-the-unit-of-randomization" class="slide level2">
-<h2>Choosing the Unit of Randomization</h2>
+</ol></section><section id="choosing-the-unit-of-randomization" class="slide level2"><h2>Choosing the Unit of Randomization</h2>
 <div class="columns}">
 <div class="column" style="width:50%;">
 <h3 id="key-considerations">Key Considerations</h3>
@@ -775,18 +742,20 @@ Sean Sylvia, Ph.D.
 </div><div class="column" style="width:50%;">
 <h3 id="common-units">Common Units</h3>
 <ul>
-<li><strong>Individual</strong>: Patients, students</li>
-<li><strong>Cluster</strong>: Villages, clinics, schools</li>
-<li><strong>Time periods</strong>: Days, weeks, shifts</li>
-<li><strong>Networks</strong>: Households, peer groups</li>
+<li>
+<strong>Individual</strong>: Patients, students</li>
+<li>
+<strong>Cluster</strong>: Villages, clinics, schools</li>
+<li>
+<strong>Time periods</strong>: Days, weeks, shifts</li>
+<li>
+<strong>Networks</strong>: Households, peer groups</li>
 </ul>
 </div></div>
 <div class="fragment">
 <p><strong>Critical trade-off</strong>: Statistical power vs.&nbsp;internal validity</p>
 </div>
-</section>
-<section id="the-spillover-problem" class="slide level2">
-<h2>The Spillover Problem</h2>
+</section><section id="the-spillover-problem" class="slide level2"><h2>The Spillover Problem</h2>
 <div>
 <ul>
 <li class="fragment">Spillovers occur when treatment affects untreated units</li>
@@ -796,15 +765,14 @@ Sean Sylvia, Ph.D.
 <li class="fragment">General equilibrium effects</li>
 <li class="fragment">Information diffusion</li>
 <li class="fragment">Resource competition</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="fragment">
 <p>Randomization at a higher level (clustering) can minimize unwanted spillovers.</p>
 </div>
-</section>
-<section id="measuring-spillovers-two-stage-randomization" class="slide level2">
-<h2>Measuring Spillovers: Two-Stage Randomization</h2>
+</section><section id="measuring-spillovers-two-stage-randomization" class="slide level2"><h2>Measuring Spillovers: Two-Stage Randomization</h2>
 <ul>
 <li>First stage: Randomize clusters to high or low treatment intensity</li>
 <li>Second stage: Randomize individuals within clusters to treatment or control</li>
@@ -813,45 +781,46 @@ Sean Sylvia, Ph.D.
 <li>Direct treatment effects</li>
 <li>Within-cluster spillovers</li>
 <li>Between-cluster spillovers</li>
-</ul></li>
+</ul>
+</li>
 <li>Provides estimates of:
 <ul>
 <li>Total treatment effect (direct + spillover)</li>
 <li>Isolated direct effect</li>
 <li>Spillover effect on untreated individuals</li>
-</ul></li>
 </ul>
-</section>
-<section id="cluster-randomization" class="slide level2">
-<h2>Cluster Randomization</h2>
+</li>
+</ul></section><section id="cluster-randomization" class="slide level2"><h2>Cluster Randomization</h2>
 <div>
 <ul>
-<li class="fragment"><strong>Definition</strong>: Randomize groups (clusters) rather than individuals</li>
-<li class="fragment"><strong>Common clusters</strong>: Schools, clinics, villages, neighborhoods</li>
-<li class="fragment"><strong>Key parameter</strong>: Intraclass correlation coefficient (ICC)</li>
-<li class="fragment"><strong>Design effect</strong>: <span class="math inline">\(DE = 1 + (m-1) \times ICC\)</span>
+<li class="fragment">
+<strong>Definition</strong>: Randomize groups (clusters) rather than individuals</li>
+<li class="fragment">
+<strong>Common clusters</strong>: Schools, clinics, villages, neighborhoods</li>
+<li class="fragment">
+<strong>Key parameter</strong>: Intraclass correlation coefficient (ICC)</li>
+<li class="fragment">
+<strong>Design effect</strong>: <span class="math inline">\(DE = 1 + (m-1) \times ICC\)</span>
 <ul>
-<li class="fragment"><span class="math inline">\(m\)</span> = average cluster size</li>
+<li class="fragment">
+<span class="math inline">\(m\)</span> = average cluster size</li>
 <li class="fragment">Increases required sample size</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="fragment">
 <p><strong>Analysis must account for clustering!</strong> * Cluster-robust standard errors * Mixed-effects models * GEE approaches</p>
 </div>
-</section>
-<section id="factorial-designs-testing-multiple-treatments" class="slide level2 smaller">
-<h2>Factorial Designs: Testing Multiple Treatments</h2>
+</section><section id="factorial-designs-testing-multiple-treatments" class="slide level2 smaller"><h2>Factorial Designs: Testing Multiple Treatments</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <table class="caption-top">
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th>Intervention B</th>
 <th>No Intervention A</th>
 <th>Intervention A</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td><strong>No</strong></td>
@@ -877,13 +846,12 @@ Sean Sylvia, Ph.D.
 <li class="fragment">Intervention A only</li>
 <li class="fragment">Intervention B only</li>
 <li class="fragment">Both A and B</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 </div>
 </div></div>
-</section>
-<section id="randomized-phase-in-designs" class="slide level2">
-<h2>Randomized Phase-in Designs</h2>
+</section><section id="randomized-phase-in-designs" class="slide level2"><h2>Randomized Phase-in Designs</h2>
 <div>
 <ul>
 <li class="fragment">All units eventually receive treatment</li>
@@ -893,7 +861,8 @@ Sean Sylvia, Ph.D.
 <li class="fragment">Better compliance (everyone gets treatment eventually)</li>
 <li class="fragment">Clear for partners with resource constraints</li>
 <li class="fragment">Politically appealing compromise</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="fragment">
@@ -903,26 +872,25 @@ Sean Sylvia, Ph.D.
 <li>Limited long-term impact measurement</li>
 </ul>
 </div>
-</section>
-<section id="adaptive-randomization" class="slide level2">
-<h2>Adaptive Randomization</h2>
+</section><section id="adaptive-randomization" class="slide level2"><h2>Adaptive Randomization</h2>
 <div>
 <ul>
 <li class="fragment">Updates assignment probabilities based on accumulated data</li>
 <li class="fragment">Balances:
 <ul>
-<li class="fragment"><strong>Exploration</strong>: Learning which treatment works best</li>
-<li class="fragment"><strong>Exploitation</strong>: Assigning more units to better treatments</li>
-</ul></li>
+<li class="fragment">
+<strong>Exploration</strong>: Learning which treatment works best</li>
+<li class="fragment">
+<strong>Exploitation</strong>: Assigning more units to better treatments</li>
+</ul>
+</li>
 <li class="fragment">Key ethical advantage: Fewer participants receive inferior treatments</li>
 </ul>
 </div>
 <div class="fragment">
 <p><strong>Note</strong>: We’ll cover adaptive designs in more detail in a future lecture</p>
 </div>
-</section>
-<section id="practical-implementation" class="slide level2">
-<h2>Practical Implementation</h2>
+</section><section id="practical-implementation" class="slide level2"><h2>Practical Implementation</h2>
 <div>
 <ol type="1">
 <li class="fragment">Create single entry per randomization unit</li>
@@ -934,20 +902,20 @@ Sean Sylvia, Ph.D.
 </ol>
 </div>
 <p>Always document your randomization procedure thoroughly!</p>
-</section>
-<section id="ethical-considerations" class="slide level2">
-<h2>Ethical Considerations</h2>
+</section><section id="ethical-considerations" class="slide level2"><h2>Ethical Considerations</h2>
 <div>
 <ul>
-<li class="fragment"><strong>Long-term benefits</strong> vs.&nbsp;short-term resource distribution</li>
-<li class="fragment"><strong>Equity</strong> in who receives potentially beneficial treatments</li>
-<li class="fragment"><strong>Transparency</strong> with participants about randomization</li>
-<li class="fragment"><strong>Minimize harm</strong> from potentially ineffective interventions</li>
+<li class="fragment">
+<strong>Long-term benefits</strong> vs.&nbsp;short-term resource distribution</li>
+<li class="fragment">
+<strong>Equity</strong> in who receives potentially beneficial treatments</li>
+<li class="fragment">
+<strong>Transparency</strong> with participants about randomization</li>
+<li class="fragment">
+<strong>Minimize harm</strong> from potentially ineffective interventions</li>
 </ul>
 </div>
-</section>
-<section id="combining-randomization-approaches" class="slide level2">
-<h2>Combining Randomization Approaches</h2>
+</section><section id="combining-randomization-approaches" class="slide level2"><h2>Combining Randomization Approaches</h2>
 <div>
 <ul>
 <li class="fragment">Stratify on discrete variables</li>
@@ -959,9 +927,7 @@ Sean Sylvia, Ph.D.
 <div class="fragment">
 <p>There is no one-size-fits-all approach!</p>
 </div>
-</section>
-<section id="key-takeaways" class="slide level2">
-<h2>Key Takeaways</h2>
+</section><section id="key-takeaways" class="slide level2"><h2>Key Takeaways</h2>
 <div>
 <ol type="1">
 <li class="fragment">Choose randomization unit carefully (individual vs.&nbsp;cluster)</li>
@@ -972,17 +938,13 @@ Sean Sylvia, Ph.D.
 <li class="fragment">Account for your randomization procedure in analysis</li>
 </ol>
 </div>
-</section>
-<section id="which-method-when" class="slide level2">
-<h2>Which Method When?</h2>
+</section><section id="which-method-when" class="slide level2"><h2>Which Method When?</h2>
 <table class="caption-top">
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th>Approach</th>
 <th>When to Use</th>
 <th>Key Consideration</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td>Simple</td>
@@ -1010,10 +972,7 @@ Sean Sylvia, Ph.D.
 <td>ICC and number of clusters</td>
 </tr>
 </tbody>
-</table>
-</section>
-<section id="coming-up-machine-learning-for-causal-inference" class="slide level2">
-<h2>Coming Up: Machine Learning for Causal Inference</h2>
+</table></section><section id="coming-up-machine-learning-for-causal-inference" class="slide level2"><h2>Coming Up: Machine Learning for Causal Inference</h2>
 <p>We’ll explore how modern prediction algorithms can enhance our ability to:</p>
 <div>
 <ul>
@@ -1025,31 +984,14 @@ Sean Sylvia, Ph.D.
 
 
 </section>
-    </div>
+</div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
 <p>UNC HPM 883 - Advanced Quantitative Methods</p>
 </div>
 </div></div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="../site_libs/revealjs/dist/reveal.js"></script>
-  <!-- reveal.js plugins -->
-  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
-  
-
-  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
-
-  <script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script><script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../site_libs/revealjs/plugin/search/search.js"></script><script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
@@ -1241,9 +1183,7 @@ Sean Sylvia, Ph.D.
           RevealZoom
         ]
       });
-    </script>
-    
-    <script>
+    </script><script>
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
       // slide changes (different for each slide format).
@@ -1278,9 +1218,7 @@ Sean Sylvia, Ph.D.
         }
 
       })();
-    </script>
-
-    <script id="quarto-html-after-body" type="application/javascript">
+    </script><script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
         const mode = bsSheetEl.getAttribute("data-mode");
@@ -1465,6 +1403,6 @@ Sean Sylvia, Ph.D.
       }
     });
     </script>
-    
+
 
 </body></html>
