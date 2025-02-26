@@ -14,10 +14,10 @@ draft: false
 
 ### Class
 
--   [Lecture Notes: Randomization Techniques](/unit-2/lec-2-2.qmd)
+-   [Lecture Notes: Randomization Techniques (Coming Soon)]
 
     -   [Lecture Slides](/unit-2/lec-2-2-slides.qmd)
 
 ### Labs
 
--   None yet!
+-   [Comming Soon]

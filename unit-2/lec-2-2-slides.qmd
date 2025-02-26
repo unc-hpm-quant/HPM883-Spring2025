@@ -58,63 +58,30 @@ The untreated potential outcomes are the same in both groups!
 
 ## Random Sampling vs. Random Assignment
 
-```{mermaid}
-flowchart TD
-    %% Nodes
-    A[Target Population]:::carolina_blue
-    B[Random Sampling]:::navy
-    C[Evaluation Sample]:::carolina_blue
-    D[Not in Evaluation]:::carolina_blue
-    E[Random Assignment]:::navy
-    F[Treatment Group]:::carolina_blue
-    G[Control Group]:::carolina_blue
-    
-    %% External and internal validity labels
-    EV[external validity]:::label
-    IV[internal validity]:::label
-    
-    %% Connections
-    A --> B
-    B --> C
-    B --> D
-    C --> E
-    E --> F
-    E --> G
-    
-    %% Arrows pointing to validity concepts
-    B -.-> EV
-    E -.-> IV
-    
-    %% Styling
-    classDef carolina_blue fill:#4B9CD3,stroke:#13294B,stroke-width:2px,color:#FFFFFF,font-size:14px
-    classDef navy fill:#13294B,stroke:#4B9CD3,stroke-width:2px,color:#FFFFFF,font-size:14px
-    classDef label fill:none,stroke:none,color:#4B9CD3,font-size:16px
-    
-    %% Make Random Sampling box dashed
-    style B stroke-dasharray: 5 5
-```
+![Random Sampling vs. Random Assignment](media/SamplingVRandom.png)
+
 
 ## Classical Assignment Mechanisms Framework 
 
 ```{mermaid}
 flowchart TD
     %% Top nodes - conditions
-    A[Non-zero probability condition]:::gold
-    B[Individualism condition]:::gold
-    C[Unconfoundedness condition]:::gold
+    A["Non-zero probability condition"]:::gold
+    B["Individualism condition"]:::gold
+    C["Unconfoundedness condition"]:::gold
     
     %% Middle node - mechanisms
-    D((Classical Random\nAssignment\nMechanisms)):::tarHeelRed
+    D{{"Classical Random Assignment Mechanisms"}}:::tarHeelRed
     
     %% Assignment types
-    E[Bernoulli Trial]:::carolinaBlue
-    F[Complete Randomized\nExperiment (CRE)]:::carolinaBlue
-    G[Stratified\nRandomization]:::carolinaBlue
-    H[Rerandomization]:::carolinaBlue
-    I[Matched Pairs]:::carolinaBlue
+    E["Bernoulli Trial"]:::carolinaBlue
+    F["Complete Randomized\nExperiment (CRE)"]:::carolinaBlue
+    G["Stratified Randomization"]:::carolinaBlue
+    H["Rerandomization"]:::carolinaBlue
+    I["Matched Pairs"]:::carolinaBlue
     
     %% Bottom node - inference
-    J((Design-conscious\nInference)):::uncGreen
+    J{{"Design-conscious Inference"}}:::uncGreen
     
     %% Connections
     A --> D
@@ -148,37 +115,44 @@ flowchart TD
 4. Stratified Randomization
 5. Matched-Pair Designs
 
-## Bernoulli Trials
+## Bernoulli Trials 
 
 * Simplest approach: independent coin flips
 * $P(Z_i = 1) = p$ for all units $i$
 
+::: {.columns}
+::: {.column width="50%"}
 ::: {.fragment}
 **Advantages:**
-* Simple to implement
-* Can randomize as participants arrive
-* No baseline data needed
+
+- Simple to implement
+- Can randomize as participants arrive
+- No baseline data needed
+:::
 :::
 
+::: {.column width="50%"}
 ::: {.fragment}
 **Disadvantages:**
-* Random group sizes
-* Potential imbalance on key covariates
-* Implementation vulnerability
+
+- Random group sizes
+- Potential imbalance on key covariates
+- Implementation vulnerability
+:::
+:::
 :::
 
 ## Case Study: The Canadian National Breast Screening Study
 
 ::: {.incremental}
-* Major randomized trial evaluating mammography screening effectiveness
-* Used alternating assignment (first to treatment, second to control)
-* Design flaw: clinical breast exams conducted *before* randomization
-* Nurses and physicians could (and did) influence group assignments
+
+- Major randomized trial evaluating mammography screening effectiveness
+- Used alternating assignment (first to treatment, second to control)
+- Design flaw: clinical breast exams conducted *before* randomization
+- Nurses and physicians could (and did) influence group assignments
+
 :::
 
-::: {.fragment}
-The randomization process was compromised in several ways
-:::
 
 ## CNBSS: Randomization Failures
 
@@ -236,11 +210,12 @@ Each participant has fixed probability of assignment, with total group sizes fix
 ## Chance Imbalance with Complete Randomization
 
 ::: {.incremental}
-* Even with perfect implementation, covariates may be imbalanced
-* Example: In a study of 722 people (NLSY data):
-  * ~45% of randomizations had all covariates balanced
-  * ~30% had one imbalanced covariate
-  * Remaining had multiple imbalanced covariates
+- Even with perfect implementation, covariates may be imbalanced
+
+- Example: In a study of 722 people (NLSY data):
+  - ~45% of randomizations had all covariates balanced
+  - ~30% had one imbalanced covariate
+  - Remaining had multiple imbalanced covariates
 :::
 
 ::: {.fragment}
@@ -252,12 +227,13 @@ This raises two critical questions:
 ## Re-randomization
 
 ::: {.incremental}
-* Generate multiple randomizations
-* Keep only those with good balance
-* Approach 1: All p-values > threshold (e.g., 0.05)
-* Approach 2: Choose iteration with best overall balance
+- Generate multiple randomizations
+- Keep only those with good balance
+- Approach 1: All p-values > threshold (e.g., 0.05)
+- Approach 2: Choose iteration with best overall balance
 :::
 
+## Re-randomization Code
 ```{r}
 #| echo: true
 #| eval: false
@@ -318,12 +294,20 @@ This function repeats randomization until finding one where all p-values exceed 
 
 ## Stratified (Block) Randomization
 
-![Stratified Randomization](/unit-2/media/stratified-rand.png)
+::: {.columns}
+::: {.column width="50%"}
 
+![Stratified Randomization](/unit-2/media/BlockRandom.png)
+
+:::
+
+::: {.column width="50%"}
 ::: {.incremental}
 1. Divide sample into strata based on covariates
 2. Randomize separately within each stratum
 3. Perfect balance on stratification variables
+:::
+:::
 :::
 
 ## Implementing Stratified Randomization
@@ -396,18 +380,22 @@ This code creates strata from combinations of gender and age group, then randomi
 
 ::: {.fragment}
 **Handling "misfits"** (when strata size not divisible by treatments):
+
 * Remove units randomly
 * Create separate strata for misfits
 * Use different randomization approach for misfits
+
 :::
 
 ## Matched Pairs Randomization
 
 ::: {.incremental}
+
 * Create pairs of similar units
 * Randomize one to treatment within each pair
 * Like stratification taken to the extreme
 * Perfect for continuous covariates
+
 :::
 
 ## Implementing Matched Pairs
@@ -478,17 +466,17 @@ This code matches participants based on age, income, and health score, then rand
 
 ## Standardized Differences for Large Samples
 
-::: {.incremental}
 * **Problem with p-values**: With large samples, tiny imbalances become "significant"
 * **Solution**: Standardized mean difference (SMD)
-:::
 
 $$SMD = \frac{\bar{X}_{treatment} - \bar{X}_{control}}{\sqrt{\frac{s^2_{treatment} + s^2_{control}}{2}}}$$
 
 ::: {.fragment}
+
 * Scale-free measure of imbalance
 * Independent of sample size
 * Rule of thumb: |SMD| < 0.1 is negligible imbalance
+
 :::
 
 ## The "Table 1" Debate
@@ -576,15 +564,22 @@ Randomization at a higher level (clustering) can minimize unwanted spillovers.
 
 ## Measuring Spillovers: Two-Stage Randomization
 
-![Two-Stage Randomization for Spillovers](/unit-2/media/two-stage-rand.png)
+* First stage: Randomize clusters to high or low treatment intensity
+* Second stage: Randomize individuals within clusters to treatment or control
+* Allows measurement of:
+  * Direct treatment effects
+  * Within-cluster spillovers
+  * Between-cluster spillovers
+* Provides estimates of:
+  * Total treatment effect (direct + spillover)
+  * Isolated direct effect
+  * Spillover effect on untreated individuals
 
-::: {.notes}
-Explain how first randomizing clusters, then individuals within clusters allows for spillover measurement.
-:::
 
 ## Cluster Randomization
 
 ::: {.incremental}
+
 * **Definition**: Randomize groups (clusters) rather than individuals
 * **Common clusters**: Schools, clinics, villages, neighborhoods
 * **Key parameter**: Intraclass correlation coefficient (ICC)
@@ -600,10 +595,17 @@ Explain how first randomizing clusters, then individuals within clusters allows 
 * GEE approaches
 :::
 
-## Factorial Designs: Testing Multiple Treatments
+## Factorial Designs: Testing Multiple Treatments {.smaller}
 
-![2×2 Factorial Design](/unit-2/media/factorial-design.png)
+::: columns
+::: {.column width="50%"}
+| Intervention B | No Intervention A | Intervention A |
+|----------------|-------------------|----------------|
+| **No**         | Control           | A only         |
+| **Yes**        | B only            | A and B        |
+:::
 
+::: {.column width="50%"}
 ::: {.incremental}
 * Test multiple treatments simultaneously
 * Estimate main effects AND interactions
@@ -613,6 +615,8 @@ Explain how first randomizing clusters, then individuals within clusters allows 
   * Intervention A only
   * Intervention B only
   * Both A and B
+:::
+:::
 :::
 
 ## Randomized Phase-in Designs
@@ -628,6 +632,7 @@ Explain how first randomizing clusters, then individuals within clusters allows 
 
 ::: {.fragment}
 **But watch out for**:
+
 * Anticipation effects
 * Limited long-term impact measurement
 :::
@@ -635,6 +640,7 @@ Explain how first randomizing clusters, then individuals within clusters allows 
 ## Adaptive Randomization
 
 ::: {.incremental}
+
 * Updates assignment probabilities based on accumulated data
 * Balances:
   * **Exploration**: Learning which treatment works best
@@ -645,18 +651,6 @@ Explain how first randomizing clusters, then individuals within clusters allows 
 ::: {.fragment}
 **Note**: We'll cover adaptive designs in more detail in a future lecture
 :::
-
-## Variable Treatment Probabilities
-
-::: {.incremental}
-* Units can have different probabilities of assignment
-* Requirements:
-  * Probabilities must be between 0 and 1
-  * Probabilities must be known
-* Analysis using inverse probability weighting:
-:::
-
-$$\hat{\tau}_{IPW} = \frac{1}{N}\sum_{i=1}^N \frac{D_i Y_i}{p_i} - \frac{(1-D_i)Y_i}{1-p_i}$$
 
 ## Practical Implementation
 
@@ -669,30 +663,18 @@ $$\hat{\tau}_{IPW} = \frac{1}{N}\sum_{i=1}^N \frac{D_i Y_i}{p_i} - \frac{(1-D_i)
 6. Test balance extensively
 :::
 
-```{r}
-#| echo: true
-# Basic randomization procedure
-set.seed(20250225)  # Always set and record seed
-N <- 1000
-data <- data.frame(id = 1:N)
-data$treatment <- sample(c(0,1), N, replace=TRUE, prob=c(0.5,0.5))
-table(data$treatment)
-```
-
 Always document your randomization procedure thoroughly!
 
 ## Ethical Considerations
 
 ::: {.incremental}
+
 * **Long-term benefits** vs. short-term resource distribution
 * **Equity** in who receives potentially beneficial treatments
 * **Transparency** with participants about randomization
 * **Minimize harm** from potentially ineffective interventions
 :::
 
-::: {.fragment}
-No experiment exists in an ethical vacuum!
-:::
 
 ## Combining Randomization Approaches
 
@@ -728,7 +710,7 @@ There is no one-size-fits-all approach!
 | Re-randomization | Balance is critical | Complexity of inference |
 | Cluster | Group-level intervention | ICC and number of clusters |
 
-## Next Time: Machine Learning for Causal Inference
+## Coming Up: Machine Learning for Causal Inference
 
 We'll explore how modern prediction algorithms can enhance our ability to:
 
@@ -738,6 +720,3 @@ We'll explore how modern prediction algorithms can enhance our ability to:
 * Select optimal treatments for individuals
 :::
 
-## Questions?
-
-![](/unit-2/media/questions.png)

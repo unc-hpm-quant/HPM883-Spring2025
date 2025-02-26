@@ -266,51 +266,8 @@ Sean Sylvia, Ph.D.
 </section>
 <section id="random-sampling-vs.-random-assignment" class="slide level2">
 <h2>Random Sampling vs.&nbsp;Random Assignment</h2>
-<div class="cell" data-reveal="true" data-fig-width="10" data-fig-height="8" data-layout-align="center">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart TD
-    %% Nodes
-    A[Target Population]:::carolina_blue
-    B[Random Sampling]:::navy
-    C[Evaluation Sample]:::carolina_blue
-    D[Not in Evaluation]:::carolina_blue
-    E[Random Assignment]:::navy
-    F[Treatment Group]:::carolina_blue
-    G[Control Group]:::carolina_blue
-    
-    %% External and internal validity labels
-    EV[external validity]:::label
-    IV[internal validity]:::label
-    
-    %% Connections
-    A --&gt; B
-    B --&gt; C
-    B --&gt; D
-    C --&gt; E
-    E --&gt; F
-    E --&gt; G
-    
-    %% Arrows pointing to validity concepts
-    B -.-&gt; EV
-    E -.-&gt; IV
-    
-    %% Styling
-    classDef carolina_blue fill:#4B9CD3,stroke:#13294B,stroke-width:2px,color:#FFFFFF,font-size:14px
-    classDef navy fill:#13294B,stroke:#4B9CD3,stroke-width:2px,color:#FFFFFF,font-size:14px
-    classDef label fill:none,stroke:none,color:#4B9CD3,font-size:16px
-    
-    %% Make Random Sampling box dashed
-    style B stroke-dasharray: 5 5
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-</section>
+
+<img data-src="media/SamplingVRandom.png" class="r-stretch quarto-figure-center"><p class="caption">Random Sampling vs.&nbsp;Random Assignment</p></section>
 <section id="classical-assignment-mechanisms-framework" class="slide level2">
 <h2>Classical Assignment Mechanisms Framework</h2>
 <div class="cell" data-reveal="true" data-layout-align="default">
@@ -320,22 +277,22 @@ Sean Sylvia, Ph.D.
 <div>
 <pre class="mermaid mermaid-js">flowchart TD
     %% Top nodes - conditions
-    A[Non-zero probability condition]:::gold
-    B[Individualism condition]:::gold
-    C[Unconfoundedness condition]:::gold
+    A["Non-zero probability condition"]:::gold
+    B["Individualism condition"]:::gold
+    C["Unconfoundedness condition"]:::gold
     
     %% Middle node - mechanisms
-    D((Classical Random\nAssignment\nMechanisms)):::tarHeelRed
+    D{{"Classical Random Assignment Mechanisms"}}:::tarHeelRed
     
     %% Assignment types
-    E[Bernoulli Trial]:::carolinaBlue
-    F[Complete Randomized\nExperiment (CRE)]:::carolinaBlue
-    G[Stratified\nRandomization]:::carolinaBlue
-    H[Rerandomization]:::carolinaBlue
-    I[Matched Pairs]:::carolinaBlue
+    E["Bernoulli Trial"]:::carolinaBlue
+    F["Complete Randomized\nExperiment (CRE)"]:::carolinaBlue
+    G["Stratified Randomization"]:::carolinaBlue
+    H["Rerandomization"]:::carolinaBlue
+    I["Matched Pairs"]:::carolinaBlue
     
     %% Bottom node - inference
-    J((Design-conscious\nInference)):::uncGreen
+    J{{"Design-conscious Inference"}}:::uncGreen
     
     %% Connections
     A --&gt; D
@@ -382,12 +339,26 @@ Sean Sylvia, Ph.D.
 <li>Simplest approach: independent coin flips</li>
 <li><span class="math inline">\(P(Z_i = 1) = p\)</span> for all units <span class="math inline">\(i\)</span></li>
 </ul>
+<div class="columns">
+<div class="column" style="width:50%;">
 <div class="fragment">
-<p><strong>Advantages:</strong> * Simple to implement * Can randomize as participants arrive * No baseline data needed</p>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Simple to implement</li>
+<li>Can randomize as participants arrive</li>
+<li>No baseline data needed</li>
+</ul>
 </div>
+</div><div class="column" style="width:50%;">
 <div class="fragment">
-<p><strong>Disadvantages:</strong> * Random group sizes * Potential imbalance on key covariates * Implementation vulnerability</p>
+<p><strong>Disadvantages:</strong></p>
+<ul>
+<li>Random group sizes</li>
+<li>Potential imbalance on key covariates</li>
+<li>Implementation vulnerability</li>
+</ul>
 </div>
+</div></div>
 </section>
 <section id="case-study-the-canadian-national-breast-screening-study" class="slide level2">
 <h2>Case Study: The Canadian National Breast Screening Study</h2>
@@ -398,9 +369,6 @@ Sean Sylvia, Ph.D.
 <li class="fragment">Design flaw: clinical breast exams conducted <em>before</em> randomization</li>
 <li class="fragment">Nurses and physicians could (and did) influence group assignments</li>
 </ul>
-</div>
-<div class="fragment">
-<p>The randomization process was compromised in several ways</p>
 </div>
 </section>
 <section id="cnbss-randomization-failures" class="slide level2">
@@ -465,8 +433,8 @@ Sean Sylvia, Ph.D.
 <h2>Chance Imbalance with Complete Randomization</h2>
 <div>
 <ul>
-<li class="fragment">Even with perfect implementation, covariates may be imbalanced</li>
-<li class="fragment">Example: In a study of 722 people (NLSY data):
+<li class="fragment"><p>Even with perfect implementation, covariates may be imbalanced</p></li>
+<li class="fragment"><p>Example: In a study of 722 people (NLSY data):</p>
 <ul>
 <li class="fragment">~45% of randomizations had all covariates balanced</li>
 <li class="fragment">~30% had one imbalanced covariate</li>
@@ -488,6 +456,9 @@ Sean Sylvia, Ph.D.
 <li class="fragment">Approach 2: Choose iteration with best overall balance</li>
 </ul>
 </div>
+</section>
+<section id="re-randomization-code" class="slide level2">
+<h2>Re-randomization Code</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>balance_check <span class="ot">&lt;-</span> <span class="cf">function</span>(data, treatment_var, balance_vars) {</span>
 <span id="cb3-2"><a></a>  <span class="co"># Initialize minimum p-value</span></span>
@@ -546,14 +517,23 @@ Sean Sylvia, Ph.D.
 </section>
 <section id="stratified-block-randomization" class="slide level2">
 <h2>Stratified (Block) Randomization</h2>
-
-<img data-src="../unit-2/media/stratified-rand.png" class="r-stretch quarto-figure-center"><p class="caption">Stratified Randomization</p><div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../unit-2/media/BlockRandom.png"></p>
+<figcaption>Stratified Randomization</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div>
 <ol type="1">
 <li class="fragment">Divide sample into strata based on covariates</li>
 <li class="fragment">Randomize separately within each stratum</li>
 <li class="fragment">Perfect balance on stratification variables</li>
 </ol>
 </div>
+</div></div>
 </section>
 <section id="implementing-stratified-randomization" class="slide level2">
 <h2>Implementing Stratified Randomization</h2>
@@ -633,7 +613,12 @@ Sean Sylvia, Ph.D.
 </ul>
 </div>
 <div class="fragment">
-<p><strong>Handling “misfits”</strong> (when strata size not divisible by treatments): * Remove units randomly * Create separate strata for misfits * Use different randomization approach for misfits</p>
+<p><strong>Handling “misfits”</strong> (when strata size not divisible by treatments):</p>
+<ul>
+<li>Remove units randomly</li>
+<li>Create separate strata for misfits</li>
+<li>Use different randomization approach for misfits</li>
+</ul>
 </div>
 </section>
 <section id="matched-pairs-randomization" class="slide level2">
@@ -714,12 +699,10 @@ Sean Sylvia, Ph.D.
 </section>
 <section id="standardized-differences-for-large-samples" class="slide level2">
 <h2>Standardized Differences for Large Samples</h2>
-<div>
 <ul>
-<li class="fragment"><strong>Problem with p-values</strong>: With large samples, tiny imbalances become “significant”</li>
-<li class="fragment"><strong>Solution</strong>: Standardized mean difference (SMD)</li>
+<li><strong>Problem with p-values</strong>: With large samples, tiny imbalances become “significant”</li>
+<li><strong>Solution</strong>: Standardized mean difference (SMD)</li>
 </ul>
-</div>
 <p><span class="math display">\[SMD = \frac{\bar{X}_{treatment} - \bar{X}_{control}}{\sqrt{\frac{s^2_{treatment} + s^2_{control}}{2}}}\]</span></p>
 <div class="fragment">
 <ul>
@@ -822,20 +805,22 @@ Sean Sylvia, Ph.D.
 </section>
 <section id="measuring-spillovers-two-stage-randomization" class="slide level2">
 <h2>Measuring Spillovers: Two-Stage Randomization</h2>
-
-<img data-src="../unit-2/media/two-stage-rand.png" class="r-stretch quarto-figure-center"><p class="caption">Two-Stage Randomization for Spillovers</p><aside class="notes">
-<p>Explain how first randomizing clusters, then individuals within clusters allows for spillover measurement.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<ul>
+<li>First stage: Randomize clusters to high or low treatment intensity</li>
+<li>Second stage: Randomize individuals within clusters to treatment or control</li>
+<li>Allows measurement of:
+<ul>
+<li>Direct treatment effects</li>
+<li>Within-cluster spillovers</li>
+<li>Between-cluster spillovers</li>
+</ul></li>
+<li>Provides estimates of:
+<ul>
+<li>Total treatment effect (direct + spillover)</li>
+<li>Isolated direct effect</li>
+<li>Spillover effect on untreated individuals</li>
+</ul></li>
+</ul>
 </section>
 <section id="cluster-randomization" class="slide level2">
 <h2>Cluster Randomization</h2>
@@ -855,10 +840,33 @@ Sean Sylvia, Ph.D.
 <p><strong>Analysis must account for clustering!</strong> * Cluster-robust standard errors * Mixed-effects models * GEE approaches</p>
 </div>
 </section>
-<section id="factorial-designs-testing-multiple-treatments" class="slide level2">
+<section id="factorial-designs-testing-multiple-treatments" class="slide level2 smaller">
 <h2>Factorial Designs: Testing Multiple Treatments</h2>
-
-<img data-src="../unit-2/media/factorial-design.png" class="r-stretch quarto-figure-center"><p class="caption">2×2 Factorial Design</p><div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Intervention B</th>
+<th>No Intervention A</th>
+<th>Intervention A</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>No</strong></td>
+<td>Control</td>
+<td>A only</td>
+</tr>
+<tr class="even">
+<td><strong>Yes</strong></td>
+<td>B only</td>
+<td>A and B</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:50%;">
+<div>
 <ul>
 <li class="fragment">Test multiple treatments simultaneously</li>
 <li class="fragment">Estimate main effects AND interactions</li>
@@ -872,6 +880,7 @@ Sean Sylvia, Ph.D.
 </ul></li>
 </ul>
 </div>
+</div></div>
 </section>
 <section id="randomized-phase-in-designs" class="slide level2">
 <h2>Randomized Phase-in Designs</h2>
@@ -888,7 +897,11 @@ Sean Sylvia, Ph.D.
 </ul>
 </div>
 <div class="fragment">
-<p><strong>But watch out for</strong>: * Anticipation effects * Limited long-term impact measurement</p>
+<p><strong>But watch out for</strong>:</p>
+<ul>
+<li>Anticipation effects</li>
+<li>Limited long-term impact measurement</li>
+</ul>
 </div>
 </section>
 <section id="adaptive-randomization" class="slide level2">
@@ -908,21 +921,6 @@ Sean Sylvia, Ph.D.
 <p><strong>Note</strong>: We’ll cover adaptive designs in more detail in a future lecture</p>
 </div>
 </section>
-<section id="variable-treatment-probabilities" class="slide level2">
-<h2>Variable Treatment Probabilities</h2>
-<div>
-<ul>
-<li class="fragment">Units can have different probabilities of assignment</li>
-<li class="fragment">Requirements:
-<ul>
-<li class="fragment">Probabilities must be between 0 and 1</li>
-<li class="fragment">Probabilities must be known</li>
-</ul></li>
-<li class="fragment">Analysis using inverse probability weighting:</li>
-</ul>
-</div>
-<p><span class="math display">\[\hat{\tau}_{IPW} = \frac{1}{N}\sum_{i=1}^N \frac{D_i Y_i}{p_i} - \frac{(1-D_i)Y_i}{1-p_i}\]</span></p>
-</section>
 <section id="practical-implementation" class="slide level2">
 <h2>Practical Implementation</h2>
 <div>
@@ -935,19 +933,6 @@ Sean Sylvia, Ph.D.
 <li class="fragment">Test balance extensively</li>
 </ol>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># Basic randomization procedure</span></span>
-<span id="cb7-2"><a></a><span class="fu">set.seed</span>(<span class="dv">20250225</span>)  <span class="co"># Always set and record seed</span></span>
-<span id="cb7-3"><a></a>N <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb7-4"><a></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span>N)</span>
-<span id="cb7-5"><a></a>data<span class="sc">$</span>treatment <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), N, <span class="at">replace=</span><span class="cn">TRUE</span>, <span class="at">prob=</span><span class="fu">c</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>))</span>
-<span id="cb7-6"><a></a><span class="fu">table</span>(data<span class="sc">$</span>treatment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-  0   1 
-496 504 </code></pre>
-</div>
-</div>
 <p>Always document your randomization procedure thoroughly!</p>
 </section>
 <section id="ethical-considerations" class="slide level2">
@@ -959,9 +944,6 @@ Sean Sylvia, Ph.D.
 <li class="fragment"><strong>Transparency</strong> with participants about randomization</li>
 <li class="fragment"><strong>Minimize harm</strong> from potentially ineffective interventions</li>
 </ul>
-</div>
-<div class="fragment">
-<p>No experiment exists in an ethical vacuum!</p>
 </div>
 </section>
 <section id="combining-randomization-approaches" class="slide level2">
@@ -1030,8 +1012,8 @@ Sean Sylvia, Ph.D.
 </tbody>
 </table>
 </section>
-<section id="next-time-machine-learning-for-causal-inference" class="slide level2">
-<h2>Next Time: Machine Learning for Causal Inference</h2>
+<section id="coming-up-machine-learning-for-causal-inference" class="slide level2">
+<h2>Coming Up: Machine Learning for Causal Inference</h2>
 <p>We’ll explore how modern prediction algorithms can enhance our ability to:</p>
 <div>
 <ul>
@@ -1040,13 +1022,9 @@ Sean Sylvia, Ph.D.
 <li class="fragment">Select optimal treatments for individuals</li>
 </ul>
 </div>
+
+
 </section>
-<section id="questions" class="slide level2">
-<h2>Questions?</h2>
-
-
-
-<img data-src="../unit-2/media/questions.png" class="r-stretch"></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

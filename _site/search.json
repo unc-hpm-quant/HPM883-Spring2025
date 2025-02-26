@@ -1721,7 +1721,7 @@
     "href": "unit-2/lec-2-2-slides.html#measuring-spillovers-two-stage-randomization",
     "title": "Unit 2.2: Advanced Randomization Techniques",
     "section": "Measuring Spillovers: Two-Stage Randomization",
-    "text": "Measuring Spillovers: Two-Stage Randomization\n\nTwo-Stage Randomization for Spillovers\nExplain how first randomizing clusters, then individuals within clusters allows for spillover measurement."
+    "text": "Measuring Spillovers: Two-Stage Randomization\n\nFirst stage: Randomize clusters to high or low treatment intensity\nSecond stage: Randomize individuals within clusters to treatment or control\nAllows measurement of:\n\nDirect treatment effects\nWithin-cluster spillovers\nBetween-cluster spillovers\n\nProvides estimates of:\n\nTotal treatment effect (direct + spillover)\nIsolated direct effect\nSpillover effect on untreated individuals"
   },
   {
     "objectID": "unit-2/lec-2-2-slides.html#classical-assignment-mechanisms",
@@ -1735,14 +1735,14 @@
     "href": "unit-2/lec-2-2-slides.html#bernoulli-trials",
     "title": "Unit 2.2: Advanced Randomization Techniques",
     "section": "Bernoulli Trials",
-    "text": "Bernoulli Trials\n\nSimplest approach: independent coin flips\n\\(P(Z_i = 1) = p\\) for all units \\(i\\)\n\n\nAdvantages: * Simple to implement * Can randomize as participants arrive * No baseline data needed\n\n\nDisadvantages: * Random group sizes * Potential imbalance on key covariates * Implementation vulnerability"
+    "text": "Bernoulli Trials\n\nSimplest approach: independent coin flips\n\\(P(Z_i = 1) = p\\) for all units \\(i\\)\n\n\n\n\nAdvantages:\n\nSimple to implement\nCan randomize as participants arrive\nNo baseline data needed\n\n\n\n\nDisadvantages:\n\nRandom group sizes\nPotential imbalance on key covariates\nImplementation vulnerability"
   },
   {
     "objectID": "unit-2/lec-2-2-slides.html#case-study-the-canadian-national-breast-screening-study",
     "href": "unit-2/lec-2-2-slides.html#case-study-the-canadian-national-breast-screening-study",
     "title": "Unit 2.2: Advanced Randomization Techniques",
     "section": "Case Study: The Canadian National Breast Screening Study",
-    "text": "Case Study: The Canadian National Breast Screening Study\n\n\nMajor randomized trial evaluating mammography screening effectiveness\nUsed alternating assignment (first to treatment, second to control)\nDesign flaw: clinical breast exams conducted before randomization\nNurses and physicians could (and did) influence group assignments\n\n\n\nThe randomization process was compromised in several ways"
+    "text": "Case Study: The Canadian National Breast Screening Study\n\n\nMajor randomized trial evaluating mammography screening effectiveness\nUsed alternating assignment (first to treatment, second to control)\nDesign flaw: clinical breast exams conducted before randomization\nNurses and physicians could (and did) influence group assignments"
   },
   {
     "objectID": "unit-2/lec-2-2-slides.html#cnbss-randomization-failures",
@@ -1777,7 +1777,7 @@
     "href": "unit-2/lec-2-2-slides.html#re-randomization",
     "title": "Unit 2.2: Advanced Randomization Techniques",
     "section": "Re-randomization",
-    "text": "Re-randomization\n\n\nGenerate multiple randomizations\nKeep only those with good balance\nApproach 1: All p-values &gt; threshold (e.g., 0.05)\nApproach 2: Choose iteration with best overall balance\n\n\n\nbalance_check &lt;- function(data, treatment_var, balance_vars) {\n  # Initialize minimum p-value\n  min_pval &lt;- 1\n  \n  # Check each covariate\n  for (var in balance_vars) {\n    # T-test for continuous variables\n    t_result &lt;- t.test(data[[var]] ~ data[[treatment_var]])\n    min_pval &lt;- min(min_pval, t_result$p.value)\n  }\n  \n  return(min_pval)\n}\n\n# Re-randomization function\nrerandomize &lt;- function(data, p_threshold = 0.1, max_attempts = 1000) {\n  n &lt;- nrow(data)\n  n_treat &lt;- floor(n * 0.5)  # 50% to treatment\n  attempts &lt;- 0\n  \n  repeat {\n    # Generate a new randomization\n    treatment &lt;- rep(0, n)\n    treatment[sample(1:n, n_treat)] &lt;- 1\n    data$treatment &lt;- treatment\n    \n    # Check balance\n    pval &lt;- balance_check(data, \"treatment\", c(\"age\", \"income\", \"education\"))\n    \n    attempts &lt;- attempts + 1\n    \n    # Accept if p-value threshold met or max attempts reached\n    if (pval &gt; p_threshold || attempts &gt;= max_attempts) {\n      break\n    }\n  }\n  \n  return(list(treatment = data$treatment, attempts = attempts, min_pval = pval))\n}\n\nThis function repeats randomization until finding one where all p-values exceed our threshold."
+    "text": "Re-randomization\n\n\nGenerate multiple randomizations\nKeep only those with good balance\nApproach 1: All p-values &gt; threshold (e.g., 0.05)\nApproach 2: Choose iteration with best overall balance"
   },
   {
     "objectID": "unit-2/lec-2-2-slides.html#drawbacks-of-re-randomization",
@@ -1791,7 +1791,7 @@
     "href": "unit-2/lec-2-2-slides.html#stratified-block-randomization",
     "title": "Unit 2.2: Advanced Randomization Techniques",
     "section": "Stratified (Block) Randomization",
-    "text": "Stratified (Block) Randomization\n\nStratified Randomization\n\nDivide sample into strata based on covariates\nRandomize separately within each stratum\nPerfect balance on stratification variables"
+    "text": "Stratified (Block) Randomization\n\n\n\n\n\nStratified Randomization\n\n\n\n\n\nDivide sample into strata based on covariates\nRandomize separately within each stratum\nPerfect balance on stratification variables"
   },
   {
     "objectID": "unit-2/lec-2-2-slides.html#implementing-stratified-randomization",
@@ -1805,7 +1805,7 @@
     "href": "unit-2/lec-2-2-slides.html#selecting-stratification-variables",
     "title": "Unit 2.2: Advanced Randomization Techniques",
     "section": "Selecting Stratification Variables",
-    "text": "Selecting Stratification Variables\n\n\nDiscrete variables are easier to implement\nPrioritize variables that strongly predict outcomes\nInclude variables where heterogeneous effects are expected\nBe careful of too many strata - causes “small cell” problems\n\n\n\nHandling “misfits” (when strata size not divisible by treatments): * Remove units randomly * Create separate strata for misfits * Use different randomization approach for misfits"
+    "text": "Selecting Stratification Variables\n\n\nDiscrete variables are easier to implement\nPrioritize variables that strongly predict outcomes\nInclude variables where heterogeneous effects are expected\nBe careful of too many strata - causes “small cell” problems\n\n\n\nHandling “misfits” (when strata size not divisible by treatments):\n\nRemove units randomly\nCreate separate strata for misfits\nUse different randomization approach for misfits"
   },
   {
     "objectID": "unit-2/lec-2-2-slides.html#matched-pairs-randomization",
@@ -1833,7 +1833,7 @@
     "href": "unit-2/lec-2-2-slides.html#standardized-differences-for-large-samples",
     "title": "Unit 2.2: Advanced Randomization Techniques",
     "section": "Standardized Differences for Large Samples",
-    "text": "Standardized Differences for Large Samples\n\n\nProblem with p-values: With large samples, tiny imbalances become “significant”\nSolution: Standardized mean difference (SMD)\n\n\n\\[SMD = \\frac{\\bar{X}_{treatment} - \\bar{X}_{control}}{\\sqrt{\\frac{s^2_{treatment} + s^2_{control}}{2}}}\\]\n\n\nScale-free measure of imbalance\nIndependent of sample size\nRule of thumb: |SMD| &lt; 0.1 is negligible imbalance"
+    "text": "Standardized Differences for Large Samples\n\nProblem with p-values: With large samples, tiny imbalances become “significant”\nSolution: Standardized mean difference (SMD)\n\n\\[SMD = \\frac{\\bar{X}_{treatment} - \\bar{X}_{control}}{\\sqrt{\\frac{s^2_{treatment} + s^2_{control}}{2}}}\\]\n\n\nScale-free measure of imbalance\nIndependent of sample size\nRule of thumb: |SMD| &lt; 0.1 is negligible imbalance"
   },
   {
     "objectID": "unit-2/lec-2-2-slides.html#the-table-1-debate",
@@ -1861,14 +1861,14 @@
     "href": "unit-2/lec-2-2-slides.html#factorial-designs-testing-multiple-treatments",
     "title": "Unit 2.2: Advanced Randomization Techniques",
     "section": "Factorial Designs: Testing Multiple Treatments",
-    "text": "Factorial Designs: Testing Multiple Treatments\n\n2×2 Factorial Design\n\nTest multiple treatments simultaneously\nEstimate main effects AND interactions\nEfficient use of resources\nExample: Two interventions with four groups\n\nNo intervention (control)\nIntervention A only\nIntervention B only\nBoth A and B"
+    "text": "Factorial Designs: Testing Multiple Treatments\n\n\n\n\n\nIntervention B\nNo Intervention A\nIntervention A\n\n\n\n\nNo\nControl\nA only\n\n\nYes\nB only\nA and B\n\n\n\n\n\n\nTest multiple treatments simultaneously\nEstimate main effects AND interactions\nEfficient use of resources\nExample: Two interventions with four groups\n\nNo intervention (control)\nIntervention A only\nIntervention B only\nBoth A and B"
   },
   {
     "objectID": "unit-2/lec-2-2-slides.html#randomized-phase-in-designs",
     "href": "unit-2/lec-2-2-slides.html#randomized-phase-in-designs",
     "title": "Unit 2.2: Advanced Randomization Techniques",
     "section": "Randomized Phase-in Designs",
-    "text": "Randomized Phase-in Designs\n\n\nAll units eventually receive treatment\nRandomize the timing of treatment\nAdvantages:\n\nBetter compliance (everyone gets treatment eventually)\nClear for partners with resource constraints\nPolitically appealing compromise\n\n\n\n\nBut watch out for: * Anticipation effects * Limited long-term impact measurement"
+    "text": "Randomized Phase-in Designs\n\n\nAll units eventually receive treatment\nRandomize the timing of treatment\nAdvantages:\n\nBetter compliance (everyone gets treatment eventually)\nClear for partners with resource constraints\nPolitically appealing compromise\n\n\n\n\nBut watch out for:\n\nAnticipation effects\nLimited long-term impact measurement"
   },
   {
     "objectID": "unit-2/lec-2-2-slides.html#adaptive-randomization",
@@ -1889,14 +1889,14 @@
     "href": "unit-2/lec-2-2-slides.html#practical-implementation",
     "title": "Unit 2.2: Advanced Randomization Techniques",
     "section": "Practical Implementation",
-    "text": "Practical Implementation\n\n\nCreate single entry per randomization unit\nSort file in reproducible way\nSet and preserve random seed\nAssign treatments\nSave assignments securely\nTest balance extensively\n\n\n\n# Basic randomization procedure\nset.seed(20250225)  # Always set and record seed\nN &lt;- 1000\ndata &lt;- data.frame(id = 1:N)\ndata$treatment &lt;- sample(c(0,1), N, replace=TRUE, prob=c(0.5,0.5))\ntable(data$treatment)\n\n\n  0   1 \n496 504 \n\n\nAlways document your randomization procedure thoroughly!"
+    "text": "Practical Implementation\n\n\nCreate single entry per randomization unit\nSort file in reproducible way\nSet and preserve random seed\nAssign treatments\nSave assignments securely\nTest balance extensively\n\n\nAlways document your randomization procedure thoroughly!"
   },
   {
     "objectID": "unit-2/lec-2-2-slides.html#ethical-considerations",
     "href": "unit-2/lec-2-2-slides.html#ethical-considerations",
     "title": "Unit 2.2: Advanced Randomization Techniques",
     "section": "Ethical Considerations",
-    "text": "Ethical Considerations\n\n\nLong-term benefits vs. short-term resource distribution\nEquity in who receives potentially beneficial treatments\nTransparency with participants about randomization\nMinimize harm from potentially ineffective interventions\n\n\n\nNo experiment exists in an ethical vacuum!"
+    "text": "Ethical Considerations\n\n\nLong-term benefits vs. short-term resource distribution\nEquity in who receives potentially beneficial treatments\nTransparency with participants about randomization\nMinimize harm from potentially ineffective interventions"
   },
   {
     "objectID": "unit-2/lec-2-2-slides.html#combining-randomization-approaches",
@@ -1938,7 +1938,7 @@
     "href": "unit-2/lec-2-2-slides.html#classical-assignment-mechanisms-framework",
     "title": "Unit 2.2: Advanced Randomization Techniques",
     "section": "Classical Assignment Mechanisms Framework",
-    "text": "Classical Assignment Mechanisms Framework\n\n\n\n\n\nflowchart TD\n    %% Top nodes - conditions\n    A[Non-zero probability condition]:::gold\n    B[Individualism condition]:::gold\n    C[Unconfoundedness condition]:::gold\n    \n    %% Middle node - mechanisms\n    D((Classical Random\\nAssignment\\nMechanisms)):::tarHeelRed\n    \n    %% Assignment types\n    E[Bernoulli Trial]:::carolinaBlue\n    F[Complete Randomized\\nExperiment (CRE)]:::carolinaBlue\n    G[Stratified\\nRandomization]:::carolinaBlue\n    H[Rerandomization]:::carolinaBlue\n    I[Matched Pairs]:::carolinaBlue\n    \n    %% Bottom node - inference\n    J((Design-conscious\\nInference)):::uncGreen\n    \n    %% Connections\n    A --&gt; D\n    B --&gt; D\n    C --&gt; D\n    \n    D --&gt; E\n    D --&gt; F\n    D --&gt; G\n    D --&gt; H\n    D --&gt; I\n    \n    E --&gt; J\n    F --&gt; J\n    G --&gt; J\n    H --&gt; J\n    I --&gt; J\n    \n    %% UNC Brand Colors\n    classDef gold fill:#FFD100,stroke:#13294B,stroke-width:1px,color:#13294B\n    classDef tarHeelRed fill:#DC143C,stroke:#13294B,stroke-width:1px,color:#FFFFFF\n    classDef carolinaBlue fill:#4B9CD3,stroke:#13294B,stroke-width:1px,color:#FFFFFF\n    classDef uncGreen fill:#8DB434,stroke:#13294B,stroke-width:1px,color:#FFFFFF"
+    "text": "Classical Assignment Mechanisms Framework\n\n\n\n\n\nflowchart TD\n    %% Top nodes - conditions\n    A[\"Non-zero probability condition\"]:::gold\n    B[\"Individualism condition\"]:::gold\n    C[\"Unconfoundedness condition\"]:::gold\n    \n    %% Middle node - mechanisms\n    D{{\"Classical Random Assignment Mechanisms\"}}:::tarHeelRed\n    \n    %% Assignment types\n    E[\"Bernoulli Trial\"]:::carolinaBlue\n    F[\"Complete Randomized\\nExperiment (CRE)\"]:::carolinaBlue\n    G[\"Stratified Randomization\"]:::carolinaBlue\n    H[\"Rerandomization\"]:::carolinaBlue\n    I[\"Matched Pairs\"]:::carolinaBlue\n    \n    %% Bottom node - inference\n    J{{\"Design-conscious Inference\"}}:::uncGreen\n    \n    %% Connections\n    A --&gt; D\n    B --&gt; D\n    C --&gt; D\n    \n    D --&gt; E\n    D --&gt; F\n    D --&gt; G\n    D --&gt; H\n    D --&gt; I\n    \n    E --&gt; J\n    F --&gt; J\n    G --&gt; J\n    H --&gt; J\n    I --&gt; J\n    \n    %% UNC Brand Colors\n    classDef gold fill:#FFD100,stroke:#13294B,stroke-width:1px,color:#13294B\n    classDef tarHeelRed fill:#DC143C,stroke:#13294B,stroke-width:1px,color:#FFFFFF\n    classDef carolinaBlue fill:#4B9CD3,stroke:#13294B,stroke-width:1px,color:#FFFFFF\n    classDef uncGreen fill:#8DB434,stroke:#13294B,stroke-width:1px,color:#FFFFFF"
   },
   {
     "objectID": "unit-2/lec-2-2-slides.html#cluster-randomization",
@@ -1952,6 +1952,20 @@
     "href": "unit-2/lec-2-2-slides.html#random-sampling-vs.-random-assignment",
     "title": "Unit 2.2: Advanced Randomization Techniques",
     "section": "Random Sampling vs. Random Assignment",
-    "text": "Random Sampling vs. Random Assignment\n\n\n\n\n\nflowchart TD\n    %% Nodes\n    A[Target Population]:::carolina_blue\n    B[Random Sampling]:::navy\n    C[Evaluation Sample]:::carolina_blue\n    D[Not in Evaluation]:::carolina_blue\n    E[Random Assignment]:::navy\n    F[Treatment Group]:::carolina_blue\n    G[Control Group]:::carolina_blue\n    \n    %% External and internal validity labels\n    EV[external validity]:::label\n    IV[internal validity]:::label\n    \n    %% Connections\n    A --&gt; B\n    B --&gt; C\n    B --&gt; D\n    C --&gt; E\n    E --&gt; F\n    E --&gt; G\n    \n    %% Arrows pointing to validity concepts\n    B -.-&gt; EV\n    E -.-&gt; IV\n    \n    %% Styling\n    classDef carolina_blue fill:#4B9CD3,stroke:#13294B,stroke-width:2px,color:#FFFFFF,font-size:14px\n    classDef navy fill:#13294B,stroke:#4B9CD3,stroke-width:2px,color:#FFFFFF,font-size:14px\n    classDef label fill:none,stroke:none,color:#4B9CD3,font-size:16px\n    \n    %% Make Random Sampling box dashed\n    style B stroke-dasharray: 5 5"
+    "text": "Random Sampling vs. Random Assignment\n\nRandom Sampling vs. Random Assignment"
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#re-randomization-code",
+    "href": "unit-2/lec-2-2-slides.html#re-randomization-code",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Re-randomization Code",
+    "text": "Re-randomization Code\n\nbalance_check &lt;- function(data, treatment_var, balance_vars) {\n  # Initialize minimum p-value\n  min_pval &lt;- 1\n  \n  # Check each covariate\n  for (var in balance_vars) {\n    # T-test for continuous variables\n    t_result &lt;- t.test(data[[var]] ~ data[[treatment_var]])\n    min_pval &lt;- min(min_pval, t_result$p.value)\n  }\n  \n  return(min_pval)\n}\n\n# Re-randomization function\nrerandomize &lt;- function(data, p_threshold = 0.1, max_attempts = 1000) {\n  n &lt;- nrow(data)\n  n_treat &lt;- floor(n * 0.5)  # 50% to treatment\n  attempts &lt;- 0\n  \n  repeat {\n    # Generate a new randomization\n    treatment &lt;- rep(0, n)\n    treatment[sample(1:n, n_treat)] &lt;- 1\n    data$treatment &lt;- treatment\n    \n    # Check balance\n    pval &lt;- balance_check(data, \"treatment\", c(\"age\", \"income\", \"education\"))\n    \n    attempts &lt;- attempts + 1\n    \n    # Accept if p-value threshold met or max attempts reached\n    if (pval &gt; p_threshold || attempts &gt;= max_attempts) {\n      break\n    }\n  }\n  \n  return(list(treatment = data$treatment, attempts = attempts, min_pval = pval))\n}\n\nThis function repeats randomization until finding one where all p-values exceed our threshold."
+  },
+  {
+    "objectID": "unit-2/lec-2-2-slides.html#coming-up-machine-learning-for-causal-inference",
+    "href": "unit-2/lec-2-2-slides.html#coming-up-machine-learning-for-causal-inference",
+    "title": "Unit 2.2: Advanced Randomization Techniques",
+    "section": "Coming Up: Machine Learning for Causal Inference",
+    "text": "Coming Up: Machine Learning for Causal Inference\nWe’ll explore how modern prediction algorithms can enhance our ability to:\n\n\nEstimate average treatment effects more precisely\nDiscover heterogeneous treatment effects\nSelect optimal treatments for individuals"
   }
 ]
