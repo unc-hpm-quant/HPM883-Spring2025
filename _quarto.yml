@@ -108,6 +108,8 @@ website:
         contents:
           - href: unit-2/unit-2-design-1.qmd
             text: "Unit 2.0: Optimal Experimental Design"
+          - href: unit-2/unit-2-design-2.qmd
+            text: "How to Randomize"
 
       
 
