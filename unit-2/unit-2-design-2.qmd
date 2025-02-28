@@ -14,10 +14,10 @@ draft: false
 
 ### Class
 
--   [Lecture Notes: Randomization Techniques (Coming Soon)]
+-   \[Lecture Notes: Randomization Techniques (Coming Soon)\]
 
     -   [Lecture Slides](/unit-2/lec-2-2-slides.qmd)
 
 ### Labs
 
--   [Comming Soon]
+-   \[Comming Soon\]

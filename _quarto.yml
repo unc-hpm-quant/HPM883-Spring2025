@@ -111,7 +111,6 @@ website:
           - href: unit-2/unit-2-design-2.qmd
             text: "Unit 2.2: How to Randomize"
 
-      
 
   page-footer:
     right: 'This page is built with [Quarto](https://quarto.org/).'

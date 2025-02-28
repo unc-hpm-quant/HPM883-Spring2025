@@ -1,0 +1,1363 @@
+---
+title: "Unit 2: Design of Experiments"
+Subtitle: "Advanced Randomization Techniques"
+author: "Sean Sylvia, Ph.D."
+date: February 25, 2025
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-fold: true
+    code-tools: true
+execute:
+  echo: true
+  warning: false
+  message: false
+draft: false
+---
+
+## Introduction
+
+Building on our previous discussion of optimal experimental design where we focused on maximizing statistical power under various constraints, today we turn our attention to the art and science of randomization itself. Randomization is the cornerstone of causal inference in experimental research, enabling us to make causal claims by balancing both observable and unobservable characteristics between treatment and control groups. Whereas observational studies must rely on often-questionable assumptions about selection mechanisms, properly randomized experiments provide a foundation for causal inference that is far more credible.
+
+The power of randomization comes from its ability to create groups that are, in expectation, identical on all characteristics—not just those we can observe and measure, but also on unobservable factors that might influence outcomes. This property allows us to attribute any differences in outcomes between treatment and control groups to the treatment itself, rather than to pre-existing differences between groups.
+
+### Theoretical Foundation: Why Randomization Works
+
+Randomization works because it satisfies three essential conditions:
+
+1. **Non-zero probability condition**: Each unit has a positive probability of receiving any treatment assignment.
+2. **Individualism**: The assignment of one unit doesn't depend on the assignments of other units.
+3. **Unconfoundedness**: The treatment assignment is independent of potential outcomes.
+
+When these conditions are met, we can write:
+
+$$E[Y_i(0)|D_i=1] = E[Y_i(0)|D_i=0]$$
+
+This equation states that the expected untreated potential outcome for those in the treatment group equals the expected untreated potential outcome for those in the control group. In other words, the groups are balanced on the counterfactual outcome we never get to observe for the treatment group. This balance on unobservables is the key to establishing causality.
+
+### Elements Needed for Randomization
+
+Before discussing specific randomization methods, let's identify what's generally required to implement randomization:
+
+1. **Sample of units**: The individuals, clusters, or entities to be randomized
+2. **Allocation ratio**: The proportion of units to assign to each treatment condition
+3. **Randomization device**: A physical or computational mechanism to generate random assignments
+4. **Baseline covariates**: (For some approaches) Information on characteristics to balance across groups
+
+### Random Sampling vs. Random Assignment
+
+![Random Sampling vs. Random Assignment](media/SamplingVRandom.png){style="float: right; margin-left: 10px; width: 300px;"}
+
+It's important to distinguish between two distinct concepts that are sometimes confused:
+
+- **Random sampling**: The process of selecting units from a population so that each unit has a known probability of selection
+- **Random assignment**: The process of allocating units to treatment conditions through a random process
+
+Random sampling helps with external validity (generalizability), while random assignment helps with internal validity (causal inference). In many experiments, we don't have a random sample from the population, but we still randomize treatment assignment within our convenience sample.
+
+### Graphical Unit Overview
+
+```{mermaid}
+flowchart TD
+    %% Top nodes - conditions
+    A["Non-zero probability condition"]:::gold
+    B["Individualism condition"]:::gold
+    C["Unconfoundedness condition"]:::gold
+    
+    %% Middle node - mechanisms
+    subgraph D[Classical Random Assignment Mechanisms]
+        F["Bernoulli Trial"]:::carolinaBlue
+        G["Complete Randomized\nExperiment (CRE)"]:::carolinaBlue
+        H["Stratified Randomization"]:::carolinaBlue
+        I["Rerandomization"]:::carolinaBlue
+        J["Matched Pairs"]:::carolinaBlue
+    end
+    subgraph E[Complex Experimental Designs]
+        K["Blocking"]:::carolinaBlue
+        L["Covariate-adaptive Randomization"]:::carolinaBlue
+        M["Minimization"]:::carolinaBlue
+    end
+    
+    %% Bottom node - inference
+    N{{"Design-conscious Inference"}}:::uncGreen
+    
+    %% Connections
+    A --> D
+    B --> D
+    C --> D
+    A --> E
+    B --> E
+    C --> E
+    D --> N
+    E --> N
+
+    %% UNC Brand Colors
+    classDef gold fill:#FFD100,stroke:#13294B,stroke-width:1px,color:#13294B
+    classDef lightGrey fill:#F7F7F7,stroke:#13294B,stroke-width:1px,color:#13294B
+    classDef carolinaBlue fill:#4B9CD3,stroke:#13294B,stroke-width:1px,color:#FFFFFF
+    classDef uncGreen fill:#8DB434,stroke:#13294B,stroke-width:1px,color:#13294B
+    
+    %% Apply lightGrey style to subgraphs
+    style D fill:#F7F7F7,stroke:#13294B,stroke-width:1px,color:#13294B
+    style E fill:#F7F7F7,stroke:#13294B,stroke-width:1px,color:#13294B
+```
+
+### Classical Assignment Mechanisms
+
+There are five primary approaches to random assignment, each with distinct advantages and disadvantages:
+
+1. Bernoulli trials
+2. Complete randomization
+3. Re-randomization
+4. Stratified randomization
+5. Matched-pair designs
+
+Let's examine each approach in detail.
+
+## Bernoulli Trials
+
+Bernoulli trials represent the simplest approach to randomization, where each unit is assigned to treatment independently with a fixed probability. This is conceptually equivalent to flipping a coin for each participant, with heads resulting in treatment assignment and tails resulting in control assignment.
+
+### Implementation
+
+Let's first create a dataset to work with:
+
+```{r}
+# Generate data with 1000 participants
+n <- 1000
+
+# Create baseline covariates
+dt <- data.table(
+  # ID variable
+  id = 1:n,
+  
+  # Covariates that will be used for stratification
+  age = sample(18:80, n, replace = TRUE),                   # Continuous - will create quintiles
+  education = sample(c("None", "Primary", "Secondary", "Higher"), n, replace = TRUE, 
+                    prob = c(0.1, 0.3, 0.4, 0.2)),          # Categorical
+  
+  # Additional covariates not used for stratification
+  female = rbinom(n, 1, 0.55),                              # Binary
+  income = round(rlnorm(n, meanlog = 10, sdlog = 1), 2),    # Continuous, right-skewed
+  rural = rbinom(n, 1, 0.4),                                # Binary
+  chronic_disease = rbinom(n, 1, 0.3),                      # Binary
+  satisfaction = sample(1:5, n, replace = TRUE,             # Ordinal 1-5 scale
+                       prob = c(0.1, 0.2, 0.4, 0.2, 0.1))
+)
+
+# Convert categorical variables to factors for clearer output
+dt[, education := factor(education, levels = c("None", "Primary", "Secondary", "Higher"))]
+
+# View data structure
+print("Data structure:")
+str(dt)
+
+# View the first 10 observations
+head(dt)
+```
+
+```{r}
+# Bernoulli trial example
+set.seed(072311)
+library(data.table)
+N <- 100  # Number of units
+p <- 0.5  # Probability of treatment assignment
+
+# Independent random assignment
+dt <- data.table(id = 1:N)
+dt[, treatment := rbinom(N, 1, p)]
+
+# Check resulting allocation
+dt[, .N, by = treatment]
+```
+
+### Advantages and Disadvantages
+
+**Advantages:**
+- Simple to implement
+- Can randomize as participants arrive (no need to know full sample in advance)
+- No baseline data needed
+
+**Disadvantages:**
+- Random group sizes (can result in imbalanced treatment allocation)
+- Potential imbalance on key covariates
+- Vulnerable to implementation problems
+
+### Case Study: The Canadian National Breast Screening Study
+
+The Canadian National Breast Screening Study (CNBSS) provides a cautionary tale about vulnerabilities in Bernoulli-type randomization. This major randomized trial evaluated the effectiveness of mammography screening for breast cancer in the 1980s.
+
+The study used a variant of simple alternating assignment—assigning the first woman to treatment, the second to control, and so on. However, several critical flaws emerged:
+
+1. **Pre-randomization examination**: Women received clinical breast exams before randomization, providing information that could influence assignment
+2. **Knowledge of the assignment schedule**: Staff knew that assignments alternated, creating opportunities for manipulation
+3. **Inadequate concealment**: Study coordinators could see which group the next woman would be assigned to
+4. **Evidence of manipulation**: Later audits found names overwritten, identities reversed, and lines skipped in assignment ledgers
+
+The consequences were severe: women with palpable lumps were disproportionately assigned to the mammography group, creating a significant selection bias. The mammography group had a 68% higher incidence of advanced cancers at baseline! This likely masked any potential benefits of screening, as the study ultimately reported no mortality benefit from mammography.^[References: ]
+
+This case highlights how vulnerable simple randomization schemes can be to manipulation, especially when those implementing the study have preferences about treatment assignment or when the randomization process is transparent and predictable. Note that there is nothing wrong with Bernoulli trials, but you should carefully consider how to impelment randomization to preserve the integrity of the randomization process. Especially when working with partner organizations (which we do all the time in health services research), one needs to work with these partners to devise a randomization protocol that fits their existing workflow but protects the randomization process.
+
+## Complete Randomization
+
+Complete randomization addresses some of the limitations of Bernoulli trials by fixing the number of units assigned to each treatment condition, ensuring the desired allocation ratio is achieved exactly.
+
+### Implementation
+
+```{r}
+set.seed(072311)  # Set seed for reproducibility
+library(data.table)
+
+# Parameters
+N <- 100          # Total number of units
+p <- 0.5          # Proportion to assign to treatment
+
+# Generate random numbers and create data.table
+dt <- data.table(
+  id = 1:N,
+  random_num = runif(N)
+)
+
+# Sort by random number
+setorder(dt, random_num)
+
+# Assign first p% to treatment
+dt[, treatment := 0]
+dt[1:(N*p), treatment := 1]
+
+# Check resulting allocation
+dt[, .N, by = treatment]
+```
+
+In complete randomization, we first determine exactly how many units will receive each treatment. Then we generate a random ordering of all units and assign the first $N_p$ units to treatment and the remaining $N_0$ units to control.
+
+### Advantages and Disadvantages
+
+**Advantages:**
+- Guarantees exactly the desired allocation ratio
+- Avoids power loss from uneven group sizes
+- Still relatively simple to implement
+
+**Disadvantages:**
+- Requires knowing the full sample in advance
+- Still subject to chance imbalance on covariates
+
+### Chance Imbalance in Complete Randomization
+
+Even with perfect implementation of complete randomization, covariates may still be imbalanced by chance. In a simulation study using data from the National Longitudinal Survey of Youth (NLSY) with 722 subjects:[^1]
+
+- ~45% of randomizations had all covariates balanced
+- ~30% had one imbalanced covariate
+- The remaining had multiple imbalanced covariates
+
+This raises two critical questions:
+1. How can we ensure better balance in the design phase?
+2. What should we do if imbalance occurs after randomization?
+
+**Our next three approaches address the first question by improving balance through more sophisticated randomization techniques.**
+
+## Re-randomization
+
+Re-randomization attempts to improve covariate balance by generating multiple possible randomizations and selecting one with good balance.
+
+### Implementation
+
+```{r}
+set.seed(072311)  # Set seed for reproducibility
+library(data.table)
+
+# Simulate data
+dt <- data.table(
+  id = 1:100,
+  age = rnorm(100, mean = 40, sd = 10),
+  income = rgamma(100, shape = 3, rate = 0.15),
+  education = sample(1:4, 100, replace = TRUE)
+)
+
+# Function to test individual balance
+test_individual_balance <- function(dt) {
+  covariates <- c("age", "income", "education")
+  results <- data.table(
+    covariate = character(),
+    t_stat = numeric(),
+    p_value = numeric()
+  )
+  
+  for (cov in covariates) {
+    if (is.numeric(dt[[cov]])) {
+      # For continuous variables, use t-test
+      t_result <- t.test(dt[[cov]] ~ dt$treatment)
+      results <- rbindlist(list(results, data.table(
+        covariate = cov,
+        t_stat = as.numeric(t_result$statistic),
+        p_value = t_result$p.value
+      )))
+    } else {
+      # For categorical variables, use chi-square test
+      tbl <- table(dt[[cov]], dt$treatment)
+      chi_result <- chisq.test(tbl)
+      results <- rbindlist(list(results, data.table(
+        covariate = cov,
+        t_stat = as.numeric(chi_result$statistic),
+        p_value = chi_result$p.value
+      )))
+    }
+  }
+  
+  return(results)
+}
+
+# Re-randomization function
+rerandomize <- function(dt, p_threshold = 0.1, max_attempts = 1000) {
+  n <- nrow(dt)
+  n_treat <- floor(n * 0.5)  # 50% to treatment
+  attempts <- 0
+  
+  repeat {
+    # Generate a new randomization
+    dt[, treatment := 0]
+    dt[sample(1:n, n_treat), treatment := 1]
+    
+    # Check balance
+    pval <- test_individual_balance(dt)$p_value
+    
+    attempts <- attempts + 1
+    
+    # Accept if p-value threshold met or max attempts reached
+    if (min(pval) > p_threshold || attempts >= max_attempts) {
+      break
+    }
+  }
+  
+  return(list(treatment = dt$treatment, attempts = attempts, min_pval = min(pval)))
+}
+
+# Re-randomize
+res <- rerandomize(dt)
+
+# Check resulting allocation
+dt[, .N, by = treatment]
+
+# Check balance
+test_individual_balance(dt)
+
+```
+
+There are two common approaches to re-randomization:
+
+1. **Threshold approach**: Generate randomizations until all p-values for covariate balance exceed a threshold (e.g., p > 0.10)
+2. **Optimization approach**: Generate a large number of randomizations (e.g., 1,000) and select the one with the best overall balance
+
+### Drawbacks of Re-randomization
+
+While re-randomization can improve balance, it has several limitations:
+
+- **Opaque constraints**: The process creates a "black box" where it's unclear what constraints are being imposed
+- **Unusual handling of outliers**: Extreme values may force unusual allocation patterns
+- **Computational cost**: May require many iterations, especially with multiple covariates
+- **Potential futility**: If criteria are too strict, acceptable randomizations may be extremely rare
+- **Statistical inference complications**: Standard methods don't account for the re-randomization process
+- **Limited scope**: Still cannot balance on unobserved covariates
+
+## Stratified (Block) Randomization
+
+Stratified randomization (also called block randomization) directly addresses the balance issue by dividing the sample into strata based on covariates and randomizing separately within each stratum.
+
+In this approach, we first create strata based on combinations of important covariates, then randomize separately within each stratum. This guarantees perfect balance on the stratification variables.
+
+### Selecting Stratification Variables
+
+Not all covariates are equally important for stratification. Consider these guidelines:
+
+- **Discrete variables** are easier to implement than continuous ones
+- Prioritize variables that **strongly predict outcomes** (baseline values of the outcome variable are especially important)
+- Include variables where **heterogeneous effects** are expected (facilitates subgroup analysis)
+- Be careful about creating **too many strata**, which can lead to "small cell" problems
+
+### Handling "Misfits"
+
+A practical challenge in stratified randomization occurs when strata sizes are not divisible by the number of treatment conditions (e.g., three people in a stratum with two treatment conditions). Options for these "misfits" include:
+
+- Remove units randomly to create divisible strata
+- Create a separate stratum for misfits
+- Use a different randomization approach for misfits
+
+### Implementation
+
+```{r}
+library(data.table)
+library(fixest)
+
+set.seed(072111)  # For reproducibility
+
+# -----------------------------------------------
+# 1. Create fake dataset 
+# -----------------------------------------------
+
+# Generate data with 1000 participants
+n <- 1000
+
+# Create baseline covariates
+dt <- data.table(
+  # ID variable
+  id = 1:n,
+  
+  # Covariates that will be used for stratification
+  age = sample(18:80, n, replace = TRUE),                   # Continuous - will create quintiles
+  education = sample(c("None", "Primary", "Secondary", "Higher"), n, replace = TRUE, 
+                    prob = c(0.1, 0.3, 0.4, 0.2)),          # Categorical
+  
+  # Additional covariates not used for stratification
+  female = rbinom(n, 1, 0.55),                              # Binary
+  income = round(rlnorm(n, meanlog = 10, sdlog = 1), 2),    # Continuous, right-skewed
+  rural = rbinom(n, 1, 0.4),                                # Binary
+  chronic_disease = rbinom(n, 1, 0.3),                      # Binary
+  satisfaction = sample(1:5, n, replace = TRUE,             # Ordinal 1-5 scale
+                       prob = c(0.1, 0.2, 0.4, 0.2, 0.1))
+)
+
+# Convert categorical variables to factors for clearer output
+dt[, education := factor(education, levels = c("None", "Primary", "Secondary", "Higher"))]
+
+# View data structure
+print("Data structure:")
+str(dt)
+```
+
+
+```{r}
+# -----------------------------------------------
+# 2. Create strata for randomization
+# -----------------------------------------------
+
+# Create age quintiles
+dt[, age_quintile := cut(age, 
+                         breaks = quantile(age, probs = seq(0, 1, 0.2), na.rm = TRUE), 
+                         labels = 1:5, 
+                         include.lowest = TRUE)]
+
+# Create strata ID by combining education and age quintile
+dt[, strata := .GRP, by = .(education, age_quintile)]
+
+# Print strata information
+print("Strata information:")
+dt[, .(count = .N), by = .(education, age_quintile, strata)][order(strata)]
+```
+
+```{r}
+# -----------------------------------------------
+# 3. Implement simple randomization and stratified randomization
+# -----------------------------------------------
+
+# Make copies of the data for each randomization method
+dt_simple <- copy(dt)
+dt_strat <- copy(dt)
+
+# Simple randomization (50% treatment)
+dt_simple[, treatment := rbinom(.N, 1, 0.5)]
+
+# Stratified randomization (50% treatment within each stratum)
+dt_strat[, treatment := rbinom(.N, 1, 0.5), by = strata]
+
+# Print treatment assignment by strata for stratified randomization
+print("Treatment assignment by strata in stratified randomization:")
+dt_strat[, .(N = .N, 
+             n_treated = sum(treatment), 
+             pct_treated = mean(treatment)*100), 
+         by = strata][order(strata)]
+```
+
+
+## Matched Pairs Randomization
+
+Matched pairs randomization represents the extreme case of stratification, where each stratum contains exactly two similar units, and one is randomly assigned to treatment and one to control.
+
+In this approach, we first create pairs of similar units based on a distance metric, then randomly assign one member of each pair to treatment and the other to control. This guarantees excellent balance on the matching variables.
+
+## Implementation
+
+```{r}
+# -----------------------------------------------
+# 4. Implement matched pairs
+# -----------------------------------------------
+
+dt_matched <- copy(dt)
+
+# 1. Create similarity scores for matching based on important covariates
+dt_matched[, similarity_score := scale(age) + as.numeric(education) + scale(income) + female + rural]
+
+# 2. Sort by similarity score
+setorder(dt_matched, similarity_score)
+
+# 3. Create pairs of adjacent observations (most similar units)
+dt_matched[, pair_id := ceiling(.I/2)]
+
+# 4. Randomly assign one unit in each pair to treatment
+dt_matched[, treatment := 0]  # Initialize all to control
+for (pair in unique(dt_matched$pair_id)) {
+  # Get the two units in the pair
+  pair_units <- dt_matched[pair_id == pair, id]
+  # Randomly select one for treatment
+  treated_unit <- sample(pair_units, 1)
+  # Assign treatment
+  dt_matched[id == treated_unit, treatment := 1]
+}
+
+# Print treatment assignment by pair for matched randomization (first 10 pairs)
+print("Treatment assignment in matched randomization (first 10 pairs):")
+dt_matched[pair_id <= 10, .(id, pair_id, treatment, age, education, income, female, rural)]
+
+```
+
+
+### Advantages and Limitations
+
+**Advantages:**
+- Achieves excellent balance on matching variables
+- Works well with continuous covariates
+- Reduces variance in treatment effect estimates
+
+**Limitations:**
+- Finding good matches becomes difficult with many covariates
+- May discard units that can't be well-matched
+- Requires all baseline data before randomization
+- Analysis must account for pairing structure
+
+## Verifying Balance: Approaches and Best Practices
+
+After randomization, it's crucial to verify that balance was achieved. Several approaches exist:
+
+### Individual Covariate Tests
+
+The most common approach is to test each covariate separately:
+- t-tests for continuous variables
+- Chi-square tests for categorical variables
+
+Let's demonstrate this with data from the stratified randomization example.
+
+```{r}
+# List of all baseline covariates to test
+baseline_vars <- c("age", "education", "female", "income", "rural", "chronic_disease", "satisfaction")
+
+# Function to perform t-tests and create a formatted results table
+run_ttests <- function(dt, title) {
+  results <- data.table(
+    variable = character(),
+    method = character(),
+    mean_control = numeric(),
+    mean_treated = numeric(),
+    diff = numeric(),
+    p_value = numeric(),
+    significant = character()
+  )
+  
+  for (var in baseline_vars) {
+    # For categorical variables (factor), we need to handle differently
+    if (is.factor(dt[[var]])) {
+      # For each level of the factor
+      for (level in levels(dt[[var]])) {
+        # Create temporary binary indicator
+        dt[, temp := as.numeric(get(var) == level)]
+        
+        # Calculate means
+        mean_control <- dt[treatment == 0, mean(temp)]
+        mean_treated <- dt[treatment == 1, mean(temp)]
+        
+        # Run t-test
+        t_result <- t.test(dt[treatment == 1, temp], 
+                           dt[treatment == 0, temp])
+        
+        # Add to results
+        results <- rbind(results, data.table(
+          variable = paste0(var, ": ", level),
+          method = title,
+          mean_control = mean_control,
+          mean_treated = mean_treated,
+          diff = mean_treated - mean_control,
+          p_value = t_result$p.value,
+          significant = ifelse(t_result$p.value < 0.05, "*", "")
+        ))
+        
+        # Remove temporary variable
+        dt[, temp := NULL]
+      }
+    } else {
+      # For continuous and binary variables
+      mean_control <- dt[treatment == 0, mean(get(var), na.rm = TRUE)]
+      mean_treated <- dt[treatment == 1, mean(get(var), na.rm = TRUE)]
+      
+      # Run t-test
+      t_result <- t.test(
+        dt[treatment == 1, get(var)], 
+        dt[treatment == 0, get(var)]
+      )
+      
+      # Add to results
+      results <- rbind(results, data.table(
+        variable = var,
+        method = title,
+        mean_control = mean_control,
+        mean_treated = mean_treated,
+        diff = mean_treated - mean_control,
+        p_value = t_result$p.value,
+        significant = ifelse(t_result$p.value < 0.05, "*", "")
+      ))
+    }
+  }
+  
+  return(results)
+}
+
+# Run t-tests for both randomization methods
+ttest_simple <- run_ttests(dt_simple, "Simple - t-test")
+ttest_strat <- run_ttests(dt_strat, "Stratified - t-test")
+ttest_matched <- run_ttests(dt_matched, "Matched Pairs - t-test")
+```
+
+### Joint Omnibus Tests
+
+F-tests can test multiple covariates simultaneously, reducing the multiple testing problem.
+
+```{r}
+# List of all baseline covariates to test
+baseline_vars <- c("age", "education", "female", "income", "rural", "chronic_disease", "satisfaction")
+
+# Function to perform F-test
+joint_balance_test <- function(dt) {
+  # Regress treatment on covariates
+  model <- lm(treatment ~ age + income + female + education + chronic_disease, 
+              data = dt)
+  
+  # Extract F-statistic and p-value for joint significance
+  f_test <- summary(model)$fstatistic
+  f_value <- f_test[1]
+  df1 <- f_test[2]
+  df2 <- f_test[3]
+  p_value <- pf(f_value, df1, df2, lower.tail = FALSE)
+  
+  result <- data.table(
+    f_value = f_value,
+    df1 = df1,
+    df2 = df2,
+    p_value = p_value
+  )
+  
+  return(result)
+}
+
+# Run joint test
+joint_test <- joint_balance_test(dt_strat)
+cat("Joint balance test (F-test):\n")
+cat("F(", joint_test$df1, ",", joint_test$df2, ") = ", 
+    round(joint_test$f_value, 2), ", p = ", round(joint_test$p_value, 4), "\n", sep="")
+
+```
+
+### Regression-Based Tests
+
+Regress treatment assignment on each covariate; if randomization worked, coefficients should be insignificant.
+
+Again, we'll use the data created for the stratified randomization example. First, let's look at this approach not controlling for strata fixed effects:
+
+```{r}
+# Function to perform OLS regressions without strata fixed effects
+run_ols_no_strata <- function(dt, title) {
+  results <- data.table(
+    variable = character(),
+    method = character(),
+    coefficient = numeric(),
+    std_error = numeric(),
+    p_value = numeric(),
+    significant = character()
+  )
+  
+  for (var in baseline_vars) {
+    # Handle factor variables
+    if (is.factor(dt[[var]])) {
+      # Create one-hot encoding
+      for (level in levels(dt[[var]])[2:length(levels(dt[[var]]))]) {  # Skip first level (reference)
+        dt[, temp := as.numeric(get(var) == level)]
+        
+        # Run regression
+        reg <- feols(temp ~ treatment, data = dt)
+        
+        # Add to results
+        results <- rbind(results, data.table(
+          variable = paste0(var, ": ", level, " vs ", levels(dt[[var]])[1]),
+          method = title,
+          coefficient = coef(reg)["treatment"],
+          std_error = se(reg)["treatment"],
+          p_value = pvalue(reg)["treatment"],
+          significant = ifelse(pvalue(reg)["treatment"] < 0.05, "*", "")
+        ))
+        
+        # Remove temporary variable
+        dt[, temp := NULL]
+      }
+    } else {
+      # For continuous and binary variables
+      formula_str <- paste0(var, " ~ treatment")
+      reg <- feols(as.formula(formula_str), data = dt)
+      
+      # Add to results
+      results <- rbind(results, data.table(
+        variable = var,
+        method = title,
+        coefficient = coef(reg)["treatment"],
+        std_error = se(reg)["treatment"],
+        p_value = pvalue(reg)["treatment"],
+        significant = ifelse(pvalue(reg)["treatment"] < 0.05, "*", "")
+      ))
+    }
+  }
+  
+  return(results)
+}
+
+# Run OLS without strata for both randomization methods
+ols_simple <- run_ols_no_strata(dt_simple, "Simple - OLS")
+ols_strat <- run_ols_no_strata(dt_strat, "Stratified - OLS")
+ols_matched <- run_ols_no_strata(dt_matched, "Matched Pairs - OLS")
+
+# Display results
+print(ols_simple)
+print(ols_strat)
+print(ols_matched)
+```
+
+
+### Standardized Differences
+
+For large samples, p-values become less informative as tiny imbalances become statistically significant. Standardized mean differences (SMDs) provide a sample size-independent measure:
+
+$$SMD = \frac{\bar{X}_{treatment} - \bar{X}_{control}}{\sqrt{\frac{s^2_{treatment} + s^2_{control}}{2}}}$$
+
+A common rule of thumb is that an absolute SMD less than 0.1 indicates negligible imbalance.
+
+```{r}
+# Calculate standardized differences 
+standardized_diff <- function(dt) {
+  covariates <- c("age", "income", "female", "education", "chronic_disease")
+  results <- data.table(
+    covariate = character(),
+    mean_treated = numeric(),
+    mean_control = numeric(),
+    sd_treated = numeric(),
+    sd_control = numeric(),
+    std_diff = numeric(),
+    stringsAsFactors = FALSE
+  )
+  
+  for (cov in covariates) {
+    # Calculate means and SDs by group
+    treated <- dt[treatment == 1, cov]
+    control <- dt[treatment == 0, cov]
+    
+    mean_treated <- mean(treated, na.rm = TRUE)
+    mean_control <- mean(control, na.rm = TRUE)
+    sd_treated <- sd(treated, na.rm = TRUE)
+    sd_control <- sd(control, na.rm = TRUE)
+    
+    # Calculate standardized difference
+    pooled_sd <- sqrt((sd_treated^2 + sd_control^2) / 2)
+    std_diff <- (mean_treated - mean_control) / pooled_sd
+    
+    results <- rbind(results, data.table(
+      covariate = cov,
+      mean_treated = mean_treated,
+      mean_control = mean_control,
+      sd_treated = sd_treated,
+      sd_control = sd_control,
+      std_diff = std_diff
+    ))
+  }
+  
+  return(results)
+}
+
+# Calculate standardized differences
+std_diffs <- standardized_diff(dt)
+print(std_diffs)
+```
+
+### Comprehensive "Table 1"
+
+Now, let's create a comprehensive "Table 1" that integrates all these approaches:
+
+```{r}
+library(knitr)
+library(kableExtra)
+
+# Create a comprehensive Table 1
+create_table1 <- function(dt) {
+  # List of covariates to include
+  covariates <- c("age", "income", "female", "education", "chronic_disease")
+  
+  # Initialize results table
+  table1 <- data.table(
+    Variable = character(),
+    Overall = character(),
+    Treatment = character(),
+    Control = character(),
+    SMD = numeric(),
+    p_value = numeric(),
+    stringsAsFactors = FALSE
+  )
+  
+  # Sample sizes
+  n_total <- nrow(dt)
+  n_treated <- sum(dt$treatment == 1)
+  n_control <- sum(dt$treatment == 0)
+  
+  # Add sample size row
+  table1 <- rbind(table1, data.table(
+    Variable = "N",
+    Overall = as.character(n_total),
+    Treatment = as.character(n_treated),
+    Control = as.character(n_control),
+    SMD = NA,
+    p_value = NA
+  ))
+  
+  # Process each covariate
+  for (cov in covariates) {
+    # Extract variable
+    var <- dt[[cov]]
+    var_treated <- var[dt$treatment == 1]
+    var_control <- var[dt$treatment == 0]
+    
+    # Calculate statistics based on variable type
+    if (is.numeric(var)) {
+      # For continuous variables
+      mean_overall <- mean(var, na.rm = TRUE)
+      sd_overall <- sd(var, na.rm = TRUE)
+      mean_treated <- mean(var_treated, na.rm = TRUE)
+      sd_treated <- sd(var_treated, na.rm = TRUE)
+      mean_control <- mean(var_control, na.rm = TRUE)
+      sd_control <- sd(var_control, na.rm = TRUE)
+      
+      # Format display values
+      overall_val <- sprintf("%.1f (%.1f)", mean_overall, sd_overall)
+      treat_val <- sprintf("%.1f (%.1f)", mean_treated, sd_treated)
+      control_val <- sprintf("%.1f (%.1f)", mean_control, sd_control)
+      
+      # Calculate standardized mean difference
+      pooled_sd <- sqrt((sd_treated^2 + sd_control^2) / 2)
+      smd <- (mean_treated - mean_control) / pooled_sd
+      
+      # T-test for p-value
+      t_result <- t.test(var_treated, var_control)
+      p_val <- t_result$p.value
+    } else {
+      # For categorical variables
+      prop_overall <- mean(var, na.rm = TRUE)
+      prop_treated <- mean(var_treated, na.rm = TRUE)
+      prop_control <- mean(var_control, na.rm = TRUE)
+      
+      # Format display values
+      overall_val <- sprintf("%.1f%%", prop_overall * 100)
+      treat_val <- sprintf("%.1f%%", prop_treated * 100)
+      control_val <- sprintf("%.1f%%", prop_control * 100)
+      
+      # Calculate standardized difference for proportions
+      # Variance for binary is p(1-p)
+      sd_treated <- sqrt(prop_treated * (1 - prop_treated))
+      sd_control <- sqrt(prop_control * (1 - prop_control))
+      pooled_sd <- sqrt((sd_treated^2 + sd_control^2) / 2)
+      smd <- (prop_treated - prop_control) / pooled_sd
+      
+      # Chi-square test for p-value
+      tab <- table(var, dt$treatment)
+      chi_result <- chisq.test(tab)
+      p_val <- chi_result$p.value
+    }
+    
+    # Add row to table
+    table1 <- rbind(table1, data.table(
+      Variable = cov,
+      Overall = overall_val,
+      Treatment = treat_val,
+      Control = control_val,
+      SMD = smd,
+      p_value = p_val
+    ))
+  }
+  
+  # Format p-values
+  table1$p_value <- ifelse(is.na(table1$p_value), "", 
+                          ifelse(table1$p_value < 0.001, "<0.001",
+                                sprintf("%.3f", table1$p_value)))
+  
+  # Format SMDs
+  table1$SMD <- ifelse(is.na(table1$SMD), "", sprintf("%.3f", table1$SMD))
+  
+  return(table1)
+}
+
+# Generate Table 1
+table1_results <- create_table1(dt)
+
+# Display formatted table
+kable(table1_results, 
+      col.names = c("Variable", "Overall (N=500)", "Treatment (N=250)", 
+                   "Control (N=250)", "SMD", "p-value"),
+      align = c("l", "c", "c", "c", "c", "c"),
+      caption = "Table 1: Baseline Characteristics by Treatment Group") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"),
+                full_width = FALSE)
+```
+
+### Interpreting Balance Results
+
+When reviewing balance tables, it's important to consider:
+
+1. **Statistical vs. Practical Significance**: With large samples, even tiny differences can be statistically significant. Focus on the magnitude of differences (SMD) rather than p-values.
+
+2. **Multiple Testing**: With many covariates, expect some to show "significant" differences by chance. This is why joint tests and SMDs are often more informative.
+
+3. **Key Predictors**: Pay special attention to covariates that strongly predict outcomes. Imbalance on these variables is more concerning.
+
+4. **Visual Inspection**: Sometimes graphical displays of covariate distributions can complement statistical tests. Consider density plots or boxplots comparing treatment and control.
+
+5. **Overall Assessment**: Look at the pattern of results rather than focusing on any single test. If multiple measures suggest imbalance on important predictors, consider covariate adjustment in analysis.
+
+Let's create a visual assessment of balance as well:
+
+```{r}
+library(ggplot2)
+library(gridExtra)
+
+# Create balance visualization
+plot_balance <- function(dt, continuous_vars) {
+  plots <- list()
+  
+  for (var in continuous_vars) {
+    p <- ggplot(dt, aes_string(x = var, fill = "factor(treatment)")) +
+      geom_density(alpha = 0.5) +
+      scale_fill_manual(values = c("blue", "red"), 
+                       labels = c("Control", "Treatment"),
+                       name = "Group") +
+      theme_minimal() +
+      labs(title = var)
+    
+    plots[[var]] <- p
+  }
+  
+  # Arrange plots in a grid
+  grid.arrange(grobs = plots, ncol = 2)
+}
+
+# Plot densities for continuous variables
+plot_balance(dt, c("age", "income"))
+```
+
+This combination of numerical metrics and visual displays provides a comprehensive assessment of balance, allowing researchers to make informed decisions about the adequacy of their randomization and whether covariate adjustment is needed in analysis.
+
+## Design-Based Inference
+
+The randomization approach directly impacts how statistical inference should be conducted. In a design-based framework:
+
+- Fisher's approach tests the sharp null hypothesis that treatment has no effect on any unit
+- The randomization distribution is generated by calculating test statistics under all possible randomizations
+- Permutation tests compare the observed statistic to this randomization distribution
+
+This approach properly accounts for the actual randomization procedure used, rather than relying on asymptotic approximations.
+
+## Complex Experimental Designs
+
+Beyond the basic approaches, several complex randomization designs address specific research challenges:
+
+### Units of Randomization & Spillovers
+
+A critical decision is choosing what entity to randomize:
+
+**Key considerations:**
+- Match observational unit when possible
+- Align with treatment delivery
+- Minimize spillovers
+- Consider statistical power
+
+**Common units:**
+- **Individual**: Patients, students
+- **Cluster**: Villages, clinics, schools  
+- **Time periods**: Days, weeks, shifts
+- **Networks**: Households, peer groups
+
+The tradeoff is often between statistical power (favoring individual randomization) and internal validity (which may require cluster randomization to minimize spillovers).
+
+### The Spillover Problem
+
+Spillovers occur when treatment affects untreated units, through:
+- Direct interaction between units
+- General equilibrium effects
+- Information diffusion
+- Resource competition
+
+When spillovers are a concern, randomization at a higher level (clustering) can help minimize unwanted contamination. Alternatively, a two-stage randomization design can help measure spillover effects explicitly.
+
+### Two-Stage Randomization for Measuring Spillovers
+
+This approach:
+1. First randomizes clusters to high or low treatment intensity
+2. Then randomizes individuals within clusters to treatment or control
+
+This design allows measurement of:
+- Direct treatment effects
+- Within-cluster spillovers
+- Between-cluster spillovers
+
+### Cluster Randomization
+
+Cluster randomization assigns groups rather than individuals to treatment conditions:
+
+**Examples of clusters:**
+- Schools
+- Clinics
+- Villages
+- Neighborhoods
+
+The key parameter affecting statistical power is the intraclass correlation coefficient (ICC), which measures how correlated outcomes are within clusters. The design effect formula shows how clustering reduces effective sample size:
+
+$$DE = 1 + (m-1) \times ICC$$
+
+where $m$ is the average cluster size. A larger design effect means a larger required sample size to achieve the same power.
+
+Analysis must account for clustering through:
+- Cluster-robust standard errors
+- Mixed-effects models
+- Generalized estimating equations (GEE)
+
+### Factorial Designs: Testing Multiple Treatments
+
+Factorial designs test multiple interventions simultaneously:
+
+| Intervention B | No Intervention A | Intervention A |
+|----------------|-------------------|----------------|
+| **No**         | Control           | A only         |
+| **Yes**        | B only            | A and B        |
+
+This approach:
+- Tests multiple treatments simultaneously
+- Estimates main effects AND interactions
+- Uses resources efficiently
+
+For example, with two interventions (A and B), we have four groups:
+- No intervention (control)
+- Intervention A only
+- Intervention B only
+- Both A and B
+
+Factorial designs are particularly valuable when:
+1. You want to test combinations of interventions
+2. You suspect treatments might interact (enhance or interfere with each other)
+3. You need to maximize efficiency with limited resources
+
+Here's how we might implement a 2×2 factorial design in R:
+
+```{r}
+library(data.table)
+set.seed(072311)
+n <- 200  # Total sample size
+
+# Create data table
+dt <- data.table(id = 1:n)
+
+# First randomization for factor A
+dt[, A := c(rep(1, n/2), rep(0, n/2))[sample(1:n)]]
+
+# Second randomization for factor B
+dt[, B := c(rep(1, n/2), rep(0, n/2))[sample(1:n)]]
+
+# Create combined treatment variable
+dt[, treatment := paste0("A", A, "B", B)]
+
+# Check allocation
+dt[, .N, by = treatment]
+```
+
+### Randomized Phase-in Designs
+
+In randomized phase-in designs, all units eventually receive treatment, but the timing of treatment is randomized. This approach:
+
+**Advantages:**
+- Improves compliance since everyone gets treatment eventually
+- Works well with resource constraints
+- Offers a politically appealing compromise
+
+**Limitations:**
+- May create anticipation effects
+- Limits long-term impact measurement
+- Eventually loses the control group
+
+Here's a simple implementation of a three-phase randomized rollout:
+
+```{r}
+set.seed(072311)
+n <- 300  # Total sample size
+
+# Create data frame
+data <- data.frame(id = 1:n)
+
+# Assign equal numbers to three phases
+data$phase <- sample(rep(1:3, each = n/3))
+
+# Check distribution across phases
+table(data$phase)
+```
+
+In this design, units in phase 1 receive treatment immediately, phase 2 after some delay, and phase 3 after a further delay. This allows for causal comparisons between groups at various time points while ensuring all participants eventually receive the intervention.
+
+### Adaptive Randomization
+
+Adaptive designs update assignment probabilities based on accumulated data, balancing:
+- **Exploration**: Learning which treatment works best
+- **Exploitation**: Assigning more units to better treatments
+
+The key ethical advantage is that fewer participants receive inferior treatments as evidence accumulates. We'll cover adaptive designs in more detail in a future lecture.
+
+A simple example of response-adaptive randomization might look like this:
+
+```{r}
+#| eval: false
+# Simplified response-adaptive randomization simulation
+simulate_adaptive_randomization <- function(n_total = 100, 
+                                          true_success_A = 0.3, 
+                                          true_success_B = 0.5) {
+  # Initialize data storage
+  results <- data.frame(
+    id = 1:n_total,
+    treatment = NA,
+    outcome = NA
+  )
+  
+  # Initial equal assignment probabilities
+  prob_A <- 0.5
+  
+  # Track successes and failures
+  success_A <- 0
+  total_A <- 0
+  success_B <- 0
+  total_B <- 0
+  
+  # Simulate sequential enrollment
+  for (i in 1:n_total) {
+    # Assign treatment based on current probability
+    treatment <- sample(c("A", "B"), 1, prob = c(prob_A, 1-prob_A))
+    results$treatment[i] <- treatment
+    
+    # Generate outcome based on true success rates
+    if (treatment == "A") {
+      outcome <- rbinom(1, 1, true_success_A)
+      success_A <- success_A + outcome
+      total_A <- total_A + 1
+    } else {
+      outcome <- rbinom(1, 1, true_success_B)
+      success_B <- success_B + outcome
+      total_B <- total_B + 1
+    }
+    results$outcome[i] <- outcome
+    
+    # Update probability for next assignment using Beta prior
+    if (i < n_total) {  # No need to update after last patient
+      # Beta-Bernoulli update (adding 1 for prior)
+      prob_A <- rbeta(1, success_A + 1, total_A - success_A + 1) /
+               (rbeta(1, success_A + 1, total_A - success_A + 1) + 
+                rbeta(1, success_B + 1, total_B - success_B + 1))
+    }
+  }
+  
+  return(results)
+}
+```
+
+## Practical Implementation Tips
+
+Regardless of which randomization approach you choose, follow these best practices:
+
+1. Create a single entry per randomization unit
+2. Sort the file in a reproducible way
+3. Set and preserve a random seed
+4. Assign treatments
+5. Save assignments securely
+6. Test balance extensively
+
+Always document your randomization procedure thoroughly to enhance transparency and reproducibility.
+
+Below is a template for implementing and documenting randomization:
+
+```{r}
+#| eval: false
+# Randomization implementation template
+
+# 1. Document parameters
+study_name <- "My Clinical Trial"
+randomization_date <- "2025-02-25"
+randomization_conducted_by <- "J. Smith"
+random_seed <- 072311  # Document why this seed was chosen
+allocation_ratio <- 0.5  # Equal allocation
+stratification_variables <- c("site", "gender")
+
+# 2. Set up reproducible environment
+set.seed(random_seed)
+library(tidyverse)
+
+# 3. Load and prepare data
+data <- read.csv("participant_data.csv")
+
+# 4. Implement randomization
+# Example: stratified randomization
+data <- data %>%
+  group_by(across(all_of(stratification_variables))) %>%
+  mutate(
+    stratum_id = cur_group_id(),
+    random_number = runif(n()),
+    treatment = if_else(
+      rank(random_number) <= ceiling(n() * allocation_ratio), 
+      1, 0
+    )
+  ) %>%
+  ungroup()
+
+# 5. Check balance
+balance_table <- data %>%
+  group_by(treatment) %>%
+  summarize(
+    n = n(),
+    across(
+      c("age", "education", "baseline_score"),
+      list(mean = mean, sd = sd), 
+      .names = "{.col}_{.fn}"
+    )
+  )
+
+# 6. Save results securely
+# a) Save randomization details
+randomization_log <- data.frame(
+  study_name = study_name,
+  date = randomization_date,
+  conducted_by = randomization_conducted_by,
+  seed = random_seed,
+  method = "stratified",
+  stratification_variables = paste(stratification_variables, collapse = ", ")
+)
+write.csv(randomization_log, "randomization_log.csv", row.names = FALSE)
+
+# b) Save assignment data
+write.csv(
+  data %>% select(id, treatment, stratum_id), 
+  "treatment_assignments.csv", 
+  row.names = FALSE
+)
+
+# c) Save balance checks
+write.csv(balance_table, "balance_checks.csv", row.names = FALSE)
+```
+
+## Ethical Considerations in Randomization
+
+Randomization raises several ethical considerations:
+
+- **Long-term benefits** vs. short-term resource distribution
+- **Equity** in who receives potentially beneficial treatments
+- **Transparency** with participants about randomization
+- **Minimizing harm** from potentially ineffective interventions
+
+These issues must be carefully considered and addressed in the design phase. Specific approaches that can address ethical concerns include:
+
+1. **Randomized phase-in designs**: Ensures everyone eventually receives the intervention
+2. **Adaptive randomization**: Skews allocation toward better-performing treatments over time
+3. **Risk-based randomization**: Targets interventions toward those most likely to benefit
+4. **Minimization of control group size**: Uses unequal allocation ratios to minimize the number of participants not receiving intervention
+
+## Combining Randomization Approaches
+
+In practice, researchers often combine multiple randomization approaches:
+- Stratify on discrete variables
+- Re-randomize on continuous variables within strata
+- Use matched pairs for especially important continuous variables
+
+There is no one-size-fits-all approach. The best randomization strategy depends on:
+- The research question
+- Available baseline data
+- Logistical constraints
+- Expected heterogeneity in treatment effects
+
+A combined approach might look like this:
+
+```{r}
+#| eval: false
+# Example of combining approaches:
+# 1. Stratify on site and gender
+# 2. Block on age categories within strata
+# 3. Re-randomize if extreme imbalance in continuous baseline score
+
+combined_randomization <- function(data, 
+                                  strata_vars = c("site", "gender"),
+                                  block_vars = c("age_category"),
+                                  balance_vars = c("baseline_score"),
+                                  p_threshold = 0.1,
+                                  max_attempts = 100) {
+  
+  # Create strata
+  data$stratum <- apply(data[, strata_vars], 1, 
+                        function(x) paste(x, collapse = "_"))
+  
+  # Create blocks within strata
+  data$block <- apply(data[, c("stratum", block_vars)], 1, 
+                      function(x) paste(x, collapse = "_"))
+  
+  # Keep trying until we get good balance
+  attempt <- 0
+  balance_achieved <- FALSE
+  
+  while (!balance_achieved && attempt < max_attempts) {
+    attempt <- attempt + 1
+    
+    # Randomize within blocks
+    data$treatment <- NA
+    for (b in unique(data$block)) {
+      indices <- which(data$block == b)
+      n_block <- length(indices)
+      n_treat <- round(n_block * 0.5)
+      treat_indices <- sample(indices, n_treat)
+      data$treatment[indices] <- 0
+      data$treatment[treat_indices] <- 1
+    }
+    
+    # Check balance on continuous variables
+    balance_pvals <- c()
+    for (var in balance_vars) {
+      t_test <- t.test(data[[var]] ~ data$treatment)
+      balance_pvals <- c(balance_pvals, t_test$p.value)
+    }
+    
+    balance_achieved <- all(balance_pvals > p_threshold)
+  }
+  
+  if (!balance_achieved) {
+    warning("Maximum attempts reached without achieving balance.")
+  }
+  
+  cat("Randomization completed in", attempt, "attempts\n")
+  return(data$treatment)
+}
+```
+
+## Conclusion: Which Method When?
+
+| Approach | When to Use | Key Consideration |
+|----------|-------------|-------------------|
+| Simple | Large samples | Simplicity |
+| Stratified | Strong predictors known | Number of strata |
+| Matched-Pair | Small samples | Finding good matches |
+| Re-randomization | Balance is critical | Complexity of inference |
+| Cluster | Group-level intervention | ICC and number of clusters |
+
+The choice of randomization method should be guided by:
+1. The unit of randomization (individual vs. cluster)
+2. The importance of balance on specific variables
+3. Feasibility constraints
+4. Analysis plans
+
+In our next sessions, we'll explore how machine learning methods can enhance our ability to estimate treatment effects, discover heterogeneity, and select optimal treatments for individuals. These methods represent the cutting edge of the integration between experimental design and computational approaches.
