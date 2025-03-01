@@ -1,0 +1,27 @@
+---
+title: "Practice Quizzes"
+format: 
+  html:
+    css: styles.css
+---
+
+# HPM 883 Quiz Generator
+
+Test your knowledge with randomly generated questions from course content. This interactive quiz tool draws from lectures across all course units.
+
+:::{.callout-tip}
+**How to Use**: Select the number of questions you want to practice with, answer each question, then submit to see your results and explanations. Generate a new quiz to practice with different questions.
+:::
+
+:::{.callout-note}
+This quiz generator pulls questions from content covered in all course units including:
+
+- Unit 0: Foundations
+- Unit 1: Internal Validity and Potential Outcomes
+- Unit 2: Design of Experiments
+- Additional topics from class lectures
+:::
+
+```{=html}
+<iframe src="quiz.html" width="100%" height="900px" frameborder="0" style="max-width: 800px; display: block; margin: 0 auto;"></iframe>
+```

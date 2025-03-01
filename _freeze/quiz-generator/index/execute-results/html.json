@@ -1,0 +1,12 @@
+{
+  "hash": "dfa678acb10711d3c90d798d94c12bfd",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Practice Quizzes\"\nformat: \n  html:\n    page-layout: custom\n    css: styles.css\n---\n\n\n\n\n\n# HPM 883 Quiz Generator\n\nTest your knowledge with randomly generated questions from course content. This interactive quiz tool draws from lectures across all course units.\n\n:::{.callout-tip}\n**How to Use**: Select the number of questions you want to practice with, answer each question, then submit to see your results and explanations. Generate a new quiz to practice with different questions.\n:::\n\n:::{.callout-note}\nThis quiz generator pulls questions from content covered in all course units including:\n\n- Unit 0: Foundations\n- Unit 1: Internal Validity and Potential Outcomes\n- Unit 2: Design of Experiments\n- Additional topics from class lectures\n:::\n\n\n\n\n\n```{html}\n<div id=\"quiz-app-container\"></div>\n\n<script type=\"module\">\n  import React from 'react';\n  import ReactDOM from 'react-dom/client';\n  import { QuizApp } from './quiz-app.jsx';\n  \n  ReactDOM.createRoot(document.getElementById('quiz-app-container')).render(\n    React.createElement(React.StrictMode, null,\n      React.createElement(QuizApp)\n    )\n  );\n</script>\n```\n\n",
+    "supporting": [
+      "index_files/figure-html"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

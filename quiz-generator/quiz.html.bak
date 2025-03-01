@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HPM 883 Quiz Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>HPM 883 Quiz Generator</h1>
+  
+  <p>Test your knowledge with randomly generated questions from course content. This interactive quiz tool draws from lectures across all course units.</p>
+
+  <div class="callout-tip">
+    <p><strong>How to Use</strong>: Select the number of questions you want to practice with, answer each question, then submit to see your results and explanations. Generate a new quiz to practice with different questions.</p>
+  </div>
+
+  <div class="callout-note">
+    <p>This quiz generator pulls questions from content covered in all course units including:</p>
+    <ul>
+      <li>Unit 0: Foundations</li>
+      <li>Unit 1: Internal Validity and Potential Outcomes</li>
+      <li>Unit 2: Design of Experiments</li>
+      <li>Additional topics from class lectures</li>
+    </ul>
+  </div>
+
+  <div id="quiz-app-container"></div>
+
+  <!-- Load questions from external file -->
+  <script src="questions.js"></script>
+  
+  <script>
+    // App uses QUESTION_TYPES and questionsDatabase from the loaded questions.js file
+
+    // App state
+    let currentQuestions = [];
+    let userAnswers = {};
+    let questionsToShow = 3;
+    let showResults = false;
+    
+    // DOM elements
+    const container = document.getElementById('quiz-app-container');
+
+    // Generate random questions
+    function generateRandomQuestions() {
+      // Reset state
+      userAnswers = {};
+      showResults = false;
+      
+      // Shuffle questions
+      const shuffled = [...questionsDatabase].sort(() => 0.5 - Math.random());
+      currentQuestions = shuffled.slice(0, questionsToShow);
+      
+      // Render the quiz
+      renderQuiz();
+    }
+    
+    // Handle option selection
+    function handleOptionSelect(questionId, option) {
+      userAnswers[questionId] = option;
+      renderQuiz();
+    }
+    
+    // Handle short answer input
+    function handleShortAnswerChange(questionId, text) {
+      userAnswers[questionId] = text;
+    }
+    
+    // Submit quiz
+    function handleSubmit() {
+      showResults = true;
+      renderQuiz();
+    }
+    
+    // Start a new quiz
+    function handleNewQuiz() {
+      generateRandomQuestions();
+    }
+    
+    // Check if all questions have been answered
+    function allQuestionsAnswered() {
+      return currentQuestions.every(q => 
+        userAnswers[q.id] !== undefined && 
+        userAnswers[q.id] !== '');
+    }
+    
+    // Calculate score
+    function calculateScore() {
+      let correctAnswers = 0;
+      
+      currentQuestions.forEach(question => {
+        if (question.type === QUESTION_TYPES.MULTIPLE_CHOICE) {
+          if (userAnswers[question.id] === question.correctAnswer) {
+            correctAnswers++;
+          }
+        } else if (question.type === QUESTION_TYPES.SHORT_ANSWER) {
+          const userAnswer = (userAnswers[question.id] || '').toLowerCase().trim();
+          const correctAnswer = question.correctAnswer.toLowerCase();
+          
+          if (userAnswer && 
+              (correctAnswer.includes(userAnswer) || 
+               userAnswer.includes(correctAnswer) ||
+               userAnswer.length > 10)) {
+            correctAnswers++;
+          }
+        }
+      });
+      
+      return {
+        correct: correctAnswers,
+        total: currentQuestions.length,
+        percentage: Math.round((correctAnswers / currentQuestions.length) * 100)
+      };
+    }
+    
+    // Render the quiz UI
+    function renderQuiz() {
+      // Clear the container
+      container.innerHTML = '';
+      
+      // Create the quiz title
+      const title = document.createElement('h2');
+      title.className = 'quiz-title';
+      title.textContent = 'Random Quiz Generator';
+      container.appendChild(title);
+      
+      if (!showResults) {
+        // Settings section
+        const settingsDiv = document.createElement('div');
+        settingsDiv.className = 'quiz-settings';
+        
+        const settingsLabel = document.createElement('label');
+        settingsLabel.className = 'settings-label';
+        settingsLabel.textContent = 'Number of Questions: ';
+        
+        const select = document.createElement('select');
+        select.className = 'settings-select';
+        select.value = questionsToShow;
+        select.addEventListener('change', (e) => {
+          questionsToShow = parseInt(e.target.value);
+          generateRandomQuestions();
+        });
+        
+        [3, 5].forEach(num => {
+          const option = document.createElement('option');
+          option.value = num;
+          option.textContent = `${num} Questions`;
+          if (num === questionsToShow) {
+            option.selected = true;
+          }
+          select.appendChild(option);
+        });
+        
+        settingsLabel.appendChild(select);
+        settingsDiv.appendChild(settingsLabel);
+        container.appendChild(settingsDiv);
+        
+        // Questions container
+        const questionsContainer = document.createElement('div');
+        questionsContainer.className = 'questions-container';
+        
+        // Add questions
+        currentQuestions.forEach((question, index) => {
+          const questionCard = document.createElement('div');
+          questionCard.className = 'question-card';
+          
+          const questionTitle = document.createElement('h3');
+          questionTitle.className = 'question-text';
+          questionTitle.textContent = `Question ${index + 1}: ${question.question}`;
+          questionCard.appendChild(questionTitle);
+          
+          if (question.type === QUESTION_TYPES.MULTIPLE_CHOICE) {
+            const optionsContainer = document.createElement('div');
+            optionsContainer.className = 'options-container';
+            
+            question.options.forEach((option, optIndex) => {
+              const optionItem = document.createElement('div');
+              optionItem.className = 'option-item';
+              
+              const input = document.createElement('input');
+              input.type = 'radio';
+              input.id = `q${question.id}-opt${optIndex}`;
+              input.name = `question-${question.id}`;
+              input.value = option;
+              input.className = 'option-input';
+              if (userAnswers[question.id] === option) {
+                input.checked = true;
+              }
+              input.addEventListener('change', () => handleOptionSelect(question.id, option));
+              
+              const label = document.createElement('label');
+              label.htmlFor = `q${question.id}-opt${optIndex}`;
+              label.className = 'option-label';
+              label.textContent = option;
+              
+              optionItem.appendChild(input);
+              optionItem.appendChild(label);
+              optionsContainer.appendChild(optionItem);
+            });
+            
+            questionCard.appendChild(optionsContainer);
+          } else {
+            const shortAnswerContainer = document.createElement('div');
+            shortAnswerContainer.className = 'short-answer-container';
+            
+            const textarea = document.createElement('textarea');
+            textarea.className = 'short-answer-input';
+            textarea.placeholder = 'Type your answer here...';
+            textarea.rows = 3;
+            textarea.value = userAnswers[question.id] || '';
+            textarea.addEventListener('input', (e) => handleShortAnswerChange(question.id, e.target.value));
+            
+            shortAnswerContainer.appendChild(textarea);
+            questionCard.appendChild(shortAnswerContainer);
+          }
+          
+          questionsContainer.appendChild(questionCard);
+        });
+        
+        container.appendChild(questionsContainer);
+        
+        // Submit button
+        const buttonContainer = document.createElement('div');
+        buttonContainer.className = 'button-container';
+        
+        const submitButton = document.createElement('button');
+        submitButton.textContent = 'Submit Quiz';
+        submitButton.className = allQuestionsAnswered() ? 'submit-button' : 'submit-button disabled';
+        submitButton.disabled = !allQuestionsAnswered();
+        submitButton.addEventListener('click', handleSubmit);
+        
+        buttonContainer.appendChild(submitButton);
+        container.appendChild(buttonContainer);
+      } else {
+        // Results view
+        const resultsContainer = document.createElement('div');
+        resultsContainer.className = 'results-container';
+        
+        // Results header
+        const resultsHeader = document.createElement('div');
+        resultsHeader.className = 'results-header';
+        
+        const resultsTitle = document.createElement('h3');
+        resultsTitle.className = 'results-title';
+        resultsTitle.textContent = 'Your Results';
+        resultsHeader.appendChild(resultsTitle);
+        
+        // Score display
+        const score = calculateScore();
+        const scoreDisplay = document.createElement('div');
+        scoreDisplay.className = 'score-display';
+        
+        const scoreText = document.createElement('p');
+        scoreText.className = 'score-text';
+        scoreText.textContent = `You scored: ${score.correct} out of ${score.total} (${score.percentage}%)`;
+        
+        scoreDisplay.appendChild(scoreText);
+        resultsHeader.appendChild(scoreDisplay);
+        resultsContainer.appendChild(resultsHeader);
+        
+        // Results details
+        const resultsDetails = document.createElement('div');
+        resultsDetails.className = 'results-details';
+        
+        currentQuestions.forEach((question, index) => {
+          // Determine if answer was correct
+          let isCorrect = false;
+          if (question.type === QUESTION_TYPES.MULTIPLE_CHOICE) {
+            isCorrect = userAnswers[question.id] === question.correctAnswer;
+          } else {
+            const userAnswer = (userAnswers[question.id] || '').toLowerCase().trim();
+            const correctAnswer = question.correctAnswer.toLowerCase();
+            isCorrect = userAnswer && 
+              (correctAnswer.includes(userAnswer) || 
+               userAnswer.includes(correctAnswer) ||
+               userAnswer.length > 10);
+          }
+          
+          const resultCard = document.createElement('div');
+          resultCard.className = isCorrect ? 'result-card correct' : 'result-card incorrect';
+          
+          const questionText = document.createElement('h3');
+          questionText.className = 'question-text';
+          questionText.textContent = `Question ${index + 1}: ${question.question}`;
+          resultCard.appendChild(questionText);
+          
+          const answerComparison = document.createElement('div');
+          answerComparison.className = 'answer-comparison';
+          
+          if (question.type === QUESTION_TYPES.MULTIPLE_CHOICE) {
+            const userAnswerP = document.createElement('p');
+            userAnswerP.className = 'user-answer';
+            userAnswerP.textContent = `Your answer: ${userAnswers[question.id] || '(No answer provided)'}`;
+            
+            const correctAnswerP = document.createElement('p');
+            correctAnswerP.className = 'correct-answer';
+            correctAnswerP.textContent = `Correct answer: ${question.correctAnswer}`;
+            
+            answerComparison.appendChild(userAnswerP);
+            answerComparison.appendChild(correctAnswerP);
+          } else {
+            const userAnswerDiv = document.createElement('div');
+            userAnswerDiv.className = 'user-answer';
+            
+            const userAnswerLabel = document.createElement('p');
+            userAnswerLabel.className = 'answer-label';
+            userAnswerLabel.textContent = 'Your answer:';
+            userAnswerDiv.appendChild(userAnswerLabel);
+            
+            const userAnswerText = document.createElement('p');
+            userAnswerText.className = 'answer-text';
+            userAnswerText.textContent = userAnswers[question.id] || '(No answer provided)';
+            userAnswerDiv.appendChild(userAnswerText);
+            
+            const correctAnswerDiv = document.createElement('div');
+            correctAnswerDiv.className = 'correct-answer';
+            
+            const correctAnswerLabel = document.createElement('p');
+            correctAnswerLabel.className = 'answer-label';
+            correctAnswerLabel.textContent = 'Correct answer:';
+            correctAnswerDiv.appendChild(correctAnswerLabel);
+            
+            const correctAnswerText = document.createElement('p');
+            correctAnswerText.className = 'answer-text';
+            correctAnswerText.textContent = question.correctAnswer;
+            correctAnswerDiv.appendChild(correctAnswerText);
+            
+            answerComparison.appendChild(userAnswerDiv);
+            answerComparison.appendChild(correctAnswerDiv);
+          }
+          
+          resultCard.appendChild(answerComparison);
+          
+          const explanation = document.createElement('div');
+          explanation.className = 'explanation';
+          
+          const explanationLabel = document.createElement('p');
+          explanationLabel.className = 'explanation-label';
+          explanationLabel.textContent = 'Explanation:';
+          explanation.appendChild(explanationLabel);
+          
+          const explanationText = document.createElement('p');
+          explanationText.className = 'explanation-text';
+          explanationText.textContent = question.explanation;
+          explanation.appendChild(explanationText);
+          
+          resultCard.appendChild(explanation);
+          resultsDetails.appendChild(resultCard);
+        });
+        
+        resultsContainer.appendChild(resultsDetails);
+        
+        // New Quiz button
+        const buttonContainer = document.createElement('div');
+        buttonContainer.className = 'button-container';
+        
+        const newQuizButton = document.createElement('button');
+        newQuizButton.textContent = 'Generate New Quiz';
+        newQuizButton.className = 'new-quiz-button';
+        newQuizButton.addEventListener('click', handleNewQuiz);
+        
+        buttonContainer.appendChild(newQuizButton);
+        resultsContainer.appendChild(buttonContainer);
+        
+        container.appendChild(resultsContainer);
+      }
+    }
+    
+    // Initialize the quiz
+    document.addEventListener('DOMContentLoaded', function() {
+      generateRandomQuestions();
+    });
+    
+    // Check if document is already loaded
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      generateRandomQuestions();
+    }
+  </script>
+</body>
+</html>

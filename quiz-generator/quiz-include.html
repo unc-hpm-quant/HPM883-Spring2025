@@ -1,0 +1,20 @@
+<div id="quiz-app-container"></div>
+
+<script type="module">
+  import React from 'https://unpkg.com/react@18/umd/react.production.min.js';
+  import ReactDOM from 'https://unpkg.com/react-dom@18/umd/react-dom.production.min.js';
+  import { QuizApp } from './quiz-app.jsx';
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    if (document.getElementById('quiz-app-container')) {
+      ReactDOM.createRoot(document.getElementById('quiz-app-container')).render(
+        React.createElement(React.StrictMode, null,
+          React.createElement(QuizApp)
+        )
+      );
+      console.log('Quiz app initialized');
+    } else {
+      console.error('Quiz container not found');
+    }
+  });
+</script>

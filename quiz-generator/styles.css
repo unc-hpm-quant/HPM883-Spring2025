@@ -1,0 +1,246 @@
+/* Main container */
+.quiz-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Quiz app container styling */
+#quiz-app-container {
+  margin: 2rem 0;
+  padding: 0 1rem;
+}
+
+/* Title */
+.quiz-title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #13294B; /* UNC Navy */
+}
+
+/* Settings */
+.quiz-settings {
+  margin-bottom: 1.5rem;
+}
+
+.settings-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #4B9CD3; /* UNC Carolina Blue */
+}
+
+.settings-select {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+/* Questions */
+.questions-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.question-card {
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+  background-color: #f8fafc;
+}
+
+.question-text {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #13294B; /* UNC Navy */
+}
+
+/* Options */
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+}
+
+.option-input {
+  margin-right: 0.5rem;
+}
+
+.option-label {
+  color: #4a5568;
+}
+
+/* Short answer */
+.short-answer-container {
+  margin-top: 0.5rem;
+}
+
+.short-answer-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  resize: vertical;
+}
+
+/* Buttons */
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.submit-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #4B9CD3; /* Carolina Blue */
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submit-button:hover {
+  background-color: #13294B; /* Navy */
+}
+
+.submit-button.disabled {
+  background-color: #cbd5e0;
+  color: #718096;
+  cursor: not-allowed;
+}
+
+.new-quiz-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #13294B; /* UNC Navy */
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.new-quiz-button:hover {
+  background-color: #4B9CD3; /* Carolina Blue */
+}
+
+/* Results */
+.results-container {
+  width: 100%;
+}
+
+.results-header {
+  background-color: #EDF2F7;
+  border: 1px solid #CBD5E0;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.results-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #13294B; /* UNC Navy */
+}
+
+.score-display {
+  text-align: center;
+}
+
+.score-text {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.results-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.result-card {
+  padding: 1rem;
+  border-radius: 0.375rem;
+  border: 1px solid;
+}
+
+.result-card.correct {
+  background-color: #F0FFF4;
+  border-color: #C6F6D5;
+}
+
+.result-card.incorrect {
+  background-color: #FFF5F5;
+  border-color: #FED7D7;
+}
+
+.answer-comparison {
+  margin-bottom: 1rem;
+}
+
+.user-answer, .correct-answer {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.answer-label {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.answer-text {
+  padding: 0.5rem;
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.25rem;
+}
+
+.explanation {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.25rem;
+}
+
+.explanation-label {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .quiz-container {
+    padding: 1rem;
+  }
+  
+  .quiz-title {
+    font-size: 1.5rem;
+  }
+  
+  .question-text {
+    font-size: 1.1rem;
+  }
+}
