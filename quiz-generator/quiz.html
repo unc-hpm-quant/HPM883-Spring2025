@@ -51,9 +51,13 @@
     }
     
     // Submit quiz
-    function handleSubmit() {
+    function handleSubmit(e) {
+      if (e) e.preventDefault();
       showResults = true;
       renderQuiz();
+      
+      // Log to make sure this is working
+      console.log('Quiz submitted successfully');
     }
     
     // Start a new quiz
@@ -63,9 +67,8 @@
     
     // Check if all questions have been answered
     function allQuestionsAnswered() {
-      return currentQuestions.every(q => 
-        userAnswers[q.id] !== undefined && 
-        userAnswers[q.id] !== '');
+      // More forgiving check - just ensure there's something in the answers
+      return currentQuestions.length > 0 && Object.keys(userAnswers).length > 0;
     }
     
     // Calculate score
@@ -295,8 +298,8 @@
         
         const submitButton = document.createElement('button');
         submitButton.textContent = 'Submit Quiz';
-        submitButton.className = allQuestionsAnswered() ? 'submit-button' : 'submit-button disabled';
-        submitButton.disabled = !allQuestionsAnswered();
+        submitButton.className = 'submit-button';
+        // Don't disable the button - let users submit whenever they want
         submitButton.addEventListener('click', handleSubmit);
         
         buttonContainer.appendChild(submitButton);
@@ -362,10 +365,27 @@
           const resultCard = document.createElement('div');
           resultCard.className = isCorrect ? 'result-card correct' : 'result-card incorrect';
           
+          // Create a header div to hold question text and flag button
+          const questionHeader = document.createElement('div');
+          questionHeader.className = 'question-header';
+          
           const questionText = document.createElement('h3');
           questionText.className = 'question-text';
           questionText.textContent = `Question ${index + 1}: ${question.question}`;
-          resultCard.appendChild(questionText);
+          questionHeader.appendChild(questionText);
+          
+          // Add flag button on results page
+          const flagButton = document.createElement('button');
+          flagButton.className = 'flag-button';
+          flagButton.innerHTML = flaggedQuestions[question.id] ? '⚑ Flagged' : '⚑ Flag';
+          if (flaggedQuestions[question.id]) {
+            flagButton.classList.add('flagged');
+          }
+          flagButton.dataset.questionId = question.id;
+          flagButton.addEventListener('click', (e) => handleQuestionFlag(e, question.id, question.question));
+          questionHeader.appendChild(flagButton);
+          
+          resultCard.appendChild(questionHeader);
           
           const answerComparison = document.createElement('div');
           answerComparison.className = 'answer-comparison';
@@ -491,6 +511,9 @@
       
       // Store in localStorage
       localStorage.setItem('flaggedQuestions', JSON.stringify(flaggedQuestions));
+      
+      // Refresh the quiz to update all flag buttons
+      renderQuiz();
     }
     
     // View flagged questions (admin only)

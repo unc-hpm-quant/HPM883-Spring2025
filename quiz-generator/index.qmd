@@ -14,13 +14,16 @@ Test your knowledge with randomly generated questions from course content. This 
 :::
 
 :::{.callout-important}
+
+**Use this tool responsibly**: This tool uses a language model (AI) to generate questions and answers. As a result, these questions may be incorrect, have unclear wording, or be completely unrelated to the course content. Although I did my best to ensure the quality and relevence of the questions is generates, language models are succeptible to hallucinations. Please take this into consideration when using this tool and report any issues you find to me so that I can fix errors.
+
 **Found an Issue?**: If you believe there's a problem with any question (unclear wording, incorrect answer, etc.), click the flag icon (⚑) next to the question. You'll be prompted to describe the issue, which will help improve the question bank.
 
 **Important**: To share flagged questions with Sean, click the gear icon (⚙️) in the top-right corner, enter the admin password when prompted, then click "Export CSV" to download your flagged questions report. Please send this CSV file to Sean in Slack.
 :::
 
 :::{.callout-note}
-This quiz generator pulls questions from content covered in all course units including:
+This quiz generator currently pulls questions from content covered in all course units including:
 
 - Unit 0: Foundations
 - Unit 1: Internal Validity and Potential Outcomes
