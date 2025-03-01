@@ -161,5 +161,8 @@
   },
   "quiz-generator/index.qmd": {
     "index.html": "aeca4e50"
+  },
+  "templates.qmd": {
+    "templates.html": "d9243a42"
   }
 }

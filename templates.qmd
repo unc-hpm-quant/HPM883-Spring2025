@@ -1,0 +1,15 @@
+---
+title: "Templates"
+execute: 
+  freeze: false
+editor_options: 
+  chunk_output_type: console
+---
+
+## Templates
+
+[Pre-Analysis Plan Template](Resources/Pre-AnalysisPlanTemplate.qmd)
+
+[RCT Analysis Template Repository (GitHub)](https://github.com/unc-hpm-quant/rct-analysis-template)
+
+[J-Pal Sample Size and Power Repository](https://github.com/unc-hpm-quant/JPAL-Sample_Size_and_Power)

@@ -5,7 +5,7 @@ format:
     css: styles.css
 ---
 
-# HPM 883 Random Question Generator
+# Welcome to the HPM 883 Quiz-o-matic!
 
 Test your knowledge with randomly generated questions from course content. This interactive tool draws questions from lectures across all course units. (These are representative of the types of questions you can expect to see on exams. You're welcome! :))
 
@@ -19,7 +19,7 @@ Test your knowledge with randomly generated questions from course content. This 
 
 **Found an Issue?**: If you believe there's a problem with any question (unclear wording, incorrect answer, etc.), click the flag icon (⚑) next to the question. You'll be prompted to describe the issue, which will help improve the question bank.
 
-**Important**: To share flagged questions with Sean, click the gear icon (⚙️) in the top-right corner, enter the admin password when prompted, then click "Export CSV" to download your flagged questions report. Please send this CSV file to Sean in Slack.
+**Important**: To share flagged questions with Sean, click the gear icon (⚙️) in the top-right corner, enter the admin password (admin123) when prompted, then click "Export CSV" to download your flagged questions report. Please send this CSV file to Sean in [Slack](https://hpm883.slack.com).
 :::
 
 :::{.callout-note}

@@ -116,11 +116,15 @@ website:
       - section: "Resources"
         contents:
           - href: resources.qmd
-            text: "Resources"
+            text: "Useful Reference Materials"
           - href: computing.qmd
             text: "Computing"
+          - href: templates.qmd
+            text: "Templates"
+          - href: unit-2/shiny-oed-app.qmd
+            text: "Optimal Experiment Design App"
           - href: quiz-generator/index.qmd
-            text: "Quiz Generator"
+            text: "Random Question Generator"
 
 
   page-footer:
