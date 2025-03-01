@@ -26,7 +26,23 @@
 
 /* Settings */
 .quiz-settings {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 1.5rem;
+}
+
+.admin-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-left: 1rem;
+  transition: transform 0.2s;
+}
+
+.admin-button:hover {
+  transform: rotate(30deg);
 }
 
 .settings-label {
@@ -61,11 +77,114 @@
   background-color: #f8fafc;
 }
 
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
 .question-text {
   font-size: 1.25rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
   color: #13294B; /* UNC Navy */
+  flex: 1;
+}
+
+.flag-button {
+  background-color: transparent;
+  color: #666;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: 1rem;
+}
+
+.flag-button:hover {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-color: #f5c6cb;
+}
+
+.flag-button.flagged {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-color: #f5c6cb;
+}
+
+/* Admin View */
+.admin-view {
+  width: 100%;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.admin-header h2 {
+  margin: 0;
+  color: #13294B; /* UNC Navy */
+}
+
+.admin-header button {
+  margin-left: 0.5rem;
+}
+
+.flagged-list {
+  margin-top: 1.5rem;
+}
+
+.flagged-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.flagged-table th, 
+.flagged-table td {
+  padding: 0.75rem;
+  border: 1px solid #dee2e6;
+  text-align: left;
+}
+
+.flagged-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+
+.flagged-table tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.resolve-button {
+  background-color: #4B9CD3; /* UNC Carolina Blue */
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.resolve-button:hover {
+  background-color: #13294B; /* UNC Navy */
+}
+
+/* Callouts */
+.callout-important {
+  padding: 1rem;
+  background-color: #fff1f0;
+  border-left: 4px solid #ff4d4f;
+  margin-bottom: 1.5rem;
+  border-radius: 0.25rem;
 }
 
 /* Options */
@@ -243,4 +362,30 @@
   .question-text {
     font-size: 1.1rem;
   }
+}
+
+/* Advanced question type styling */
+.content-container {
+  margin: 15px 0;
+  width: 100%;
+}
+
+.content-box {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #dee2e6;
+  font-family: monospace;
+  white-space: pre-wrap;
+  overflow-x: auto;
+  max-height: 300px;
+  margin-bottom: 15px;
+}
+
+.question-image {
+  display: block;
+  margin: 15px auto;
+  max-width: 100%;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }

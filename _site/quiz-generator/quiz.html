@@ -3,28 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HPM 883 Quiz Generator</title>
+  <title>HPM 883 Random Question Generator</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>HPM 883 Quiz Generator</h1>
+  <h1>HPM 883 Random Question Generator</h1>
   
-  <p>Test your knowledge with randomly generated questions from course content. This interactive quiz tool draws from lectures across all course units.</p>
-
-  <div class="callout-tip">
-    <p><strong>How to Use</strong>: Select the number of questions you want to practice with, answer each question, then submit to see your results and explanations. Generate a new quiz to practice with different questions.</p>
-  </div>
-
-  <div class="callout-note">
-    <p>This quiz generator pulls questions from content covered in all course units including:</p>
-    <ul>
-      <li>Unit 0: Foundations</li>
-      <li>Unit 1: Internal Validity and Potential Outcomes</li>
-      <li>Unit 2: Design of Experiments</li>
-      <li>Additional topics from class lectures</li>
-    </ul>
-  </div>
-
   <div id="quiz-app-container"></div>
 
   <!-- Load questions from external file -->
@@ -36,6 +20,7 @@
     let userAnswers = {};
     let questionsToShow = 3;
     let showResults = false;
+    let flaggedQuestions = JSON.parse(localStorage.getItem('flaggedQuestions') || '{}');
     
     // DOM elements
     const container = document.getElementById('quiz-app-container');
@@ -92,14 +77,32 @@
           if (userAnswers[question.id] === question.correctAnswer) {
             correctAnswers++;
           }
-        } else if (question.type === QUESTION_TYPES.SHORT_ANSWER) {
+        } else if (question.type === QUESTION_TYPES.SHORT_ANSWER ||
+                  question.type === QUESTION_TYPES.CODE_EXPLANATION ||
+                  question.type === QUESTION_TYPES.CODE_CORRECTION ||
+                  question.type === QUESTION_TYPES.RESEARCH_DESIGN_CRITIQUE ||
+                  question.type === QUESTION_TYPES.STUDY_VIGNETTE_CRITIQUE ||
+                  question.type === QUESTION_TYPES.COUNTERFACTUAL_REASONING ||
+                  question.type === QUESTION_TYPES.STATISTICAL_INTERPRETATION ||
+                  question.type === QUESTION_TYPES.METHOD_SELECTION) {
+          // For all text-based answers, we'll use a simple matching approach
+          // More sophisticated grading would require server-side processing
           const userAnswer = (userAnswers[question.id] || '').toLowerCase().trim();
           const correctAnswer = question.correctAnswer.toLowerCase();
+          
+          // Consider answer correct if:
+          // 1. It contains key elements of the correct answer or
+          // 2. It's substantial in length (likely a thoughtful answer)
+          const keyPhrases = question.keyPhrases || [];
+          const containsKeyPhrases = keyPhrases.some(phrase => 
+            userAnswer.includes(phrase.toLowerCase())
+          );
           
           if (userAnswer && 
               (correctAnswer.includes(userAnswer) || 
                userAnswer.includes(correctAnswer) ||
-               userAnswer.length > 10)) {
+               containsKeyPhrases ||
+               userAnswer.length > 50)) {
             correctAnswers++;
           }
         }
@@ -152,6 +155,15 @@
         
         settingsLabel.appendChild(select);
         settingsDiv.appendChild(settingsLabel);
+        
+        // Add admin button (hidden in plain sight)
+        const adminButton = document.createElement('button');
+        adminButton.textContent = '⚙️';
+        adminButton.title = 'Admin Settings';
+        adminButton.className = 'admin-button';
+        adminButton.addEventListener('click', viewFlaggedQuestions);
+        settingsDiv.appendChild(adminButton);
+        
         container.appendChild(settingsDiv);
         
         // Questions container
@@ -163,10 +175,24 @@
           const questionCard = document.createElement('div');
           questionCard.className = 'question-card';
           
+          const questionHeader = document.createElement('div');
+          questionHeader.className = 'question-header';
+          
           const questionTitle = document.createElement('h3');
           questionTitle.className = 'question-text';
           questionTitle.textContent = `Question ${index + 1}: ${question.question}`;
-          questionCard.appendChild(questionTitle);
+          questionHeader.appendChild(questionTitle);
+          
+          // Add flag button
+          const flagButton = document.createElement('button');
+          flagButton.className = 'flag-button';
+          flagButton.innerHTML = '⚑ Flag';
+          flagButton.title = 'Flag this question if you think there is an issue';
+          flagButton.dataset.questionId = question.id;
+          flagButton.addEventListener('click', (e) => handleQuestionFlag(e, question.id, question.question));
+          questionHeader.appendChild(flagButton);
+          
+          questionCard.appendChild(questionHeader);
           
           if (question.type === QUESTION_TYPES.MULTIPLE_CHOICE) {
             const optionsContainer = document.createElement('div');
@@ -198,6 +224,51 @@
             });
             
             questionCard.appendChild(optionsContainer);
+          } else if ([QUESTION_TYPES.CODE_EXPLANATION, 
+                    QUESTION_TYPES.CODE_CORRECTION, 
+                    QUESTION_TYPES.RESEARCH_DESIGN_CRITIQUE, 
+                    QUESTION_TYPES.STUDY_VIGNETTE_CRITIQUE,
+                    QUESTION_TYPES.COUNTERFACTUAL_REASONING,
+                    QUESTION_TYPES.STATISTICAL_INTERPRETATION,
+                    QUESTION_TYPES.METHOD_SELECTION].includes(question.type)) {
+            // For all advanced question types that need special formatting
+            const contentContainer = document.createElement('div');
+            contentContainer.className = 'content-container';
+            
+            // If there's a code snippet or special content to display
+            if (question.content) {
+              const contentBox = document.createElement('pre');
+              contentBox.className = 'content-box';
+              contentBox.textContent = question.content;
+              contentContainer.appendChild(contentBox);
+            }
+            
+            // If there are images
+            if (question.images && question.images.length > 0) {
+              question.images.forEach(imgSrc => {
+                const img = document.createElement('img');
+                img.src = imgSrc;
+                img.className = 'question-image';
+                img.style.maxWidth = '100%';
+                contentContainer.appendChild(img);
+              });
+            }
+            
+            questionCard.appendChild(contentContainer);
+            
+            // All these question types use a textarea for answers
+            const answerContainer = document.createElement('div');
+            answerContainer.className = 'short-answer-container';
+            
+            const textarea = document.createElement('textarea');
+            textarea.className = 'short-answer-input';
+            textarea.placeholder = 'Type your answer here...';
+            textarea.rows = 6;
+            textarea.value = userAnswers[question.id] || '';
+            textarea.addEventListener('input', (e) => handleShortAnswerChange(question.id, e.target.value));
+            
+            answerContainer.appendChild(textarea);
+            questionCard.appendChild(answerContainer);
           } else {
             const shortAnswerContainer = document.createElement('div');
             shortAnswerContainer.className = 'short-answer-container';
@@ -266,13 +337,26 @@
           let isCorrect = false;
           if (question.type === QUESTION_TYPES.MULTIPLE_CHOICE) {
             isCorrect = userAnswers[question.id] === question.correctAnswer;
-          } else {
+          } else if (question.type === QUESTION_TYPES.SHORT_ANSWER ||
+                     question.type === QUESTION_TYPES.CODE_EXPLANATION ||
+                     question.type === QUESTION_TYPES.CODE_CORRECTION ||
+                     question.type === QUESTION_TYPES.RESEARCH_DESIGN_CRITIQUE ||
+                     question.type === QUESTION_TYPES.STUDY_VIGNETTE_CRITIQUE ||
+                     question.type === QUESTION_TYPES.COUNTERFACTUAL_REASONING ||
+                     question.type === QUESTION_TYPES.STATISTICAL_INTERPRETATION ||
+                     question.type === QUESTION_TYPES.METHOD_SELECTION) {
             const userAnswer = (userAnswers[question.id] || '').toLowerCase().trim();
             const correctAnswer = question.correctAnswer.toLowerCase();
+            const keyPhrases = question.keyPhrases || [];
+            const containsKeyPhrases = keyPhrases.some(phrase => 
+              userAnswer.includes(phrase.toLowerCase())
+            );
+            
             isCorrect = userAnswer && 
               (correctAnswer.includes(userAnswer) || 
                userAnswer.includes(correctAnswer) ||
-               userAnswer.length > 10);
+               containsKeyPhrases ||
+               userAnswer.length > 50);
           }
           
           const resultCard = document.createElement('div');
@@ -373,6 +457,196 @@
     // Check if document is already loaded
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
       generateRandomQuestions();
+    }
+
+    // Handle question flag
+    function handleQuestionFlag(e, questionId, questionText) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const button = e.target;
+      const isFlagged = button.classList.contains('flagged');
+      
+      if (isFlagged) {
+        // Remove flag
+        button.classList.remove('flagged');
+        button.innerHTML = '⚑ Flag';
+        delete flaggedQuestions[questionId];
+      } else {
+        // Add flag
+        button.classList.add('flagged');
+        button.innerHTML = '⚑ Flagged';
+        
+        // Capture feedback from student
+        const feedback = prompt('Please describe the issue with this question:', '');
+        
+        // Store flagged question
+        flaggedQuestions[questionId] = {
+          questionId,
+          questionText, 
+          flaggedAt: new Date().toISOString(),
+          feedback: feedback || 'No feedback provided'
+        };
+      }
+      
+      // Store in localStorage
+      localStorage.setItem('flaggedQuestions', JSON.stringify(flaggedQuestions));
+    }
+    
+    // View flagged questions (admin only)
+    function viewFlaggedQuestions() {
+      const adminPassword = prompt('Enter admin password:');
+      
+      // Simple password protection (in a real app, use proper authentication)
+      if (adminPassword !== 'admin123') {
+        alert('Incorrect password');
+        return;
+      }
+      
+      container.innerHTML = '';
+      
+      // Create admin view
+      const adminView = document.createElement('div');
+      adminView.className = 'admin-view';
+      
+      // Header
+      const header = document.createElement('div');
+      header.className = 'admin-header';
+      
+      const title = document.createElement('h2');
+      title.textContent = 'Flagged Questions Admin View';
+      
+      const backButton = document.createElement('button');
+      backButton.textContent = 'Back to Quiz';
+      backButton.className = 'quiz-button';
+      backButton.addEventListener('click', renderQuiz);
+      
+      const exportButton = document.createElement('button');
+      exportButton.textContent = 'Export CSV';
+      exportButton.className = 'quiz-button';
+      exportButton.addEventListener('click', exportFlaggedQuestions);
+      
+      header.appendChild(title);
+      header.appendChild(backButton);
+      header.appendChild(exportButton);
+      adminView.appendChild(header);
+      
+      // Flagged questions list
+      const flaggedList = document.createElement('div');
+      flaggedList.className = 'flagged-list';
+      
+      if (Object.keys(flaggedQuestions).length === 0) {
+        const noFlags = document.createElement('p');
+        noFlags.textContent = 'No questions have been flagged.';
+        flaggedList.appendChild(noFlags);
+      } else {
+        // Table of flagged questions
+        const table = document.createElement('table');
+        table.className = 'flagged-table';
+        
+        // Table header
+        const thead = document.createElement('thead');
+        const headerRow = document.createElement('tr');
+        ['ID', 'Question', 'Flagged At', 'Feedback', 'Actions'].forEach(text => {
+          const th = document.createElement('th');
+          th.textContent = text;
+          headerRow.appendChild(th);
+        });
+        thead.appendChild(headerRow);
+        table.appendChild(thead);
+        
+        // Table body
+        const tbody = document.createElement('tbody');
+        
+        Object.values(flaggedQuestions).forEach(flag => {
+          const row = document.createElement('tr');
+          
+          // ID cell
+          const idCell = document.createElement('td');
+          idCell.textContent = flag.questionId;
+          row.appendChild(idCell);
+          
+          // Question cell
+          const questionCell = document.createElement('td');
+          questionCell.textContent = flag.questionText.length > 100 
+            ? flag.questionText.substring(0, 100) + '...' 
+            : flag.questionText;
+          questionCell.title = flag.questionText;
+          row.appendChild(questionCell);
+          
+          // Date cell
+          const dateCell = document.createElement('td');
+          dateCell.textContent = new Date(flag.flaggedAt).toLocaleString();
+          row.appendChild(dateCell);
+          
+          // Feedback cell
+          const feedbackCell = document.createElement('td');
+          feedbackCell.textContent = flag.feedback;
+          row.appendChild(feedbackCell);
+          
+          // Actions cell
+          const actionsCell = document.createElement('td');
+          const resolveButton = document.createElement('button');
+          resolveButton.textContent = 'Resolve';
+          resolveButton.className = 'resolve-button';
+          resolveButton.addEventListener('click', () => {
+            delete flaggedQuestions[flag.questionId];
+            localStorage.setItem('flaggedQuestions', JSON.stringify(flaggedQuestions));
+            row.remove();
+            if (Object.keys(flaggedQuestions).length === 0) {
+              tbody.innerHTML = '<tr><td colspan="5">No questions have been flagged.</td></tr>';
+            }
+          });
+          actionsCell.appendChild(resolveButton);
+          row.appendChild(actionsCell);
+          
+          tbody.appendChild(row);
+        });
+        
+        table.appendChild(tbody);
+        flaggedList.appendChild(table);
+      }
+      
+      adminView.appendChild(flaggedList);
+      container.appendChild(adminView);
+    }
+    
+    // Export flagged questions to CSV
+    function exportFlaggedQuestions() {
+      if (Object.keys(flaggedQuestions).length === 0) {
+        alert('No flagged questions to export.');
+        return;
+      }
+      
+      // Create CSV content
+      const headers = ['Question ID', 'Question Text', 'Flagged At', 'Feedback'];
+      let csvContent = headers.join(',') + '\n';
+      
+      Object.values(flaggedQuestions).forEach(flag => {
+        // Clean text for CSV (escape quotes and remove newlines)
+        const cleanQuestion = `"${flag.questionText.replace(/"/g, '""').replace(/\n/g, ' ')}"`;  
+        const cleanFeedback = `"${flag.feedback.replace(/"/g, '""').replace(/\n/g, ' ')}"`;  
+        
+        const row = [
+          flag.questionId,
+          cleanQuestion,
+          flag.flaggedAt,
+          cleanFeedback
+        ];
+        
+        csvContent += row.join(',') + '\n';
+      });
+      
+      // Create download link
+      const encodedUri = encodeURI('data:text/csv;charset=utf-8,' + csvContent);
+      const link = document.createElement('a');
+      link.setAttribute('href', encodedUri);
+      link.setAttribute('download', `flagged_questions_${new Date().toISOString().slice(0,10)}.csv`);
+      document.body.appendChild(link);
+      
+      // Download file
+      link.click();
+      document.body.removeChild(link);
     }
   </script>
 </body>

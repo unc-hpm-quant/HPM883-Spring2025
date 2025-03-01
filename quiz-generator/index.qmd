@@ -1,16 +1,22 @@
 ---
-title: "Practice Quizzes"
+title: "Random Question Generator"
 format: 
   html:
     css: styles.css
 ---
 
-# HPM 883 Quiz Generator
+# HPM 883 Random Question Generator
 
-Test your knowledge with randomly generated questions from course content. This interactive quiz tool draws from lectures across all course units.
+Test your knowledge with randomly generated questions from course content. This interactive tool draws questions from lectures across all course units. (These are representative of the types of questions you can expect to see on exams. You're welcome! :))
 
 :::{.callout-tip}
 **How to Use**: Select the number of questions you want to practice with, answer each question, then submit to see your results and explanations. Generate a new quiz to practice with different questions.
+:::
+
+:::{.callout-important}
+**Found an Issue?**: If you believe there's a problem with any question (unclear wording, incorrect answer, etc.), click the flag icon (⚑) next to the question. You'll be prompted to describe the issue, which will help improve the question bank.
+
+**Important**: To share flagged questions with Sean, click the gear icon (⚙️) in the top-right corner, enter the admin password when prompted, then click "Export CSV" to download your flagged questions report. Please send this CSV file to Sean in Slack.
 :::
 
 :::{.callout-note}

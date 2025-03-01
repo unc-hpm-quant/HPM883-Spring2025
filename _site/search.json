@@ -1937,6 +1937,17 @@
     ]
   },
   {
+    "objectID": "quiz-generator/index.html",
+    "href": "quiz-generator/index.html",
+    "title": "Random Question Generator",
+    "section": "",
+    "text": "HPM 883 Random Question Generator\nTest your knowledge with randomly generated questions from course content. This interactive tool draws questions from lectures across all course units. (These are representative of the types of questions you can expect to see on exams. You’re welcome! :))\n\n\n\n\n\n\nTip\n\n\n\nHow to Use: Select the number of questions you want to practice with, answer each question, then submit to see your results and explanations. Generate a new quiz to practice with different questions.\n\n\n\n\n\n\n\n\nImportant\n\n\n\nFound an Issue?: If you believe there’s a problem with any question (unclear wording, incorrect answer, etc.), click the flag icon (⚑) next to the question. You’ll be prompted to describe the issue, which will help improve the question bank.\nImportant: To share flagged questions with Sean, click the gear icon (⚙️) in the top-right corner, enter the admin password when prompted, then click “Export CSV” to download your flagged questions report. Please send this CSV file to Sean in Slack.\n\n\n\n\n\n\n\n\nNote\n\n\n\nThis quiz generator pulls questions from content covered in all course units including:\n\nUnit 0: Foundations\nUnit 1: Internal Validity and Potential Outcomes\nUnit 2: Design of Experiments\nAdditional topics from class lectures",
+    "crumbs": [
+      "Resources",
+      "Quiz Generator"
+    ]
+  },
+  {
     "objectID": "unit-2/unit-2-design-1.html",
     "href": "unit-2/unit-2-design-1.html",
     "title": "Unit 2.1: Optimal Experimental Design",
@@ -2070,16 +2081,5 @@
     "title": "Unit 2.2: Randomization Techniques",
     "section": "Conclusion: Which Method When?",
     "text": "Conclusion: Which Method When?\nThere is no one-size-fits-all approach. The best randomization strategy depends on:\n\nThe research question\nAvailable baseline data\nLogistical constraints\nExpected heterogeneity in treatment effects\n\n\n\n\n\n\n\n\nApproach\nWhen to Use\nKey Consideration\n\n\n\nSimple\nLarge samples\nSimplicity\n\n\nStratified\nStrong predictors known\nNumber of strata\n\n\nMatched-Pair\nSmall samples\nFinding good matches\n\n\nRe-randomization\nBalance is critical\nComplexity of inference\n\n\nCluster\nGroup-level intervention\nICC and number of clusters\n\n\n\nThe choice of randomization method should be guided by:\n\nThe unit of randomization (individual vs. cluster)\nThe importance of balance on specific variables\nFeasibility constraints\nAnalysis plans\n\nHappy randomizing!"
-  },
-  {
-    "objectID": "quiz-generator/index.html",
-    "href": "quiz-generator/index.html",
-    "title": "Practice Quizzes",
-    "section": "",
-    "text": "HPM 883 Quiz Generator\nTest your knowledge with randomly generated questions from course content. This interactive quiz tool draws from lectures across all course units.\n\n\n\n\n\n\nTip\n\n\n\nHow to Use: Select the number of questions you want to practice with, answer each question, then submit to see your results and explanations. Generate a new quiz to practice with different questions.\n\n\n\n\n\n\n\n\nNote\n\n\n\nThis quiz generator pulls questions from content covered in all course units including:\n\nUnit 0: Foundations\nUnit 1: Internal Validity and Potential Outcomes\nUnit 2: Design of Experiments\nAdditional topics from class lectures",
-    "crumbs": [
-      "Resources",
-      "Quiz Generator"
-    ]
   }
 ]
