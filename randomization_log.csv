@@ -1,0 +1,2 @@
+"study_name","randomization_date","randomization_method","seed_value","stratification_variables","treatment_conditions","sample_size_total","sample_sizes_by_arm","balance_assessment"
+"HBV Vaccination Subsidy Trial",2025-03-03,"Stratified randomization",72111,"insurance, prior_vaccines","Control, FirstDoseFree.first_dose_free, LastDoseFree, Graduated",5177,"Control: 216; FirstDoseFree.first_dose_free: 945; LastDoseFree: 2008; Graduated: 2008","0 significant imbalances out of 6 covariates"

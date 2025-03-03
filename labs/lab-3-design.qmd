@@ -1,0 +1,1153 @@
+---
+title: Lab 3
+subtitle: Optimizing HBV Vaccination Strategies
+author: Sean Sylvia
+date: "`r Sys.Date()`"
+slug: lab-3
+categories: 
+    - Lab
+    - Optimal Design
+    - Randomization
+description: "Optimal experimental design and randomization techniques for vaccine interventions"
+format: 
+  html:
+    toc: true
+    toc-depth: 2
+    code-tools: true
+editor: visual
+execute:
+  eval: false
+---
+
+## Overview and Learning Objectives
+
+In this lab, you will apply concepts of **optimal experimental design** and **randomization techniques** to a real-world public health challenge: increasing Hepatitis B virus (HBV) vaccination rates. Specifically, you will:
+
+1.  Design an experiment to test different subsidy strategies for HBV vaccination
+2.  Determine the **optimal allocation** of resources given budget constraints
+3.  Create a **simulated dataset** for your experiment
+4.  Implement and compare different **randomization approaches**
+5.  Test for **covariate balance** across treatment groups
+6.  Document your randomization procedure thoroughly
+
+By the end of this lab, you will have practical experience with:
+
+-   Calculating **Minimum Detectable Effects (MDEs)** for different experimental designs
+-   Making informed design trade-offs based on **budget constraints**
+-   Implementing various **randomization techniques** including simple, stratified, and matched-pair randomization
+-   Using specialized R packages (`fabricatr` and `randomizr`) for efficient experimental design
+
+------------------------------------------------------------------------
+
+## The HBV Crisis at St. Null's Community
+
+### Scene 1: The Foundation's Dilemma
+
+The corridors of St. Null's Memorial Hospital buzz with unusual energy as the hospital's charitable foundation prepares to announce a major public health initiative. **CEO Barnaby Beta**, dressed in his finest suit with a Hepatitis B awareness pin prominently displayed, stands at the head of the conference room.
+
+"People, we have a crisis on our hands!" he announces dramatically. "Only 26% of adults in our region have received *any* dose of the Hepatitis B vaccine. With 1.1 million global deaths annually, we simply must act!"
+
+**Dr. P-Hacker** nods vigorously. "I've already run some numbers," he interjects, pulling out a colorful chart. "If we offer free vaccines to everyone who walks through our doors, we'll save exactly 371.5 lives per year."
+
+**Nurse Random** raises an eyebrow. "That seems... suspiciously precise. And completely ignoring the fact that people need three doses for full protection. The completion rate in similar programs is only 13%."
+
+"Also," adds **Dr. Doub R. Obust**, who until now had been quietly examining his coffee cup, "our foundation's budget is finite. Simply offering everyone a free first dose might not optimize our impact. We need a carefully designed experiment to determine the most effective subsidy strategy."
+
+CEO Beta brightens. "An experiment! Perfect! I was just reading about those in my 'Management Buzzwords Monthly' magazine."
+
+Dr. P-Hacker frowns. "But I've already made the charts for the press release..."
+
+"What we need," says Nurse Random firmly, "is to bring in those methodology consultants from the university again. They'll help us design a proper randomized trial to test different subsidy approaches."
+
+And that's where you come in. The foundation has a fixed budget and needs to determine the optimal strategy: Should they subsidize the first, second, or third dose? Or perhaps distribute subsidies differently? Your task is to design an experiment that will provide clear answers within their budget constraints.
+
+------------------------------------------------------------------------
+
+## Part 1: Setting Up the Problem
+
+First, let's establish some key parameters about HBV vaccination in this community:
+
+-   **Current first-dose uptake rate**: 26% of eligible adults
+-   **Series completion rate without intervention**: 13% of those who start
+-   **Protection rates**: 30-55% after one dose, 75% after two doses, \>90% after three doses
+-   **Dose costs**: \$25 per dose (same for all three doses)
+-   **Follow-up costs**: \$5 per person for reminder/tracking
+-   **Foundation budget**: \$100,000 for the pilot program
+
+The foundation is considering several possible intervention strategies:
+
+1.  **First Dose Free**: Provide the first dose free to everyone
+2.  **Last Dose Free**: Provide the third dose free to those who complete two doses
+3.  **Graduated Subsidy**: Provide increasing subsidies (\$10, \$15, \$25) for each subsequent dose
+4.  **Full Series Free**: Provide all three doses free, but to a smaller population
+
+Before diving into randomization, let's install the required packages:
+
+```{r}
+# Install required packages if not already installed
+required_packages <- c("data.table", "ggplot2", "fabricatr", "randomizr", "multiwayvcov", "lmtest")
+
+for (pkg in required_packages) {
+  if (!require(pkg, character.only = TRUE)) {
+    install.packages(pkg)
+  }
+}
+
+# Load libraries
+library(data.table)
+library(ggplot2)
+```
+
+## Part 2: Optimal Allocation of Resources
+
+### Step 1: Define the parameters
+
+Let's start by defining the variables needed for our power calculations and optimal design:
+
+```{r}
+# Cost parameters
+dose_cost <- 25  # Cost per vaccine dose ($)
+followup_cost <- 5  # Cost of follow-up per person ($)
+total_budget <- 100000  # Total budget ($)
+
+# Expected outcomes for each strategy (completion rates)
+baseline_completion <- 0.13  # Baseline completion rate
+expected_effects <- c(
+  first_dose_free = 0.08,   # Expected increase if first dose is free
+  last_dose_free = 0.12,    # Expected increase if third dose is free
+  graduated = 0.15,         # Expected increase if graduated subsidies
+  full_series = 0.20        # Expected increase if all doses free
+)
+
+# Variance parameters (assume equal for now)
+outcome_variance <- 0.2  # Variance of binary outcome (completion)
+
+# Statistical parameters
+alpha <- 0.05  # Significance level
+power <- 0.80  # Desired power
+```
+
+### Step 2: Calculate total cost per person for each strategy
+
+Next, we'll calculate the cost per person for each intervention strategy:
+
+```{r}
+# Calculate cost per person for each strategy
+cost_per_person <- c(
+  # First dose free: 1 dose cost + followup
+  first_dose_free = dose_cost + followup_cost,
+  
+  # Last dose free: Those who reach third dose (baseline + effect) get subsidy
+  # Everyone gets followup cost
+  last_dose_free = (baseline_completion + expected_effects["last_dose_free"]) * 
+                   dose_cost + followup_cost,
+  
+  # Graduated subsidy: $10 + $15 + $25 for completers
+  # Partial subsidy costs for non-completers + followup for all
+  graduated = 10 + 
+              0.50 * 15 + # Assume 50% reach second dose
+              (baseline_completion + expected_effects["graduated"]) * 25 + 
+              followup_cost,
+  
+  # Full series free: 3 doses for completers, partial for others + followup
+  full_series = 3 * dose_cost + followup_cost
+)
+
+# Display costs
+print(cost_per_person)
+```
+
+### Step 3: Calculate sample size for each arm with equal allocation
+
+First, let's determine how many people we could include if we divide our budget equally among the strategies:
+
+```{r}
+# Determine total sample size with equal allocation (4 arms)
+n_per_arm_equal <- floor(total_budget / (sum(cost_per_person)))
+total_n_equal <- 4 * n_per_arm_equal
+
+cat("With equal allocation:\n")
+cat("Sample size per arm:", n_per_arm_equal, "\n")
+cat("Total sample size:", total_n_equal, "\n")
+```
+
+### Step 4: Calculate the Minimum Detectable Effect (MDE) with equal allocation
+
+Now, let's calculate the MDE for each strategy under equal allocation:
+
+```{r}
+# Minimum Detectable Effect calculation
+calculate_mde <- function(n1, n0, sigma_sq, alpha = 0.05, power = 0.80) {
+  # Critical values
+  z_alpha <- qnorm(1 - alpha/2)
+  z_power <- qnorm(power)
+  
+  # Standard error
+  se <- sqrt(sigma_sq * (1/n1 + 1/n0))
+  
+  # MDE
+  mde <- (z_alpha + z_power) * se
+  
+  return(mde)
+}
+
+# Calculate MDE for each arm vs. control with equal allocation
+mde_equal <- numeric(length(cost_per_person))
+names(mde_equal) <- names(cost_per_person)
+
+for (i in seq_along(cost_per_person)) {
+  mde_equal[i] <- calculate_mde(
+    n1 = n_per_arm_equal,
+    n0 = n_per_arm_equal,
+    sigma_sq = outcome_variance
+  )
+}
+
+# Display MDEs
+print(mde_equal)
+```
+
+### Step 5: Calculate optimal allocation based on costs
+
+Now, let's determine the optimal allocation of resources based on the cost per person and the expected effect of each strategy:
+
+```{r}
+# Optimal allocation when costs differ
+optimal_allocation <- function(costs, budget, sigma_sq = NULL) {
+  if (is.null(sigma_sq)) {
+    # If no variance provided, assume equal variance
+    sigma_sq <- rep(outcome_variance, length(costs))
+  }
+  
+  # Calculate the optimal proportions
+  proportions <- sqrt(sigma_sq) / sqrt(costs)
+  proportions <- proportions / sum(proportions)
+  
+  # Calculate sample sizes
+  n_per_arm <- floor(budget * proportions / costs)
+  
+  return(n_per_arm)
+}
+
+# Calculate optimal allocation
+n_per_arm_optimal <- optimal_allocation(
+  costs = cost_per_person,
+  budget = total_budget
+)
+
+total_n_optimal <- sum(n_per_arm_optimal)
+
+cat("With optimal allocation:\n")
+for (i in seq_along(n_per_arm_optimal)) {
+  cat(names(n_per_arm_optimal)[i], ":", n_per_arm_optimal[i], "participants\n")
+}
+cat("Total sample size:", total_n_optimal, "\n")
+```
+
+### Step 6: Calculate the MDE with optimal allocation
+
+Let's calculate the MDEs we can expect with the optimal allocation:
+
+```{r}
+# Calculate MDE for each arm vs. control with optimal allocation
+mde_optimal <- numeric(length(cost_per_person))
+names(mde_optimal) <- names(cost_per_person)
+
+# Control group size (we'll use the smallest treatment group as reference)
+n0 <- min(n_per_arm_optimal)
+
+for (i in seq_along(cost_per_person)) {
+  mde_optimal[i] <- calculate_mde(
+    n1 = n_per_arm_optimal[i],
+    n0 = n0,
+    sigma_sq = outcome_variance
+  )
+}
+
+# Display MDEs
+print(mde_optimal)
+
+# Compare to expected effects
+results_table <- data.frame(
+  Strategy = names(expected_effects),
+  Expected_Effect = expected_effects,
+  MDE_Equal = mde_equal,
+  MDE_Optimal = mde_optimal,
+  Detectable_Equal = expected_effects > mde_equal,
+  Detectable_Optimal = expected_effects > mde_optimal
+)
+
+print(results_table)
+```
+
+### Discussion Questions
+
+1.  Which allocation strategy (equal or optimal) allows you to detect more of the expected effects?
+2.  What trade-offs are involved in choosing between these allocation strategies?
+3.  Based on the MDEs, which intervention strategies should the foundation prioritize testing?
+
+------------------------------------------------------------------------
+
+## Part 3: Creating a Simulated Dataset
+
+### Scene 2: The Dataset Debate
+
+Back at St. Null's, **Dr. P-Hacker** is pacing the room impatiently.
+
+"I still don't understand why we need to wait for an experiment," he complains. "I can just use our electronic health records to prove whichever strategy you prefer, CEO Beta."
+
+**Nurse Random** crosses her arms. "And that's exactly the problem. We need a properly randomized prospective study, not a fishing expedition through historical data."
+
+"But we have hundreds of thousands of patient records!" Dr. P-Hacker protests.
+
+**Dr. Doub R. Obust** clears his throat. "Ah, but what we don't have is the counterfactual. We don't know what would have happened if Patient X had been offered a different subsidy scheme."
+
+CEO Beta looks confused. "Counter... what now?"
+
+"What people would have done under different circumstances," Nurse Random explains. "That's why we need a clean experiment with proper randomization."
+
+"Fine," huffs Dr. P-Hacker. "But how do we even create a dataset for this yet-to-happen experiment?"
+
+Dr. Doub R. Obust smiles. "That's where our university consultants come in. They'll simulate the data based on our best knowledge of the population characteristics. Then they'll help us implement a proper randomization strategy."
+
+### Step 1: Manual dataset creation
+
+Let's create a simulated dataset of potential participants for our HBV vaccination study. We'll include baseline characteristics that might affect vaccine uptake:
+
+```{r}
+# Set seed for reproducibility
+set.seed(072111)
+
+# Define sample size (from our optimal allocation calculation)
+n_total <- sum(n_per_arm_optimal)
+
+# Create baseline dataset manually
+create_baseline_data <- function(n) {
+  # Initialize data table
+  dt <- data.table(
+    id = 1:n,
+    
+    # Demographics
+    age = sample(18:65, n, replace = TRUE),
+    female = rbinom(n, 1, 0.55),
+    education = sample(1:4, n, replace = TRUE, 
+                      prob = c(0.15, 0.3, 0.4, 0.15)),
+    
+    # Health factors
+    insurance = rbinom(n, 1, 0.7),
+    prior_vaccines = rbinom(n, 1, 0.4),
+    health_conscious = rbinom(n, 1, 0.3),
+    
+    # Access factors
+    distance_to_clinic = runif(n, 0, 30),
+    works_weekdays = rbinom(n, 1, 0.8)
+  )
+  
+  # Convert categorical variables to factors
+  dt[, education := factor(education, 
+                          levels = 1:4, 
+                          labels = c("Less than HS", "HS", "Some college", "College+"))]
+  
+  return(dt)
+}
+
+# Create the baseline dataset
+sim_data <- create_baseline_data(n_total)
+
+# View the first few rows
+head(sim_data)
+
+# Summary statistics
+summary(sim_data)
+```
+
+### Step 2: Using fabricatr for more efficient data generation
+
+The `fabricatr` package provides a more efficient way to generate simulated data:
+
+```{r}
+library(fabricatr)
+
+# Create the same dataset using fabricatr
+sim_data_fab <- fabricate(
+  N = n_total,
+  id = 1:n_total,
+  age = sample(18:65, N, replace = TRUE),
+  female = draw_binary(prob = 0.55),
+  education = draw_categorical(
+    prob = c(0.15, 0.3, 0.4, 0.15),
+    N = N,
+    category_labels = c("Less than HS", "HS", "Some college", "College+")
+  ),
+  insurance = draw_binary(prob = 0.7),
+  prior_vaccines = draw_binary(prob = 0.4),
+  health_conscious = draw_binary(prob = 0.3),
+  distance_to_clinic = runif(N, 0, 30),
+  works_weekdays = draw_binary(prob = 0.8)
+)
+
+# Convert to data.table for consistency
+sim_data_fab <- as.data.table(sim_data_fab)
+
+# View the first few rows
+head(sim_data_fab)
+
+# Summary statistics
+summary(sim_data_fab)
+```
+
+### Step 3: Add a predicted baseline completion probability
+
+To model the heterogeneity in participants' likelihood of completing the vaccine series, let's add a baseline predicted probability based on their characteristics:
+
+```{r}
+# Add predicted baseline probability
+sim_data[, baseline_prob := 0.13 +  # Base rate
+         0.05 * (age > 40) +         # Older people more likely
+         0.08 * (insurance == 1) +    # Insurance increases likelihood
+         0.10 * (prior_vaccines == 1) + # Prior vaccination behavior
+         0.07 * (health_conscious == 1) - # Health consciousness
+         0.005 * distance_to_clinic +    # Distance (negative effect)
+         0.03 * (education %in% c("Some college", "College+")) # Education effect
+]
+
+# Constrain probabilities between 0 and 1
+sim_data[baseline_prob < 0, baseline_prob := 0]
+sim_data[baseline_prob > 1, baseline_prob := 1]
+
+# Display distribution of baseline probabilities
+hist(sim_data$baseline_prob, 
+     main = "Distribution of Baseline Completion Probabilities",
+     xlab = "Probability of Completing Vaccine Series",
+     col = "lightblue",
+     breaks = 20)
+```
+
+## Part 4: Implementing Different Randomization Approaches
+
+### Scene 3: The Randomization Revelation
+
+In the hospital's data center, **Dr. P-Hacker** is gesturing at his computer screen, where a crude Excel sheet displays his "randomization" plan.
+
+"I've already assigned participants to groups," he announces proudly. "I just alternated down the list: A, B, C, D, A, B, C, D..."
+
+**Nurse Random** looks horrified. "That's not randomization at all! It's completely predictable, and it doesn't account for any baseline characteristics."
+
+"But it's so... neat," Dr. P-Hacker protests.
+
+**Dr. Doub R. Obust** shakes his head sadly. "A cardinal sin in experimental design. We need proper randomization that gives each participant a known, non-zero probability of assignment to each treatment condition, and that's independent of potential outcomes."
+
+"Exactly," Nurse Random agrees. "And ideally, we should stratify by key characteristics to ensure balance across treatment arms."
+
+"Strati-what now?" CEO Beta asks, glancing up from his phone where he's been browsing luxury yacht websites.
+
+Dr. Doub R. Obust sighs. "This is why we need the university consultants."
+
+### Step 1: Simple Randomization
+
+Let's implement the simplest form of randomization - Bernoulli trials:
+
+```{r}
+# Define treatment conditions
+treatment_conditions <- c("Control", "FirstDoseFree", "LastDoseFree", "Graduated")
+
+# Simple randomization (Bernoulli trials)
+simple_randomize <- function(data, conditions, probabilities = NULL) {
+  n <- nrow(data)
+  k <- length(conditions)
+  
+  # If no probabilities provided, use equal probabilities
+  if (is.null(probabilities)) {
+    probabilities <- rep(1/k, k)
+  }
+  
+  # Generate random assignments
+  assignments <- sample(conditions, n, replace = TRUE, prob = probabilities)
+  
+  return(assignments)
+}
+
+# Apply simple randomization
+set.seed(072111)
+sim_data[, treatment_simple := simple_randomize(sim_data, treatment_conditions)]
+
+# Check distribution
+table(sim_data$treatment_simple)
+```
+
+### Step 2: Complete Randomization
+
+Now let's use complete randomization to ensure exact numbers in each group:
+
+```{r}
+# Complete randomization
+complete_randomize <- function(data, conditions, ns = NULL) {
+  n <- nrow(data)
+  k <- length(conditions)
+  
+  # If no specific counts provided, divide equally
+  if (is.null(ns)) {
+    ns <- rep(floor(n / k), k)
+    # Distribute any remainder
+    remainder <- n - sum(ns)
+    if (remainder > 0) {
+      ns[1:remainder] <- ns[1:remainder] + 1
+    }
+  }
+  
+  # Check for NA values in ns
+  if (any(is.na(ns))) {
+    stop("Group sizes (ns) contain NA values")
+  }
+  
+  # Ensure all ns are positive integers
+  if (any(ns <= 0) || any(ns != floor(ns))) {
+    stop("All group sizes must be positive integers")
+  }
+  
+  # Ensure sum of ns equals total sample size
+  sum_ns <- sum(ns)
+  if (sum_ns != n) {
+    stop(paste("Sum of group sizes (", sum_ns, ") does not equal total sample size (", n, ")", sep = ""))
+  }
+  
+  # Create vector of assignments
+  assignments <- rep(conditions, ns)
+  
+  # Randomly shuffle
+  assignments <- sample(assignments, n)
+  
+  return(assignments)
+}
+
+# Calculate desired sample sizes from optimal allocation
+# Adjust to ensure the sum matches the total sample size
+n_total_current <- nrow(sim_data)
+
+# Debug n_per_arm_optimal
+print("n_per_arm_optimal values:")
+print(n_per_arm_optimal)
+
+# Check for NA values
+if (any(is.na(n_per_arm_optimal))) {
+  warning("n_per_arm_optimal contains NA values, using equal allocation instead")
+  # Fall back to equal allocation
+  treatment_counts <- rep(floor(n_total_current / 4), 4)
+  names(treatment_counts) <- c("Control", "FirstDoseFree", "LastDoseFree", "Graduated")
+  
+  # Handle remainder
+  remainder <- n_total_current - sum(treatment_counts)
+  if (remainder > 0) {
+    treatment_counts[1:remainder] <- treatment_counts[1:remainder] + 1
+  }
+} else {
+  # Original calculation, but with more robust error handling
+  # Set control size to a reasonable value
+  control_size <- min(n_per_arm_optimal)
+  if (is.na(control_size) || control_size <= 0) {
+    control_size <- floor(n_total_current / 8) # Default to 1/8 of total
+  }
+  
+  # Get treatment arm sizes, replacing any NA values with reasonable defaults
+  get_arm_size <- function(arm_name, default_proportion = 0.25) {
+    size <- n_per_arm_optimal[arm_name]
+    if (is.na(size) || size <= 0) {
+      # Default to 1/4 of what's left after control
+      size <- floor((n_total_current - control_size) * default_proportion)
+    }
+    return(size)
+  }
+  
+  # Total from optimal allocation
+  arms <- c(
+    Control = control_size,
+    FirstDoseFree = get_arm_size("first_dose_free", 1/3),
+    LastDoseFree = get_arm_size("last_dose_free", 1/3),
+    Graduated = get_arm_size("graduated", 1/3)
+  )
+  
+  total_optimal <- sum(arms)
+  
+  # Calculate proportions
+  proportions <- arms / total_optimal
+  
+  # Recalculate group counts based on current sample size
+  treatment_counts <- floor(proportions * n_total_current)
+  
+  # Handle remainder to ensure sum matches exactly
+  remainder <- n_total_current - sum(treatment_counts)
+  if (remainder > 0) {
+    # Add the remainder to groups in order until it's all distributed
+    for (i in 1:remainder) {
+      idx <- (i - 1) %% length(treatment_counts) + 1
+      treatment_counts[idx] <- treatment_counts[idx] + 1
+    }
+  }
+}
+
+# Verify the sum equals the total
+cat("Treatment counts:")
+print(treatment_counts)
+cat("Sum of treatment counts:", sum(treatment_counts), "\n")
+cat("Total sample size:", n_total_current, "\n")
+
+# Apply complete randomization with adjusted allocation
+set.seed(072111)
+tryCatch({
+  # Verify one more time that counts sum to the correct number
+  if (sum(treatment_counts) != nrow(sim_data)) {
+    stop("Treatment counts must sum to the total number of rows in sim_data")
+  }
+  
+  sim_data[, treatment_complete := complete_randomize(
+    sim_data, 
+    names(treatment_counts),
+    ns = treatment_counts
+  )]
+  
+  # Show results of randomization
+  cat("\nTreatment assignment counts:\n")
+  print(table(sim_data$treatment_complete))
+}, error = function(e) {
+  # Fall back to simple equal allocation as a last resort
+  message("Error in randomization: ", e$message)
+  message("Falling back to simple equal allocation")
+  
+  n <- nrow(sim_data)
+  k <- 4  # Number of treatment groups
+  equal_counts <- rep(floor(n / k), k)
+  remainder <- n - sum(equal_counts)
+  if (remainder > 0) {
+    equal_counts[1:remainder] <- equal_counts[1:remainder] + 1
+  }
+  
+  conditions <- c("Control", "FirstDoseFree", "LastDoseFree", "Graduated")
+  
+  sim_data[, treatment_complete := complete_randomize(
+    sim_data, 
+    conditions,
+    ns = equal_counts
+  )]
+})
+
+# Check distribution
+table(sim_data$treatment_complete)
+```
+
+### Step 3: Stratified Randomization
+
+Let's stratify by key characteristics that might influence outcomes:
+
+```{r}
+# Stratified randomization
+stratified_randomize <- function(data, conditions, strata_vars, ns = NULL) {
+  # Create strata based on combinations of strata_vars
+  data$strata <- do.call(paste, c(data[, strata_vars, with = FALSE], sep = "_"))
+  
+  # Get unique strata
+  unique_strata <- unique(data$strata)
+  
+  # Initialize treatment assignment vector
+  n <- nrow(data)
+  assignments <- rep(NA, n)
+  
+  # Loop through strata
+  for (stratum in unique_strata) {
+    # Get indices for this stratum
+    stratum_indices <- which(data$strata == stratum)
+    stratum_size <- length(stratum_indices)
+    
+    # Determine counts for this stratum (proportional to overall)
+    if (is.null(ns)) {
+      # Equal allocation within stratum
+      stratum_ns <- rep(floor(stratum_size / length(conditions)), length(conditions))
+      remainder <- stratum_size - sum(stratum_ns)
+      if (remainder > 0) {
+        stratum_ns[1:remainder] <- stratum_ns[1:remainder] + 1
+      }
+    } else {
+      # Proportional allocation based on provided ns
+      stratum_props <- ns / sum(ns)
+      stratum_ns <- floor(stratum_size * stratum_props)
+      remainder <- stratum_size - sum(stratum_ns)
+      if (remainder > 0) {
+        # Distribute remainder to largest groups
+        for (i in order(stratum_ns, decreasing = TRUE)[1:remainder]) {
+          stratum_ns[i] <- stratum_ns[i] + 1
+        }
+      }
+    }
+    
+    # Generate assignments for this stratum
+    stratum_assignments <- rep(conditions, stratum_ns)
+    if (length(stratum_assignments) < stratum_size) {
+      # Handle edge case: add one more randomized assignment if needed
+      stratum_assignments <- c(stratum_assignments, 
+                              sample(conditions, stratum_size - length(stratum_assignments)))
+    }
+    
+    # Randomly shuffle and assign
+    stratum_assignments <- sample(stratum_assignments, stratum_size)
+    assignments[stratum_indices] <- stratum_assignments
+  }
+  
+  return(assignments)
+}
+
+# Define stratification variables
+strata_vars <- c("insurance", "prior_vaccines")
+
+# Apply stratified randomization
+set.seed(072111)
+sim_data[, treatment_strat := stratified_randomize(
+  sim_data, 
+  names(treatment_counts),
+  strata_vars = strata_vars,
+  ns = treatment_counts
+)]
+
+# Check distribution
+table(sim_data$treatment_strat)
+
+# Check distribution within strata
+with(sim_data, table(insurance, prior_vaccines, treatment_strat))
+```
+
+### Step 4: Using randomizr for efficient randomization
+
+The `randomizr` package provides a more streamlined way to implement these randomization approaches:
+
+```{r}
+library(randomizr)
+
+# Simple randomization with randomizr
+sim_data[, treatment_randomizr_simple := complete_ra(
+  N = nrow(sim_data),
+  num_arms = length(treatment_conditions),
+  conditions = treatment_conditions
+)]
+
+# Complete randomization with randomizr
+sim_data[, treatment_randomizr_complete := complete_ra(
+  N = nrow(sim_data),
+  conditions = names(treatment_counts),
+  prob_each = treatment_counts / sum(treatment_counts)
+)]
+
+# Stratified randomization with randomizr
+sim_data[, strata_combined := paste(insurance, prior_vaccines, sep = "_")]
+sim_data[, treatment_randomizr_strat := block_ra(
+  blocks = strata_combined,
+  conditions = names(treatment_counts),
+  prob_each = treatment_counts / sum(treatment_counts)
+)]
+
+# Check distributions
+cat("Simple randomization with randomizr:\n")
+table(sim_data$treatment_randomizr_simple)
+
+cat("\nComplete randomization with randomizr:\n")
+table(sim_data$treatment_randomizr_complete)
+
+cat("\nStratified randomization with randomizr:\n")
+table(sim_data$treatment_randomizr_strat)
+```
+
+## Part 5: Assessing Balance Across Treatment Groups
+
+### Scene 4: The Balance Inquiry
+
+With the randomization complete, the team at St. Null's gathers to review the results.
+
+**Dr. P-Hacker** squints at the printout. "It looks random to me. Can we start the intervention now?"
+
+**Nurse Random** shakes her head firmly. "Not until we check for balance. We need to make sure our randomization didn't produce any significant differences in baseline characteristics between groups."
+
+"But it's randomized!" protests Dr. P-Hacker. "Doesn't that guarantee balance?"
+
+**Dr. Doub R. Obust** adjusts his glasses. "In expectation, yes. But any single realization of a randomization process can result in imbalances by chance. We need to verify that our treatment groups are comparable at baseline."
+
+"Exactly," Nurse Random agrees. "We should check for balance on key characteristics, especially those that might influence our outcomes."
+
+"And if there's imbalance?" asks CEO Beta, looking worried.
+
+"Then we might need to re-randomize," Dr. Doub R. Obust says, "or account for these differences in our analysis."
+
+Dr. P-Hacker sighs dramatically. "More delays!"
+
+"Better a delayed but valid study," Nurse Random counters, "than a quick but meaningless one."
+
+### Step 1: Creating balance tables
+
+Let's assess balance across our treatment groups for key covariates:
+
+```{r}
+# Function to assess balance
+assess_balance <- function(data, treatment_var, covariates) {
+  # Check if treatment variable exists
+  if (!treatment_var %in% names(data)) {
+    stop(paste("Treatment variable", treatment_var, "not found in dataset"))
+  }
+  
+  # Check if treatment variable has multiple levels
+  treatment_levels <- unique(data[[treatment_var]])
+  if (length(treatment_levels) < 2) {
+    stop("Treatment variable must have at least 2 levels for balance assessment")
+  }
+  
+  # Initialize results table
+  results <- data.table(
+    Variable = character(),
+    Category = character(),
+    Overall = numeric()
+  )
+  
+  # Add columns for each treatment level
+  for (level in treatment_levels) {
+    results[[as.character(level)]] <- numeric()
+  }
+  
+  # Add columns for p-values
+  results[["p.value"]] <- numeric()
+  
+  # Process each covariate
+  for (var in covariates) {
+    # Check if variable exists
+    if (!var %in% names(data)) {
+      warning(paste("Covariate", var, "not found in dataset - skipping"))
+      next
+    }
+    
+    # Determine variable type and handle appropriately
+    if (is.factor(data[[var]]) || is.character(data[[var]]) || length(unique(na.omit(data[[var]]))) <= 5) {
+      # Categorical variable (factor, character, or numeric with few unique values)
+      var_data <- data[[var]]
+      
+      # Ensure factor type for table creation
+      if (!is.factor(var_data)) {
+        var_data <- as.factor(var_data)
+      }
+      
+      # Create contingency table safely
+      var_table <- tryCatch({
+        table(var_data, data[[treatment_var]])
+      }, error = function(e) {
+        warning(paste("Error creating table for", var, ":", e$message))
+        return(NULL)
+      })
+      
+      # Skip if table creation failed
+      if (is.null(var_table) || any(dim(var_table) == 0)) {
+        warning(paste("Could not create valid contingency table for", var))
+        next
+      }
+      
+      # Calculate proportions
+      var_props <- tryCatch({
+        prop.table(var_table, margin = 2)
+      }, error = function(e) {
+        warning(paste("Error calculating proportions for", var, ":", e$message))
+        # Create a matrix of NAs with appropriate dimensions
+        props <- matrix(NA, nrow = nrow(var_table), ncol = ncol(var_table))
+        rownames(props) <- rownames(var_table)
+        colnames(props) <- colnames(var_table)
+        return(props)
+      })
+      
+      # Chi-square test (only if enough data)
+      chi_p_value <- tryCatch({
+        if (any(var_table < 5)) {
+          # Use Fisher's exact test for small counts
+          fisher.test(var_table, simulate.p.value = TRUE)$p.value
+        } else {
+          chisq.test(var_table)$p.value
+        }
+      }, error = function(e) {
+        warning(paste("Error in statistical test for", var, ":", e$message))
+        return(NA)
+      })
+      
+      # Add rows for each category
+      for (cat_idx in 1:nrow(var_props)) {
+        cat <- rownames(var_props)[cat_idx]
+        
+        row <- data.table(
+          Variable = var,
+          Category = as.character(cat),
+          Overall = sum(var_data == cat, na.rm = TRUE) / sum(!is.na(var_data))
+        )
+        
+        # Add proportions for each treatment level
+        for (level in treatment_levels) {
+          level_col <- which(colnames(var_props) == as.character(level))
+          if (length(level_col) > 0) {
+            row[[as.character(level)]] <- var_props[cat_idx, level_col]
+          } else {
+            row[[as.character(level)]] <- NA
+          }
+        }
+        
+        # Add p-value
+        row[["p.value"]] <- chi_p_value
+        
+        # Add to results
+        results <- rbind(results, row)
+      }
+    } else {
+      # Continuous variable
+      # Overall mean
+      row <- data.table(
+        Variable = var,
+        Category = "Mean",
+        Overall = mean(data[[var]], na.rm = TRUE)
+      )
+      
+      # Means for each treatment level
+      for (level in treatment_levels) {
+        level_data <- data[data[[treatment_var]] == level, ][[var]]
+        if (length(level_data) > 0) {
+          row[[as.character(level)]] <- mean(level_data, na.rm = TRUE)
+        } else {
+          row[[as.character(level)]] <- NA
+        }
+      }
+      
+      # ANOVA test (catch errors)
+      row[["p.value"]] <- tryCatch({
+        anova_model <- aov(as.formula(paste(var, "~", treatment_var)), data = data)
+        anova_summary <- summary(anova_model)
+        anova_summary[[1]]$`Pr(>F)`[1]
+      }, error = function(e) {
+        warning(paste("Error in ANOVA for", var, ":", e$message))
+        return(NA)
+      })
+      
+      # Add to results
+      results <- rbind(results, row)
+    }
+  }
+  
+  return(results)
+}
+```
+
+```{r}
+# Select covariates to check for balance
+balance_covariates <- c("age", "female", "education", "insurance", "prior_vaccines", "distance_to_clinic")
+
+# Check balance for complete randomization
+balance_complete <- assess_balance(
+  sim_data, 
+  "treatment_complete", 
+  balance_covariates
+)
+
+# Check balance for stratified randomization
+balance_strat <- assess_balance(
+  sim_data, 
+  "treatment_strat", 
+  balance_covariates
+)
+
+# Print balance tables
+cat("Balance table for complete randomization:\n")
+print(balance_complete)
+
+cat("\nBalance table for stratified randomization:\n")
+print(balance_strat)
+
+# Compare number of significant imbalances
+sig_complete <- sum(balance_complete$p.value < 0.05)
+sig_strat <- sum(balance_strat$p.value < 0.05)
+
+cat("\nNumber of significant imbalances (p < 0.05):\n")
+cat("Complete randomization:", sig_complete, "\n")
+cat("Stratified randomization:", sig_strat, "\n")
+```
+
+### Step 2: Visual assessment of balance
+
+Let's create visual representations of balance across treatment groups:
+
+```{r}
+library(ggplot2)
+
+# Function to plot standardized mean differences
+plot_balance <- function(data, treatment_var, covariates) {
+  # Initialize results
+  results <- data.frame(
+    Variable = character(),
+    Category = character(),
+    Std_Diff = numeric(),
+    Treatment = character()
+  )
+  
+  # Process each covariate
+  for (var in covariates) {
+    # Overall SD
+    var_sd <- sd(as.numeric(data[[var]]), na.rm = TRUE)
+    
+    # Reference level (Control)
+    ref_mean <- mean(as.numeric(data[data[[treatment_var]] == "Control", ][[var]]), na.rm = TRUE)
+    
+    # Other treatment levels
+    treatment_levels <- setdiff(unique(data[[treatment_var]]), "Control")
+    
+    for (level in treatment_levels) {
+      # Treatment mean
+      treat_mean <- mean(as.numeric(data[data[[treatment_var]] == level, ][[var]]), na.rm = TRUE)
+      
+      # Standardized difference
+      std_diff <- (treat_mean - ref_mean) / var_sd
+      
+      # Add to results
+      results <- rbind(results, data.frame(
+        Variable = var,
+        Std_Diff = std_diff,
+        Treatment = level
+      ))
+    }
+  }
+  
+  # Create plot
+  ggplot(results, aes(x = Variable, y = Std_Diff, fill = Treatment)) +
+    geom_bar(stat = "identity", position = "dodge") +
+    geom_hline(yintercept = 0, linetype = "dashed") +
+    geom_hline(yintercept = c(-0.1, 0.1), linetype = "dotted", color = "red") +
+    labs(
+      title = "Standardized Mean Differences",
+      subtitle = "Treatment vs. Control",
+      x = "Variable",
+      y = "Standardized Difference"
+    ) +
+    coord_flip() +
+    theme_minimal()
+}
+
+# Create balance plots
+balance_plot_complete <- plot_balance(
+  sim_data, 
+  "treatment_complete", 
+  c("age", "female", "insurance", "prior_vaccines", "distance_to_clinic")
+)
+
+balance_plot_strat <- plot_balance(
+  sim_data, 
+  "treatment_strat", 
+  c("age", "female", "insurance", "prior_vaccines", "distance_to_clinic")
+)
+
+# Display plots
+balance_plot_complete
+balance_plot_strat
+```
+
+## Part 6: Documenting the Randomization Procedure
+
+### Scene 5: Documentation Day
+
+As the team finalizes their randomization approach, **Nurse Random** insists on proper documentation.
+
+"We need to document every step of our randomization procedure," she explains. "Not just for transparency, but for reproducibility."
+
+**Dr. P-Hacker** looks puzzled. "Can't we just say 'we randomized participants' and leave it at that?"
+
+**Dr. Doub R. Obust** chuckles. "That's like saying 'we did surgery' without specifying the procedure, instruments, or technique. Details matter in science."
+
+"Exactly," Nurse Random agrees. "We need to record the randomization method, the seed used, the stratification variables, and verification of balance."
+
+"But why?" whines Dr. P-Hacker.
+
+"Because," Dr. Doub R. Obust explains patiently, "someday someone might need to replicate our study. Or we might need to defend our methods. Good documentation is good science."
+
+CEO Beta nods decisively. "Makes sense to me. If I'm going to put the hospital's name on this project, I want it to be bulletproof."
+
+### Step 1: Creating a randomization log
+
+Let's create a comprehensive randomization log:
+
+```{r}
+# Create randomization log
+randomization_log <- data.table(
+  study_name = "HBV Vaccination Subsidy Trial",
+  randomization_date = Sys.Date(),
+  randomization_method = "Stratified randomization",
+  seed_value = 072111,
+  stratification_variables = paste(strata_vars, collapse = ", "),
+  treatment_conditions = paste(names(treatment_counts), collapse = ", "),
+  sample_size_total = nrow(sim_data),
+  sample_sizes_by_arm = paste(paste(names(treatment_counts), treatment_counts, sep = ": "), 
+                             collapse = "; "),
+  balance_assessment = paste0(sig_strat, " significant imbalances out of ", 
+                             length(balance_covariates), " covariates")
+)
+
+# Save randomization log
+write.csv(randomization_log, "randomization_log.csv", row.names = FALSE)
+
+# Save treatment assignments
+treatment_assignments <- sim_data[, .(id, treatment = treatment_strat)]
+write.csv(treatment_assignments, "treatment_assignments.csv", row.names = FALSE)
+
+# Save balance assessment
+write.csv(balance_strat, "balance_assessment.csv", row.names = FALSE)
+
+# Display randomization log
+print(randomization_log)
+```
+
+### Step 2: Finalizing the allocation approch
+
+Based on our analyses, let's make a final recommendation for the experimental design:
+
+```{r}
+# Extract key results
+final_allocation <- treatment_counts
+mdes <- mde_optimal
+expected_completion <- baseline_completion + expected_effects
+
+# Create summary table
+final_summary <- data.table(
+  Strategy = names(final_allocation),
+  Sample_Size = final_allocation,
+  Proportion = final_allocation / sum(final_allocation),
+  Expected_Completion = c(baseline_completion, expected_completion[-4]),  # Exclude full_series
+  MDE = c(NA, mdes[-4]),  # NA for control, exclude full_series
+  Powered = c(NA, expected_effects[-4] > mdes[-4])  # NA for control, exclude full_series
+)
+
+# Display final recommendation
+print(final_summary)
+```
+
+## Discussion and Conclusion
+
+### Final Questions to Consider
+
+As you complete this lab, consider the following questions:
+
+1.  How does the optimal allocation differ from an equal allocation approach? What factors drive this difference?
+
+2.  Which randomization approach provided the best balance across treatment groups, and why?
+
+3.  What are the trade-offs between the different subsidy strategies in terms of:
+
+    -   Cost-effectiveness
+    -   Expected impact on vaccine completion rates
+    -   Statistical power to detect effects
+
+4.  If the foundation asked you to recommend just one subsidy strategy to test against a control group (rather than testing all three), which would you choose and why?
+
+5.  How might the results change if:
+
+    -   The ICC (intraclass correlation) between patients within clinics was high?
+    -   The baseline completion rate was much higher (e.g., 30% instead of 13%)?
+    -   The cost of one dose was much higher than the others?
+
+### Submission Instructions
+
+1.  Make sure your `.qmd` file knits successfully to HTML.
+2.  Include your answers to the discussion questions.
+3.  Submit your completed lab to Gradescope by the deadline.
+
+Remember that good experimental design balances statistical power, practical constraints, and the focus of inquiry. In the real world, there's rarely a perfect design—only thoughtful trade-offs guided by clear priorities.
