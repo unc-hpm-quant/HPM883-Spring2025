@@ -24,15 +24,63 @@
     // DOM elements
     const container = document.getElementById('quiz-app-container');
 
-    // Generate random questions
+    // Generate random questions with diversity of question types
     function generateRandomQuestions() {
       // Reset state
       userAnswers = {};
       showResults = false;
       
-      // Shuffle questions
-      const shuffled = [...questionsDatabase].sort(() => 0.5 - Math.random());
-      currentQuestions = shuffled.slice(0, questionsToShow);
+      // Group questions by type
+      const questionsByType = {};
+      for (const question of questionsDatabase) {
+        if (!questionsByType[question.type]) {
+          questionsByType[question.type] = [];
+        }
+        questionsByType[question.type].push(question);
+      }
+      
+      // Shuffle each type group
+      const typeKeys = Object.keys(questionsByType);
+      typeKeys.forEach(type => {
+        questionsByType[type].sort(() => 0.5 - Math.random());
+      });
+      
+      // Strategy to ensure diversity: take one from each type first, then fill remaining slots randomly
+      currentQuestions = [];
+      
+      // First, try to include at least one question from each type
+      const usedTypes = new Set();
+      // Shuffle the type keys to randomize which types are selected first
+      const shuffledTypes = [...typeKeys].sort(() => 0.5 - Math.random());
+      
+      for (const type of shuffledTypes) {
+        if (currentQuestions.length < questionsToShow && questionsByType[type].length > 0) {
+          currentQuestions.push(questionsByType[type].shift());
+          usedTypes.add(type);
+        }
+        
+        // If we've reached our target number of questions, stop adding
+        if (currentQuestions.length >= questionsToShow) {
+          break;
+        }
+      }
+      
+      // If we still need more questions, randomly select from remaining questions
+      if (currentQuestions.length < questionsToShow) {
+        // Create a pool of all remaining questions
+        const remainingQuestions = [];
+        for (const type of typeKeys) {
+          remainingQuestions.push(...questionsByType[type]);
+        }
+        
+        // Shuffle and take as many as needed
+        remainingQuestions.sort(() => 0.5 - Math.random());
+        const additionalCount = Math.min(questionsToShow - currentQuestions.length, remainingQuestions.length);
+        currentQuestions = [...currentQuestions, ...remainingQuestions.slice(0, additionalCount)];
+      }
+      
+      // Final shuffle to avoid any patterns (e.g., first question always being the same type)
+      currentQuestions.sort(() => 0.5 - Math.random());
       
       // Render the quiz
       renderQuiz();
