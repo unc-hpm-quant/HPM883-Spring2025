@@ -353,6 +353,12 @@ window.Quarto = {
  <span class="menu-text">Unit 2.2: How to Randomize</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-3-design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 3: Experiment Design</span></a>
+  </div>
+</li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -569,7 +575,7 @@ window.Quarto = {
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
 <span></span>
 <span><span class="co"># Create baseline covariates</span></span>
-<span><span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op">(</span></span>
+<span><span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html">data.table</a></span><span class="op">(</span></span>
 <span>  <span class="co"># ID variable</span></span>
 <span>  id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">n</span>,</span>
 <span>  </span>
@@ -624,7 +630,7 @@ window.Quarto = {
 <p>Now let’s randomize using Bernoulli:</p>
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Make a copy of the data (so we can compare to other randomization methods below)</span></span>
-<span><span class="va">dt_bern</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/copy.html">copy</a></span><span class="op">(</span><span class="va">dt</span><span class="op">)</span></span>
+<span><span class="va">dt_bern</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/copy.html">copy</a></span><span class="op">(</span><span class="va">dt</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Bernoulli trial example</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">072111</span><span class="op">)</span></span>
@@ -671,7 +677,7 @@ window.Quarto = {
 <section id="implementation-1" class="level3"><h3 class="anchored" data-anchor-id="implementation-1">Implementation</h3>
 <div class="cell">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Copy data</span></span>
-<span><span class="va">dt_cr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/copy.html">copy</a></span><span class="op">(</span><span class="va">dt</span><span class="op">)</span></span>
+<span><span class="va">dt_cr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/copy.html">copy</a></span><span class="op">(</span><span class="va">dt</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">072111</span><span class="op">)</span>  <span class="co"># Set seed for reproducibility</span></span>
 <span></span>
@@ -682,7 +688,7 @@ window.Quarto = {
 <span><span class="va">dt_cr</span><span class="op">[</span>, <span class="va">random_num</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">.N</span>, min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">]</span></span>
 <span></span>
 <span><span class="co"># Sort by random number</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/data.table/man/setorder.html">setorder</a></span><span class="op">(</span><span class="va">dt_cr</span>, <span class="va">random_num</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/setorder.html">setorder</a></span><span class="op">(</span><span class="va">dt_cr</span>, <span class="va">random_num</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Assign first p% to treatment</span></span>
 <span><span class="va">dt_cr</span><span class="op">[</span>, <span class="va">treatment</span> <span class="op">:=</span> <span class="fl">0</span><span class="op">]</span></span>
@@ -713,7 +719,7 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># First let's create a function to perform t-tests and create a formatted results table</span></span>
 <span><span class="va">run_ttests</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">dt</span>, <span class="va">title</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op">(</span></span>
+<span>  <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html">data.table</a></span><span class="op">(</span></span>
 <span>    variable <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>    method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>    mean_control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -740,7 +746,7 @@ window.Quarto = {
 <span>                           <span class="va">dt</span><span class="op">[</span><span class="va">treatment</span> <span class="op">==</span> <span class="fl">0</span>, <span class="va">temp</span><span class="op">]</span><span class="op">)</span></span>
 <span>        </span>
 <span>        <span class="co"># Add to results</span></span>
-<span>        <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">results</span>, <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op">(</span></span>
+<span>        <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">results</span>, <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html">data.table</a></span><span class="op">(</span></span>
 <span>          variable <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">var</span>, <span class="st">": "</span>, <span class="va">level</span><span class="op">)</span>,</span>
 <span>          method <span class="op">=</span> <span class="va">title</span>,</span>
 <span>          mean_control <span class="op">=</span> <span class="va">mean_control</span>,</span>
@@ -765,7 +771,7 @@ window.Quarto = {
 <span>      <span class="op">)</span></span>
 <span>      </span>
 <span>      <span class="co"># Add to results</span></span>
-<span>      <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">results</span>, <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op">(</span></span>
+<span>      <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">results</span>, <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html">data.table</a></span><span class="op">(</span></span>
 <span>        variable <span class="op">=</span> <span class="va">var</span>,</span>
 <span>        method <span class="op">=</span> <span class="va">title</span>,</span>
 <span>        mean_control <span class="op">=</span> <span class="va">mean_control</span>,</span>
@@ -865,7 +871,7 @@ window.Quarto = {
 <section id="threshold-approach" class="level3"><h3 class="anchored" data-anchor-id="threshold-approach">Threshold Approach</h3>
 <div class="cell">
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Copy the data again</span></span>
-<span><span class="va">dt_rerand_threshold</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/copy.html">copy</a></span><span class="op">(</span><span class="va">dt</span><span class="op">)</span></span>
+<span><span class="va">dt_rerand_threshold</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/copy.html">copy</a></span><span class="op">(</span><span class="va">dt</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Re-randomization - Threshold Approach:</span></span>
 <span><span class="co"># Function to test balance on key covariates</span></span>
@@ -963,7 +969,7 @@ d_{maha} = \sqrt{(x_B - X_A)^TC^{-1}(x_B - x_A)}
 <div class="cell">
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Copy data</span></span>
 <span></span>
-<span><span class="va">dt_rerand_optimal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/copy.html">copy</a></span><span class="op">(</span><span class="va">dt</span><span class="op">)</span></span>
+<span><span class="va">dt_rerand_optimal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/copy.html">copy</a></span><span class="op">(</span><span class="va">dt</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Re-randomization - Optimization Approach:</span></span>
 <span><span class="co"># Generate multiple randomizations and select the one with best overall balance</span></span>
@@ -1068,7 +1074,7 @@ Generated 1000 candidate randomizations...</code></pre>
 </ul></section><section id="implementation-2" class="level3"><h3 class="anchored" data-anchor-id="implementation-2">Implementation</h3>
 <div class="cell">
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Copy the Data</span></span>
-<span><span class="va">dt_strat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/copy.html">copy</a></span><span class="op">(</span><span class="va">dt</span><span class="op">)</span></span>
+<span><span class="va">dt_strat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/copy.html">copy</a></span><span class="op">(</span><span class="va">dt</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Set the seed using Zoe's bday</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">072111</span><span class="op">)</span>  <span class="co"># For reproducibility</span></span>
@@ -1205,7 +1211,7 @@ Generated 1000 candidate randomizations...</code></pre>
 <p>In practice, “canned” matching commands are commonly used to form matches and these often use other optimal matching algorithms. A non-greedy, optimal matching algorithm would consider all possible ways to pair units and select the configuration that minimizes the total sum of distances across all pairs. This is computationally more intensive (often solved using network optimization methods like the Hungarian algorithm) but guarantees the global minimum total distance.</p>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dt_matched</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/copy.html">copy</a></span><span class="op">(</span><span class="va">dt</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dt_matched</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/copy.html">copy</a></span><span class="op">(</span><span class="va">dt</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Set the seed using Zoe's bday</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">072111</span><span class="op">)</span>  <span class="co"># For reproducibility</span></span>
@@ -1428,7 +1434,7 @@ Treatment balance:</code></pre>
 <span></span>
 <span><span class="co"># Function to perform t-tests and create a formatted results table</span></span>
 <span><span class="va">run_ttests</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">dt</span>, <span class="va">title</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op">(</span></span>
+<span>  <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html">data.table</a></span><span class="op">(</span></span>
 <span>    variable <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>    method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>    mean_control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -1455,7 +1461,7 @@ Treatment balance:</code></pre>
 <span>                           <span class="va">dt</span><span class="op">[</span><span class="va">treatment</span> <span class="op">==</span> <span class="fl">0</span>, <span class="va">temp</span><span class="op">]</span><span class="op">)</span></span>
 <span>        </span>
 <span>        <span class="co"># Add to results</span></span>
-<span>        <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">results</span>, <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op">(</span></span>
+<span>        <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">results</span>, <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html">data.table</a></span><span class="op">(</span></span>
 <span>          variable <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">var</span>, <span class="st">": "</span>, <span class="va">level</span><span class="op">)</span>,</span>
 <span>          method <span class="op">=</span> <span class="va">title</span>,</span>
 <span>          mean_control <span class="op">=</span> <span class="va">mean_control</span>,</span>
@@ -1480,7 +1486,7 @@ Treatment balance:</code></pre>
 <span>      <span class="op">)</span></span>
 <span>      </span>
 <span>      <span class="co"># Add to results</span></span>
-<span>      <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">results</span>, <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op">(</span></span>
+<span>      <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">results</span>, <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html">data.table</a></span><span class="op">(</span></span>
 <span>        variable <span class="op">=</span> <span class="va">var</span>,</span>
 <span>        method <span class="op">=</span> <span class="va">title</span>,</span>
 <span>        mean_control <span class="op">=</span> <span class="va">mean_control</span>,</span>
@@ -1516,7 +1522,7 @@ Treatment balance:</code></pre>
 <span>  <span class="va">df2</span> <span class="op">&lt;-</span> <span class="va">f_test</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span>  <span class="va">p_value</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Fdist.html">pf</a></span><span class="op">(</span><span class="va">f_value</span>, <span class="va">df1</span>, <span class="va">df2</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span>  </span>
-<span>  <span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op">(</span></span>
+<span>  <span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html">data.table</a></span><span class="op">(</span></span>
 <span>    f_value <span class="op">=</span> <span class="va">f_value</span>,</span>
 <span>    df1 <span class="op">=</span> <span class="va">df1</span>,</span>
 <span>    df2 <span class="op">=</span> <span class="va">df2</span>,</span>
@@ -1546,7 +1552,7 @@ Treatment balance:</code></pre>
 <span></span>
 <span><span class="co"># Function to perform OLS regressions without strata fixed effects</span></span>
 <span><span class="va">run_ols_no_strata</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">dt</span>, <span class="va">title</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op">(</span></span>
+<span>  <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html">data.table</a></span><span class="op">(</span></span>
 <span>    variable <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>    method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>    coefficient <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -1566,7 +1572,7 @@ Treatment balance:</code></pre>
 <span>        <span class="va">reg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://lrberge.github.io/fixest/reference/feols.html">feols</a></span><span class="op">(</span><span class="va">temp</span> <span class="op">~</span> <span class="va">treatment</span>, data <span class="op">=</span> <span class="va">dt</span><span class="op">)</span></span>
 <span>        </span>
 <span>        <span class="co"># Add to results</span></span>
-<span>        <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">results</span>, <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op">(</span></span>
+<span>        <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">results</span>, <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html">data.table</a></span><span class="op">(</span></span>
 <span>          variable <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">var</span>, <span class="st">": "</span>, <span class="va">level</span>, <span class="st">" vs "</span>, <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">dt</span><span class="op">[[</span><span class="va">var</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>,</span>
 <span>          method <span class="op">=</span> <span class="va">title</span>,</span>
 <span>          coefficient <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">reg</span><span class="op">)</span><span class="op">[</span><span class="st">"treatment"</span><span class="op">]</span>,</span>
@@ -1584,7 +1590,7 @@ Treatment balance:</code></pre>
 <span>      <span class="va">reg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://lrberge.github.io/fixest/reference/feols.html">feols</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/formula.html">as.formula</a></span><span class="op">(</span><span class="va">formula_str</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">dt</span><span class="op">)</span></span>
 <span>      </span>
 <span>      <span class="co"># Add to results</span></span>
-<span>      <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">results</span>, <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op">(</span></span>
+<span>      <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">results</span>, <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html">data.table</a></span><span class="op">(</span></span>
 <span>        variable <span class="op">=</span> <span class="va">var</span>,</span>
 <span>        method <span class="op">=</span> <span class="va">title</span>,</span>
 <span>        coefficient <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">reg</span><span class="op">)</span><span class="op">[</span><span class="st">"treatment"</span><span class="op">]</span>,</span>
@@ -1633,7 +1639,7 @@ Treatment balance:</code></pre>
 <div class="cell">
 <div class="sourceCode" id="cb80"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Function to perform OLS regressions with strata fixed effects</span></span>
 <span><span class="va">run_ols_with_strata</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">dt</span>, <span class="va">title</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op">(</span></span>
+<span>  <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html">data.table</a></span><span class="op">(</span></span>
 <span>    variable <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>    method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>    coefficient <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -1652,7 +1658,7 @@ Treatment balance:</code></pre>
 <span>        <span class="va">reg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://lrberge.github.io/fixest/reference/feols.html">feols</a></span><span class="op">(</span><span class="va">temp</span> <span class="op">~</span> <span class="va">treatment</span> <span class="op">|</span> <span class="va">strata</span>, data <span class="op">=</span> <span class="va">dt</span><span class="op">)</span></span>
 <span>        </span>
 <span>        <span class="co"># Add to results</span></span>
-<span>        <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">results</span>, <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op">(</span></span>
+<span>        <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">results</span>, <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html">data.table</a></span><span class="op">(</span></span>
 <span>          variable <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">var</span>, <span class="st">": "</span>, <span class="va">level</span>, <span class="st">" vs "</span>, <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">dt</span><span class="op">[[</span><span class="va">var</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>,</span>
 <span>          method <span class="op">=</span> <span class="va">title</span>,</span>
 <span>          coefficient <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">reg</span><span class="op">)</span><span class="op">[</span><span class="st">"treatment"</span><span class="op">]</span>,</span>
@@ -1670,7 +1676,7 @@ Treatment balance:</code></pre>
 <span>      <span class="va">reg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://lrberge.github.io/fixest/reference/feols.html">feols</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/formula.html">as.formula</a></span><span class="op">(</span><span class="va">formula_str</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">dt</span><span class="op">)</span></span>
 <span>      </span>
 <span>      <span class="co"># Add to results</span></span>
-<span>      <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">results</span>, <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op">(</span></span>
+<span>      <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">results</span>, <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html">data.table</a></span><span class="op">(</span></span>
 <span>        variable <span class="op">=</span> <span class="va">var</span>,</span>
 <span>        method <span class="op">=</span> <span class="va">title</span>,</span>
 <span>        coefficient <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">reg</span><span class="op">)</span><span class="op">[</span><span class="st">"treatment"</span><span class="op">]</span>,</span>
@@ -1735,7 +1741,7 @@ Note
 <div class="sourceCode" id="cb82"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Calculate standardized differences </span></span>
 <span><span class="va">standardized_diff</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">dt</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">covariates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"age"</span>, <span class="st">"income"</span>, <span class="st">"female"</span>, <span class="st">"chronic_disease"</span><span class="op">)</span></span>
-<span>  <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op">(</span></span>
+<span>  <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html">data.table</a></span><span class="op">(</span></span>
 <span>    covariate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>    mean_treated <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>    mean_control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -1759,7 +1765,7 @@ Note
 <span>    <span class="va">pooled_sd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="va">sd_treated</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="va">sd_control</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">/</span> <span class="fl">2</span><span class="op">)</span></span>
 <span>    <span class="va">std_diff</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">mean_treated</span> <span class="op">-</span> <span class="va">mean_control</span><span class="op">)</span> <span class="op">/</span> <span class="va">pooled_sd</span></span>
 <span>    </span>
-<span>    <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">results</span>, <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op">(</span></span>
+<span>    <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">results</span>, <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html">data.table</a></span><span class="op">(</span></span>
 <span>      covariate <span class="op">=</span> <span class="va">cov</span>,</span>
 <span>      mean_treated <span class="op">=</span> <span class="va">mean_treated</span>,</span>
 <span>      mean_control <span class="op">=</span> <span class="va">mean_control</span>,</span>
@@ -1794,7 +1800,7 @@ Note
 <span>        <span class="va">std_diff</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">treated</span> <span class="op">-</span> <span class="va">control</span><span class="op">)</span> <span class="op">/</span> <span class="va">pooled_sd</span></span>
 <span>      <span class="op">}</span></span>
 <span>      </span>
-<span>      <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">results</span>, <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op">(</span></span>
+<span>      <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">results</span>, <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html">data.table</a></span><span class="op">(</span></span>
 <span>        covariate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"education: "</span>, <span class="va">level</span><span class="op">)</span>,</span>
 <span>        mean_treated <span class="op">=</span> <span class="va">treated</span>,</span>
 <span>        mean_control <span class="op">=</span> <span class="va">control</span>,</span>
@@ -1851,7 +1857,7 @@ Note
 <span><span class="co"># Function to extract p-values from all balance tests</span></span>
 <span><span class="va">extract_pvalues</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">test_results</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">results</span> <span class="op">&lt;-</span> <span class="va">test_results</span><span class="op">[</span>, <span class="fu">.</span><span class="op">(</span><span class="va">variable</span>, <span class="va">p_value</span><span class="op">)</span><span class="op">]</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/setattr.html">setnames</a></span><span class="op">(</span><span class="va">results</span>, <span class="st">"variable"</span>, <span class="st">"covariate"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/setattr.html">setnames</a></span><span class="op">(</span><span class="va">results</span>, <span class="st">"variable"</span>, <span class="st">"covariate"</span><span class="op">)</span></span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">results</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
@@ -2867,7 +2873,7 @@ P-values by Testing Approach<span class="gt_footnote_marks" style="white-space:n
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">200</span>  <span class="co"># Total sample size</span></span>
 <span></span>
 <span><span class="co"># Create data table</span></span>
-<span><span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">n</span><span class="op">)</span></span>
+<span><span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html">data.table</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">n</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># First randomization for factor A</span></span>
 <span><span class="va">dt</span><span class="op">[</span>, <span class="va">A</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">n</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">n</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">n</span><span class="op">)</span><span class="op">]</span><span class="op">]</span></span>

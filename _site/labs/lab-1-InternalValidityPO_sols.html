@@ -328,6 +328,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Unit 2.2: How to Randomize</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-3-design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 3: Experiment Design</span></a>
+  </div>
+</li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -554,7 +560,7 @@ Results may differ
 <span></span>
 <span><span class="co"># 100,000 people with differing levels of covid symptoms</span></span>
 <span><span class="va">N_people</span> <span class="op">=</span> <span class="fl">100000</span></span>
-<span><span class="va">df</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op">(</span>person <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">N_people</span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">=</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html">data.table</a></span><span class="op">(</span>person <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">N_people</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Potential outcomes (Y0): life-span if no vent</span></span>
 <span><span class="va">df</span><span class="op">[</span>, <span class="va">y0</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">N_people</span>, <span class="fl">9.4</span>, <span class="fl">4</span><span class="op">)</span><span class="op">]</span></span>

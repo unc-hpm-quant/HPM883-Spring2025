@@ -352,6 +352,12 @@ window.Quarto = {
  <span class="menu-text">Unit 2.2: How to Randomize</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-3-design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 3: Experiment Design</span></a>
+  </div>
+</li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -675,7 +681,7 @@ t = \frac{\hat{\tau}}{\text{SE}(\hat{\tau})}
 <p>Now we can simulate the data using data.table:</p>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Simulate data using data.table</span></span>
-<span><span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">N</span><span class="op">)</span></span>
+<span><span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html">data.table</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">N</span><span class="op">)</span></span>
 <span><span class="va">dt</span><span class="op">[</span>, <span class="va">treatment</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span><span class="va">.N</span>, <span class="fl">1</span>, <span class="va">p</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="va">dt</span><span class="op">[</span>, <span class="va">outcome</span> <span class="op">:=</span> <span class="fl">10</span> <span class="op">+</span> <span class="va">true_tau</span> <span class="op">*</span> <span class="va">treatment</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">.N</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="va">sigma</span><span class="op">)</span><span class="op">]</span></span>
 <span></span>
@@ -724,7 +730,7 @@ t = \frac{\hat{\tau}}{\text{SE}(\hat{\tau})}
 <span>  <span class="va">rejections</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
 <span>  </span>
 <span>  <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="va">reps</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">N</span><span class="op">)</span></span>
+<span>    <span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html">data.table</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">N</span><span class="op">)</span></span>
 <span>    <span class="va">dt</span><span class="op">[</span>, <span class="va">treatment</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span><span class="va">.N</span>, <span class="fl">1</span>, <span class="va">p</span><span class="op">)</span><span class="op">]</span></span>
 <span>    <span class="va">dt</span><span class="op">[</span>, <span class="va">outcome</span> <span class="op">:=</span> <span class="fl">10</span> <span class="op">+</span> <span class="va">true_tau</span> <span class="op">*</span> <span class="va">treatment</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">.N</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="va">sigma</span><span class="op">)</span><span class="op">]</span></span>
 <span>    <span class="va">diff_means</span> <span class="op">&lt;-</span> <span class="va">dt</span><span class="op">[</span><span class="va">treatment</span> <span class="op">==</span> <span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">outcome</span><span class="op">)</span><span class="op">]</span> <span class="op">-</span> <span class="va">dt</span><span class="op">[</span><span class="va">treatment</span> <span class="op">==</span> <span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">outcome</span><span class="op">)</span><span class="op">]</span></span>
@@ -873,7 +879,7 @@ FWER = 1 - 0.7738 = 0.2262
 <span><span class="va">alpha</span> <span class="op">&lt;-</span> <span class="fl">0.05</span>  <span class="co"># Significance level</span></span>
 <span></span>
 <span><span class="co"># Simulate k independent hypothesis tests</span></span>
-<span><span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op">(</span>test_id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">k</span><span class="op">)</span></span>
+<span><span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html">data.table</a></span><span class="op">(</span>test_id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">k</span><span class="op">)</span></span>
 <span><span class="va">dt</span><span class="op">[</span>, <span class="va">p_value</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">.N</span>, min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">]</span>  <span class="co"># Generate uniform random p-values</span></span>
 <span></span>
 <span><span class="va">dt</span><span class="op">[</span>, <span class="va">bonferroni</span> <span class="op">:=</span> <span class="va">p_value</span> <span class="op">&lt;</span> <span class="op">(</span><span class="va">alpha</span> <span class="op">/</span> <span class="va">k</span><span class="op">)</span><span class="op">]</span>  <span class="co"># Bonferroni correction</span></span>

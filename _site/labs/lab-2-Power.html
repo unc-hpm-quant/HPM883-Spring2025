@@ -330,6 +330,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Unit 2.2: How to Randomize</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-3-design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 3: Experiment Design</span></a>
+  </div>
+</li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -514,7 +520,7 @@ Task 1: Flawed Simulation Setup
 <span></span>
 <span><span class="co"># Simulation loop</span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="va">sim.size</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">sample_size</span><span class="op">)</span></span>
+<span>  <span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html">data.table</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">sample_size</span><span class="op">)</span></span>
 <span>  </span>
 <span>  <span class="co"># Assign treatment individually (incorrect for cluster randomization!)</span></span>
 <span>  <span class="va">dt</span><span class="op">[</span>, <span class="va">treatment</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span><span class="va">.N</span>, <span class="fl">1</span>, <span class="va">prop</span><span class="op">)</span><span class="op">]</span></span>
@@ -625,7 +631,7 @@ Task 2: Correcting the Simulation for Clustering
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="va">sim.size</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  </span>
 <span>  <span class="co"># Create a data table with one row per cluster, repeated for each patient</span></span>
-<span>  <span class="va">clusters</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op">(</span></span>
+<span>  <span class="va">clusters</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html">data.table</a></span><span class="op">(</span></span>
 <span>    cluster <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">num_clusters</span>, each <span class="op">=</span> <span class="va">cluster_size</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span>  </span>
@@ -712,7 +718,7 @@ Task 3: Create an MDE Plot
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">effect_sizes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.5</span>, by <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span> </span>
-<span><span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op">(</span>effect <span class="op">=</span> <span class="va">effect_sizes</span>, power <span class="op">=</span> <span class="cn">NA_real_</span><span class="op">)</span></span>
+<span><span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html">data.table</a></span><span class="op">(</span>effect <span class="op">=</span> <span class="va">effect_sizes</span>, power <span class="op">=</span> <span class="cn">NA_real_</span><span class="op">)</span></span>
 <span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">e</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">effect_sizes</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># Repeat your cluster simulation steps but with effect = effect_sizes[e]</span></span>

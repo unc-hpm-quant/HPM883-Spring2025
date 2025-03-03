@@ -164,5 +164,8 @@
   },
   "templates.qmd": {
     "templates.html": "d9243a42"
+  },
+  "labs/lab-3-design.qmd": {
+    "lab-3-design.html": "f4cc15ac"
   }
 }
