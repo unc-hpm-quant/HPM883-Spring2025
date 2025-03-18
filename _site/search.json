@@ -2207,5 +2207,54 @@
     "title": "Unit 2.2: Randomization Techniques",
     "section": "Conclusion: Which Method When?",
     "text": "Conclusion: Which Method When?\nThere is no one-size-fits-all approach. The best randomization strategy depends on:\n\nThe research question\nAvailable baseline data\nLogistical constraints\nExpected heterogeneity in treatment effects\n\n\n\n\n\n\n\n\nApproach\nWhen to Use\nKey Consideration\n\n\n\nSimple\nLarge samples\nSimplicity\n\n\nStratified\nStrong predictors known\nNumber of strata\n\n\nMatched-Pair\nSmall samples\nFinding good matches\n\n\nRe-randomization\nBalance is critical\nComplexity of inference\n\n\nCluster\nGroup-level intervention\nICC and number of clusters\n\n\n\nThe choice of randomization method should be guided by:\n\nThe unit of randomization (individual vs. cluster)\nThe importance of balance on specific variables\nFeasibility constraints\nAnalysis plans\n\nHappy randomizing!"
+  },
+  {
+    "objectID": "unit-3/lec-3-1-slides.html#loads-of-recent-advances-in-machine-learning-other-types-of-ai",
+    "href": "unit-3/lec-3-1-slides.html#loads-of-recent-advances-in-machine-learning-other-types-of-ai",
+    "title": "Introduction to Machine Learning",
+    "section": "Loads of recent advances in Machine Learning & other Types of AI…",
+    "text": "Loads of recent advances in Machine Learning & other Types of AI…\nObviously, ChatGPT & other Large Language Models (LLMs) are the most visible … but many other advances…"
+  },
+  {
+    "objectID": "unit-3/lec-3-1-slides.html#machine-translation",
+    "href": "unit-3/lec-3-1-slides.html#machine-translation",
+    "title": "Introduction to Machine Learning",
+    "section": "Machine Translation",
+    "text": "Machine Translation"
+  },
+  {
+    "objectID": "unit-3/lec-3-1-slides.html#self-driving-cars",
+    "href": "unit-3/lec-3-1-slides.html#self-driving-cars",
+    "title": "Introduction to Machine Learning",
+    "section": "Self-Driving Cars",
+    "text": "Self-Driving Cars"
+  },
+  {
+    "objectID": "unit-3/lec-3-1-slides.html#robots-for-housework",
+    "href": "unit-3/lec-3-1-slides.html#robots-for-housework",
+    "title": "Introduction to Machine Learning",
+    "section": "Robots for Housework",
+    "text": "Robots for Housework"
+  },
+  {
+    "objectID": "unit-3/lec-3-1-slides.html#or-imposing-martial-law",
+    "href": "unit-3/lec-3-1-slides.html#or-imposing-martial-law",
+    "title": "Introduction to Machine Learning",
+    "section": "…or imposing martial law",
+    "text": "…or imposing martial law"
+  },
+  {
+    "objectID": "unit-3/lec-3-1-slides.html#or-even-governing",
+    "href": "unit-3/lec-3-1-slides.html#or-even-governing",
+    "title": "Introduction to Machine Learning",
+    "section": "or even governing",
+    "text": "or even governing"
+  },
+  {
+    "objectID": "unit-3/lec-3-1-slides.html#what-is-machine-learning",
+    "href": "unit-3/lec-3-1-slides.html#what-is-machine-learning",
+    "title": "Introduction to Machine Learning",
+    "section": "What is machine learning?",
+    "text": "What is machine learning?"
   }
 ]

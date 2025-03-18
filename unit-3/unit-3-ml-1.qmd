@@ -1,0 +1,67 @@
+---
+title: "Unit 3: Supervised Machine Learning Crash Course"
+draft: false
+---
+
+## Unit Overview
+
+
+## Unit 3.1: Intro to ML 
+
+### Preparation
+
+-   Read:
+    -   [ISLR Chapter 2]()
+    -   Optional:
+        -   [Machine Learning: An Applied Econometric Approach](https://app.perusall.com/courses/hpm-883/machine-learning-an-applied-econometric-approach-981264625)
+        -   [Lessons and tips for designing a machine learning study using EHR data](https://app.perusall.com/courses/hpm-883/lessons-and-tips-for-designing-a-machine-learning-study-using-ehr-data)
+
+
+### Class
+
+-   [Lecture Notes: Introduction to Machine Learning](/unit-3/lec-3-1.qmd)
+
+    -   [Lecture Slides](/unit-3/lec-3-1-slides.qmd)
+
+
+## Unit 3.2: Lasso and friends: Linear Regression with High-Dimensional Data
+
+### Preparation
+
+-   Read:
+    -   [ISLR Chapter 5](https://app.perusall.com/courses/hpm-883/islrv2-corrected-june-2023)
+
+### Class
+
+-   [Lecture Notes: Lasso and friends](/unit-3/lec-3-2.qmd)
+
+    -   [Lecture Slides](/unit-3/lec-3-2-slides.qmd)
+
+
+## Unit 3.3: Tree-based Methods
+
+### Preparation
+
+-   Read:
+    -   [ISLR Chapter 6.1, 6.2](https://app.perusall.com/courses/hpm-883/islrv2-corrected-june-2023)
+
+### Class
+
+-   [Lecture Notes: Tree-based Methods](/unit-3/lec-3-3.qmd)
+
+    -   [Lecture Slides](/unit-3/lec-3-3-slides.qmd)
+
+
+## Labs
+
+- Coming Soon!
+
+## Other Resources
+
+-   [Supervised Learning  (Logistic regression, decision trees, random forest)](https://github.com/DHEPLab/SISBID-Supervised-Learning)
+
+-   [Unsupervised Learning (Clustering, PCA)](https://github.com/SISBID/Unsupervised-Learning)
+
+-   [MIT Course: Machine Learning for Healthcare](https://ocw.mit.edu/courses/6-s897-machine-learning-for-healthcare-spring-2019/pages/syllabus/)
+
+

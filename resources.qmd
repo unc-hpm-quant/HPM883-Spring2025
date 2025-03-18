@@ -44,5 +44,27 @@ A global research center based at MIT's Economics Department that works to reduc
 
 ## Data
 
-[Stanford GSB Social Impact Lab Experiment Data](https://github.com/gsbDBI/ExperimentData)
+-   [Stanford GSB Social Impact Lab Experiment Data](https://github.com/gsbDBI/ExperimentData)
+
+-   [MIMIC-IV (Medical Information Mart for Intensive Care IV)](https://mimic.mit.edu/)
+
+    MIMIC-IV is an updated version of the MIMIC database, containing comprehensive de-identified electronic health records from patients admitted to Beth Israel Deaconess Medical Center in Boston, MA from 2008 to 2019. This freely accessible dataset includes data from over 257,000 distinct patients, yielding approximately 524,000 admission records.
+
+    **Key Features and Structure**
+
+    MIMIC-IV adopts a modular approach to data organization, highlighting data provenance and facilitating both individual and combined use of different data sources. The database is organized into three main modules:
+
+    -   **hosp**: Contains hospital-wide data including admission/discharge/transfer records, laboratory values, microbiology cultures, medication orders, and administrative data from billing practices
+
+    -   **icu**: Comprises data documented at the ICU bedside, including intravenous infusions, patient outputs, charted observations, and documentation of ongoing procedures
+
+    -   **note**: Contains discharge summaries, radiology reports, and other clinical notes in free-text format
+
+    -   [Detailed Description](https://www.nature.com/articles/s41597-022-01899-x)
+
+    -   [MIMIC Code Repository](https://github.com/MIT-LCP/mimic-code)
+
+-   [Papers With Code](https://paperswithcode.com/datasets)
+
+    Papers with Code is a free and open resource platform dedicated to making machine learning research more accessible by connecting research papers with their code implementations.
 

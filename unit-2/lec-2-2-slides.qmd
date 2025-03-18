@@ -18,16 +18,16 @@ format:
 
 ## Randomization: The Foundation of Causal Inference
 
-::: {.incremental}
-* Last session: Maximizing power through optimal experimental design
-* Today: The art and science of randomization
-* Randomization enables causal claims by balancing **all** factors:
-  * Observable characteristics
-  * Unobservable characteristics
-  * Potential outcomes
+::: incremental
+-   Last session: Maximizing power through optimal experimental design
+-   Today: The art and science of randomization
+-   Randomization enables causal claims by balancing **all** factors:
+    -   Observable characteristics
+    -   Unobservable characteristics
+    -   Potential outcomes
 :::
 
-::: {.notes}
+::: notes
 Emphasize that randomization is what allows us to make causal claims - it's the key distinction between experimental and observational studies.
 :::
 
@@ -35,33 +35,32 @@ Emphasize that randomization is what allows us to make causal claims - it's the 
 
 Because it ensures:
 
-::: {.incremental}
-1. **Non-zero probability condition**: Everyone has a chance of treatment
-2. **Individualism**: Independence across units
-3. **Unconfoundedness**: Balance on observed/unobserved covariates
+::: incremental
+1.  **Non-zero probability condition**: Everyone has a chance of treatment
+2.  **Individualism**: Independence across units
+3.  **Unconfoundedness**: Balance on observed/unobserved covariates
 :::
 
 $$E[Y_i(0)|D_i=1] = E[Y_i(0)|D_i=0]$$
 
-::: {.fragment}
+::: fragment
 The untreated potential outcomes are the same in both groups!
 :::
 
-## What You Need for Randomization 
+## What You Need for Randomization
 
-::: {.incremental}
-1. **Sample of units**: Who or what will be randomized
-2. **Allocation ratio**: How many units to each condition
-3. **Randomization device**: Physical or computational
-4. **Baseline covariates**: (for some approaches)
+::: incremental
+1.  **Sample of units**: Who or what will be randomized
+2.  **Allocation ratio**: How many units to each condition
+3.  **Randomization device**: Physical or computational
+4.  **Baseline covariates**: (for some approaches)
 :::
 
 ## Random Sampling vs. Random Assignment
 
 ![Random Sampling vs. Random Assignment](media/SamplingVRandom.png)
 
-
-## Classical Assignment Mechanisms Framework 
+## Classical Assignment Mechanisms Framework
 
 ```{mermaid}
 flowchart TD
@@ -109,74 +108,71 @@ flowchart TD
 
 ## Classical Assignment Mechanisms
 
-1. Bernoulli Trials
-2. Complete Randomization
-3. Re-randomization
-4. Stratified Randomization
-5. Matched-Pair Designs
+1.  Bernoulli Trials
+2.  Complete Randomization
+3.  Re-randomization
+4.  Stratified Randomization
+5.  Matched-Pair Designs
 
-## Bernoulli Trials 
+## Bernoulli Trials
 
-* Simplest approach: independent coin flips
-* $P(Z_i = 1) = p$ for all units $i$
+-   Simplest approach: independent coin flips
+-   $P(Z_i = 1) = p$ for all units $i$
 
-::: {.columns}
-::: {.column width="50%"}
-::: {.fragment}
+::::::: columns
+:::: {.column width="50%"}
+::: fragment
 **Advantages:**
 
-- Simple to implement
-- Can randomize as participants arrive
-- No baseline data needed
+-   Simple to implement
+-   Can randomize as participants arrive
+-   No baseline data needed
 :::
-:::
+::::
 
-::: {.column width="50%"}
-::: {.fragment}
+:::: {.column width="50%"}
+::: fragment
 **Disadvantages:**
 
-- Random group sizes
-- Potential imbalance on key covariates
-- Implementation vulnerability
+-   Random group sizes
+-   Potential imbalance on key covariates
+-   Implementation vulnerability
 :::
-:::
-:::
+::::
+:::::::
 
 ## Case Study: The Canadian National Breast Screening Study
 
-::: {.incremental}
-
-- Major randomized trial evaluating mammography screening effectiveness
-- Used alternating assignment (first to treatment, second to control)
-- Design flaw: clinical breast exams conducted *before* randomization
-- Nurses and physicians could (and did) influence group assignments
-
+::: incremental
+-   Major randomized trial evaluating mammography screening effectiveness
+-   Used alternating assignment (first to treatment, second to control)
+-   Design flaw: clinical breast exams conducted *before* randomization
+-   Nurses and physicians could (and did) influence group assignments
 :::
-
 
 ## CNBSS: Randomization Failures
 
-::: {.incremental}
-* **Pre-randomization examination**: Detected suspicious lumps before group assignment
-* **Selection bias**: Women with palpable lumps disproportionately assigned to mammography group
-* **Inadequate concealment**: Study staff could influence group assignments
-* **Evidence of manipulation**: Names overwritten, identities reversed, lines skipped
+::: incremental
+-   **Pre-randomization examination**: Detected suspicious lumps before group assignment
+-   **Selection bias**: Women with palpable lumps disproportionately assigned to mammography group
+-   **Inadequate concealment**: Study staff could influence group assignments
+-   **Evidence of manipulation**: Names overwritten, identities reversed, lines skipped
 :::
 
-::: {.fragment}
+::: fragment
 Result: Mammography group had 68% higher incidence of advanced cancers at baseline!
 :::
 
 ## CNBSS: Impact on Study Validity
 
-::: {.incremental}
-* Study reported no mortality benefit from mammography screening
-* **However**: The randomization bias likely masked true benefits
-* Higher-risk patients concentrated in treatment group
-* Control group contamination: ~25% received mammograms outside the study
+::: incremental
+-   Study reported no mortality benefit from mammography screening
+-   **However**: The randomization bias likely masked true benefits
+-   Higher-risk patients concentrated in treatment group
+-   Control group contamination: \~25% received mammograms outside the study
 :::
 
-::: {.fragment}
+::: fragment
 **Broader lesson**: Compromise in randomization can fundamentally undermine study validity and lead to decades of scientific controversy
 :::
 
@@ -209,31 +205,31 @@ Each participant has fixed probability of assignment, with total group sizes fix
 
 ## Chance Imbalance with Complete Randomization
 
-::: {.incremental}
-- Even with perfect implementation, covariates may be imbalanced
+::: incremental
+-   Even with perfect implementation, covariates may be imbalanced
 
-- Example: In a study of 722 people (NLSY data):
-  - ~45% of randomizations had all covariates balanced
-  - ~30% had one imbalanced covariate
-  - Remaining had multiple imbalanced covariates
+-   Example: In a study of 722 people (NLSY data):
+
+    -   \~45% of randomizations had all covariates balanced
+    -   \~30% had one imbalanced covariate
+    -   Remaining had multiple imbalanced covariates
 :::
 
-::: {.fragment}
-This raises two critical questions:
-1. How can we ensure better balance in design?
-2. What do we do if imbalance occurs?
+::: fragment
+This raises two critical questions: 1. How can we ensure better balance in design? 2. What do we do if imbalance occurs?
 :::
 
 ## Re-randomization
 
-::: {.incremental}
-- Generate multiple randomizations
-- Keep only those with good balance
-- Approach 1: All p-values > threshold (e.g., 0.05)
-- Approach 2: Choose iteration with best overall balance
+::: incremental
+-   Generate multiple randomizations
+-   Keep only those with good balance
+-   Approach 1: All p-values \> threshold (e.g., 0.05)
+-   Approach 2: Choose iteration with best overall balance
 :::
 
 ## Re-randomization Code
+
 ```{r}
 #| echo: true
 #| eval: false
@@ -283,32 +279,30 @@ This function repeats randomization until finding one where all p-values exceed 
 
 ## Drawbacks of Re-randomization
 
-::: {.incremental}
-* Opaque constraints: "Black box" process
-* Unusual handling of outliers
-* Computationally expensive
-* Could run forever if criteria too strict
-* Statistical inference must account for the procedure
-* Cannot balance on unobserved covariates
+::: incremental
+-   Opaque constraints: "Black box" process
+-   Unusual handling of outliers
+-   Computationally expensive
+-   Could run forever if criteria too strict
+-   Statistical inference must account for the procedure
+-   Cannot balance on unobserved covariates
 :::
 
 ## Stratified (Block) Randomization
 
-::: {.columns}
+:::::: columns
 ::: {.column width="50%"}
-
 ![Stratified Randomization](/unit-2/media/BlockRandom.png)
-
 :::
 
-::: {.column width="50%"}
-::: {.incremental}
-1. Divide sample into strata based on covariates
-2. Randomize separately within each stratum
-3. Perfect balance on stratification variables
+:::: {.column width="50%"}
+::: incremental
+1.  Divide sample into strata based on covariates
+2.  Randomize separately within each stratum
+3.  Perfect balance on stratification variables
 :::
-:::
-:::
+::::
+::::::
 
 ## Implementing Stratified Randomization
 
@@ -371,31 +365,28 @@ This code creates strata from combinations of gender and age group, then randomi
 
 ## Selecting Stratification Variables
 
-::: {.incremental}
-* **Discrete variables** are easier to implement
-* Prioritize variables that **strongly predict outcomes**
-* Include variables where **heterogeneous effects** are expected
-* Be careful of **too many strata** - causes "small cell" problems
+::: incremental
+-   **Discrete variables** are easier to implement
+-   Prioritize variables that **strongly predict outcomes**
+-   Include variables where **heterogeneous effects** are expected
+-   Be careful of **too many strata** - causes "small cell" problems
 :::
 
-::: {.fragment}
+::: fragment
 **Handling "misfits"** (when strata size not divisible by treatments):
 
-* Remove units randomly
-* Create separate strata for misfits
-* Use different randomization approach for misfits
-
+-   Remove units randomly
+-   Create separate strata for misfits
+-   Use different randomization approach for misfits
 :::
 
 ## Matched Pairs Randomization
 
-::: {.incremental}
-
-* Create pairs of similar units
-* Randomize one to treatment within each pair
-* Like stratification taken to the extreme
-* Perfect for continuous covariates
-
+::: incremental
+-   Create pairs of similar units
+-   Randomize one to treatment within each pair
+-   Like stratification taken to the extreme
+-   Perfect for continuous covariates
 :::
 
 ## Implementing Matched Pairs
@@ -457,147 +448,144 @@ This code matches participants based on age, income, and health score, then rand
 
 ## Balance Tests: Approaches for Verification
 
-::: {.incremental}
-* **Individual covariate tests**: t-tests, Chi-square tests
-* **Joint omnibus tests**: F-tests testing multiple covariates simultaneously
-* **Regression-based tests**: Regress treatment on covariates
-* **Standardized differences**: Sample size-independent assessment
+::: incremental
+-   **Individual covariate tests**: t-tests, Chi-square tests
+-   **Joint omnibus tests**: F-tests testing multiple covariates simultaneously
+-   **Regression-based tests**: Regress treatment on covariates
+-   **Standardized differences**: Sample size-independent assessment
 :::
 
 ## Standardized Differences for Large Samples
 
-* **Problem with p-values**: With large samples, tiny imbalances become "significant"
-* **Solution**: Standardized mean difference (SMD)
+-   **Problem with p-values**: With large samples, tiny imbalances become "significant"
+-   **Solution**: Standardized mean difference (SMD)
 
 $$SMD = \frac{\bar{X}_{treatment} - \bar{X}_{control}}{\sqrt{\frac{s^2_{treatment} + s^2_{control}}{2}}}$$
 
-::: {.fragment}
-
-* Scale-free measure of imbalance
-* Independent of sample size
-* Rule of thumb: |SMD| < 0.1 is negligible imbalance
-
+::: fragment
+-   Scale-free measure of imbalance
+-   Independent of sample size
+-   Rule of thumb: \|SMD\| \< 0.1 is negligible imbalance
 :::
 
 ## The "Table 1" Debate
 
-::: columns}
+::::: columns}
 ::: {.column width="50%"}
 ### For Including
-* Transparency
-* Demonstrates randomization effectiveness
-* Provides context for readers
-* Shows extent of imbalance
+
+-   Transparency
+-   Demonstrates randomization effectiveness
+-   Provides context for readers
+-   Shows extent of imbalance
 :::
 
 ::: {.column width="50%"}
 ### Against Including
-* Randomization guarantees balance in expectation
-* Overemphasis on statistically significant differences
-* Can lead to inappropriate adjustments
-* Journal space limitations
-:::
-:::
 
-::: {.fragment}
+-   Randomization guarantees balance in expectation
+-   Overemphasis on statistically significant differences
+-   Can lead to inappropriate adjustments
+-   Journal space limitations
+:::
+:::::
+
+::: fragment
 **Compromise**: Report balance without p-values, use standardized differences
 :::
 
 ## Design-Based Inference
 
-::: {.incremental}
-* Randomization creates the foundation for inference
-* **Fisher's approach**: Test sharp null that treatment has no effect on any unit
-* **Randomization distribution**: Generate distribution of test statistics under all possible randomizations
-* **Permutation tests**: Compare observed statistic to randomization distribution
+::: incremental
+-   Randomization creates the foundation for inference
+-   **Fisher's approach**: Test sharp null that treatment has no effect on any unit
+-   **Randomization distribution**: Generate distribution of test statistics under all possible randomizations
+-   **Permutation tests**: Compare observed statistic to randomization distribution
 :::
 
 ## Complex Experimental Designs
 
-1. Units of Randomization & Spillovers
-2. Cluster Randomization
-3. Factorial Designs
-4. Fractional Factorial Designs  
-5. Within-Subject vs. Between-Subject
-6. Randomized Phase-in
-7. Adaptive Designs
-8. Variable Treatment Probabilities
+1.  Units of Randomization & Spillovers
+2.  Cluster Randomization
+3.  Factorial Designs
+4.  Fractional Factorial Designs\
+5.  Within-Subject vs. Between-Subject
+6.  Randomized Phase-in
+7.  Adaptive Designs
+8.  Variable Treatment Probabilities
 
 ## Choosing the Unit of Randomization
 
-::: columns}
+::::: columns}
 ::: {.column width="50%"}
 ### Key Considerations
-* Should match observational unit when possible
-* Must align with treatment delivery
-* Need to minimize spillovers
-* Consider statistical power
+
+-   Should match observational unit when possible
+-   Must align with treatment delivery
+-   Need to minimize spillovers
+-   Consider statistical power
 :::
 
 ::: {.column width="50%"}
 ### Common Units
-* **Individual**: Patients, students
-* **Cluster**: Villages, clinics, schools
-* **Time periods**: Days, weeks, shifts
-* **Networks**: Households, peer groups
-:::
-:::
 
-::: {.fragment}
+-   **Individual**: Patients, students
+-   **Cluster**: Villages, clinics, schools
+-   **Time periods**: Days, weeks, shifts
+-   **Networks**: Households, peer groups
+:::
+:::::
+
+::: fragment
 **Critical trade-off**: Statistical power vs. internal validity
 :::
 
 ## The Spillover Problem
 
-::: {.incremental}
-* Spillovers occur when treatment affects untreated units
-* Types of spillovers:
-  * Direct interaction between units
-  * General equilibrium effects
-  * Information diffusion
-  * Resource competition
+::: incremental
+-   Spillovers occur when treatment affects untreated units
+-   Types of spillovers:
+    -   Direct interaction between units
+    -   General equilibrium effects
+    -   Information diffusion
+    -   Resource competition
 :::
 
-::: {.fragment}
+::: fragment
 Randomization at a higher level (clustering) can minimize unwanted spillovers.
 :::
 
 ## Measuring Spillovers: Two-Stage Randomization
 
-* First stage: Randomize clusters to high or low treatment intensity
-* Second stage: Randomize individuals within clusters to treatment or control
-* Allows measurement of:
-  * Direct treatment effects
-  * Within-cluster spillovers
-  * Between-cluster spillovers
-* Provides estimates of:
-  * Total treatment effect (direct + spillover)
-  * Isolated direct effect
-  * Spillover effect on untreated individuals
-
+-   First stage: Randomize clusters to high or low treatment intensity
+-   Second stage: Randomize individuals within clusters to treatment or control
+-   Allows measurement of:
+    -   Direct treatment effects
+    -   Within-cluster spillovers
+    -   Between-cluster spillovers
+-   Provides estimates of:
+    -   Total treatment effect (direct + spillover)
+    -   Isolated direct effect
+    -   Spillover effect on untreated individuals
 
 ## Cluster Randomization
 
-::: {.incremental}
-
-* **Definition**: Randomize groups (clusters) rather than individuals
-* **Common clusters**: Schools, clinics, villages, neighborhoods
-* **Key parameter**: Intraclass correlation coefficient (ICC)
-* **Design effect**: $DE = 1 + (m-1) \times ICC$
-  * $m$ = average cluster size
-  * Increases required sample size
+::: incremental
+-   **Definition**: Randomize groups (clusters) rather than individuals
+-   **Common clusters**: Schools, clinics, villages, neighborhoods
+-   **Key parameter**: Intraclass correlation coefficient (ICC)
+-   **Design effect**: $DE = 1 + (m-1) \times ICC$
+    -   $m$ = average cluster size
+    -   Increases required sample size
 :::
 
-::: {.fragment}
-**Analysis must account for clustering!**
-* Cluster-robust standard errors
-* Mixed-effects models
-* GEE approaches
+::: fragment
+**Analysis must account for clustering!** \* Cluster-robust standard errors \* Mixed-effects models \* GEE approaches
 :::
 
 ## Factorial Designs: Testing Multiple Treatments {.smaller}
 
-::: columns
+:::::: columns
 ::: {.column width="50%"}
 | Intervention B | No Intervention A | Intervention A |
 |----------------|-------------------|----------------|
@@ -605,118 +593,114 @@ Randomization at a higher level (clustering) can minimize unwanted spillovers.
 | **Yes**        | B only            | A and B        |
 :::
 
-::: {.column width="50%"}
-::: {.incremental}
-* Test multiple treatments simultaneously
-* Estimate main effects AND interactions
-* Efficient use of resources
-* Example: Two interventions with four groups
-  * No intervention (control)
-  * Intervention A only
-  * Intervention B only
-  * Both A and B
+:::: {.column width="50%"}
+::: incremental
+-   Test multiple treatments simultaneously
+-   Estimate main effects AND interactions
+-   Efficient use of resources
+-   Example: Two interventions with four groups
+    -   No intervention (control)
+    -   Intervention A only
+    -   Intervention B only
+    -   Both A and B
 :::
-:::
-:::
+::::
+::::::
 
 ## Randomized Phase-in Designs
 
-::: {.incremental}
-* All units eventually receive treatment
-* Randomize the **timing** of treatment
-* Advantages:
-  * Better compliance (everyone gets treatment eventually)
-  * Clear for partners with resource constraints
-  * Politically appealing compromise
+::: incremental
+-   All units eventually receive treatment
+-   Randomize the **timing** of treatment
+-   Advantages:
+    -   Better compliance (everyone gets treatment eventually)
+    -   Clear for partners with resource constraints
+    -   Politically appealing compromise
 :::
 
-::: {.fragment}
+::: fragment
 **But watch out for**:
 
-* Anticipation effects
-* Limited long-term impact measurement
+-   Anticipation effects
+-   Limited long-term impact measurement
 :::
 
 ## Adaptive Randomization
 
-::: {.incremental}
-
-* Updates assignment probabilities based on accumulated data
-* Balances:
-  * **Exploration**: Learning which treatment works best
-  * **Exploitation**: Assigning more units to better treatments
-* Key ethical advantage: Fewer participants receive inferior treatments
+::: incremental
+-   Updates assignment probabilities based on accumulated data
+-   Balances:
+    -   **Exploration**: Learning which treatment works best
+    -   **Exploitation**: Assigning more units to better treatments
+-   Key ethical advantage: Fewer participants receive inferior treatments
 :::
 
-::: {.fragment}
+::: fragment
 **Note**: We'll cover adaptive designs in more detail in a future lecture
 :::
 
 ## Practical Implementation
 
-::: {.incremental}
-1. Create single entry per randomization unit
-2. Sort file in reproducible way
-3. Set and preserve random seed
-4. Assign treatments
-5. Save assignments securely
-6. Test balance extensively
+::: incremental
+1.  Create single entry per randomization unit
+2.  Sort file in reproducible way
+3.  Set and preserve random seed
+4.  Assign treatments
+5.  Save assignments securely
+6.  Test balance extensively
 :::
 
 Always document your randomization procedure thoroughly!
 
 ## Ethical Considerations
 
-::: {.incremental}
-
-* **Long-term benefits** vs. short-term resource distribution
-* **Equity** in who receives potentially beneficial treatments
-* **Transparency** with participants about randomization
-* **Minimize harm** from potentially ineffective interventions
+::: incremental
+-   **Long-term benefits** vs. short-term resource distribution
+-   **Equity** in who receives potentially beneficial treatments
+-   **Transparency** with participants about randomization
+-   **Minimize harm** from potentially ineffective interventions
 :::
-
 
 ## Combining Randomization Approaches
 
-::: {.incremental}
-* Stratify on discrete variables
-* Re-randomize on continuous variables within strata
-* Use matched pairs for important continuous variables
-* Adapt to your specific context and constraints
+::: incremental
+-   Stratify on discrete variables
+-   Re-randomize on continuous variables within strata
+-   Use matched pairs for important continuous variables
+-   Adapt to your specific context and constraints
 :::
 
-::: {.fragment}
+::: fragment
 There is no one-size-fits-all approach!
 :::
 
 ## Key Takeaways
 
-::: {.incremental}
-1. Choose randomization unit carefully (individual vs. cluster)
-2. Balance variables that strongly predict outcomes
-3. Use re-randomization, stratification, or matching when feasible
-4. Document your randomization procedure completely
-5. Test balance appropriately for your sample size
-6. Account for your randomization procedure in analysis
+::: incremental
+1.  Choose randomization unit carefully (individual vs. cluster)
+2.  Balance variables that strongly predict outcomes
+3.  Use re-randomization, stratification, or matching when feasible
+4.  Document your randomization procedure completely
+5.  Test balance appropriately for your sample size
+6.  Account for your randomization procedure in analysis
 :::
 
 ## Which Method When?
 
-| Approach | When to Use | Key Consideration |
-|----------|-------------|-------------------|
-| Simple | Large samples | Simplicity |
-| Stratified | Strong predictors known | Number of strata |
-| Matched-Pair | Small samples | Finding good matches |
-| Re-randomization | Balance is critical | Complexity of inference |
-| Cluster | Group-level intervention | ICC and number of clusters |
+| Approach         | When to Use              | Key Consideration          |
+|------------------|--------------------------|----------------------------|
+| Simple           | Large samples            | Simplicity                 |
+| Stratified       | Strong predictors known  | Number of strata           |
+| Matched-Pair     | Small samples            | Finding good matches       |
+| Re-randomization | Balance is critical      | Complexity of inference    |
+| Cluster          | Group-level intervention | ICC and number of clusters |
 
 ## Coming Up: Machine Learning for Causal Inference
 
 We'll explore how modern prediction algorithms can enhance our ability to:
 
-::: {.incremental}
-* Estimate average treatment effects more precisely
-* Discover heterogeneous treatment effects
-* Select optimal treatments for individuals
+::: incremental
+-   Estimate average treatment effects more precisely
+-   Discover heterogeneous treatment effects
+-   Select optimal treatments for individuals
 :::
-
