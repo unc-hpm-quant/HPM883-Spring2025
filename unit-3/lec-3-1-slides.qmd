@@ -14,6 +14,7 @@ format:
     scrollable: false
     smaller: false
     footer: "UNC HPM 883 - Advanced Quantitative Methods"
+draft: true
 ---
 
 # Introduction to Machine Learning
@@ -24,8 +25,7 @@ Obviously, ChatGPT & other Large Language Models (LLMs) are the most visible ...
 
 All enabled by large amounts of data, computing power, and advances in methods to **predict** or **learn** patterns in data.
 
-
-## Machine Translation 
+## Machine Translation
 
 ![](media/Translation.png)
 
@@ -45,12 +45,10 @@ All enabled by large amounts of data, computing power, and advances in methods t
 
 ![](media/govern.png)
 
-
 ## What is machine learning?
- 
-- Traditional OLS struggles with thousands of features or highly nonlinear relationships.  
-- ML can more flexibly uncover predictive patterns for tasks like readmission risk, resource targeting, or disease onset.  
 
+-   Traditional OLS struggles with thousands of features or highly nonlinear relationships.\
+-   ML can more flexibly uncover predictive patterns for tasks like readmission risk, resource targeting, or disease onset.
 
 ---
 title: "Introduction to Machine Learning"
@@ -73,258 +71,235 @@ format:
 ## 1. Introduction & Motivation
 
 ::: incremental
-- **From Sci-Fi to Daily Life**  
-  - We often imagine AI like in *Ex Machina*—futuristic robots passing as humans.  
-  - But *modern* machine learning is already in your pocket:  
-    - **Facebook** recognizing friends in photos  
-    - **Google Translate** scanning text and translating on the fly  
-    - **Self-driving cars** detecting obstacles and avoiding collisions  
-
-- **Why This Matters for Health Policy**  
-  - Healthcare settings generate enormous amounts of data (EHR, administrative claims, sensor data).  
-  - Traditional OLS struggles with thousands of features or highly nonlinear relationships.  
-  - ML can more flexibly uncover predictive patterns for tasks like readmission risk, resource targeting, or disease onset.  
+-   **From Sci-Fi to Daily Life**
+    -   We often imagine AI like in *Ex Machina*—futuristic robots passing as humans.\
+    -   But *modern* machine learning is already in your pocket:
+        -   **Facebook** recognizing friends in photos\
+        -   **Google Translate** scanning text and translating on the fly\
+        -   **Self-driving cars** detecting obstacles and avoiding collisions
+-   **Why This Matters for Health Policy**
+    -   Healthcare settings generate enormous amounts of data (EHR, administrative claims, sensor data).\
+    -   Traditional OLS struggles with thousands of features or highly nonlinear relationships.\
+    -   ML can more flexibly uncover predictive patterns for tasks like readmission risk, resource targeting, or disease onset.\
 :::
 
 ::: notes
 Mention the powerful day-to-day examples: face recognition, real-time translation, partial self-driving. Emphasize how these examples come from the same machine learning concepts that can be harnessed in health economics (predicting outcomes, segmenting populations, etc.).
 :::
 
----
+------------------------------------------------------------------------
 
 ## 2. ML Essentials: Supervised Learning
 
 ::: incremental
-- **Supervised Learning**: Learn a function \(f\) from labeled data \((X_i, Y_i)\)  
-  - We choose a **loss function** (e.g., MSE for regression).  
-  - The goal is to predict \(Y\) for new, unseen \(X\).  
-
-- **Cucumber Classification Example**  
-  - *Transcripts mention a story of a family in Japan automating cucumber sorting.*  
-  - **Old approach**: Hard-coded rules about color, shape.  
-  - **New approach**: Train a model on labeled images → The ML system figures out patterns.  
-
-- **Implications for Health**  
-  - Similarly, we can feed in medical images or extensive patient data and let an ML algorithm detect subtle features predictive of outcomes.  
+-   **Supervised Learning**: Learn a function (f) from labeled data ((X_i, Y_i))
+    -   We choose a **loss function** (e.g., MSE for regression).\
+    -   The goal is to predict (Y) for new, unseen (X).
+-   **Cucumber Classification Example**
+    -   *Transcripts mention a story of a family in Japan automating cucumber sorting.*\
+    -   **Old approach**: Hard-coded rules about color, shape.\
+    -   **New approach**: Train a model on labeled images → The ML system figures out patterns.
+-   **Implications for Health**
+    -   Similarly, we can feed in medical images or extensive patient data and let an ML algorithm detect subtle features predictive of outcomes.\
 :::
 
 ::: fragment
 **Remember**: This is not about interpreting *why* the algorithm picks certain features but about *accuracy* in predicting the outcome.
 :::
 
----
+------------------------------------------------------------------------
 
 ## 3. Focus on Prediction vs. Causal Inference
 
 ::: incremental
-- **ML’s Core Strength**  
-  - Minimizing out-of-sample error for \(\hat{Y}\).  
-  - This is critical for tasks where we just need *the best guess* of a target variable.  
-
-- **But…**  
-  - It doesn’t guarantee stable or unbiased coefficient estimates.  
-  - “*Beta-hard*” vs. “*Y-hard*” distinction from transcripts:  
-    - *Beta-hard tasks*: Causal or structural inference.  
-    - *Y-hard tasks*: Focused purely on predictive performance.  
-
-- **Example**:  
-  - Predicting credit default from a large set of features doesn’t necessarily tell us *which* variable causes default—it just flags risk.  
+-   **ML’s Core Strength**
+    -   Minimizing out-of-sample error for (\hat{Y}).\
+    -   This is critical for tasks where we just need *the best guess* of a target variable.
+-   **But…**
+    -   It doesn’t guarantee stable or unbiased coefficient estimates.\
+    -   “*Beta-hard*” vs. “*Y-hard*” distinction from transcripts:
+        -   *Beta-hard tasks*: Causal or structural inference.\
+        -   *Y-hard tasks*: Focused purely on predictive performance.
+-   **Example**:
+    -   Predicting credit default from a large set of features doesn’t necessarily tell us *which* variable causes default—it just flags risk.\
 :::
 
 ::: notes
 Draw from transcript references to differences in “beta-hat” (interpretation, structural causal parameters) versus “y-hat” (pure prediction). The credit default example underscores how correlated features can still yield accurate predictions even if the coefficients aren’t interpretable.
 :::
 
----
+------------------------------------------------------------------------
 
 ## 4. The Bias–Variance Trade-Off
 
 ::: incremental
-- **Overfitting vs. Underfitting**  
-  - **Overfit**: The model memorizes noise, performs poorly on new data.  
-  - **Underfit**: Model too simple, high bias, misses real structure.  
-
-- **Polynomial Example** (from transcripts)  
-  - Fitting polynomials of degrees 2, 4, 10… and seeing test MSE behavior.  
-  - We want a “sweet spot” that captures the signal but not the noise.  
-
-- **Cross-Validation**  
-  - Partition data into training/validation (or do k-fold).  
-  - **Key**: Choose complexity (e.g., polynomial degree) that minimizes out-of-sample error.  
+-   **Overfitting vs. Underfitting**
+    -   **Overfit**: The model memorizes noise, performs poorly on new data.\
+    -   **Underfit**: Model too simple, high bias, misses real structure.
+-   **Polynomial Example** (from transcripts)
+    -   Fitting polynomials of degrees 2, 4, 10… and seeing test MSE behavior.\
+    -   We want a “sweet spot” that captures the signal but not the noise.
+-   **Cross-Validation**
+    -   Partition data into training/validation (or do k-fold).\
+    -   **Key**: Choose complexity (e.g., polynomial degree) that minimizes out-of-sample error.\
 :::
 
 ::: fragment
 ![Placeholder: Overfit vs. Underfit Polynomials](assets/overfit-underfit.png)
 :::
 
----
+------------------------------------------------------------------------
 
 ## 5. Regularization: LASSO, Ridge, Elastic Net
 
 ::: incremental
-1. **Why Regularize?**  
-   - With many features (think 2000+ labs & comorbidities in a hospital dataset), OLS can overfit or produce huge coefficient variance.  
-
-2. **LASSO**  
-   - \(\min \sum (y - x\beta)^2 + \lambda \sum|\beta_j|\)  
-   - Sets some coefficients *exactly zero* → “capitalist” approach  
-   - Great for feature selection, but watch out for omitted-variable bias if correlated features exist.  
-
-3. **Ridge**  
-   - \(\min \sum (y - x\beta)^2 + \lambda \sum \beta_j^2\)  
-   - Shrinks all coefficients → “socialist,” no exact zeros.  
-
-4. **Elastic Net**  
-   - Mix of both; \(\alpha \|\beta\|_1 + (1-\alpha)\|\beta\|_2^2\).  
+1.  **Why Regularize?**
+    -   With many features (think 2000+ labs & comorbidities in a hospital dataset), OLS can overfit or produce huge coefficient variance.
+2.  **LASSO**
+    -   (\min \sum (y - x\beta)\^2 + \lambda \sum\|\beta\_j\|)\
+    -   Sets some coefficients *exactly zero* → “capitalist” approach\
+    -   Great for feature selection, but watch out for omitted-variable bias if correlated features exist.
+3.  **Ridge**
+    -   (\min \sum (y - x\beta)\^2 + \lambda \sum \beta\_j\^2)\
+    -   Shrinks all coefficients → “socialist,” no exact zeros.
+4.  **Elastic Net**
+    -   Mix of both; (\alpha \|\beta\|\_1 + (1-\alpha)\|\beta\|\_2\^2).\
 :::
 
 ::: fragment
-**Cross-validation** typically used to pick \(\lambda\). The transcripts mention how LASSO can be *unstable* when multiple variables are correlated.
+**Cross-validation** typically used to pick (\lambda). The transcripts mention how LASSO can be *unstable* when multiple variables are correlated.
 :::
 
----
+------------------------------------------------------------------------
 
 ## LASSO & Coefficient Instability
 
 ::: incremental
-- **Transcript Example**:  
-  - If `BEDRMS` and `BATHS` are both strongly correlated with house price, LASSO might select one or the other arbitrarily.  
-  - Re-running LASSO on slightly different training sets can flip which variable is chosen.  
-
-- **Implication**  
-  - The model’s *predictive performance* might stay good.  
-  - But the selected variables are not necessarily “the true drivers.”  
+-   **Transcript Example**:
+    -   If `BEDRMS` and `BATHS` are both strongly correlated with house price, LASSO might select one or the other arbitrarily.\
+    -   Re-running LASSO on slightly different training sets can flip which variable is chosen.
+-   **Implication**
+    -   The model’s *predictive performance* might stay good.\
+    -   But the selected variables are not necessarily “the true drivers.”\
 :::
 
----
+------------------------------------------------------------------------
 
 ## 6. Tree-Based Methods
 
 ::: incremental
-- **Decision Trees**  
-  - Recursively split data (like “Is `BATHS` ≤ 1.5?”).  
-  - If grown too deep → overfit. Prune or limit depth to reduce variance.  
-  - Interpretable: “If you see a node, you know which variable & threshold used.”  
-
-- **Regression Trees** for continuous outcomes  
-  - e.g., Predicting log house value from transcripts: splits on # bathrooms, # rooms, year built, etc.  
-
-- **Random Forests**  
-  - Bagging many trees on bootstrap samples + random feature subsets.  
-  - Usually yields stable, accurate predictions.  
-  - OOB (out-of-bag) error as built-in performance estimate.  
+-   **Decision Trees**
+    -   Recursively split data (like “Is `BATHS` ≤ 1.5?”).\
+    -   If grown too deep → overfit. Prune or limit depth to reduce variance.\
+    -   Interpretable: “If you see a node, you know which variable & threshold used.”
+-   **Regression Trees** for continuous outcomes
+    -   e.g., Predicting log house value from transcripts: splits on \# bathrooms, \# rooms, year built, etc.
+-   **Random Forests**
+    -   Bagging many trees on bootstrap samples + random feature subsets.\
+    -   Usually yields stable, accurate predictions.\
+    -   OOB (out-of-bag) error as built-in performance estimate.\
 :::
 
 ::: fragment
 “Forest = an ensemble that reduces variance by averaging many uncorrelated (or weakly correlated) trees.”
 :::
 
----
+------------------------------------------------------------------------
 
 ## 7. Real-World Example: Poverty Targeting
 
 ::: incremental
-- **From the Transcripts**:  
-  - Predicting household consumption from characteristics to identify who is poor.  
-  - A tree-based or LASSO approach can rank families most in need for a subsidy.  
-
-- **In Practice**  
-  - Government agencies (e.g., social service departments) often have partial data on household size, assets, location.  
-  - ML can guess consumption/income more accurately than basic linear models.  
-
-- **Important Caveat**  
-  - This is purely for *predicting who is poor*, not claiming what *causes* poverty.  
+-   **From the Transcripts**:
+    -   Predicting household consumption from characteristics to identify who is poor.\
+    -   A tree-based or LASSO approach can rank families most in need for a subsidy.
+-   **In Practice**
+    -   Government agencies (e.g., social service departments) often have partial data on household size, assets, location.\
+    -   ML can guess consumption/income more accurately than basic linear models.
+-   **Important Caveat**
+    -   This is purely for *predicting who is poor*, not claiming what *causes* poverty.\
 :::
 
----
+------------------------------------------------------------------------
 
 ## 8. When ML Is Enough & When We Need More
 
 ::: incremental
-- **Pure Prediction Scenarios**  
-  - Triage or resource allocation: We only need a good risk score.  
-  - Implementation: Create a threshold, direct resources to high-score folks.  
-  - The transcripts mention this approach for tax audits, loan default, self-driving decisions.  
-
-- **Causal Inference**  
-  - If we want the effect of an intervention, ML can’t solve hidden confounding alone.  
-  - Must combine ML with robust design (RCT, difference-in-differences, etc.).  
-
-- **Takeaway**  
-  - ML is amazing for big data + complex patterns → “Which units are at risk?”  
-  - For “Why?” or “What if we changed X?” → specialized approaches (Double ML, partial IDs, etc.).  
+-   **Pure Prediction Scenarios**
+    -   Triage or resource allocation: We only need a good risk score.\
+    -   Implementation: Create a threshold, direct resources to high-score folks.\
+    -   The transcripts mention this approach for tax audits, loan default, self-driving decisions.
+-   **Causal Inference**
+    -   If we want the effect of an intervention, ML can’t solve hidden confounding alone.\
+    -   Must combine ML with robust design (RCT, difference-in-differences, etc.).
+-   **Takeaway**
+    -   ML is amazing for big data + complex patterns → “Which units are at risk?”\
+    -   For “Why?” or “What if we changed X?” → specialized approaches (Double ML, partial IDs, etc.).\
 :::
 
----
+------------------------------------------------------------------------
 
 ## 9. Practical Tips for Implementation
 
 ::: incremental
-1. **Choose Software**  
-   - `glmnet` for LASSO/Ridge  
-   - `rpart`, `randomForest`, or `grf` for tree methods  
-   - `caret` or `tidymodels` frameworks for consistent workflows  
-
-2. **Data Splitting**  
-   - Keep a final holdout set *untouched* for unbiased performance.  
-   - k-fold cross-validation for hyperparameter tuning.  
-
-3. **Watch Out for Overfitting**  
-   - Don’t repeatedly peek at your test set to tune.  
-   - Use separate *validation* vs. *test* sets.  
-
-4. **Document**  
-   - Seeds, code versions, transformations.  
-   - Maintain reproducibility logs.  
+1.  **Choose Software**
+    -   `glmnet` for LASSO/Ridge\
+    -   `rpart`, `randomForest`, or `grf` for tree methods\
+    -   `caret` or `tidymodels` frameworks for consistent workflows
+2.  **Data Splitting**
+    -   Keep a final holdout set *untouched* for unbiased performance.\
+    -   k-fold cross-validation for hyperparameter tuning.
+3.  **Watch Out for Overfitting**
+    -   Don’t repeatedly peek at your test set to tune.\
+    -   Use separate *validation* vs. *test* sets.
+4.  **Document**
+    -   Seeds, code versions, transformations.\
+    -   Maintain reproducibility logs.\
 :::
 
----
+------------------------------------------------------------------------
 
 ## 10. Summary & Key Takeaways
 
 ::: incremental
-1. **ML** is outstanding for *prediction* tasks in large or complex data.  
-2. **Cross-validation** is critical to handle overfitting vs. underfitting.  
-3. **LASSO & Ridge**: Solve high-dimensional problems but can create bias in coefficients.  
-4. **Decision Trees & Forests**: Nonlinear, flexible, strong performance, less interpretability.  
-5. **Prediction \(\neq\) Causation**. For causal insights, we still need strong designs (RCT, etc.).  
-6. **Practical**: Use the transcripts’ examples (cucumber, credit, poverty) as analogies in health contexts.  
+1.  **ML** is outstanding for *prediction* tasks in large or complex data.\
+2.  **Cross-validation** is critical to handle overfitting vs. underfitting.\
+3.  **LASSO & Ridge**: Solve high-dimensional problems but can create bias in coefficients.\
+4.  **Decision Trees & Forests**: Nonlinear, flexible, strong performance, less interpretability.\
+5.  **Prediction (**\neq) Causation. For causal insights, we still need strong designs (RCT, etc.).\
+6.  **Practical**: Use the transcripts’ examples (cucumber, credit, poverty) as analogies in health contexts.\
 :::
 
----
+------------------------------------------------------------------------
 
 ## References & Next Steps
 
 ::: incremental
-- **Key Readings**  
-  - James et al. (2013): *An Introduction to Statistical Learning*  
-  - Hastie, Tibshirani, Friedman: *The Elements of Statistical Learning*  
-  - Mullainathan & Spiess (2017): “Machine Learning: An Applied Econometric Approach,” *JEP*  
-
-- **Coming Soon**  
-  - Integrating ML with experimental/quasi-experimental methods  
-  - Double Machine Learning for partial out confounders  
-  - Causal Forests for heterogeneity in treatment effects
+-   **Key Readings**
+    -   James et al. (2013): *An Introduction to Statistical Learning*\
+    -   Hastie, Tibshirani, Friedman: *The Elements of Statistical Learning*\
+    -   Mullainathan & Spiess (2017): “Machine Learning: An Applied Econometric Approach,” *JEP*
+-   **Coming Soon**
+    -   Integrating ML with experimental/quasi-experimental methods\
+    -   Double Machine Learning for partial out confounders\
+    -   Causal Forests for heterogeneity in treatment effects
 :::
 
----
+------------------------------------------------------------------------
 
-## Appendix 
+## Appendix
 
 ::: incremental
-- **More detail from transcripts**:
-  1. The cucumber farm in Japan example  
-  2. The “Facebook friend recognition / Google Translate” references  
-  3. Potential insight about self-driving cars framing a supervised learning approach  
-
-- **Extended Code Snippets**  
-  - LASSO path plots  
-  - Cross-validation loops for polynomial degrees  
-  - Random forest variable importance examples  
-
-- **Figures**  
-  - Bias–variance decomposition chart  
-  - Polynomial degrees vs. test error curves  
+-   **More detail from transcripts**:
+    1.  The cucumber farm in Japan example\
+    2.  The “Facebook friend recognition / Google Translate” references\
+    3.  Potential insight about self-driving cars framing a supervised learning approach
+-   **Extended Code Snippets**
+    -   LASSO path plots\
+    -   Cross-validation loops for polynomial degrees\
+    -   Random forest variable importance examples
+-   **Figures**
+    -   Bias–variance decomposition chart\
+    -   Polynomial degrees vs. test error curves\
 :::
 
 ::: notes

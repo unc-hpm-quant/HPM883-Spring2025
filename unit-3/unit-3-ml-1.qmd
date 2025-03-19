@@ -5,8 +5,7 @@ draft: false
 
 ## Unit Overview
 
-
-## Unit 3.1: Intro to ML 
+## Unit 3.1: Intro to ML
 
 ### Preparation
 
@@ -15,14 +14,19 @@ draft: false
     -   Optional:
         -   [Machine Learning: An Applied Econometric Approach](https://app.perusall.com/courses/hpm-883/machine-learning-an-applied-econometric-approach-981264625)
         -   [Lessons and tips for designing a machine learning study using EHR data](https://app.perusall.com/courses/hpm-883/lessons-and-tips-for-designing-a-machine-learning-study-using-ehr-data)
-
+-   Watch
+    -   [Susan Athey - Machine Learning and Economics](https://www.youtube.com/watch?v=Z0ZcsxI-HTs)
+        -   [Slides](https://drive.google.com/file/d/18aJiFthGTj9oly5yd8MCDNVEV2d6HTft/view)
+    -   [Jann Spiess - Applied Machine Learning - An Introduction](https://www.youtube.com/watch?v=Z0ZcsxI-HTs)
+        -   [slides](https://drive.google.com/file/d/1WACyrmUdlEZ-FI9ekC9ggo7m-pYUD7id/view?usp=sharing)
+    -   [Jann Spiess - Applied ML: Secret Sauce](https://www.youtube.com/watch?v=Qs6JmdNoT-Y)
+        -   [slides](https://drive.google.com/file/d/1qaiJOStmAOVnBubteuQDu56Or0cC3V_Q/view)
+    -   [Jann Spiess - Applied ML: Prediction vs Estimation](https://www.youtube.com/watch?v=e2Nmlk0cbrY)
+        -   [slides](https://drive.google.com/file/d/1x1NbOqgZpMegBSq-jpJPYQjaZiioh4Ix/view)
 
 ### Class
 
--   [Lecture Notes: Introduction to Machine Learning](/unit-3/lec-3-1.qmd)
-
-    -   [Lecture Slides](/unit-3/lec-3-1-slides.qmd)
-
+-   \[Lecture Notes - coming soon!\]
 
 ## Unit 3.2: Lasso and friends: Linear Regression with High-Dimensional Data
 
@@ -30,13 +34,14 @@ draft: false
 
 -   Read:
     -   [ISLR Chapter 5](https://app.perusall.com/courses/hpm-883/islrv2-corrected-june-2023)
+-   Watch:
+    -   [Statistical Learning - Bias-Variance Traeoff](https://youtu.be/pvcEQfcO3pk?si=qtjopD4nYb6aZvfs)
+    -   [Statistical Learning - Cross Validation](https://youtu.be/6eWODQJrMKs?si=L86PmFYhMOUcJFXf)
+    -   [Statistical Learning - The Lasso](https://youtu.be/0tfPuddPhEY?si=euU1Rm_WEDvTGt80)
 
 ### Class
 
--   [Lecture Notes: Lasso and friends](/unit-3/lec-3-2.qmd)
-
-    -   [Lecture Slides](/unit-3/lec-3-2-slides.qmd)
-
+-   \[Lecture Notes - coming soon!\]
 
 ## Unit 3.3: Tree-based Methods
 
@@ -44,24 +49,21 @@ draft: false
 
 -   Read:
     -   [ISLR Chapter 6.1, 6.2](https://app.perusall.com/courses/hpm-883/islrv2-corrected-june-2023)
+    -   [Causal ML - 8.1, 8.2](https://app.perusall.com/courses/hpm-883/causalml_chap_8)
 
 ### Class
 
--   [Lecture Notes: Tree-based Methods](/unit-3/lec-3-3.qmd)
-
-    -   [Lecture Slides](/unit-3/lec-3-3-slides.qmd)
-
+-   \[Lecture Notes - coming soon!\]
 
 ## Labs
 
-- Coming Soon!
+-   [Linear Penalized Regressions](https://colab.research.google.com/github/CausalAIBook/MetricsMLNotebooks/blob/main/PM2/r_linear_penalized_regs.irnb)
+-   [Wage Prediction](https://colab.research.google.com/github/CausalAIBook/MetricsMLNotebooks/blob/main/PM2/r_ml_for_wage_prediction.irnb)
 
 ## Other Resources
 
--   [Supervised Learning  (Logistic regression, decision trees, random forest)](https://github.com/DHEPLab/SISBID-Supervised-Learning)
+-   [Supervised Learning (Logistic regression, decision trees, random forest)](https://github.com/DHEPLab/SISBID-Supervised-Learning)
 
 -   [Unsupervised Learning (Clustering, PCA)](https://github.com/SISBID/Unsupervised-Learning)
 
 -   [MIT Course: Machine Learning for Healthcare](https://ocw.mit.edu/courses/6-s897-machine-learning-for-healthcare-spring-2019/pages/syllabus/)
-
-
