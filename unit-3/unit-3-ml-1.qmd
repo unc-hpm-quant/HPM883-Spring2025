@@ -38,6 +38,8 @@ draft: false
     -   [Statistical Learning - Bias-Variance Traeoff](https://youtu.be/pvcEQfcO3pk?si=qtjopD4nYb6aZvfs)
     -   [Statistical Learning - Cross Validation](https://youtu.be/6eWODQJrMKs?si=L86PmFYhMOUcJFXf)
     -   [Statistical Learning - The Lasso](https://youtu.be/0tfPuddPhEY?si=euU1Rm_WEDvTGt80)
+-   Do:
+    -   [Linear Penalized Regressions](https://colab.research.google.com/github/CausalAIBook/MetricsMLNotebooks/blob/main/PM2/r_linear_penalized_regs.irnb)
 
 ### Class
 
@@ -57,8 +59,7 @@ draft: false
 
 ## Labs
 
--   [Linear Penalized Regressions](https://colab.research.google.com/github/CausalAIBook/MetricsMLNotebooks/blob/main/PM2/r_linear_penalized_regs.irnb)
--   [Wage Prediction](https://colab.research.google.com/github/CausalAIBook/MetricsMLNotebooks/blob/main/PM2/r_ml_for_wage_prediction.irnb)
+-   [Replication of Dynamic Complementarity Analysis ](https://drive.google.com/drive/u/0/folders/1qe6nFqRVd-pJoUaqg-imLJI4npAfzo0X)
 
 ## Other Resources
 
