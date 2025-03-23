@@ -9,7 +9,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.6.42">
 
-  <meta name="author" content="Sean Sylvia">
+  <meta name="author" content="Your Name">
   <title>HPM 883 – Introduction to Machine Learning</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -140,6 +140,7 @@ Sean Sylvia
 </div>
 </div>
 
+  <p class="date">March 2025</p>
 </section>
 <section>
 <section id="introduction-to-machine-learning" class="title-slide slide level1 center">
@@ -149,6 +150,7 @@ Sean Sylvia
 <section id="loads-of-recent-advances-in-machine-learning-other-types-of-ai" class="slide level2">
 <h2>Loads of recent advances in Machine Learning &amp; other Types of AI…</h2>
 <p>Obviously, ChatGPT &amp; other Large Language Models (LLMs) are the most visible … but many other advances…</p>
+<p>All enabled by large amounts of data, computing power, and advances in methods to <strong>predict</strong> or <strong>learn</strong> patterns in data.</p>
 </section>
 <section id="machine-translation" class="slide level2">
 <h2>Machine Translation</h2>
@@ -172,13 +174,420 @@ Sean Sylvia
 <img data-src="media/govern.png" class="r-stretch"></section>
 <section id="what-is-machine-learning" class="slide level2">
 <h2>What is machine learning?</h2>
+<ul>
+<li>Traditional OLS struggles with thousands of features or highly nonlinear relationships.<br>
+</li>
+<li>ML can more flexibly uncover predictive patterns for tasks like readmission risk, resource targeting, or disease onset.</li>
+</ul>
+</section>
+<section id="introduction-motivation" class="slide level2">
+<h2>1. Introduction &amp; Motivation</h2>
+<div>
+<ul>
+<li class="fragment"><strong>From Sci-Fi to Daily Life</strong>
+<ul>
+<li class="fragment">We often imagine AI like in <em>Ex Machina</em>—futuristic robots passing as humans.<br>
+</li>
+<li class="fragment">But <em>modern</em> machine learning is already in your pocket:
+<ul>
+<li class="fragment"><strong>Facebook</strong> recognizing friends in photos<br>
+</li>
+<li class="fragment"><strong>Google Translate</strong> scanning text and translating on the fly<br>
+</li>
+<li class="fragment"><strong>Self-driving cars</strong> detecting obstacles and avoiding collisions</li>
+</ul></li>
+</ul></li>
+<li class="fragment"><strong>Why This Matters for Health Policy</strong>
+<ul>
+<li class="fragment">Healthcare settings generate enormous amounts of data (EHR, administrative claims, sensor data).<br>
+</li>
+<li class="fragment">Traditional OLS struggles with thousands of features or highly nonlinear relationships.<br>
+</li>
+<li class="fragment">ML can more flexibly uncover predictive patterns for tasks like readmission risk, resource targeting, or disease onset.<br>
+</li>
+</ul></li>
+</ul>
+</div>
+<aside class="notes">
+<p>Mention the powerful day-to-day examples: face recognition, real-time translation, partial self-driving. Emphasize how these examples come from the same machine learning concepts that can be harnessed in health economics (predicting outcomes, segmenting populations, etc.).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ml-essentials-supervised-learning" class="slide level2">
+<h2>2. ML Essentials: Supervised Learning</h2>
+<div>
+<ul>
+<li class="fragment"><strong>Supervised Learning</strong>: Learn a function (f) from labeled data ((X_i, Y_i))
+<ul>
+<li class="fragment">We choose a <strong>loss function</strong> (e.g., MSE for regression).<br>
+</li>
+<li class="fragment">The goal is to predict (Y) for new, unseen (X).</li>
+</ul></li>
+<li class="fragment"><strong>Cucumber Classification Example</strong>
+<ul>
+<li class="fragment"><em>Transcripts mention a story of a family in Japan automating cucumber sorting.</em><br>
+</li>
+<li class="fragment"><strong>Old approach</strong>: Hard-coded rules about color, shape.<br>
+</li>
+<li class="fragment"><strong>New approach</strong>: Train a model on labeled images → The ML system figures out patterns.</li>
+</ul></li>
+<li class="fragment"><strong>Implications for Health</strong>
+<ul>
+<li class="fragment">Similarly, we can feed in medical images or extensive patient data and let an ML algorithm detect subtle features predictive of outcomes.<br>
+</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<p><strong>Remember</strong>: This is not about interpreting <em>why</em> the algorithm picks certain features but about <em>accuracy</em> in predicting the outcome.</p>
+</div>
+</section>
+<section id="focus-on-prediction-vs.-causal-inference" class="slide level2">
+<h2>3. Focus on Prediction vs.&nbsp;Causal Inference</h2>
+<div>
+<ul>
+<li class="fragment"><strong>ML’s Core Strength</strong>
+<ul>
+<li class="fragment">Minimizing out-of-sample error for ().<br>
+</li>
+<li class="fragment">This is critical for tasks where we just need <em>the best guess</em> of a target variable.</li>
+</ul></li>
+<li class="fragment"><strong>But…</strong>
+<ul>
+<li class="fragment">It doesn’t guarantee stable or unbiased coefficient estimates.<br>
+</li>
+<li class="fragment">“<em>Beta-hard</em>” vs.&nbsp;“<em>Y-hard</em>” distinction from transcripts:
+<ul>
+<li class="fragment"><em>Beta-hard tasks</em>: Causal or structural inference.<br>
+</li>
+<li class="fragment"><em>Y-hard tasks</em>: Focused purely on predictive performance.</li>
+</ul></li>
+</ul></li>
+<li class="fragment"><strong>Example</strong>:
+<ul>
+<li class="fragment">Predicting credit default from a large set of features doesn’t necessarily tell us <em>which</em> variable causes default—it just flags risk.<br>
+</li>
+</ul></li>
+</ul>
+</div>
+<aside class="notes">
+<p>Draw from transcript references to differences in “beta-hat” (interpretation, structural causal parameters) versus “y-hat” (pure prediction). The credit default example underscores how correlated features can still yield accurate predictions even if the coefficients aren’t interpretable.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="the-biasvariance-trade-off" class="slide level2">
+<h2>4. The Bias–Variance Trade-Off</h2>
+<div>
+<ul>
+<li class="fragment"><strong>Overfitting vs.&nbsp;Underfitting</strong>
+<ul>
+<li class="fragment"><strong>Overfit</strong>: The model memorizes noise, performs poorly on new data.<br>
+</li>
+<li class="fragment"><strong>Underfit</strong>: Model too simple, high bias, misses real structure.</li>
+</ul></li>
+<li class="fragment"><strong>Polynomial Example</strong> (from transcripts)
+<ul>
+<li class="fragment">Fitting polynomials of degrees 2, 4, 10… and seeing test MSE behavior.<br>
+</li>
+<li class="fragment">We want a “sweet spot” that captures the signal but not the noise.</li>
+</ul></li>
+<li class="fragment"><strong>Cross-Validation</strong>
+<ul>
+<li class="fragment">Partition data into training/validation (or do k-fold).<br>
+</li>
+<li class="fragment"><strong>Key</strong>: Choose complexity (e.g., polynomial degree) that minimizes out-of-sample error.<br>
+</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="assets/overfit-underfit.png"></p>
+<figcaption>Placeholder: Overfit vs.&nbsp;Underfit Polynomials</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="regularization-lasso-ridge-elastic-net" class="slide level2">
+<h2>5. Regularization: LASSO, Ridge, Elastic Net</h2>
+<div>
+<ol type="1">
+<li class="fragment"><strong>Why Regularize?</strong>
+<ul>
+<li class="fragment">With many features (think 2000+ labs &amp; comorbidities in a hospital dataset), OLS can overfit or produce huge coefficient variance.</li>
+</ul></li>
+<li class="fragment"><strong>LASSO</strong>
+<ul>
+<li class="fragment">((y - x)^2 + |_j|)<br>
+</li>
+<li class="fragment">Sets some coefficients <em>exactly zero</em> → “capitalist” approach<br>
+</li>
+<li class="fragment">Great for feature selection, but watch out for omitted-variable bias if correlated features exist.</li>
+</ul></li>
+<li class="fragment"><strong>Ridge</strong>
+<ul>
+<li class="fragment">((y - x)^2 + _j^2)<br>
+</li>
+<li class="fragment">Shrinks all coefficients → “socialist,” no exact zeros.</li>
+</ul></li>
+<li class="fragment"><strong>Elastic Net</strong>
+<ul>
+<li class="fragment">Mix of both; (||_1 + (1-)||_2^2).<br>
+</li>
+</ul></li>
+</ol>
+</div>
+<div class="fragment">
+<p><strong>Cross-validation</strong> typically used to pick (). The transcripts mention how LASSO can be <em>unstable</em> when multiple variables are correlated.</p>
+</div>
+</section>
+<section id="lasso-coefficient-instability" class="slide level2">
+<h2>LASSO &amp; Coefficient Instability</h2>
+<div>
+<ul>
+<li class="fragment"><strong>Transcript Example</strong>:
+<ul>
+<li class="fragment">If <code>BEDRMS</code> and <code>BATHS</code> are both strongly correlated with house price, LASSO might select one or the other arbitrarily.<br>
+</li>
+<li class="fragment">Re-running LASSO on slightly different training sets can flip which variable is chosen.</li>
+</ul></li>
+<li class="fragment"><strong>Implication</strong>
+<ul>
+<li class="fragment">The model’s <em>predictive performance</em> might stay good.<br>
+</li>
+<li class="fragment">But the selected variables are not necessarily “the true drivers.”<br>
+</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="tree-based-methods" class="slide level2">
+<h2>6. Tree-Based Methods</h2>
+<div>
+<ul>
+<li class="fragment"><strong>Decision Trees</strong>
+<ul>
+<li class="fragment">Recursively split data (like “Is <code>BATHS</code> ≤ 1.5?”).<br>
+</li>
+<li class="fragment">If grown too deep → overfit. Prune or limit depth to reduce variance.<br>
+</li>
+<li class="fragment">Interpretable: “If you see a node, you know which variable &amp; threshold used.”</li>
+</ul></li>
+<li class="fragment"><strong>Regression Trees</strong> for continuous outcomes
+<ul>
+<li class="fragment">e.g., Predicting log house value from transcripts: splits on # bathrooms, # rooms, year built, etc.</li>
+</ul></li>
+<li class="fragment"><strong>Random Forests</strong>
+<ul>
+<li class="fragment">Bagging many trees on bootstrap samples + random feature subsets.<br>
+</li>
+<li class="fragment">Usually yields stable, accurate predictions.<br>
+</li>
+<li class="fragment">OOB (out-of-bag) error as built-in performance estimate.<br>
+</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<p>“Forest = an ensemble that reduces variance by averaging many uncorrelated (or weakly correlated) trees.”</p>
+</div>
+</section>
+<section id="real-world-example-poverty-targeting" class="slide level2">
+<h2>7. Real-World Example: Poverty Targeting</h2>
+<div>
+<ul>
+<li class="fragment"><strong>From the Transcripts</strong>:
+<ul>
+<li class="fragment">Predicting household consumption from characteristics to identify who is poor.<br>
+</li>
+<li class="fragment">A tree-based or LASSO approach can rank families most in need for a subsidy.</li>
+</ul></li>
+<li class="fragment"><strong>In Practice</strong>
+<ul>
+<li class="fragment">Government agencies (e.g., social service departments) often have partial data on household size, assets, location.<br>
+</li>
+<li class="fragment">ML can guess consumption/income more accurately than basic linear models.</li>
+</ul></li>
+<li class="fragment"><strong>Important Caveat</strong>
+<ul>
+<li class="fragment">This is purely for <em>predicting who is poor</em>, not claiming what <em>causes</em> poverty.<br>
+</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="when-ml-is-enough-when-we-need-more" class="slide level2">
+<h2>8. When ML Is Enough &amp; When We Need More</h2>
+<div>
+<ul>
+<li class="fragment"><strong>Pure Prediction Scenarios</strong>
+<ul>
+<li class="fragment">Triage or resource allocation: We only need a good risk score.<br>
+</li>
+<li class="fragment">Implementation: Create a threshold, direct resources to high-score folks.<br>
+</li>
+<li class="fragment">The transcripts mention this approach for tax audits, loan default, self-driving decisions.</li>
+</ul></li>
+<li class="fragment"><strong>Causal Inference</strong>
+<ul>
+<li class="fragment">If we want the effect of an intervention, ML can’t solve hidden confounding alone.<br>
+</li>
+<li class="fragment">Must combine ML with robust design (RCT, difference-in-differences, etc.).</li>
+</ul></li>
+<li class="fragment"><strong>Takeaway</strong>
+<ul>
+<li class="fragment">ML is amazing for big data + complex patterns → “Which units are at risk?”<br>
+</li>
+<li class="fragment">For “Why?” or “What if we changed X?” → specialized approaches (Double ML, partial IDs, etc.).<br>
+</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="practical-tips-for-implementation" class="slide level2">
+<h2>9. Practical Tips for Implementation</h2>
+<div>
+<ol type="1">
+<li class="fragment"><strong>Choose Software</strong>
+<ul>
+<li class="fragment"><code>glmnet</code> for LASSO/Ridge<br>
+</li>
+<li class="fragment"><code>rpart</code>, <code>randomForest</code>, or <code>grf</code> for tree methods<br>
+</li>
+<li class="fragment"><code>caret</code> or <code>tidymodels</code> frameworks for consistent workflows</li>
+</ul></li>
+<li class="fragment"><strong>Data Splitting</strong>
+<ul>
+<li class="fragment">Keep a final holdout set <em>untouched</em> for unbiased performance.<br>
+</li>
+<li class="fragment">k-fold cross-validation for hyperparameter tuning.</li>
+</ul></li>
+<li class="fragment"><strong>Watch Out for Overfitting</strong>
+<ul>
+<li class="fragment">Don’t repeatedly peek at your test set to tune.<br>
+</li>
+<li class="fragment">Use separate <em>validation</em> vs.&nbsp;<em>test</em> sets.</li>
+</ul></li>
+<li class="fragment"><strong>Document</strong>
+<ul>
+<li class="fragment">Seeds, code versions, transformations.<br>
+</li>
+<li class="fragment">Maintain reproducibility logs.<br>
+</li>
+</ul></li>
+</ol>
+</div>
+</section>
+<section id="summary-key-takeaways" class="slide level2">
+<h2>10. Summary &amp; Key Takeaways</h2>
+<div>
+<ol type="1">
+<li class="fragment"><strong>ML</strong> is outstanding for <em>prediction</em> tasks in large or complex data.<br>
+</li>
+<li class="fragment"><strong>Cross-validation</strong> is critical to handle overfitting vs.&nbsp;underfitting.<br>
+</li>
+<li class="fragment"><strong>LASSO &amp; Ridge</strong>: Solve high-dimensional problems but can create bias in coefficients.<br>
+</li>
+<li class="fragment"><strong>Decision Trees &amp; Forests</strong>: Nonlinear, flexible, strong performance, less interpretability.<br>
+</li>
+<li class="fragment"><strong>Prediction (</strong>) Causation. For causal insights, we still need strong designs (RCT, etc.).<br>
+</li>
+<li class="fragment"><strong>Practical</strong>: Use the transcripts’ examples (cucumber, credit, poverty) as analogies in health contexts.<br>
+</li>
+</ol>
+</div>
+</section>
+<section id="references-next-steps" class="slide level2">
+<h2>References &amp; Next Steps</h2>
+<div>
+<ul>
+<li class="fragment"><strong>Key Readings</strong>
+<ul>
+<li class="fragment">James et al.&nbsp;(2013): <em>An Introduction to Statistical Learning</em><br>
+</li>
+<li class="fragment">Hastie, Tibshirani, Friedman: <em>The Elements of Statistical Learning</em><br>
+</li>
+<li class="fragment">Mullainathan &amp; Spiess (2017): “Machine Learning: An Applied Econometric Approach,” <em>JEP</em></li>
+</ul></li>
+<li class="fragment"><strong>Coming Soon</strong>
+<ul>
+<li class="fragment">Integrating ML with experimental/quasi-experimental methods<br>
+</li>
+<li class="fragment">Double Machine Learning for partial out confounders<br>
+</li>
+<li class="fragment">Causal Forests for heterogeneity in treatment effects</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="appendix" class="slide level2">
+<h2>Appendix</h2>
+<div>
+<ul>
+<li class="fragment"><strong>More detail from transcripts</strong>:
+<ol type="1">
+<li class="fragment">The cucumber farm in Japan example<br>
+</li>
+<li class="fragment">The “Facebook friend recognition / Google Translate” references<br>
+</li>
+<li class="fragment">Potential insight about self-driving cars framing a supervised learning approach</li>
+</ol></li>
+<li class="fragment"><strong>Extended Code Snippets</strong>
+<ul>
+<li class="fragment">LASSO path plots<br>
+</li>
+<li class="fragment">Cross-validation loops for polynomial degrees<br>
+</li>
+<li class="fragment">Random forest variable importance examples</li>
+</ul></li>
+<li class="fragment"><strong>Figures</strong>
+<ul>
+<li class="fragment">Bias–variance decomposition chart<br>
+</li>
+<li class="fragment">Polynomial degrees vs.&nbsp;test error curves<br>
+</li>
+</ul></li>
+</ul>
+</div>
+<aside class="notes">
+<p>Wrap up with direct references to the transcripts, reminding students these real-life examples highlight ML’s predictive success and the continuing caution around interpretive leaps.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 
 
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p>UNC HPM 883 - Advanced Quantitative Methods</p>
+<p>UNC HPM 883 - Experimental &amp; Quantitative Methods</p>
 </div>
 </div></div>
 

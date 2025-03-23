@@ -59,7 +59,7 @@ draft: false
 
 ## Labs
 
--   [Replication of Dynamic Complementarity Analysis ](https://drive.google.com/drive/u/0/folders/1qe6nFqRVd-pJoUaqg-imLJI4npAfzo0X)
+-   [Replication of Dynamic Complementarity Analysis](https://drive.google.com/drive/u/0/folders/1qe6nFqRVd-pJoUaqg-imLJI4npAfzo0X)
 
 ## Other Resources
 
