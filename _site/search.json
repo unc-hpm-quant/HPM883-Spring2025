@@ -2078,35 +2078,55 @@
     "href": "unit-3/unit-3-ml-1.html#unit-3.1-intro-to-ml",
     "title": "Unit 3: Supervised Machine Learning Crash Course",
     "section": "Unit 3.1: Intro to ML",
-    "text": "Unit 3.1: Intro to ML\n\nPreparation\n\nRead:\n\nISLR Chapter 2\nOptional:\n\nMachine Learning: An Applied Econometric Approach\nLessons and tips for designing a machine learning study using EHR data\n\n\nWatch\n\nSusan Athey - Machine Learning and Economics\n\nSlides\n\nJann Spiess - Applied Machine Learning - An Introduction\n\nslides\n\nJann Spiess - Applied ML: Secret Sauce\n\nslides\n\nJann Spiess - Applied ML: Prediction vs Estimation\n\nslides\n\n\n\n\n\nClass\n\n[Lecture Notes - coming soon!]"
+    "text": "Unit 3.1: Intro to ML\n\nPreparation\n\nRead:\n\nISLR Chapter 2\nOptional:\n\nMachine Learning: An Applied Econometric Approach\nLessons and tips for designing a machine learning study using EHR data\n\n\nWatch\n\nSusan Athey - Machine Learning and Economics\n\nSlides\n\nJann Spiess - Applied Machine Learning - An Introduction\n\nslides\n\nJann Spiess - Applied ML: Secret Sauce\n\nslides\n\nJann Spiess - Applied ML: Prediction vs Estimation\n\nslides\n\n\n\n\n\nClass\n\n[Lecture Notes - coming soon!]",
+    "crumbs": [
+      "Unit 3: Supervised Learning",
+      "Unit 3.1: Supervised Learning"
+    ]
   },
   {
     "objectID": "unit-3/unit-3-ml-1.html#unit-3.2-lasso-and-friends-linear-regression-with-high-dimensional-data",
     "href": "unit-3/unit-3-ml-1.html#unit-3.2-lasso-and-friends-linear-regression-with-high-dimensional-data",
     "title": "Unit 3: Supervised Machine Learning Crash Course",
     "section": "Unit 3.2: Lasso and friends: Linear Regression with High-Dimensional Data",
-    "text": "Unit 3.2: Lasso and friends: Linear Regression with High-Dimensional Data\n\nPreparation\n\nRead:\n\nISLR Chapter 5\n\nWatch:\n\nStatistical Learning - Bias-Variance Traeoff\nStatistical Learning - Cross Validation\nStatistical Learning - The Lasso\n\nDo:\n\nLinear Penalized Regressions\n\n\n\n\nClass\n\n[Lecture Notes - coming soon!]"
+    "text": "Unit 3.2: Lasso and friends: Linear Regression with High-Dimensional Data\n\nPreparation\n\nRead:\n\nISLR Chapter 5\n\nWatch:\n\nStatistical Learning - Bias-Variance Traeoff\nStatistical Learning - Cross Validation\nStatistical Learning - The Lasso\n\nDo:\n\nLinear Penalized Regressions\n\n\n\n\nClass\n\n[Lecture Notes - coming soon!]",
+    "crumbs": [
+      "Unit 3: Supervised Learning",
+      "Unit 3.1: Supervised Learning"
+    ]
   },
   {
     "objectID": "unit-3/unit-3-ml-1.html#unit-3.3-tree-based-methods",
     "href": "unit-3/unit-3-ml-1.html#unit-3.3-tree-based-methods",
     "title": "Unit 3: Supervised Machine Learning Crash Course",
     "section": "Unit 3.3: Tree-based Methods",
-    "text": "Unit 3.3: Tree-based Methods\n\nPreparation\n\nRead:\n\nISLR Chapter 6.1, 6.2\nCausal ML - 8.1, 8.2\n\n\n\n\nClass\n\nLecture Slides"
+    "text": "Unit 3.3: Tree-based Methods\n\nPreparation\n\nRead:\n\nISLR Chapter 6.1, 6.2\nCausal ML - 8.1, 8.2\n\n\n\n\nClass\n\nLecture Slides",
+    "crumbs": [
+      "Unit 3: Supervised Learning",
+      "Unit 3.1: Supervised Learning"
+    ]
   },
   {
     "objectID": "unit-3/unit-3-ml-1.html#labs",
     "href": "unit-3/unit-3-ml-1.html#labs",
     "title": "Unit 3: Supervised Machine Learning Crash Course",
     "section": "Labs",
-    "text": "Labs\n\nReplication of Dynamic Complementarity Analysis"
+    "text": "Labs\n\nReplication of Dynamic Complementarity Analysis",
+    "crumbs": [
+      "Unit 3: Supervised Learning",
+      "Unit 3.1: Supervised Learning"
+    ]
   },
   {
     "objectID": "unit-3/unit-3-ml-1.html#other-resources",
     "href": "unit-3/unit-3-ml-1.html#other-resources",
     "title": "Unit 3: Supervised Machine Learning Crash Course",
     "section": "Other Resources",
-    "text": "Other Resources\n\nSupervised Learning (Logistic regression, decision trees, random forest)\nUnsupervised Learning (Clustering, PCA)\nMIT Course: Machine Learning for Healthcare"
+    "text": "Other Resources\n\nSupervised Learning (Logistic regression, decision trees, random forest)\nUnsupervised Learning (Clustering, PCA)\nMIT Course: Machine Learning for Healthcare",
+    "crumbs": [
+      "Unit 3: Supervised Learning",
+      "Unit 3.1: Supervised Learning"
+    ]
   },
   {
     "objectID": "unit-2/unit-2-design-1.html",
