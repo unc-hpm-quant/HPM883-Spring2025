@@ -1,5 +1,6 @@
 /*-- scss:defaults --*/
 @import 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap';
 
 $carolina-blue: #4B9CD3; /* Carolina Blue */
 $dark-blue: #13294B; /* Dark Blue */
@@ -9,6 +10,7 @@ $black: #151515; /* Black */
 $longleaf-green: #00594C; /* Longleaf Green */
 $campus-sandstone: #F4E8DD; /* Campus Sandstone */
 $font-family: 'Roboto', sans-serif; /* Modern Font */
+$reveal-font: 'Source Sans Pro', sans-serif; /* Font for reveal.js slides */
 $code-block-bg: #F4E8DD; 
 
 /*-- scss:rules --*/
@@ -44,3 +46,13 @@ $mermaid-label-bg-color: $body-bg;
 $mermaid-label-fg-color: $secondary;
 $mermaid-node-bg-color: rgba($secondary, 0.1);
 $mermaid-node-fg-color: $secondary;
+
+/* Reveal.js specific styles */
+.reveal {
+  font-family: $reveal-font;
+  
+  .faded {
+    color: #999999;
+    text-decoration: line-through;
+  }
+}

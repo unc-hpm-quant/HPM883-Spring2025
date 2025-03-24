@@ -55,7 +55,7 @@ draft: false
 
 ### Class
 
--   \[Lecture Notes - coming soon!\]
+-   [Lecture Slides](lec-3-3-slides.qmd)
 
 ## Labs
 
