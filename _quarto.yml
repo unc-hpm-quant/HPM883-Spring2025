@@ -119,6 +119,8 @@ website:
         contents:
           - href: unit-3/unit-3-ml.qmd
             text: "Unit 3: Supervised Learning"
+          - href: unit-3/lec-3-3-slides.qmd
+            text: "Lecture Slides: Unit 3.3: Tree-based Methods"
       - section: "Resources"
         contents:
           - href: resources.qmd

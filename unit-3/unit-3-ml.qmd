@@ -5,7 +5,7 @@ draft: false
 
 ## Unit Overview
 
--   [Lecture Slides: Unit 3.3](unit-3/lec-3-3-slides.qmd)
+-   [Lecture Slides: Unit 3.3](lec-3-3-slides.qmd)
 
 ## Labs
 
