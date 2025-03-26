@@ -117,8 +117,8 @@ website:
             text: "Lab 3: Experiment Design"
       - section: "Unit 3: Supervised Learning"
         contents:
-          - href: unit-3/unit-3-ml-1.qmd
-            text: "Unit 3.1: Supervised Learning"
+          - href: unit-3/unit-3-ml.qmd
+            text: "Unit 3: Supervised Learning"
       - section: "Resources"
         contents:
           - href: resources.qmd

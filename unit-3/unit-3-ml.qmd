@@ -5,6 +5,12 @@ draft: false
 
 ## Unit Overview
 
+-   [Lecture Slides](unit-3/lec-3-3-slides.qmd)
+
+## Labs
+
+-   [Replication of Dynamic Complementarity Analysis](https://drive.google.com/drive/u/0/folders/1qe6nFqRVd-pJoUaqg-imLJI4npAfzo0X)
+
 ## Unit 3.1: Intro to ML
 
 ### Preparation
@@ -24,10 +30,6 @@ draft: false
     -   [Jann Spiess - Applied ML: Prediction vs Estimation](https://www.youtube.com/watch?v=e2Nmlk0cbrY)
         -   [slides](https://drive.google.com/file/d/1x1NbOqgZpMegBSq-jpJPYQjaZiioh4Ix/view)
 
-### Class
-
--   \[Lecture Notes - coming soon!\]
-
 ## Unit 3.2: Lasso and friends: Linear Regression with High-Dimensional Data
 
 ### Preparation
@@ -41,10 +43,6 @@ draft: false
 -   Do:
     -   [Linear Penalized Regressions](https://colab.research.google.com/github/CausalAIBook/MetricsMLNotebooks/blob/main/PM2/r_linear_penalized_regs.irnb)
 
-### Class
-
--   \[Lecture Notes - coming soon!\]
-
 ## Unit 3.3: Tree-based Methods
 
 ### Preparation
@@ -52,14 +50,6 @@ draft: false
 -   Read:
     -   [ISLR Chapter 6.1, 6.2](https://app.perusall.com/courses/hpm-883/islrv2-corrected-june-2023)
     -   [Causal ML - 8.1, 8.2](https://app.perusall.com/courses/hpm-883/causalml_chap_8)
-
-### Class
-
--   [Lecture Slides](unit-3/lec-3-3-slides.qmd)
-
-## Labs
-
--   [Replication of Dynamic Complementarity Analysis](https://drive.google.com/drive/u/0/folders/1qe6nFqRVd-pJoUaqg-imLJI4npAfzo0X)
 
 ## Other Resources
 

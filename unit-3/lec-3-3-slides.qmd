@@ -14,69 +14,67 @@ format:
     scrollable: false
     smaller: true
     footer: "UNC HPM 883 - Advanced Quantitative Methods"
-draft: true
+draft: false
 ---
 
 ## Unit 2: Basic ML Crash Course
 
-1. Introduction to ML
+1.  Introduction to ML
 
-2. Lasso and friends (Linear High-dimensional Regression)
+2.  Lasso and friends (Linear High-dimensional Regression)
 
-3. Tree-based methods (Nonlinear)
+3.  Tree-based methods (Nonlinear)
 
 # Review
 
 ## Basic ML Setup
 
-1. Flexible functional forms
+1.  Flexible functional forms
 
-2. Limit expressiveness via **regularization**
+2.  Limit expressiveness via **regularization**
 
-3. Learn how much to regularize **tuning**
+3.  Learn how much to regularize **tuning**
 
-::: {.fragment}
-
-- What do the features imply about properties of $\hat{f}$ ?
-- How can we use $\hat{f}$ in applied data analyses?
+::: fragment
+-   What do the features imply about properties of $\hat{f}$ ?
+-   How can we use $\hat{f}$ in applied data analyses?
 :::
 
 ## The Approximation-Overfit Tradeoff
 
-::: {.columns}
+::::: columns
 ::: {.column width="45%"}
 **The Fundamental Challenge**
 
 As model complexity increases, we face two competing forces:
 
-1. **Approximation error decreases** as we better capture the true underlying function
-2. **Estimation error increases** as we begin to fit noise in our training data
+1.  **Approximation error decreases** as we better capture the true underlying function
+2.  **Estimation error increases** as we begin to fit noise in our training data
 
 This creates the **bias-variance tradeoff** that defines machine learning:
 
-- **Simple models**: High bias, low variance
-- **Complex models**: Low bias, high variance
-
+-   **Simple models**: High bias, low variance
+-   **Complex models**: Low bias, high variance
 :::
 
 ::: {.column width="55%"}
 ![Bias-variance tradeoff visualization. The blue curve represents test error, while the red curve shows training error. The gap widens as model complexity increases, indicating overfitting.](media/bias_variance_tradeoff.png)
 :::
-:::
+:::::
 
 ## Supervised Learning
 
 For supervised learners, we need three things:
 
-1. Function Class
-2. A regularizer
-3. Optimization algorithms to guide us
+1.  Function Class
+2.  A regularizer
+3.  Optimization algorithms to guide us
 
-##  Choosing a regularization parameter using k-fold Cross-validation 
+## Choosing a regularization parameter using k-fold Cross-validation
 
 ![](media/k-fold.png)
 
-## Full ML Exercise 
+## Full ML Exercise
 
 ![](media/ml-exercise.png)
 
@@ -84,60 +82,31 @@ For supervised learners, we need three things:
 
 Every model class has its own unique form of regularization that controls the bias-variance tradeoff. Understanding this spectrum reveals the fundamental unity behind seemingly diverse machine learning approaches.
 
-::: {.columns}
+:::: columns
 ::: {.column width="100%"}
-<table class="regularization-table">
-  <thead>
-    <tr>
-      <th>Function Class</th>
-      <th>Regularization Parameters</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Linear</td>
-      <td>LASSO, ridge, elastic net</td>
-    </tr>
-    <tr>
-      <td>Decision/regression trees</td>
-      <td>Depth, leaves, leaf size, info gain</td>
-    </tr>
-    <tr>
-      <td>Random forest</td>
-      <td>Trees, variables per tree, sample sizes, complexity</td>
-    </tr>
-    <tr>
-      <td>Nearest neighbors</td>
-      <td>Number of neighbors</td>
-    </tr>
-    <tr>
-      <td>Kernel regression</td>
-      <td>Bandwidth</td>
-    </tr>
-    <tr>
-      <td>Splines</td>
-      <td>Number of knots, order</td>
-    </tr>
-    <tr>
-      <td>Neural nets</td>
-      <td>Layers, sizes, connectivity, drop-out, early stopping</td>
-    </tr>
-  </tbody>
-</table>
+| Function Class | Regularization Parameters |
+|------------------------|-----------------------------------------------|
+| Linear | LASSO, ridge, elastic net |
+| Decision/regression trees | Depth, leaves, leaf size, info gain |
+| Random forest | Trees, variables per tree, sample sizes, complexity |
+| Nearest neighbors | Number of neighbors |
+| Kernel regression | Bandwidth |
+| Splines | Number of knots, order |
+| Neural nets | Layers, sizes, connectivity, drop-out, early stopping |
 :::
-:::
+::::
 
-::: {.fragment}
+::: fragment
 > **Cross-cutting insight**: While the specific mechanisms differ, regularization always involves restricting a model's capacity to memorize training data, instead encouraging it to generalize underlying patterns. Tree-based methods share this fundamental principle with linear models, but implement it through structural constraints rather than coefficient penalties.
 :::
 
 ## Lasso Regression: Constrained Minimization to Regularize
 
-::: {.nonincremental}
+::: nonincremental
 **Objective**: Minimize the sum of squared errors while keeping coefficients small
 :::
 
-::: {.columns}
+::::: columns
 ::: {.column width="40%"}
 ### Constrained Form
 
@@ -148,46 +117,44 @@ $$
 \end{align}
 $$
 
-- $t \geq 0$ is the constraint parameter
-- Smaller $t$ means more regularization
-- $t = 0$ forces all $\beta_j = 0$
+-   $t \geq 0$ is the constraint parameter
+-   Smaller $t$ means more regularization
+-   $t = 0$ forces all $\beta_j = 0$
 :::
 
 ::: {.column width="60%"}
-![](media/lasso-contours.png){width=150%}
+![](media/lasso-contours.png){width="150%"}
 
 *Contours of RSS function and lasso constraint region (diamond). Solution occurs at corners, forcing coefficients to zero.*
 :::
-:::
+:::::
 
 ## Lasso: Lagrangian Form
-
 
 $$
 \min_{\beta} \sum_{i=1}^{n} \left(y_i - \beta_0 - \sum_{j=1}^{p} \beta_j x_{ij}\right)^2 + \lambda \sum_{j=1}^{p} |\beta_j|
 $$
 
-- $\lambda \geq 0$ is the penalty parameter
-- $\lambda$ and $t$ have an inverse relationship
-- As $\lambda \rightarrow \infty$, all $\beta_j \rightarrow 0$
-
+-   $\lambda \geq 0$ is the penalty parameter
+-   $\lambda$ and $t$ have an inverse relationship
+-   As $\lambda \rightarrow \infty$, all $\beta_j \rightarrow 0$
 
 ## Geometric Interpretation
 
-::: {.columns}
+::::: columns
 ::: {.column width="50%"}
-- **The constraint region**: $\sum_{j=1}^{p} |\beta_j| \leq t$ forms a diamond (L1 norm)
-- Unlike ridge regression's circular constraint (L2 norm)
-- **Key insight**: The corners of the diamond often intersect with axes
-- This means some coefficients become exactly zero
+-   **The constraint region**: $\sum_{j=1}^{p} |\beta_j| \leq t$ forms a diamond (L1 norm)
+-   Unlike ridge regression's circular constraint (L2 norm)
+-   **Key insight**: The corners of the diamond often intersect with axes
+-   This means some coefficients become exactly zero
 :::
 
 ::: {.column width="50%"}
-![](media/lasso-contours.png){width=150%}
+![](media/lasso-contours.png){width="150%"}
 
 *Contours of RSS function and lasso constraint region (diamond). Solution occurs at corners, forcing coefficients to zero.*
 :::
-:::
+:::::
 
 ## Lasso Lambda and coefficient paths (relaxing constraint)
 
@@ -195,89 +162,84 @@ $$
 
 ## Why Lasso Performs Variable Selection
 
-::: {.nonincremental}
+::: nonincremental
 The L1 penalty's diamond shape makes it likely for solutions to occur at corners where some $\beta_j = 0$
 :::
 
-::: {.columns}
+::::: columns
 ::: {.column width="35%"}
-- Solution occurs where RSS contours touch constraint region
-- Corners of diamond intersect with coordinate axes
-- When solution is at a corner, some coefficients equal zero
-- **Result**: Automatic variable selection
+-   Solution occurs where RSS contours touch constraint region
+-   Corners of diamond intersect with coordinate axes
+-   When solution is at a corner, some coefficients equal zero
+-   **Result**: Automatic variable selection
 :::
 
 ::: {.column width="65%"}
-
-![](media/lasso_vs_ridge_vs_en.png){width=125%}
+![](media/lasso_vs_ridge_vs_en.png){width="125%"}
 
 *Comparison of lasso (diamond) vs. ridge (circle) vs. elastic net (fat diamond thingy) constraint regions.*
 :::
-:::
+:::::
 
 ## The Lasso Selection Problem
 
-::: {.nonincremental}
+::: nonincremental
 **Challenge**: Different regularization paths can lead to different selected variables
 :::
 
-::: {.fragment}
-**OLS:**  
+::: fragment
+**OLS:**\
 Health = β₀ + β₁·Age + β₂·Income + β₃·Education + β₄·SES + ... + βₙ·X_n + ε
 :::
 
-::: {.fragment}
-**Lasso (1):**  
+::: fragment
+**Lasso (1):**\
 Health = β₀ + β₁·Age + β₂·Income + β₃·Education \color{grey}{+ β₄·SES} + ... + βₙ·X_n + ε
 :::
 
-::: {.fragment}
-**Lasso (2):**  
+::: fragment
+**Lasso (2):**\
 Health = β₀ + β₁·Age + \color{grey}{β₂·Income + β₃·Education} + β₄·SES + ... + βₙ·X_n + ε
 :::
-
 
 ## Lasso Selection Problem
 
 **Key implications:**
 
-- Variable selection depends heavily on choice of λ
-- Highly correlated predictors compete for selection
-- Different random seeds in cross-validation → different final models
-- Selection can be unstable with small changes in data
+-   Variable selection depends heavily on choice of λ
+-   Highly correlated predictors compete for selection
+-   Different random seeds in cross-validation → different final models
+-   Selection can be unstable with small changes in data
 
 ## Lasso Selection Instability
 
-::: {.columns}
+::::: columns
 ::: {.column width="60%"}
 Lasso variable selection often exhibits **instability** across different runs, even on the same dataset:
 
-- Small changes in data can lead to completely different sets of selected variables
-- Highly correlated predictors compete for selection
-- Cross-validation randomness affects final model composition
-- Bootstrapping or repeated CV shows selection frequencies
+-   Small changes in data can lead to completely different sets of selected variables
+-   Highly correlated predictors compete for selection
+-   Cross-validation randomness affects final model composition
+-   Bootstrapping or repeated CV shows selection frequencies
 
-**Implications for practice:**
-- Single Lasso runs may miss important variables
-- Ensemble approaches can provide more stable selection
-- Variable selection consistency is not guaranteed
+**Implications for practice:** - Single Lasso runs may miss important variables - Ensemble approaches can provide more stable selection - Variable selection consistency is not guaranteed
 :::
 
 ::: {.column width="40%"}
 ![Variable selection across 10 iterations of Lasso on the same dataset. Black indicates selected; white indicates excluded. Notice the inconsistent pattern of selection.](media/lasso_stability.png)
 :::
-:::
+:::::
 
 ## Tree-Based Methods: Overview
 
-- Previously: linear models, regularization (ridge, lasso, elastic net)
-- Now: flexible, non-parametric approaches for prediction and classification
+-   Previously: linear models, regularization (ridge, lasso, elastic net)
+-   Now: flexible, non-parametric approaches for prediction and classification
 
-### **Key Question:** 
+### **Key Question:**
 
 How can we model non-linear relationships without assuming functional form?
 
-::: {.fragment}
+::: fragment
 Decision trees and (mostly) their extensions...
 
 Tree-based methods include random forests, bagged trees, boosted trees, which combine many decision trees in different ways (called an ensemble)..
@@ -285,62 +247,59 @@ Tree-based methods include random forests, bagged trees, boosted trees, which co
 
 ## Why Tree-Based Methods?
 
-- Powerful non-parametric approaches that:
-  - Make no assumptions about functional form
-  - Automatically model interactions between predictors
-  - Handle different types of predictors (continuous, categorical)
-  - Are highly interpretable (single trees)
-  - Can achieve excellent predictive performance (ensembles)
+-   Powerful non-parametric approaches that:
+    -   Make no assumptions about functional form
+    -   Automatically model interactions between predictors
+    -   Handle different types of predictors (continuous, categorical)
+    -   Are highly interpretable (single trees)
+    -   Can achieve excellent predictive performance (ensembles)
 
-::: {.fragment}
+::: fragment
 Perfect for health services research, where relationships are often complex and non-linear!
 :::
 
 ## Decision Trees: Intuition
 
-::: {.columns}
+::::: columns
 ::: {.column width="40%"}
-- Trees reflect human decision-making processes
-- We navigate a series of yes/no questions
-- Arrive at a prediction based on answers to those questions
+-   Trees reflect human decision-making processes
+-   We navigate a series of yes/no questions
+-   Arrive at a prediction based on answers to those questions
 :::
 
 ::: {.column width="60%"}
 Trees segment predictor space into regions, then:
 
-- **For regression**: Predict mean outcome value in that region
-- **For classification**: Predict most common class in that region
+-   **For regression**: Predict mean outcome value in that region
+-   **For classification**: Predict most common class in that region
 
-The beauty is in the simplicity: 
-- **No formula needed**
-- Can capture complex relationships without parametric assumptions
-
+The beauty is in the simplicity: - **No formula needed** - Can capture complex relationships without parametric assumptions
 :::
-:::
+:::::
 
 ## Example: Surviving the Titanic
 
-![](media/titanic.png){width=150%}
+![](media/titanic.png){width="150%"}
 
 ## Example: Surviving the Titanic
 
-![](media/titanic2.png){width=150%}
+![](media/titanic2.png){width="150%"}
 
 ## Age, Class and Survival
 
-![](media/age_class.png){width=150%}
+![](media/age_class.png){width="150%"}
 
 ## Age, Class and Survival
 
-![](media/age_class2.png){width=150%}
+![](media/age_class2.png){width="150%"}
 
 ## Age, Class and Survival
 
-![](media/age_class3.png){width=150%}
+![](media/age_class3.png){width="150%"}
 
 ## Age, Class and Survival
 
-![](media/age_class4.png){width=150%}
+![](media/age_class4.png){width="150%"}
 
 ## Age, Class and Survival: Tree
 
@@ -369,9 +328,9 @@ flowchart TD
 
 The general approach:
 
-1. **Split**: Choose a predictor and value to split data
-2. **Recurse**: Apply the same process to resulting regions
-3. **Prune**: Simplify the tree to prevent overfitting
+1.  **Split**: Choose a predictor and value to split data
+2.  **Recurse**: Apply the same process to resulting regions
+3.  **Prune**: Simplify the tree to prevent overfitting
 
 The key challenge: **Finding the optimal splits**
 
@@ -383,32 +342,27 @@ $$RSS = \sum_{j=1}^{J} \sum_{i \in R_j} (y_i - \hat{y}_{R_j})^2$$
 
 Where $\hat{y}_{R_j}$ is the mean response for observations in region $R_j$
 
-::: {.notes}
+::: notes
 We aim to create regions where the observations within each region are as homogeneous as possible with respect to the response variable.
 :::
 
 ## Recursive Binary Splitting
 
-::: {.incremental}
-1. Consider all predictors $X_j$ and all possible cut points $s$
-2. For each combination, split predictor space into two regions:
-   $$R_1(j,s) = \{X|X_j < s\} \text{ and } R_2(j,s) = \{X|X_j \geq s\}$$
-3. Choose split that minimizes:
-   $$\sum_{i \in R_1(j,s)} (y_i - \hat{y}_{R_1})^2 + \sum_{i \in R_2(j,s)} (y_i - \hat{y}_{R_2})^2$$
-4. Repeat recursively on each resulting region
+::: incremental
+1.  Consider all predictors $X_j$ and all possible cut points $s$
+2.  For each combination, split predictor space into two regions: $$R_1(j,s) = \{X|X_j < s\} \text{ and } R_2(j,s) = \{X|X_j \geq s\}$$
+3.  Choose split that minimizes: $$\sum_{i \in R_1(j,s)} (y_i - \hat{y}_{R_1})^2 + \sum_{i \in R_2(j,s)} (y_i - \hat{y}_{R_2})^2$$
+4.  Repeat recursively on each resulting region
 :::
 
 ## Classification Trees
 
-- Used when predicting categorical outcomes
-- Same recursive splitting approach, but different splitting criteria
-- Instead of RSS, we use measures of node **purity**
+-   Used when predicting categorical outcomes
+-   Same recursive splitting approach, but different splitting criteria
+-   Instead of RSS, we use measures of node **purity**
 
-::: {.fragment}
-Common impurity measures:
-- **Classification Error Rate**: $1 - \max_k(p_{mk})$
-- **Gini Index**: $\sum_{k=1}^K p_{mk}(1-p_{mk})$
-- **Entropy**: $-\sum_{k=1}^K p_{mk}\log(p_{mk})$
+::: fragment
+Common impurity measures: - **Classification Error Rate**: $1 - \max_k(p_{mk})$ - **Gini Index**: $\sum_{k=1}^K p_{mk}(1-p_{mk})$ - **Entropy**: $-\sum_{k=1}^K p_{mk}\log(p_{mk})$
 
 Where $p_{mk}$ is the proportion of observations in node $m$ that belong to class $k$
 :::
@@ -417,46 +371,45 @@ Where $p_{mk}$ is the proportion of observations in node $m$ that belong to clas
 
 Once the tree is built:
 
-- **Regression**: Predict the mean response value in the leaf node
-- **Classification**: Predict the most common class in the leaf node
+-   **Regression**: Predict the mean response value in the leaf node
+-   **Classification**: Predict the most common class in the leaf node
 
-::: {.fragment}
+::: fragment
 Trees can also provide probability estimates (proportions of classes in each node)
 :::
 
 ## Advantages of Trees
 
-::: {.incremental}
-- **Interpretability**: Easy to explain and visualize
-- **No preprocessing needed**: No normalization or dummy variables required
-- **Handle mixed data types**: Both numerical and categorical predictors
-- **Automatically model interactions**
-- **No distributional assumptions**
-- **Handle missing data** (with appropriate implementation)
+::: incremental
+-   **Interpretability**: Easy to explain and visualize
+-   **No preprocessing needed**: No normalization or dummy variables required
+-   **Handle mixed data types**: Both numerical and categorical predictors
+-   **Automatically model interactions**
+-   **No distributional assumptions**
+-   **Handle missing data** (with appropriate implementation)
 :::
 
 ## Disadvantages of Trees
 
-::: {.incremental}
-- **High variance**: Small changes in data can result in very different trees
-- **Can overfit**: Tend to learn noise in the data if not constrained
-- **Greedy algorithm**: May not find global optimum
-- **Limited predictive accuracy** (for single trees)
-- **Biased toward predictors with many possible splits**
+::: incremental
+-   **High variance**: Small changes in data can result in very different trees
+-   **Can overfit**: Tend to learn noise in the data if not constrained
+-   **Greedy algorithm**: May not find global optimum
+-   **Limited predictive accuracy** (for single trees)
+-   **Biased toward predictors with many possible splits**
 :::
 
 ## The Overfitting Challenge
 
-
-- Deep trees fit training data perfectly but generalize poorly
-- Need a way to find right-sized trees
+-   Deep trees fit training data perfectly but generalize poorly
+-   Need a way to find right-sized trees
 
 ## Tree Pruning
 
-- **Idea**: Grow a large tree, then prune it back to prevent overfitting
-- **Approach**: Cost-complexity pruning with a penalty for tree complexity
+-   **Idea**: Grow a large tree, then prune it back to prevent overfitting
+-   **Approach**: Cost-complexity pruning with a penalty for tree complexity
 
-::: {.fragment}
+::: fragment
 Find subtree $T \subset T_0$ that minimizes:
 
 $$\sum_{m=1}^{|T|} \sum_{i:x_i \in R_m} (y_i - \hat{y}_{R_m})^2 + \alpha|T|$$
@@ -466,22 +419,20 @@ where $|T|$ is the number of terminal nodes and $\alpha$ is the complexity param
 
 ## Cross-Validation for Optimal Tree Size
 
-1. Grow a large tree $T_0$
-2. For range of $\alpha$ values, find best subtree $T_\alpha$
-3. Use K-fold cross-validation to select optimal $\alpha$
-4. Return the subtree $T_\alpha$ that corresponds to the optimal $\alpha$
+1.  Grow a large tree $T_0$
+2.  For range of $\alpha$ values, find best subtree $T_\alpha$
+3.  Use K-fold cross-validation to select optimal $\alpha$
+4.  Return the subtree $T_\alpha$ that corresponds to the optimal $\alpha$
 
-::: {.fragment}
+::: fragment
 Remember: We're using the same cross-validation framework we learned with lasso!
 :::
 
 ## The Fundamental Problem of Trees
 
-Single trees have:
-- High interpretability
-- Limited predictive performance
+Single trees have: - High interpretability - Limited predictive performance
 
-::: {.fragment}
+::: fragment
 Can we keep the flexibility of trees while improving predictive performance?
 :::
 
@@ -489,46 +440,40 @@ Can we keep the flexibility of trees while improving predictive performance?
 
 The core idea: Combine many trees to reduce variance and improve predictions
 
-::: {.incremental}
-
+::: incremental
 Key ensemble approaches:
 
-1. **Bagging**: Bootstrap aggregation of trees
-2. **Random Forests**: Bagging with random feature selection
-3. **Boosting**: Sequential tree building to correct errors
-
+1.  **Bagging**: Bootstrap aggregation of trees
+2.  **Random Forests**: Bagging with random feature selection
+3.  **Boosting**: Sequential tree building to correct errors
 :::
 
 ## Bagging Trees
 
-![](media/bag_titanic.png){width=150%}
+![](media/bag_titanic.png){width="150%"}
 
 ## Bagging Trees
 
-![](media/bag_titanic2.png){width=150%}
+![](media/bag_titanic2.png){width="150%"}
 
 ## Bagging (Bootstrap Aggregation)
 
-1. Create $B$ bootstrap samples from training data
-2. Fit a deep, unpruned tree to each bootstrap sample
-3. Average predictions across all trees (for regression)
-4. Take majority vote (for classification)
+1.  Create $B$ bootstrap samples from training data
+2.  Fit a deep, unpruned tree to each bootstrap sample
+3.  Average predictions across all trees (for regression)
+4.  Take majority vote (for classification)
 
-::: {.fragment}
+::: fragment
 Key insight: Averaging many high-variance, low-bias estimators gives a lower-variance, low-bias ensemble
 :::
 
 ## Ensemble Prediction
 
-**By averaging over many low bias but high variance
-models, we reduce the overall variance ⇒ more
-accurate model.**
+**By averaging over many low bias but high variance models, we reduce the overall variance ⇒ more accurate model.**
 
-- the average of all $B$ predictions for regression trees:
-  $\hat{y}_{bag}(X) = \frac{1}{B} \sum_{i=1}^{B} \hat{y}^i(X)$
-  
-- the majority vote by all $B$ predictions for classification trees:
-  $\hat{y}_{bag}(X) = \underset{k}{\arg\max} \sum_{i=1}^{B} I\{\hat{y}^i(X) = k\}$
+-   the average of all $B$ predictions for regression trees: $\hat{y}_{bag}(X) = \frac{1}{B} \sum_{i=1}^{B} \hat{y}^i(X)$
+
+-   the majority vote by all $B$ predictions for classification trees: $\hat{y}_{bag}(X) = \underset{k}{\arg\max} \sum_{i=1}^{B} I\{\hat{y}^i(X) = k\}$
 
 ```{mermaid}
 %%| fig-width: 8
@@ -543,35 +488,34 @@ flowchart TB
 
 ## Majority Vote
 
-![](media/bag_titanic3.png){width=150%}
+![](media/bag_titanic3.png){width="150%"}
 
 ## Out-of-Bag Error Estimation
 
-- Each bootstrap sample only uses ~2/3 of observations
-- Remaining ~1/3 ("out-of-bag" or OOB) can be used as validation data
-- For each observation, average predictions from trees that didn't use it in training
-- Provides honest error estimate without separate validation set
+-   Each bootstrap sample only uses \~2/3 of observations
+-   Remaining \~1/3 ("out-of-bag" or OOB) can be used as validation data
+-   For each observation, average predictions from trees that didn't use it in training
+-   Provides honest error estimate without separate validation set
 
-## Random Forests: Decorrelating Trees (De-cor-relating, not de-cor-ating!)
+## Random Forests: Decorrelating Trees
 
 Random forests address a weakness of bagging:
 
-- In bagging, trees can be highly correlated if strong predictors dominate splits
+-   In bagging, trees can be highly correlated if strong predictors dominate splits
 
-::: {.fragment}
+::: fragment
 Random forests solution:
 
-- At each split, consider only a random subset of $m$ predictors
+-   At each split, consider only a random subset of $m$ predictors
 
-- Typically $m \approx \sqrt{p}$ for classification, $m \approx p/3$ for regression
+-   Typically $m \approx \sqrt{p}$ for classification, $m \approx p/3$ for regression
 
-- For example, with sample of 100 predictors, sample 10 in each split for class.
+-   For example, with sample of 100 predictors, sample 10 in each split for class.
 
-- Decorrelates trees, further reducing variance
-
+-   Decorrelates trees, further reducing variance
 :::
 
-::: {.fragment}
+::: fragment
 Random Forest are Particularly useful when there is one strong predictor or a set of predictors that are highly correlated with each other. (Why?)
 :::
 
@@ -579,13 +523,13 @@ Random Forest are Particularly useful when there is one strong predictor or a se
 
 Unlike bagging/random forests (parallel tree building), boosting:
 
-- Fits trees sequentially
+-   Fits trees sequentially
 
-- Each tree focuses on errors of previous trees
+-   Each tree focuses on errors of previous trees
 
-- Combines many "weak learners" into a strong ensemble
+-   Combines many "weak learners" into a strong ensemble
 
-::: {.fragment}
+::: fragment
 **Key insight**: Rather than averaging many independent predictions, we build an additive model of trees
 :::
 
@@ -593,109 +537,142 @@ Unlike bagging/random forests (parallel tree building), boosting:
 
 For regression (simplified):
 
-1. Initialize $\hat{f}(x) = 0$
+1.  Initialize $\hat{f}(x) = 0$
 
-2. For $b = 1$ to $B$:
-   - Compute residuals $r_i = y_i - \hat{f}(x_i)$
+2.  For $b = 1$ to $B$:
 
-   - Fit a small tree to the residuals, get predictions $\hat{h}_b(x)$
+    -   Compute residuals $r_i = y_i - \hat{f}(x_i)$
 
-   - Update model: $\hat{f}(x) = \hat{f}(x) + \lambda \hat{h}_b(x)$
+    -   Fit a small tree to the residuals, get predictions $\hat{h}_b(x)$
 
-   - Where $\lambda$ is the learning rate (shrinkage parameter)
+    -   Update model: $\hat{f}(x) = \hat{f}(x) + \lambda \hat{h}_b(x)$
+
+    -   Where $\lambda$ is the learning rate (shrinkage parameter)
 
 ## Boosting Tuning Parameters
 
 Three key parameters control the model:
 
-1. **Number of trees $B$**: More trees can improve performance but may lead to overfitting
+1.  **Number of trees** $B$: More trees can improve performance but may lead to overfitting
 
-2. **Tree depth $d$**: Controls complexity of individual trees (often shallow, 1-6 nodes)
+2.  **Tree depth** $d$: Controls complexity of individual trees (often shallow, 1-6 nodes)
 
-3. **Learning rate $\lambda$**: How quickly model adapts to errors (smaller values need more trees)
+3.  **Learning rate** $\lambda$: How quickly model adapts to errors (smaller values need more trees)
 
-::: {.fragment}
+::: fragment
 As with other regularization approaches, cross-validation helps select optimal parameters
 :::
 
 ## Gradient Boosting vs. Random Forests
 
-::: {.incremental}
+::: incremental
 **Random Forests**
 
-- Trees built independently
+-   Trees built independently
 
-- Try to average out errors
+-   Try to average out errors
 
-- Less prone to overfitting
+-   Less prone to overfitting
 
-- Easier to tune
+-   Easier to tune
 
-**Gradient Boosting**
-- Trees built sequentially
+**Gradient Boosting** - Trees built sequentially
 
-- Try to correct previous errors
+-   Try to correct previous errors
 
-- More prone to overfitting
+-   More prone to overfitting
 
-- Often higher accuracy, if tuned properly
-
+-   Often higher accuracy, if tuned properly
 :::
 
 ## XGBoost: State-of-the-Art Boosting
 
-- eXtreme Gradient Boosting (XGBoost) is a highly optimized boosting implementation
+-   eXtreme Gradient Boosting (XGBoost) is a highly optimized boosting implementation
 
-- Regularization term in objective function
+-   Regularization term in objective function
 
-- Efficient handling of sparse data
+-   Efficient handling of sparse data
 
-- Parallel processing
+-   Parallel processing
 
-- Often wins machine learning competitions
+-   Often wins machine learning competitions
 
-::: {.fragment}
+::: fragment
 **XGBoost Objective**:
 
 $$\text{Obj} = \sum_{i=1}^n l(y_i, \hat{y}_i) + \sum_{k=1}^K \Omega(f_k)$$
 
 Where $\Omega(f) = \gamma T + \frac{1}{2}\lambda ||\omega||^2$ penalizes complex trees
-
 :::
 
 ## Applications in Health Services Research
 
-- **Predicting hospital readmissions**: Capturing complex interactions between comorbidities
-- **Identifying high-risk patients**: Finding non-linear patterns in health indicators
-- **Claims data analysis**: Handling mixed data types from administrative datasets
-- **Medical imaging**: Feature extraction and classification
-- **Treatment effect heterogeneity**: Identifying subgroups with different responses to interventions
-
+-   **Predicting hospital readmissions**: Capturing complex interactions between comorbidities
+-   **Identifying high-risk patients**: Finding non-linear patterns in health indicators
+-   **Claims data analysis**: Handling mixed data types from administrative datasets
+-   **Medical imaging**: Feature extraction and classification
+-   **Treatment effect heterogeneity**: Identifying subgroups with different responses to interventions
 
 ## Tuning Tree-Based Methods
 
-- **Single trees**: Prune using cross-validation to select complexity parameter
-- **Bagging**: Typically only need to set number of trees (usually 100-500)
-- **Random Forests**: Number of trees and mtry (predictors per split)
-- **Boosting**: Number of trees, learning rate, tree depth
+-   **Single trees**: Prune using cross-validation to select complexity parameter
+-   **Bagging**: Typically only need to set number of trees (usually 100-500)
+-   **Random Forests**: Number of trees and mtry (predictors per split)
+-   **Boosting**: Number of trees, learning rate, tree depth
 
-::: {.fragment}
+::: fragment
 Remember: Cross-validation is essential for all these models!
 :::
 
 ## Key Takeaways
 
-::: {.incremental}
-1. Tree-based methods offer flexible, non-parametric modeling
-2. Single trees prioritize interpretability
-3. Ensemble methods dramatically improve predictive performance
-4. Random Forests: Easy to tune, robust performance
-5. Boosting: Often highest accuracy, but requires careful tuning
-6. Tree ensembles provide variable importance and partial dependence for interpretation
+::: incremental
+1.  Tree-based methods offer flexible, non-parametric modeling
+2.  Single trees prioritize interpretability
+3.  Ensemble methods dramatically improve predictive performance
+4.  Random Forests: Easy to tune, robust performance
+5.  Boosting: Often highest accuracy, but requires careful tuning
+6.  Tree ensembles provide variable importance and partial dependence for interpretation
 :::
 
 ## Next Steps
 
-- **Lab exercise**: Implementing tree-based methods in R
-- **Readings**: Chapter 8 in "Introduction to Statistical Learning"
-- **Coming up**: Causal trees and forests - using tree-based methods for causal inference!
+-   **Lab exercise**: Implementing tree-based methods in R
+-   **Readings**: Chapter 8 in "Introduction to Statistical Learning"
+-   **Coming up**: Causal trees and forests - using tree-based methods for causal inference!
+
+# Prediction vs. Estimation
+
+-   Prediction: Out-of-sample loss minimization $\rightarrow$ $\hat{y}$
+-   Estimation: Coefficient inference $\rightarrow$ $\hat{\beta}$
+-   In high dimensions:
+    -   Good predictions possible even if $\hat{\beta}$ is unstable/biased
+    -   Multiple functions can predict similarly; distinguishing is hard
+    -   Regularization & tuning help prediction but complicate estimation
+
+# Prediction $(\hat{y})$
+
+-   ML prediction aims for a good fit of $\hat{y}$ to $y$ on the **same distribution**
+-   Not necessarily about policy counterfactuals or structural knowledge
+-   Counterfactual analysis requires causal modeling
+
+# Estimation $(\hat{\beta})$
+
+-   Some ML approaches estimate $f(x) \approx \mathbb{E}[y \mid x]$
+-   Achieving minimal loss does not guarantee consistent $\hat{\beta}$ for inference
+-   Consistency depends on the distribution of $x$
+-   Structural parameters require more than just good fit
+
+# Key Takeaways for Applied Work
+
+-   ML excels at predicting $\hat{y}$
+-   Hold-out or cross-validation validate prediction quality
+-   Typically no consistency for $\hat{\beta}$
+-   Limited causal interpretation or counterfactual extrapolation
+-   Inference can be tricky; bootstrap may fail in high dimensions
+
+# Application Areas for a $\hat{y}$ Tool
+
+1.  Data pre-processing
+2.  $\hat{y}$ tasks (prediction policy problems)
+3.  $\hat{y}$ in service of $\hat{\beta}$

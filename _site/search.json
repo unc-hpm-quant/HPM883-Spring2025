@@ -582,6 +582,377 @@
     ]
   },
   {
+    "objectID": "unit-3/lec-3-3-slides.html#unit-2-basic-ml-crash-course",
+    "href": "unit-3/lec-3-3-slides.html#unit-2-basic-ml-crash-course",
+    "title": "Tree-based Methods",
+    "section": "Unit 2: Basic ML Crash Course",
+    "text": "Unit 2: Basic ML Crash Course\n\nIntroduction to ML\nLasso and friends (Linear High-dimensional Regression)\nTree-based methods (Nonlinear)"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#basic-ml-setup",
+    "href": "unit-3/lec-3-3-slides.html#basic-ml-setup",
+    "title": "Tree-based Methods",
+    "section": "Basic ML Setup",
+    "text": "Basic ML Setup\n\nFlexible functional forms\nLimit expressiveness via regularization\nLearn how much to regularize tuning\n\n\n\nWhat do the features imply about properties of \\(\\hat{f}\\) ?\nHow can we use \\(\\hat{f}\\) in applied data analyses?"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#the-approximation-overfit-tradeoff",
+    "href": "unit-3/lec-3-3-slides.html#the-approximation-overfit-tradeoff",
+    "title": "Tree-based Methods",
+    "section": "The Approximation-Overfit Tradeoff",
+    "text": "The Approximation-Overfit Tradeoff\n\n\nThe Fundamental Challenge\nAs model complexity increases, we face two competing forces:\n\nApproximation error decreases as we better capture the true underlying function\nEstimation error increases as we begin to fit noise in our training data\n\nThis creates the bias-variance tradeoff that defines machine learning:\n\nSimple models: High bias, low variance\nComplex models: Low bias, high variance\n\n\n\n\n\nBias-variance tradeoff visualization. The blue curve represents test error, while the red curve shows training error. The gap widens as model complexity increases, indicating overfitting."
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#supervised-learning",
+    "href": "unit-3/lec-3-3-slides.html#supervised-learning",
+    "title": "Tree-based Methods",
+    "section": "Supervised Learning",
+    "text": "Supervised Learning\nFor supervised learners, we need three things:\n\nFunction Class\nA regularizer\nOptimization algorithms to guide us"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#choosing-a-regularization-parameter-using-k-fold-cross-validation",
+    "href": "unit-3/lec-3-3-slides.html#choosing-a-regularization-parameter-using-k-fold-cross-validation",
+    "title": "Tree-based Methods",
+    "section": "Choosing a regularization parameter using k-fold Cross-validation",
+    "text": "Choosing a regularization parameter using k-fold Cross-validation"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#full-ml-exercise",
+    "href": "unit-3/lec-3-3-slides.html#full-ml-exercise",
+    "title": "Tree-based Methods",
+    "section": "Full ML Exercise",
+    "text": "Full ML Exercise"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#the-regularization-spectrum-how-we-control-complexity",
+    "href": "unit-3/lec-3-3-slides.html#the-regularization-spectrum-how-we-control-complexity",
+    "title": "Tree-based Methods",
+    "section": "The Regularization Spectrum: How We Control Complexity",
+    "text": "The Regularization Spectrum: How We Control Complexity\nEvery model class has its own unique form of regularization that controls the bias-variance tradeoff. Understanding this spectrum reveals the fundamental unity behind seemingly diverse machine learning approaches.\n\n\n\n\n\n\n\n\n\nFunction Class\nRegularization Parameters\n\n\n\n\nLinear\nLASSO, ridge, elastic net\n\n\nDecision/regression trees\nDepth, leaves, leaf size, info gain\n\n\nRandom forest\nTrees, variables per tree, sample sizes, complexity\n\n\nNearest neighbors\nNumber of neighbors\n\n\nKernel regression\nBandwidth\n\n\nSplines\nNumber of knots, order\n\n\nNeural nets\nLayers, sizes, connectivity, drop-out, early stopping\n\n\n\n\n\n\nCross-cutting insight: While the specific mechanisms differ, regularization always involves restricting a model’s capacity to memorize training data, instead encouraging it to generalize underlying patterns. Tree-based methods share this fundamental principle with linear models, but implement it through structural constraints rather than coefficient penalties."
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#lasso-regression-constrained-minimization-to-regularize",
+    "href": "unit-3/lec-3-3-slides.html#lasso-regression-constrained-minimization-to-regularize",
+    "title": "Tree-based Methods",
+    "section": "Lasso Regression: Constrained Minimization to Regularize",
+    "text": "Lasso Regression: Constrained Minimization to Regularize\n\nObjective: Minimize the sum of squared errors while keeping coefficients small\n\n\n\nConstrained Form\n\\[\n\\begin{align}\n\\min_{\\beta} &\\sum_{i=1}^{n} \\left(y_i - \\beta_0 - \\sum_{j=1}^{p} \\beta_j x_{ij}\\right)^2\\\\\n\\text{subject to } &\\sum_{j=1}^{p} |\\beta_j| \\leq t\n\\end{align}\n\\]\n\n\\(t \\geq 0\\) is the constraint parameter\nSmaller \\(t\\) means more regularization\n\\(t = 0\\) forces all \\(\\beta_j = 0\\)\n\n\n\nContours of RSS function and lasso constraint region (diamond). Solution occurs at corners, forcing coefficients to zero."
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#lasso-lagrangian-form",
+    "href": "unit-3/lec-3-3-slides.html#lasso-lagrangian-form",
+    "title": "Tree-based Methods",
+    "section": "Lasso: Lagrangian Form",
+    "text": "Lasso: Lagrangian Form\n\\[\n\\min_{\\beta} \\sum_{i=1}^{n} \\left(y_i - \\beta_0 - \\sum_{j=1}^{p} \\beta_j x_{ij}\\right)^2 + \\lambda \\sum_{j=1}^{p} |\\beta_j|\n\\]\n\n\\(\\lambda \\geq 0\\) is the penalty parameter\n\\(\\lambda\\) and \\(t\\) have an inverse relationship\nAs \\(\\lambda \\rightarrow \\infty\\), all \\(\\beta_j \\rightarrow 0\\)"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#geometric-interpretation",
+    "href": "unit-3/lec-3-3-slides.html#geometric-interpretation",
+    "title": "Tree-based Methods",
+    "section": "Geometric Interpretation",
+    "text": "Geometric Interpretation\n\n\n\nThe constraint region: \\(\\sum_{j=1}^{p} |\\beta_j| \\leq t\\) forms a diamond (L1 norm)\nUnlike ridge regression’s circular constraint (L2 norm)\nKey insight: The corners of the diamond often intersect with axes\nThis means some coefficients become exactly zero\n\n\n\nContours of RSS function and lasso constraint region (diamond). Solution occurs at corners, forcing coefficients to zero."
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#lasso-lambda-and-coefficient-paths-relaxing-constraint",
+    "href": "unit-3/lec-3-3-slides.html#lasso-lambda-and-coefficient-paths-relaxing-constraint",
+    "title": "Tree-based Methods",
+    "section": "Lasso Lambda and coefficient paths (relaxing constraint)",
+    "text": "Lasso Lambda and coefficient paths (relaxing constraint)\n\nEach line is a coefficient. Lambda is “relaxed” moving from left to right"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#why-lasso-performs-variable-selection",
+    "href": "unit-3/lec-3-3-slides.html#why-lasso-performs-variable-selection",
+    "title": "Tree-based Methods",
+    "section": "Why Lasso Performs Variable Selection",
+    "text": "Why Lasso Performs Variable Selection\n\nThe L1 penalty’s diamond shape makes it likely for solutions to occur at corners where some \\(\\beta_j = 0\\)\n\n\n\n\nSolution occurs where RSS contours touch constraint region\nCorners of diamond intersect with coordinate axes\nWhen solution is at a corner, some coefficients equal zero\nResult: Automatic variable selection\n\n\n\nComparison of lasso (diamond) vs. ridge (circle) vs. elastic net (fat diamond thingy) constraint regions."
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#the-lasso-selection-problem",
+    "href": "unit-3/lec-3-3-slides.html#the-lasso-selection-problem",
+    "title": "Tree-based Methods",
+    "section": "The Lasso Selection Problem",
+    "text": "The Lasso Selection Problem\n\nChallenge: Different regularization paths can lead to different selected variables\n\n\nOLS:\nHealth = β₀ + β₁·Age + β₂·Income + β₃·Education + β₄·SES + … + βₙ·X_n + ε\n\n\nLasso (1):\nHealth = β₀ + β₁·Age + β₂·Income + β₃·Education + … + βₙ·X_n + ε\n\n\nLasso (2):\nHealth = β₀ + β₁·Age + + β₄·SES + … + βₙ·X_n + ε"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#lasso-selection-problem",
+    "href": "unit-3/lec-3-3-slides.html#lasso-selection-problem",
+    "title": "Tree-based Methods",
+    "section": "Lasso Selection Problem",
+    "text": "Lasso Selection Problem\nKey implications:\n\nVariable selection depends heavily on choice of λ\nHighly correlated predictors compete for selection\nDifferent random seeds in cross-validation → different final models\nSelection can be unstable with small changes in data"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#lasso-selection-instability",
+    "href": "unit-3/lec-3-3-slides.html#lasso-selection-instability",
+    "title": "Tree-based Methods",
+    "section": "Lasso Selection Instability",
+    "text": "Lasso Selection Instability\n\n\nLasso variable selection often exhibits instability across different runs, even on the same dataset:\n\nSmall changes in data can lead to completely different sets of selected variables\nHighly correlated predictors compete for selection\nCross-validation randomness affects final model composition\nBootstrapping or repeated CV shows selection frequencies\n\nImplications for practice: - Single Lasso runs may miss important variables - Ensemble approaches can provide more stable selection - Variable selection consistency is not guaranteed\n\n\n\n\nVariable selection across 10 iterations of Lasso on the same dataset. Black indicates selected; white indicates excluded. Notice the inconsistent pattern of selection."
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#tree-based-methods-overview",
+    "href": "unit-3/lec-3-3-slides.html#tree-based-methods-overview",
+    "title": "Tree-based Methods",
+    "section": "Tree-Based Methods: Overview",
+    "text": "Tree-Based Methods: Overview\n\nPreviously: linear models, regularization (ridge, lasso, elastic net)\nNow: flexible, non-parametric approaches for prediction and classification\n\nKey Question:\nHow can we model non-linear relationships without assuming functional form?\n\nDecision trees and (mostly) their extensions…\nTree-based methods include random forests, bagged trees, boosted trees, which combine many decision trees in different ways (called an ensemble).."
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#why-tree-based-methods",
+    "href": "unit-3/lec-3-3-slides.html#why-tree-based-methods",
+    "title": "Tree-based Methods",
+    "section": "Why Tree-Based Methods?",
+    "text": "Why Tree-Based Methods?\n\nPowerful non-parametric approaches that:\n\nMake no assumptions about functional form\nAutomatically model interactions between predictors\nHandle different types of predictors (continuous, categorical)\nAre highly interpretable (single trees)\nCan achieve excellent predictive performance (ensembles)\n\n\n\nPerfect for health services research, where relationships are often complex and non-linear!"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#decision-trees-intuition",
+    "href": "unit-3/lec-3-3-slides.html#decision-trees-intuition",
+    "title": "Tree-based Methods",
+    "section": "Decision Trees: Intuition",
+    "text": "Decision Trees: Intuition\n\n\n\nTrees reflect human decision-making processes\nWe navigate a series of yes/no questions\nArrive at a prediction based on answers to those questions\n\n\nTrees segment predictor space into regions, then:\n\nFor regression: Predict mean outcome value in that region\nFor classification: Predict most common class in that region\n\nThe beauty is in the simplicity: - No formula needed - Can capture complex relationships without parametric assumptions"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#example-surviving-the-titanic",
+    "href": "unit-3/lec-3-3-slides.html#example-surviving-the-titanic",
+    "title": "Tree-based Methods",
+    "section": "Example: Surviving the Titanic",
+    "text": "Example: Surviving the Titanic"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#example-surviving-the-titanic-1",
+    "href": "unit-3/lec-3-3-slides.html#example-surviving-the-titanic-1",
+    "title": "Tree-based Methods",
+    "section": "Example: Surviving the Titanic",
+    "text": "Example: Surviving the Titanic"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#age-class-and-survival",
+    "href": "unit-3/lec-3-3-slides.html#age-class-and-survival",
+    "title": "Tree-based Methods",
+    "section": "Age, Class and Survival",
+    "text": "Age, Class and Survival"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#age-class-and-survival-1",
+    "href": "unit-3/lec-3-3-slides.html#age-class-and-survival-1",
+    "title": "Tree-based Methods",
+    "section": "Age, Class and Survival",
+    "text": "Age, Class and Survival"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#age-class-and-survival-2",
+    "href": "unit-3/lec-3-3-slides.html#age-class-and-survival-2",
+    "title": "Tree-based Methods",
+    "section": "Age, Class and Survival",
+    "text": "Age, Class and Survival"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#age-class-and-survival-3",
+    "href": "unit-3/lec-3-3-slides.html#age-class-and-survival-3",
+    "title": "Tree-based Methods",
+    "section": "Age, Class and Survival",
+    "text": "Age, Class and Survival"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#age-class-and-survival-tree",
+    "href": "unit-3/lec-3-3-slides.html#age-class-and-survival-tree",
+    "title": "Tree-based Methods",
+    "section": "Age, Class and Survival: Tree",
+    "text": "Age, Class and Survival: Tree\n\n\n\n\n\nflowchart TD\n    A[Age &gt; 60?] --&gt; |Yes| B[Did not survive]\n    A --&gt; |No| C[Pclass = 1?]\n    C --&gt; |Yes| D[Survived]\n    C --&gt; |No| E[Pclass = 2?]\n    E --&gt; |Yes| F[Age &gt; 20?]\n    F --&gt; |Yes| G[Did not survive]\n    F --&gt; |No| H[Did not survive]\n    E --&gt; |No| I[Age &lt; 10?]\n    I --&gt; |Yes| J[Survived]\n    I --&gt; |No| K[Did not survive]\n    \n    %% Styling\n    classDef survived fill:#a8d5e5,stroke:#333,stroke-width:1px;\n    classDef notSurvived fill:#f8cecc,stroke:#333,stroke-width:1px;\n    \n    class D,J survived;\n    class B,G,H,K notSurvived;"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#how-to-grow-a-tree",
+    "href": "unit-3/lec-3-3-slides.html#how-to-grow-a-tree",
+    "title": "Tree-based Methods",
+    "section": "How to Grow a Tree?",
+    "text": "How to Grow a Tree?\nThe general approach:\n\nSplit: Choose a predictor and value to split data\nRecurse: Apply the same process to resulting regions\nPrune: Simplify the tree to prevent overfitting\n\nThe key challenge: Finding the optimal splits"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#growing-a-regression-tree",
+    "href": "unit-3/lec-3-3-slides.html#growing-a-regression-tree",
+    "title": "Tree-based Methods",
+    "section": "Growing a Regression Tree",
+    "text": "Growing a Regression Tree\nGoal: Partition predictor space into non-overlapping regions \\(R_1, R_2, ..., R_J\\) to minimize:\n\\[RSS = \\sum_{j=1}^{J} \\sum_{i \\in R_j} (y_i - \\hat{y}_{R_j})^2\\]\nWhere \\(\\hat{y}_{R_j}\\) is the mean response for observations in region \\(R_j\\)\n\nWe aim to create regions where the observations within each region are as homogeneous as possible with respect to the response variable."
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#recursive-binary-splitting",
+    "href": "unit-3/lec-3-3-slides.html#recursive-binary-splitting",
+    "title": "Tree-based Methods",
+    "section": "Recursive Binary Splitting",
+    "text": "Recursive Binary Splitting\n\n\nConsider all predictors \\(X_j\\) and all possible cut points \\(s\\)\nFor each combination, split predictor space into two regions: \\[R_1(j,s) = \\{X|X_j &lt; s\\} \\text{ and } R_2(j,s) = \\{X|X_j \\geq s\\}\\]\nChoose split that minimizes: \\[\\sum_{i \\in R_1(j,s)} (y_i - \\hat{y}_{R_1})^2 + \\sum_{i \\in R_2(j,s)} (y_i - \\hat{y}_{R_2})^2\\]\nRepeat recursively on each resulting region"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#classification-trees",
+    "href": "unit-3/lec-3-3-slides.html#classification-trees",
+    "title": "Tree-based Methods",
+    "section": "Classification Trees",
+    "text": "Classification Trees\n\nUsed when predicting categorical outcomes\nSame recursive splitting approach, but different splitting criteria\nInstead of RSS, we use measures of node purity\n\n\nCommon impurity measures: - Classification Error Rate: \\(1 - \\max_k(p_{mk})\\) - Gini Index: \\(\\sum_{k=1}^K p_{mk}(1-p_{mk})\\) - Entropy: \\(-\\sum_{k=1}^K p_{mk}\\log(p_{mk})\\)\nWhere \\(p_{mk}\\) is the proportion of observations in node \\(m\\) that belong to class \\(k\\)"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#prediction-with-trees",
+    "href": "unit-3/lec-3-3-slides.html#prediction-with-trees",
+    "title": "Tree-based Methods",
+    "section": "Prediction with Trees",
+    "text": "Prediction with Trees\nOnce the tree is built:\n\nRegression: Predict the mean response value in the leaf node\nClassification: Predict the most common class in the leaf node\n\n\nTrees can also provide probability estimates (proportions of classes in each node)"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#advantages-of-trees",
+    "href": "unit-3/lec-3-3-slides.html#advantages-of-trees",
+    "title": "Tree-based Methods",
+    "section": "Advantages of Trees",
+    "text": "Advantages of Trees\n\n\nInterpretability: Easy to explain and visualize\nNo preprocessing needed: No normalization or dummy variables required\nHandle mixed data types: Both numerical and categorical predictors\nAutomatically model interactions\nNo distributional assumptions\nHandle missing data (with appropriate implementation)"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#disadvantages-of-trees",
+    "href": "unit-3/lec-3-3-slides.html#disadvantages-of-trees",
+    "title": "Tree-based Methods",
+    "section": "Disadvantages of Trees",
+    "text": "Disadvantages of Trees\n\n\nHigh variance: Small changes in data can result in very different trees\nCan overfit: Tend to learn noise in the data if not constrained\nGreedy algorithm: May not find global optimum\nLimited predictive accuracy (for single trees)\nBiased toward predictors with many possible splits"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#the-overfitting-challenge",
+    "href": "unit-3/lec-3-3-slides.html#the-overfitting-challenge",
+    "title": "Tree-based Methods",
+    "section": "The Overfitting Challenge",
+    "text": "The Overfitting Challenge\n\nDeep trees fit training data perfectly but generalize poorly\nNeed a way to find right-sized trees"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#tree-pruning",
+    "href": "unit-3/lec-3-3-slides.html#tree-pruning",
+    "title": "Tree-based Methods",
+    "section": "Tree Pruning",
+    "text": "Tree Pruning\n\nIdea: Grow a large tree, then prune it back to prevent overfitting\nApproach: Cost-complexity pruning with a penalty for tree complexity\n\n\nFind subtree \\(T \\subset T_0\\) that minimizes:\n\\[\\sum_{m=1}^{|T|} \\sum_{i:x_i \\in R_m} (y_i - \\hat{y}_{R_m})^2 + \\alpha|T|\\]\nwhere \\(|T|\\) is the number of terminal nodes and \\(\\alpha\\) is the complexity parameter"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#cross-validation-for-optimal-tree-size",
+    "href": "unit-3/lec-3-3-slides.html#cross-validation-for-optimal-tree-size",
+    "title": "Tree-based Methods",
+    "section": "Cross-Validation for Optimal Tree Size",
+    "text": "Cross-Validation for Optimal Tree Size\n\nGrow a large tree \\(T_0\\)\nFor range of \\(\\alpha\\) values, find best subtree \\(T_\\alpha\\)\nUse K-fold cross-validation to select optimal \\(\\alpha\\)\nReturn the subtree \\(T_\\alpha\\) that corresponds to the optimal \\(\\alpha\\)\n\n\nRemember: We’re using the same cross-validation framework we learned with lasso!"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#the-fundamental-problem-of-trees",
+    "href": "unit-3/lec-3-3-slides.html#the-fundamental-problem-of-trees",
+    "title": "Tree-based Methods",
+    "section": "The Fundamental Problem of Trees",
+    "text": "The Fundamental Problem of Trees\nSingle trees have: - High interpretability - Limited predictive performance\n\nCan we keep the flexibility of trees while improving predictive performance?"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#ensemble-methods-to-the-rescue",
+    "href": "unit-3/lec-3-3-slides.html#ensemble-methods-to-the-rescue",
+    "title": "Tree-based Methods",
+    "section": "Ensemble Methods to the Rescue!",
+    "text": "Ensemble Methods to the Rescue!\nThe core idea: Combine many trees to reduce variance and improve predictions\n\nKey ensemble approaches:\n\nBagging: Bootstrap aggregation of trees\nRandom Forests: Bagging with random feature selection\nBoosting: Sequential tree building to correct errors"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#bagging-trees",
+    "href": "unit-3/lec-3-3-slides.html#bagging-trees",
+    "title": "Tree-based Methods",
+    "section": "Bagging Trees",
+    "text": "Bagging Trees"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#bagging-trees-1",
+    "href": "unit-3/lec-3-3-slides.html#bagging-trees-1",
+    "title": "Tree-based Methods",
+    "section": "Bagging Trees",
+    "text": "Bagging Trees"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#bagging-bootstrap-aggregation",
+    "href": "unit-3/lec-3-3-slides.html#bagging-bootstrap-aggregation",
+    "title": "Tree-based Methods",
+    "section": "Bagging (Bootstrap Aggregation)",
+    "text": "Bagging (Bootstrap Aggregation)\n\nCreate \\(B\\) bootstrap samples from training data\nFit a deep, unpruned tree to each bootstrap sample\nAverage predictions across all trees (for regression)\nTake majority vote (for classification)\n\n\nKey insight: Averaging many high-variance, low-bias estimators gives a lower-variance, low-bias ensemble"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#ensemble-prediction",
+    "href": "unit-3/lec-3-3-slides.html#ensemble-prediction",
+    "title": "Tree-based Methods",
+    "section": "Ensemble Prediction",
+    "text": "Ensemble Prediction\nBy averaging over many low bias but high variance models, we reduce the overall variance ⇒ more accurate model.\n\nthe average of all \\(B\\) predictions for regression trees: \\(\\hat{y}_{bag}(X) = \\frac{1}{B} \\sum_{i=1}^{B} \\hat{y}^i(X)\\)\nthe majority vote by all \\(B\\) predictions for classification trees: \\(\\hat{y}_{bag}(X) = \\underset{k}{\\arg\\max} \\sum_{i=1}^{B} I\\{\\hat{y}^i(X) = k\\}\\)\n\n\n\n\n\n\nflowchart TB\n    Forecast[\"Forecast for any new X\"] --&gt; DT1[\"DT 1&lt;br&gt;sample 1&lt;br&gt;random S%\"]\n    Forecast --&gt; DT2[\"DT 2&lt;br&gt;sample 2&lt;br&gt;random S%\"]\n    Forecast --&gt; dots1[\"...\"]\n    Forecast --&gt; dots2[\"...\"]\n    Forecast --&gt; dots3[\"...\"]\n    Forecast --&gt; DTB[\"DT B&lt;br&gt;sample B&lt;br&gt;random S%\"]"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#majority-vote",
+    "href": "unit-3/lec-3-3-slides.html#majority-vote",
+    "title": "Tree-based Methods",
+    "section": "Majority Vote",
+    "text": "Majority Vote"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#out-of-bag-error-estimation",
+    "href": "unit-3/lec-3-3-slides.html#out-of-bag-error-estimation",
+    "title": "Tree-based Methods",
+    "section": "Out-of-Bag Error Estimation",
+    "text": "Out-of-Bag Error Estimation\n\nEach bootstrap sample only uses ~2/3 of observations\nRemaining ~1/3 (“out-of-bag” or OOB) can be used as validation data\nFor each observation, average predictions from trees that didn’t use it in training\nProvides honest error estimate without separate validation set"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#random-forests-decorrelating-trees",
+    "href": "unit-3/lec-3-3-slides.html#random-forests-decorrelating-trees",
+    "title": "Tree-based Methods",
+    "section": "Random Forests: Decorrelating Trees",
+    "text": "Random Forests: Decorrelating Trees\nRandom forests address a weakness of bagging:\n\nIn bagging, trees can be highly correlated if strong predictors dominate splits\n\n\nRandom forests solution:\n\nAt each split, consider only a random subset of \\(m\\) predictors\nTypically \\(m \\approx \\sqrt{p}\\) for classification, \\(m \\approx p/3\\) for regression\nFor example, with sample of 100 predictors, sample 10 in each split for class.\nDecorrelates trees, further reducing variance\n\n\n\nRandom Forest are Particularly useful when there is one strong predictor or a set of predictors that are highly correlated with each other. (Why?)"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#boosting-sequential-learning",
+    "href": "unit-3/lec-3-3-slides.html#boosting-sequential-learning",
+    "title": "Tree-based Methods",
+    "section": "Boosting: Sequential Learning",
+    "text": "Boosting: Sequential Learning\nUnlike bagging/random forests (parallel tree building), boosting:\n\nFits trees sequentially\nEach tree focuses on errors of previous trees\nCombines many “weak learners” into a strong ensemble\n\n\nKey insight: Rather than averaging many independent predictions, we build an additive model of trees"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#gradient-boosting-algorithm",
+    "href": "unit-3/lec-3-3-slides.html#gradient-boosting-algorithm",
+    "title": "Tree-based Methods",
+    "section": "Gradient Boosting Algorithm",
+    "text": "Gradient Boosting Algorithm\nFor regression (simplified):\n\nInitialize \\(\\hat{f}(x) = 0\\)\nFor \\(b = 1\\) to \\(B\\):\n\nCompute residuals \\(r_i = y_i - \\hat{f}(x_i)\\)\nFit a small tree to the residuals, get predictions \\(\\hat{h}_b(x)\\)\nUpdate model: \\(\\hat{f}(x) = \\hat{f}(x) + \\lambda \\hat{h}_b(x)\\)\nWhere \\(\\lambda\\) is the learning rate (shrinkage parameter)"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#boosting-tuning-parameters",
+    "href": "unit-3/lec-3-3-slides.html#boosting-tuning-parameters",
+    "title": "Tree-based Methods",
+    "section": "Boosting Tuning Parameters",
+    "text": "Boosting Tuning Parameters\nThree key parameters control the model:\n\nNumber of trees \\(B\\): More trees can improve performance but may lead to overfitting\nTree depth \\(d\\): Controls complexity of individual trees (often shallow, 1-6 nodes)\nLearning rate \\(\\lambda\\): How quickly model adapts to errors (smaller values need more trees)\n\n\nAs with other regularization approaches, cross-validation helps select optimal parameters"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#gradient-boosting-vs.-random-forests",
+    "href": "unit-3/lec-3-3-slides.html#gradient-boosting-vs.-random-forests",
+    "title": "Tree-based Methods",
+    "section": "Gradient Boosting vs. Random Forests",
+    "text": "Gradient Boosting vs. Random Forests\n\nRandom Forests\n\nTrees built independently\nTry to average out errors\nLess prone to overfitting\nEasier to tune\n\nGradient Boosting - Trees built sequentially\n\nTry to correct previous errors\nMore prone to overfitting\nOften higher accuracy, if tuned properly"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#xgboost-state-of-the-art-boosting",
+    "href": "unit-3/lec-3-3-slides.html#xgboost-state-of-the-art-boosting",
+    "title": "Tree-based Methods",
+    "section": "XGBoost: State-of-the-Art Boosting",
+    "text": "XGBoost: State-of-the-Art Boosting\n\neXtreme Gradient Boosting (XGBoost) is a highly optimized boosting implementation\nRegularization term in objective function\nEfficient handling of sparse data\nParallel processing\nOften wins machine learning competitions\n\n\nXGBoost Objective:\n\\[\\text{Obj} = \\sum_{i=1}^n l(y_i, \\hat{y}_i) + \\sum_{k=1}^K \\Omega(f_k)\\]\nWhere \\(\\Omega(f) = \\gamma T + \\frac{1}{2}\\lambda ||\\omega||^2\\) penalizes complex trees"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#applications-in-health-services-research",
+    "href": "unit-3/lec-3-3-slides.html#applications-in-health-services-research",
+    "title": "Tree-based Methods",
+    "section": "Applications in Health Services Research",
+    "text": "Applications in Health Services Research\n\nPredicting hospital readmissions: Capturing complex interactions between comorbidities\nIdentifying high-risk patients: Finding non-linear patterns in health indicators\nClaims data analysis: Handling mixed data types from administrative datasets\nMedical imaging: Feature extraction and classification\nTreatment effect heterogeneity: Identifying subgroups with different responses to interventions"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#tuning-tree-based-methods",
+    "href": "unit-3/lec-3-3-slides.html#tuning-tree-based-methods",
+    "title": "Tree-based Methods",
+    "section": "Tuning Tree-Based Methods",
+    "text": "Tuning Tree-Based Methods\n\nSingle trees: Prune using cross-validation to select complexity parameter\nBagging: Typically only need to set number of trees (usually 100-500)\nRandom Forests: Number of trees and mtry (predictors per split)\nBoosting: Number of trees, learning rate, tree depth\n\n\nRemember: Cross-validation is essential for all these models!"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#key-takeaways",
+    "href": "unit-3/lec-3-3-slides.html#key-takeaways",
+    "title": "Tree-based Methods",
+    "section": "Key Takeaways",
+    "text": "Key Takeaways\n\n\nTree-based methods offer flexible, non-parametric modeling\nSingle trees prioritize interpretability\nEnsemble methods dramatically improve predictive performance\nRandom Forests: Easy to tune, robust performance\nBoosting: Often highest accuracy, but requires careful tuning\nTree ensembles provide variable importance and partial dependence for interpretation"
+  },
+  {
+    "objectID": "unit-3/lec-3-3-slides.html#next-steps",
+    "href": "unit-3/lec-3-3-slides.html#next-steps",
+    "title": "Tree-based Methods",
+    "section": "Next Steps",
+    "text": "Next Steps\n\nLab exercise: Implementing tree-based methods in R\nReadings: Chapter 8 in “Introduction to Statistical Learning”\nComing up: Causal trees and forests - using tree-based methods for causal inference!"
+  },
+  {
     "objectID": "computing.html",
     "href": "computing.html",
     "title": "Computing",
@@ -2074,58 +2445,80 @@
     ]
   },
   {
-    "objectID": "unit-3/unit-3-ml-1.html#unit-3.1-intro-to-ml",
-    "href": "unit-3/unit-3-ml-1.html#unit-3.1-intro-to-ml",
+    "objectID": "unit-3/unit-3-ml.html",
+    "href": "unit-3/unit-3-ml.html",
     "title": "Unit 3: Supervised Machine Learning Crash Course",
-    "section": "Unit 3.1: Intro to ML",
-    "text": "Unit 3.1: Intro to ML\n\nPreparation\n\nRead:\n\nISLR Chapter 2\nOptional:\n\nMachine Learning: An Applied Econometric Approach\nLessons and tips for designing a machine learning study using EHR data\n\n\nWatch\n\nSusan Athey - Machine Learning and Economics\n\nSlides\n\nJann Spiess - Applied Machine Learning - An Introduction\n\nslides\n\nJann Spiess - Applied ML: Secret Sauce\n\nslides\n\nJann Spiess - Applied ML: Prediction vs Estimation\n\nslides\n\n\n\n\n\nClass\n\n[Lecture Notes - coming soon!]",
+    "section": "",
+    "text": "Lecture Slides",
     "crumbs": [
       "Unit 3: Supervised Learning",
-      "Unit 3.1: Supervised Learning"
+      "Unit 3: Supervised Learning"
     ]
   },
   {
-    "objectID": "unit-3/unit-3-ml-1.html#unit-3.2-lasso-and-friends-linear-regression-with-high-dimensional-data",
-    "href": "unit-3/unit-3-ml-1.html#unit-3.2-lasso-and-friends-linear-regression-with-high-dimensional-data",
+    "objectID": "unit-3/unit-3-ml.html#unit-overview",
+    "href": "unit-3/unit-3-ml.html#unit-overview",
     "title": "Unit 3: Supervised Machine Learning Crash Course",
-    "section": "Unit 3.2: Lasso and friends: Linear Regression with High-Dimensional Data",
-    "text": "Unit 3.2: Lasso and friends: Linear Regression with High-Dimensional Data\n\nPreparation\n\nRead:\n\nISLR Chapter 5\n\nWatch:\n\nStatistical Learning - Bias-Variance Traeoff\nStatistical Learning - Cross Validation\nStatistical Learning - The Lasso\n\nDo:\n\nLinear Penalized Regressions\n\n\n\n\nClass\n\n[Lecture Notes - coming soon!]",
+    "section": "",
+    "text": "Lecture Slides",
     "crumbs": [
       "Unit 3: Supervised Learning",
-      "Unit 3.1: Supervised Learning"
+      "Unit 3: Supervised Learning"
     ]
   },
   {
-    "objectID": "unit-3/unit-3-ml-1.html#unit-3.3-tree-based-methods",
-    "href": "unit-3/unit-3-ml-1.html#unit-3.3-tree-based-methods",
-    "title": "Unit 3: Supervised Machine Learning Crash Course",
-    "section": "Unit 3.3: Tree-based Methods",
-    "text": "Unit 3.3: Tree-based Methods\n\nPreparation\n\nRead:\n\nISLR Chapter 6.1, 6.2\nCausal ML - 8.1, 8.2\n\n\n\n\nClass\n\nLecture Slides",
-    "crumbs": [
-      "Unit 3: Supervised Learning",
-      "Unit 3.1: Supervised Learning"
-    ]
-  },
-  {
-    "objectID": "unit-3/unit-3-ml-1.html#labs",
-    "href": "unit-3/unit-3-ml-1.html#labs",
+    "objectID": "unit-3/unit-3-ml.html#labs",
+    "href": "unit-3/unit-3-ml.html#labs",
     "title": "Unit 3: Supervised Machine Learning Crash Course",
     "section": "Labs",
     "text": "Labs\n\nReplication of Dynamic Complementarity Analysis",
     "crumbs": [
       "Unit 3: Supervised Learning",
-      "Unit 3.1: Supervised Learning"
+      "Unit 3: Supervised Learning"
     ]
   },
   {
-    "objectID": "unit-3/unit-3-ml-1.html#other-resources",
-    "href": "unit-3/unit-3-ml-1.html#other-resources",
+    "objectID": "unit-3/unit-3-ml.html#unit-3.1-intro-to-ml",
+    "href": "unit-3/unit-3-ml.html#unit-3.1-intro-to-ml",
+    "title": "Unit 3: Supervised Machine Learning Crash Course",
+    "section": "Unit 3.1: Intro to ML",
+    "text": "Unit 3.1: Intro to ML\n\nPreparation\n\nRead:\n\nISLR Chapter 2\nOptional:\n\nMachine Learning: An Applied Econometric Approach\nLessons and tips for designing a machine learning study using EHR data\n\n\nWatch\n\nSusan Athey - Machine Learning and Economics\n\nSlides\n\nJann Spiess - Applied Machine Learning - An Introduction\n\nslides\n\nJann Spiess - Applied ML: Secret Sauce\n\nslides\n\nJann Spiess - Applied ML: Prediction vs Estimation\n\nslides",
+    "crumbs": [
+      "Unit 3: Supervised Learning",
+      "Unit 3: Supervised Learning"
+    ]
+  },
+  {
+    "objectID": "unit-3/unit-3-ml.html#unit-3.2-lasso-and-friends-linear-regression-with-high-dimensional-data",
+    "href": "unit-3/unit-3-ml.html#unit-3.2-lasso-and-friends-linear-regression-with-high-dimensional-data",
+    "title": "Unit 3: Supervised Machine Learning Crash Course",
+    "section": "Unit 3.2: Lasso and friends: Linear Regression with High-Dimensional Data",
+    "text": "Unit 3.2: Lasso and friends: Linear Regression with High-Dimensional Data\n\nPreparation\n\nRead:\n\nISLR Chapter 5\n\nWatch:\n\nStatistical Learning - Bias-Variance Traeoff\nStatistical Learning - Cross Validation\nStatistical Learning - The Lasso\n\nDo:\n\nLinear Penalized Regressions",
+    "crumbs": [
+      "Unit 3: Supervised Learning",
+      "Unit 3: Supervised Learning"
+    ]
+  },
+  {
+    "objectID": "unit-3/unit-3-ml.html#unit-3.3-tree-based-methods",
+    "href": "unit-3/unit-3-ml.html#unit-3.3-tree-based-methods",
+    "title": "Unit 3: Supervised Machine Learning Crash Course",
+    "section": "Unit 3.3: Tree-based Methods",
+    "text": "Unit 3.3: Tree-based Methods\n\nPreparation\n\nRead:\n\nISLR Chapter 6.1, 6.2\nCausal ML - 8.1, 8.2",
+    "crumbs": [
+      "Unit 3: Supervised Learning",
+      "Unit 3: Supervised Learning"
+    ]
+  },
+  {
+    "objectID": "unit-3/unit-3-ml.html#other-resources",
+    "href": "unit-3/unit-3-ml.html#other-resources",
     "title": "Unit 3: Supervised Machine Learning Crash Course",
     "section": "Other Resources",
     "text": "Other Resources\n\nSupervised Learning (Logistic regression, decision trees, random forest)\nUnsupervised Learning (Clustering, PCA)\nMIT Course: Machine Learning for Healthcare",
     "crumbs": [
       "Unit 3: Supervised Learning",
-      "Unit 3.1: Supervised Learning"
+      "Unit 3: Supervised Learning"
     ]
   },
   {

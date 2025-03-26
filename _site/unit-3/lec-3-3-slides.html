@@ -217,73 +217,45 @@ Sean Sylvia
 <p>Every model class has its own unique form of regularization that controls the bias-variance tradeoff. Understanding this spectrum reveals the fundamental unity behind seemingly diverse machine learning approaches.</p>
 <div class="columns">
 <div class="column" style="width:100%;">
-<table class="regularization-table">
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 66%">
+</colgroup>
 <thead>
-<tr>
-<th>
-Function Class
-</th>
-<th>
-Regularization Parameters
-</th>
+<tr class="header">
+<th>Function Class</th>
+<th>Regularization Parameters</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>
-Linear
-</td>
-<td>
-LASSO, ridge, elastic net
-</td>
+<tr class="odd">
+<td>Linear</td>
+<td>LASSO, ridge, elastic net</td>
 </tr>
-<tr>
-<td>
-Decision/regression trees
-</td>
-<td>
-Depth, leaves, leaf size, info gain
-</td>
+<tr class="even">
+<td>Decision/regression trees</td>
+<td>Depth, leaves, leaf size, info gain</td>
 </tr>
-<tr>
-<td>
-Random forest
-</td>
-<td>
-Trees, variables per tree, sample sizes, complexity
-</td>
+<tr class="odd">
+<td>Random forest</td>
+<td>Trees, variables per tree, sample sizes, complexity</td>
 </tr>
-<tr>
-<td>
-Nearest neighbors
-</td>
-<td>
-Number of neighbors
-</td>
+<tr class="even">
+<td>Nearest neighbors</td>
+<td>Number of neighbors</td>
 </tr>
-<tr>
-<td>
-Kernel regression
-</td>
-<td>
-Bandwidth
-</td>
+<tr class="odd">
+<td>Kernel regression</td>
+<td>Bandwidth</td>
 </tr>
-<tr>
-<td>
-Splines
-</td>
-<td>
-Number of knots, order
-</td>
+<tr class="even">
+<td>Splines</td>
+<td>Number of knots, order</td>
 </tr>
-<tr>
-<td>
-Neural nets
-</td>
-<td>
-Layers, sizes, connectivity, drop-out, early stopping
-</td>
+<tr class="odd">
+<td>Neural nets</td>
+<td>Layers, sizes, connectivity, drop-out, early stopping</td>
 </tr>
 </tbody>
 </table>
@@ -715,8 +687,8 @@ Health = β₀ + β₁·Age + + β₄·SES + … + βₙ·X_n + ε</p>
 <li>Provides honest error estimate without separate validation set</li>
 </ul>
 </section>
-<section id="random-forests-decorrelating-trees-de-cor-relating-not-de-cor-ating" class="slide level2">
-<h2>Random Forests: Decorrelating Trees (De-cor-relating, not de-cor-ating!)</h2>
+<section id="random-forests-decorrelating-trees" class="slide level2">
+<h2>Random Forests: Decorrelating Trees</h2>
 <p>Random forests address a weakness of bagging:</p>
 <ul>
 <li>In bagging, trees can be highly correlated if strong predictors dominate splits</li>
@@ -764,9 +736,9 @@ Health = β₀ + β₁·Age + + β₄·SES + … + βₙ·X_n + ε</p>
 <h2>Boosting Tuning Parameters</h2>
 <p>Three key parameters control the model:</p>
 <ol type="1">
-<li><p><strong>Number of trees <span class="math inline">\(B\)</span></strong>: More trees can improve performance but may lead to overfitting</p></li>
-<li><p><strong>Tree depth <span class="math inline">\(d\)</span></strong>: Controls complexity of individual trees (often shallow, 1-6 nodes)</p></li>
-<li><p><strong>Learning rate <span class="math inline">\(\lambda\)</span></strong>: How quickly model adapts to errors (smaller values need more trees)</p></li>
+<li><p><strong>Number of trees</strong> <span class="math inline">\(B\)</span>: More trees can improve performance but may lead to overfitting</p></li>
+<li><p><strong>Tree depth</strong> <span class="math inline">\(d\)</span>: Controls complexity of individual trees (often shallow, 1-6 nodes)</p></li>
+<li><p><strong>Learning rate</strong> <span class="math inline">\(\lambda\)</span>: How quickly model adapts to errors (smaller values need more trees)</p></li>
 </ol>
 <div class="fragment">
 <p>As with other regularization approaches, cross-validation helps select optimal parameters</p>
@@ -847,9 +819,61 @@ Health = β₀ + β₁·Age + + β₄·SES + … + βₙ·X_n + ε</p>
 <li><strong>Readings</strong>: Chapter 8 in “Introduction to Statistical Learning”</li>
 <li><strong>Coming up</strong>: Causal trees and forests - using tree-based methods for causal inference!</li>
 </ul>
-
-
 </section></section>
+<section id="prediction-vs.-estimation" class="title-slide slide level1 center">
+<h1>Prediction vs.&nbsp;Estimation</h1>
+<ul>
+<li>Out-of-sample loss minimization focuses on <span class="math inline">\(\hat{y}\)</span></li>
+<li>Coefficient inference focuses on $}$</li>
+<li>In high dimensions:
+<ul>
+<li>Good predictions possible even if () is unstable/biased</li>
+<li>Multiple functions can fit similarly; distinguishing is hard</li>
+<li>Regularization &amp; tuning help prediction but complicate estimation</li>
+</ul></li>
+</ul>
+</section>
+
+<section id="prediction-haty" class="title-slide slide level1 center">
+<h1>Prediction <span class="math inline">\((\hat{y})\)</span></h1>
+<ul>
+<li>ML prediction aims for a good fit of <span class="math inline">\(\hat{y}\)</span> to <span class="math inline">\(y\)</span> on the <strong>same distribution</strong></li>
+<li>Not necessarily about policy counterfactuals or structural knowledge</li>
+<li>Counterfactual analysis requires causal modeling</li>
+</ul>
+</section>
+
+<section id="estimation-hatbeta" class="title-slide slide level1 center">
+<h1>Estimation <span class="math inline">\((\hat{\beta})\)</span></h1>
+<ul>
+<li>Some ML approaches estimate <span class="math inline">\(f(x) \approx \mathbb{E}[y \mid x]\)</span></li>
+<li>Achieving minimal loss does not guarantee consistent <span class="math inline">\(\hat{\beta}\)</span> for inference</li>
+<li>Consistency depends on the distribution of <span class="math inline">\(x\)</span></li>
+<li>Structural parameters require more than just good fit</li>
+</ul>
+</section>
+
+<section id="key-takeaways-for-applied-work" class="title-slide slide level1 center">
+<h1>Key Takeaways for Applied Work</h1>
+<ul>
+<li>ML excels at predicting <span class="math inline">\(\hat{y}\)</span></li>
+<li>Hold-out or cross-validation validate prediction quality</li>
+<li>Typically no structural consistency for <span class="math inline">\(\hat{\beta}\)</span></li>
+<li>Limited causal interpretation or counterfactual extrapolation</li>
+<li>Inference can be tricky; bootstrap may fail in high dimensions</li>
+</ul>
+</section>
+
+<section id="application-areas-for-a-haty-tool" class="title-slide slide level1 center">
+<h1>Application Areas for a <span class="math inline">\(\hat{y}\)</span> Tool</h1>
+<ol type="1">
+<li>Data pre-processing</li>
+<li><span class="math inline">\(\hat{y}\)</span> tasks (prediction policy problems)</li>
+<li><span class="math inline">\(\hat{y}\)</span> in service of <span class="math inline">\(\hat{\beta}\)</span></li>
+</ol>
+
+
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
