@@ -823,12 +823,12 @@ Health = β₀ + β₁·Age + + β₄·SES + … + βₙ·X_n + ε</p>
 <section id="prediction-vs.-estimation" class="title-slide slide level1 center">
 <h1>Prediction vs.&nbsp;Estimation</h1>
 <ul>
-<li>Out-of-sample loss minimization focuses on <span class="math inline">\(\hat{y}\)</span></li>
-<li>Coefficient inference focuses on $}$</li>
+<li>Prediction: Out-of-sample loss minimization <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\hat{y}\)</span></li>
+<li>Estimation: Coefficient inference <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\hat{\beta}\)</span></li>
 <li>In high dimensions:
 <ul>
-<li>Good predictions possible even if () is unstable/biased</li>
-<li>Multiple functions can fit similarly; distinguishing is hard</li>
+<li>Good predictions possible even if <span class="math inline">\(\hat{\beta}\)</span> is unstable/biased</li>
+<li>Multiple functions can predict similarly; distinguishing is hard</li>
 <li>Regularization &amp; tuning help prediction but complicate estimation</li>
 </ul></li>
 </ul>
@@ -858,7 +858,7 @@ Health = β₀ + β₁·Age + + β₄·SES + … + βₙ·X_n + ε</p>
 <ul>
 <li>ML excels at predicting <span class="math inline">\(\hat{y}\)</span></li>
 <li>Hold-out or cross-validation validate prediction quality</li>
-<li>Typically no structural consistency for <span class="math inline">\(\hat{\beta}\)</span></li>
+<li>Typically no consistency for <span class="math inline">\(\hat{\beta}\)</span></li>
 <li>Limited causal interpretation or counterfactual extrapolation</li>
 <li>Inference can be tricky; bootstrap may fail in high dimensions</li>
 </ul>
