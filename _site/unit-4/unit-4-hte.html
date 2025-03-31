@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Unit 3: Supervised Machine Learning Crash Course – HPM 883</title>
+<title>Unit 4: Heterogeneous Treatment Effects – HPM 883</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,8 +29,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../unit-3/lec-3-3-slides.html" rel="next">
-<link href="../labs/lab-3-design.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -72,6 +70,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/lodash@4.17.21/lodash.min.js"></script>
+<meta name="quarto:status" content="draft">
 
 
 </head>
@@ -79,13 +78,13 @@ ul.task-list li input[type="checkbox"] {
 <body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top"><div id="quarto-draft-alert" class="alert alert-warning"><i class="bi bi-pencil-square"></i>Draft</div>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../unit-3/unit-3-ml.html">Unit 3: Supervised Learning</a></li><li class="breadcrumb-item"><a href="../unit-3/unit-3-ml.html">Unit 3: Supervised Learning</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Unit 4: Heterogeneous Treatment Effects</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -321,16 +320,16 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
  <span class="menu-text">Unit 3: Supervised Learning</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../unit-3/unit-3-ml.html" class="sidebar-item-text sidebar-link active">
+  <a href="../unit-3/unit-3-ml.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Unit 3: Supervised Learning</span></a>
   </div>
 </li>
@@ -395,28 +394,15 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#unit-overview" id="toc-unit-overview" class="nav-link active" data-scroll-target="#unit-overview">Unit Overview</a></li>
   <li><a href="#labs" id="toc-labs" class="nav-link" data-scroll-target="#labs">Labs</a></li>
-  <li><a href="#unit-3.1-intro-to-ml" id="toc-unit-3.1-intro-to-ml" class="nav-link" data-scroll-target="#unit-3.1-intro-to-ml">Unit 3.1: Intro to ML</a>
-  <ul class="collapse">
-  <li><a href="#preparation" id="toc-preparation" class="nav-link" data-scroll-target="#preparation">Preparation</a></li>
-  </ul></li>
-  <li><a href="#unit-3.2-lasso-and-friends-linear-regression-with-high-dimensional-data" id="toc-unit-3.2-lasso-and-friends-linear-regression-with-high-dimensional-data" class="nav-link" data-scroll-target="#unit-3.2-lasso-and-friends-linear-regression-with-high-dimensional-data">Unit 3.2: Lasso and friends: Linear Regression with High-Dimensional Data</a>
-  <ul class="collapse">
-  <li><a href="#preparation-1" id="toc-preparation-1" class="nav-link" data-scroll-target="#preparation-1">Preparation</a></li>
-  </ul></li>
-  <li><a href="#unit-3.3-tree-based-methods" id="toc-unit-3.3-tree-based-methods" class="nav-link" data-scroll-target="#unit-3.3-tree-based-methods">Unit 3.3: Tree-based Methods</a>
-  <ul class="collapse">
-  <li><a href="#preparation-2" id="toc-preparation-2" class="nav-link" data-scroll-target="#preparation-2">Preparation</a></li>
-  </ul></li>
-  <li><a href="#other-resources" id="toc-other-resources" class="nav-link" data-scroll-target="#other-resources">Other Resources</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/hpm883/edit/main/unit-3/unit-3-ml.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/hpm883/edit/main/unit-4/unit-4-hte.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../unit-3/unit-3-ml.html">Unit 3: Supervised Learning</a></li><li class="breadcrumb-item"><a href="../unit-3/unit-3-ml.html">Unit 3: Supervised Learning</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Unit 3: Supervised Machine Learning Crash Course</h1>
+<h1 class="title">Unit 4: Heterogeneous Treatment Effects</h1>
 </div>
 
 
@@ -436,93 +422,11 @@ ul.task-list li input[type="checkbox"] {
 <section id="unit-overview" class="level2">
 <h2 class="anchored" data-anchor-id="unit-overview">Unit Overview</h2>
 <ul>
-<li><a href="../unit-3/lec-3-3-slides.html">Lecture Slides: Unit 3.3</a></li>
+<li><a href="unit-4/lec-4-1-slides.qmd">Lecture Slides: Unit 4.1</a></li>
 </ul>
 </section>
 <section id="labs" class="level2">
 <h2 class="anchored" data-anchor-id="labs">Labs</h2>
-<ul>
-<li><a href="https://drive.google.com/drive/u/0/folders/1qe6nFqRVd-pJoUaqg-imLJI4npAfzo0X">Replication of Dynamic Complementarity Analysis</a></li>
-</ul>
-</section>
-<section id="unit-3.1-intro-to-ml" class="level2">
-<h2 class="anchored" data-anchor-id="unit-3.1-intro-to-ml">Unit 3.1: Intro to ML</h2>
-<section id="preparation" class="level3">
-<h3 class="anchored" data-anchor-id="preparation">Preparation</h3>
-<ul>
-<li>Read:
-<ul>
-<li><a href="https://app.perusall.com/courses/hpm-883/islrv2-corrected-june-2023">ISLR Chapter 2</a></li>
-<li>Optional:
-<ul>
-<li><a href="https://app.perusall.com/courses/hpm-883/machine-learning-an-applied-econometric-approach-981264625">Machine Learning: An Applied Econometric Approach</a></li>
-<li><a href="https://app.perusall.com/courses/hpm-883/lessons-and-tips-for-designing-a-machine-learning-study-using-ehr-data">Lessons and tips for designing a machine learning study using EHR data</a></li>
-</ul></li>
-</ul></li>
-<li>Watch
-<ul>
-<li><a href="https://www.youtube.com/watch?v=Z0ZcsxI-HTs">Susan Athey - Machine Learning and Economics</a>
-<ul>
-<li><a href="https://drive.google.com/file/d/18aJiFthGTj9oly5yd8MCDNVEV2d6HTft/view">Slides</a></li>
-</ul></li>
-<li><a href="https://www.youtube.com/watch?v=G5qrBvOmzes">Jann Spiess - Applied Machine Learning - An Introduction</a>
-<ul>
-<li><a href="https://drive.google.com/file/d/1WACyrmUdlEZ-FI9ekC9ggo7m-pYUD7id/view?usp=sharing">slides</a></li>
-</ul></li>
-<li><a href="https://www.youtube.com/watch?v=Qs6JmdNoT-Y">Jann Spiess - Applied ML: Secret Sauce</a>
-<ul>
-<li><a href="https://drive.google.com/file/d/1qaiJOStmAOVnBubteuQDu56Or0cC3V_Q/view">slides</a></li>
-</ul></li>
-<li><a href="https://www.youtube.com/watch?v=e2Nmlk0cbrY">Jann Spiess - Applied ML: Prediction vs Estimation</a>
-<ul>
-<li><a href="https://drive.google.com/file/d/1x1NbOqgZpMegBSq-jpJPYQjaZiioh4Ix/view">slides</a></li>
-</ul></li>
-</ul></li>
-</ul>
-</section>
-</section>
-<section id="unit-3.2-lasso-and-friends-linear-regression-with-high-dimensional-data" class="level2">
-<h2 class="anchored" data-anchor-id="unit-3.2-lasso-and-friends-linear-regression-with-high-dimensional-data">Unit 3.2: Lasso and friends: Linear Regression with High-Dimensional Data</h2>
-<section id="preparation-1" class="level3">
-<h3 class="anchored" data-anchor-id="preparation-1">Preparation</h3>
-<ul>
-<li>Read:
-<ul>
-<li><a href="https://app.perusall.com/courses/hpm-883/islrv2-corrected-june-2023">ISLR Chapter 5</a></li>
-</ul></li>
-<li>Watch:
-<ul>
-<li><a href="https://youtu.be/pvcEQfcO3pk?si=qtjopD4nYb6aZvfs">Statistical Learning - Bias-Variance Traeoff</a></li>
-<li><a href="https://youtu.be/6eWODQJrMKs?si=L86PmFYhMOUcJFXf">Statistical Learning - Cross Validation</a></li>
-<li><a href="https://youtu.be/0tfPuddPhEY?si=euU1Rm_WEDvTGt80">Statistical Learning - The Lasso</a></li>
-</ul></li>
-<li>Do:
-<ul>
-<li><a href="https://colab.research.google.com/github/CausalAIBook/MetricsMLNotebooks/blob/main/PM2/r_linear_penalized_regs.irnb">Linear Penalized Regressions</a></li>
-</ul></li>
-</ul>
-</section>
-</section>
-<section id="unit-3.3-tree-based-methods" class="level2">
-<h2 class="anchored" data-anchor-id="unit-3.3-tree-based-methods">Unit 3.3: Tree-based Methods</h2>
-<section id="preparation-2" class="level3">
-<h3 class="anchored" data-anchor-id="preparation-2">Preparation</h3>
-<ul>
-<li>Read:
-<ul>
-<li><a href="https://app.perusall.com/courses/hpm-883/islrv2-corrected-june-2023">ISLR Chapter 6.1, 6.2</a></li>
-<li><a href="https://app.perusall.com/courses/hpm-883/causalml_chap_8">Causal ML - 8.1, 8.2</a></li>
-</ul></li>
-</ul>
-</section>
-</section>
-<section id="other-resources" class="level2">
-<h2 class="anchored" data-anchor-id="other-resources">Other Resources</h2>
-<ul>
-<li><p><a href="https://github.com/DHEPLab/SISBID-Supervised-Learning">Supervised Learning (Logistic regression, decision trees, random forest)</a></p></li>
-<li><p><a href="https://github.com/SISBID/Unsupervised-Learning">Unsupervised Learning (Clustering, PCA)</a></p></li>
-<li><p><a href="https://ocw.mit.edu/courses/6-s897-machine-learning-for-healthcare-spring-2019/pages/syllabus/">MIT Course: Machine Learning for Healthcare</a></p></li>
-</ul>
 
 
 </section>
@@ -1089,18 +993,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../labs/lab-3-design.html" class="pagination-link" aria-label="Lab 3: Experiment Design">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 3: Experiment Design</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../unit-3/lec-3-3-slides.html" class="pagination-link" aria-label="Lecture Slides: Unit 3.3: Tree-based Methods">
-        <span class="nav-page-text">Lecture Slides: Unit 3.3: Tree-based Methods</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1109,7 +1001,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/hpm883/edit/main/unit-3/unit-3-ml.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/hpm883/edit/main/unit-4/unit-4-hte.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

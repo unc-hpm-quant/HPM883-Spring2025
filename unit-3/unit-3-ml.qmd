@@ -16,14 +16,14 @@ draft: false
 ### Preparation
 
 -   Read:
-    -   [ISLR Chapter 2]()
+    -   [ISLR Chapter 2](https://app.perusall.com/courses/hpm-883/islrv2-corrected-june-2023)
     -   Optional:
         -   [Machine Learning: An Applied Econometric Approach](https://app.perusall.com/courses/hpm-883/machine-learning-an-applied-econometric-approach-981264625)
         -   [Lessons and tips for designing a machine learning study using EHR data](https://app.perusall.com/courses/hpm-883/lessons-and-tips-for-designing-a-machine-learning-study-using-ehr-data)
 -   Watch
     -   [Susan Athey - Machine Learning and Economics](https://www.youtube.com/watch?v=Z0ZcsxI-HTs)
         -   [Slides](https://drive.google.com/file/d/18aJiFthGTj9oly5yd8MCDNVEV2d6HTft/view)
-    -   [Jann Spiess - Applied Machine Learning - An Introduction](https://www.youtube.com/watch?v=Z0ZcsxI-HTs)
+    -   [Jann Spiess - Applied Machine Learning - An Introduction](https://www.youtube.com/watch?v=G5qrBvOmzes)
         -   [slides](https://drive.google.com/file/d/1WACyrmUdlEZ-FI9ekC9ggo7m-pYUD7id/view?usp=sharing)
     -   [Jann Spiess - Applied ML: Secret Sauce](https://www.youtube.com/watch?v=Qs6JmdNoT-Y)
         -   [slides](https://drive.google.com/file/d/1qaiJOStmAOVnBubteuQDu56Or0cC3V_Q/view)
