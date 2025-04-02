@@ -2734,6 +2734,202 @@
     ]
   },
   {
+    "objectID": "unit-4/lec-4-1-slides.html#review-the-potential-outcomes-framework",
+    "href": "unit-4/lec-4-1-slides.html#review-the-potential-outcomes-framework",
+    "title": "Lecture 4.1: EstimatingAverage Treatment Effects",
+    "section": "Review: The Potential Outcomes Framework",
+    "text": "Review: The Potential Outcomes Framework\n\n\nFor each unit \\(i\\), we define two potential outcomes:\n\n\n\\(Y_i(1)\\): Outcome if unit receives treatment\n\n\\(Y_i(0)\\): Outcome if unit does not receive treatment\n\n\nThe causal effect for unit \\(i\\): \\(\\delta_i = Y_i(1) - Y_i(0)\\)\n\n\nFundamental problem of causal inference: We only observe one potential outcome for each unit\nThe observed outcome: \\(Y_i = Y_i(W_i)\\) where \\(W_i \\in \\{0,1\\}\\) is the treatment assignment\n\n\n\nWe typically focus on the Average Treatment Effect (ATE): \\[\\tau = E[Y_i(1) - Y_i(0)]\\]"
+  },
+  {
+    "objectID": "unit-4/lec-4-1-slides.html#why-randomization-works",
+    "href": "unit-4/lec-4-1-slides.html#why-randomization-works",
+    "title": "Lecture 4.1: EstimatingAverage Treatment Effects",
+    "section": "Why Randomization Works",
+    "text": "Why Randomization Works\n\n\nRandomization makes treatment assignment independent of potential outcomes: \\[W_i \\perp\\!\\!\\!\\perp (Y_i(0), Y_i(1))\\]\n\nThis means treatment and control groups are balanced on observable and unobservable characteristics\nIn expectation:\n\n\\(E[Y_i(1)|W_i=1] = E[Y_i(1)]\\)\n\\(E[Y_i(0)|W_i=0] = E[Y_i(0)]\\)\n\n\nThus, the difference in observed outcomes provides an unbiased estimate of the ATE"
+  },
+  {
+    "objectID": "unit-4/lec-4-1-slides.html#the-difference-in-means-estimator",
+    "href": "unit-4/lec-4-1-slides.html#the-difference-in-means-estimator",
+    "title": "Lecture 4.1: EstimatingAverage Treatment Effects",
+    "section": "The Difference-in-Means Estimator",
+    "text": "The Difference-in-Means Estimator\nThe simplest approach to estimate the ATE in an RCT is the difference in means:\n\\[\\hat{\\tau}_{DM} = \\frac{1}{n_1}\\sum_{i:W_i=1}Y_i - \\frac{1}{n_0}\\sum_{i:W_i=0}Y_i\\]\n\n\n\n\\(n_1\\): Number of treated units\n\n\\(n_0\\): Number of control units\n\nProperties:\n\nUnbiased for the ATE: \\(E[\\hat{\\tau}_{DM}] = \\tau\\)\n\nVariance depends on outcome variation\nSimple to calculate and understand"
+  },
+  {
+    "objectID": "unit-4/lec-4-1-slides.html#room-for-improvement",
+    "href": "unit-4/lec-4-1-slides.html#room-for-improvement",
+    "title": "Lecture 4.1: EstimatingAverage Treatment Effects",
+    "section": "Room for Improvement",
+    "text": "Room for Improvement\nDespite randomization, the difference-in-means estimator has limitations:\n\n\nMay have high variance, especially with small samples\nDoes not leverage baseline information\nDoes not account for the design of the experiment (e.g., stratification)\nSubject to chance imbalances between treatment and control\n\n\n\nKey Question: How can we improve precision while maintaining unbiasedness?"
+  },
+  {
+    "objectID": "unit-4/lec-4-1-slides.html#lecture-roadmap",
+    "href": "unit-4/lec-4-1-slides.html#lecture-roadmap",
+    "title": "Lecture 4.1: EstimatingAverage Treatment Effects",
+    "section": "Lecture Roadmap",
+    "text": "Lecture Roadmap\nToday we’ll explore three approaches to estimating the ATE:\n\n\n\nStandard Regression Approach\n\nControlling for baseline covariates in RCTs\nANCOVA specification\n\n\n\nPost-Double Selection Lasso\n\nA principled approach to covariate selection\nBalancing precision and researcher degrees of freedom\n\n\n\nMachine Learning Approaches\n\nUsing flexible methods to model treatment effects\nAddressing non-linearities in outcome relationships"
+  },
+  {
+    "objectID": "unit-4/lec-4-1-slides.html#standard-approach-to-ate-estimation-in-rcts",
+    "href": "unit-4/lec-4-1-slides.html#standard-approach-to-ate-estimation-in-rcts",
+    "title": "Lecture 4.1: EstimatingAverage Treatment Effects",
+    "section": "Standard Approach to ATE Estimation in RCTs",
+    "text": "Standard Approach to ATE Estimation in RCTs\n\\[Y_{it} = \\alpha + \\theta T_i + \\beta Y_{i(t-1)} + \\sum\\beta_i X_i + \\sum\\delta_s + \\varepsilon_i\\]\n\n\nThe equation above represents the canonical specification for ATE estimation in RCTs\n\nParameters of interest:\n\n\n\\(Y_{it}\\): Outcome variable for unit \\(i\\) at follow-up time \\(t\\)\n\n\n\\(T_i\\): Treatment indicator (1 = treated, 0 = control)\n\n\\(\\theta\\): Average treatment effect (our target)\n\n\\(Y_{i(t-1)}\\): Baseline value of the outcome\n\n\\(X_i\\): Vector of baseline covariates\n\n\\(\\delta_s\\): Strata fixed effects"
+  },
+  {
+    "objectID": "unit-4/lec-4-1-slides.html#basic-specification-no-controls",
+    "href": "unit-4/lec-4-1-slides.html#basic-specification-no-controls",
+    "title": "Lecture 4.1: EstimatingAverage Treatment Effects",
+    "section": "Basic Specification: No Controls",
+    "text": "Basic Specification: No Controls\n\\[Y_{it} = \\alpha + \\theta T_i + \\varepsilon_i\\]\n\n\nSimplest specification: regress outcome on treatment indicator only\nValid in expectation due to randomization\n\n\\(\\theta\\) is unbiased estimate of the ATE\n\nCritical note on inference:\n\nUse robust standard errors to account for heteroskedasticity\nIf clustered randomization, use cluster-robust standard errors\n\\(SE(\\hat{\\theta})_{robust} = \\sqrt{\\frac{\\hat{\\sigma}^2_1}{n_1} + \\frac{\\hat{\\sigma}^2_0}{n_0}}\\)\n\n\nOften leaves substantial unexplained variation in the outcome\n\n\n\nThis approach is equivalent to a simple difference in means between treatment and control groups."
+  },
+  {
+    "objectID": "unit-4/lec-4-1-slides.html#adding-strata-fixed-effects",
+    "href": "unit-4/lec-4-1-slides.html#adding-strata-fixed-effects",
+    "title": "Lecture 4.1: EstimatingAverage Treatment Effects",
+    "section": "Adding Strata Fixed Effects",
+    "text": "Adding Strata Fixed Effects\n\\[Y_{it} = \\alpha + \\theta T_i + \\sum\\delta_s + \\varepsilon_i\\]\n\n\nWhen randomization is stratified, include fixed effects for each stratum\n\n\\(\\sum\\delta_s\\) represents indicator variables for each randomization stratum\n\nBenefits:\n\nAccounts for the design of the experiment\nImproves precision by removing between-strata variation\nEnsures valid inference (failure to include can lead to incorrect standard errors)\n\n\n\nImplementation:\n\nInclude dummy variables for all but one stratum\nOr use factor variables in statistical software (e.g., in R: factor(stratum))"
+  },
+  {
+    "objectID": "unit-4/lec-4-1-slides.html#adding-baseline-controls",
+    "href": "unit-4/lec-4-1-slides.html#adding-baseline-controls",
+    "title": "Lecture 4.1: EstimatingAverage Treatment Effects",
+    "section": "Adding Baseline Controls",
+    "text": "Adding Baseline Controls\n\\[Y_{it} = \\alpha + \\theta T_i + \\beta Y_{i(t-1)} + \\sum\\beta_i X_i + \\sum\\delta_s + \\varepsilon_i\\]\n\n\n\nBaseline outcome (\\(Y_{i(t-1)}\\)):\n\nUsually provides largest precision gain\nFlexibly controls for autocorrelation\nPreferable to “difference-in-differences” in most RCTs\nCoefficient \\(\\beta\\) need not equal 1 (unlike DiD)\n\n\n\nAdditional covariates (\\(X_i\\)):\n\nMust be measured pre-treatment\nShould predict residual variation in outcome\nBalance checks not necessary to justify inclusion\nHelps account for chance imbalances\n\n\n\n\n\nThis approach (ANCOVA) is the gold standard for most RCTs with baseline data."
+  },
+  {
+    "objectID": "unit-4/lec-4-1-slides.html#considerations-on-including-covariate-controls",
+    "href": "unit-4/lec-4-1-slides.html#considerations-on-including-covariate-controls",
+    "title": "Lecture 4.1: EstimatingAverage Treatment Effects",
+    "section": "Considerations on Including Covariate Controls",
+    "text": "Considerations on Including Covariate Controls\n\\[Y_{it} = \\alpha + \\theta T_i + \\beta Y_{i(t-1)} + \\sum\\beta_i X_i + \\sum\\delta_s + \\varepsilon_i\\]\n\n\nResearch Design Considerations: - Pre-specify controls in analysis plan - Avoid “fishing” for significant results - Balance precision gains against complexity - Guard against researcher degrees of freedom\n\nThe Selection Problem: - Which covariates should we include? - How many covariates are too many? - How do we handle many potential controls? - Can we automate control selection?\n\n\nThis is where Post-Double Selection Lasso can provide a principled solution."
+  },
+  {
+    "objectID": "unit-4/lec-4-1-slides.html#pds-lasso-in-field-experiments",
+    "href": "unit-4/lec-4-1-slides.html#pds-lasso-in-field-experiments",
+    "title": "Lecture 4.1: EstimatingAverage Treatment Effects",
+    "section": "PDS Lasso in Field Experiments",
+    "text": "PDS Lasso in Field Experiments\nPost-Double Selection Lasso for Randomized Trials\n\n\n\nPDS Lasso: A principled approach to selecting control variables in field experiments\nAddresses the key question: Which covariates should we include in our regression?\n\nHelps balance competing concerns:\n\nIncluding relevant controls improves precision\nAd hoc selection creates researcher degrees of freedom (p-hacking concerns)\nToo many controls reduces power in small samples\n\n\nProvides a data-driven alternative to traditional ANCOVA approaches\nOriginally developed for observational studies but increasingly applied to RCTs\n\n\n\nKey Question: In a randomized experiment, why use a method designed for observational studies?"
+  },
+  {
+    "objectID": "unit-4/lec-4-1-slides.html#the-pds-lasso-method",
+    "href": "unit-4/lec-4-1-slides.html#the-pds-lasso-method",
+    "title": "Lecture 4.1: EstimatingAverage Treatment Effects",
+    "section": "The PDS Lasso Method",
+    "text": "The PDS Lasso Method\n\n\nThree-Step Procedure:\n\n\nStep 1: Use Lasso to select controls that predict the outcome\n\nRegress Y on covariates X (excluding treatment)\nLasso penalty shrinks coefficients toward zero\nSet of selected variables: I₁\n\n\n\nStep 2: Use Lasso to select controls that predict treatment\n\nRegress T on covariates X\nSet of selected variables: I₂\n\n\n\nStep 3: Estimate treatment effect by OLS\n\nRegress Y on T and all selected controls (I = I₁ ∪ I₂)\nOptional “amelioration set” (I₃) of variables always included\n\n\n\n\n\n\n\n\n\nflowchart TD\n    A[Potential Controls X] --&gt; B[\"Lasso Step 1: &lt;br&gt; Predict Outcome\"]\n    A --&gt; C[\"Lasso Step 2: &lt;br&gt; Predict Treatment\"]\n    B --&gt; D[Selected Controls I₁]\n    C --&gt; E[Selected Controls I₂]\n    D --&gt; F[Union of Controls &lt;br&gt; I₁ ∪ I₂ ∪ I₃]\n    E --&gt; F\n    G[Amelioration Set I₃] --&gt; F\n    F --&gt; H[Final OLS Regression &lt;br&gt; Y ~ T + Selected Controls]"
+  },
+  {
+    "objectID": "unit-4/lec-4-1-slides.html#why-double-selection-in-rcts",
+    "href": "unit-4/lec-4-1-slides.html#why-double-selection-in-rcts",
+    "title": "Lecture 4.1: EstimatingAverage Treatment Effects",
+    "section": "Why Double Selection in RCTs?",
+    "text": "Why Double Selection in RCTs?\n\n\nThe Theoretical Paradox: - In perfectly randomized experiments, treatment is orthogonal to all covariates - So why model treatment prediction at all?\nPractical Justifications: - Small sample sizes lead to chance imbalances - Attrition creates non-random final analysis samples - Field experiments often have both issues (average 15% attrition)\n\nKey Insight:\nLasso in Step 1 may miss variables with: - Moderate associations with outcomes (due to regularization) - Strong correlations with treatment\nStep 2 provides a “second chance” to capture these important variables, enhancing robustness against: - Chance imbalances - Selective attrition\nParticularly valuable when variables have moderate outcome correlations but strong treatment imbalances"
+  },
+  {
+    "objectID": "unit-4/lec-4-1-slides.html#pds-lasso-in-practice",
+    "href": "unit-4/lec-4-1-slides.html#pds-lasso-in-practice",
+    "title": "Lecture 4.1: EstimatingAverage Treatment Effects",
+    "section": "PDS Lasso in Practice",
+    "text": "PDS Lasso in Practice\n\n\nEmpirical Findings from 780 Treatment Estimates:\n\nDespite many potential controls (median 182), PDS Lasso selects few (median 2)\nStep 1 (outcome prediction): Selects at least one variable in 71% of cases\nStep 2 (treatment prediction): Selects no variables in 57% of cases\nAlmost no overlap between variables selected in Steps 1 and 2\n\nImpact relative to ANCOVA:\n\nVery minimal changes in treatment estimates (median 0.01 SD)\nSlight reduction in standard errors (median ratio 0.992)\nYields larger standard errors in about 25% of cases\nImplied MDE reduction: only 0.9% at median\n\n\n\n\n\n\nDistribution of Selected Variables\n\nKey finding: PDS Lasso offers limited precision gains compared to standard ANCOVA approaches in most field experiments"
+  },
+  {
+    "objectID": "unit-4/lec-4-1-slides.html#implementation-considerations",
+    "href": "unit-4/lec-4-1-slides.html#implementation-considerations",
+    "title": "Lecture 4.1: EstimatingAverage Treatment Effects",
+    "section": "Implementation Considerations",
+    "text": "Implementation Considerations\nKey Decisions When Using PDS Lasso:\n\n\nPenalty Parameter λ: - Controls degree of variable selection - Default “plug-in” λ: Increases with covariates and sample size - Theoretically justified for causal inference - Tends to select few variables - Cross-validation: Select λ to minimize prediction error - Selects many more variables (often 5-7x more) - Can be unstable and risks overfitting - Limited theoretical justification for causal inference\n\nInput Variable Selection: - “Kitchen sink” approach common but problematic - Penalty increases with number of potential controls - Too many variables can lead to none being selected - Amelioration Set (I₃): - Variables always included regardless of selection - Recommended inclusions: - Lagged dependent variable - Randomization strata fixed effects - Guards against underselection of important variables"
+  },
+  {
+    "objectID": "unit-4/lec-4-1-slides.html#best-practices-for-pds-lasso",
+    "href": "unit-4/lec-4-1-slides.html#best-practices-for-pds-lasso",
+    "title": "Lecture 4.1: EstimatingAverage Treatment Effects",
+    "section": "Best Practices for PDS Lasso",
+    "text": "Best Practices for PDS Lasso\nChecklist for Effective Implementation:\n\n\n\nBe realistic about power gains\n\nExpect very small reductions in standard errors compared to ANCOVA\nDon’t rely on large improvements for power calculations\n\n\n\nInclude key variables in amelioration set\n\nLagged dependent variable\nRandomization strata or matched pair fixed effects\n\n\n\nBe judicious with input controls\n\nAvoid “kitchen sink” approach with hundreds of variables\nFocus on variables with potential outcome correlation\n\n\n\nHandle missing values carefully\n\nEnsure all input controls have no missing values (e.g., by dummying out)\nMissing values reduced final samples in many studies\n\n\n\nUse as a robustness check\n\nProvides a principled alternative to ad hoc control selection\nLarge coefficient changes may signal concerns about randomization"
+  },
+  {
+    "objectID": "unit-4/lec-4-1-slides.html#the-modern-machine-learning-approach",
+    "href": "unit-4/lec-4-1-slides.html#the-modern-machine-learning-approach",
+    "title": "Lecture 4.1: EstimatingAverage Treatment Effects",
+    "section": "The Modern Machine Learning Approach",
+    "text": "The Modern Machine Learning Approach\nLet’s now explore more flexible methods for estimating the ATE with covariates."
+  },
+  {
+    "objectID": "unit-4/lec-4-1-slides.html#covariates-and-unconfoundedness",
+    "href": "unit-4/lec-4-1-slides.html#covariates-and-unconfoundedness",
+    "title": "Lecture 4.1: EstimatingAverage Treatment Effects",
+    "section": "Covariates and Unconfoundedness",
+    "text": "Covariates and Unconfoundedness\nFor a set of i.i.d. subjects i = 1, …, n, we observe a tuple (X_i, Y_i, W_i), comprised of:\n\nA feature vector X_i ∈ ℝᵖ\nA response Y_i ∈ ℝ\nA treatment assignment W_i ∈ {0, 1}\n\nWith potential outcomes Y_i(0) and Y_i(1) such that Y_i = Y_i(W_i).\n\nControlling for X_i is sufficient for identifying average treatment effects if W_i is as good as random once we condition on X_i:\n\\[[{Y_i(0), Y_i(1)} \\perp\\!\\!\\!\\perp W_i] \\mid X_i\\]\nThis assumption is commonly referred to as unconfoundedness or selection on observables."
+  },
+  {
+    "objectID": "unit-4/lec-4-1-slides.html#regression-adjustments-under-unconfoundedness",
+    "href": "unit-4/lec-4-1-slides.html#regression-adjustments-under-unconfoundedness",
+    "title": "Lecture 4.1: EstimatingAverage Treatment Effects",
+    "section": "Regression Adjustments Under Unconfoundedness",
+    "text": "Regression Adjustments Under Unconfoundedness\nGiven unconfoundedness \\([{Y_i(0), Y_i(1)} \\perp\\!\\!\\!\\perp W_i] \\mid X_i\\), we can express the ATE in terms of conditional response surfaces:\n\\[\n\\begin{align}\n\\tau &= E[Y_i(1) - Y_i(0)]\\\\\n&= E[E[Y_i(1) \\mid X_i] - E[Y_i(0) \\mid X_i]]\\\\\n&= E[E[Y_i \\mid X_i, W_i = 1] - E[Y_i \\mid X_i, W_i = 0]]\\\\\n&= E[\\mu^{(1)}(X_i) - \\mu^{(0)}(X_i)]\n\\end{align}\n\\]\nWhere \\(\\mu^{(w)}(x) = E[Y_i \\mid X_i = x, W_i = w]\\)"
+  },
+  {
+    "objectID": "unit-4/lec-4-1-slides.html#estimation-strategy",
+    "href": "unit-4/lec-4-1-slides.html#estimation-strategy",
+    "title": "Lecture 4.1: EstimatingAverage Treatment Effects",
+    "section": "Estimation Strategy",
+    "text": "Estimation Strategy\nGiven unconfoundedness, we know that:\n\\[\\tau = E[\\mu^{(1)}(X_i) - \\mu^{(0)}(X_i)]\\]\nThis suggests a three-step estimation strategy:\n\n\nLearn \\(\\hat{\\mu}^{(0)}(x)\\) by predicting Y from X on controls\nLearn \\(\\hat{\\mu}^{(1)}(x)\\) by predicting Y from X on treated units\nEstimate \\(\\hat{\\tau} = \\frac{1}{n}\\sum_{i=1}^{n}[\\hat{\\mu}^{(1)}(X_i) - \\hat{\\mu}^{(0)}(X_i)]\\)\n\n\n\n\nThis is “obviously” consistent if \\(\\hat{\\mu}^{(w)}(x)\\) is consistent for \\(\\mu^{(w)}(x)\\). But is this any good?"
+  },
+  {
+    "objectID": "unit-4/lec-4-1-slides.html#the-classical-approach-ols",
+    "href": "unit-4/lec-4-1-slides.html#the-classical-approach-ols",
+    "title": "Lecture 4.1: EstimatingAverage Treatment Effects",
+    "section": "The Classical Approach: OLS",
+    "text": "The Classical Approach: OLS\nA classical approach to the ATE involves estimating \\(\\mu^{(0)}(x)\\) and \\(\\mu^{(1)}(x)\\) via ordinary least-squares regression (OLS).\n\n\nFirst posit a linear model, \\(\\mu^{(w)}(x) = x\\beta^{(w)}\\)\n\nFit the model separately for each treatment group:\n\n\n\\(\\hat{\\beta}^{(0)} \\leftarrow\\) lm(Y_i ~ X_i, subset W_i = 0)\n\n\\(\\hat{\\beta}^{(1)} \\leftarrow\\) lm(Y_i ~ X_i, subset W_i = 1)\n\n\nMake predictions \\(\\hat{\\mu}^{(w)}(x) = x\\hat{\\beta}^{(w)}\\)\n\nCompute the ATE estimate: \\(\\hat{\\tau} = \\frac{1}{n}\\sum_{i=1}^{n}[\\hat{\\mu}^{(1)}(X_i) - \\hat{\\mu}^{(0)}(X_i)]\\)\n\n\n\n\nNote that the ATE estimate simplifies to \\(\\hat{\\tau} = (\\hat{\\beta}^{(1)} - \\hat{\\beta}^{(0)})'\\bar{X}\\), where \\(\\bar{X} = \\frac{1}{n}\\sum_{i=1}^{n}X_i\\)"
+  },
+  {
+    "objectID": "unit-4/lec-4-1-slides.html#ols-implementation-example",
+    "href": "unit-4/lec-4-1-slides.html#ols-implementation-example",
+    "title": "Lecture 4.1: EstimatingAverage Treatment Effects",
+    "section": "OLS Implementation Example",
+    "text": "OLS Implementation Example"
+  },
+  {
+    "objectID": "unit-4/lec-4-1-slides.html#the-machine-learning-approach",
+    "href": "unit-4/lec-4-1-slides.html#the-machine-learning-approach",
+    "title": "Lecture 4.1: EstimatingAverage Treatment Effects",
+    "section": "The Machine Learning Approach",
+    "text": "The Machine Learning Approach\nA modern, non-parametric approach seeks to avoid making assumptions about the functional form of \\(\\mu^{(0)}(x)\\) and \\(\\mu^{(1)}(x)\\).\n\n\nPick your favorite machine learning method\nUse it to predict Y_i from X_i separately for treated and control groups\nUse these predictions as estimates for \\(\\mu^{(0)}(x)\\) and \\(\\mu^{(1)}(x)\\)\n\nEstimate \\(\\hat{\\tau} = \\frac{1}{n}\\sum_{i=1}^{n}[\\hat{\\mu}^{(1)}(X_i) - \\hat{\\mu}^{(0)}(X_i)]\\)\n\n\n\n\nIn many settings, machine learning methods enable accurate prediction without needing to model the shape of \\(\\mu^{(0)}(x)\\) and \\(\\mu^{(1)}(x)\\)."
+  },
+  {
+    "objectID": "unit-4/lec-4-1-slides.html#random-forest-implementation-example",
+    "href": "unit-4/lec-4-1-slides.html#random-forest-implementation-example",
+    "title": "Lecture 4.1: EstimatingAverage Treatment Effects",
+    "section": "Random Forest Implementation Example",
+    "text": "Random Forest Implementation Example"
+  },
+  {
+    "objectID": "unit-4/lec-4-1-slides.html#a-simulation-comparison",
+    "href": "unit-4/lec-4-1-slides.html#a-simulation-comparison",
+    "title": "Lecture 4.1: EstimatingAverage Treatment Effects",
+    "section": "A Simulation Comparison",
+    "text": "A Simulation Comparison\nLet’s compare OLS and Random Forests in two settings:\n\n\nLinear Setting: - X ~ N(0, I_{20×20}) - P[W=1|X] = 1/(1+e^{X₁}) - Y(0) = X₁ + X₂ + N(0, 4) - Y(1) = X₁ + X₃ + N(0, 4) - True ATE = 0\n\nNon-linear Setting: - X ~ N(0, I_{20×20}) - P[W=1|X] = (1+sin(X₁))/2 - Y(0) = 4·1({X₁ &gt; 0}) + X₂²/2 + N(0, 4) - Y(1) = 4·1({X₁ &gt; 0}) + X₃²/2 + N(0, 4) - True ATE = 0"
+  },
+  {
+    "objectID": "unit-4/lec-4-1-slides.html#linear-regression-vs-random-forests",
+    "href": "unit-4/lec-4-1-slides.html#linear-regression-vs-random-forests",
+    "title": "Lecture 4.1: EstimatingAverage Treatment Effects",
+    "section": "Linear Regression vs Random Forests",
+    "text": "Linear Regression vs Random Forests\n\n\nLinear Regression (OLS) bets everything on \\(\\hat{\\mu}^{(w)}(x)\\) being linear:\n\nIf this assumption is valid, everything works perfectly\nParametric reasoning applies\nNo need to worry\nIf this assumption fails, everything is wrong\nNot much subtlety in how to do inference\n\n\nMachine Learning Methods seek to fit potentially complicated functions \\(\\hat{\\mu}^{(w)}(x)\\):\n\nNever completely wrong: expect consistency as n → ∞\nBut even when a simple model is correct, converge slowly\nPossible to extract useful insights\nMust be robust to suboptimal finite sample performance"
+  },
+  {
+    "objectID": "unit-4/lec-4-1-slides.html#key-takeaways",
+    "href": "unit-4/lec-4-1-slides.html#key-takeaways",
+    "title": "Lecture 4.1: EstimatingAverage Treatment Effects",
+    "section": "Key Takeaways",
+    "text": "Key Takeaways\n\n\n\nRegression adjustment improves precision\n\nIn randomized trials, it’s not needed for unbiasedness but helps with efficiency\nThe baseline outcome is typically the most important control\n\n\n\nStandard ANCOVA is a robust approach\n\nPre-specify key controls (baseline outcome, strata)\nWorks well in most field experiments\n\n\n\nPDS Lasso provides a principled control selection method\n\nBut offers limited gains over ANCOVA in most cases\nInclude key variables in the amelioration set\n\n\n\nMachine learning methods can help with non-linear relationships\n\nBut may not offer large gains in typical field experiment settings\nRequire careful implementation to maintain valid inference"
+  },
+  {
+    "objectID": "unit-4/lec-4-1-slides.html#next-steps",
+    "href": "unit-4/lec-4-1-slides.html#next-steps",
+    "title": "Lecture 4.1: EstimatingAverage Treatment Effects",
+    "section": "Next Steps",
+    "text": "Next Steps\nAdvanced methods that build on these approaches:\n\n\n\nDouble/Debiased Machine Learning\n\nCombining machine learning with robust inference\n\n\n\nCausal Forests\n\nEstimating heterogeneous treatment effects\n\n\n\nDoubly Robust Estimation\n\nProtecting against model misspecification\n\n\n\nExperimental Design Considerations\n\nOptimal sample allocation\nStratification and blocking"
+  },
+  {
     "objectID": "unit-4/unit-4.html",
     "href": "unit-4/unit-4.html",
     "title": "Unit 4: Mechanisms",
@@ -2771,7 +2967,7 @@
     "href": "unit-4/unit-4.html#unit-4.1-average-treatment-effects",
     "title": "Unit 4: Mechanisms",
     "section": "Unit 4.1: Average Treatment Effects",
-    "text": "Unit 4.1: Average Treatment Effects",
+    "text": "Unit 4.1: Average Treatment Effects\n\nLecture 4.1 Slides\nUsing PDS Lasso to Select Controls in Field Experiments",
     "crumbs": [
       "Unit 4: Mechanisms",
       "Unit 4: Mechanisms"

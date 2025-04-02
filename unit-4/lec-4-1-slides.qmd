@@ -1,0 +1,564 @@
+---
+title: "Lecture 4.1: EstimatingAverage Treatment Effects"
+author: "Sean Sylvia"
+format:
+  revealjs:
+    theme: default
+    slide-number: true
+    chalkboard: true
+    transition: fade
+    progress: true
+    incremental: false
+    toc: false
+    scrollable: false
+    smaller: true
+    footer: "UNC HPM 883 - Advanced Quantitative Methods"
+draft: false
+---
+
+## Review: The Potential Outcomes Framework
+
+::: incremental
+- For each unit $i$, we define two potential outcomes:
+  - $Y_i(1)$: Outcome if unit receives treatment
+  - $Y_i(0)$: Outcome if unit does not receive treatment
+- The causal effect for unit $i$: $\delta_i = Y_i(1) - Y_i(0)$
+- **Fundamental problem of causal inference**: We only observe one potential outcome for each unit
+- The observed outcome: $Y_i = Y_i(W_i)$ where $W_i \in \{0,1\}$ is the treatment assignment
+:::
+
+::: fragment
+We typically focus on the **Average Treatment Effect (ATE)**:
+$$\tau = E[Y_i(1) - Y_i(0)]$$
+:::
+
+## Why Randomization Works
+
+::: incremental
+- Randomization makes treatment assignment **independent** of potential outcomes:
+  $$W_i \perp\!\!\!\perp (Y_i(0), Y_i(1))$$
+- This means treatment and control groups are balanced on observable and unobservable characteristics
+- In expectation:
+  - $E[Y_i(1)|W_i=1] = E[Y_i(1)]$
+  - $E[Y_i(0)|W_i=0] = E[Y_i(0)]$
+- Thus, the difference in observed outcomes provides an unbiased estimate of the ATE
+:::
+
+## The Difference-in-Means Estimator
+
+The simplest approach to estimate the ATE in an RCT is the difference in means:
+
+$$\hat{\tau}_{DM} = \frac{1}{n_1}\sum_{i:W_i=1}Y_i - \frac{1}{n_0}\sum_{i:W_i=0}Y_i$$
+
+::: incremental
+- $n_1$: Number of treated units
+- $n_0$: Number of control units
+- **Properties**:
+  - Unbiased for the ATE: $E[\hat{\tau}_{DM}] = \tau$
+  - Variance depends on outcome variation
+  - Simple to calculate and understand
+:::
+
+## Room for Improvement
+
+Despite randomization, the difference-in-means estimator has limitations:
+
+::: incremental
+- May have high variance, especially with small samples
+- Does not leverage baseline information
+- Does not account for the design of the experiment (e.g., stratification)
+- Subject to chance imbalances between treatment and control
+:::
+
+::: fragment
+**Key Question**: How can we improve precision while maintaining unbiasedness?
+:::
+
+## Lecture Roadmap
+
+Today we'll explore three approaches to estimating the ATE:
+
+::: incremental
+1. **Standard Regression Approach**
+   - Controlling for baseline covariates in RCTs
+   - ANCOVA specification
+
+2. **Post-Double Selection Lasso**
+   - A principled approach to covariate selection
+   - Balancing precision and researcher degrees of freedom
+
+3. **Machine Learning Approaches**
+   - Using flexible methods to model treatment effects
+   - Addressing non-linearities in outcome relationships
+:::
+
+## Standard Approach to ATE Estimation in RCTs
+
+$$Y_{it} = \alpha + \theta T_i + \beta Y_{i(t-1)} + \sum\beta_i X_i + \sum\delta_s + \varepsilon_i$$
+
+::: incremental
+- The equation above represents the canonical specification for ATE estimation in RCTs
+- **Parameters of interest:**
+  - $Y_{it}$: Outcome variable for unit $i$ at follow-up time $t$
+  - $T_i$: Treatment indicator (1 = treated, 0 = control)
+  - $\theta$: Average treatment effect (our target)
+  - $Y_{i(t-1)}$: Baseline value of the outcome
+  - $X_i$: Vector of baseline covariates
+  - $\delta_s$: Strata fixed effects
+:::
+
+## Basic Specification: No Controls
+
+$$Y_{it} = \alpha + \theta T_i + \varepsilon_i$$
+
+::: incremental
+- Simplest specification: regress outcome on treatment indicator only
+- Valid in expectation due to randomization
+- $\theta$ is unbiased estimate of the ATE
+- **Critical note on inference:**
+  - Use robust standard errors to account for heteroskedasticity
+  - If clustered randomization, use cluster-robust standard errors
+  - $SE(\hat{\theta})_{robust} = \sqrt{\frac{\hat{\sigma}^2_1}{n_1} + \frac{\hat{\sigma}^2_0}{n_0}}$
+- Often leaves substantial unexplained variation in the outcome
+:::
+
+::: fragment
+This approach is equivalent to a simple difference in means between treatment and control groups.
+:::
+
+## Adding Strata Fixed Effects
+
+$$Y_{it} = \alpha + \theta T_i + \sum\delta_s + \varepsilon_i$$
+
+::: incremental
+- When randomization is stratified, include fixed effects for each stratum
+- $\sum\delta_s$ represents indicator variables for each randomization stratum
+- **Benefits:**
+  - Accounts for the design of the experiment
+  - Improves precision by removing between-strata variation
+  - Ensures valid inference (failure to include can lead to incorrect standard errors)
+- **Implementation:**
+  - Include dummy variables for all but one stratum
+  - Or use factor variables in statistical software (e.g., in R: `factor(stratum)`)
+:::
+
+## Adding Baseline Controls
+
+$$Y_{it} = \alpha + \theta T_i + \beta Y_{i(t-1)} + \sum\beta_i X_i + \sum\delta_s + \varepsilon_i$$
+
+::: incremental
+- **Baseline outcome** ($Y_{i(t-1)}$):
+  - Usually provides largest precision gain
+  - Flexibly controls for autocorrelation
+  - Preferable to "difference-in-differences" in most RCTs
+  - Coefficient $\beta$ need not equal 1 (unlike DiD)
+
+- **Additional covariates** ($X_i$):
+  - Must be measured pre-treatment
+  - Should predict residual variation in outcome
+  - Balance checks not necessary to justify inclusion
+  - Helps account for chance imbalances
+:::
+
+::: fragment
+This approach (ANCOVA) is the gold standard for most RCTs with baseline data.
+:::
+
+## Considerations on Including Covariate Controls
+
+$$Y_{it} = \alpha + \theta T_i + \beta Y_{i(t-1)} + \sum\beta_i X_i + \sum\delta_s + \varepsilon_i$$
+
+::::: columns
+::: {.column width="50%"}
+**Research Design Considerations:**
+- Pre-specify controls in analysis plan
+- Avoid "fishing" for significant results
+- Balance precision gains against complexity
+- Guard against researcher degrees of freedom
+:::
+
+::: {.column width="50%"}
+**The Selection Problem:**
+- Which covariates should we include?
+- How many covariates are too many?
+- How do we handle many potential controls?
+- Can we automate control selection?
+:::
+:::::
+
+::: fragment
+This is where Post-Double Selection Lasso can provide a principled solution.
+:::
+
+## PDS Lasso in Field Experiments
+
+**Post-Double Selection Lasso for Randomized Trials**
+
+::: incremental
+- **PDS Lasso**: A principled approach to selecting control variables in field experiments
+- Addresses the key question: *Which covariates should we include in our regression?*
+- Helps balance competing concerns:
+  - Including relevant controls improves precision
+  - Ad hoc selection creates researcher degrees of freedom (p-hacking concerns)
+  - Too many controls reduces power in small samples
+- Provides a data-driven alternative to traditional ANCOVA approaches
+- Originally developed for observational studies but increasingly applied to RCTs
+:::
+
+::: fragment
+**Key Question**: In a randomized experiment, why use a method designed for observational studies?
+:::
+
+## The PDS Lasso Method
+
+::::: columns
+::: {.column width="60%"}
+**Three-Step Procedure:**
+
+1. **Step 1**: Use Lasso to select controls that predict the outcome
+   - Regress Y on covariates X (excluding treatment)
+   - Lasso penalty shrinks coefficients toward zero
+   - Set of selected variables: I₁
+
+2. **Step 2**: Use Lasso to select controls that predict treatment 
+   - Regress T on covariates X
+   - Set of selected variables: I₂
+
+3. **Step 3**: Estimate treatment effect by OLS
+   - Regress Y on T and all selected controls (I = I₁ ∪ I₂)
+   - Optional "amelioration set" (I₃) of variables always included
+:::
+
+::: {.column width="40%"}
+```{mermaid}
+flowchart TD
+    A[Potential Controls X] --> B["Lasso Step 1: <br> Predict Outcome"]
+    A --> C["Lasso Step 2: <br> Predict Treatment"]
+    B --> D[Selected Controls I₁]
+    C --> E[Selected Controls I₂]
+    D --> F[Union of Controls <br> I₁ ∪ I₂ ∪ I₃]
+    E --> F
+    G[Amelioration Set I₃] --> F
+    F --> H[Final OLS Regression <br> Y ~ T + Selected Controls]
+```
+:::
+:::::
+
+## Why Double Selection in RCTs?
+
+::::: columns
+::: {.column width="50%"}
+**The Theoretical Paradox:**
+- In perfectly randomized experiments, treatment is orthogonal to all covariates
+- So why model treatment prediction at all?
+
+**Practical Justifications:**
+- Small sample sizes lead to chance imbalances
+- Attrition creates non-random final analysis samples
+- Field experiments often have both issues (average 15% attrition)
+:::
+
+::: {.column width="50%"}
+**Key Insight**:
+
+Lasso in Step 1 may miss variables with:
+- Moderate associations with outcomes (due to regularization)
+- Strong correlations with treatment
+
+Step 2 provides a "second chance" to capture these important variables, enhancing robustness against:
+- Chance imbalances
+- Selective attrition
+
+Particularly valuable when variables have moderate outcome correlations but strong treatment imbalances
+:::
+:::::
+
+## PDS Lasso in Practice
+
+::::: columns
+::: {.column width="60%"}
+**Empirical Findings from 780 Treatment Estimates:**
+
+- Despite many potential controls (median 182), PDS Lasso selects few (median 2)
+- Step 1 (outcome prediction): Selects at least one variable in 71% of cases
+- Step 2 (treatment prediction): Selects no variables in 57% of cases
+- Almost no overlap between variables selected in Steps 1 and 2
+- **Impact relative to ANCOVA**:
+  - Very minimal changes in treatment estimates (median 0.01 SD)
+  - Slight reduction in standard errors (median ratio 0.992)
+  - Yields larger standard errors in about 25% of cases
+  - Implied MDE reduction: only 0.9% at median
+:::
+
+::: {.column width="40%"}
+![Distribution of Selected Variables](media/pds_selected_vars.png)
+
+*Key finding: PDS Lasso offers limited precision gains compared to standard ANCOVA approaches in most field experiments*
+:::
+:::::
+
+## Implementation Considerations
+
+**Key Decisions When Using PDS Lasso:**
+
+::::: columns
+::: {.column width="50%"}
+**Penalty Parameter λ:**
+- Controls degree of variable selection
+- **Default "plug-in" λ**: Increases with covariates and sample size
+  - Theoretically justified for causal inference
+  - Tends to select few variables
+- **Cross-validation**: Select λ to minimize prediction error
+  - Selects many more variables (often 5-7x more)
+  - Can be unstable and risks overfitting
+  - Limited theoretical justification for causal inference
+:::
+
+::: {.column width="50%"}
+**Input Variable Selection:**
+- "Kitchen sink" approach common but problematic
+  - Penalty increases with number of potential controls
+  - Too many variables can lead to none being selected
+- **Amelioration Set (I₃):**
+  - Variables always included regardless of selection
+  - Recommended inclusions:
+    - Lagged dependent variable
+    - Randomization strata fixed effects
+  - Guards against underselection of important variables
+:::
+:::::
+
+## Best Practices for PDS Lasso
+
+**Checklist for Effective Implementation:**
+
+::: incremental
+1. **Be realistic about power gains**
+   - Expect very small reductions in standard errors compared to ANCOVA
+   - Don't rely on large improvements for power calculations
+
+2. **Include key variables in amelioration set**
+   - Lagged dependent variable
+   - Randomization strata or matched pair fixed effects
+
+3. **Be judicious with input controls**
+   - Avoid "kitchen sink" approach with hundreds of variables
+   - Focus on variables with potential outcome correlation
+
+4. **Handle missing values carefully**
+   - Ensure all input controls have no missing values (e.g., by dummying out)
+   - Missing values reduced final samples in many studies
+
+5. **Use as a robustness check**
+   - Provides a principled alternative to ad hoc control selection
+   - Large coefficient changes may signal concerns about randomization
+:::
+
+## The Modern Machine Learning Approach
+
+Let's now explore more flexible methods for estimating the ATE with covariates.
+
+## Covariates and Unconfoundedness
+
+For a set of i.i.d. subjects i = 1, ..., n, we observe a tuple (X_i, Y_i, W_i), comprised of:
+
+- A feature vector X_i ∈ ℝᵖ
+- A response Y_i ∈ ℝ
+- A treatment assignment W_i ∈ {0, 1}
+
+With potential outcomes Y_i(0) and Y_i(1) such that Y_i = Y_i(W_i).
+
+::: fragment
+Controlling for X_i is sufficient for identifying average treatment effects if W_i is as good as random once we condition on X_i:
+
+$$[{Y_i(0), Y_i(1)} \perp\!\!\!\perp W_i] \mid X_i$$
+
+This assumption is commonly referred to as **unconfoundedness** or **selection on observables**.
+:::
+
+## Regression Adjustments Under Unconfoundedness
+
+Given unconfoundedness $[{Y_i(0), Y_i(1)} \perp\!\!\!\perp W_i] \mid X_i$, we can express the ATE in terms of conditional response surfaces:
+
+$$
+\begin{align}
+\tau &= E[Y_i(1) - Y_i(0)]\\
+&= E[E[Y_i(1) \mid X_i] - E[Y_i(0) \mid X_i]]\\
+&= E[E[Y_i \mid X_i, W_i = 1] - E[Y_i \mid X_i, W_i = 0]]\\
+&= E[\mu^{(1)}(X_i) - \mu^{(0)}(X_i)]
+\end{align}
+$$
+
+Where $\mu^{(w)}(x) = E[Y_i \mid X_i = x, W_i = w]$
+
+## Estimation Strategy
+
+Given unconfoundedness, we know that:
+
+$$\tau = E[\mu^{(1)}(X_i) - \mu^{(0)}(X_i)]$$
+
+This suggests a three-step estimation strategy:
+
+::: incremental
+1. Learn $\hat{\mu}^{(0)}(x)$ by predicting Y from X on controls
+2. Learn $\hat{\mu}^{(1)}(x)$ by predicting Y from X on treated units
+3. Estimate $\hat{\tau} = \frac{1}{n}\sum_{i=1}^{n}[\hat{\mu}^{(1)}(X_i) - \hat{\mu}^{(0)}(X_i)]$
+:::
+
+::: fragment
+This is "obviously" consistent if $\hat{\mu}^{(w)}(x)$ is consistent for $\mu^{(w)}(x)$. But is this any good?
+:::
+
+## The Classical Approach: OLS
+
+A classical approach to the ATE involves estimating $\mu^{(0)}(x)$ and $\mu^{(1)}(x)$ via ordinary least-squares regression (OLS).
+
+::: incremental
+- First posit a linear model, $\mu^{(w)}(x) = x\beta^{(w)}$
+- Fit the model separately for each treatment group:
+  - $\hat{\beta}^{(0)} \leftarrow$ lm(Y_i ~ X_i, subset W_i = 0)
+  - $\hat{\beta}^{(1)} \leftarrow$ lm(Y_i ~ X_i, subset W_i = 1)
+- Make predictions $\hat{\mu}^{(w)}(x) = x\hat{\beta}^{(w)}$
+- Compute the ATE estimate: $\hat{\tau} = \frac{1}{n}\sum_{i=1}^{n}[\hat{\mu}^{(1)}(X_i) - \hat{\mu}^{(0)}(X_i)]$
+:::
+
+::: fragment
+Note that the ATE estimate simplifies to $\hat{\tau} = (\hat{\beta}^{(1)} - \hat{\beta}^{(0)})'\bar{X}$, where $\bar{X} = \frac{1}{n}\sum_{i=1}^{n}X_i$
+:::
+
+## OLS Implementation Example
+
+```{r}
+#| eval: false
+# First center the X, then run OLS with full W:X
+# interactions. With this construction, the
+# W-coefficient can be interpreted as ATE.
+X.centered = scale(X, center = TRUE, scale = FALSE)
+ols.fit = lm(Y ~ W * X.centered)
+
+# Use robust standard errors
+tau.hat = coef(ols.fit)["W"]
+tau.se = sqrt(sandwich::vcovHC(ols.fit)["W", "W"])
+print(paste0("95% CI: ", round(tau.hat),
+" +/- ", round(1.96 * tau.se)))
+```
+
+## The Machine Learning Approach
+
+A modern, non-parametric approach seeks to avoid making assumptions about the functional form of $\mu^{(0)}(x)$ and $\mu^{(1)}(x)$.
+
+::: incremental
+- Pick your favorite machine learning method
+- Use it to predict Y_i from X_i separately for treated and control groups
+- Use these predictions as estimates for $\mu^{(0)}(x)$ and $\mu^{(1)}(x)$
+- Estimate $\hat{\tau} = \frac{1}{n}\sum_{i=1}^{n}[\hat{\mu}^{(1)}(X_i) - \hat{\mu}^{(0)}(X_i)]$
+:::
+
+::: fragment
+In many settings, machine learning methods enable accurate prediction without needing to model the shape of $\mu^{(0)}(x)$ and $\mu^{(1)}(x)$.
+:::
+
+## Random Forest Implementation Example
+
+```{r}
+#| eval: false
+library(grf)
+
+# Fit separate random forests for treated and control groups
+rf.0 = regression_forest(X[W==0,], Y[W==0])
+mu.hat.0 = predict(rf.0, X)$predictions
+mu.hat.0[W==0] = predict(rf.0)$predictions
+
+rf.1 = regression_forest(X[W==1,], Y[W==1])
+mu.hat.1 = predict(rf.1, X)$predictions
+mu.hat.1[W==1] = predict(rf.1)$predictions
+
+# Calculate ATE estimate
+tau.hat.rf = mean(mu.hat.1 - mu.hat.0)
+```
+
+## A Simulation Comparison
+
+Let's compare OLS and Random Forests in two settings:
+
+::::: columns
+::: {.column width="50%"}
+**Linear Setting**:
+- X ~ N(0, I_{20×20})
+- P[W=1|X] = 1/(1+e^{X₁})
+- Y(0) = X₁ + X₂ + N(0, 4)
+- Y(1) = X₁ + X₃ + N(0, 4)
+- True ATE = 0
+:::
+
+::: {.column width="50%"}
+**Non-linear Setting**:
+- X ~ N(0, I_{20×20})
+- P[W=1|X] = (1+sin(X₁))/2
+- Y(0) = 4·1({X₁ > 0}) + X₂²/2 + N(0, 4)
+- Y(1) = 4·1({X₁ > 0}) + X₃²/2 + N(0, 4)
+- True ATE = 0
+:::
+:::::
+
+## Linear Regression vs Random Forests
+
+::::: columns
+::: {.column width="50%"}
+**Linear Regression (OLS)** bets everything on $\hat{\mu}^{(w)}(x)$ being linear:
+
+- If this assumption is valid, everything works perfectly
+- Parametric reasoning applies
+- No need to worry
+- If this assumption fails, everything is wrong
+- Not much subtlety in how to do inference
+:::
+
+::: {.column width="50%"}
+**Machine Learning Methods** seek to fit potentially complicated functions $\hat{\mu}^{(w)}(x)$:
+
+- Never completely wrong: expect consistency as n → ∞
+- But even when a simple model is correct, converge slowly
+- Possible to extract useful insights
+- Must be robust to suboptimal finite sample performance
+:::
+:::::
+
+## Key Takeaways
+
+::: incremental
+1. **Regression adjustment improves precision**
+   - In randomized trials, it's not needed for unbiasedness but helps with efficiency
+   - The baseline outcome is typically the most important control
+
+2. **Standard ANCOVA is a robust approach**
+   - Pre-specify key controls (baseline outcome, strata)
+   - Works well in most field experiments
+
+3. **PDS Lasso provides a principled control selection method**
+   - But offers limited gains over ANCOVA in most cases
+   - Include key variables in the amelioration set
+
+4. **Machine learning methods can help with non-linear relationships**
+   - But may not offer large gains in typical field experiment settings
+   - Require careful implementation to maintain valid inference
+:::
+
+## Next Steps
+
+Advanced methods that build on these approaches:
+
+::: incremental
+- **Double/Debiased Machine Learning**
+  - Combining machine learning with robust inference
+
+- **Causal Forests**
+  - Estimating heterogeneous treatment effects
+
+- **Doubly Robust Estimation**
+  - Protecting against model misspecification
+
+- **Experimental Design Considerations**
+  - Optimal sample allocation
+  - Stratification and blocking
+:::
