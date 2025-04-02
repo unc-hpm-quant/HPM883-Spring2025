@@ -6,17 +6,17 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
-<meta name="author" content="Sean Sylvia">
-<title>HPM 883 – Lecture 4.1: EstimatingAverage Treatment Effects</title>
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-<link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
-<link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
-<style>
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.42">
+
+  <meta name="author" content="Sean Sylvia">
+  <title>HPM 883 – Lecture 4.1: EstimatingAverage Treatment Effects</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -29,14 +29,14 @@
       vertical-align: middle;
     }
   </style>
-<link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-b9d2fe02cc32158b42e7eed6b5f25a77.css">
-<link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-<link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-<link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-<link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-<link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-<link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-<style type="text/css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-b9d2fe02cc32158b42e7eed6b5f25a77.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
       overflow: auto;
@@ -123,13 +123,16 @@
       margin-right: 0; 
     }
   </style>
-<script src="../site_libs/quarto-diagram/mermaid.min.js"></script><script src="../site_libs/quarto-diagram/mermaid-init.js"></script><link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+  <script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+  <script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+  <link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center"><h1 class="title">Lecture 4.1: EstimatingAverage Treatment Effects</h1>
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Lecture 4.1: EstimatingAverage Treatment Effects</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -139,63 +142,59 @@ Sean Sylvia
 </div>
 </div>
 
-</section><section id="review-the-potential-outcomes-framework" class="slide level2"><h2>Review: The Potential Outcomes Framework</h2>
+</section>
+<section id="review-the-potential-outcomes-framework" class="slide level2">
+<h2>Review: The Potential Outcomes Framework</h2>
 <div>
 <ul>
 <li class="fragment">For each unit <span class="math inline">\(i\)</span>, we define two potential outcomes:
 <ul>
-<li class="fragment">
-<span class="math inline">\(Y_i(1)\)</span>: Outcome if unit receives treatment</li>
-<li class="fragment">
-<span class="math inline">\(Y_i(0)\)</span>: Outcome if unit does not receive treatment</li>
-</ul>
-</li>
-<li class="fragment">The causal effect for unit <span class="math inline">\(i\)</span>: <span class="math inline">\(\delta_i = Y_i(1) - Y_i(0)\)</span>
-</li>
-<li class="fragment">
-<strong>Fundamental problem of causal inference</strong>: We only observe one potential outcome for each unit</li>
+<li class="fragment"><span class="math inline">\(Y_i(1)\)</span>: Outcome if unit receives treatment</li>
+<li class="fragment"><span class="math inline">\(Y_i(0)\)</span>: Outcome if unit does not receive treatment</li>
+</ul></li>
+<li class="fragment">The causal effect for unit <span class="math inline">\(i\)</span>: <span class="math inline">\(\delta_i = Y_i(1) - Y_i(0)\)</span></li>
+<li class="fragment"><strong>Fundamental problem of causal inference</strong>: We only observe one potential outcome for each unit</li>
 <li class="fragment">The observed outcome: <span class="math inline">\(Y_i = Y_i(W_i)\)</span> where <span class="math inline">\(W_i \in \{0,1\}\)</span> is the treatment assignment</li>
 </ul>
 </div>
 <div class="fragment">
 <p>We typically focus on the <strong>Average Treatment Effect (ATE)</strong>: <span class="math display">\[\tau = E[Y_i(1) - Y_i(0)]\]</span></p>
 </div>
-</section><section id="why-randomization-works" class="slide level2"><h2>Why Randomization Works</h2>
+</section>
+<section id="why-randomization-works" class="slide level2">
+<h2>Why Randomization Works</h2>
 <div>
 <ul>
-<li class="fragment">Randomization makes treatment assignment <strong>independent</strong> of potential outcomes: <span class="math display">\[W_i \perp\!\!\!\perp (Y_i(0), Y_i(1))\]</span>
-</li>
+<li class="fragment">Randomization makes treatment assignment <strong>independent</strong> of potential outcomes: <span class="math display">\[W_i \perp\!\!\!\perp (Y_i(0), Y_i(1))\]</span></li>
 <li class="fragment">This means treatment and control groups are balanced on observable and unobservable characteristics</li>
 <li class="fragment">In expectation:
 <ul>
 <li class="fragment"><span class="math inline">\(E[Y_i(1)|W_i=1] = E[Y_i(1)]\)</span></li>
 <li class="fragment"><span class="math inline">\(E[Y_i(0)|W_i=0] = E[Y_i(0)]\)</span></li>
-</ul>
-</li>
+</ul></li>
 <li class="fragment">Thus, the difference in observed outcomes provides an unbiased estimate of the ATE</li>
 </ul>
 </div>
-</section><section id="the-difference-in-means-estimator" class="slide level2"><h2>The Difference-in-Means Estimator</h2>
+</section>
+<section id="the-difference-in-means-estimator" class="slide level2">
+<h2>The Difference-in-Means Estimator</h2>
 <p>The simplest approach to estimate the ATE in an RCT is the difference in means:</p>
 <p><span class="math display">\[\hat{\tau}_{DM} = \frac{1}{n_1}\sum_{i:W_i=1}Y_i - \frac{1}{n_0}\sum_{i:W_i=0}Y_i\]</span></p>
 <div>
 <ul>
-<li class="fragment">
-<span class="math inline">\(n_1\)</span>: Number of treated units</li>
-<li class="fragment">
-<span class="math inline">\(n_0\)</span>: Number of control units</li>
-<li class="fragment">
-<strong>Properties</strong>:
+<li class="fragment"><span class="math inline">\(n_1\)</span>: Number of treated units</li>
+<li class="fragment"><span class="math inline">\(n_0\)</span>: Number of control units</li>
+<li class="fragment"><strong>Properties</strong>:
 <ul>
-<li class="fragment">Unbiased for the ATE: <span class="math inline">\(E[\hat{\tau}_{DM}] = \tau\)</span>
-</li>
+<li class="fragment">Unbiased for the ATE: <span class="math inline">\(E[\hat{\tau}_{DM}] = \tau\)</span></li>
 <li class="fragment">Variance depends on outcome variation</li>
 <li class="fragment">Simple to calculate and understand</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 </div>
-</section><section id="room-for-improvement" class="slide level2"><h2>Room for Improvement</h2>
+</section>
+<section id="room-for-improvement" class="slide level2">
+<h2>Room for Improvement</h2>
 <p>Despite randomization, the difference-in-means estimator has limitations:</p>
 <div>
 <ul>
@@ -208,157 +207,153 @@ Sean Sylvia
 <div class="fragment">
 <p><strong>Key Question</strong>: How can we improve precision while maintaining unbiasedness?</p>
 </div>
-</section><section id="lecture-roadmap" class="slide level2"><h2>Lecture Roadmap</h2>
+</section>
+<section id="lecture-roadmap" class="slide level2">
+<h2>Lecture Roadmap</h2>
 <p>Today we’ll explore three approaches to estimating the ATE:</p>
 <div>
 <ol type="1">
-<li class="fragment">
-<strong>Standard Regression Approach</strong>
+<li class="fragment"><strong>Standard Regression Approach</strong>
 <ul>
 <li class="fragment">Controlling for baseline covariates in RCTs</li>
 <li class="fragment">ANCOVA specification</li>
-</ul>
-</li>
-<li class="fragment">
-<strong>Post-Double Selection Lasso</strong>
+</ul></li>
+<li class="fragment"><strong>Post-Double Selection Lasso</strong>
 <ul>
 <li class="fragment">A principled approach to covariate selection</li>
 <li class="fragment">Balancing precision and researcher degrees of freedom</li>
-</ul>
-</li>
-<li class="fragment">
-<strong>Machine Learning Approaches</strong>
+</ul></li>
+<li class="fragment"><strong>Machine Learning Approaches</strong>
 <ul>
 <li class="fragment">Using flexible methods to model treatment effects</li>
 <li class="fragment">Addressing non-linearities in outcome relationships</li>
-</ul>
-</li>
+</ul></li>
 </ol>
 </div>
-</section><section id="standard-approach-to-ate-estimation-in-rcts" class="slide level2"><h2>Standard Approach to ATE Estimation in RCTs</h2>
+</section>
+<section id="standard-approach-to-ate-estimation-in-rcts" class="slide level2">
+<h2>Standard Approach to ATE Estimation in RCTs</h2>
 <p><span class="math display">\[Y_{it} = \alpha + \theta T_i + \beta Y_{i(t-1)} + \sum\beta_i X_i + \sum\delta_s + \varepsilon_i\]</span></p>
 <div>
 <ul>
 <li class="fragment">The equation above represents the canonical specification for ATE estimation in RCTs</li>
-<li class="fragment">
-<strong>Parameters of interest:</strong>
+<li class="fragment"><strong>Parameters of interest:</strong>
 <ul>
-<li class="fragment">
-<span class="math inline">\(Y_{it}\)</span>: Outcome variable for unit <span class="math inline">\(i\)</span> at follow-up time <span class="math inline">\(t\)</span>
-</li>
-<li class="fragment">
-<span class="math inline">\(T_i\)</span>: Treatment indicator (1 = treated, 0 = control)</li>
-<li class="fragment">
-<span class="math inline">\(\theta\)</span>: Average treatment effect (our target)</li>
-<li class="fragment">
-<span class="math inline">\(Y_{i(t-1)}\)</span>: Baseline value of the outcome</li>
-<li class="fragment">
-<span class="math inline">\(X_i\)</span>: Vector of baseline covariates</li>
-<li class="fragment">
-<span class="math inline">\(\delta_s\)</span>: Strata fixed effects</li>
-</ul>
-</li>
+<li class="fragment"><span class="math inline">\(Y_{it}\)</span>: Outcome variable for unit <span class="math inline">\(i\)</span> at follow-up time <span class="math inline">\(t\)</span></li>
+<li class="fragment"><span class="math inline">\(T_i\)</span>: Treatment indicator (1 = treated, 0 = control)</li>
+<li class="fragment"><span class="math inline">\(\theta\)</span>: Average treatment effect (our target)</li>
+<li class="fragment"><span class="math inline">\(Y_{i(t-1)}\)</span>: Baseline value of the outcome</li>
+<li class="fragment"><span class="math inline">\(X_i\)</span>: Vector of baseline covariates</li>
+<li class="fragment"><span class="math inline">\(\delta_s\)</span>: Strata fixed effects</li>
+</ul></li>
 </ul>
 </div>
-</section><section id="basic-specification-no-controls" class="slide level2"><h2>Basic Specification: No Controls</h2>
+</section>
+<section id="basic-specification-no-controls" class="slide level2">
+<h2>Basic Specification: No Controls</h2>
 <p><span class="math display">\[Y_{it} = \alpha + \theta T_i + \varepsilon_i\]</span></p>
 <div>
 <ul>
 <li class="fragment">Simplest specification: regress outcome on treatment indicator only</li>
 <li class="fragment">Valid in expectation due to randomization</li>
-<li class="fragment">
-<span class="math inline">\(\theta\)</span> is unbiased estimate of the ATE</li>
-<li class="fragment">
-<strong>Critical note on inference:</strong>
+<li class="fragment"><span class="math inline">\(\theta\)</span> is unbiased estimate of the ATE</li>
+<li class="fragment"><strong>Critical note on inference:</strong>
 <ul>
 <li class="fragment">Use robust standard errors to account for heteroskedasticity</li>
 <li class="fragment">If clustered randomization, use cluster-robust standard errors</li>
 <li class="fragment"><span class="math inline">\(SE(\hat{\theta})_{robust} = \sqrt{\frac{\hat{\sigma}^2_1}{n_1} + \frac{\hat{\sigma}^2_0}{n_0}}\)</span></li>
-</ul>
-</li>
+</ul></li>
 <li class="fragment">Often leaves substantial unexplained variation in the outcome</li>
 </ul>
 </div>
 <div class="fragment">
 <p>This approach is equivalent to a simple difference in means between treatment and control groups.</p>
 </div>
-</section><section id="adding-strata-fixed-effects" class="slide level2"><h2>Adding Strata Fixed Effects</h2>
+</section>
+<section id="adding-strata-fixed-effects" class="slide level2">
+<h2>Adding Strata Fixed Effects</h2>
 <p><span class="math display">\[Y_{it} = \alpha + \theta T_i + \sum\delta_s + \varepsilon_i\]</span></p>
 <div>
 <ul>
 <li class="fragment">When randomization is stratified, include fixed effects for each stratum</li>
-<li class="fragment">
-<span class="math inline">\(\sum\delta_s\)</span> represents indicator variables for each randomization stratum</li>
-<li class="fragment">
-<strong>Benefits:</strong>
+<li class="fragment"><span class="math inline">\(\sum\delta_s\)</span> represents indicator variables for each randomization stratum</li>
+<li class="fragment"><strong>Benefits:</strong>
 <ul>
 <li class="fragment">Accounts for the design of the experiment</li>
 <li class="fragment">Improves precision by removing between-strata variation</li>
 <li class="fragment">Ensures valid inference (failure to include can lead to incorrect standard errors)</li>
-</ul>
-</li>
-<li class="fragment">
-<strong>Implementation:</strong>
+</ul></li>
+<li class="fragment"><strong>Implementation:</strong>
 <ul>
 <li class="fragment">Include dummy variables for all but one stratum</li>
 <li class="fragment">Or use factor variables in statistical software (e.g., in R: <code>factor(stratum)</code>)</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 </div>
-</section><section id="adding-baseline-controls" class="slide level2"><h2>Adding Baseline Controls</h2>
+</section>
+<section id="adding-baseline-controls" class="slide level2">
+<h2>Adding Baseline Controls</h2>
 <p><span class="math display">\[Y_{it} = \alpha + \theta T_i + \beta Y_{i(t-1)} + \sum\beta_i X_i + \sum\delta_s + \varepsilon_i\]</span></p>
 <div>
 <ul>
-<li class="fragment">
-<strong>Baseline outcome</strong> (<span class="math inline">\(Y_{i(t-1)}\)</span>):
+<li class="fragment"><strong>Baseline outcome</strong> (<span class="math inline">\(Y_{i(t-1)}\)</span>):
 <ul>
 <li class="fragment">Usually provides largest precision gain</li>
 <li class="fragment">Flexibly controls for autocorrelation</li>
 <li class="fragment">Preferable to “difference-in-differences” in most RCTs</li>
 <li class="fragment">Coefficient <span class="math inline">\(\beta\)</span> need not equal 1 (unlike DiD)</li>
-</ul>
-</li>
-<li class="fragment">
-<strong>Additional covariates</strong> (<span class="math inline">\(X_i\)</span>):
+</ul></li>
+<li class="fragment"><strong>Additional covariates</strong> (<span class="math inline">\(X_i\)</span>):
 <ul>
 <li class="fragment">Must be measured pre-treatment</li>
 <li class="fragment">Should predict residual variation in outcome</li>
 <li class="fragment">Balance checks not necessary to justify inclusion</li>
 <li class="fragment">Helps account for chance imbalances</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 </div>
 <div class="fragment">
 <p>This approach (ANCOVA) is the gold standard for most RCTs with baseline data.</p>
 </div>
-</section><section id="considerations-on-including-covariate-controls" class="slide level2"><h2>Considerations on Including Covariate Controls</h2>
+</section>
+<section id="considerations-on-including-covariate-controls" class="slide level2">
+<h2>Considerations on Including Covariate Controls</h2>
 <p><span class="math display">\[Y_{it} = \alpha + \theta T_i + \beta Y_{i(t-1)} + \sum\beta_i X_i + \sum\delta_s + \varepsilon_i\]</span></p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><strong>Research Design Considerations:</strong> - Pre-specify controls in analysis plan - Avoid “fishing” for significant results - Balance precision gains against complexity - Guard against researcher degrees of freedom</p>
+<p><strong>Research Design Considerations:</strong></p>
+<ul>
+<li>Pre-specify controls in analysis plan</li>
+<li>Avoid “fishing” for significant results</li>
+<li>Balance precision gains against complexity</li>
+<li>Guard against researcher degrees of freedom</li>
+</ul>
 </div><div class="column" style="width:50%;">
-<p><strong>The Selection Problem:</strong> - Which covariates should we include? - How many covariates are too many? - How do we handle many potential controls? - Can we automate control selection?</p>
+<p><strong>The Selection Problem:</strong></p>
+<ul>
+<li>Which covariates should we include?</li>
+<li>How many covariates are too many?</li>
+<li>How do we handle many potential controls?</li>
+<li>Can we automate control selection?</li>
+</ul>
 </div></div>
 <div class="fragment">
 <p>This is where Post-Double Selection Lasso can provide a principled solution.</p>
 </div>
-</section><section id="pds-lasso-in-field-experiments" class="slide level2"><h2>PDS Lasso in Field Experiments</h2>
+</section>
+<section id="pds-lasso-in-field-experiments" class="slide level2">
+<h2>PDS Lasso in Field Experiments</h2>
 <p><strong>Post-Double Selection Lasso for Randomized Trials</strong></p>
 <div>
 <ul>
-<li class="fragment">
-<strong>PDS Lasso</strong>: A principled approach to selecting control variables in field experiments</li>
-<li class="fragment">Addresses the key question: <em>Which covariates should we include in our regression?</em>
-</li>
+<li class="fragment"><strong>PDS Lasso</strong>: A principled approach to selecting control variables in field experiments</li>
+<li class="fragment">Addresses the key question: <em>Which covariates should we include in our regression?</em></li>
 <li class="fragment">Helps balance competing concerns:
 <ul>
 <li class="fragment">Including relevant controls improves precision</li>
 <li class="fragment">Ad hoc selection creates researcher degrees of freedom (p-hacking concerns)</li>
 <li class="fragment">Too many controls reduces power in small samples</li>
-</ul>
-</li>
+</ul></li>
 <li class="fragment">Provides a data-driven alternative to traditional ANCOVA approaches</li>
 <li class="fragment">Originally developed for observational studies but increasingly applied to RCTs</li>
 </ul>
@@ -366,39 +361,35 @@ Sean Sylvia
 <div class="fragment">
 <p><strong>Key Question</strong>: In a randomized experiment, why use a method designed for observational studies?</p>
 </div>
-</section><section id="the-pds-lasso-method" class="slide level2"><h2>The PDS Lasso Method</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
+</section>
+<section id="the-pds-lasso-method" class="slide level2">
+<h2>The PDS Lasso Method</h2>
 <p><strong>Three-Step Procedure:</strong></p>
 <ol type="1">
-<li>
-<strong>Step 1</strong>: Use Lasso to select controls that predict the outcome
+<li><strong>Step 1</strong>: Use Lasso to select controls that predict the outcome
 <ul>
 <li>Regress Y on covariates X (excluding treatment)</li>
 <li>Lasso penalty shrinks coefficients toward zero</li>
 <li>Set of selected variables: I₁</li>
-</ul>
-</li>
-<li>
-<strong>Step 2</strong>: Use Lasso to select controls that predict treatment
+</ul></li>
+<li><strong>Step 2</strong>: Use Lasso to select controls that predict treatment
 <ul>
 <li>Regress T on covariates X</li>
 <li>Set of selected variables: I₂</li>
-</ul>
-</li>
-<li>
-<strong>Step 3</strong>: Estimate treatment effect by OLS
+</ul></li>
+<li><strong>Step 3</strong>: Estimate treatment effect by OLS
 <ul>
 <li>Regress Y on T and all selected controls (I = I₁ ∪ I₂)</li>
 <li>Optional “amelioration set” (I₃) of variables always included</li>
-</ul>
-</li>
+</ul></li>
 </ol>
-</div><div class="column" style="width:40%;">
+</section>
+<section id="the-pds-lasso-method-1" class="slide level2">
+<h2>The PDS Lasso Method</h2>
 <div class="cell" data-reveal="true" data-layout-align="default">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""></figure><p></p>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart TD
     A[Potential Controls X] --&gt; B["Lasso Step 1: &lt;br&gt; Predict Outcome"]
@@ -411,100 +402,148 @@ Sean Sylvia
     F --&gt; H[Final OLS Regression &lt;br&gt; Y ~ T + Selected Controls]
 </pre>
 </div>
-<p></p>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
-</div></div>
-</section><section id="why-double-selection-in-rcts" class="slide level2"><h2>Why Double Selection in RCTs?</h2>
+</section>
+<section id="why-double-selection-in-rcts" class="slide level2">
+<h2>Why Double Selection in RCTs?</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><strong>The Theoretical Paradox:</strong> - In perfectly randomized experiments, treatment is orthogonal to all covariates - So why model treatment prediction at all?</p>
-<p><strong>Practical Justifications:</strong> - Small sample sizes lead to chance imbalances - Attrition creates non-random final analysis samples - Field experiments often have both issues (average 15% attrition)</p>
+<p><strong>The Theoretical Paradox:</strong></p>
+<ul>
+<li>In perfectly randomized experiments, treatment is orthogonal to all covariates</li>
+<li>So why model treatment prediction at all?</li>
+</ul>
+<p><strong>Practical Justifications:</strong></p>
+<ul>
+<li>Small sample sizes lead to chance imbalances</li>
+<li>Attrition creates non-random final analysis samples</li>
+<li>Field experiments often have both issues (average 15% attrition)</li>
+</ul>
 </div><div class="column" style="width:50%;">
-<p><strong>Key Insight</strong>:</p>
-<p>Lasso in Step 1 may miss variables with: - Moderate associations with outcomes (due to regularization) - Strong correlations with treatment</p>
-<p>Step 2 provides a “second chance” to capture these important variables, enhancing robustness against: - Chance imbalances - Selective attrition</p>
-<p>Particularly valuable when variables have moderate outcome correlations but strong treatment imbalances</p>
+<div class="fragment">
+<p><strong>Key Insights</strong>:</p>
+<ol type="1">
+<li>Lasso in Step 1 may miss variables with:
+<ul>
+<li>Moderate associations with outcomes (due to regularization)</li>
+<li>Strong correlations with treatment</li>
+</ul></li>
+<li>Step 2 provides a “second chance” to capture these important variables, enhancing robustness against:
+<ul>
+<li>Chance imbalances</li>
+<li>Selective attrition</li>
+</ul></li>
+<li>Particularly valuable when variables have moderate outcome correlations but strong treatment imbalances</li>
+</ol>
+</div>
 </div></div>
-</section><section id="pds-lasso-in-practice" class="slide level2"><h2>PDS Lasso in Practice</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p><strong>Empirical Findings from 780 Treatment Estimates:</strong></p>
+</section>
+<section id="pds-lasso-in-practice" class="slide level2">
+<h2>PDS Lasso in Practice</h2>
+<p><strong>Cilliers, Elashmawy, and McKenzie (2024)</strong></p>
+<h4 id="empirical-findings-from-780-treatment-estimates">Empirical Findings from 780 Treatment Estimates:</h4>
 <ul>
 <li>Despite many potential controls (median 182), PDS Lasso selects few (median 2)</li>
 <li>Step 1 (outcome prediction): Selects at least one variable in 71% of cases</li>
 <li>Step 2 (treatment prediction): Selects no variables in 57% of cases</li>
 <li>Almost no overlap between variables selected in Steps 1 and 2</li>
-<li>
-<strong>Impact relative to ANCOVA</strong>:
+</ul>
+<h4 id="impact-relative-to-ancova">Impact relative to ANCOVA:</h4>
 <ul>
 <li>Very minimal changes in treatment estimates (median 0.01 SD)</li>
 <li>Slight reduction in standard errors (median ratio 0.992)</li>
 <li>Yields larger standard errors in about 25% of cases</li>
 <li>Implied MDE reduction: only 0.9% at median</li>
 </ul>
-</li>
-</ul>
-</div><div class="column" style="width:40%;">
-<div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="media/pds_selected_vars.png"></p>
-<figcaption>Distribution of Selected Variables</figcaption></figure>
-</div>
-<p><em>Key finding: PDS Lasso offers limited precision gains compared to standard ANCOVA approaches in most field experiments</em></p>
-</div></div>
-</section><section id="implementation-considerations" class="slide level2"><h2>Implementation Considerations</h2>
+</section>
+<section id="pds-lasso-in-practice---cilliers-elashmawy-and-mckenzie-2024" class="slide level2">
+<h2>PDS Lasso in Practice - Cilliers, Elashmawy, and McKenzie (2024)</h2>
+
+<img data-src="../unit-4/pds_selected_vars_cilliers2024.png" class="r-stretch quarto-figure-center"><p class="caption">Distribution of Selected Variables</p><p><em>Key finding: PDS Lasso offers limited precision gains compared to standard ANCOVA approaches in most field experiments</em></p>
+</section>
+<section id="implementation-considerations" class="slide level2">
+<h2>Implementation Considerations</h2>
 <p><strong>Key Decisions When Using PDS Lasso:</strong></p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><strong>Penalty Parameter λ:</strong> - Controls degree of variable selection - <strong>Default “plug-in” λ</strong>: Increases with covariates and sample size - Theoretically justified for causal inference - Tends to select few variables - <strong>Cross-validation</strong>: Select λ to minimize prediction error - Selects many more variables (often 5-7x more) - Can be unstable and risks overfitting - Limited theoretical justification for causal inference</p>
+<p><strong>Penalty Parameter λ:</strong></p>
+<ul>
+<li>Controls degree of variable selection</li>
+<li><strong>Default “plug-in” λ</strong>: Increases with covariates and sample size
+<ul>
+<li>Theoretically justified for causal inference</li>
+<li>Tends to select few variables</li>
+</ul></li>
+<li><strong>Cross-validation</strong>: Select λ to minimize prediction error
+<ul>
+<li>Selects many more variables (often 5-7x more)</li>
+<li>Can be unstable and risks overfitting</li>
+<li>Limited theoretical justification for causal inference</li>
+</ul></li>
+</ul>
 </div><div class="column" style="width:50%;">
-<p><strong>Input Variable Selection:</strong> - “Kitchen sink” approach common but problematic - Penalty increases with number of potential controls - Too many variables can lead to none being selected - <strong>Amelioration Set (I₃):</strong> - Variables always included regardless of selection - Recommended inclusions: - Lagged dependent variable - Randomization strata fixed effects - Guards against underselection of important variables</p>
+<p><strong>Input Variable Selection:</strong></p>
+<ul>
+<li>“Kitchen sink” approach common but problematic
+<ul>
+<li>Penalty increases with number of potential controls</li>
+<li>Too many variables can lead to none being selected</li>
+</ul></li>
+<li><strong>Amelioration Set (I₃):</strong>
+<ul>
+<li>Variables always included regardless of selection</li>
+<li>Recommended inclusions:
+<ul>
+<li>Lagged dependent variable</li>
+<li>Randomization strata fixed effects</li>
+</ul></li>
+<li>Guards against underselection of important variables</li>
+</ul></li>
+</ul>
 </div></div>
-</section><section id="best-practices-for-pds-lasso" class="slide level2"><h2>Best Practices for PDS Lasso</h2>
+</section>
+<section id="best-practices-for-pds-lasso" class="slide level2">
+<h2>Best Practices for PDS Lasso</h2>
 <p><strong>Checklist for Effective Implementation:</strong></p>
 <div>
 <ol type="1">
-<li class="fragment">
-<strong>Be realistic about power gains</strong>
+<li class="fragment"><strong>Be realistic about power gains</strong>
 <ul>
 <li class="fragment">Expect very small reductions in standard errors compared to ANCOVA</li>
 <li class="fragment">Don’t rely on large improvements for power calculations</li>
-</ul>
-</li>
-<li class="fragment">
-<strong>Include key variables in amelioration set</strong>
+</ul></li>
+<li class="fragment"><strong>Include key variables in amelioration set</strong>
 <ul>
 <li class="fragment">Lagged dependent variable</li>
 <li class="fragment">Randomization strata or matched pair fixed effects</li>
-</ul>
-</li>
-<li class="fragment">
-<strong>Be judicious with input controls</strong>
+</ul></li>
+<li class="fragment"><strong>Be judicious with input controls</strong>
 <ul>
 <li class="fragment">Avoid “kitchen sink” approach with hundreds of variables</li>
 <li class="fragment">Focus on variables with potential outcome correlation</li>
-</ul>
-</li>
-<li class="fragment">
-<strong>Handle missing values carefully</strong>
+</ul></li>
+<li class="fragment"><strong>Handle missing values carefully</strong>
 <ul>
 <li class="fragment">Ensure all input controls have no missing values (e.g., by dummying out)</li>
 <li class="fragment">Missing values reduced final samples in many studies</li>
-</ul>
-</li>
-<li class="fragment">
-<strong>Use as a robustness check</strong>
+</ul></li>
+<li class="fragment"><strong>Use as a robustness check</strong>
 <ul>
 <li class="fragment">Provides a principled alternative to ad hoc control selection</li>
 <li class="fragment">Large coefficient changes may signal concerns about randomization</li>
-</ul>
-</li>
+</ul></li>
 </ol>
 </div>
-</section><section id="the-modern-machine-learning-approach" class="slide level2"><h2>The Modern Machine Learning Approach</h2>
+</section>
+<section id="the-modern-machine-learning-approach" class="slide level2">
+<h2>The Modern Machine Learning Approach</h2>
 <p>Let’s now explore more flexible methods for estimating the ATE with covariates.</p>
-</section><section id="covariates-and-unconfoundedness" class="slide level2"><h2>Covariates and Unconfoundedness</h2>
+</section>
+<section id="covariates-and-unconfoundedness" class="slide level2">
+<h2>Covariates and Unconfoundedness</h2>
 <p>For a set of i.i.d. subjects i = 1, …, n, we observe a tuple (X_i, Y_i, W_i), comprised of:</p>
 <ul>
 <li>A feature vector X_i ∈ ℝᵖ</li>
@@ -517,7 +556,9 @@ Sean Sylvia
 <p><span class="math display">\[[{Y_i(0), Y_i(1)} \perp\!\!\!\perp W_i] \mid X_i\]</span></p>
 <p>This assumption is commonly referred to as <strong>unconfoundedness</strong> or <strong>selection on observables</strong>.</p>
 </div>
-</section><section id="regression-adjustments-under-unconfoundedness" class="slide level2"><h2>Regression Adjustments Under Unconfoundedness</h2>
+</section>
+<section id="regression-adjustments-under-unconfoundedness" class="slide level2">
+<h2>Regression Adjustments Under Unconfoundedness</h2>
 <p>Given unconfoundedness <span class="math inline">\([{Y_i(0), Y_i(1)} \perp\!\!\!\perp W_i] \mid X_i\)</span>, we can express the ATE in terms of conditional response surfaces:</p>
 <p><span class="math display">\[
 \begin{align}
@@ -528,7 +569,9 @@ Sean Sylvia
 \end{align}
 \]</span></p>
 <p>Where <span class="math inline">\(\mu^{(w)}(x) = E[Y_i \mid X_i = x, W_i = w]\)</span></p>
-</section><section id="estimation-strategy" class="slide level2"><h2>Estimation Strategy</h2>
+</section>
+<section id="estimation-strategy" class="slide level2">
+<h2>Estimation Strategy</h2>
 <p>Given unconfoundedness, we know that:</p>
 <p><span class="math display">\[\tau = E[\mu^{(1)}(X_i) - \mu^{(0)}(X_i)]\]</span></p>
 <p>This suggests a three-step estimation strategy:</p>
@@ -536,54 +579,55 @@ Sean Sylvia
 <ol type="1">
 <li class="fragment">Learn <span class="math inline">\(\hat{\mu}^{(0)}(x)\)</span> by predicting Y from X on controls</li>
 <li class="fragment">Learn <span class="math inline">\(\hat{\mu}^{(1)}(x)\)</span> by predicting Y from X on treated units</li>
-<li class="fragment">Estimate <span class="math inline">\(\hat{\tau} = \frac{1}{n}\sum_{i=1}^{n}[\hat{\mu}^{(1)}(X_i) - \hat{\mu}^{(0)}(X_i)]\)</span>
-</li>
+<li class="fragment">Estimate <span class="math inline">\(\hat{\tau} = \frac{1}{n}\sum_{i=1}^{n}[\hat{\mu}^{(1)}(X_i) - \hat{\mu}^{(0)}(X_i)]\)</span></li>
 </ol>
 </div>
 <div class="fragment">
 <p>This is “obviously” consistent if <span class="math inline">\(\hat{\mu}^{(w)}(x)\)</span> is consistent for <span class="math inline">\(\mu^{(w)}(x)\)</span>. But is this any good?</p>
 </div>
-</section><section id="the-classical-approach-ols" class="slide level2"><h2>The Classical Approach: OLS</h2>
+</section>
+<section id="the-classical-approach-ols" class="slide level2">
+<h2>The Classical Approach: OLS</h2>
 <p>A classical approach to the ATE involves estimating <span class="math inline">\(\mu^{(0)}(x)\)</span> and <span class="math inline">\(\mu^{(1)}(x)\)</span> via ordinary least-squares regression (OLS).</p>
 <div>
 <ul>
-<li class="fragment">First posit a linear model, <span class="math inline">\(\mu^{(w)}(x) = x\beta^{(w)}\)</span>
-</li>
+<li class="fragment">First posit a linear model, <span class="math inline">\(\mu^{(w)}(x) = x\beta^{(w)}\)</span></li>
 <li class="fragment">Fit the model separately for each treatment group:
 <ul>
-<li class="fragment">
-<span class="math inline">\(\hat{\beta}^{(0)} \leftarrow\)</span> lm(Y_i ~ X_i, subset W_i = 0)</li>
-<li class="fragment">
-<span class="math inline">\(\hat{\beta}^{(1)} \leftarrow\)</span> lm(Y_i ~ X_i, subset W_i = 1)</li>
-</ul>
-</li>
-<li class="fragment">Make predictions <span class="math inline">\(\hat{\mu}^{(w)}(x) = x\hat{\beta}^{(w)}\)</span>
-</li>
-<li class="fragment">Compute the ATE estimate: <span class="math inline">\(\hat{\tau} = \frac{1}{n}\sum_{i=1}^{n}[\hat{\mu}^{(1)}(X_i) - \hat{\mu}^{(0)}(X_i)]\)</span>
-</li>
+<li class="fragment"><span class="math inline">\(\hat{\beta}^{(0)} \leftarrow\)</span> lm(Y_i ~ X_i, subset W_i = 0)</li>
+<li class="fragment"><span class="math inline">\(\hat{\beta}^{(1)} \leftarrow\)</span> lm(Y_i ~ X_i, subset W_i = 1)</li>
+</ul></li>
+<li class="fragment">Make predictions <span class="math inline">\(\hat{\mu}^{(w)}(x) = x\hat{\beta}^{(w)}\)</span></li>
+<li class="fragment">Compute the ATE estimate: <span class="math inline">\(\hat{\tau} = \frac{1}{n}\sum_{i=1}^{n}[\hat{\mu}^{(1)}(X_i) - \hat{\mu}^{(0)}(X_i)]\)</span></li>
 </ul>
 </div>
 <div class="fragment">
 <p>Note that the ATE estimate simplifies to <span class="math inline">\(\hat{\tau} = (\hat{\beta}^{(1)} - \hat{\beta}^{(0)})'\bar{X}\)</span>, where <span class="math inline">\(\bar{X} = \frac{1}{n}\sum_{i=1}^{n}X_i\)</span></p>
 </div>
-</section><section id="ols-implementation-example" class="slide level2"><h2>OLS Implementation Example</h2>
-</section><section id="the-machine-learning-approach" class="slide level2"><h2>The Machine Learning Approach</h2>
+</section>
+<section id="ols-implementation-example" class="slide level2">
+<h2>OLS Implementation Example</h2>
+</section>
+<section id="the-machine-learning-approach" class="slide level2">
+<h2>The Machine Learning Approach</h2>
 <p>A modern, non-parametric approach seeks to avoid making assumptions about the functional form of <span class="math inline">\(\mu^{(0)}(x)\)</span> and <span class="math inline">\(\mu^{(1)}(x)\)</span>.</p>
 <div>
 <ul>
 <li class="fragment">Pick your favorite machine learning method</li>
 <li class="fragment">Use it to predict Y_i from X_i separately for treated and control groups</li>
-<li class="fragment">Use these predictions as estimates for <span class="math inline">\(\mu^{(0)}(x)\)</span> and <span class="math inline">\(\mu^{(1)}(x)\)</span>
-</li>
-<li class="fragment">Estimate <span class="math inline">\(\hat{\tau} = \frac{1}{n}\sum_{i=1}^{n}[\hat{\mu}^{(1)}(X_i) - \hat{\mu}^{(0)}(X_i)]\)</span>
-</li>
+<li class="fragment">Use these predictions as estimates for <span class="math inline">\(\mu^{(0)}(x)\)</span> and <span class="math inline">\(\mu^{(1)}(x)\)</span></li>
+<li class="fragment">Estimate <span class="math inline">\(\hat{\tau} = \frac{1}{n}\sum_{i=1}^{n}[\hat{\mu}^{(1)}(X_i) - \hat{\mu}^{(0)}(X_i)]\)</span></li>
 </ul>
 </div>
 <div class="fragment">
 <p>In many settings, machine learning methods enable accurate prediction without needing to model the shape of <span class="math inline">\(\mu^{(0)}(x)\)</span> and <span class="math inline">\(\mu^{(1)}(x)\)</span>.</p>
 </div>
-</section><section id="random-forest-implementation-example" class="slide level2"><h2>Random Forest Implementation Example</h2>
-</section><section id="a-simulation-comparison" class="slide level2"><h2>A Simulation Comparison</h2>
+</section>
+<section id="random-forest-implementation-example" class="slide level2">
+<h2>Random Forest Implementation Example</h2>
+</section>
+<section id="a-simulation-comparison" class="slide level2">
+<h2>A Simulation Comparison</h2>
 <p>Let’s compare OLS and Random Forests in two settings:</p>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -591,7 +635,9 @@ Sean Sylvia
 </div><div class="column" style="width:50%;">
 <p><strong>Non-linear Setting</strong>: - X ~ N(0, I_{20×20}) - P[W=1|X] = (1+sin(X₁))/2 - Y(0) = 4·1({X₁ &gt; 0}) + X₂²/2 + N(0, 4) - Y(1) = 4·1({X₁ &gt; 0}) + X₃²/2 + N(0, 4) - True ATE = 0</p>
 </div></div>
-</section><section id="linear-regression-vs-random-forests" class="slide level2"><h2>Linear Regression vs Random Forests</h2>
+</section>
+<section id="linear-regression-vs-random-forests" class="slide level2">
+<h2>Linear Regression vs Random Forests</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Linear Regression (OLS)</strong> bets everything on <span class="math inline">\(\hat{\mu}^{(w)}(x)\)</span> being linear:</p>
@@ -611,81 +657,80 @@ Sean Sylvia
 <li>Must be robust to suboptimal finite sample performance</li>
 </ul>
 </div></div>
-</section><section id="key-takeaways" class="slide level2"><h2>Key Takeaways</h2>
+</section>
+<section id="key-takeaways" class="slide level2">
+<h2>Key Takeaways</h2>
 <div>
 <ol type="1">
-<li class="fragment">
-<strong>Regression adjustment improves precision</strong>
+<li class="fragment"><strong>Regression adjustment improves precision</strong>
 <ul>
 <li class="fragment">In randomized trials, it’s not needed for unbiasedness but helps with efficiency</li>
 <li class="fragment">The baseline outcome is typically the most important control</li>
-</ul>
-</li>
-<li class="fragment">
-<strong>Standard ANCOVA is a robust approach</strong>
+</ul></li>
+<li class="fragment"><strong>Standard ANCOVA is a robust approach</strong>
 <ul>
 <li class="fragment">Pre-specify key controls (baseline outcome, strata)</li>
 <li class="fragment">Works well in most field experiments</li>
-</ul>
-</li>
-<li class="fragment">
-<strong>PDS Lasso provides a principled control selection method</strong>
+</ul></li>
+<li class="fragment"><strong>PDS Lasso provides a principled control selection method</strong>
 <ul>
 <li class="fragment">But offers limited gains over ANCOVA in most cases</li>
 <li class="fragment">Include key variables in the amelioration set</li>
-</ul>
-</li>
-<li class="fragment">
-<strong>Machine learning methods can help with non-linear relationships</strong>
+</ul></li>
+<li class="fragment"><strong>Machine learning methods can help with non-linear relationships</strong>
 <ul>
 <li class="fragment">But may not offer large gains in typical field experiment settings</li>
 <li class="fragment">Require careful implementation to maintain valid inference</li>
-</ul>
-</li>
+</ul></li>
 </ol>
 </div>
-</section><section id="next-steps" class="slide level2"><h2>Next Steps</h2>
-<p>Advanced methods that build on these approaches:</p>
+</section>
+<section id="next-steps" class="slide level2">
+<h2>Next Steps</h2>
 <div>
 <ul>
-<li class="fragment">
-<strong>Double/Debiased Machine Learning</strong>
-<ul>
-<li class="fragment">Combining machine learning with robust inference</li>
-</ul>
-</li>
-<li class="fragment">
-<strong>Causal Forests</strong>
-<ul>
-<li class="fragment">Estimating heterogeneous treatment effects</li>
-</ul>
-</li>
-<li class="fragment">
-<strong>Doubly Robust Estimation</strong>
+<li class="fragment"><strong>Doubly Robust Estimation</strong>
 <ul>
 <li class="fragment">Protecting against model misspecification</li>
-</ul>
-</li>
-<li class="fragment">
-<strong>Experimental Design Considerations</strong>
+</ul></li>
+<li class="fragment"><strong>Double/Debiased Machine Learning</strong>
 <ul>
-<li class="fragment">Optimal sample allocation</li>
-<li class="fragment">Stratification and blocking</li>
-</ul>
-</li>
+<li class="fragment">Combining machine learning with robust inference</li>
+</ul></li>
+<li class="fragment"><strong>Causal Forests</strong>
+<ul>
+<li class="fragment">Estimating heterogeneous treatment effects</li>
+</ul></li>
 </ul>
 </div>
 
 
 </section>
-</div>
+    </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
 <p>UNC HPM 883 - Advanced Quantitative Methods</p>
 </div>
 </div></div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script><script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../site_libs/revealjs/plugin/search/search.js"></script><script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
@@ -877,7 +922,9 @@ Sean Sylvia
           RevealZoom
         ]
       });
-    </script><script>
+    </script>
+    
+    <script>
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
       // slide changes (different for each slide format).
@@ -912,7 +959,9 @@ Sean Sylvia
         }
 
       })();
-    </script><script id="quarto-html-after-body" type="application/javascript">
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
         const mode = bsSheetEl.getAttribute("data-mode");
@@ -1097,6 +1146,6 @@ Sean Sylvia
       }
     });
     </script>
-
+    
 
 </body></html>
