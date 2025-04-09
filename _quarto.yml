@@ -125,6 +125,8 @@ website:
         contents:
           - href: unit-4/unit-4.qmd
             text: "Unit 4: Mechanisms"
+          - href: unit-4/lec-4-1-slides.qmd
+            text: "Lecture Slides: Unit 4.1: Estimating Average Treatment Effects"
       - section: "Resources"
         contents:
           - href: resources.qmd

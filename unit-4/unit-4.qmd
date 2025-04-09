@@ -25,10 +25,12 @@ In this unit, we'll be digging deeper into analysis of randomized trials, focusi
 
 
 
-## Unit 4.2: Heterogeneous Treatment Effects
+## Unit 4.2: Heterogeneous Treatment Effects & Moderation
+
+- [Lecture 4.2 Slides](/unit-4/lec-4-2-slides.qmd)
+- [HTE Exercise]
 
 
-## Unit 4.3: Moderation
 
 
 

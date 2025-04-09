@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.6.42">
 
   <meta name="author" content="Sean Sylvia">
-  <title>HPM 883 – Lecture 4.1: Estimating Average Treatment Effects</title>
+  <title>HPM 883 – Lecture 4.2: Heterogeneous Treatment Effects</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -123,16 +123,13 @@
       margin-right: 0; 
     }
   </style>
-  <script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
-  <script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
-  <link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Lecture 4.1: Estimating Average Treatment Effects</h1>
+  <h1 class="title">Lecture 4.2: Heterogeneous Treatment Effects</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -143,446 +140,294 @@ Sean Sylvia
 </div>
 
 </section>
-<section id="review-the-potential-outcomes-framework" class="slide level2">
-<h2>Review: The Potential Outcomes Framework</h2>
-<div>
+<section id="learning-objectives" class="slide level2">
+<h2>Learning Objectives</h2>
+<p>By the end of this session, you should be able to:</p>
 <ul>
-<li class="fragment">For each unit <span class="math inline">\(i\)</span>, we define two potential outcomes:
-<ul>
-<li class="fragment"><span class="math inline">\(Y_i(1)\)</span>: Outcome if unit receives treatment</li>
-<li class="fragment"><span class="math inline">\(Y_i(0)\)</span>: Outcome if unit does not receive treatment</li>
-</ul></li>
-<li class="fragment">The causal effect for unit <span class="math inline">\(i\)</span>: <span class="math inline">\(\delta_i = Y_i(1) - Y_i(0)\)</span></li>
-<li class="fragment"><strong>Fundamental problem of causal inference</strong>: We only observe one potential outcome for each unit</li>
-<li class="fragment">The observed outcome: <span class="math inline">\(Y_i = Y_i(W_i)\)</span> where <span class="math inline">\(W_i \in \{0,1\}\)</span> is the treatment assignment</li>
+<li>Understand the concept of heterogeneous treatment effects and why they matter</li>
+<li>Distinguish between individual treatment effects, average treatment effects, and conditional average treatment effects</li>
+<li>Apply different approaches to analyze treatment effect heterogeneity</li>
+<li>Understand the strengths and limitations of pre-specified and data-driven approaches</li>
+<li>Interpret heterogeneity findings in published research</li>
 </ul>
-</div>
-<div class="fragment">
-<p>We typically focus on the <strong>Average Treatment Effect (ATE)</strong>: <span class="math display">\[\tau = E[Y_i(1) - Y_i(0)]\]</span></p>
-</div>
 </section>
-<section id="why-randomization-works" class="slide level2">
-<h2>Why Randomization Works</h2>
-<div>
+<section id="individual-treatment-effects" class="slide level2">
+<h2>Individual Treatment Effects</h2>
+<p><strong>Individual Treatment Effect (ITE)</strong>: <span class="math inline">\(T_i = Y_i(1) - Y_i(0)\)</span></p>
 <ul>
-<li class="fragment">Randomization makes treatment assignment <strong>independent</strong> of potential outcomes: <span class="math display">\[W_i \perp\!\!\!\perp (Y_i(0), Y_i(1))\]</span></li>
-<li class="fragment">This means treatment and control groups are balanced on observable and unobservable characteristics</li>
-<li class="fragment">In expectation:
-<ul>
-<li class="fragment"><span class="math inline">\(E[Y_i(1)|W_i=1] = E[Y_i(1)]\)</span></li>
-<li class="fragment"><span class="math inline">\(E[Y_i(0)|W_i=0] = E[Y_i(0)]\)</span></li>
-</ul></li>
-<li class="fragment">Thus, the difference in observed outcomes provides an unbiased estimate of the ATE</li>
+<li>The individual-specific causal effect of the treatment</li>
+<li><span class="math inline">\(Y_i(1)\)</span> is the potential outcome under treatment</li>
+<li><span class="math inline">\(Y_i(0)\)</span> is the potential outcome under control</li>
 </ul>
-</div>
-</section>
-<section id="the-difference-in-means-estimator" class="slide level2">
-<h2>The Difference-in-Means Estimator</h2>
-<p>The simplest approach to estimate the ATE in an RCT is the difference in means:</p>
-<p><span class="math display">\[\hat{\tau}_{DM} = \frac{1}{n_1}\sum_{i:W_i=1}Y_i - \frac{1}{n_0}\sum_{i:W_i=0}Y_i\]</span></p>
-<div>
+<p><strong>Fundamental Problem of Causal Inference</strong>:</p>
 <ul>
-<li class="fragment"><span class="math inline">\(n_1\)</span>: Number of treated units</li>
-<li class="fragment"><span class="math inline">\(n_0\)</span>: Number of control units</li>
-<li class="fragment"><strong>Properties</strong>:
-<ul>
-<li class="fragment">Unbiased for the ATE: <span class="math inline">\(E[\hat{\tau}_{DM}] = \tau\)</span></li>
-<li class="fragment">Variance depends on outcome variation</li>
-<li class="fragment">Simple to calculate and understand</li>
-</ul></li>
+<li>We only observe one potential outcome per individual</li>
+<li>It’s impossible to directly observe individual treatment effects</li>
+<li>This makes identifying individual effects infeasible in between-subjects designs</li>
 </ul>
-</div>
 </section>
-<section id="room-for-improvement" class="slide level2">
-<h2>Room for Improvement</h2>
-<p>Despite randomization, the difference-in-means estimator has limitations:</p>
-<div>
+<section id="average-treatment-effect-ate" class="slide level2">
+<h2>Average Treatment Effect (ATE)</h2>
+<p>Given the fundamental problem, we focus on the Average Treatment Effect:</p>
+<p><span class="math display">\[
+\tau = E[Y_i(1) - Y_i(0)]
+\]</span></p>
 <ul>
-<li class="fragment">May have high variance, especially with small samples</li>
-<li class="fragment">Does not leverage baseline information</li>
-<li class="fragment">Does not account for the design of the experiment (e.g., stratification)</li>
-<li class="fragment">Subject to chance imbalances between treatment and control</li>
+<li>ATE answers: “What is the expected change in outcome if we randomly select a unit from the population and apply the treatment?”</li>
+<li>ATE is estimable through randomization</li>
+<li><strong>Limitation</strong>: Assuming equal effect for all subjects is often unrealistic</li>
+<li>Interest in how treatment effects vary with subject characteristics</li>
 </ul>
-</div>
-<div class="fragment">
-<p><strong>Key Question</strong>: How can we improve precision while maintaining unbiasedness?</p>
-</div>
 </section>
-<section id="lecture-roadmap" class="slide level2">
-<h2>Lecture Roadmap</h2>
-<p>Today we’ll explore three approaches to estimating the ATE:</p>
+<section id="examples-of-interest-in-heterogeneity" class="slide level2">
+<h2>Examples of Interest in Heterogeneity</h2>
+<p><strong>Real-world examples where heterogeneity matters</strong>:</p>
+<ul>
+<li>Preventive screening effectiveness: How the benefits of cancer screenings or other preventive services vary by age, risk status, and other patient characteristics</li>
+<li>Telehealth disparities: How rural and urban populations may experience different benefits from telehealth interventions (particularly relevant given the expansion of telehealth)</li>
+<li>Care coordination effectiveness: How complex patients with multiple comorbidities might benefit differently from care coordination programs</li>
+<li>Adherence interventions: How socioeconomic factors might moderate the effectiveness of programs to improve medication adherence</li>
+<li>Value-based payment impacts: How provider characteristics influence responses to payment reform</li>
+</ul>
+</section>
+<section id="reasons-for-interest-in-heterogeneity" class="slide level2">
+<h2>Reasons for Interest in Heterogeneity</h2>
 <div>
 <ol type="1">
-<li class="fragment"><strong>Standard Regression Approach</strong>
+<li class="fragment"><strong>Targeting Treatment</strong>
 <ul>
-<li class="fragment">Controlling for baseline covariates in RCTs</li>
-<li class="fragment">ANCOVA specification</li>
+<li class="fragment">Should we direct interventions to certain types of people?</li>
+<li class="fragment">Can help maximize impact with limited resources</li>
+<li class="fragment">Ethical considerations in allocation</li>
 </ul></li>
-<li class="fragment"><strong>Post-Double Selection Lasso</strong>
+<li class="fragment"><strong>Understanding Mechanisms</strong>
 <ul>
-<li class="fragment">A principled approach to covariate selection</li>
-<li class="fragment">Balancing precision and researcher degrees of freedom</li>
+<li class="fragment">Why did treatment work or not work?</li>
+<li class="fragment">Helps refine interventions and theory</li>
 </ul></li>
-<li class="fragment"><strong>Machine Learning Approaches</strong>
+<li class="fragment"><strong>External Validity</strong>
 <ul>
-<li class="fragment">Using flexible methods to model treatment effects</li>
-<li class="fragment">Addressing non-linearities in outcome relationships</li>
+<li class="fragment">Will effects generalize to new populations?</li>
+<li class="fragment">Crucial for policy scale-up decisions</li>
 </ul></li>
 </ol>
 </div>
 </section>
-<section id="standard-approach-to-ate-estimation-in-rcts" class="slide level2">
-<h2>Standard Approach to ATE Estimation in RCTs</h2>
-<p><span class="math display">\[Y_{it} = \alpha + \theta T_i + \beta Y_{i(t-1)} + \sum\beta_i X_i + \sum\delta_s + \varepsilon_i\]</span></p>
-<div>
+<section id="moderation-analysis" class="slide level2">
+<h2>Moderation Analysis</h2>
+<p><strong>Moderation Analysis</strong>: Examines how treatment effects differ based on pre-determined covariates (moderators)</p>
+<p><strong>Types of moderation analysis:</strong></p>
 <ul>
-<li class="fragment">The equation above represents the canonical specification for ATE estimation in RCTs</li>
-<li class="fragment"><strong>Parameters of interest:</strong>
-<ul>
-<li class="fragment"><span class="math inline">\(Y_{it}\)</span>: Outcome variable for unit <span class="math inline">\(i\)</span> at follow-up time <span class="math inline">\(t\)</span></li>
-<li class="fragment"><span class="math inline">\(T_i\)</span>: Treatment indicator (1 = treated, 0 = control)</li>
-<li class="fragment"><span class="math inline">\(\theta\)</span>: Average treatment effect (our target)</li>
-<li class="fragment"><span class="math inline">\(Y_{i(t-1)}\)</span>: Baseline value of the outcome</li>
-<li class="fragment"><span class="math inline">\(X_i\)</span>: Vector of baseline covariates</li>
-<li class="fragment"><span class="math inline">\(\delta_s\)</span>: Strata fixed effects</li>
-</ul></li>
+<li><strong>Descriptive</strong>: Do treatment effects differ based on pre-determined covariates?</li>
+<li><strong>Causal</strong>: If we independently varied the moderator, would we see the same CATEs?</li>
 </ul>
-</div>
-</section>
-<section id="basic-specification-no-controls" class="slide level2">
-<h2>Basic Specification: No Controls</h2>
-<p><span class="math display">\[Y_{it} = \alpha + \theta T_i + \varepsilon_i\]</span></p>
-<div>
+<p><strong>Interpretation:</strong></p>
 <ul>
-<li class="fragment">Simplest specification: regress outcome on treatment indicator only</li>
-<li class="fragment">Valid in expectation due to randomization</li>
-<li class="fragment"><span class="math inline">\(\theta\)</span> is unbiased estimate of the ATE</li>
-<li class="fragment"><strong>Critical note on inference:</strong>
-<ul>
-<li class="fragment">Use robust standard errors to account for heteroskedasticity</li>
-<li class="fragment">If clustered randomization, use cluster-robust standard errors</li>
-<li class="fragment"><span class="math inline">\(SE(\hat{\theta})_{robust} = \sqrt{\frac{\hat{\sigma}^2_1}{n_1} + \frac{\hat{\sigma}^2_0}{n_0}}\)</span></li>
-</ul></li>
-<li class="fragment">Often leaves substantial unexplained variation in the outcome</li>
-</ul>
-</div>
-<div class="fragment">
-<p>This approach is equivalent to a simple difference in means between treatment and control groups.</p>
-</div>
-</section>
-<section id="adding-strata-fixed-effects" class="slide level2">
-<h2>Adding Strata Fixed Effects</h2>
-<p><span class="math display">\[Y_{it} = \alpha + \theta T_i + \sum\delta_s + \varepsilon_i\]</span></p>
-<div>
-<ul>
-<li class="fragment">When randomization is stratified, include fixed effects for each stratum</li>
-<li class="fragment"><span class="math inline">\(\sum\delta_s\)</span> represents indicator variables for each randomization stratum</li>
-<li class="fragment"><strong>Benefits:</strong>
-<ul>
-<li class="fragment">Accounts for the design of the experiment</li>
-<li class="fragment">Improves precision by removing between-strata variation</li>
-<li class="fragment">Ensures valid inference (failure to include can lead to incorrect standard errors)</li>
-</ul></li>
-<li class="fragment"><strong>Implementation:</strong>
-<ul>
-<li class="fragment">Include dummy variables for all but one stratum</li>
-<li class="fragment">Or use factor variables in statistical software (e.g., in R: <code>factor(stratum)</code>)</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="adding-baseline-controls" class="slide level2">
-<h2>Adding Baseline Controls</h2>
-<p><span class="math display">\[Y_{it} = \alpha + \theta T_i + \beta Y_{i(t-1)} + \sum\beta_i X_i + \sum\delta_s + \varepsilon_i\]</span></p>
-<div>
-<ul>
-<li class="fragment"><strong>Baseline outcome</strong> (<span class="math inline">\(Y_{i(t-1)}\)</span>):
-<ul>
-<li class="fragment">Usually provides largest precision gain</li>
-<li class="fragment">Flexibly controls for autocorrelation</li>
-<li class="fragment">Preferable to “difference-in-differences” in most RCTs</li>
-<li class="fragment">Coefficient <span class="math inline">\(\beta\)</span> need not equal 1 (unlike DiD)</li>
-</ul></li>
-<li class="fragment"><strong>Additional covariates</strong> (<span class="math inline">\(X_i\)</span>):
-<ul>
-<li class="fragment">Must be measured pre-treatment</li>
-<li class="fragment">Should predict residual variation in outcome</li>
-<li class="fragment">Balance checks not necessary to justify inclusion</li>
-<li class="fragment">Helps account for chance imbalances</li>
-</ul></li>
-</ul>
-</div>
-<div class="fragment">
-<p>This approach (ANCOVA) is the gold standard for most RCTs with baseline data.</p>
-</div>
-</section>
-<section id="considerations-on-including-covariate-controls" class="slide level2">
-<h2>Considerations on Including Covariate Controls</h2>
-<p><span class="math display">\[Y_{it} = \alpha + \theta T_i + \beta Y_{i(t-1)} + \sum\beta_i X_i + \sum\delta_s + \varepsilon_i\]</span></p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>Research Design Considerations:</strong></p>
-<ul>
-<li>Pre-specify controls in analysis plan</li>
-<li>Avoid “fishing” for significant results</li>
-<li>Balance precision gains against complexity</li>
-<li>Guard against researcher degrees of freedom</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<p><strong>The Selection Problem:</strong></p>
-<ul>
-<li>Which covariates should we include?</li>
-<li>How many covariates are too many?</li>
-<li>How do we handle many potential controls?</li>
-<li>Can we automate control selection?</li>
-</ul>
-</div></div>
-<div class="fragment">
-<p>This is where Post-Double Selection Lasso can provide a principled solution.</p>
-</div>
-</section>
-<section id="pds-lasso-in-field-experiments" class="slide level2">
-<h2>PDS Lasso in Field Experiments</h2>
-<p><strong>Post-Double Selection Lasso for Randomized Trials</strong></p>
-<div>
-<ul>
-<li class="fragment"><strong>PDS Lasso</strong>: A principled approach to selecting control variables in field experiments</li>
-<li class="fragment">Addresses the key question: <em>Which covariates should we include in our regression?</em></li>
-<li class="fragment">Helps balance competing concerns:
-<ul>
-<li class="fragment">Including relevant controls improves precision</li>
-<li class="fragment">Ad hoc selection creates researcher degrees of freedom (p-hacking concerns)</li>
-<li class="fragment">Too many controls reduces power in small samples</li>
-</ul></li>
-<li class="fragment">Provides a data-driven alternative to traditional ANCOVA approaches</li>
-<li class="fragment">Originally developed for observational studies but increasingly applied to RCTs</li>
-</ul>
-</div>
-<div class="fragment">
-<p><strong>Key Question</strong>: In a randomized experiment, why use a method designed for observational studies?</p>
-</div>
-</section>
-<section id="the-pds-lasso-method" class="slide level2">
-<h2>The PDS Lasso Method</h2>
-<p><strong>Three-Step Procedure:</strong></p>
-<ol type="1">
-<li><strong>Step 1</strong>: Use Lasso to select controls that predict the outcome
-<ul>
-<li>Regress Y on covariates X (excluding treatment)</li>
-<li>Lasso penalty shrinks coefficients toward zero</li>
-<li>Set of selected variables: I₁</li>
-</ul></li>
-<li><strong>Step 2</strong>: Use Lasso to select controls that predict treatment
-<ul>
-<li>Regress T on covariates X</li>
-<li>Set of selected variables: I₂</li>
-</ul></li>
-<li><strong>Step 3</strong>: Estimate treatment effect by OLS
-<ul>
-<li>Regress Y on T and all selected controls (I = I₁ ∪ I₂)</li>
-<li>Optional “amelioration set” (I₃) of variables always included</li>
-</ul></li>
-</ol>
-</section>
-<section id="the-pds-lasso-method-1" class="slide level2">
-<h2>The PDS Lasso Method</h2>
-<div class="cell" data-reveal="true" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart TD
-    A[Potential Controls X] --&gt; B["Lasso Step 1: &lt;br&gt; Predict Outcome"]
-    A --&gt; C["Lasso Step 2: &lt;br&gt; Predict Treatment"]
-    B --&gt; D[Selected Controls I₁]
-    C --&gt; E[Selected Controls I₂]
-    D --&gt; F[Union of Controls &lt;br&gt; I₁ ∪ I₂ ∪ I₃]
-    E --&gt; F
-    G[Amelioration Set I₃] --&gt; F
-    F --&gt; H[Final OLS Regression &lt;br&gt; Y ~ T + Selected Controls]
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-</section>
-<section id="why-double-selection-in-rcts" class="slide level2">
-<h2>Why Double Selection in RCTs?</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>The Theoretical Paradox:</strong></p>
-<ul>
-<li>In perfectly randomized experiments, treatment is orthogonal to all covariates</li>
-<li>So why model treatment prediction at all?</li>
-</ul>
-<p><strong>Practical Justifications:</strong></p>
-<ul>
-<li>Small sample sizes lead to chance imbalances</li>
-<li>Attrition creates non-random final analysis samples</li>
-<li>Field experiments often have both issues (average 15% attrition)</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="fragment">
-<p><strong>Key Insights</strong>:</p>
-<ol type="1">
-<li>Lasso in Step 1 may miss variables with:
-<ul>
-<li>Moderate associations with outcomes (due to regularization)</li>
-<li>Strong correlations with treatment</li>
-</ul></li>
-<li>Step 2 provides a “second chance” to capture these important variables, enhancing robustness against:
-<ul>
-<li>Chance imbalances</li>
-<li>Selective attrition</li>
-</ul></li>
-<li>Particularly valuable when variables have moderate outcome correlations but strong treatment imbalances</li>
-</ol>
-</div>
-</div></div>
-</section>
-<section id="pds-lasso-in-practice" class="slide level2">
-<h2>PDS Lasso in Practice</h2>
-<p><strong>Cilliers, Elashmawy, and McKenzie (2024)</strong></p>
-<h4 id="empirical-findings-from-780-treatment-estimates">Empirical Findings from 780 Treatment Estimates:</h4>
-<ul>
-<li>Despite many potential controls (median 182), PDS Lasso selects few (median 2)</li>
-<li>Step 1 (outcome prediction): Selects at least one variable in 71% of cases</li>
-<li>Step 2 (treatment prediction): Selects no variables in 57% of cases</li>
-<li>Almost no overlap between variables selected in Steps 1 and 2</li>
-</ul>
-<h4 id="impact-relative-to-ancova">Impact relative to ANCOVA:</h4>
-<ul>
-<li>Very minimal changes in treatment estimates (median 0.01 SD)</li>
-<li>Slight reduction in standard errors (median ratio 0.992)</li>
-<li>Yields larger standard errors in about 25% of cases</li>
-<li>Implied MDE reduction: only 0.9% at median</li>
+<li>Focus not just on measuring heterogeneities, but understanding why they exist</li>
+<li>Descriptive heterogeneity doesn’t necessarily imply causal moderation</li>
 </ul>
 </section>
-<section id="pds-lasso-in-practice---cilliers-elashmawy-and-mckenzie-2024" class="slide level2">
-<h2>PDS Lasso in Practice - Cilliers, Elashmawy, and McKenzie (2024)</h2>
+<section id="conditional-average-treatment-effects-cates" class="slide level2">
+<h2>Conditional Average Treatment Effects (CATEs)</h2>
+<p><strong>Definition</strong>: <span class="math display">\[
+\tau(x) = E[\tau(x) | X_i = x] = E[Y_i(1, x) - Y_i(0, x) | X_i = x]
+\]</span></p>
+<ul>
+<li>Average treatment effect for a subgroup with characteristics <span class="math inline">\(X_i = x\)</span></li>
+<li>Potential interest in changes in CATEs: <span class="math display">\[
+\Delta\tau(X_i) = E[Y_i(1,1) - Y_i(1,0) - Y_i(0,1) - Y_i(0,0)]
+\]</span></li>
+</ul>
+<p><strong>Limitation</strong>:</p>
+<ul>
+<li>This object is not directly observed in data</li>
+<li>Each unit only provides a single potential outcome</li>
+<li>Each unit has only a single level of <span class="math inline">\(X_i\)</span></li>
+</ul>
+</section>
+<section id="differences-in-cates" class="slide level2">
+<h2>Differences in CATEs</h2>
+<p>We can measure differences between <span class="math inline">\(\tau(x)\)</span> for different levels of <span class="math inline">\(X_i\)</span>:</p>
+<p><span class="math display">\[
+\Delta\hat\tau(X_i) = \tau(1) - \tau(0) = E[\tau_i(1) | X_i = 1] - E[\tau_i(0) | X_i = 0]
+\]</span></p>
+<p><strong>Important Note</strong>:</p>
+<ul>
+<li><span class="math inline">\(\Delta\hat\tau(X_i)\)</span> is descriptive, not causal</li>
+<li>It can show whether CATE is higher for different levels of <span class="math inline">\(X_i\)</span></li>
+<li>Cannot answer whether there is a causal effect of <span class="math inline">\(X\)</span> on the treatment effect</li>
+<li>But still highly valuable for policy and implementation</li>
+</ul>
+</section>
+<section id="example" class="slide level2">
+<h2>Example</h2>
+<p><strong>Home-based Parenting Intervention in Rural China (Sylvia et al.&nbsp;2021)</strong></p>
+<p><strong>Background</strong>:</p>
+<ul>
+<li>Randomized experiment evaluating home-based parenting program delivered by family planning cadres in rural China</li>
+<li>Program significantly increased infant skill development after six months</li>
+<li>Beyond ATE, wanted to understand heterogeneous effects</li>
+</ul>
+<p><strong>Reasons for examining heterogeneity</strong>:</p>
+<ul>
+<li>Targeting: Identify which children benefited most</li>
+<li>Generalization: Understand how effects might vary in other populations</li>
+<li>Mechanisms: Gain insights into how the program worked</li>
+</ul>
+</section>
+<section class="slide level2">
 
-<img data-src="../unit-4/pds_selected_vars_cilliers2024.png" class="r-stretch quarto-figure-center"><p class="caption">Distribution of Selected Variables</p><p><em>Key finding: PDS Lasso offers limited precision gains compared to standard ANCOVA approaches in most field experiments</em></p>
+
+<img data-src="QQ-ATE-1.png" class="r-stretch"></section>
+<section class="slide level2">
+
+
+<img data-src="QQ-ATE-Table.png" class="r-stretch"></section>
+<section id="approach-1-pre-specified-hypotheses" class="slide level2">
+<h2>Approach 1: Pre-specified Hypotheses</h2>
+<p><strong>Simple case</strong>: A small set of distinct subgroups that we hypothesize to summarize heterogeneity</p>
+<p>With sufficient sample sizes per subgroup, treat each subgroup as a “mini-RCT”:</p>
+<ul>
+<li>Estimate <span class="math inline">\(\hat\tau(X) = E[\tau(X) | X_i = X]\)</span></li>
+<li>Hold <span class="math inline">\(X\)</span> fixed in estimation</li>
+<li>Can be done separately or using interaction terms in regression</li>
+</ul>
+<p><strong>Example</strong>: Analyzing treatment effects by baseline parental investment levels</p>
 </section>
-<section id="implementation-considerations" class="slide level2">
-<h2>Implementation Considerations</h2>
-<p><strong>Key Decisions When Using PDS Lasso:</strong></p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>Penalty Parameter λ:</strong></p>
+<section id="sample-size-and-hte" class="slide level2">
+<h2>Sample Size and HTE</h2>
 <ul>
-<li>Controls degree of variable selection</li>
-<li><strong>Default “plug-in” λ</strong>: Increases with covariates and sample size
+<li><p>Moderation analysis requires larger samples or larger MDEs</p></li>
+<li><p>Considerations:</p>
 <ul>
-<li>Theoretically justified for causal inference</li>
-<li>Tends to select few variables</li>
+<li>Moderation effects are often smaller than main effects</li>
+<li>You can have smaller samples when comparing subgroups</li>
+<li>Subgroups don’t have to be evenly split</li>
 </ul></li>
-<li><strong>Cross-validation</strong>: Select λ to minimize prediction error
+<li><p>Design implications:</p>
 <ul>
-<li>Selects many more variables (often 5-7x more)</li>
-<li>Can be unstable and risks overfitting</li>
-<li>Limited theoretical justification for causal inference</li>
+<li>Consider oversampling key subgroups</li>
+<li>Power calculations should account for heterogeneity analyses</li>
+<li>Stratification can improve precision for key subgroups</li>
 </ul></li>
 </ul>
-</div><div class="column" style="width:50%;">
-<p><strong>Input Variable Selection:</strong></p>
-<ul>
-<li>“Kitchen sink” approach common but problematic
-<ul>
-<li>Penalty increases with number of potential controls</li>
-<li>Too many variables can lead to none being selected</li>
-</ul></li>
-<li><strong>Amelioration Set (I₃):</strong>
-<ul>
-<li>Variables always included regardless of selection</li>
-<li>Recommended inclusions:
-<ul>
-<li>Lagged dependent variable</li>
-<li>Randomization strata fixed effects</li>
-</ul></li>
-<li>Guards against underselection of important variables</li>
-</ul></li>
-</ul>
-</div></div>
 </section>
-<section id="best-practices-for-pds-lasso" class="slide level2">
-<h2>Best Practices for PDS Lasso</h2>
-<p><strong>Checklist for Effective Implementation:</strong></p>
-<div>
+<section id="challenges-with-pre-specified-approaches" class="slide level2">
+<h2>Challenges with Pre-specified Approaches</h2>
+<ul>
+<li>Moderation analysis typically involves estimating a series of CATEs</li>
+<li>With many covariates, quickly becomes infeasible
+<ul>
+<li>Particularly with smaller samples</li>
+</ul></li>
+<li>Continuous covariates require functional form assumptions</li>
+<li>Difficult to discover/justify interactions of multiple variables ex post</li>
+</ul>
+<p><strong>Partial solutions</strong>:</p>
+<ul>
+<li>Pre-analysis plans</li>
+<li>Data-driven approaches to predict heterogeneity</li>
+</ul>
+</section>
+<section id="approach-2-ml---causal-forests" class="slide level2">
+<h2>Approach 2: ML - Causal Forests</h2>
+<p><strong>Causal forests</strong> adapt random forest methods to estimate heterogeneous treatment effects:</p>
+<ul>
+<li>Trees are trained on subsets of data and features</li>
+<li>Goal is to partition data to maximize between-group heterogeneity while maintaining within-group homogeneity</li>
+<li>Repeated many times with random splits of the data</li>
+<li>ITE estimated by averaging over subgroup effects across iterations</li>
+</ul>
+<p><strong>Advantages</strong>:</p>
+<ul>
+<li>Can handle high-dimensional covariates</li>
+<li>Doesn’t require functional form assumptions</li>
+<li>Can discover unexpected patterns of heterogeneity</li>
+</ul>
+</section>
+<section id="case-study-heterogeneity-in-chinas-parenting-intervention" class="slide level2">
+<h2>Case Study: Heterogeneity in China’s Parenting Intervention</h2>
+<p><strong>Sylvia et al.&nbsp;(2021) study</strong>:</p>
+<ul>
+<li>Evaluated home-based parenting program delivered by family planning cadres in rural China</li>
+<li>Used Generalized Random Forest (GRF) method to identify sources of heterogeneity</li>
+<li>Two-stage approach:
 <ol type="1">
-<li class="fragment"><strong>Be realistic about power gains</strong>
+<li>Used GRF to identify important predictors of heterogeneity</li>
+<li>Used these insights for traditional subgroup analysis</li>
+</ol></li>
+</ul>
+</section>
+<section class="slide level2">
+
+
+<img data-src="QQ-CATE-1.png" class="r-stretch"></section>
+<section class="slide level2">
+
+
+<img data-src="QQ-CATE-2.png" class="r-stretch"></section>
+<section class="slide level2">
+
+
+<img data-src="QQ-CATE-3.png" class="r-stretch"></section>
+<section id="grf-findings-variable-importance" class="slide level2">
+<h2>GRF Findings: Variable Importance</h2>
+
+<img data-src="QQ-VI.png" class="r-stretch"><p><strong>Key predictors of heterogeneity:</strong> 1. Baseline parental investment (27.16%) 2. Baseline infant skills (16.73%) 3. Distance to FPC office (12.51%)</p>
+</section>
+<section id="grf-informed-heterogeneity-analysis" class="slide level2">
+<h2>GRF-Informed Heterogeneity Analysis</h2>
+
+<img data-src="QQ-GRF-Informed.png" class="r-stretch"></section>
+<section id="grf-informed-heterogeneity-analysis-1" class="slide level2">
+<h2>GRF-Informed Heterogeneity Analysis</h2>
+<p><strong>Findings:</strong></p>
 <ul>
-<li class="fragment">Expect very small reductions in standard errors compared to ANCOVA</li>
-<li class="fragment">Don’t rely on large improvements for power calculations</li>
-</ul></li>
-<li class="fragment"><strong>Include key variables in amelioration set</strong>
+<li>Treatment effects significantly higher for children with low baseline parental investment
 <ul>
-<li class="fragment">Lagged dependent variable</li>
-<li class="fragment">Randomization strata or matched pair fixed effects</li>
+<li>First quartile: +0.456 SD higher effect</li>
 </ul></li>
-<li class="fragment"><strong>Be judicious with input controls</strong>
+<li>Children with below-median baseline skills benefited more
 <ul>
-<li class="fragment">Avoid “kitchen sink” approach with hundreds of variables</li>
-<li class="fragment">Focus on variables with potential outcome correlation</li>
+<li>+0.340 SD higher effect</li>
 </ul></li>
-<li class="fragment"><strong>Handle missing values carefully</strong>
-<ul>
-<li class="fragment">Ensure all input controls have no missing values (e.g., by dummying out)</li>
-<li class="fragment">Missing values reduced final samples in many studies</li>
-</ul></li>
-<li class="fragment"><strong>Use as a robustness check</strong>
-<ul>
-<li class="fragment">Provides a principled alternative to ad hoc control selection</li>
-<li class="fragment">Large coefficient changes may signal concerns about randomization</li>
-</ul></li>
-</ol>
-</div>
+<li>No significant differences based on distance to FPC office</li>
+</ul>
+<p><strong>Conclusion:</strong> Program was most effective for disadvantaged children who lagged behind cognitively and had low initial parental investment</p>
 </section>
 <section id="key-takeaways" class="slide level2">
 <h2>Key Takeaways</h2>
-<div>
-<ol type="1">
-<li class="fragment"><strong>Regression adjustment improves precision</strong>
 <ul>
-<li class="fragment">In randomized trials, it’s not needed for unbiasedness but helps with efficiency</li>
-<li class="fragment">The baseline outcome is typically the most important control</li>
+<li>Heterogeneity analysis provides crucial insights beyond average effects</li>
+<li>Two main approaches:
+<ul>
+<li>Pre-specified subgroup analysis (theory-driven)</li>
+<li>Data-driven methods like causal forests (exploratory)</li>
 </ul></li>
-<li class="fragment"><strong>Standard ANCOVA is a robust approach</strong>
+<li>Best practice: Use both approaches complementarily</li>
+<li>Results can guide:
 <ul>
-<li class="fragment">Pre-specify key controls (baseline outcome, strata)</li>
-<li class="fragment">Works well in most field experiments</li>
-</ul></li>
-<li class="fragment"><strong>PDS Lasso provides a principled control selection method</strong>
-<ul>
-<li class="fragment">But offers limited gains over ANCOVA in most cases</li>
-<li class="fragment">Include key variables in the amelioration set</li>
-</ul></li>
-<li class="fragment"><strong>Machine learning methods can help with non-linear relationships</strong>
-<ul>
-<li class="fragment">But may not offer large gains in typical field experiment settings</li>
-<li class="fragment">Require careful implementation to maintain valid inference</li>
-</ul></li>
-</ol>
-</div>
-</section>
-<section id="next-steps" class="slide level2">
-<h2>Next Steps</h2>
-<div>
-<ul>
-<li class="fragment"><strong>Doubly Robust Estimation</strong>
-<ul>
-<li class="fragment">Protecting against model misspecification</li>
-</ul></li>
-<li class="fragment"><strong>Double/Debiased Machine Learning</strong>
-<ul>
-<li class="fragment">Combining machine learning with robust inference</li>
-</ul></li>
-<li class="fragment"><strong>Causal Forests</strong>
-<ul>
-<li class="fragment">Estimating heterogeneous treatment effects</li>
+<li>Program targeting</li>
+<li>Mechanism understanding</li>
+<li>External validity assessments</li>
 </ul></li>
 </ul>
-</div>
+</section>
+<section id="using-heterogeneity-insights" class="slide level2">
+<h2>Using Heterogeneity Insights</h2>
+<ul>
+<li><strong>Program design</strong>: Target children with greatest potential benefit</li>
+<li><strong>Resource allocation</strong>: Direct resources where most effective</li>
+<li><strong>Implementation science</strong>: Understand contextual factors affecting success</li>
+<li><strong>Theory development</strong>: Refine understanding of causal mechanisms</li>
+<li><strong>Scale-up decisions</strong>: Predict effectiveness in new populations</li>
+</ul>
+</section>
+<section id="references" class="slide level2">
+<h2>References</h2>
+<p>Sylvia, S., Warrinnier, N., Luo, R., Yue, A., Attanasio, O., Medina, A., &amp; Rozelle, S. (2021). From quantity to quality: Delivering a home-based parenting intervention through China’s family planning cadres. <em>The Economic Journal</em>, 131(635), 1365-1400.</p>
+<p>Athey, S., Tibshirani, J., &amp; Wager, S. (2019). Generalized random forests. <em>The Annals of Statistics</em>, 47(2), 1148-1178.</p>
+<p>Wager, S., &amp; Athey, S. (2018). Estimation and inference of heterogeneous treatment effects using random forests. <em>Journal of the American Statistical Association</em>, 113(523), 1228-1242.</p>
 
 
 </section>
