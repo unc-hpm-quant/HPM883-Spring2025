@@ -85,7 +85,7 @@ Every model class has its own unique form of regularization that controls the bi
 :::: columns
 ::: {.column width="100%"}
 | Function Class | Regularization Parameters |
-|------------------------|-----------------------------------------------|
+|-------------------------|-----------------------------------------------|
 | Linear | LASSO, ridge, elastic net |
 | Decision/regression trees | Depth, leaves, leaf size, info gain |
 | Random forest | Trees, variables per tree, sample sizes, complexity |

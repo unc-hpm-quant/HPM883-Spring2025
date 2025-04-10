@@ -19,29 +19,27 @@ draft: false
 ## Review: The Potential Outcomes Framework
 
 ::: incremental
-- For each unit $i$, we define two potential outcomes:
-  - $Y_i(1)$: Outcome if unit receives treatment
-  - $Y_i(0)$: Outcome if unit does not receive treatment
-- The causal effect for unit $i$: $\delta_i = Y_i(1) - Y_i(0)$
-- **Fundamental problem of causal inference**: We only observe one potential outcome for each unit
-- The observed outcome: $Y_i = Y_i(W_i)$ where $W_i \in \{0,1\}$ is the treatment assignment
+-   For each unit $i$, we define two potential outcomes:
+    -   $Y_i(1)$: Outcome if unit receives treatment
+    -   $Y_i(0)$: Outcome if unit does not receive treatment
+-   The causal effect for unit $i$: $\delta_i = Y_i(1) - Y_i(0)$
+-   **Fundamental problem of causal inference**: We only observe one potential outcome for each unit
+-   The observed outcome: $Y_i = Y_i(W_i)$ where $W_i \in \{0,1\}$ is the treatment assignment
 :::
 
 ::: fragment
-We typically focus on the **Average Treatment Effect (ATE)**:
-$$\tau = E[Y_i(1) - Y_i(0)]$$
+We typically focus on the **Average Treatment Effect (ATE)**: $$\tau = E[Y_i(1) - Y_i(0)]$$
 :::
 
 ## Why Randomization Works
 
 ::: incremental
-- Randomization makes treatment assignment **independent** of potential outcomes:
-  $$W_i \perp\!\!\!\perp (Y_i(0), Y_i(1))$$
-- This means treatment and control groups are balanced on observable and unobservable characteristics
-- In expectation:
-  - $E[Y_i(1)|W_i=1] = E[Y_i(1)]$
-  - $E[Y_i(0)|W_i=0] = E[Y_i(0)]$
-- Thus, the difference in observed outcomes provides an unbiased estimate of the ATE
+-   Randomization makes treatment assignment **independent** of potential outcomes: $$W_i \perp\!\!\!\perp (Y_i(0), Y_i(1))$$
+-   This means treatment and control groups are balanced on observable and unobservable characteristics
+-   In expectation:
+    -   $E[Y_i(1)|W_i=1] = E[Y_i(1)]$
+    -   $E[Y_i(0)|W_i=0] = E[Y_i(0)]$
+-   Thus, the difference in observed outcomes provides an unbiased estimate of the ATE
 :::
 
 ## The Difference-in-Means Estimator
@@ -51,12 +49,12 @@ The simplest approach to estimate the ATE in an RCT is the difference in means:
 $$\hat{\tau}_{DM} = \frac{1}{n_1}\sum_{i:W_i=1}Y_i - \frac{1}{n_0}\sum_{i:W_i=0}Y_i$$
 
 ::: incremental
-- $n_1$: Number of treated units
-- $n_0$: Number of control units
-- **Properties**:
-  - Unbiased for the ATE: $E[\hat{\tau}_{DM}] = \tau$
-  - Variance depends on outcome variation
-  - Simple to calculate and understand
+-   $n_1$: Number of treated units
+-   $n_0$: Number of control units
+-   **Properties**:
+    -   Unbiased for the ATE: $E[\hat{\tau}_{DM}] = \tau$
+    -   Variance depends on outcome variation
+    -   Simple to calculate and understand
 :::
 
 ## Room for Improvement
@@ -64,10 +62,10 @@ $$\hat{\tau}_{DM} = \frac{1}{n_1}\sum_{i:W_i=1}Y_i - \frac{1}{n_0}\sum_{i:W_i=0}
 Despite randomization, the difference-in-means estimator has limitations:
 
 ::: incremental
-- May have high variance, especially with small samples
-- Does not leverage baseline information
-- Does not account for the design of the experiment (e.g., stratification)
-- Subject to chance imbalances between treatment and control
+-   May have high variance, especially with small samples
+-   Does not leverage baseline information
+-   Does not account for the design of the experiment (e.g., stratification)
+-   Subject to chance imbalances between treatment and control
 :::
 
 ::: fragment
@@ -79,17 +77,15 @@ Despite randomization, the difference-in-means estimator has limitations:
 Today we'll explore three approaches to estimating the ATE:
 
 ::: incremental
-1. **Standard Regression Approach**
-   - Controlling for baseline covariates in RCTs
-   - ANCOVA specification
-
-2. **Post-Double Selection Lasso**
-   - A principled approach to covariate selection
-   - Balancing precision and researcher degrees of freedom
-
-3. **Machine Learning Approaches**
-   - Using flexible methods to model treatment effects
-   - Addressing non-linearities in outcome relationships
+1.  **Standard Regression Approach**
+    -   Controlling for baseline covariates in RCTs
+    -   ANCOVA specification
+2.  **Post-Double Selection Lasso**
+    -   A principled approach to covariate selection
+    -   Balancing precision and researcher degrees of freedom
+3.  **Machine Learning Approaches**
+    -   Using flexible methods to model treatment effects
+    -   Addressing non-linearities in outcome relationships
 :::
 
 ## Standard Approach to ATE Estimation in RCTs
@@ -97,14 +93,14 @@ Today we'll explore three approaches to estimating the ATE:
 $$Y_{it} = \alpha + \theta T_i + \beta Y_{i(t-1)} + \sum\beta_i X_i + \sum\delta_s + \varepsilon_i$$
 
 ::: incremental
-- The equation above represents the canonical specification for ATE estimation in RCTs
-- **Parameters of interest:**
-  - $Y_{it}$: Outcome variable for unit $i$ at follow-up time $t$
-  - $T_i$: Treatment indicator (1 = treated, 0 = control)
-  - $\theta$: Average treatment effect (our target)
-  - $Y_{i(t-1)}$: Baseline value of the outcome
-  - $X_i$: Vector of baseline covariates
-  - $\delta_s$: Strata fixed effects
+-   The equation above represents the canonical specification for ATE estimation in RCTs
+-   **Parameters of interest:**
+    -   $Y_{it}$: Outcome variable for unit $i$ at follow-up time $t$
+    -   $T_i$: Treatment indicator (1 = treated, 0 = control)
+    -   $\theta$: Average treatment effect (our target)
+    -   $Y_{i(t-1)}$: Baseline value of the outcome
+    -   $X_i$: Vector of baseline covariates
+    -   $\delta_s$: Strata fixed effects
 :::
 
 ## Basic Specification: No Controls
@@ -112,14 +108,14 @@ $$Y_{it} = \alpha + \theta T_i + \beta Y_{i(t-1)} + \sum\beta_i X_i + \sum\delta
 $$Y_{it} = \alpha + \theta T_i + \varepsilon_i$$
 
 ::: incremental
-- Simplest specification: regress outcome on treatment indicator only
-- Valid in expectation due to randomization
-- $\theta$ is unbiased estimate of the ATE
-- **Critical note on inference:**
-  - Use robust standard errors to account for heteroskedasticity
-  - If clustered randomization, use cluster-robust standard errors
-  - $SE(\hat{\theta})_{robust} = \sqrt{\frac{\hat{\sigma}^2_1}{n_1} + \frac{\hat{\sigma}^2_0}{n_0}}$
-- Often leaves substantial unexplained variation in the outcome
+-   Simplest specification: regress outcome on treatment indicator only
+-   Valid in expectation due to randomization
+-   $\theta$ is unbiased estimate of the ATE
+-   **Critical note on inference:**
+    -   Use robust standard errors to account for heteroskedasticity
+    -   If clustered randomization, use cluster-robust standard errors
+    -   $SE(\hat{\theta})_{robust} = \sqrt{\frac{\hat{\sigma}^2_1}{n_1} + \frac{\hat{\sigma}^2_0}{n_0}}$
+-   Often leaves substantial unexplained variation in the outcome
 :::
 
 ::: fragment
@@ -131,15 +127,15 @@ This approach is equivalent to a simple difference in means between treatment an
 $$Y_{it} = \alpha + \theta T_i + \sum\delta_s + \varepsilon_i$$
 
 ::: incremental
-- When randomization is stratified, include fixed effects for each stratum
-- $\sum\delta_s$ represents indicator variables for each randomization stratum
-- **Benefits:**
-  - Accounts for the design of the experiment
-  - Improves precision by removing between-strata variation
-  - Ensures valid inference (failure to include can lead to incorrect standard errors)
-- **Implementation:**
-  - Include dummy variables for all but one stratum
-  - Or use factor variables in statistical software (e.g., in R: `factor(stratum)`)
+-   When randomization is stratified, include fixed effects for each stratum
+-   $\sum\delta_s$ represents indicator variables for each randomization stratum
+-   **Benefits:**
+    -   Accounts for the design of the experiment
+    -   Improves precision by removing between-strata variation
+    -   Ensures valid inference (failure to include can lead to incorrect standard errors)
+-   **Implementation:**
+    -   Include dummy variables for all but one stratum
+    -   Or use factor variables in statistical software (e.g., in R: `factor(stratum)`)
 :::
 
 ## Adding Baseline Controls
@@ -147,17 +143,16 @@ $$Y_{it} = \alpha + \theta T_i + \sum\delta_s + \varepsilon_i$$
 $$Y_{it} = \alpha + \theta T_i + \beta Y_{i(t-1)} + \sum\beta_i X_i + \sum\delta_s + \varepsilon_i$$
 
 ::: incremental
-- **Baseline outcome** ($Y_{i(t-1)}$):
-  - Usually provides largest precision gain
-  - Flexibly controls for autocorrelation
-  - Preferable to "difference-in-differences" in most RCTs
-  - Coefficient $\beta$ need not equal 1 (unlike DiD)
-
-- **Additional covariates** ($X_i$):
-  - Must be measured pre-treatment
-  - Should predict residual variation in outcome
-  - Balance checks not necessary to justify inclusion
-  - Helps account for chance imbalances
+-   **Baseline outcome** ($Y_{i(t-1)}$):
+    -   Usually provides largest precision gain
+    -   Flexibly controls for autocorrelation
+    -   Preferable to "difference-in-differences" in most RCTs
+    -   Coefficient $\beta$ need not equal 1 (unlike DiD)
+-   **Additional covariates** ($X_i$):
+    -   Must be measured pre-treatment
+    -   Should predict residual variation in outcome
+    -   Balance checks not necessary to justify inclusion
+    -   Helps account for chance imbalances
 :::
 
 ::: fragment
@@ -172,19 +167,19 @@ $$Y_{it} = \alpha + \theta T_i + \beta Y_{i(t-1)} + \sum\beta_i X_i + \sum\delta
 ::: {.column width="50%"}
 **Research Design Considerations:**
 
-- Pre-specify controls in analysis plan
-- Avoid "fishing" for significant results
-- Balance precision gains against complexity
-- Guard against researcher degrees of freedom
+-   Pre-specify controls in analysis plan
+-   Avoid "fishing" for significant results
+-   Balance precision gains against complexity
+-   Guard against researcher degrees of freedom
 :::
 
 ::: {.column width="50%"}
 **The Selection Problem:**
 
-- Which covariates should we include?
-- How many covariates are too many?
-- How do we handle many potential controls?
-- Can we automate control selection?
+-   Which covariates should we include?
+-   How many covariates are too many?
+-   How do we handle many potential controls?
+-   Can we automate control selection?
 :::
 :::::
 
@@ -197,14 +192,14 @@ This is where Post-Double Selection Lasso can provide a principled solution.
 **Post-Double Selection Lasso for Randomized Trials**
 
 ::: incremental
-- **PDS Lasso**: A principled approach to selecting control variables in field experiments
-- Addresses the key question: *Which covariates should we include in our regression?*
-- Helps balance competing concerns:
-  - Including relevant controls improves precision
-  - Ad hoc selection creates researcher degrees of freedom (p-hacking concerns)
-  - Too many controls reduces power in small samples
-- Provides a data-driven alternative to traditional ANCOVA approaches
-- Originally developed for observational studies but increasingly applied to RCTs
+-   **PDS Lasso**: A principled approach to selecting control variables in field experiments
+-   Addresses the key question: *Which covariates should we include in our regression?*
+-   Helps balance competing concerns:
+    -   Including relevant controls improves precision
+    -   Ad hoc selection creates researcher degrees of freedom (p-hacking concerns)
+    -   Too many controls reduces power in small samples
+-   Provides a data-driven alternative to traditional ANCOVA approaches
+-   Originally developed for observational studies but increasingly applied to RCTs
 :::
 
 ::: fragment
@@ -215,19 +210,16 @@ This is where Post-Double Selection Lasso can provide a principled solution.
 
 **Three-Step Procedure:**
 
-1. **Step 1**: Use Lasso to select controls that predict the outcome
-   - Regress Y on covariates X (excluding treatment)
-   - Lasso penalty shrinks coefficients toward zero
-   - Set of selected variables: I₁
-
-2. **Step 2**: Use Lasso to select controls that predict treatment 
-   - Regress T on covariates X
-   - Set of selected variables: I₂
-
-3. **Step 3**: Estimate treatment effect by OLS
-   - Regress Y on T and all selected controls (I = I₁ ∪ I₂)
-   - Optional "amelioration set" (I₃) of variables always included
-
+1.  **Step 1**: Use Lasso to select controls that predict the outcome
+    -   Regress Y on covariates X (excluding treatment)
+    -   Lasso penalty shrinks coefficients toward zero
+    -   Set of selected variables: I₁
+2.  **Step 2**: Use Lasso to select controls that predict treatment
+    -   Regress T on covariates X
+    -   Set of selected variables: I₂
+3.  **Step 3**: Estimate treatment effect by OLS
+    -   Regress Y on T and all selected controls (I = I₁ ∪ I₂)
+    -   Optional "amelioration set" (I₃) of variables always included
 
 ## The PDS Lasso Method
 
@@ -245,62 +237,58 @@ flowchart TD
 
 ## Why Double Selection in RCTs?
 
-::::: columns
+:::::: columns
 ::: {.column width="50%"}
 **The Theoretical Paradox:**
 
-- In perfectly randomized experiments, treatment is orthogonal to all covariates
-- So why model treatment prediction at all?
+-   In perfectly randomized experiments, treatment is orthogonal to all covariates
+-   So why model treatment prediction at all?
 
 **Practical Justifications:**
 
-- Small sample sizes lead to chance imbalances
-- Attrition creates non-random final analysis samples
-- Field experiments often have both issues (average 15% attrition)
+-   Small sample sizes lead to chance imbalances
+-   Attrition creates non-random final analysis samples
+-   Field experiments often have both issues (average 15% attrition)
 :::
 
-
-::: {.column width="50%"}
+:::: {.column width="50%"}
 ::: fragment
 **Key Insights**:
 
-1. Lasso in Step 1 may miss variables with:
-    - Moderate associations with outcomes (due to regularization)
-    - Strong correlations with treatment
-
-2. Step 2 provides a "second chance" to capture these important variables, enhancing robustness against:
-    - Chance imbalances
-    - Selective attrition
-
-3. Particularly valuable when variables have moderate outcome correlations but strong treatment imbalances
+1.  Lasso in Step 1 may miss variables with:
+    -   Moderate associations with outcomes (due to regularization)
+    -   Strong correlations with treatment
+2.  Step 2 provides a "second chance" to capture these important variables, enhancing robustness against:
+    -   Chance imbalances
+    -   Selective attrition
+3.  Particularly valuable when variables have moderate outcome correlations but strong treatment imbalances
 :::
-:::
-:::::
+::::
+::::::
 
-## PDS Lasso in Practice 
+## PDS Lasso in Practice
+
 **Cilliers, Elashmawy, and McKenzie (2024)**
 
 #### Empirical Findings from 780 Treatment Estimates:
 
-- Despite many potential controls (median 182), PDS Lasso selects few (median 2)
-- Step 1 (outcome prediction): Selects at least one variable in 71% of cases
-- Step 2 (treatment prediction): Selects no variables in 57% of cases
-- Almost no overlap between variables selected in Steps 1 and 2
+-   Despite many potential controls (median 182), PDS Lasso selects few (median 2)
+-   Step 1 (outcome prediction): Selects at least one variable in 71% of cases
+-   Step 2 (treatment prediction): Selects no variables in 57% of cases
+-   Almost no overlap between variables selected in Steps 1 and 2
 
 #### Impact relative to ANCOVA:
 
-  - Very minimal changes in treatment estimates (median 0.01 SD)
-  - Slight reduction in standard errors (median ratio 0.992)
-  - Yields larger standard errors in about 25% of cases
-  - Implied MDE reduction: only 0.9% at median
-
+-   Very minimal changes in treatment estimates (median 0.01 SD)
+-   Slight reduction in standard errors (median ratio 0.992)
+-   Yields larger standard errors in about 25% of cases
+-   Implied MDE reduction: only 0.9% at median
 
 ## PDS Lasso in Practice - Cilliers, Elashmawy, and McKenzie (2024)
 
 ![Distribution of Selected Variables](/unit-4/pds_selected_vars_cilliers2024.png)
 
 *Key finding: PDS Lasso offers limited precision gains compared to standard ANCOVA approaches in most field experiments*
-
 
 ## Implementation Considerations
 
@@ -310,28 +298,28 @@ flowchart TD
 ::: {.column width="50%"}
 **Penalty Parameter λ:**
 
-- Controls degree of variable selection
-- **Default "plug-in" λ**: Increases with covariates and sample size
-  - Theoretically justified for causal inference
-  - Tends to select few variables
-- **Cross-validation**: Select λ to minimize prediction error
-  - Selects many more variables (often 5-7x more)
-  - Can be unstable and risks overfitting
-  - Limited theoretical justification for causal inference
+-   Controls degree of variable selection
+-   **Default "plug-in" λ**: Increases with covariates and sample size
+    -   Theoretically justified for causal inference
+    -   Tends to select few variables
+-   **Cross-validation**: Select λ to minimize prediction error
+    -   Selects many more variables (often 5-7x more)
+    -   Can be unstable and risks overfitting
+    -   Limited theoretical justification for causal inference
 :::
 
 ::: {.column width="50%"}
 **Input Variable Selection:**
 
-- "Kitchen sink" approach common but problematic
-  - Penalty increases with number of potential controls
-  - Too many variables can lead to none being selected
-- **Amelioration Set (I₃):**
-  - Variables always included regardless of selection
-  - Recommended inclusions:
-    - Lagged dependent variable
-    - Randomization strata fixed effects
-  - Guards against underselection of important variables
+-   "Kitchen sink" approach common but problematic
+    -   Penalty increases with number of potential controls
+    -   Too many variables can lead to none being selected
+-   **Amelioration Set (I₃):**
+    -   Variables always included regardless of selection
+    -   Recommended inclusions:
+        -   Lagged dependent variable
+        -   Randomization strata fixed effects
+    -   Guards against underselection of important variables
 :::
 :::::
 
@@ -340,56 +328,47 @@ flowchart TD
 **Checklist for Effective Implementation:**
 
 ::: incremental
-1. **Be realistic about power gains**
-   - Expect very small reductions in standard errors compared to ANCOVA
-   - Don't rely on large improvements for power calculations
-
-2. **Include key variables in amelioration set**
-   - Lagged dependent variable
-   - Randomization strata or matched pair fixed effects
-
-3. **Be judicious with input controls**
-   - Avoid "kitchen sink" approach with hundreds of variables
-   - Focus on variables with potential outcome correlation
-
-4. **Handle missing values carefully**
-   - Ensure all input controls have no missing values (e.g., by dummying out)
-   - Missing values reduced final samples in many studies
-
-5. **Use as a robustness check**
-   - Provides a principled alternative to ad hoc control selection
-   - Large coefficient changes may signal concerns about randomization
+1.  **Be realistic about power gains**
+    -   Expect very small reductions in standard errors compared to ANCOVA
+    -   Don't rely on large improvements for power calculations
+2.  **Include key variables in amelioration set**
+    -   Lagged dependent variable
+    -   Randomization strata or matched pair fixed effects
+3.  **Be judicious with input controls**
+    -   Avoid "kitchen sink" approach with hundreds of variables
+    -   Focus on variables with potential outcome correlation
+4.  **Handle missing values carefully**
+    -   Ensure all input controls have no missing values (e.g., by dummying out)
+    -   Missing values reduced final samples in many studies
+5.  **Use as a robustness check**
+    -   Provides a principled alternative to ad hoc control selection
+    -   Large coefficient changes may signal concerns about randomization
 :::
 
 ## Key Takeaways
 
 ::: incremental
-1. **Regression adjustment improves precision**
-   - In randomized trials, it's not needed for unbiasedness but helps with efficiency
-   - The baseline outcome is typically the most important control
-
-2. **Standard ANCOVA is a robust approach**
-   - Pre-specify key controls (baseline outcome, strata)
-   - Works well in most field experiments
-
-3. **PDS Lasso provides a principled control selection method**
-   - But offers limited gains over ANCOVA in most cases
-   - Include key variables in the amelioration set
-
-4. **Machine learning methods can help with non-linear relationships**
-   - But may not offer large gains in typical field experiment settings
-   - Require careful implementation to maintain valid inference
+1.  **Regression adjustment improves precision**
+    -   In randomized trials, it's not needed for unbiasedness but helps with efficiency
+    -   The baseline outcome is typically the most important control
+2.  **Standard ANCOVA is a robust approach**
+    -   Pre-specify key controls (baseline outcome, strata)
+    -   Works well in most field experiments
+3.  **PDS Lasso provides a principled control selection method**
+    -   But offers limited gains over ANCOVA in most cases
+    -   Include key variables in the amelioration set
+4.  **Machine learning methods can help with non-linear relationships**
+    -   But may not offer large gains in typical field experiment settings
+    -   Require careful implementation to maintain valid inference
 :::
 
 ## Next Steps
 
 ::: incremental
-- **Doubly Robust Estimation**
-  - Protecting against model misspecification
-
-- **Double/Debiased Machine Learning**
-  - Combining machine learning with robust inference
-
-- **Causal Forests**
-  - Estimating heterogeneous treatment effects
+-   **Doubly Robust Estimation**
+    -   Protecting against model misspecification
+-   **Double/Debiased Machine Learning**
+    -   Combining machine learning with robust inference
+-   **Causal Forests**
+    -   Estimating heterogeneous treatment effects
 :::
