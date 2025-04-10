@@ -166,7 +166,7 @@ const questionsDatabase = [
     type: QUESTION_TYPES.SHORT_ANSWER,
     question: 'What are the key differences between LASSO and ridge regression in terms of the regularization penalty and its effects?',
     correctAnswer: 'LASSO uses an L1 penalty (sum of absolute values) that forces some coefficients to exactly zero, performing variable selection. Ridge uses an L2 penalty (sum of squares) that shrinks all coefficients toward zero but rarely to exactly zero. The LASSO\'s constraint region is diamond-shaped while ridge\'s is circular.',
-    explanation: 'LASSO's L1 penalty creates a diamond-shaped constraint region whose corners often intersect with axes, forcing coefficients to exactly zero and thus performing variable selection. Ridge's L2 penalty creates a circular constraint region that shrinks coefficients proportionally toward zero but rarely to exactly zero. Both methods control complexity but in different ways.'
+    explanation: 'LASSO\'s L1 penalty creates a diamond-shaped constraint region whose corners often intersect with axes, forcing coefficients to exactly zero and thus performing variable selection. Ridge\'s L2 penalty creates a circular constraint region that shrinks coefficients proportionally toward zero but rarely to exactly zero. Both methods control complexity but in different ways.'
   },
   
   {

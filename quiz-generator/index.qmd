@@ -26,10 +26,8 @@ To share flagged questions with Sean, click the gear icon (⚙️) in the top-ri
 ::: callout-note
 This quiz generator currently pulls questions from content covered in all course units including:
 
--   Unit 0: Foundations
--   Unit 1: Internal Validity and Potential Outcomes
--   Unit 2: Design of Experiments
--   Additional topics from class lectures
+-   Unit 3: Introduction to Machine Learning
+-   Unit 4: Estimation & Heterogeneity
 :::
 
 ```{=html}
