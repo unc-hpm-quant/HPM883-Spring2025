@@ -1,0 +1,646 @@
+---
+title: "Experimental Analysis Challenges"
+subtitle: "When Reality Meets Theory"
+author: "Sean Sylvia, Ph.D."
+date: "April 2025"
+format: 
+  revealjs:
+    theme: default
+    slide-number: true
+    transition: fade
+    progress: true
+    incremental: true
+    toc: false
+    scrollable: false
+    footer: "UNC HPM 883 - Advanced Quantitative Methods"
+---
+
+
+## Learning Objectives
+
+::: {.nonincremental}
+
+- Identify the main **threats to internal validity** that can arise while implementing an experiment
+- Understand how these threats can bias the causal inference
+- Discuss strategies to mitigate these threats during  **implementation** 
+- Learn some strategies to account for threats during **analysis** 
+    - Intention-to-treat analysis
+    - Local average treatment effect
+
+:::
+
+## Review: The Four Key Exclusion Restrictions
+
+::: {.nonincremental}
+Four critical assumptions needed for valid causal inference:
+:::
+
+1. **Stable Unit Treatment Value Assumption (SUTVA)**: No interference between units and no hidden treatment versions
+2. **Observability**: Outcomes are observed for all units
+3. **Statistical Independence**: Treatment assignment independent of potential outcomes
+4. **Complete Compliance**: Treatment received equals treatment assigned
+
+## Things can (and do) go wrong in real-world experiments
+
+:::{.nonincremental}
+:::{.columns}
+:::{.column}
+During the **conception** phase,
+we design an experiment that
+enables us to answer our
+research questions
+:::
+:::{.column}
+But in the **implementation** phase,    
+many things can go wrong
+:::
+:::
+
+![](CleanShot%202025-04-16%20at%2010.09.41.png){width=90%}
+:::
+
+## Lecture Outline
+
+:::{.nonincremental}
+**1. Threats to Internal Validity**
+
+- Spillover effects: Units affect each other, violating **1. SUTVA** 
+- Hidden variation / Implementation Heterogeneity: Treatment varies across units, violating **1. SUTVA**
+- Attrition: Participants drop out, violating **2. Observability**
+- Partial or Non-compliance: Units don't follow assigned treatment, violating **4. Complete Compliance**
+
+**2. Addressing Threats to Internal Validity in Analysis**
+
+- Intention-to-treat (ITT) analysis
+- Local average treatment effect (LATE)
+
+:::
+
+## SUTVA: Two Critical Components
+
+1. **No interference between units (No Spillovers)**:
+  - One unit's treatment does not affect another unit's potential outcomes
+  - $Y_i(T_1,...,T_N) = Y_i(T_i)$: The only effect of the treatment on unit $i$ is through its own treatment
+
+2. **No hidden treatment versions**:
+  - Treatment is identical for all units who receive it
+  - No variation in treatment quality or implementation
+
+- **When violated**: Biased treatment effect estimates and ambiguous causal interpretations
+
+## Randomization
+
+![](CleanShot%202025-04-16%20at%2009.41.55.png)
+
+## SUTVA Violation: Spillover Effects
+
+**Spillovers occur when the outcomes of untreated units are indirectly affected by the treatment given to others.**
+
+- Spillovers violate the key assumption that one unit’s treatment assignment has no effect on the outcomes of other units
+- Spillovers are not limited to subjects in the study sample, but can affect
+anyone who is not treated
+- Common causes: geographic proximity, social networks
+- Make it difficult or impossible to measure the impact of the program
+– Comparison group no longer serves as a valid estimate of the
+counterfactual
+
+## Spillovers - Outcomes
+
+Spillovers may not put a study in jeopardy if they are contained or measured, but are problematic if they affect the comparison group
+
+- Spillovers can be positive (+) or negative (-)
+  - (+) Positive spillovers: comparison group benefits from treatment group
+  - (-) Negative spillovers: comparison group is harmed by treatment group
+- Spillovers can cause impact to be underestimated or overestimated
+- Channels: physical, informational/behavioral, and marketwide/general equilibrium
+
+## Spillovers - Example 1
+
+**Handwashing promotion campaign** that provided soap and education about health benefits of and handwashing
+
+**How might spillovers occur?**
+
+**How might they affect the outcome of the study?**
+
+## Spillovers - Example 2
+
+**Clinic-based intervention to improve the quality of care**
+
+**How might spillovers occur?**
+
+**How might they affect the outcome of the study?**
+
+## SUTVA: What and Why
+
+- **Stable Unit Treatment Value Assumption (SUTVA)** consists of two key components:
+  1. No interference between units
+  2. No hidden versions of treatments
+
+- Critical assumption for identification in experimental research
+
+- When SUTVA is violated:
+  - Standard estimators become biased
+  - Causal effects are not uniquely defined
+  - External validity is threatened
+
+## SUTVA Component 1: No Interference Between Units
+
+- **Definition**: A unit's potential outcomes are unaffected by other units' treatment assignment
+  
+- **Formal expression**: For all units i and j (j≠i): 
+  - $Y_i(d_i, d_j) = Y_i(d_i, d'_j)$ for all possible treatments $d_j, d'_j$
+
+- Often violated in: 
+  - Social network interventions
+  - Educational interventions
+  - Market-based programs
+  - Public health interventions
+
+## Interference (Spillover Effects)
+
+- **Definition**: One unit's treatment affects another unit's outcome
+
+- **Examples**:
+  - Information spreads through social networks
+  - Market equilibrium effects
+  - Behavioral responses to others' treatment
+
+- **Consequence**: Standard difference-in-means estimator becomes biased
+
+## Real-World Violations of No Interference
+
+::: {.nonincremental}
+- **Information Spillovers**: Knowledge or behaviors spread through social networks
+  - Example: Agricultural technology adoption spreads to neighboring farmers
+
+- **Physical Spillovers**: Treatment physically affects nearby untreated units
+  - Example: Vaccine interventions create herd immunity
+
+- **Psychological Spillovers**: Awareness of others' treatment affects behavior
+  - Example: Control group students become discouraged when peers receive tutoring
+
+- **Market Equilibrium Effects**: Interventions shift prices/resources for all participants
+  - Example: Job training program affects labor market for all job seekers
+:::
+
+## Types of Treatment Effects with Interference
+
+- **Direct treatment effect**: Impact on treated units
+
+- **Spillover effect** (indirect treatment effect): Impact on untreated units exposed to treated units
+
+- **Overall treatment effect**: Combination of direct and spillover effects
+
+
+## Formalizing Interference Under SUTVA Violations
+
+- When SUTVA is violated, potential outcomes depend on the entire treatment assignment vector:
+  - $Y_i(d_i, \mathbf{d}_{-i})$ instead of just $Y_i(d_i)$
+
+- For N units and binary treatment, this means $2^N$ potential outcomes instead of 2!
+
+- Complicates estimation: more potential outcomes than observable data points
+
+## Parameter Estimation Under Interference
+
+- **Direct Treatment Effect**: Effect on treated units
+  $\tau_{direct} = E[Y_i(1,\mathbf{d}_{-i}) - Y_i(0,\mathbf{d}_{-i})]$
+
+- **Indirect (Spillover) Effect**: Effect on untreated units
+  $\tau_{indirect} = E[Y_i(0,\mathbf{d}_{-i}) - Y_i(0,\mathbf{0})]$
+
+- **Total Effect**: Combined direct and spillover effects
+  $\tau_{total} = p\tau_{direct} + (1-p)\tau_{indirect}$
+  
+  Where p is the proportion treated
+
+## Approaches to Deal with Interference
+
+- **Linear-in-means model**
+  - Assumes linear relationship between outcomes and own/group treatment
+
+- **Clustered randomized trials**
+  - Randomize at group level to attenuate between-group spillovers
+
+- **Randomized saturation designs**
+  - Vary proportion of treated units within different groups
+  - Estimate spillover effects across groups with different saturation levels
+
+## Linear-in-Means Model
+
+- A common approach to estimating spillover effects:
+
+$$Y_{ig} = \alpha + \beta D_{ig} + \gamma S_{-ig} + \delta X_{ig} + \varepsilon_{ig}$$
+
+Where:
+- $D_{ig}$ is the treatment indicator for individual i in group g
+- $S_{-ig}$ is the proportion of others treated in the group
+- $\beta$ captures direct effects
+- $\gamma$ captures spillover effects
+
+- **Limitation**: Assumes spillovers are linear in proportion treated
+
+## SUTVA Component 2: No Hidden Versions of Treatment
+
+- **Definition**: The treatment is identical across all units who receive it
+
+- **Formal expression**: For a given treatment level d, all units receive exactly the same intervention
+
+- **Common violations**:
+  - Provider/implementer differences
+  - Treatment quality variations
+  - Contextual variations
+  - Multiple treatment paths
+
+## Real-World Hidden Treatment Variations
+
+::: {.nonincremental}
+- **Provider Characteristics**: Different implementation styles
+  - Example: Instructor quality in educational interventions
+
+- **Delivery Context**: Variations in setting/environment
+  - Example: Telemedicine delivered across different internet connection speeds
+
+- **Treatment Intensity**: Differences in "dosage" received
+  - Example: Varying attendance in a health education program
+
+- **Unintended Co-interventions**: Unplanned additional treatments
+  - Example: Some doctors providing extra advice with prescribed medication
+:::
+
+## Special Case: "Evaluation-driven effects"
+
+**Evaluation-driven effects occur when respondents change their behavior in
+response to the evaluation itself instead of the intervention.**
+
+Common causes: salience of being evaluated, social pressure
+
+These include observer-driven effects and enumerator effects:
+
+- Hawthorne effects: Behavior changes due to attention from the study or intervention
+- Anticipation effects: Comparison group changes behavior because they expect to
+receive the treatment later (particular concern for phase-ins)
+- Resentment/demoralization effects: Comparison group resents missing out on
+treatment and changes behavior
+- Demand effects: Behavior changes due to perceptions of evaluator’s objectives
+- Survey effects: Being surveyed changes subsequent behavior
+
+## What can we do about it? Spillover Effects
+
+### Approach 1: Avoid Spillovers
+
+- Choose level of randomization wisely, and randomize at a higher level if concerned about spillovers
+- Use spatial or institutional buffer to limit spillovers between treatment and control groups
+
+### Approach 2: Measure Spillovers
+
+- Collect data on spillovers
+- Two-stage randomization 
+
+## What can we do about it? Hidden Treatment Versions
+
+::: {.nonincremental}
+1. **Standardization**: Create detailed protocols and implementation guidelines
+   - Training sessions for implementers
+   - Checklists for implementation
+   - Quality monitoring systems
+
+2. **Measurement**: Record potential sources of variation
+   - Implementer characteristics
+   - Treatment delivery details
+   - Compliance/adherence measures
+
+3. **Statistical Adjustment**: Control for observed variations
+   - Include variation measures as covariates
+   - Conduct subgroup analyses
+   - Use instrumental variables when appropriate
+:::
+
+## The Attrition Problem
+
+::: {.nonincremental}
+- **Attrition**: Participants dropping out of a study after initial assignment
+- **Consequence**: Violates the **Observability** assumption
+- Even small amounts of attrition can compromise identification
+:::
+
+## Observability
+
+- **Definition**: Outcomes are observed for all units, regardless of treatment status
+  - $P(R_i = 1) = 1$ for all units $i$
+  - Where $R_i$ indicates whether outcome is observed
+
+- **Common violations**:
+  - Survey non-response
+  - Participant dropout (Attrition)
+
+- **When violated**: Potential selection bias if attrition is related to treatment or potential outcomes
+
+## Attrition Bias Example
+
+Suppose we were interested in testing the impact of giving students eyeglasses on test scores
+
+Consider these scenarios: 
+- If everyone is in our data in the treatment and control group, what is the result? 
+- How does this change if some people are missing from baseline only? From endline only? 
+- What if under-performing children don't come to school when we give exams?
+
+## Why Is Attrition an Issue?
+
+- **Completely random attrition**
+  - Primarily affects statistical power (smaller sample size)
+  - Doesn't necessarily invalidate treatment effect estimate
+
+- **Non-random (selective) attrition**
+  - Remaining participants systematically differ from those who drop out
+  - Can lead to biased treatment effect estimates
+  - Occurs when decision to stay is correlated with treatment or potential outcomes
+
+## Formalizing Attrition
+
+- Introduce a dummy variable $R_i$:
+  - $R_i = 1$ if subject remains in the study (responder)
+  - $R_i = 0$ if subject dropped out (non-responder)
+
+- **Observability with attrition**: We only observe $Y_i(T_i)$ if $R_i = 1$
+
+- **Stronger independence assumption needed**:
+  $(Y_i(0), Y_i(1), R_i) \perp T_i$
+
+## Observability in the Potential Outcomes Framework
+
+- Without attrition, observed outcome equation:
+  $Y_i = D_i Y_i(1) + (1-D_i)Y_i(0)$
+
+- With attrition, observed outcome equation becomes:
+  $Y_i = \begin{cases}
+  D_i Y_i(1) + (1-D_i)Y_i(0), & \text{if } R_i(D_i) = 1 \\
+  \text{missing}, & \text{if } R_i(D_i) = 0
+  \end{cases}$
+
+- Response indicator is potentially treatment-dependent:
+  $R_i = D_i R_i(1) + (1-D_i)R_i(0)$
+
+## Internal Validity for Respondents
+
+- **Goal**: Valid treatment effect estimate for population of responders
+
+- **Naive estimator**: Difference in means between treated and control among responders
+
+- **Potential bias**: Responders in treatment group may differ from responders in control group
+
+- **Assumption for validity**: $(Y_i(0), Y_i(1)) \perp T_i | R_i = 1$
+
+## Internal Validity for Entire Population
+
+- **Average treatment effect** can be expressed as:
+
+$$\text{ATE} = P(R=1) \cdot E[Y_i(1) - Y_i(0) | R_i = 1] + P(R=0) \cdot E[Y_i(1) - Y_i(0) | R_i = 0]$$
+
+- **Strong assumption needed**: $E[Y_i(1) - Y_i(0) | R_i = 1] = E[Y_i(1) - Y_i(0) | R_i = 0]$
+
+## Difference between responders' effect and overall effect
+
+- ATE for entire sample as a weighted average:
+  $\tau = P[R_i = 1]\tau(R_i = 1) + (1 - P[R_i = 1])\tau(R_i = 0)$
+
+- Difference between responders' effect and overall effect:
+  $\tau(R_i = 1) - \tau = P[R_i = 0](\tau(R_i = 1) - \tau(R_i = 0))$
+
+- Bias depends on:
+  1. Proportion of attritors $(P[R_i = 0])$
+  2. Treatment effect difference between responders and non-responders
+
+## Preventing Attrition Problems
+
+Best to try to prevent this problem rather than "deal with it"
+
+-   Try to track down people who leave
+-   Can choose a random sample, and devote resources to tracking them down
+
+But we always need to check after if this is a problem...
+
+## Testing for Attrition Bias
+
+Testing depends on available data:
+
+1. **When baseline outcome measures are available** (Ideal case)
+   - Compare baseline outcomes across all combinations:
+     (Treatment/Control × Retained/Attrited)
+
+2. **When baseline covariates are available**
+   - Compare baseline covariates across these groups
+   - Challenge: Which covariates to include?
+
+3. **When no baseline information is available**
+   - Compare attrition rates between treatment and control
+   - Limited evidence - equal rates don't guarantee no problem
+
+## Tests Using Baseline Outcome Data
+
+- **GHO tests** (Ghanem, Hirshleifer, Ortiz-Becerra, 2020):
+  - Use regression with baseline outcome as dependent variable:
+    $Y_{i0} = \pi_{11}D_iR_i + \pi_{01}(1-D_i)R_i + \pi_{10}D_i(1-R_i) + \pi_{00}(1-D_i)(1-R_i) + \epsilon_i$
+
+- For valid estimate for responders, test:
+  $E[Y_{i0}|D_i = 0, R_i = r] = E[Y_{i0}|D_i = 1, R_i = r]$ for $r = 0, 1$
+
+- For valid estimate for entire population, test equality across all four means:
+  $\pi_{11} = \pi_{01} = \pi_{10} = \pi_{00}$
+
+## Analyzing Data with Attrition
+
+- **Available case analysis**
+  - Only analyze data from participants who remained
+  - Valid only if attrition is random
+
+- **Horowitz and Manski bounds** (Worst-case bounds)
+  - Impute extreme values for missing outcomes
+  - Often very wide, especially with moderate attrition
+
+- **Inverse probability weighting (IPW)**
+  - Weight observations by inverse probability of remaining
+  - Assumes attrition independent of potential outcomes conditional on covariates
+
+- **Lee bounds**
+  - Trim observed data to bound treatment effect
+  - Assumes monotonic attrition
+
+## Design Tips to Reduce Attrition
+
+1. **Collect Rich Baseline Data**
+   - Essential for testing identification assumptions
+   - Enables adjustment methods if attrition occurs
+
+2. **Remove Barriers to Contacting Participants**
+   - Collect multiple contact methods
+   - Establish location tracking procedures
+   - Streamline follow-up protocols
+
+3. **Consider Populations Less Likely to Attrit**
+   - But balance with external validity concerns
+   - Be mindful of equity implications
+
+## More Practices to Minimize Attrition
+
+4. **Maintain Regular Contact**
+   - Don't just collect data at baseline and endline
+   - Schedule intermediate check-ins
+   - Build ongoing relationship with participants
+
+5. **Think Like a Behavioral Economist**
+   - Provide appropriate incentives
+   - Choose convenient times for data collection
+   - Leverage reciprocity and commitment
+
+6. **Minimize Participant Burden**
+   - Keep surveys concise
+   - Make participation as easy as possible
+   - Reduce complexity of required tasks
+
+## Complete Compliance
+
+- **Definition**: Units receive exactly the treatment to which they were assigned
+  - $D_i = T_i$ for all units $i$
+
+- **In mathematical terms**:
+  - $P(D_i = 1 | T_i = 1) = 1$
+  - $P(D_i = 0 | T_i = 0) = 1$
+
+- **When violated**: Treatment effect estimates are diluted or biased
+  - Intention-to-treat (ITT) estimates may understate effects
+  - Selection effects may be reintroduced
+
+## Imperfect Compliance
+
+- **Definition**: Received treatment differs from assigned treatment
+
+- **Types**:
+  - **One-sided**: Control group receives treatment OR treatment group doesn't
+  - **Two-sided**: Both types occur simultaneously
+
+- **Examples**:
+  - Deworming treatment in schools
+  - Information provision in voting experiments
+  - Market experience interventions
+
+## Complete Compliance Assumption
+
+- **Complete compliance**: Treatment assignment equals treatment received
+- Formally: $D_i = Z_i$ for all units $i$
+- Critical for identifying the average treatment effect (ATE)
+- Reality: Often violated in field and even lab settings
+
+## Four Types of Participants
+
+Based on potential treatment status:
+
+- **Compliers**: Take treatment if and only if assigned to treatment
+- **Always-takers**: Take treatment regardless of assignment
+- **Never-takers**: Never take treatment regardless of assignment
+- **Defiers**: Take treatment if and only if assigned to control
+
+::: {.notes}
+Monotonicity assumption typically rules out the existence of defiers
+:::
+
+## Analytical Approaches Under Imperfect Compliance
+
+- **As-treated analysis**
+  - Compare based on treatment actually received
+  - Reintroduces selection problem
+  - Valid only under strong assumptions
+
+- **Intention-to-treat (ITT) analysis**
+  - Compare based on initial treatment assignment
+  - Unbiased estimate of effect of being offered treatment
+  - Diluted measure if compliance is low
+
+## ITT Decomposition
+
+ITT can be decomposed into:
+
+$$ITT = \Pr(\text{complier}) \cdot \tau_{compliers} + \Pr(\text{always-taker}) \cdot 0 + \Pr(\text{never-taker}) \cdot 0 + \Pr(\text{defier}) \cdot \tau_{defiers}$$
+
+- Always-takers and never-takers have zero contribution
+- Under monotonicity (no defiers), simplifies further
+
+## Randomization as an Instrumental Variable
+
+- Uses randomized assignment as instrument for endogenous received treatment
+
+- **Key assumptions**:
+  - **Exclusion restriction**: Assignment affects outcome only through received treatment
+  - **Monotonicity**: Assignment never decreases probability of receiving treatment
+
+- **Estimand**: Local Average Treatment Effect (LATE)
+  - Average effect for "compliers" only
+
+## Calculating the LATE
+
+$$\text{LATE} = \frac{\text{ITT effect on outcome}}{\text{ITT effect on treatment receipt}}$$
+
+- Denominator = proportion of compliers (under monotonicity)
+
+- Can characterize compliers by comparing conditional ITT effects
+
+## First-Stage and Complier Share
+
+- **First stage**: Effect of assignment on treatment receipt
+- Measures proportion of compliers under monotonicity
+- Can be estimated via regression: $D_i = \alpha + \beta Z_i + \varepsilon_i$
+- $\beta$ represents complier share
+
+## One-Sided Non-Compliance
+
+- Special case where:
+  - Either control units can't access treatment OR
+  - Treatment units all receive treatment
+- LATE equals Treatment on the Treated (TOT)
+- Simplifies denominator in IV formula
+- Common in settings with controlled access
+
+## Who Are the Compliers?
+
+- Cannot directly identify individual compliers
+- Can characterize compliers as a group:
+  - Compare distribution of characteristics
+  - For binary characteristic $X$: 
+  $$\frac{\Pr(X=1|\text{complier})}{\Pr(X=1)} = \frac{E[D_i|Z_i=1,X=1] - E[D_i|Z_i=0,X=1]}{E[D_i|Z_i=1] - E[D_i|Z_i=0]}$$
+- Helps assess generalizability of LATE
+
+## Bounding the ATE with Non-Compliance
+
+- Even without monotonicity, can place bounds on ATE if outcome is bounded
+
+- Similar to Horowitz-Manski bounds for attrition
+- Uses worst-case scenarios for potential outcomes of non-compliers
+- Bounds can be wide but provide range for potential ATE
+
+## Design Tips to Improve Compliance
+
+1. **Leverage technology** to monitor and maintain compliance
+   - Tracking devices, electronic monitoring, digital verification
+
+2. **Minimize complexity** and participant burden
+   - Clear instructions, simple protocols, reduced effort costs
+
+3. **Strategic incentives** placement
+   - Front-load or back-load depending on compliance concerns
+
+4. **Apply behavioral principles**
+   - Commitment devices, social norms, default options, reminders
+
+5. **Education and supportive environment**
+   - Training, explanation of importance, regular reinforcement
+
+6. **Attention to treatment administration**
+   - Standardized protocols, administrator training, avoid contamination
+   - Consider separate administrators for treatment/control
+
+## Take-home
+
+- Perfect experiments exist only in theory
+- Analysis strategy should account for real-world challenges
+- Design choices can minimize (but rarely eliminate) issues
+- Multiple approaches often needed for robust conclusions

@@ -9,28 +9,19 @@ In this unit, we'll be digging deeper into analysis of randomized trials, focusi
 
 ## Unit 4.0: Pre-analysis Plans
 
-- [Project](project.qmd)
-- [Pre-Analysis Plan Template](Resources/Pre-AnalysisPlanTemplate.qmd)
-- [Paying for Anemia Reduction Analysis Plan](https://www.socialscienceregistry.org/trials/1469)
-- [Theory of Change Template](https://app.mural.co/t/digitalhealtheconlab8807/m/digitalhealtheconlab8807/1631664414562/d69f1bdcb404ff329601238e4b95383e9b667aff?sender=uef946b18ad7445100afd8329)
-- [How to Build an UN-SILOED Theory of Change](https://www.youtube.com/watch?v=pWutrZwzP18)
-
+-   [Project](project.qmd)
+-   [Pre-Analysis Plan Template](Resources/Pre-AnalysisPlanTemplate.qmd)
+-   [Paying for Anemia Reduction Analysis Plan](https://www.socialscienceregistry.org/trials/1469)
+-   [Theory of Change Template](https://app.mural.co/t/digitalhealtheconlab8807/m/digitalhealtheconlab8807/1631664414562/d69f1bdcb404ff329601238e4b95383e9b667aff?sender=uef946b18ad7445100afd8329)
+-   [How to Build an UN-SILOED Theory of Change](https://www.youtube.com/watch?v=pWutrZwzP18)
 
 ## Unit 4.1: Average Treatment Effects
 
+-   [Lecture 4.1 Slides](/unit-4/lec-4-1-slides.qmd)
 
-- [Lecture 4.1 Slides](/unit-4/lec-4-1-slides.qmd)
-
-- [Using PDS Lasso to Select Controls in Field Experiments](https://blogs.worldbank.org/en/impactevaluations/using-pds-lasso-to-select-controls-in-field-experiments)
-
-
+-   [Using PDS Lasso to Select Controls in Field Experiments](https://blogs.worldbank.org/en/impactevaluations/using-pds-lasso-to-select-controls-in-field-experiments)
 
 ## Unit 4.2: Heterogeneous Treatment Effects & Moderation
 
-- [Lecture 4.2 Slides](/unit-4/lec-4-2-slides.qmd)
-- [HTE Exercise]
-
-
-
-
-
+-   [Lecture 4.2 Slides](/unit-4/lec-4-2-slides.qmd)
+-   \[HTE Exercise\]

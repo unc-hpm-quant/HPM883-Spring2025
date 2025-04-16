@@ -129,6 +129,12 @@ website:
             text: "Lecture Slides: Unit 4.1: Estimating Average Treatment Effects"
           - href: unit-4/lec-4-2-slides.qmd
             text: "Lecture Slides: Unit 4.2: Heterogeneous Treatment Effects & Moderation"
+      - section: "Unit 5: Threats to Validity"
+        contents:
+          - href: unit-5/unit-5.qmd
+            text: "Unit 5: Threats to Validity"
+          - href: unit-5/lec-5-0-slides.qmd
+            text: "Lecture Slides: Unit 5.0: Threats to Validity"
       - section: "Resources"
         contents:
           - href: resources.qmd

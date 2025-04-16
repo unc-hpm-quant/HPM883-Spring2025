@@ -1,0 +1,394 @@
+---
+title: "Lecture 3: Hypothesis Testing & Sample Size"
+subtitle: "Advanced Quantitative Methods for Health Policy and Management"
+author: "Sean Sylvia, Ph.D."
+date: "2025-02-11"
+format:
+  revealjs:
+    theme: default
+    slide-number: true
+    html-math-method:
+      method: mathjax
+      packages: ["amsmath"]
+    transition: fade
+    progress: true
+    incremental: false
+    toc: false
+    scrollable: false
+    smaller: false
+    footer: "UNC HPM 883 - Advanced Quantitative Methods"
+---
+
+## Analysis Basics
+
+-   Because we designed our experiment properly, analysis is EASY: Just compare the means in the treatment and control groups
+-   Results for intervention giving eyeglasses to primary school students:
+
+| 1\. Average Test Score in Treatment Group | 2\. Average Test Score in Control Group | Difference (1-2) |
+|----------------------------|--------------------------|------------------|
+| 75 | 68 | +7 |
+
+## But is this difference statistically significant?
+
+![](CleanShot%202025-04-15%20at%2004.22.07@2x.png)
+
+## We need to do a statistical test
+
+-   Remember from our previous discussions...
+-   What are we testing?
+-   What specifically is our Null Hypothesis for the eyeglasses program?
+
+## Hypothesis Testing
+
+-   In Impact Evaluation, we are interested in testing if the program had an effect
+-   In other words, we want to test a Null Hypothesis that our program had NO effect
+-   If it is not likely that our result was just due to chance/luck (e.g., because of our sample), we "reject the Null Hypothesis"
+    -   Usually this means \<5% probability the result is because of luck
+-   If we reject the Null Hypothesis, this means our program had a "statistically significant" impact
+
+## We could do a t-test
+
+Formula for t-statistic:
+
+$$
+\begin{aligned}
+t &= \frac{\bar{x}_t - \bar{x}_c}{\sqrt{\frac{var_t}{n_t} + \frac{var_c}{n_c}}} \\
+&= \frac{\overbrace{\text{Difference between Group Means}}^{\text{Signal}}}{\underbrace{SE(\bar{x}_t - \bar{x}_c)}_{\text{Noise}}}
+\end{aligned}
+$$
+
+And see if this is large enough to "reject the Null"
+
+## Regression Form of the Test
+
+Actually, we can do the SAME test in regression form:
+
+Run the regression:
+
+$$
+\underbrace{Y_i}_{\text{Outcome}} = \underbrace{\alpha}_{\text{Constant}} + \underbrace{\beta}_{\text{Effect}} \underbrace{W_i}_{\text{Treatment}} + \underbrace{\varepsilon_i}_{\text{Error}}
+$$
+
+-   Here, $\beta$ will give us the difference between treatment and control and tell us whether it is "statistically significant" or not.
+
+-   Our estimate will be unbiased because of random assignment.
+
+## Maximizing Precision
+
+But remember, we also want to be as precise as possible?
+
+![Precision and Accuracy in Estimation](CleanShot%202025-04-15%20at%2004.22.33@2x.png)
+
+Can we increase precision even after we've run the experiment?
+
+## Using Covariates to Improve Precision
+
+Yes! By adding "covariates"...
+
+We can control for other baseline variables in the regression to "suck up" extra variation:
+
+$$
+Y_i = \alpha + \beta W_i + \gamma \textcolor{red}{X_i} + \varepsilon_i
+$$
+
+What covariates should we control for?
+
+-   If stratified randomization, add fixed effects for strata (e.g., if we stratify on county, add "dummy" variables for each county)
+-   The baseline of the outcome variable
+-   Other covariates strongly related to the outcome
+-   If cluster randomized: cluster level covariates can help a LOT...why?
+
+Also report "raw" differences without covariates for transparency
+
+## Clustering
+
+We need to be careful with "clustered" data
+
+Remember: Students in a school are similar...this makes our regular standard errors too small
+
+This is easy to deal with: we use "cluster-robust standard errors" in the regression
+
+In R, this is just a command:
+
+```{r}
+#| eval: false
+library(fixest)
+feols_model <- feols(y ~ t + x, data = data, vcov = "cluster", cluster = "school")
+summary(feols_model)
+```
+
+## Assessing & Dealing with Threats
+
+In the real world, things often don't go perfectly...
+
+We spoke before about 2 kinds of "threats": - Attrition - Imperfect compliance
+
+When we analyze our data, we need to: 1. Assess whether these are problems, and see how big the problems are 2. Sometimes we can do things to address them
+
+## Attrition
+
+Usually, there will be some people that leave/cannot be found and are not in the endline survey
+
+This is a problem if the proportion of "attriters" are different in the treatment and control group
+
+-   Why is this a problem?
+-   Why might this happen?
+-   Is it a problem if the rate of attrition is the same across groups, but is high? Say 30-40%?
+
+## Attrition Bias Example
+
+Suppose we were interested in testing the impact of giving students eyeglasses on test scores
+
+Consider these scenarios: - If everyone is in our data in the treatment and control group, what is the result? - How does this change if some people are missing from baseline only? From endline only? - What if under-performing children (e.g., scores \<50) don't come to school when we give exams?
+
+## Preventing Attrition Problems
+
+Best to try to prevent this problem rather than "deal with it"
+
+-   Try to track down people who leave
+-   Can choose a random sample, and devote resources to tracking them down
+
+But we always need to check after if this is a problem...
+
+## Assessing Attrition
+
+To see how much of a problem this is in our experiment, we need to do two things:
+
+1.  Is there "differential" attrition? Run the regression:
+
+$$
+Attrit_i = \alpha + \beta W_i + \varepsilon_i
+$$
+
+2.  How are those who "attrit" different from those who don't?
+
+$$
+Attrit_i = \alpha + \gamma X_i + \varepsilon_i
+$$
+
+## What if I have attrition?
+
+This is a difficult problem, but there are some things...
+
+"Bounding Approaches" can give you a range of effects under best case and worst case - Assume everyone that left got the lowest score...assume everyone that left got the best score...
+
+\- Example: "Lee Bounds"
+
+\- Often not very efficient
+
+## Imperfect Compliance
+
+Another potential problem is "Imperfect Compliance"...
+
+Imperfect compliance: some in the control group get treatment and some in the treatment group do not... - This introduces selection bias
+
+Four types of people:
+
+|                     | What actually happened: |               |
+|---------------------|-------------------------|---------------|
+|                     | Treated                 | Not Treated   |
+| **Treatment Group** | OK                      | Non-compliers |
+| **Control Group**   | Non-compliers           | OK            |
+
+What do we do with these non-compliers? Can we just drop/ignore them? NO!!! Why?
+
+## Selection Bias Example: Eyeglasses
+
+Suppose girls are more likely to wear their eyeglasses...
+
+::::: columns
+::: {.column width="50%"}
+**Treatment Group**
+
+| Student | Treatment Group? (Given glasses) | Wore glasses? | Gender | Score |
+|--------------|-------------------|--------------|--------------|--------------|
+| Student 1 | Yes | Yes | Girl | 80 |
+| Student 2 | Yes | No | Boy | 70 |
+| Student 3 | Yes | Yes | Girl | 80 |
+| Student 4 | Yes | Yes | Boy | 70 |
+| Student 5 | Yes | Yes | Girl | 80 |
+| Student 6 | Yes | No | Boy | 70 |
+| --------- | ---------------------------------- | --------------- | -------- | --------------- |
+| Full Sample |  |  | 3 girls, 3 boys | 75.0 |
+| --------- | ---------------------------------- | --------------- | -------- | --------------- |
+| Compliers |  |  | 3 girls, 1 boys | 72.5 |
+:::
+
+::: {.column width="50%"}
+**Control Group**
+
+| Student | Treatment Group? (Given glasses) | Wore glasses? | Gender | Score |
+|--------------|-------------------|--------------|--------------|--------------|
+| Student 1 | No | No | Boy | 70 |
+| Student 2 | No | No | Boy | 70 |
+| Student 3 | No | Yes | Girl | 80 |
+| Student 4 | No | No | Boy | 70 |
+| Student 5 | No | Yes | Girl | 80 |
+| Student 6 | No | No | Girl | 80 |
+| --------- | ---------------------------------- | --------------- | -------- | --------------- |
+| Full Sample |  |  | 3 girls, 3 boys | 75.0 |
+| --------- | ---------------------------------- | --------------- | -------- | --------------- |
+| Defiers |  |  | 3 girls, 1 boys | 72.5 |
+:::
+:::::
+
+If we just compare based on who actually wore glasses ("per-protocol analysis"), the groups would be imbalanced!
+
+## Intention to Treat (ITT)
+
+What do we do?
+
+-   Compare individuals based on their ORIGINAL ASSIGNMENT to treatment or control group
+-   This is called the "Intention to Treat" estimate
+-   IGNORE who actually got treated
+
+$$ITT = E[Y_i|W_i = 1] - E[Y_i|W_i = 0]$$
+
+## Treatment on the Treated (TOT)
+
+We can also estimate the effect of ACTUAL treatment - What would this be in eyeglasses example? - This is called the "Treatment on the Treated" (TOT) - The ITT effect may be "too small" because of non-compliance - But the proportion treated is also smaller - What can we do?
+
+## Re-scaling the ITT Estimate
+
+We can "re-scale" the ITT estimate
+
+Use the probability of treatment in each group to "re-scale" the ITT:
+
+$$TOT = \frac{E[Y_i|W_i = 1] - E[Y_i|W_i = 0]}{E[T_i|W_i = 1] - E[T_i|W_i = 0]}$$
+
+Where: - Numerator is the ITT - Denominator is the difference in probability of actually being treated between treatment and control groups
+
+## Eyeglasses Example
+
+|   | Treatment Group (gave eyeglasses) | Control Group (Did not give eyeglasses) |
+|------------------------------------|------------------|------------------|
+| \% Actually Got Treatment (Actually wore glasses) | 70% | 10% |
+| E\[Outcome\] (Test Scores) | 95 | 82 |
+
+1.  Intention to Treat: 95 - 82 = 13
+
+2.  Treatment On the Treated (IV):
+
+$$
+TOT = \frac{95-82}{70\%-10\%} = \frac{13}{0.6} = 21.67
+$$
+
+## Assumptions?
+
+What are the Assumptions? What do we need for this to work?
+
+::: incremental
+We need the same assumptions as we do for IV:
+
+1.  Relevance: $E[T_i|W_i = 1] - E[T_i|W_i = 0] \neq 0$
+2.  Exclusion Restriction: $E[\varepsilon_i|W_i = 1] = E[\varepsilon_i|W_i = 0] = 0$
+:::
+
+## Instrumental Variables for TOT
+
+Using Instrumental Variables to estimate TOT
+
+We can calculate by hand like above, but: - Not efficient (remember we like to add covariates) - Harder to figure out standard errors for TOT
+
+Easier way: Use Instrumental Variables (IV) 1. "First Stage" Regression: $\hat{T}_i = \hat{\alpha}_0 + \hat{\alpha}_1 W_i + \hat{\alpha}_i X_i$ 2. Predict Probability of Treatment using first stage 3. "Second Stage" regression using predicted treatment status: $Y_i = \beta_0 + \beta_1 \hat{T}_i + \beta_i X_i + \varepsilon_i$
+
+$\beta_1$ gives the TOT estimate
+
+## R Implementation
+
+In R, this is simple:
+
+```{r}
+#| eval: false
+library(fixest)
+iv_feols <- feols(y ~ x | w ~ t, data = data, vcov = "cluster", cluster = "school")
+summary(iv_feols)
+```
+
+## Secondary/Intermediate Outcomes
+
+Until now, we have talked about just one outcome: Y, the primary outcome
+
+But, in addition to the primary outcome(s), you should also consider HOW/WHY a program worked to improve the primary outcome or not
+
+To figure out what other outcomes to consider, you need to lay out your "Theory of Change"
+
+## What is Theory of Change?
+
+A Theory of Change (ToC) documents the causal links between inputs, activities, outputs, intermediate and final outcomes, and identifies the underlying assumptions.
+
+Assumptions are what need to be true for the causal chain to operate.
+
+## Theory of Change Framework
+
+![Theory of Change Framework](CleanShot%202025-04-15%20at%2004.42.55@2x.png)
+
+## Theory of Change Example
+
+![Theory of Change Example](CleanShot%202025-04-15%20at%2004.45.13@2x.png)
+
+## Building a Theory of Change
+
+Steps for creating a ToC: 1. Define intervention, objectives, outcomes (even potential unintended ones!) 2. Lay out main steps in causal chain 3. Identify underlying assumptions 4. Add temporal dimension 5. Identify key evaluation questions 6. Validate and revise
+
+## Example: Iron Supplements
+
+:::::: columns
+::: {.column width="40%"}
+Vitamins provided to schools to give to children
+:::
+
+::: {.column width="20%"}
+→ ???? → ???? →
+:::
+
+::: {.column width="40%"}
+Learning outcomes improve
+:::
+::::::
+
+Let's develop this Theory of Change together...
+
+## Multiple Outcomes
+
+You'll see that you often come up with MANY outcomes
+
+-   You can test many outcomes just as you did the primary outcomes
+-   But, this can complicate our statistical analysis...
+
+## Multiple Outcomes Problem
+
+The problem:
+
+The more outcomes to test, the higher the chance that at least one is significantly affected by the program just by chance
+
+Why?
+
+What can we do?
+
+## Dealing with Multiple Outcomes
+
+Three ways to deal with multiple outcomes:
+
+1.  Pre-specify the outcomes you will examine, and report all results (even not significant)
+
+2.  Combine the variables into an index
+
+    -   Principal components, GLS Weighting
+    -   Advantage: Powerful
+    -   Disadvantage: You don't really know what the index means
+
+3.  Adjust your p-values for the number of tests
+
+    -   Several approaches...Romano and Wolf (2005) common in economics
+
+## Analysis Review
+
+-   Analysis Basics
+-   Clustering
+-   Assessing & Dealing with Threats
+    -   Attrition
+    -   Imperfect Compliance
+-   Choosing secondary outcomes
+    -   Theory of Change
+-   Multiple outcomes and hypothesis testing
