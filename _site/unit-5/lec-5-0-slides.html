@@ -377,9 +377,13 @@ many things can go wrong</p>
 <li class="fragment">A common approach to estimating spillover effects:</li>
 </ul>
 <p><span class="math display">\[Y_{ig} = \alpha + \beta D_{ig} + \gamma S_{-ig} + \delta X_{ig} + \varepsilon_{ig}\]</span></p>
-<p>Where: - <span class="math inline">\(D_{ig}\)</span> is the treatment indicator for individual i in group g - <span class="math inline">\(S_{-ig}\)</span> is the proportion of others treated in the group - <span class="math inline">\(\beta\)</span> captures direct effects - <span class="math inline">\(\gamma\)</span> captures spillover effects</p>
+<p>Where:</p>
 <ul>
-<li class="fragment"><strong>Limitation</strong>: Assumes spillovers are linear in proportion treated</li>
+<li class="fragment"><p><span class="math inline">\(D_{ig}\)</span> is the treatment indicator for individual i in group g</p></li>
+<li class="fragment"><p><span class="math inline">\(S_{-ig}\)</span> is the proportion of others treated in the group</p></li>
+<li class="fragment"><p><span class="math inline">\(\beta\)</span> captures direct effects</p></li>
+<li class="fragment"><p><span class="math inline">\(\gamma\)</span> captures spillover effects</p></li>
+<li class="fragment"><p><strong>Limitation</strong>: Assumes spillovers are linear in proportion treated</p></li>
 </ul>
 </section>
 <section id="sutva-component-2-no-hidden-versions-of-treatment" class="slide level2">
@@ -423,6 +427,9 @@ many things can go wrong</p>
 <h2>Special Case: “Evaluation-driven effects”</h2>
 <p><strong>Evaluation-driven effects occur when respondents change their behavior in response to the evaluation itself instead of the intervention.</strong></p>
 <p>Common causes: salience of being evaluated, social pressure</p>
+</section>
+<section id="special-case-evaluation-driven-effects-1" class="slide level2">
+<h2>Special Case: “Evaluation-driven effects”</h2>
 <p>These include observer-driven effects and enumerator effects:</p>
 <ul>
 <li class="fragment">Hawthorne effects: Behavior changes due to attention from the study or intervention</li>
@@ -445,7 +452,7 @@ many things can go wrong</p>
 <li class="fragment">Two-stage randomization</li>
 </ul>
 </section>
-<section id="what-can-we-do-about-it-hidden-treatment-versions" class="slide level2">
+<section id="what-can-we-do-about-it-hidden-treatment-versions" class="slide level2 smaller">
 <h2>What can we do about it? Hidden Treatment Versions</h2>
 <div>
 <ol type="1">
@@ -498,8 +505,13 @@ many things can go wrong</p>
 </section>
 <section id="attrition-bias-example" class="slide level2">
 <h2>Attrition Bias Example</h2>
-<p>Suppose we were interested in testing the impact of giving students eyeglasses on test scores</p>
-<p>Consider these scenarios: - If everyone is in our data in the treatment and control group, what is the result? - How does this change if some people are missing from baseline only? From endline only? - What if under-performing children don’t come to school when we give exams?</p>
+<p>Suppose we were interested in testing the impact of students wearing eyeglasses on test scores. What would we want to know?</p>
+<p>Consider these scenarios:</p>
+<ul>
+<li class="fragment">If everyone is in our data in the treatment and control group, what is the result?</li>
+<li class="fragment">How does this change if some people are missing from baseline only? From endline only?</li>
+<li class="fragment">What if under-performing children don’t come to school when we give exams?</li>
+</ul>
 </section>
 <section id="why-is-attrition-an-issue" class="slide level2">
 <h2>Why Is Attrition an Issue?</h2>
@@ -554,7 +566,10 @@ D_i Y_i(1) + (1-D_i)Y_i(0), &amp; \text{if } R_i(D_i) = 1 \\
 <ul>
 <li class="fragment"><strong>Average treatment effect</strong> can be expressed as:</li>
 </ul>
-<p><span class="math display">\[\text{ATE} = P(R=1) \cdot E[Y_i(1) - Y_i(0) | R_i = 1] + P(R=0) \cdot E[Y_i(1) - Y_i(0) | R_i = 0]\]</span></p>
+<p><span class="math display">\[
+\text{ATE} = P(R=1) \cdot E[Y_i(1) - Y_i(0) | R_i = 1] \\
++ P(R=0) \cdot E[Y_i(1) - Y_i(0) | R_i = 0]
+\]</span></p>
 <ul>
 <li class="fragment"><strong>Strong assumption needed</strong>: <span class="math inline">\(E[Y_i(1) - Y_i(0) | R_i = 1] = E[Y_i(1) - Y_i(0) | R_i = 0]\)</span></li>
 </ul>
@@ -605,7 +620,10 @@ D_i Y_i(1) + (1-D_i)Y_i(0), &amp; \text{if } R_i(D_i) = 1 \\
 <ul>
 <li class="fragment"><p><strong>GHO tests</strong> (Ghanem, Hirshleifer, Ortiz-Becerra, 2020):</p>
 <ul>
-<li class="fragment">Use regression with baseline outcome as dependent variable: <span class="math inline">\(Y_{i0} = \pi_{11}D_iR_i + \pi_{01}(1-D_i)R_i + \pi_{10}D_i(1-R_i) + \pi_{00}(1-D_i)(1-R_i) + \epsilon_i\)</span></li>
+<li class="fragment">Use regression with baseline outcome as dependent variable: <span class="math display">\[
+Y_{i0} = \pi_{11}D_iR_i + \pi_{01}(1-D_i)R_i + \\
+\pi_{10}D_i(1-R_i) + \pi_{00}(1-D_i)(1-R_i) + \epsilon_i
+\]</span></li>
 </ul></li>
 <li class="fragment"><p>For valid estimate for responders, test: <span class="math inline">\(E[Y_{i0}|D_i = 0, R_i = r] = E[Y_{i0}|D_i = 1, R_i = r]\)</span> for <span class="math inline">\(r = 0, 1\)</span></p></li>
 <li class="fragment"><p>For valid estimate for entire population, test equality across all four means: <span class="math inline">\(\pi_{11} = \pi_{01} = \pi_{10} = \pi_{00}\)</span></p></li>
@@ -728,30 +746,21 @@ D_i Y_i(1) + (1-D_i)Y_i(0), &amp; \text{if } R_i(D_i) = 1 \\
 <section id="four-types-of-participants" class="slide level2">
 <h2>Four Types of Participants</h2>
 <p>Based on potential treatment status:</p>
+
+<img data-src="CleanShot 2025-04-21 at 10.31.04@2x.png" class="r-stretch"></section>
+<section id="four-types-of-participants-1" class="slide level2">
+<h2>Four Types of Participants</h2>
 <ul>
 <li class="fragment"><strong>Compliers</strong>: Take treatment if and only if assigned to treatment</li>
 <li class="fragment"><strong>Always-takers</strong>: Take treatment regardless of assignment</li>
 <li class="fragment"><strong>Never-takers</strong>: Never take treatment regardless of assignment</li>
 <li class="fragment"><strong>Defiers</strong>: Take treatment if and only if assigned to control</li>
 </ul>
-<aside class="notes">
-<p>Monotonicity assumption typically rules out the existence of defiers</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="analytical-approaches-under-imperfect-compliance" class="slide level2">
 <h2>Analytical Approaches Under Imperfect Compliance</h2>
 <ul>
-<li class="fragment"><strong>As-treated analysis</strong>
+<li class="fragment"><strong>As-treated analysis (NO!)</strong>
 <ul>
 <li class="fragment">Compare based on treatment actually received</li>
 <li class="fragment">Reintroduces selection problem</li>
@@ -768,7 +777,9 @@ D_i Y_i(1) + (1-D_i)Y_i(0), &amp; \text{if } R_i(D_i) = 1 \\
 <section id="itt-decomposition" class="slide level2">
 <h2>ITT Decomposition</h2>
 <p>ITT can be decomposed into:</p>
-<p><span class="math display">\[ITT = \Pr(\text{complier}) \cdot \tau_{compliers} + \Pr(\text{always-taker}) \cdot 0 + \Pr(\text{never-taker}) \cdot 0 + \Pr(\text{defier}) \cdot \tau_{defiers}\]</span></p>
+<p><span class="math display">\[
+ITT = \Pr(\text{complier}) \cdot \tau_{compliers} + \Pr(\text{always-taker}) \cdot 0 + \Pr(\text{never-taker}) \cdot 0 + \Pr(\text{defier}) \cdot \tau_{defiers}
+\]</span></p>
 <ul>
 <li class="fragment">Always-takers and never-takers have zero contribution</li>
 <li class="fragment">Under monotonicity (no defiers), simplifies further</li>
@@ -859,6 +870,11 @@ D_i Y_i(1) + (1-D_i)Y_i(0), &amp; \text{if } R_i(D_i) = 1 \\
 <ul>
 <li class="fragment">Commitment devices, social norms, default options, reminders</li>
 </ul></li>
+</ol>
+</section>
+<section id="design-tips-to-improve-compliance-1" class="slide level2">
+<h2>Design Tips to Improve Compliance</h2>
+<ol start="5" type="1">
 <li class="fragment"><strong>Education and supportive environment</strong>
 <ul>
 <li class="fragment">Training, explanation of importance, regular reinforcement</li>

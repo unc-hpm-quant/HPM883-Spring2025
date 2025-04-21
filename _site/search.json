@@ -531,7 +531,7 @@
     "href": "unit-5/unit-5.html#readings",
     "title": "Unit 5: Threats to Validity",
     "section": "Readings",
-    "text": "Readings",
+    "text": "Readings\n\nRequired\n\nJPAL:Data Analysis for Social Science\nEGAP Methods Guide on LATE\n\n\n\nOptional\n\nImbens & Wooldridge (2007) Lecture 5 on LATE",
     "crumbs": [
       "Unit 5: Threats to Validity",
       "Unit 5: Threats to Validity"
@@ -3691,7 +3691,7 @@
     "href": "unit-5/lec-5-0-slides.html#linear-in-means-model",
     "title": "Experimental Analysis Challenges",
     "section": "Linear-in-Means Model",
-    "text": "Linear-in-Means Model\n\nA common approach to estimating spillover effects:\n\n\\[Y_{ig} = \\alpha + \\beta D_{ig} + \\gamma S_{-ig} + \\delta X_{ig} + \\varepsilon_{ig}\\]\nWhere: - \\(D_{ig}\\) is the treatment indicator for individual i in group g - \\(S_{-ig}\\) is the proportion of others treated in the group - \\(\\beta\\) captures direct effects - \\(\\gamma\\) captures spillover effects\n\nLimitation: Assumes spillovers are linear in proportion treated",
+    "text": "Linear-in-Means Model\n\nA common approach to estimating spillover effects:\n\n\\[Y_{ig} = \\alpha + \\beta D_{ig} + \\gamma S_{-ig} + \\delta X_{ig} + \\varepsilon_{ig}\\]\nWhere:\n\n\\(D_{ig}\\) is the treatment indicator for individual i in group g\n\\(S_{-ig}\\) is the proportion of others treated in the group\n\\(\\beta\\) captures direct effects\n\\(\\gamma\\) captures spillover effects\nLimitation: Assumes spillovers are linear in proportion treated",
     "crumbs": [
       "Unit 5: Threats to Validity",
       "Lecture Slides: Unit 5.0: Threats to Validity"
@@ -3724,7 +3724,18 @@
     "href": "unit-5/lec-5-0-slides.html#special-case-evaluation-driven-effects",
     "title": "Experimental Analysis Challenges",
     "section": "Special Case: “Evaluation-driven effects”",
-    "text": "Special Case: “Evaluation-driven effects”\nEvaluation-driven effects occur when respondents change their behavior in response to the evaluation itself instead of the intervention.\nCommon causes: salience of being evaluated, social pressure\nThese include observer-driven effects and enumerator effects:\n\nHawthorne effects: Behavior changes due to attention from the study or intervention\nAnticipation effects: Comparison group changes behavior because they expect to receive the treatment later (particular concern for phase-ins)\nResentment/demoralization effects: Comparison group resents missing out on treatment and changes behavior\nDemand effects: Behavior changes due to perceptions of evaluator’s objectives\nSurvey effects: Being surveyed changes subsequent behavior",
+    "text": "Special Case: “Evaluation-driven effects”\nEvaluation-driven effects occur when respondents change their behavior in response to the evaluation itself instead of the intervention.\nCommon causes: salience of being evaluated, social pressure",
+    "crumbs": [
+      "Unit 5: Threats to Validity",
+      "Lecture Slides: Unit 5.0: Threats to Validity"
+    ]
+  },
+  {
+    "objectID": "unit-5/lec-5-0-slides.html#special-case-evaluation-driven-effects-1",
+    "href": "unit-5/lec-5-0-slides.html#special-case-evaluation-driven-effects-1",
+    "title": "Experimental Analysis Challenges",
+    "section": "Special Case: “Evaluation-driven effects”",
+    "text": "Special Case: “Evaluation-driven effects”\nThese include observer-driven effects and enumerator effects:\n\nHawthorne effects: Behavior changes due to attention from the study or intervention\nAnticipation effects: Comparison group changes behavior because they expect to receive the treatment later (particular concern for phase-ins)\nResentment/demoralization effects: Comparison group resents missing out on treatment and changes behavior\nDemand effects: Behavior changes due to perceptions of evaluator’s objectives\nSurvey effects: Being surveyed changes subsequent behavior",
     "crumbs": [
       "Unit 5: Threats to Validity",
       "Lecture Slides: Unit 5.0: Threats to Validity"
@@ -3779,7 +3790,7 @@
     "href": "unit-5/lec-5-0-slides.html#attrition-bias-example",
     "title": "Experimental Analysis Challenges",
     "section": "Attrition Bias Example",
-    "text": "Attrition Bias Example\nSuppose we were interested in testing the impact of giving students eyeglasses on test scores\nConsider these scenarios: - If everyone is in our data in the treatment and control group, what is the result? - How does this change if some people are missing from baseline only? From endline only? - What if under-performing children don’t come to school when we give exams?",
+    "text": "Attrition Bias Example\nSuppose we were interested in testing the impact of students wearing eyeglasses on test scores. What would we want to know?\nConsider these scenarios:\n\nIf everyone is in our data in the treatment and control group, what is the result?\nHow does this change if some people are missing from baseline only? From endline only?\nWhat if under-performing children don’t come to school when we give exams?",
     "crumbs": [
       "Unit 5: Threats to Validity",
       "Lecture Slides: Unit 5.0: Threats to Validity"
@@ -3834,7 +3845,7 @@
     "href": "unit-5/lec-5-0-slides.html#internal-validity-for-entire-population",
     "title": "Experimental Analysis Challenges",
     "section": "Internal Validity for Entire Population",
-    "text": "Internal Validity for Entire Population\n\nAverage treatment effect can be expressed as:\n\n\\[\\text{ATE} = P(R=1) \\cdot E[Y_i(1) - Y_i(0) | R_i = 1] + P(R=0) \\cdot E[Y_i(1) - Y_i(0) | R_i = 0]\\]\n\nStrong assumption needed: \\(E[Y_i(1) - Y_i(0) | R_i = 1] = E[Y_i(1) - Y_i(0) | R_i = 0]\\)",
+    "text": "Internal Validity for Entire Population\n\nAverage treatment effect can be expressed as:\n\n\\[\n\\text{ATE} = P(R=1) \\cdot E[Y_i(1) - Y_i(0) | R_i = 1] \\\\\n+ P(R=0) \\cdot E[Y_i(1) - Y_i(0) | R_i = 0]\n\\]\n\nStrong assumption needed: \\(E[Y_i(1) - Y_i(0) | R_i = 1] = E[Y_i(1) - Y_i(0) | R_i = 0]\\)",
     "crumbs": [
       "Unit 5: Threats to Validity",
       "Lecture Slides: Unit 5.0: Threats to Validity"
@@ -3878,7 +3889,7 @@
     "href": "unit-5/lec-5-0-slides.html#tests-using-baseline-outcome-data",
     "title": "Experimental Analysis Challenges",
     "section": "Tests Using Baseline Outcome Data",
-    "text": "Tests Using Baseline Outcome Data\n\nGHO tests (Ghanem, Hirshleifer, Ortiz-Becerra, 2020):\n\nUse regression with baseline outcome as dependent variable: \\(Y_{i0} = \\pi_{11}D_iR_i + \\pi_{01}(1-D_i)R_i + \\pi_{10}D_i(1-R_i) + \\pi_{00}(1-D_i)(1-R_i) + \\epsilon_i\\)\n\nFor valid estimate for responders, test: \\(E[Y_{i0}|D_i = 0, R_i = r] = E[Y_{i0}|D_i = 1, R_i = r]\\) for \\(r = 0, 1\\)\nFor valid estimate for entire population, test equality across all four means: \\(\\pi_{11} = \\pi_{01} = \\pi_{10} = \\pi_{00}\\)",
+    "text": "Tests Using Baseline Outcome Data\n\nGHO tests (Ghanem, Hirshleifer, Ortiz-Becerra, 2020):\n\nUse regression with baseline outcome as dependent variable: \\[\nY_{i0} = \\pi_{11}D_iR_i + \\pi_{01}(1-D_i)R_i + \\\\\n\\pi_{10}D_i(1-R_i) + \\pi_{00}(1-D_i)(1-R_i) + \\epsilon_i\n\\]\n\nFor valid estimate for responders, test: \\(E[Y_{i0}|D_i = 0, R_i = r] = E[Y_{i0}|D_i = 1, R_i = r]\\) for \\(r = 0, 1\\)\nFor valid estimate for entire population, test equality across all four means: \\(\\pi_{11} = \\pi_{01} = \\pi_{10} = \\pi_{00}\\)",
     "crumbs": [
       "Unit 5: Threats to Validity",
       "Lecture Slides: Unit 5.0: Threats to Validity"
@@ -3955,7 +3966,18 @@
     "href": "unit-5/lec-5-0-slides.html#four-types-of-participants",
     "title": "Experimental Analysis Challenges",
     "section": "Four Types of Participants",
-    "text": "Four Types of Participants\nBased on potential treatment status:\n\nCompliers: Take treatment if and only if assigned to treatment\nAlways-takers: Take treatment regardless of assignment\nNever-takers: Never take treatment regardless of assignment\nDefiers: Take treatment if and only if assigned to control\n\n\nMonotonicity assumption typically rules out the existence of defiers",
+    "text": "Four Types of Participants\nBased on potential treatment status:",
+    "crumbs": [
+      "Unit 5: Threats to Validity",
+      "Lecture Slides: Unit 5.0: Threats to Validity"
+    ]
+  },
+  {
+    "objectID": "unit-5/lec-5-0-slides.html#four-types-of-participants-1",
+    "href": "unit-5/lec-5-0-slides.html#four-types-of-participants-1",
+    "title": "Experimental Analysis Challenges",
+    "section": "Four Types of Participants",
+    "text": "Four Types of Participants\n\nCompliers: Take treatment if and only if assigned to treatment\nAlways-takers: Take treatment regardless of assignment\nNever-takers: Never take treatment regardless of assignment\nDefiers: Take treatment if and only if assigned to control",
     "crumbs": [
       "Unit 5: Threats to Validity",
       "Lecture Slides: Unit 5.0: Threats to Validity"
@@ -3966,7 +3988,7 @@
     "href": "unit-5/lec-5-0-slides.html#analytical-approaches-under-imperfect-compliance",
     "title": "Experimental Analysis Challenges",
     "section": "Analytical Approaches Under Imperfect Compliance",
-    "text": "Analytical Approaches Under Imperfect Compliance\n\nAs-treated analysis\n\nCompare based on treatment actually received\nReintroduces selection problem\nValid only under strong assumptions\n\nIntention-to-treat (ITT) analysis\n\nCompare based on initial treatment assignment\nUnbiased estimate of effect of being offered treatment\nDiluted measure if compliance is low",
+    "text": "Analytical Approaches Under Imperfect Compliance\n\nAs-treated analysis (NO!)\n\nCompare based on treatment actually received\nReintroduces selection problem\nValid only under strong assumptions\n\nIntention-to-treat (ITT) analysis\n\nCompare based on initial treatment assignment\nUnbiased estimate of effect of being offered treatment\nDiluted measure if compliance is low",
     "crumbs": [
       "Unit 5: Threats to Validity",
       "Lecture Slides: Unit 5.0: Threats to Validity"
@@ -3977,7 +3999,7 @@
     "href": "unit-5/lec-5-0-slides.html#itt-decomposition",
     "title": "Experimental Analysis Challenges",
     "section": "ITT Decomposition",
-    "text": "ITT Decomposition\nITT can be decomposed into:\n\\[ITT = \\Pr(\\text{complier}) \\cdot \\tau_{compliers} + \\Pr(\\text{always-taker}) \\cdot 0 + \\Pr(\\text{never-taker}) \\cdot 0 + \\Pr(\\text{defier}) \\cdot \\tau_{defiers}\\]\n\nAlways-takers and never-takers have zero contribution\nUnder monotonicity (no defiers), simplifies further",
+    "text": "ITT Decomposition\nITT can be decomposed into:\n\\[\nITT = \\Pr(\\text{complier}) \\cdot \\tau_{compliers} + \\Pr(\\text{always-taker}) \\cdot 0 + \\Pr(\\text{never-taker}) \\cdot 0 + \\Pr(\\text{defier}) \\cdot \\tau_{defiers}\n\\]\n\nAlways-takers and never-takers have zero contribution\nUnder monotonicity (no defiers), simplifies further",
     "crumbs": [
       "Unit 5: Threats to Validity",
       "Lecture Slides: Unit 5.0: Threats to Validity"
@@ -4054,7 +4076,18 @@
     "href": "unit-5/lec-5-0-slides.html#design-tips-to-improve-compliance",
     "title": "Experimental Analysis Challenges",
     "section": "Design Tips to Improve Compliance",
-    "text": "Design Tips to Improve Compliance\n\nLeverage technology to monitor and maintain compliance\n\nTracking devices, electronic monitoring, digital verification\n\nMinimize complexity and participant burden\n\nClear instructions, simple protocols, reduced effort costs\n\nStrategic incentives placement\n\nFront-load or back-load depending on compliance concerns\n\nApply behavioral principles\n\nCommitment devices, social norms, default options, reminders\n\nEducation and supportive environment\n\nTraining, explanation of importance, regular reinforcement\n\nAttention to treatment administration\n\nStandardized protocols, administrator training, avoid contamination\nConsider separate administrators for treatment/control",
+    "text": "Design Tips to Improve Compliance\n\nLeverage technology to monitor and maintain compliance\n\nTracking devices, electronic monitoring, digital verification\n\nMinimize complexity and participant burden\n\nClear instructions, simple protocols, reduced effort costs\n\nStrategic incentives placement\n\nFront-load or back-load depending on compliance concerns\n\nApply behavioral principles\n\nCommitment devices, social norms, default options, reminders",
+    "crumbs": [
+      "Unit 5: Threats to Validity",
+      "Lecture Slides: Unit 5.0: Threats to Validity"
+    ]
+  },
+  {
+    "objectID": "unit-5/lec-5-0-slides.html#design-tips-to-improve-compliance-1",
+    "href": "unit-5/lec-5-0-slides.html#design-tips-to-improve-compliance-1",
+    "title": "Experimental Analysis Challenges",
+    "section": "Design Tips to Improve Compliance",
+    "text": "Design Tips to Improve Compliance\n\nEducation and supportive environment\n\nTraining, explanation of importance, regular reinforcement\n\nAttention to treatment administration\n\nStandardized protocols, administrator training, avoid contamination\nConsider separate administrators for treatment/control",
     "crumbs": [
       "Unit 5: Threats to Validity",
       "Lecture Slides: Unit 5.0: Threats to Validity"

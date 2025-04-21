@@ -8,6 +8,14 @@ draft: false
 
 ## Readings
 
+### Required
+- [JPAL:Data Analysis for Social Science](https://www.povertyactionlab.org/resource/data-analysis)
+- [EGAP Methods Guide on LATE](https://egap.org/resource/10-things-to-know-about-the-local-average-treatment-effect/)
+
+### Optional
+- [Imbens & Wooldridge (2007) Lecture 5 on LATE](https://www2.nber.org/WNE/lect_5_late_fig.pdf)
+- 
+
 
 ## Lecture
 

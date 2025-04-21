@@ -233,6 +233,7 @@ Spillovers may not put a study in jeopardy if they are contained or measured, bu
 $$Y_{ig} = \alpha + \beta D_{ig} + \gamma S_{-ig} + \delta X_{ig} + \varepsilon_{ig}$$
 
 Where:
+
 - $D_{ig}$ is the treatment indicator for individual i in group g
 - $S_{-ig}$ is the proportion of others treated in the group
 - $\beta$ captures direct effects
@@ -275,6 +276,8 @@ response to the evaluation itself instead of the intervention.**
 
 Common causes: salience of being evaluated, social pressure
 
+## Special Case: "Evaluation-driven effects"
+
 These include observer-driven effects and enumerator effects:
 
 - Hawthorne effects: Behavior changes due to attention from the study or intervention
@@ -297,7 +300,7 @@ treatment and changes behavior
 - Collect data on spillovers
 - Two-stage randomization 
 
-## What can we do about it? Hidden Treatment Versions
+## What can we do about it? Hidden Treatment Versions {.smaller}
 
 ::: {.nonincremental}
 1. **Standardization**: Create detailed protocols and implementation guidelines
@@ -338,9 +341,10 @@ treatment and changes behavior
 
 ## Attrition Bias Example
 
-Suppose we were interested in testing the impact of giving students eyeglasses on test scores
+Suppose we were interested in testing the impact of students wearing eyeglasses on test scores. What would we want to know?
 
 Consider these scenarios: 
+
 - If everyone is in our data in the treatment and control group, what is the result? 
 - How does this change if some people are missing from baseline only? From endline only? 
 - What if under-performing children don't come to school when we give exams?
@@ -395,7 +399,10 @@ Consider these scenarios:
 
 - **Average treatment effect** can be expressed as:
 
-$$\text{ATE} = P(R=1) \cdot E[Y_i(1) - Y_i(0) | R_i = 1] + P(R=0) \cdot E[Y_i(1) - Y_i(0) | R_i = 0]$$
+$$
+\text{ATE} = P(R=1) \cdot E[Y_i(1) - Y_i(0) | R_i = 1] \\
++ P(R=0) \cdot E[Y_i(1) - Y_i(0) | R_i = 0]
+$$
 
 - **Strong assumption needed**: $E[Y_i(1) - Y_i(0) | R_i = 1] = E[Y_i(1) - Y_i(0) | R_i = 0]$
 
@@ -440,7 +447,10 @@ Testing depends on available data:
 
 - **GHO tests** (Ghanem, Hirshleifer, Ortiz-Becerra, 2020):
   - Use regression with baseline outcome as dependent variable:
-    $Y_{i0} = \pi_{11}D_iR_i + \pi_{01}(1-D_i)R_i + \pi_{10}D_i(1-R_i) + \pi_{00}(1-D_i)(1-R_i) + \epsilon_i$
+    $$
+    Y_{i0} = \pi_{11}D_iR_i + \pi_{01}(1-D_i)R_i + \\
+    \pi_{10}D_i(1-R_i) + \pi_{00}(1-D_i)(1-R_i) + \epsilon_i
+    $$
 
 - For valid estimate for responders, test:
   $E[Y_{i0}|D_i = 0, R_i = r] = E[Y_{i0}|D_i = 1, R_i = r]$ for $r = 0, 1$
@@ -535,18 +545,20 @@ Testing depends on available data:
 
 Based on potential treatment status:
 
+![](CleanShot%202025-04-21%20at%2010.31.04@2x.png)
+
+
+## Four Types of Participants
+
 - **Compliers**: Take treatment if and only if assigned to treatment
 - **Always-takers**: Take treatment regardless of assignment
 - **Never-takers**: Never take treatment regardless of assignment
 - **Defiers**: Take treatment if and only if assigned to control
 
-::: {.notes}
-Monotonicity assumption typically rules out the existence of defiers
-:::
 
 ## Analytical Approaches Under Imperfect Compliance
 
-- **As-treated analysis**
+- **As-treated analysis (NO!)**
   - Compare based on treatment actually received
   - Reintroduces selection problem
   - Valid only under strong assumptions
@@ -560,7 +572,9 @@ Monotonicity assumption typically rules out the existence of defiers
 
 ITT can be decomposed into:
 
-$$ITT = \Pr(\text{complier}) \cdot \tau_{compliers} + \Pr(\text{always-taker}) \cdot 0 + \Pr(\text{never-taker}) \cdot 0 + \Pr(\text{defier}) \cdot \tau_{defiers}$$
+$$
+ITT = \Pr(\text{complier}) \cdot \tau_{compliers} + \Pr(\text{always-taker}) \cdot 0 + \Pr(\text{never-taker}) \cdot 0 + \Pr(\text{defier}) \cdot \tau_{defiers}
+$$
 
 - Always-takers and never-takers have zero contribution
 - Under monotonicity (no defiers), simplifies further
@@ -630,6 +644,8 @@ $$\text{LATE} = \frac{\text{ITT effect on outcome}}{\text{ITT effect on treatmen
 
 4. **Apply behavioral principles**
    - Commitment devices, social norms, default options, reminders
+
+## Design Tips to Improve Compliance
 
 5. **Education and supportive environment**
    - Training, explanation of importance, regular reinforcement

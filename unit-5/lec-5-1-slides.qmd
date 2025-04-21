@@ -201,7 +201,7 @@ Suppose girls are more likely to wear their eyeglasses...
 **Treatment Group**
 
 | Student | Treatment Group? (Given glasses) | Wore glasses? | Gender | Score |
-|--------------|-------------------|--------------|--------------|--------------|
+|---------------|---------------|---------------|---------------|---------------|
 | Student 1 | Yes | Yes | Girl | 80 |
 | Student 2 | Yes | No | Boy | 70 |
 | Student 3 | Yes | Yes | Girl | 80 |
@@ -218,7 +218,7 @@ Suppose girls are more likely to wear their eyeglasses...
 **Control Group**
 
 | Student | Treatment Group? (Given glasses) | Wore glasses? | Gender | Score |
-|--------------|-------------------|--------------|--------------|--------------|
+|---------------|---------------|---------------|---------------|---------------|
 | Student 1 | No | No | Boy | 70 |
 | Student 2 | No | No | Boy | 70 |
 | Student 3 | No | Yes | Girl | 80 |
@@ -261,7 +261,7 @@ Where: - Numerator is the ITT - Denominator is the difference in probability of 
 ## Eyeglasses Example
 
 |   | Treatment Group (gave eyeglasses) | Control Group (Did not give eyeglasses) |
-|------------------------------------|------------------|------------------|
+|-----------------------------------|------------------|------------------|
 | \% Actually Got Treatment (Actually wore glasses) | 70% | 10% |
 | E\[Outcome\] (Test Scores) | 95 | 82 |
 
