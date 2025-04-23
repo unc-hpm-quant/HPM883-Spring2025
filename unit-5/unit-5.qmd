@@ -5,6 +5,7 @@ draft: false
 
 ## Overview
 
+In this unit, we will discuss the threats to validity in experimental settings. We will also discuss how to address these threats in design, implementation, and analysis. 
 
 ## Readings
 
@@ -21,3 +22,6 @@ draft: false
 
 -   [Lecture 5.0 Slides](/unit-5/lec-5-0-slides.qmd)
 
+## Labs
+
+- [Lab 5: Peer PAP Review](/labs/lab-5-PeerPAPReview.qmd)

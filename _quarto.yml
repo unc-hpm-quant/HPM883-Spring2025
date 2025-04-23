@@ -135,6 +135,8 @@ website:
             text: "Unit 5: Threats to Validity"
           - href: unit-5/lec-5-0-slides.qmd
             text: "Lecture Slides: Unit 5.0: Threats to Validity"
+          - href: labs/lab-5-PeerPAPReview.qmd
+            text: "Lab 5: Peer PAP Review"
       - section: "Resources"
         contents:
           - href: resources.qmd

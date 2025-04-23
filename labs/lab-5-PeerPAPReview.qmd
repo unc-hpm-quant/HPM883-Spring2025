@@ -1,0 +1,113 @@
+---
+title: "Lab Assignment: Peer Review of Pre-Analysis Plan"
+author: "Your Name"
+date: "`r Sys.Date()`"
+format: html
+draft: false
+---
+
+## Introduction
+
+In this lab assignment, you will conduct a peer review of another student's Pre-Analysis Plan (PAP) for the "Designing and Analyzing an Experiment in Health Services Research" semester project. The goal of this exercise is to provide constructive feedback to your peer and to critically reflect on effective research design and analysis practices. 
+
+Please refer to the attached **Guide for Peer Review** and the provided rubric to structure your feedback clearly and constructively.
+
+## Instructions
+
+1. **Obtain the Peer PAP**:  
+   You will receive a peer's Pre-Analysis Plan via a private message in the course Slack channel.
+
+2. **Review the PAP Carefully**:  
+   Carefully read the document provided by your peer, making notes based on the grading criteria outlined in the rubric and the guidance provided in the Guide for Peer Review.
+
+3. **Assess the PAP**:  
+   Evaluate your peer's PAP according to the three main criteria:
+   
+   - **Clarity and Completeness (40%)**
+   - **Rigor of Design and Analysis (40%)**
+   - **Feasibility and Practicality (20%)**
+   
+   Provide specific, actionable feedback in each area. 
+
+4. **Submit Your Review**:  
+   Write your review clearly and respectfully, highlighting strengths and providing constructive suggestions for improvement. Submit your review in Gradescope.
+
+---
+
+## Peer Review Submission Template
+
+In your submission, clearly structure your review using the following headings and prompts. Address each point thoroughly.
+
+**Reviewer Name:**  
+**Peer Name (Author of PAP):**  
+**Date of Review:**
+
+---
+
+## 1. Clarity and Completeness (40%)
+
+Evaluate the clarity and completeness of the PAP. Provide comments in each of the following areas:
+
+- **Description of Intervention and Control Conditions:**  
+  _Is the proposed intervention and control clearly and completely described? What additional details or clarifications would be helpful?_
+
+- **Outcome Measures Clearly Defined and Justified:**  
+  _Are the primary and secondary outcomes clearly defined? Are they justified effectively? Suggest improvements if needed._
+
+- **Sample and Population Description:**  
+  _Is the target population, sampling method, and sample size clearly described and appropriate? What clarifications or adjustments would improve this section?_
+
+- **Data Collection Methods and Timeline:**  
+  _Are data collection methods and timelines clearly articulated and realistic? Provide suggestions to improve clarity or completeness._
+
+---
+
+## 2. Rigor of Design and Analysis (40%)
+
+Evaluate the rigor of the experimental design and analytical approach. Provide comments in each of the following areas:
+
+- **Randomization Strategy:**  
+  _Has the randomization approach been clearly described and well-justified? What improvements could strengthen this section?_
+
+- **Statistical Power and Sample Size Calculations:**  
+  _Are power calculations clearly presented, appropriate, and well-justified? Suggest clarifications or improvements._
+
+- **Analytical Approach and Econometric Methods:**  
+  _Is the analytical approach clearly defined and appropriate for answering the research questions? Suggest any improvements or additional considerations._
+
+- **Plan for Checking Balance and Attrition:**  
+  _Is there a clear, feasible plan to check randomization balance and manage attrition? Provide recommendations to improve rigor._
+
+---
+
+## 3. Feasibility and Practicality (20%)
+
+Evaluate the practicality and feasibility of the PAP. Provide comments in each of the following areas:
+
+- **Practicality of Intervention Implementation:**  
+  _Is the intervention practical and feasible within realistic constraints (time, resources, logistics)? Suggest ways to enhance feasibility._
+
+- **Feasibility of Data Collection and Analysis:**  
+  _Are data collection and analysis plans realistic and achievable? Suggest any improvements._
+
+---
+
+## Summary and Additional Comments
+
+Provide a brief summary of the strengths of the PAP and highlight the most important areas for improvement. Include any additional comments or recommendations not covered above.
+
+---
+
+## Submission Instructions
+
+- Submit your peer review as a pdf file.
+- Name your file using the following convention: `peer-review-[YourName]-for-[Peer PAP ID].pdf`
+- Submit via Gradescope by Friday, April 26th, 2025 at 11:59 PM EST.
+
+---
+
+## Resources and Support
+
+- Refer to the attached **Guide for Peer Review** for detailed guidance on providing constructive and effective feedback.
+- For additional examples of PAPs, consult the [AEA RCT Registry](https://www.socialscienceregistry.org/) or the [World Bank DIME Wiki](https://dimewiki.worldbank.org/Pre-Analysis_Plan).
+
