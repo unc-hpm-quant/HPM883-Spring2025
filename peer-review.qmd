@@ -1,0 +1,108 @@
+---
+title: "Peer Review Guide"
+format: html
+draft: false
+---
+
+Peer review is a cornerstone of academic publishing and the scientific process. As a PhD student or early-career researcher, being asked to review a manuscript is a sign of your growing expertise and an important responsibility. It's also a fantastic learning opportunity. This guide provides practical steps and tips for writing thoughtful, constructive, and high-quality peer reviews.
+
+### The Purpose and Principles of Good Peer Review
+
+Before diving in, remember the goals:
+
+1. **Improve the Manuscript:** Your primary role is to provide constructive feedback to help the authors strengthen their work.
+2. **Advise the Editor:** Your review helps the journal editor decide whether the manuscript is suitable for publication (after potential revisions).
+3. **Uphold Standards:** You act as a gatekeeper for scientific rigor, clarity, and significance in your field.
+
+**Core Principles:**
+
+* **Be Constructive:** Focus on *how* the paper can be improved.
+* **Be Prompt:** Respond to invitations quickly and submit your review on time.
+* **Be Fair and Unbiased:** Evaluate the work objectively based on its merits, not on the authors' reputation or institution. Acknowledge your own potential biases.
+* **Be Specific:** Ground your comments in specific examples from the text (use page/line numbers).
+* **Be Respectful:** Maintain a professional and courteous tone, even when critical. Address the *work*, not the authors personally.
+* **Maintain Confidentiality:** Treat the manuscript and your review as confidential documents.
+
+
+### Step 1: Before You Accept the Invitation
+
+* **Expertise:** Do you have sufficient knowledge of the topic and methods to evaluate the manuscript critically? It's okay if you aren't an expert in *every* aspect, but you should be comfortable with the core subject matter. Don't be afraid to decline if it's truly outside your area.
+* **Time:** Can you dedicate sufficient time (typically 3-6 hours) to provide a thorough review by the deadline? Rushing leads to poor reviews.
+* **Conflicts of Interest (COI):** Do you have any potential COIs? (e.g., collaborating with the authors recently, working on a *very* similar project, direct professional or personal conflicts). If unsure, declare it to the editor.
+
+
+### Step 2: Reading the Manuscript – A Multi-Pass Approach
+
+Don't just read it once. Try this:
+
+1. **First Pass (Big Picture):** Read the abstract, introduction, and conclusion. Skim the rest. Ask yourself:
+    * What is the main research question or objective?
+    * What are the key findings?
+    * Is the study potentially significant and original?
+    * Does the overall structure make sense? Is it easy to follow the argument?
+2. **Second Pass (Deep Dive):** Read the entire manuscript carefully, section by section. Take detailed notes. Pay attention to:
+    * **Introduction:** Is the background adequate? Is the research question/hypothesis clearly stated and well-motivated? Is the gap in the literature clearly identified?
+    * **Methods:** Are the methods appropriate for the research question? Are they described in enough detail for replication (consider data sources, variable definitions, statistical/analytical techniques, ethical approvals)? Are there obvious flaws in the design or analysis plan? *For quantitative papers like those in health economics or using ML: Check model specification, assumptions, robustness checks, potential endogeneity, etc.*
+    * **Results:** Are the findings presented clearly and logically (using text, tables, figures)? Do the results directly address the research question? Are the tables and figures well-designed and easy to understand? Are statistical results reported appropriately?
+    * **Discussion:** Do the authors interpret the results correctly? Do they link back to the research question and literature? Are limitations acknowledged adequately? Are the conclusions justified by the results? Is the significance/contribution clearly articulated?
+    * **Overall:** Is the writing clear, concise, and professional? Are there major issues with grammar or style that impede understanding? Are references appropriate and reasonably comprehensive?
+
+### Step 3: Structuring Your Review
+
+Organize your feedback clearly for both the editor and the authors. A standard structure works well:
+
+1. **Brief Summary:** Start with 2-3 sentences summarizing the paper's topic, main approach, and key findings. This shows you understood the core message.
+2. **Overall Impression \& Recommendation:** State your overall assessment (e.g., interesting study with potential, significant flaws, solid contribution). Then, clearly state your recommendation (Accept, Minor Revision, Major Revision, Reject – see below) and briefly justify it based on your main points.
+3. **Major Concerns:** List the most significant issues that *must* be addressed for the paper to be potentially publishable. These often relate to:
+    * Serious methodological flaws (design, analysis, data)
+    * Lack of originality or significance
+    * Conclusions not supported by the data
+    * Major gaps in the literature review or discussion
+    * Fundamental lack of clarity
+    * Number these points for easy reference. Be specific and explain *why* it's a concern and, if possible, suggest *how* it might be addressed (without being overly prescriptive).
+4. **Minor Concerns:** List less critical issues that would improve the paper but aren't fundamental flaws. Examples include:
+    * Need for clarification in specific sections
+    * Suggestions for additional, non-essential analyses or discussion points
+    * Minor errors in tables/figures
+    * Typos or grammatical errors (mention patterns rather than listing every single one, unless they significantly hinder understanding).
+    * Number these points too.
+5. **(Optional) Confidential Comments to the Editor:** Use this section for comments you don't want the authors to see (e.g., concerns about potential plagiarism or ethical issues, frank assessment of significance/novelty if you feel it differs from your comments to the authors).
+
+### Step 4: Writing Constructive Feedback
+
+* **Balance:** Acknowledge strengths as well as weaknesses. Start with a positive comment if possible.
+* **Specificity:** Instead of "The methods are unclear," say "The description of the sample selection process on page 5 lacks detail regarding exclusion criteria."
+* **Evidence:** Refer to specific page numbers, paragraphs, figures, or tables.
+* **Tone:** Be professional, polite, and objective. Avoid sarcasm, dismissive language, or personal attacks. Frame critiques as suggestions for improvement.
+    * *Instead of:* "The authors clearly don't understand X."
+    * *Try:* "The discussion of X could be strengthened by considering..." or "It was unclear how the authors accounted for Y; clarification is needed."
+* **Actionability:** Suggest ways forward where possible, but respect the authors' autonomy. "The authors might consider..." or "Perhaps clarifying X would help..."
+
+
+### Step 5: Making Your Recommendation
+
+Align your recommendation with the severity of the issues raised:
+
+* **Accept:** Rare for an initial submission. Means the paper is publishable as is, perhaps with only very minor copyediting.
+* **Minor Revision:** The paper is fundamentally sound but needs small improvements (clarifications, minor analyses, better figures). You are confident the authors can address these easily.
+* **Major Revision:** The paper has potential but requires substantial changes (significant re-analysis, major rewriting of sections, addressing key methodological concerns). The revisions might not be successful, requiring re-review.
+* **Reject:** The paper has fundamental flaws (poor methodology, lack of novelty/significance, conclusions unsupported) that cannot be realistically fixed through revision, or the topic is inappropriate for the journal.
+
+
+### Why Bother? Benefits for *You*
+
+Engaging in peer review:
+
+* **Sharpens Your Critical Thinking:** Evaluating others' work improves your own research and writing skills.
+* **Keeps You Current:** You see cutting-edge research (often before publication).
+* **Builds Your Network \& Reputation:** Editors notice thoughtful reviewers.
+* **Contributes to Your Field:** It's a vital part of academic citizenship.
+* **Improves Your Own Submissions:** Understanding the review process from the other side helps you anticipate reviewer comments on your own papers.
+
+
+### Final Tips for New Reviewers
+
+* **Check Journal Guidelines:** Many journals have specific instructions or criteria for reviewers.
+* **Don't Be Afraid to Ask:** If you're unsure about something, ask a mentor or senior colleague for advice (without breaking confidentiality about the manuscript's specifics).
+* **It's Okay to Be Critical:** Your job is to identify weaknesses. Just ensure your criticism is constructive and fair.
+* **Proofread Your Review:** Ensure your comments are clear, concise, and professional.

@@ -1,5 +1,5 @@
 ---
-title: "Templates"
+title: "Templates & Guides"
 execute: 
   freeze: false
 editor_options: 
@@ -13,3 +13,7 @@ editor_options:
 [RCT Analysis Template Repository (GitHub)](https://github.com/unc-hpm-quant/rct-analysis-template)
 
 [J-Pal Sample Size and Power Repository](https://github.com/unc-hpm-quant/JPAL-Sample_Size_and_Power)
+
+## Guides
+
+[Peer Review Guide](peer-review.qmd)
