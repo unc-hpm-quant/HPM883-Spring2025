@@ -137,6 +137,12 @@ website:
             text: "Lecture Slides: Unit 5.0: Threats to Validity"
           - href: labs/lab-5-PeerPAPReview.qmd
             text: "Lab 5: Peer PAP Review"
+      - section: "Unit 6: Generalizability & Scalability"
+        contents:
+          - href: unit-6/unit-6.qmd
+            text: "Unit 6: Generalizability & Scalability"
+          - href: unit-6/lec-6-1-slides.qmd
+            text: "Lecture Slides: Unit 6.1: Generating and Applying Scalable Insights"
       - section: "Resources"
         contents:
           - href: resources.qmd

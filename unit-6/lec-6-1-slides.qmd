@@ -1,0 +1,351 @@
+---
+title: "From Petri Dish to Policy: Generating and Applying Scalable Experimental Insights"
+author: Sean Sylvia, PhD
+date: "2025-04-28"
+format:
+  revealjs:
+    theme: default
+    slide-number: true
+    transition: fade
+    progress: true
+    incremental: false
+    toc: false
+    scrollable: false
+    smaller: true
+editor: visual
+draft: false # Set draft to false
+---
+
+## The Goal: Evidence-Informed Policy & Practice
+
+*   Throughout this course, we've explored methods for generating rigorous evidence about "what works."
+*   The ultimate aim is often to improve decisions, policies, and programs that affect people's lives.
+*   BUT... translating research findings into real-world impact is challenging.
+*   This lecture tackles two critical hurdles: **Generalizability** (Does it work *elsewhere*?) and **Scalability** (Does it work *at scale*?).
+
+<!-- Graphics: Image: Research paper transforming into a policy document or real-world program. -->
+
+---
+
+## Why This Matters Now: Bridging the "Know-Do" Gap
+
+*   We often face a gap between what research suggests *could* work and what actually gets implemented effectively.
+*   Policymakers need actionable insights relevant to *their* context and constraints.
+*   Researchers want their work to have impact.
+*   This topic connects back to the beginning: rethinking the research question itself.
+    *   An impact evaluation is an intervention on the policy process.
+    *   The goal (theory of change) of an evaluation is to enable better-informed decisions and policies.
+
+<!-- Graphics: Image depicting a bridge spanning a gap between 'Research Lab/University' and 'Government Building/Community'. -->
+
+---
+
+## Roadmap
+
+*   **The Challenge:** Using evidence for policy decisions.
+*   **Diagnosing Failure:** Why do interventions experience "Voltage Drop"? (List's Vital Signs)
+*   **Generating Better Evidence:** Designing experiments for scale 
+*   **Applying Existing Evidence:** Generalizing across contexts 
+*   **Synthesis & Takeaways:** Implications for your research.
+
+<!-- Graphics: Simple flowchart or numbered list graphic. -->
+
+---
+
+## Part I: The Challenge: Using Evidence for Policy Decisions
+
+<!-- Graphics: Image depicting a crossroads or decision point. -->
+<!-- Using background-image as an example placeholder -->
+
+---
+
+## The Policymaker's Dilemma
+
+*   Need evidence to inform decisions.
+*   BUT: Finding a high-quality impact evaluation that addresses the *exact* policy question in the *exact* target context is highly improbable.
+*   **How do we bridge the gap between available evidence and specific policy needs?**
+
+<!-- Graphics: World map with scattered 'RCT' icons and a question mark over a specific region. -->
+
+---
+
+## Common (Mis)Approaches to Using Evidence
+
+*   `❌` Waiting for the *perfect* local RCT (may never happen).
+*   `❌` Relying *only* on weak local evidence (e.g., correlations).
+*   `❌` Blindly copying rigorous results from *different* contexts.
+*   `❌` Believing replication count is magic ("How many RCTs needed?"). 
+*   `❌` Vague definitions of "similar" contexts.
+
+<!-- Graphics: Icons representing these pitfalls with red 'X' marks. -->
+
+---
+
+## Compounding the Problem: The "Voltage Drop"
+
+*   Even when we *do* have evidence, interventions often perform worse when scaled.
+*   **Voltage Drop:** "The cost–benefit profile depreciates considerably when moving from the small to the large." (List)
+*   Occurs in 50-90% of scaled programs across various fields.
+*   Why does this happen? We need diagnostics.
+
+<!-- Graphics: Simple line graph showing 'Impact' or 'Benefit/Cost Ratio' high in 'Pilot/Small Study' and dropping significantly in 'Scale-Up'. -->
+
+---
+
+## Part II: Diagnosing Voltage Drop: List's Five Vital Signs
+
+<!-- Graphics: Icon of a stethoscope or medical diagnostic tool. -->
+
+---
+
+## The Five Vital Signs of Scaling (List 2024)
+
+Factors that cause voltage drops and threaten scalability:
+
+| Vital Sign                      | Definition                                                                  | Brief Example                               |
+| :------------------------------ | :-------------------------------------------------------------------------- | :------------------------------------------ |
+| **1. False Positives**          | It didn't *actually* work reliably in the first place.                      | Initial D.A.R.E. results                    |
+| **2. Population**               | Sampled population differs significantly from the population at scale.        | Early energy saving adopters vs. later ones |
+| **3. Situation (Context)**      | Initial study context differs crucially from the real world at scale.       | Implementation fidelity issues; Teacher quality (CHECC); Nudges over time |
+| **4. Spillovers (Gen. Equil.)** | Intervention affects non-participants or market dynamics outside the trial. | Credential devaluation; Neighbor effects    |
+| **5. Supply-Side**              | Costs increase disproportionately during scaling (diseconomies of scale).    | Hiring less qualified staff at scale        |
+
+*(Adapted from List 2024, Table 1)*
+
+<!-- Graphics: The table is the main graphic. Use icons next to each vital sign if desired (e.g., graph with noise for #1, diverse people icons for #2, gears/factory for #3/#5, ripple effect for #4). -->
+
+---
+
+## Part III: Generating Better Evidence: Designing for Scale 
+
+<!-- Graphics: Blueprint or construction design icon. -->
+
+---
+
+## Shifting the Research Question
+
+*   Traditional Efficacy Question: "Can this intervention work *under ideal conditions*?" (Petri dish)
+*   **Scaling/Policy Question:** "Will this intervention work *at scale*, considering real-world constraints?"
+*   Requires a shift in research design *from the outset*.
+
+<!-- Graphics: Image shifting focus from a small petri dish to a wider landscape/city view. -->
+
+---
+
+## When is This Critical? HFIDs (List 2024)
+
+Flipping the model is most crucial for:
+
+*   **H**igh **F**ixed Cost Interventions: Expensive initial setup/testing.
+*   **I**mpatient **D**ecision-makers: Risk of premature scaling based on early, optimistic results.
+
+*(Diagram below)*
+
+<!-- Graphics: Recreate the 2x2 HFID quadrant: -->
+<!-- Axes: Fixed Cost (Low/High), Decision-maker Impatience (Patient/Impatient) -->
+<!-- Label Quadrants: I (HFID - Flip!), II (High Cost/Patient), III (Low Cost/Impatient), IV (Low Cost/Patient - Traditional often OK) -->
+<!-- Based on List 2024, Fig 2 -->
+
+---
+
+## Method 1: Backward Induction
+
+*   Start by imagining the fully scaled program.
+*   What will the constraints be (budget, staff, context, politics)?
+*   What are the potential failure points (Vital Signs)?
+*   Design the *initial* research to gather information relevant to these scaled realities.
+
+<!-- Graphics: Arrow pointing backward from 'Scale' to 'Design'. -->
+
+---
+
+## Method 2: "Option C Thinking" (List 2024)
+
+Augment standard A/B testing:
+
+*   **A (Control):** Baseline / No intervention.
+*   **B (Efficacy Test):** Intervention under *ideal* conditions.
+*   **C (Scale Test):** Intervention under *realistic scaling constraints*.
+*   Compare A vs. B (Can it work?) AND A vs. C (Will it likely work at scale?).
+
+*(Diagram below)*
+
+<!-- Graphics: Simplified version of List's Fig 1: -->
+<!-- Top: Box A (Control, 17%) -> Box B (Ideal Tx, 51%) -> "Looks Great!" -> "Fails at Scale" -->
+<!-- Bottom: Add Box C (Scaled Tx, 18%) -> "Minimal Effect" -> "Won't Scale Well (w/o changes)" -->
+
+---
+
+## Example: Parenting Intervention in China 
+
+*   High Fixed Costs (developing curriculum, training home visitors).
+*   **Backward Induction:** Realized home visitor quality would vary at scale.
+*   **Option C Applied:** Didn't just hire superstar home visitors (Arm B). Home visitors from the *existing staff* of the local family planning commission (part of Arm C logic).
+*   Allowed testing if the program worked with a *representative* range of home visitor quality, providing scaling confidence on that dimension.
+
+<!-- Graphics: Simple icons: School building + Diverse teacher figures. -->
+
+---
+
+## Part IV: Applying Existing Evidence Across Contexts 
+
+<!-- Graphics: Icon of puzzle pieces fitting together or a bridge connecting two different places. -->
+
+---
+
+## Using Evidence: Globally Informed, Locally Grounded
+
+*   We often need to assess if findings from *elsewhere* apply *here*.
+*   Need a structured way to combine general lessons with local knowledge.
+*   Effectively applying evidence requires integrating insights from the broader research literature (including RCTs) with a thorough understanding of the specific local context. You need both; one doesn't replace the other.
+    * Complements, not substitutes.
+
+<!-- Graphics: Globe icon + Local map icon connected by arrows. -->
+
+---
+
+## A Framework for Generalizability (Glennerster)
+
+Systematically assess relevance by examining four areas:
+
+1.  **Theory/Mechanisms:** Unpack the 'how' and 'why'.
+2.  **Local Conditions:** Does the context match the theory's needs?
+3.  **General Behavior:** How strong is evidence for the core mechanism?
+4.  **Local Implementation:** Can we deliver it faithfully here?
+
+<!-- Graphics: 4-quadrant diagram or circular flow graphic showing the four components (based on Glennerster Slide 19/21). -->
+
+---
+
+## Step 1: Program Theory
+
+*   Deconstruct the "black box".
+*   Map the causal chain (Inputs -> Activities -> Outputs -> Outcomes).
+    * i.e. your Theory of Change.
+*   What are the key assumptions/conditions required for the program to work?
+*   *Example (Immunization Incentives):
+    * Assumes parents *want* to immunize, can *access* clinic
+    * but *procrastinate* or struggle with persistence. (Glennerster)
+
+<!-- Graphics: Black box icon opening up to show a simple Theory of Change diagram. -->
+
+---
+
+## Step 2: Local Conditions
+
+*   Does the *problem* exist here? (Needs Assessment)
+*   Do the *key conditions* from the theory hold in *this specific context*?
+*   Use local data (quantitative, qualitative, descriptive).
+*   *Example (Immunization):*   
+    * Compare immunization drop-off patterns. 
+    * High initial uptake but poor completion suggests persistence issue (like India study). 
+    * Low initial uptake suggests access/acceptability issues, making incentives less relevant alone. 
+
+<!-- Graphics: Glennerster's immunization uptake comparison graph (stylized). Map icon with data overlay. -->
+
+---
+
+## Step 3: General Behavior / Mechanism
+
+*   What is the *core behavioral principle* driving the effect?
+*   How strong is the *broader evidence* for this principle (beyond the single study)?
+*   Look across different types of studies testing the same underlying behavior.
+*   *Example (Immunization):* 
+    * Evidence on present bias, effects of small incentives/costs on health behaviors (deworming, CCTs, HIV tests, contraception). 
+    * People are price-sensitive for preventative health. 
+
+<!-- Graphics: Brain icon or human figure making a decision. Graph showing price sensitivity for preventative health. -->
+
+---
+
+## Step 4: Local Implementation Capacity
+
+*   Can *we* implement the program *here* with fidelity to its core components?
+*   Who will implement (Govt vs NGO)? Do they have capacity, resources, buy-in?
+*   Are there logistical challenges unique to this context?
+*   May require a *process evaluation* or *pilot*, not necessarily another impact RCT, to assess feasibility.
+
+<!-- Graphics: Checklist graphic, gears turning icon, people working together icon. -->
+
+---
+
+## Applying the Framework: Key Question
+
+*   Instead of: "Do RCTs replicate?"
+*   Ask: "What's the theory of change? Do local conditions support it? How strong is the general behavioral evidence? Can we implement it here?" 
+
+<!-- Graphics: Question mark transforming into the four framework components. -->
+
+---
+
+## Part V: Synthesis & Takeaways for PhD Research
+
+<!-- Graphics: Lightbulb or graduation cap icon. -->
+
+---
+
+## Takeaways for Your Research
+
+*   **Be Critical Consumers:** Apply the Glennerster framework when reading literature. Ask: Would this generalize? Why/why not?
+*   **Design Thoughtfully:**
+    *   Clearly articulate your Theory of Change.
+    *   Consider List's Vital Signs – how might they affect your study or its scalability?
+    *   If feasible (esp. for potential HFIDs), consider 'Option C' elements.
+    *   Measure mechanisms and heterogeneity.
+*   **Document Diligently:** Detail your context, program specifics, and implementation process – this aids future generalization.
+*   **Contribute Broadly:** Aim for findings that inform fundamental behaviors/principles, not just a single program test.
+
+<!-- Graphics: Checklist or bullet points with relevant icons. -->
+
+---
+
+## Connecting the Dots: The Impact Evaluation as Intervention
+
+*   This course covered the journey: Causal inference, robust design, measurement, analysis -> Ensuring *internal validity*.
+*   This unit adds **Generalizability & Scale** -> Crucial for *external validity* and policy impact.
+*   **The Meta-Point:** Thinking about scale forces us back to the beginning (the research question). An **impact evaluation is itself an intervention** on the policy process.
+*   Our implicit theory of change *for the evaluation* is that by conducting it rigorously *and* considering its applicability (generalizability, scalability), we enable **better-informed decisions**.
+*   Each stage (design, data, ethics, generalizability, scale) serves this ultimate goal.
+
+<!-- Graphics: Perhaps a diagram showing: [Research Question] -> [Rigorous Evaluation (Internal Validity)] -> [Consideration of Scale/Context (External Validity)] -> [Informed Policy/Decision]. Highlight the "Evaluation" step as an intervention itself. -->
+
+---
+
+## Looking Ahead: Your Role as Evidence Generators & Users
+
+*   As PhD researchers, you will contribute to this evidence lifecycle.
+*   **Your Dissertation:** Think critically *now* about the potential generalizability and scalability of your research questions and findings. Use the frameworks discussed.
+*   **Beyond:** Whether in academia, policy, or practice, you'll need to:
+    *   Critically evaluate existing evidence.
+    *   Design studies with an eye towards future application.
+    *   Communicate findings clearly, including limitations related to context and scale.
+*   The goal is not just publications, but meaningful, applicable knowledge.
+
+<!-- Graphics: Icons representing PhD thesis, policy document, academic journal. -->
+
+---
+
+## Final Thought
+
+*   Designing for scale and applying evidence rigorously requires more upfront thinking.
+*   BUT: It increases the likelihood that our research contributes meaningfully to policy and avoids the pitfalls of voltage drop and misapplication.
+*   It builds long-term trust in the value of evidence.
+
+<!-- Graphics: Image of a bridge successfully connecting 'Research' and 'Policy/Impact'. -->
+
+---
+
+## Final Questions?
+
+<!-- Graphics: Large question mark icon. -->
+
+---
+
+## Core References
+
+*   List, J. A. (2024). Optimally generate policy-based evidence before scaling. *Nature*, *626*(7998), 491–499. https://doi.org/10.1038/s41586-023-06972-y
+*   Glennerster, R. (Based on J-PAL Lecture Materials/Transcript). Globally informed, locally grounded decision making. *[Note: Cite specific J-PAL source if available, otherwise use transcript context]*.
+*   Al-Ubaydli, O., List, J. A., & Suskind, D. L. (2019). *The Science of Using Science: Towards an Understanding of the Threats to Scaling Experiments* (Working Paper No. 2019-73). Becker Friedman Institute for Economics Working Paper Series. *[Mention as underpinning List 2024]*
+
+<!-- Graphics: Book/document icons. -->
+

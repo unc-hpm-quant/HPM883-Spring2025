@@ -1,0 +1,23 @@
+---
+title: "Unit 6: Generalizability and Scalability"
+draft: false
+---
+
+## Unit Overview
+
+-   Discusses the concepts of generalizability (external validity) and scalability in translating research findings into policy and practice.
+-   Covers common challenges like "voltage drop" and List's Five Vital Signs for diagnosing scaling failures.
+-   Explores strategies for designing research *for* scale (e.g., backward induction, Option C).
+-   Presents frameworks (e.g., Glennerster) for assessing the applicability of existing evidence to new contexts.
+
+### Preparation
+
+-   Read:
+    -   List, J. A. (2024). Optimally generate policy-based evidence before scaling. *Nature*, *626*(7998), 491–499. https://doi.org/10.1038/s41586-023-06972-y
+    -   Review: Framework for Generalizability (Glennerster, based on J-PAL materials discussed in lecture)
+-   Listen: [Internal Validity Podcast](media/InternalValidity.mp3)
+
+### Class
+
+-   [Lecture: From Petri Dish to Policy: Generating and Applying Scalable Experimental Insights](/unit-6/lec-6-1-slides.qmd)
+

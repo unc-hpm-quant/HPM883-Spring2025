@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Labs – HPM 883</title>
+<title>Unit 6: Generalizability and Scalability – HPM 883</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +23,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-1fa1d8026083a9bddc52b4aafc7f818e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-1fa1d8026083a9bddc52b4aafc7f818e.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ecb6e7fce1ae14730c1686dde9be5040.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-135ac4d113b30199e54d7437fe66c954.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../unit-6/lec-6-1-slides.html" rel="next">
+<link href="../labs/lab-5-PeerPAPReview.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fa1d8026083a9bddc52b4aafc7f818e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-1fa1d8026083a9bddc52b4aafc7f818e.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-ecb6e7fce1ae14730c1686dde9be5040.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-135ac4d113b30199e54d7437fe66c954.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -69,68 +69,10 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-subtitle','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/lodash@4.17.21/lodash.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -143,7 +85,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Labs</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../unit-6/unit-6.html">Unit 6: Generalizability &amp; Scalability</a></li><li class="breadcrumb-item"><a href="../unit-6/unit-6.html">Unit 6: Generalizability &amp; Scalability</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -157,8 +99,8 @@ window.Quarto = {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/hpm883" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
@@ -222,7 +164,7 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course Schedule</span></a>
   </div>
 </li>
@@ -237,25 +179,25 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-overview.html" class="sidebar-item-text sidebar-link">
+  <a href="../course-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-syllabus.html" class="sidebar-item-text sidebar-link">
+  <a href="../course-syllabus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Syllabus</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./instructors.html" class="sidebar-item-text sidebar-link">
+  <a href="../instructors.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Instructors</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-communication.html" class="sidebar-item-text sidebar-link">
+  <a href="../course-communication.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Communication</span></a>
   </div>
 </li>
@@ -272,13 +214,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./project.html" class="sidebar-item-text sidebar-link">
+  <a href="../project.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Project Description</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ex-simulate.html" class="sidebar-item-text sidebar-link">
+  <a href="../ex-simulate.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Simulation Example</span></a>
   </div>
 </li>
@@ -295,19 +237,19 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-0/unit-0-foundations-1.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-0/unit-0-foundations-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Unit 0.0: Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-0/unit-0-foundations-2.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-0/unit-0-foundations-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Unit 0.1: A Field Experiment in Health Services Research</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-0/unit-0-foundations-3.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-0/unit-0-foundations-3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Unit 0.2: Computing for Reproducible Research</span></a>
   </div>
 </li>
@@ -324,25 +266,25 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-1/unit-1-internal-1.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-1/unit-1-internal-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Unit 1.0: Internal Validity</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/lab-1-InternalValidityPO.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/lab-1-InternalValidityPO.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 1: The Hospital of Uncertain Outcomes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-1/unit-1-internal-2.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-1/unit-1-internal-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Unit 1.1: Statistical Conclusion Validity</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/lab-2-Power.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/lab-2-Power.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 2: Power by Simulation</span></a>
   </div>
 </li>
@@ -359,19 +301,19 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-2/unit-2-design-1.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-2/unit-2-design-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Unit 2.1: Optimal Experimental Design</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-2/unit-2-design-2.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-2/unit-2-design-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Unit 2.2: How to Randomize</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/lab-3-design.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/lab-3-design.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 3: Experiment Design</span></a>
   </div>
 </li>
@@ -388,13 +330,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-3/unit-3-ml.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-3/unit-3-ml.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Unit 3: Supervised Learning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-3/lec-3-3-slides.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-3/lec-3-3-slides.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lecture Slides: Unit 3.3: Tree-based Methods</span></a>
   </div>
 </li>
@@ -411,19 +353,19 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-4/unit-4.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-4/unit-4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Unit 4: Mechanisms</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-4/lec-4-1-slides.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-4/lec-4-1-slides.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lecture Slides: Unit 4.1: Estimating Average Treatment Effects</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-4/lec-4-2-slides.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-4/lec-4-2-slides.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lecture Slides: Unit 4.2: Heterogeneous Treatment Effects &amp; Moderation</span></a>
   </div>
 </li>
@@ -440,19 +382,19 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-5/unit-5.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-5/unit-5.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Unit 5: Threats to Validity</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-5/lec-5-0-slides.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-5/lec-5-0-slides.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lecture Slides: Unit 5.0: Threats to Validity</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/lab-5-PeerPAPReview.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/lab-5-PeerPAPReview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 5: Peer PAP Review</span></a>
   </div>
 </li>
@@ -460,22 +402,22 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
  <span class="menu-text">Unit 6: Generalizability &amp; Scalability</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-6/unit-6.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-6/unit-6.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Unit 6: Generalizability &amp; Scalability</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-6/lec-6-1-slides.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-6/lec-6-1-slides.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lecture Slides: Unit 6.1: Generating and Applying Scalable Insights</span></a>
   </div>
 </li>
@@ -492,31 +434,31 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./resources.html" class="sidebar-item-text sidebar-link">
+  <a href="../resources.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Useful Reference Materials</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./computing.html" class="sidebar-item-text sidebar-link">
+  <a href="../computing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Computing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./templates.html" class="sidebar-item-text sidebar-link">
+  <a href="../templates.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Templates</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-2/shiny-oed-app.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-2/shiny-oed-app.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Optimal Experiment Design App</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./quiz-generator/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../quiz-generator/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Random Question Generator</span></a>
   </div>
 </li>
@@ -527,15 +469,25 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#unit-overview" id="toc-unit-overview" class="nav-link active" data-scroll-target="#unit-overview">Unit Overview</a>
+  <ul class="collapse">
+  <li><a href="#preparation" id="toc-preparation" class="nav-link" data-scroll-target="#preparation">Preparation</a></li>
+  <li><a href="#class" id="toc-class" class="nav-link" data-scroll-target="#class">Class</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/hpm883/edit/main/unit-6/unit-6.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../unit-6/unit-6.html">Unit 6: Generalizability &amp; Scalability</a></li><li class="breadcrumb-item"><a href="../unit-6/unit-6.html">Unit 6: Generalizability &amp; Scalability</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Labs</h1>
+<h1 class="title">Unit 6: Generalizability and Scalability</h1>
 </div>
 
 
@@ -552,99 +504,36 @@ window.Quarto = {
 </header>
 
 
-<p>More labs to be added as the semester progresses.</p>
+<section id="unit-overview" class="level2">
+<h2 class="anchored" data-anchor-id="unit-overview">Unit Overview</h2>
+<ul>
+<li>Discusses the concepts of generalizability (external validity) and scalability in translating research findings into policy and practice.</li>
+<li>Covers common challenges like “voltage drop” and List’s Five Vital Signs for diagnosing scaling failures.</li>
+<li>Explores strategies for designing research <em>for</em> scale (e.g., backward induction, Option C).</li>
+<li>Presents frameworks (e.g., Glennerster) for assessing the applicability of existing evidence to new contexts.</li>
+</ul>
+<section id="preparation" class="level3">
+<h3 class="anchored" data-anchor-id="preparation">Preparation</h3>
+<ul>
+<li>Read:
+<ul>
+<li>List, J. A. (2024). Optimally generate policy-based evidence before scaling. <em>Nature</em>, <em>626</em>(7998), 491–499. https://doi.org/10.1038/s41586-023-06972-y</li>
+<li>Review: Framework for Generalizability (Glennerster, based on J-PAL materials discussed in lecture)</li>
+</ul></li>
+<li>Listen: <a href="media/InternalValidity.mp3">Internal Validity Podcast</a></li>
+</ul>
+</section>
+<section id="class" class="level3">
+<h3 class="anchored" data-anchor-id="class">Class</h3>
+<ul>
+<li><a href="../unit-6/lec-6-1-slides.html">Lecture: From Petri Dish to Policy: Generating and Applying Scalable Experimental Insights</a></li>
+</ul>
 
 
+</section>
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-No.
-</th>
-<th>
-Title
-</th>
-<th>
-Due date
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-categories="TGFiJTJDSW50ZXJuYWwlMjBWYWxpZGl0eQ==" data-listing-date-sort="1738126800000" data-listing-file-modified-sort="1738769191557" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1928" data-listing-title-sort="Lab 1" data-listing-filename-sort="lab-1-InternalValidityPO.qmd">
-<td>
-<a href="./labs/lab-1-InternalValidityPO.html" class="title listing-title">Lab 1</a>
-</td>
-<td>
-<span class="listing-subtitle">The Hospital of Uncertain Outcomes</span>
-</td>
-<td>
-<span class="listing-description">Internal Validity, Potential Outcomes</span>
-</td>
-</tr>
-<tr data-index="1" data-categories="TGFiJTJDSW50ZXJuYWwlMjBWYWxpZGl0eQ==" data-listing-date-sort="1737522000000" data-listing-file-modified-sort="1738769170785" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="19" data-listing-word-count-sort="3772" data-listing-title-sort="Lab 1 Solutions" data-listing-filename-sort="lab-1-InternalValidityPO_sols.qmd">
-<td>
-<a href="./labs/lab-1-InternalValidityPO_sols.html" class="title listing-title">Lab 1 Solutions</a>
-</td>
-<td>
-<span class="listing-subtitle">The Hospital of Uncertain Outcomes</span>
-</td>
-<td>
-<span class="listing-description">Internal Validity, Potential Outcomes</span>
-</td>
-</tr>
-<tr data-index="2" data-categories="TGFiJTJDSW50ZXJuYWwlMjBWYWxpZGl0eQ==" data-listing-date-sort="NaN" data-listing-file-modified-sort="1740395740765" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2387" data-listing-title-sort="Lab 2" data-listing-filename-sort="lab-2-Power.qmd">
-<td>
-<a href="./labs/lab-2-Power.html" class="title listing-title">Lab 2</a>
-</td>
-<td>
-<span class="listing-subtitle">Power by Simulation</span>
-</td>
-<td>
-<span class="listing-description">Conducting power calculations by simulation, first without clusters and then with clusters.</span>
-</td>
-</tr>
-<tr data-index="3" data-categories="TGFiJTJDSW50ZXJuYWwlMjBWYWxpZGl0eQ==" data-listing-date-sort="NaN" data-listing-file-modified-sort="1740397320727" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2859" data-listing-title-sort="Lab 2: Power by Simulation" data-listing-filename-sort="lab-2-Power-sols.qmd">
-<td>
-<a href="./labs/lab-2-Power-sols.html" class="title listing-title">Lab 2: Power by Simulation</a>
-</td>
-<td>
-<span class="listing-subtitle">(Possible)Solutions</span>
-</td>
-<td>
-<span class="listing-description">Conducting power calculations by simulation, first without clusters and then with clusters.</span>
-</td>
-</tr>
-<tr data-index="4" data-categories="TGFiJTJDT3B0aW1hbCUyMERlc2lnbiUyQ1JhbmRvbWl6YXRpb24=" data-listing-date-sort="NaN" data-listing-file-modified-sort="1741017830900" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="33" data-listing-word-count-sort="6466" data-listing-title-sort="Lab 3" data-listing-filename-sort="lab-3-design.qmd">
-<td>
-<a href="./labs/lab-3-design.html" class="title listing-title">Lab 3</a>
-</td>
-<td>
-<span class="listing-subtitle">Optimizing HBV Vaccination Strategies</span>
-</td>
-<td>
-<span class="listing-description">Optimal experimental design and randomization techniques for vaccine interventions</span>
-</td>
-</tr>
-<tr data-index="5" data-listing-date-sort="NaN" data-listing-file-modified-sort="1745415746800" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="655" data-listing-title-sort="Lab Assignment: Peer Review of Pre-Analysis Plan" data-listing-filename-sort="lab-5-PeerPAPReview.qmd">
-<td>
-<a href="./labs/lab-5-PeerPAPReview.html" class="title listing-title">Lab Assignment: Peer Review of Pre-Analysis Plan</a>
-</td>
-<td>
-<span class="listing-subtitle">&nbsp;</span>
-</td>
-<td>
-<span class="listing-description">In this lab assignment, you will conduct a peer review of another student’s Pre-Analysis Plan (PAP) for the “Designing and Analyzing an Experiment in Health Services…</span>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1206,6 +1095,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../labs/lab-5-PeerPAPReview.html" class="pagination-link" aria-label="Lab 5: Peer PAP Review">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 5: Peer PAP Review</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../unit-6/lec-6-1-slides.html" class="pagination-link" aria-label="Lecture Slides: Unit 6.1: Generating and Applying Scalable Insights">
+        <span class="nav-page-text">Lecture Slides: Unit 6.1: Generating and Applying Scalable Insights</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1214,7 +1115,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/hpm883/edit/main/lab.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/hpm883/edit/main/unit-6/unit-6.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hpm883/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

@@ -209,5 +209,11 @@
   },
   "peer-review.qmd": {
     "peer-review.html": "bcbbb40e"
+  },
+  "unit-6/lec-6-1-slides.qmd": {
+    "lec-6-1-slides.html": "180d4c79"
+  },
+  "unit-6/unit-6.qmd": {
+    "unit-6.html": "235deb09"
   }
 }
