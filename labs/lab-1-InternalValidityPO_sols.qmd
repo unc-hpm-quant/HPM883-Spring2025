@@ -317,7 +317,7 @@ df[, y := vents * y1 + (1 - vents) * y0]
 ```
 
 ::: callout-note
-####  **Explanation :**
+#### **Explanation :**
 
 1.  **`vents * y1 + (1 - vents) * y0`**
 
@@ -408,7 +408,7 @@ cat(sprintf(
 ```
 
 ::: callout-note
-####  **Explanation:**
+#### **Explanation:**
 
 1.  **`pi = mean(df$vents)`**
 
@@ -452,7 +452,7 @@ print(reg)
 ```
 
 ::: callout-note
-####  **Explanation :**
+#### **Explanation :**
 
 1.  **`feols(y ~ vents, data = df, vcov = "hc1")`**
 

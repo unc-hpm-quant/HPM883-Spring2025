@@ -36,6 +36,7 @@ introsurvey_data <- read.csv("/Users/mac/Dropbox/Mac/Desktop/2025 spring course 
 # Calculate scores for each topic choice ranking question (Q12 & Q19) using the Borda count
 
 ## Calculate Borda count scores for Q12:How do you like to learn?
+
 ```{r}
 ### Creat data frame of ranking questions
 q12ranking_df <- data.frame(introsurvey_data$Q1, introsurvey_data$Q12_1, introsurvey_data$Q12_2, introsurvey_data$Q12_3, introsurvey_data$Q12_4, introsurvey_data$Q12_5, introsurvey_data$Q12_6)
@@ -100,6 +101,7 @@ print(q12_results)
 ```
 
 ## Calculate Borda count scores for Q19: Please rank the following topics in order of preference
+
 ```{r}
 ### Creat data frame of ranking questions
 q19ranking_df <- data.frame(introsurvey_data$Q1, introsurvey_data$Q19_1, introsurvey_data$Q19_2, introsurvey_data$Q19_3, introsurvey_data$Q19_4, introsurvey_data$Q19_5, introsurvey_data$Q19_6, introsurvey_data$Q19_7, introsurvey_data$Q19_8, introsurvey_data$Q19_9)
@@ -175,6 +177,7 @@ print(q19_results)
 ```
 
 # Group assignment
+
 ```{r}
 ## Rename variables of preferences and skills
 introsurvey_data <- introsurvey_data %>%
@@ -229,8 +232,3 @@ plot(hc, labels = FALSE, main = "Dendrogram of Group Matching")
 table(subset(introsurvey_data, select = c(FullName, Group)))
 
 ```
-
-
-
-
-
