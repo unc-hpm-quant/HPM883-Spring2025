@@ -1,0 +1,69 @@
+---
+title: "The Perfect Doctor Problem"
+subtitle: "An Interactive Demonstration of Selection Bias"
+format:
+  html:
+    css: styles.css
+---
+
+# Understanding Selection Bias Through the Perfect Doctor Exercise
+
+This interactive animation demonstrates the **Fundamental Problem of Causal Inference** through the lens of a hypothetical doctor who has perfect knowledge of each patient's treatment effects.
+
+::: callout-note
+## The Setup
+
+Imagine a doctor who can see into the future and knows exactly what would happen to each patient under both treatment and control conditions. This doctor knows each patient's:
+
+-   **Y^0^**: Health outcome if *not* treated
+-   **Y^1^**: Health outcome if treated
+-   **$\delta_i$**: Individual treatment effect (Y^1^ - Y^0^)
+:::
+
+## The Three Scenarios
+
+Click on each button to see how different assignment mechanisms affect our ability to estimate causal effects:
+
+1.  **Perfect Doctor**: Only treats patients who would benefit ($\delta > 0$)
+2.  **Bad Doctor**: Only treats patients who would be harmed ($\delta < 0$)
+3.  **Random Assignment**: Assigns treatment by coin flip (50/50 chance)
+
+::: callout-important
+## Key Learning Objective
+
+Even with *perfect knowledge* of treatment effects, selection into treatment based on those effects creates **selection bias**. Only **randomization** can eliminate this bias and produce unbiased estimates of the Average Treatment Effect (ATE).
+:::
+
+```{=html}
+<iframe src="doctor.html" width="100%" height="1400px" frameborder="0" style="max-width: 1000px; display: block; margin: 0 auto;"></iframe>
+```
+
+## Discussion Questions
+
+After exploring the animation, consider:
+
+1.  Why does the "perfect" doctor's strategy lead to *overestimation* of the treatment effect?
+2.  What is the relationship between the selection bias formula $E[Y^0|D=1] - E[Y^0|D=0]$ and what the perfect doctor is doing?
+3.  Why doesn't randomization have the same bias problem, even though it "ignores" what would be best for each individual patient?
+4.  In real-world settings, why might doctors (or patients) make treatment decisions similar to the "perfect doctor" scenario?
+
+## Mathematical Foundation
+
+The naive difference in means gives us:
+
+$$
+E[Y|D=1] - E[Y|D=0] = \underbrace{E[Y^1 - Y^0]}_{\text{ATE}} + \underbrace{E[Y^0|D=1] - E[Y^0|D=0]}_{\text{Selection Bias}}
+$$
+
+When the perfect doctor assigns treatment based on $\delta_i$, they systematically place patients with higher $Y^0$ values in the control group and patients with higher $Y^1$ values in the treatment group, creating positive selection bias.
+
+::: callout-tip
+## Connection to the Lecture
+
+This exercise illustrates the concepts covered in Unit 1 on Internal Validity:
+
+-   The **Potential Outcomes Framework**
+-   The **Fundamental Problem of Causal Inference** (missing data problem)
+-   Why **randomization** is the "gold standard" for causal inference
+-   The importance of the **assignment mechanism** being independent of potential outcomes
+:::
