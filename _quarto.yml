@@ -101,6 +101,8 @@ website:
         contents:
           - href: unit-1/unit-1-internal-1.qmd
             text: "Unit 1.0: Internal Validity"
+          - href: doctor-animation/index.qmd
+            text: "The Perfect Doctor Problem (Interactive)"
           - href: labs/lab-1-InternalValidityPO.qmd
             text: "Lab 1: The Hospital of Uncertain Outcomes"
           - href: unit-1/unit-1-internal-2.qmd
