@@ -1,0 +1,10 @@
+[build]
+  # Build is handled by GitHub Actions (.github/workflows/deploy.yml)
+  # which installs Quarto + R + renv before rendering.
+  command = ":"
+  publish = "_site"
+  # Always skip Netlify's git-triggered builds; deploys are pushed by GH Actions.
+  ignore = "exit 0"
+
+[build.processing]
+  skip_processing = false

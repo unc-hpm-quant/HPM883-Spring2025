@@ -18,10 +18,10 @@ format:
 
 website:
   page-navigation: true
-  title: "HPM 883"
-  description: "Homepage for HPM 883: Advanced Quantitative Methods for Health policy and Management"
-  site-url: https://hpm883.github.io
-  repo-url: https://github.com/hpm883
+  title: "HPM 883 — Spring 2025"
+  description: "HPM 883: Advanced Quantitative Methods for Health Policy and Management — Spring 2025 (archive)"
+  site-url: https://spring-2025.hpm883.ssylvia.io
+  repo-url: https://github.com/unc-hpm-quant/HPM883-Spring2025
   repo-actions: [edit, issue]
 
   draft-mode: unlinked
